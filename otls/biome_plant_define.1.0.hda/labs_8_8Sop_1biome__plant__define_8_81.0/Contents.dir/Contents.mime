@@ -32,11 +32,12 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -53.2732 70.6634
-connectornextid 0
+position -1.82598 0.406743
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
@@ -64,6 +65,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"sidefx::parm_filter_text_pattern":{
+		"type":"string",
+		"value":" f"
 	},
 	"wirestyle":{
 		"type":"string",
@@ -1306,6 +1311,7 @@ snippet	[ 0	locks=0 ]	(	"
 int numvariations = 0;
 string meshpath;
 string deadmeshpath;
+float deadratio;
 vector pos;
 int pts[] = expandpointgroup(-1, \"\");
 float agemin = 0;
@@ -1336,7 +1342,10 @@ foreach(int pt; pts)
         {
             deadmeshpath = d@plant_definition[\"meshdeadvariant\" + itoa(i)];
         }
-        
+        if(isvalidindex(d@plant_definition, \"deadratio\" + itoa(i)))
+        {
+            deadratio = d@plant_definition[\"deadratio\" + itoa(i)];
+        }
         // if this is object-level geometry to be instanced, 
         // prepend op: to the full path so the instance node 
         // can differentiate between a file path and a node path
@@ -1375,17 +1384,20 @@ foreach(int pt; pts)
         setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
         setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
         
-        //set attributes for dead mesh
-        pos = set(pt * spacing + .5 * spacing, 0.0, (i - 1) * spacing * .5);
-        newpt = addpoint(0, pos);
-        setpointattrib(0, chs(\"meshpath\"), newpt, deadmeshpath, \"set\");
-        setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
-        setpointattrib(0, \"_bps_viability\", newpt, 1, \"set\");
-        setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
-        setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
-        setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
-        setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
-        setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+        if(deadratio > 0)
+        {
+            //set attributes for dead mesh
+            pos = set(pt * spacing + .5 * spacing, 0.0, (i - 1) * spacing * .5);
+            newpt = addpoint(0, pos);
+            setpointattrib(0, chs(\"meshpath\"), newpt, deadmeshpath, \"set\");
+            setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
+            setpointattrib(0, \"_bps_viability\", newpt, 1, \"set\");
+            setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
+            setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
+            setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
+            setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
+            setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+         }
     }
 
 }
@@ -4946,11 +4958,11 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 24.2792 -10.1524
-connectornextid 3
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
+2 "output1"
 }
 inputsNamed3
 {
@@ -5304,11 +5316,11 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 42.4122 -7.89338
-connectornextid 4
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
+2 "output1"
 }
 inputsNamed3
 {
@@ -6640,11 +6652,11 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 32.0357 -7.89338
-connectornextid 3
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-2 "output1"
+1 "output1"
 }
 inputsNamed3
 {
@@ -7535,7 +7547,7 @@ Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
 f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIwLjUuNDg3JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFqKwQLdmVydGV4Y291bnQmBBEAKwUOcHJpbWl0aXZlY291bnQmBREAKwYEaW5mbyYGeysHCGhvc3RuYW1lJgc=
-KwgJQmFpbGV5c1BDJggrCQRkYXRlJgkrChMyMDI1LTAyLTA2IDE3OjAzOjEyJgorCwZhcnRpc3QmCysMBkJhaWxleSYMKw0Ic29mdHdhcmUmDSsOEEhvdWRpbmkgMjAuNS40ODcmDisPBmJvdW5kcyYPQBkGI9t1wUa26kEGgZU=
+KwgJQmFpbGV5c1BDJggrCQRkYXRlJgkrChMyMDI1LTAyLTA3IDE2OjEwOjQ0JgorCwZhcnRpc3QmCysMBkJhaWxleSYMKw0Ic29mdHdhcmUmDSsOEEhvdWRpbmkgMjAuNS40ODcmDisPBmJvdW5kcyYPQBkGI9t1wUa26kEGgZU=
 PScxMUIAAAAAAAAAACsQEWF0dHJpYnV0ZV9zdW1tYXJ5JhAnUSAgICAgMyBwb2ludCBhdHRyaWJ1dGVzOglQLCBiaW9tZSwgbWVyZ2VkX2Jpb21lCiAgICAgMSBnbG9iYWwgYXR0cmlidXRlczoJdmFybWFwCn0rEQh0b3BvbG8=
 Z3kmEVsrEghwb2ludHJlZiYSWysTB2luZGljZXMmE0ASAF1dKxQKYXR0cmlidXRlcyYUWysVD3BvaW50YXR0cmlidXRlcyYVW1tbKxYFc2NvcGUmFisXBnB1YmxpYyYXKxgEdHlwZSYYKxkHbnVtZXJpYyYZKxoEbmFtZSYaKxs=
 AVAmGyscB29wdGlvbnMmHHsmGHsmGCsdBnN0cmluZyYdKx4FdmFsdWUmHisfBXBvaW50Jh99fV1bKyAEc2l6ZSYgEQMrIQdzdG9yYWdlJiErIghmcHJlYWwzMiYiKyMIZGVmYXVsdHMmI1smIBEBJiErJAhmcHJlYWw2NCYkKyU=
@@ -7687,8 +7699,7 @@ for (int i = 1; i <= numvariations; i++)
     }
       
 }
-s@newstring = newpath;
-i@totalpts = npoints(s@newstring);"	)
+"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 autobind	[ 0	locks=0 ]	(	"on"	)

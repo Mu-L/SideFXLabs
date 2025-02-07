@@ -32,28 +32,29 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.01031 -2.91245
-connectornextid 3
+position -0.53051 -3.42055
+connectornextid 4
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
 2 "output1"
+3 "output2"
 }
 inputsNamed3
 {
 0 	biome_plant_define1 0 1 "input1"
-1 	biome_attributes_to_terrain1 1 1 "input2"
+1 	biome_attributes_evolve2 1 1 "input2"
 }
 inputs
 {
 0 	biome_plant_define1 0 1
-1 	biome_attributes_to_terrain1 0 1
+1 	biome_attributes_evolve2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author arvid@sid
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -19566,6 +19567,7 @@ snippet	[ 0	locks=0 ]	(	"
 int numvariations = 0;
 string meshpath;
 string deadmeshpath;
+float deadratio;
 vector pos;
 int pts[] = expandpointgroup(-1, \"\");
 float agemin = 0;
@@ -19595,6 +19597,10 @@ foreach(int pt; pts)
         if(isvalidindex(d@plant_definition, \"meshdeadvariant\" + itoa(i)))
         {
             deadmeshpath = d@plant_definition[\"meshdeadvariant\" + itoa(i)];
+        }
+        if(isvalidindex(d@plant_definition, \"deadratio\" + itoa(i)))
+        {
+            deadratio = d@plant_definition[\"deadratio\" + itoa(i)];
         }
         
         // if this is object-level geometry to be instanced, 
@@ -19635,17 +19641,20 @@ foreach(int pt; pts)
         setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
         setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
         
-        //set attributes for dead mesh
-        pos = set(pt * spacing + .5 * spacing, 0.0, (i - 1) * spacing * .5);
-        newpt = addpoint(0, pos);
-        setpointattrib(0, chs(\"meshpath\"), newpt, deadmeshpath, \"set\");
-        setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
-        setpointattrib(0, \"_bps_viability\", newpt, 1, \"set\");
-        setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
-        setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
-        setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
-        setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
-        setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+        if(deadratio > 0)
+        {
+            //set attributes for dead mesh
+            pos = set(pt * spacing + .5 * spacing, 0.0, (i - 1) * spacing * .5);
+            newpt = addpoint(0, pos);
+            setpointattrib(0, chs(\"meshpath\"), newpt, deadmeshpath, \"set\");
+            setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
+            setpointattrib(0, \"_bps_viability\", newpt, 1, \"set\");
+            setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
+            setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
+            setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
+            setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
+            setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+        }
     }
 
 }
