@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -29.6759 -35.1071
+position -12.321 -1.42301
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -41,11 +41,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	orientalongcurve2 1 1 "input1"
+0 	orientalongcurve1 1 1 "input1"
 }
 inputs
 {
-0 	orientalongcurve2 0 1
+0 	orientalongcurve1 0 1
 }
 stat
 {
@@ -221,11 +221,11 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.451 0.369 0.796 ";
 	comment := "Orient and Scale controls";
-	height := 5.427595015380767;
+	height := 6.392837230840319;
 	minimized := 0;
 	width := 4.225837907708409;
 	x_position := -0.30126969359552724;
-	y_position := -14.199497461811475;
+	y_position := -14.751064435262117;
 }
 {
   create -1
@@ -318,8 +318,8 @@ Content-Type: text/plain
 	height := 1.6164219073318087;
 	minimized := 0;
 	width := 4.023222711030971;
-	x_position := 6.453391098556535;
-	y_position := -11.196100000810624;
+	x_position := 8.119150019073487;
+	y_position := -10.966985219421307;
 }
 {
   create -1
@@ -3636,7 +3636,7 @@ sopflags sopflags =
 comment ""
 position 0.364895 -16.6757
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -3701,9 +3701,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.333538 -10.1183
+position 1.43381 -9.57968
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -3828,7 +3828,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.330538 -11.1582
+position 0.330538 -12.1847
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass on display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -3837,11 +3837,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	orientalongcurve2 1 1 "input1"
+0 	switch1 2 1 "input1"
 }
 inputs
 {
-0 	orientalongcurve2 0 1
+0 	switch1 0 1
 }
 stat
 {
@@ -4207,7 +4207,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.330088 -13.2739
+position 0.330088 -14.3004
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4453,7 +4453,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 7.24706 -10.52
+position 8.91282 -10.2909
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4512,7 +4512,7 @@ applyroll	[ 0	locks=0 ]	(	"on"	)
 roll	[ 0	locks=0 ]	(	0	)
 rollper	[ 0	locks=0 ]	(	"attrib"	)
 fulltwists	[ 0	locks=0 ]	(	0	)
-incroll	[ 0	locks=0 ]	(	1	)
+incroll	[ 0	locks=0 ]	(	0	)
 rollattrib	[ 0	locks=0 ]	(	roll	)
 sepparmroll	[ 0	locks=0 ]	(	)
 applyyaw	[ 0	locks=0 ]	(	"off"	)
@@ -4580,7 +4580,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.330538 -12.236
+position 0.330538 -13.2625
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4692,12 +4692,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	out_export 1 1 "input1"
-1 	orientalongcurve3 1 1 "input2"
+1 	switch2 2 1 "input2"
 }
 inputs
 {
 0 	out_export 0 1
-1 	orientalongcurve3 0 1
+1 	switch2 0 1
 }
 stat
 {
@@ -5227,10 +5227,167 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.230561 -10.9074
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	foreach_end1 1 1 "input1"
+1 	orientalongcurve2 1 1 "input2"
+}
+inputs
+{
+0 	foreach_end1 0 1
+1 	orientalongcurve2 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Mo@SideFX_Mo
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../orient_along_curve\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.netbox"
+Content-Type: text/plain
+
+__netbox9
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 7.16411 -12.0548
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	delete_prim_tag 1 1 "input1"
+1 	orientalongcurve3 1 1 "input2"
+}
+inputs
+{
+0 	delete_prim_tag 0 1
+1 	orientalongcurve3 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Mo@SideFX_Mo
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../switch1/input\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-27
+29
 output0
 default_scale
 Convert_to_Hermite
@@ -5258,6 +5415,8 @@ attribdelete2
 null1
 polyframe1
 attribwrangle2
+switch1
+switch2
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

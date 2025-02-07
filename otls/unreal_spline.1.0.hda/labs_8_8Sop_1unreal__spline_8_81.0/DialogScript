@@ -32,11 +32,23 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
+            name    "reimport"
+            label   "Reimport"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Writes Spline data into a Json File"
+            disablewhen "{ import_spline == 0 }"
+            parmtag { "script_callback" "hou.phm().reimport(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
             name    "import_spline"
             label   "Import"
             type    toggle
             default { "0" }
             help    "Import Splines from Json File"
+            parmtag { "script_callback" "hou.phm().reimport(kwargs)" }
             parmtag { "script_callback_language" "python" }
         }
         parm {
@@ -47,6 +59,15 @@
             help    "Splines Json File Path"
             disablewhen "{ enablemesh == 0 }"
             range   { 0 1 }
+        }
+        parm {
+            name    "orient_along_curve"
+            label   "Orient Along Curve"
+            type    toggle
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
         }
         parm {
             name    "prim_tags"

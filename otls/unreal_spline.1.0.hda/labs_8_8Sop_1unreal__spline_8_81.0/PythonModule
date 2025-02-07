@@ -87,3 +87,8 @@ def export(kwargs):
     python_node.cook(force=True)
 
     return
+
+def reimport(kwargs):
+    node = hou.pwd()
+    python_node = node.node('curve_from_json')
+    python_node.cook(force=True)
