@@ -64,7 +64,8 @@
             name    "orient_along_curve"
             label   "Orient Along Curve"
             type    toggle
-            default { "1" }
+            default { "0" }
+            disablewhen "{ import_spline == 1 }"
             range   { 0! 10 }
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "script_callback_language" "python" }
