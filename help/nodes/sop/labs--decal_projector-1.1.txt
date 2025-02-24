@@ -15,7 +15,11 @@ Decals are a common feature in game engines. For example, say a small manhole co
 
 Instead, game engines will provide a decal, providing a wireframe box as a GUI element to the user. The manhole cover is assigned to the decal, and the box UI is rotated, scaled, and intersected with the floor to represent where it needs to go. The manhole cover will be composited into the floor texture.
 
-The gamedev decal projector sop replicates this workflow. Rather than composite the texture, a perfectly fitting polygon 'sticker' or 'decal' is made containing the required texture. This will adapt to to any changes of the underlying geometry, and can be merged with the original geometry.
+There are two radio buttons representing two different modes for this tool, 'Project' and 'Place'. 
+
+In 'Project' mode, the decal projector sop replicates the manhole cover workflow. Rather than composite the texture, a perfectly fitting polygon 'sticker' or 'decal' is made containing the required texture. This will adapt to any changes of the underlying geometry, and can be merged with the original geometry.
+
+In 'Place' mode, the decal projector sop requires the second and third input. The second input requires target points, typically points scattered on the projection mesh. These points must be assigned a 'decal_index' integer, point attribute. This will determine how decals are matched with the target points. The third input expects decal geometry in the form of grid planes with materials. Each plane needs a unique 'decal_index' integer, primitive attribute. The 'Place' mode does not shape the decals to the underlying geometry like the 'Project' mode. 
 
 
 
@@ -53,3 +57,5 @@ The gamedev decal projector sop replicates this workflow. Rather than composite 
     Clip Z:
         Clip or 'barn doors' for the top and bottom of the projection.
     
+@examples
+	- [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/examples/decal_projector/decal_projector.1.1.hip]
