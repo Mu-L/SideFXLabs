@@ -11,6 +11,10 @@
 This node exports 2 CSV files that are plugged into the _Houdini Import DataTable Blueprint_ inside a PCG graph in Unreal Engine 5.2 and up. It can export attributes such as Positions, Rotation, Scale, Mesh, Material and Custom ones. These attributes are then read inside the Unreal Blueprint to reproduce the [Copy to Points|Node:/sop/copytopoints] node functionality with a piece attribute that decides what mesh should be copied to what point.
 
 WARNING:
+    Make sure to have the Procedural Content Generation Framework (PCG) Plugin enabled.
+
+    Make sure to have the Procedural Content Generation Framework External Data Interop Plugin enabled in order to use the Alembic node (Only available in UE5.4+).
+
     The Unreal Engine _Houdini Import DataTable Blueprint_ needs to be fixed once it is downloaded as part of the _SideFX Labs Unreal Plugin_.
     
     When opening the _Houdini Import DataTable Blueprint_ for the first time, Unreal may not be able to find the node called _Break CSV Point Format_. (This is likely a known issue on the Unreal side.) All you have to do in that case is to recreate it and rewire it to the other nodes. 
