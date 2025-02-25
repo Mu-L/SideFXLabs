@@ -153,6 +153,14 @@
                     range   { 0.0001! 0.2 }
                     parmtag { "script_callback_language" "python" }
                 }
+                parm {
+                    name    "scalemult"
+                    label   "Scale Multiplier"
+                    type    float
+                    default { "1" }
+                    range   { 0.0001! 5 }
+                    parmtag { "script_callback_language" "python" }
+                }
             }
 
             groupsimple {
@@ -192,6 +200,53 @@
             name    "fd_speciessettings_1"
             label   "Species Variants"
 
+            parm {
+                name    "autofillmode"
+                label   "Autofill Mode"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "0" "from Directory"
+                    "1" "from Merge Path"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "variantsmergepath"
+                label   "Variants Merge Path"
+                type    oppath
+                default { "" }
+                disablewhen "{ autofillmode == 0 }"
+                hidewhen "{ autofillmode == 0 }"
+                parmtag { "oprelative" "." }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "variantsdir"
+                label   "Variants Directory"
+                type    directory
+                default { "" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "findfilescontaining"
+                label   "Find Files Containing"
+                type    string
+                default { "LOD0.fbx" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "autofillvariants"
+                label   "Autofill Variants"
+                type    button
+                default { "0" }
+                parmtag { "script_callback" "hou.phm().initVariants(kwargs, 'autofillmode')" }
+                parmtag { "script_callback_language" "python" }
+            }
             parm {
                 name    "enginepaths"
                 label   "Include Engine Asset Paths"

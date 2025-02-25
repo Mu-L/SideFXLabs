@@ -46,7 +46,7 @@ def getAttrib(node):
     type_to_find = 'labs::biome_plant_define::1.0'
     
     #template dictionnaries
-    parm_dict = orderedDict(node, 'Species Settings')   
+    parm_dict = orderedDict(node, 'Species Settings') 
     multiparm_dict = orderedDict(node, 'Species Variants','Number Of Variants')
     parm = {}
     
@@ -70,12 +70,34 @@ def getAttrib(node):
             #create new title and add 
             txt= {new_title: attr_to_find[key]}                
             title_list.update(txt)
-        plant.update(title_list)
+        plant.update(title_list)        
+        
+        #manually add the variantsdir string
+        iter = attr_to_find["autofillmode"]
+        inc_title = {node.parm("autofillmode").eval():attr_to_find["autofillmode"]}
+        plant.update(inc_title)
+        
+        #manually add the variantsmergepath string
+        iter = attr_to_find["variantsmergepath"]
+        inc_title = {node.parm("variantsmergepath").eval():attr_to_find["variantsmergepath"]}
+        plant.update(inc_title)
+        
+        #manually add the variantsdir string
+        iter = attr_to_find["variantsdir"]
+        inc_title = {node.parm("variantsdir").eval():attr_to_find["variantsdir"]}
+        plant.update(inc_title)
+        
+        #manually add the findfilescontaining string
+        iter = attr_to_find["findfilescontaining"]
+        inc_title = {node.parm("findfilescontaining").eval():attr_to_find["findfilescontaining"]}
+        plant.update(inc_title)
         
         #manually add the include asset path
         iter = attr_to_find["enginepaths"]
         inc_title = {node.parm("enginepaths").eval():attr_to_find["enginepaths"]}
         plant.update(inc_title)
+        
+        
         
         #manually add the variation in dictionnary
         iter = attr_to_find["variants"]
@@ -219,7 +241,6 @@ def recreateNodes(node):
         
         for name in iter(data[parms]): 
             
-
             number = re.findall("-"r"\d",name) 
             name1 = re.sub('-'r"\d", "" , name)
 

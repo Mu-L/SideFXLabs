@@ -32,29 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.53051 -3.42055
-connectornextid 4
+position -12.3367 -2.5458
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-2 "output1"
-3 "output2"
+1 "output1"
 }
 inputsNamed3
 {
-0 	biome_plant_define1 0 1 "input1"
-1 	biome_attributes_evolve2 1 1 "input2"
+0 	biome_plant_define_new5 0 1 "input1"
 }
 inputs
 {
-0 	biome_plant_define1 0 1
-1 	biome_attributes_evolve2 0 1
+0 	biome_plant_define_new5 0 1
 }
 stat
 {
   create -1
   modify -1
-  author arvid@sid
+  author Bailey@BaileysPC
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -538,7 +535,7 @@ sopflags sopflags =
 comment ""
 position 3.64053 -92.7841
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -982,7 +979,7 @@ sopflags sopflags =
 comment ""
 position 20.385 -75.2603
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -19574,6 +19571,8 @@ float agemin = 0;
 int newpt;
 float radius;
 float trunkradius;
+float scalemult;
+float scalemin;
 float spacing = chf('spacing');
 d@plant_definition;
 s@plant_name;
@@ -19619,6 +19618,10 @@ foreach(int pt; pts)
         {
             agemin = d@plant_definition[\"agemin\" + itoa(i)];  
         }
+        if(isvalidindex(d@plant_definition, \"scalemin\" + itoa(i)))
+        {
+            scalemin = d@plant_definition[\"scalemin\" + itoa(i)];  
+        }
         if(isvalidindex(d@plant_definition, \"radius\"))
         {
             radius = d@plant_definition[\"radius\"];  
@@ -19627,19 +19630,23 @@ foreach(int pt; pts)
         {
             trunkradius = d@plant_definition[\"trunkradius\"];  
         }
+        if(isvalidindex(d@plant_definition, \"scalemult\"))
+        {
+            scalemult = d@plant_definition[\"scalemult\"];  
+        }
         
         
         //set attributes for live mesh
         pos = set(pt * spacing, 0.0, (i - 1) * spacing * .5);
         newpt = addpoint(0, pos);
         setpointattrib(0, chs(\"meshpath\"), newpt, meshpath,\"set\");
-        setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
+        setpointattrib(0, \"pscale\", newpt, scalemult , \"set\");
         setpointattrib(0, \"_bps_viability\", newpt, 1,\"set\");
         setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
         setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
         setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
-        setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
-        setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+        setpointattrib(0, \"_bps_radius\", newpt, radius * scalemult, \"set\");
+        setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius  * scalemult, \"set\");
         
         if(deadratio > 0)
         {
@@ -19647,13 +19654,13 @@ foreach(int pt; pts)
             pos = set(pt * spacing + .5 * spacing, 0.0, (i - 1) * spacing * .5);
             newpt = addpoint(0, pos);
             setpointattrib(0, chs(\"meshpath\"), newpt, deadmeshpath, \"set\");
-            setpointattrib(0, \"pscale\", newpt, 1.0, \"set\");
+            setpointattrib(0, \"pscale\", newpt, scalemult, \"set\");
             setpointattrib(0, \"_bps_viability\", newpt, 1, \"set\");
             setpointattrib(0, \"plant_definition\", newpt, d@plant_definition, \"set\");
             setpointattrib(0, \"plant_name\", newpt, s@plant_name, \"set\");
             setpointattrib(0, \"_bps_age\", newpt, agemin, \"set\");
-            setpointattrib(0, \"_bps_radius\", newpt, radius, \"set\");
-            setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius, \"set\");
+            setpointattrib(0, \"_bps_radius\", newpt, radius * scalemult, \"set\");
+            setpointattrib(0, \"_bps_trunkradius\", newpt, trunkradius  * scalemult, \"set\");
         }
     }
 
@@ -19954,6 +19961,7 @@ s@_bps_mesh_path;
 s@_bps_unreal_path;
 float minscale;
 float maxscale;
+float scalemult;
 int scaleby;
 float weight;
 float difference;
@@ -19969,6 +19977,10 @@ if(isvalidindex(d@plant_definition, \"enginepaths\"))
 if(isvalidindex(d@plant_definition, \"variants\"))
 {
     numvariations = d@plant_definition[\"variants\"];
+}
+if(isvalidindex(d@plant_definition, \"scalemult\"))
+{
+    scalemult = d@plant_definition[\"scalemult\"];
 }
 
 for (int i = 1; i <= numvariations; i++)
@@ -20101,11 +20113,11 @@ if(isvalidindex(d@plant_definition, \"randscale\"))
 //if random scale method, else scale by age
 if(scaleby == 1)
 {
-    @pscale = fit01(rand(@ptnum * 30 + 12), minscale, maxscale);
+    @pscale = fit01(rand(@ptnum * 30 + 12), minscale, maxscale) * scalemult;
 }
 else
 {
-    @pscale = fit01(@_bps_age, minscale, maxscale);
+    @pscale = fit01(@_bps_age, minscale, maxscale) * scalemult;
 }
 
 if(enginepaths == 1)

@@ -248,6 +248,14 @@
                     range   { 0.0001! 0.2 }
                     parmtag { "script_callback_language" "python" }
                 }
+                parm {
+                    name    "scalemult"
+                    label   "Scale Multiplier"
+                    type    string
+                    default { "Scale Multiplier" }
+                    range   { 0.0001! 0.2 }
+                    parmtag { "script_callback_language" "python" }
+                }
             }
 
             groupsimple {
@@ -287,13 +295,48 @@
             name    "fd_speciesvariant"
             label   "Species Variants"
 
-            parm {
-                name    "enginepaths"
-                label   "Include Engine Asset Paths"
-                type    string
-                default { "Include Engine Asset Paths" }
-                parmtag { "script_callback_language" "python" }
+            groupsimple {
+                name    "autofill"
+                label   "Autofill"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "autofillmode"
+                    label   "Autofill Mode"
+                    type    string
+                    default { "Autofill Mode" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "variantsmergepath"
+                    label   "Variants Merge Path"
+                    type    string
+                    default { "Variants Merge Path" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "variantsdir"
+                    label   "Variants Directory"
+                    type    string
+                    default { "Variants Directory" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "findfilescontaining"
+                    label   "Find Files Containing"
+                    type    string
+                    default { "Find Files Containing" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "enginepaths"
+                    label   "Include Engine Asset Paths"
+                    type    string
+                    default { "Include Engine Asset Paths" }
+                    parmtag { "script_callback_language" "python" }
+                }
             }
+
             parm {
                 name    "variants"
                 label   "Number Of Variants"

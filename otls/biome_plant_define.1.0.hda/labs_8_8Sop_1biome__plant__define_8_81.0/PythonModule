@@ -1,2 +1,45 @@
 def printNodeName(node):
     print("Mesh Variant Callback")
+    
+import soptoolutils
+import os
+
+    
+def get_all_files(dir):
+    file_list = []
+    for root, _, files in os.walk(dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                file_list.append(file_path)
+    return file_list
+
+def initVariants(kwargs , mode):
+    node = kwargs['node']
+    autofillmode = node.parm(mode).eval()
+    
+    if autofillmode == 0:
+        dir = node.parm('variantsdir').eval()
+        contains = node.parm('findfilescontaining').eval()
+        all_files = get_all_files(dir)
+        filtered_files = list(filter(lambda i : contains in i, all_files))
+        
+        nvariants = len(filtered_files)
+        node.parm('variants').set(nvariants)
+        for i in range(nvariants):
+            parmname = 'filemeshvariant' + '%d' % (i+1)
+            reftypeparmname = 'reftype' + '%d' % (i+1)
+            node.parm(reftypeparmname).set(0)
+            node.parm(parmname).set(str(filtered_files[i]))
+            #print(str(filtered_files[i]))
+    ## from merge path
+    elif autofillmode == 1:
+        mergepath = node.parm('variantsmergepath').eval()
+        mergenode = hou.node(mergepath)
+        nvariants = len(mergenode.inputs())
+        node.parm('variants').set(nvariants)
+        for i in range(nvariants):
+            parmname = 'meshvariant' + '%d' % (i+1)
+            reftypeparmname = 'reftype' + '%d' % (i+1)
+            node.parm(reftypeparmname).set(1)
+            node.parm(parmname).set(str(mergenode.inputs()[i].path()))
+    
