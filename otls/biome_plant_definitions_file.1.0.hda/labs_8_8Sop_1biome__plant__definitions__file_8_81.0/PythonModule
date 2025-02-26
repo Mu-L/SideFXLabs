@@ -88,8 +88,13 @@ def getAttrib(node):
         plant.update(inc_title)
         
         #manually add the findfilescontaining string
-        iter = attr_to_find["findfilescontaining"]
-        inc_title = {node.parm("findfilescontaining").eval():attr_to_find["findfilescontaining"]}
+        iter = attr_to_find["pattern"]
+        inc_title = {node.parm("pattern").eval():attr_to_find["pattern"]}
+        plant.update(inc_title)
+        
+        #manually add the recursive toggle
+        iter = attr_to_find["recursive"]
+        inc_title = {node.parm("recursive").eval():attr_to_find["recursive"]}
         plant.update(inc_title)
         
         #manually add the include asset path

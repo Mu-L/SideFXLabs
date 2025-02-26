@@ -3,14 +3,15 @@ def printNodeName(node):
     
 import soptoolutils
 import os
-
+import fnmatch
     
-def get_all_files(dir):
+def get_all_files(dir, recursive):
     file_list = []
     for root, _, files in os.walk(dir):
             for file in files:
                 file_path = os.path.join(root, file)
                 file_list.append(file_path)
+            if not recursive: break            
     return file_list
 
 def initVariants(kwargs , mode):
@@ -19,10 +20,12 @@ def initVariants(kwargs , mode):
     
     if autofillmode == 0:
         dir = node.parm('variantsdir').eval()
-        contains = node.parm('findfilescontaining').eval()
-        all_files = get_all_files(dir)
-        filtered_files = list(filter(lambda i : contains in i, all_files))
-        
+        pattern = node.parm('pattern').eval()
+        recursive = 0
+        recursive = node.parm('recursive').eval()
+        all_files = get_all_files(dir, recursive)
+        ##filtered_files = list(filter(lambda i : hou.hscriptExpression('strmatch("%s", "%s")' % (pattern, i)), all_files))
+        filtered_files = fnmatch.filter(all_files, pattern)
         nvariants = len(filtered_files)
         node.parm('variants').set(nvariants)
         for i in range(nvariants):
@@ -30,7 +33,6 @@ def initVariants(kwargs , mode):
             reftypeparmname = 'reftype' + '%d' % (i+1)
             node.parm(reftypeparmname).set(0)
             node.parm(parmname).set(str(filtered_files[i]))
-            #print(str(filtered_files[i]))
     ## from merge path
     elif autofillmode == 1:
         mergepath = node.parm('variantsmergepath').eval()

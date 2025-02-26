@@ -231,10 +231,19 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
-                name    "findfilescontaining"
-                label   "Find Files Containing"
-                type    string
-                default { "LOD0.fbx" }
+                name    "pattern"
+                label   "Pattern"
+                type    file
+                default { "*.fbx" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "recursive"
+                label   "Recursive"
+                type    toggle
+                default { "1" }
                 disablewhen "{ autofillmode == 1 }"
                 hidewhen "{ autofillmode == 1 }"
                 parmtag { "script_callback_language" "python" }
@@ -246,6 +255,12 @@
                 default { "0" }
                 parmtag { "script_callback" "hou.phm().initVariants(kwargs, 'autofillmode')" }
                 parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sepparm"
+                label   "Separator"
+                type    separator
+                default { "" }
             }
             parm {
                 name    "enginepaths"
