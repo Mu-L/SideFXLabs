@@ -160,21 +160,14 @@
         name    "scatter"
         label   "Scatter"
 
-        groupsimple {
-            name    "fd_postprocessing"
-            label   "Post-processing"
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "scalemult"
-                label   "Scale Multiplier"
-                type    float
-                default { "1" }
-                range   { 0! 10 }
-                parmtag { "script_callback_language" "python" }
-            }
+        parm {
+            name    "scalemult"
+            label   "Scale Multiplier"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "script_callback_language" "python" }
         }
-
         parm {
             name    "densitymultiplier"
             label   "Density Multiplier"
@@ -194,14 +187,6 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "seed"
-            label   "Random Seed"
-            type    integer
-            default { "0" }
-            range   { 0 10 }
-            parmtag { "autoscope" "0000000000000000" }
-        }
-        parm {
             name    "treeoverlapallowance"
             label   "Tree Overlap Allowance"
             type    float
@@ -218,6 +203,14 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
+            name    "seed"
+            label   "Random Seed"
+            type    integer
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
             name    "keepplantsby"
             label   "Keep Plants by"
             type    ordinal
@@ -229,10 +222,89 @@
             }
             parmtag { "script_callback_language" "python" }
         }
-        groupsimple {
+        parm {
+            name    "enablemask"
+            label   "Enable Mask"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "invertmask"
+            label   "Invert Mask"
+            type    toggle
+            default { "1" }
+            disablewhen "{ enablemask == 0 }"
+            hidewhen "{ enablemask == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "scatter_sep"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        groupcollapsible {
+            name    "fd_Noise"
+            label   "Noise"
+
+            parm {
+                name    "lb_noise"
+                label   "Noise Label"
+                type    label
+                default { "Enable \"Visualize Points\" and \"Color by: Noise\" to preview noise." }
+                parmtag { "sidefx::look" "block" }
+            }
+            parm {
+                name    "basis"
+                label   "Noise Type"
+                type    ordinal
+                default { "simplex" }
+                menu {
+                    "value_fast"    "Fast"
+                    "sparse"        "Sparse Convolution"
+                    "alligator"     "Alligator"
+                    "perlin"        "Perlin"
+                    "flow"          "Perlin Flow"
+                    "simplex"       "Simplex"
+                    "worleyFA"      "Worley Cellular F1"
+                    "worleyFB"      "Worley Cellular F2-F1"
+                    "mworleyFA"     "Manhattan Cellular F1"
+                    "mworleyFB"     "Manhattan Cellular F2-F1"
+                    "cworleyFA"     "Chebyshev Cellular F1"
+                    "cworleyFB"     "Chebyshev Cellular F2-F1"
+                    "pcloud"        "Perlin Cloud"
+                    "scloud"        "Simplex Cloud"
+                    "fscloud"       "Fast Simplex Cloud"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_unquoted" "1" }
+            }
+            parm {
+                name    "elementsize"
+                label   "Element Size"
+                type    float
+                default { "500" }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "offset"
+                label   "Offset"
+                type    float
+                default { "0" }
+                range   { 0 50 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "parmvop" "1" }
+                parmtag { "shaderparmcontexts" "cvex" }
+            }
+        }
+
+        groupcollapsible {
             name    "culling"
             label   "Culling"
-            grouptag { "sidefx::look" "blank" }
 
             parm {
                 name    "enableculling"
@@ -276,28 +348,6 @@
             }
         }
 
-        parm {
-            name    "enablemask"
-            label   "Enable Mask"
-            type    toggle
-            default { "1" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "invertmask"
-            label   "Invert Mask"
-            type    toggle
-            default { "1" }
-            disablewhen "{ enablemask == 0 }"
-            hidewhen "{ enablemask == 0 }"
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "sepparm"
-            label   "Separator"
-            type    separator
-            default { "" }
-        }
         groupcollapsible {
             name    "fd_incompleteagecoverage"
             label   "Incomplete Age Coverage"
@@ -547,6 +597,42 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "enablenoise"
+                label   "Enable Noise"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "noisename"
+                label   "Noise"
+                type    string
+                default { "noise" }
+                disablewhen "{ enablenoise == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "enableuniqueid"
+                label   "Enable Unique ID"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "uniqueidname"
+                label   "Unique ID"
+                type    string
+                default { "uniqueid" }
+                disablewhen "{ enableuniqueid == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "enablemeshid"
                 label   "Enable Mesh ID"
                 type    toggle
@@ -700,6 +786,7 @@
                     "0" "Plant Species"
                     "1" "Viability"
                     "2" "Age"
+                    "3" "Noise"
                 }
             }
             parm {
