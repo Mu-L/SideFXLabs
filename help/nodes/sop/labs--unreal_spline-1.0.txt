@@ -23,7 +23,15 @@ Make sure the SideFX_Labs folder is in your Unreal project Plugins folder so you
     Import:
         #id: import_spline
     Imports an Unreal spline from a JSON file.
+
+    Rimport:
+        #id: rimport
+    Rimports an Unreal spline from a JSON file.
         
+    Orient Along Curve:
+        #id: orient_along_curve
+    Orients Normals along curve path.
+
     File Path:
         #id: file_export_spline
     The file path to export spline.
@@ -32,61 +40,10 @@ Make sure the SideFX_Labs folder is in your Unreal project Plugins folder so you
         #id: prim_tags
     Per primitive array string that can hold multiple tags, by default the tag will be the spline primitive number.
         
-    Visualize Spline:
-        #id: visualize_geo
-    Visualize the spline using different modes, however, this does not affect the data output.
-        
-    === Visualize ===
-
-    Mode:
-        #id: mode
-        
-        Arrow:
-            
-        Box:
-            
-        Sweep:
-            
-        Spline:
-            
-    Handles:
-        #id: handles
-        
-    Scale:
-        #id: s
-        
-    Resample:
-        #id: resample
         
     Unreal Engine Content Plugin and Guides:
         #id: openunrealshaderpath
     Find the SideFX_Labs folder, copy and paste it into your unreal project plugins folder with the correct Unreal version so you can use the scripted actions to import and export your splines.
-        
-    == Scale And Rotation ==
-
-    Global Scale:
-        #id: global_scale
-    Changes the scale for all points.
-        
-    Ramp Scale:
-        #id: ramp_scale
-    Changes the scale using a ramp that is mapped for each spline.
-        
-    Roll:
-        #id: roll
-    Rotates the spline points around the axis that goes along the curve direction.
-        
-    Partial Twist:
-        #id: incroll
-    Twists the spline points around the axis that goes along the curve direction.
-        
-    Full Twists:
-        #id: fulltwists
-    Fully twists the spline points around the axis that goes along the curve direction.
-        
-    Orient Up:
-        #id: orient_up
-    Ensures the spline orientation always faces up, unless specified along the ramp otherwise.
 
 
 @related
