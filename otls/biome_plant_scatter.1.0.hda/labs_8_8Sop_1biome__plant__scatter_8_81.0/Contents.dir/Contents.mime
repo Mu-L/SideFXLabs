@@ -32,23 +32,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -48.1913 80.3926
-connectornextid 4
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
+position 6.217 -16.4749
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-2 "output1"
-3 "output2"
+1 "output1"
 }
 inputsNamed3
 {
-0 	Shrub 1 1 "input1"
-1 	biome_attributes_evolve 1 1 "input2"
+0 	switch1 2 1 "input1"
 }
 inputs
 {
-0 	Shrub 0 1
-1 	biome_attributes_evolve 0 1
+0 	switch1 0 1
 }
 stat
 {
@@ -57,7 +54,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.89 0.412 0.761 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
@@ -730,7 +727,7 @@ sopflags sopflags =
 comment ""
 position 3.58678 -97.5986
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -1174,7 +1171,7 @@ sopflags sopflags =
 comment ""
 position 20.385 -75.2603
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -6854,11 +6851,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	INITIAL_SCATTER 1 1 "input1"
+0 	enable_cull 1 1 "input1"
 }
 inputs
 {
-0 	INITIAL_SCATTER 0 1
+0 	enable_cull 0 1
 }
 stat
 {
@@ -10502,14 +10499,18 @@ snippet	[ 0	locks=0 ]	(	"
 
 f@_bps_radius;
 i@_bps_type;
-
+f@_bps_scalemult;
+if(isvalidindex(d@plant_definition, \"scalemult\"))
+{
+    @_bps_scalemult = d@plant_definition[\"scalemult\"];
+}
 if(isvalidindex(d@plant_definition, \"radius\"))
 {
-    @_bps_radius = d@plant_definition[\"radius\"]*@pscale;
+    @_bps_radius = d@plant_definition[\"radius\"]*@pscale/@_bps_scalemult;
 }
 if(isvalidindex(d@plant_definition, \"trunkradius\"))
 {
-    @_bps_trunkradius = d@plant_definition[\"trunkradius\"]*@pscale;
+    @_bps_trunkradius = d@plant_definition[\"trunkradius\"]*@pscale/@_bps_scalemult;
 }
 
 if(isvalidindex(d@plant_definition, \"type\"))
@@ -18137,11 +18138,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	INITIAL_SCATTER 1 1 "input1"
+0 	enable_cull 1 1 "input1"
 }
 inputs
 {
-0 	INITIAL_SCATTER 0 1
+0 	enable_cull 0 1
 }
 stat
 {
@@ -18361,11 +18362,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	INITIAL_SCATTER 1 1 "input1"
+0 	enable_cull 1 1 "input1"
 }
 inputs
 {
-0 	INITIAL_SCATTER 0 1
+0 	enable_cull 0 1
 }
 stat
 {
@@ -18786,7 +18787,7 @@ Content-Type: text/plain
       righttype = extend
       default = -2
       flags = 0
-      segment { length = 0 value = -2 -2 expr = ch(\"../treeoverlapallowance\")*-1 }
+      segment { length = 0 value = -2 -2 expr = ch(\"../treetolerance\")*-1 }
     }
   }
 
@@ -19242,7 +19243,7 @@ Content-Type: text/plain
       righttype = extend
       default = -2
       flags = 0
-      segment { length = 0 value = -2 -2 expr = ch(\"../shruboverlapallowance\")*-1 }
+      segment { length = 0 value = -2 -2 expr = ch(\"../shrubtolerance\")*-1 }
     }
   }
 

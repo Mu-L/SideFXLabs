@@ -52,7 +52,7 @@
 
                 parm {
                     name    "templower"
-                    label   "Lower"
+                    label   "Lower Limit"
                     type    float
                     default { "10" }
                     range   { -10 33 }
@@ -70,7 +70,7 @@
                 }
                 parm {
                     name    "tempupper"
-                    label   "Upper"
+                    label   "Upper Limit"
                     type    float
                     default { "20" }
                     range   { -10 33 }
@@ -85,7 +85,7 @@
 
                 parm {
                     name    "preclower"
-                    label   "Lower"
+                    label   "Lower Limit"
                     type    float
                     default { "500" }
                     range   { 10 4300 }
@@ -103,7 +103,7 @@
                 }
                 parm {
                     name    "precupper"
-                    label   "Upper"
+                    label   "Upper Limit"
                     type    float
                     default { "900" }
                     range   { 10 4300 }
@@ -116,6 +116,14 @@
                 name    "fd_spacing"
                 label   "Spacing"
 
+                parm {
+                    name    "densitymax"
+                    label   "Maximum Density"
+                    type    float
+                    default { "1" }
+                    range   { 0.0001! 0.2 }
+                    parmtag { "script_callback_language" "python" }
+                }
                 parm {
                     name    "type"
                     label   "Type"
@@ -145,14 +153,12 @@
                     range   { 0.0001! 20 }
                     parmtag { "script_callback_language" "python" }
                 }
-                parm {
-                    name    "densitymax"
-                    label   "Density"
-                    type    float
-                    default { "0.05" }
-                    range   { 0.0001! 0.2 }
-                    parmtag { "script_callback_language" "python" }
-                }
+            }
+
+            groupsimple {
+                name    "fd_scale"
+                label   "Scale"
+
                 parm {
                     name    "scalemult"
                     label   "Scale Multiplier"
@@ -206,8 +212,8 @@
                 type    ordinal
                 default { "0" }
                 menu {
-                    "0" "from Directory"
-                    "1" "from Merge Path"
+                    "0" "From Directory"
+                    "1" "From Merge Path"
                 }
                 parmtag { "script_callback_language" "python" }
             }
@@ -241,7 +247,7 @@
             }
             parm {
                 name    "recursive"
-                label   "Recursive"
+                label   "Search Child Directories"
                 type    toggle
                 default { "1" }
                 disablewhen "{ autofillmode == 1 }"

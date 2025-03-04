@@ -48,7 +48,7 @@
             name    "size"
             label   "Size"
             type    float
-            default { "1000" }
+            default { "100" }
             disablewhen "{ mode != 1 }"
             hidewhen "{ mode != 1 }"
             range   { 0! 2000 }
@@ -187,40 +187,12 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "treeoverlapallowance"
-            label   "Tree Overlap Allowance"
-            type    float
-            default { "0" }
-            range   { 0 5 }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "shruboverlapallowance"
-            label   "Shrub Overlap Allowance"
-            type    float
-            default { "0" }
-            range   { 0 5 }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
             name    "seed"
             label   "Random Seed"
             type    integer
             default { "0" }
             range   { 0 10 }
             parmtag { "autoscope" "0000000000000000" }
-        }
-        parm {
-            name    "keepplantsby"
-            label   "Keep Plants by"
-            type    ordinal
-            default { "0" }
-            menu usetokenvalue {
-                "0" "Greatest Age"
-                "1" "Greatest Viability"
-                "2" "Random"
-            }
-            parmtag { "script_callback_language" "python" }
         }
         parm {
             name    "enablemask"
@@ -238,6 +210,40 @@
             hidewhen "{ enablemask == 0 }"
             parmtag { "script_callback_language" "python" }
         }
+        groupsimple {
+            name    "fd_overlap"
+            label   "Overlap"
+
+            parm {
+                name    "keepplantsby"
+                label   "Keep Plants by"
+                type    ordinal
+                default { "0" }
+                menu usetokenvalue {
+                    "0" "Greatest Age"
+                    "1" "Greatest Viability"
+                    "2" "Random"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "treetolerance"
+                label   "Tree Tolerance"
+                type    float
+                default { "0" }
+                range   { 0 5 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "shrubtolerance"
+                label   "Shrub Tolerance"
+                type    float
+                default { "0" }
+                range   { 0 5 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
         parm {
             name    "scatter_sep"
             label   "Separator"
@@ -349,80 +355,86 @@
         }
 
         groupcollapsible {
-            name    "fd_incompleteagecoverage"
-            label   "Incomplete Age Coverage"
+            name    "fd_debug"
+            label   "Debug"
 
-            parm {
-                name    "replacewith2"
-                label   "Replace With"
-                type    ordinal
-                default { "1" }
-                menu usetokenvalue {
-                    "0" "No Geometry"
-                    "1" "Debug Spheres"
-                    "2" "Closest Age Mesh Variant"
+            groupsimple {
+                name    "fd_incompleteagecoverage"
+                label   "Incomplete Age Coverage"
+
+                parm {
+                    name    "replacewith2"
+                    label   "Replace With"
+                    type    ordinal
+                    default { "1" }
+                    menu usetokenvalue {
+                        "0" "No Geometry"
+                        "1" "Debug Spheres"
+                        "2" "Closest Age Mesh Variant"
+                    }
+                    parmtag { "script_callback_language" "python" }
                 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "debugspherecol2"
-                label   "Debug Sphere Color"
-                type    color
-                size    3
-                default { "1" "0" "1" }
-                disablewhen "{ replacewith2 != 1 }"
-                hidewhen "{ replacewith2 != 1 }"
-                range   { 0 1 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "debugspherescale2"
-                label   "Debug Sphere Scale"
-                type    float
-                default { "1" }
-                disablewhen "{ replacewith2 != 1 }"
-                hidewhen "{ replacewith2 != 1 }"
-                range   { 0! 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupcollapsible {
-            name    "fd_invalidmeshpath"
-            label   "Invalid Mesh Path"
-
-            parm {
-                name    "replacewith"
-                label   "Replace With"
-                type    ordinal
-                default { "1" }
-                menu usetokenvalue {
-                    "0" "No Geometry"
-                    "1" "Debug Spheres"
+                parm {
+                    name    "debugspherecol2"
+                    label   "Debug Sphere Color"
+                    type    color
+                    size    3
+                    default { "1" "0" "1" }
+                    disablewhen "{ replacewith2 != 1 }"
+                    hidewhen "{ replacewith2 != 1 }"
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
                 }
-                parmtag { "script_callback_language" "python" }
+                parm {
+                    name    "debugspherescale2"
+                    label   "Debug Sphere Scale"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ replacewith2 != 1 }"
+                    hidewhen "{ replacewith2 != 1 }"
+                    range   { 0! 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
             }
-            parm {
-                name    "debugspherecol"
-                label   "Debug Sphere Color"
-                type    color
-                size    3
-                default { "0" "1" "1" }
-                disablewhen "{ replacewith != 1 }"
-                hidewhen "{ replacewith != 1 }"
-                range   { 0 1 }
-                parmtag { "script_callback_language" "python" }
+
+            groupsimple {
+                name    "fd_invalidmeshpath"
+                label   "Invalid Mesh Path"
+
+                parm {
+                    name    "replacewith"
+                    label   "Replace With"
+                    type    ordinal
+                    default { "1" }
+                    menu usetokenvalue {
+                        "0" "No Geometry"
+                        "1" "Debug Spheres"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "debugspherecol"
+                    label   "Debug Sphere Color"
+                    type    color
+                    size    3
+                    default { "0" "1" "1" }
+                    disablewhen "{ replacewith != 1 }"
+                    hidewhen "{ replacewith != 1 }"
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "debugspherescale"
+                    label   "Debug Sphere Scale"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ replacewith != 1 }"
+                    hidewhen "{ replacewith != 1 }"
+                    range   { 0! 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
             }
-            parm {
-                name    "debugspherescale"
-                label   "Debug Sphere Scale"
-                type    float
-                default { "1" }
-                disablewhen "{ replacewith != 1 }"
-                hidewhen "{ replacewith != 1 }"
-                range   { 0! 10 }
-                parmtag { "script_callback_language" "python" }
-            }
+
         }
 
     }

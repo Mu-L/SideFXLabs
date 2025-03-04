@@ -150,7 +150,7 @@
 
                 parm {
                     name    "templower"
-                    label   "Lower"
+                    label   "Lower Limit"
                     type    string
                     default { "Lower Temperature" }
                     range   { -10 33 }
@@ -168,7 +168,7 @@
                 }
                 parm {
                     name    "tempupper"
-                    label   "Upper"
+                    label   "Upper Limit"
                     type    string
                     default { "Upper Temperature" }
                     range   { -10 33 }
@@ -183,7 +183,7 @@
 
                 parm {
                     name    "preclower"
-                    label   "Lower"
+                    label   "Lower Limit"
                     type    string
                     default { "Lower Precipitation" }
                     range   { 10 4300 }
@@ -201,7 +201,7 @@
                 }
                 parm {
                     name    "precupper"
-                    label   "Upper"
+                    label   "Upper Limit"
                     type    string
                     default { "Upper Precipitation" }
                     range   { 10 4300 }
@@ -214,6 +214,14 @@
                 name    "fd_spacing"
                 label   "Spacing"
 
+                parm {
+                    name    "densitymax"
+                    label   "Maximum Density"
+                    type    string
+                    default { "Maximum Density" }
+                    range   { 0.0001! 0.2 }
+                    parmtag { "script_callback_language" "python" }
+                }
                 parm {
                     name    "type"
                     label   "Type"
@@ -240,14 +248,12 @@
                     range   { 0.0001! 20 }
                     parmtag { "script_callback_language" "python" }
                 }
-                parm {
-                    name    "densitymax"
-                    label   "Density"
-                    type    string
-                    default { "Density" }
-                    range   { 0.0001! 0.2 }
-                    parmtag { "script_callback_language" "python" }
-                }
+            }
+
+            groupsimple {
+                name    "fd_scale"
+                label   "Scale"
+
                 parm {
                     name    "scalemult"
                     label   "Scale Multiplier"
@@ -330,9 +336,9 @@
                 }
                 parm {
                     name    "recursive"
-                    label   "Recursive"
+                    label   "Search Child Directories"
                     type    string
-                    default { "Recursive" }
+                    default { "Search Child Directories" }
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
