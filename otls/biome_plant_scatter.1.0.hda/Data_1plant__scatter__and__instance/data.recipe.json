@@ -3,8 +3,8 @@
     "tags": {
       "target_tag": "biome_plant_scatter1",
       "start_tags": [
-        "TEMPERATE_SHRUB",
-        "heightfield1"
+        "heightfield1",
+        "TEMPERATE_SHRUB"
       ],
       "end_tags": [
         "OUT_PLANT_SCATTER_AND_INSTANCE"
@@ -20,7 +20,7 @@
             "to_index": 0
           },
           {
-            "from": "del_border_line",
+            "from": "del_border_line_mask",
             "from_index": 0,
             "to_index": 1
           },
@@ -44,18 +44,18 @@
         },
         "parms": {
           "agejitter": 0.3,
-          "colorby": 1,
+          "outputage": true,
           "meshvariantsdetailarray": true,
           "size": 1000.0,
-          "outputviability": true,
-          "outputage": true
+          "colorby": 1,
+          "outputviability": true
         }
       },
       "SAMPLE_ENV": {
         "type": "null",
         "inputs": [
           {
-            "from": "heightfield_remap3",
+            "from": "heightfield_remap2",
             "from_index": 0,
             "to_index": 0
           }
@@ -300,7 +300,7 @@
           0.31
         ]
       },
-      "del_border_line": {
+      "del_border_line_mask": {
         "type": "volumewrangle",
         "inputs": [
           {
@@ -364,8 +364,8 @@
           }
         ],
         "position": [
-          5.64,
-          0.96
+          6.98,
+          0.91
         ],
         "color": [
           0.31,
@@ -386,16 +386,16 @@
           ]
         }
       },
-      "heightfield_masknoise1": {
+      "heightfield_masknoise2": {
         "type": "heightfield_noise",
         "inputs": [
           {
-            "from": "heightfield_maskbyfeature1",
+            "from": "heightfield_maskbyfeature2",
             "from_index": 0,
             "to_index": 0
           },
           {
-            "from": "heightfield_maskbyfeature1",
+            "from": "heightfield_maskbyfeature2",
             "from_index": 0,
             "to_index": 1
           }
@@ -414,7 +414,7 @@
           "gain": 0.9
         }
       },
-      "heightfield_maskbyfeature1": {
+      "heightfield_maskbyfeature2": {
         "type": "heightfield_maskbyfeature",
         "inputs": [
           {
@@ -575,7 +575,7 @@
         "type": "heightfield_distort",
         "inputs": [
           {
-            "from": "heightfield_remap2",
+            "from": "heightfield_remap1",
             "from_index": 0,
             "to_index": 0
           },
@@ -599,12 +599,12 @@
         "type": "heightfield_blur",
         "inputs": [
           {
-            "from": "heightfield_masknoise1",
+            "from": "heightfield_masknoise2",
             "from_index": 0,
             "to_index": 0
           },
           {
-            "from": "heightfield_masknoise1",
+            "from": "heightfield_masknoise2",
             "from_index": 0,
             "to_index": 1
           }
@@ -752,8 +752,8 @@
           }
         ],
         "position": [
-          5.64,
-          6.96
+          6.98,
+          6.91
         ],
         "parms": {
           "tracelayer": "mask",
@@ -768,7 +768,7 @@
         "type": "heightfield_resample",
         "inputs": [
           {
-            "from": "heightfield_maskclear3",
+            "from": "heightfield_maskclear1",
             "from_index": 0,
             "to_index": 0
           }
@@ -791,8 +791,8 @@
           }
         ],
         "position": [
-          5.64,
-          5.96
+          6.98,
+          5.91
         ],
         "parms": {
           "colorramp": [
@@ -836,8 +836,8 @@
           }
         ],
         "position": [
-          5.63,
-          4.96
+          6.97,
+          4.91
         ],
         "parms": {
           "inname": "area",
@@ -847,7 +847,7 @@
           "deletein": false
         }
       },
-      "attribwrangle1": {
+      "keep_the_largest_area": {
         "type": "attribwrangle",
         "inputs": [
           {
@@ -857,26 +857,26 @@
           }
         ],
         "position": [
-          5.63,
-          3.92
+          6.97,
+          3.87
         ],
         "parms": {
           "class": "primitive",
-          "snippet": "@test = detail(0,'area',0);\n\nif(@test != @area) {\n    removeprim(0,@primnum,1);\n    }"
+          "snippet": "@delA = detail(0,'area',0);\n\nif(@delA != @area) {\n    removeprim(0,@primnum,1);\n    }"
         }
       },
       "transform1": {
         "type": "xform",
         "inputs": [
           {
-            "from": "attribwrangle1",
+            "from": "keep_the_largest_area",
             "from_index": 0,
             "to_index": 0
           }
         ],
         "position": [
-          5.64,
-          2.88
+          6.98,
+          2.83
         ]
       },
       "color1": {
@@ -889,8 +889,8 @@
           }
         ],
         "position": [
-          5.64,
-          1.88
+          6.98,
+          1.83
         ],
         "parms": {
           "color": [
@@ -904,7 +904,7 @@
         "type": "heightfield_slump",
         "inputs": [
           {
-            "from": "heightfield_distort2",
+            "from": "heightfield_distort4",
             "from_index": 0,
             "to_index": 0
           }
@@ -923,12 +923,12 @@
         "type": "heightfield_noise",
         "inputs": [
           {
-            "from": "heightfield_noise3",
+            "from": "heightfield_noise1",
             "from_index": 0,
             "to_index": 0
           },
           {
-            "from": "heightfield_noise3",
+            "from": "heightfield_noise1",
             "from_index": 0,
             "to_index": 1
           }
@@ -947,7 +947,7 @@
           ]
         }
       },
-      "heightfield_distort2": {
+      "heightfield_distort4": {
         "type": "heightfield_distort",
         "inputs": [
           {
@@ -969,11 +969,11 @@
           "amp": 25.0
         }
       },
-      "heightfield_masknoise2": {
+      "heightfield_masknoise1": {
         "type": "heightfield_noise",
         "inputs": [
           {
-            "from": "heightfield_distort5",
+            "from": "heightfield_distort2",
             "from_index": 0,
             "to_index": 0
           }
@@ -992,22 +992,22 @@
           "gain": 0.9
         }
       },
-      "heightfield_remap2": {
+      "heightfield_remap1": {
         "type": "heightfield_remap",
         "inputs": [
           {
-            "from": "heightfield_maskbyfeature6",
+            "from": "heightfield_maskbyfeature1",
             "from_index": 0,
             "to_index": 0
           },
           {
-            "from": "heightfield_maskbyfeature6",
+            "from": "heightfield_maskbyfeature1",
             "from_index": 0,
             "to_index": 1
           }
         ],
         "position": [
-          3.35,
+          0.98,
           22.33
         ],
         "parms": {
@@ -1017,7 +1017,7 @@
           "outputmax": 212.75814819335938
         }
       },
-      "heightfield_maskclear3": {
+      "heightfield_maskclear1": {
         "type": "heightfield_layerclear",
         "inputs": [
           {
@@ -1042,12 +1042,12 @@
         "type": "heightfield_distort",
         "inputs": [
           {
-            "from": "heightfield_masknoise2",
+            "from": "heightfield_masknoise1",
             "from_index": 0,
             "to_index": 0
           },
           {
-            "from": "heightfield_masknoise2",
+            "from": "heightfield_masknoise1",
             "from_index": 0,
             "to_index": 1
           }
@@ -1060,7 +1060,7 @@
           "amp": 20.0
         }
       },
-      "heightfield_noise3": {
+      "heightfield_noise1": {
         "type": "heightfield_noise",
         "inputs": [
           {
@@ -1100,8 +1100,8 @@
           }
         ],
         "position": [
-          5.64,
-          7.96
+          6.98,
+          7.91
         ],
         "parms": {
           "maskbyslope": false,
@@ -1188,7 +1188,7 @@
           ]
         }
       },
-      "heightfield_remap3": {
+      "heightfield_remap2": {
         "type": "heightfield_remap",
         "inputs": [
           {
@@ -1225,7 +1225,7 @@
           ]
         }
       },
-      "heightfield_distort5": {
+      "heightfield_distort2": {
         "type": "heightfield_distort",
         "inputs": [
           {
@@ -1248,7 +1248,7 @@
           "element_size": 650.0
         }
       },
-      "heightfield_maskbyfeature6": {
+      "heightfield_maskbyfeature1": {
         "type": "heightfield_maskbyfeature",
         "inputs": [
           {
@@ -1258,7 +1258,7 @@
           }
         ],
         "position": [
-          3.35,
+          0.98,
           23.31
         ],
         "parms": {
@@ -1356,26 +1356,26 @@
         "type": "NetworkBox",
         "title": "GENERATE HEIGHTFIELD",
         "box_content": [
-          "heightfield_noise3",
-          "heightfield_distort1",
-          "heightfield_resample1",
-          "heightfield1",
           "SAMPLE_ENV",
-          "heightfield_distort5",
-          "heightfield_maskblur1",
-          "heightfield_maskbyfeature6",
-          "heightfield_maskclear3",
-          "heightfield_noise2",
-          "heightfield_distort3",
-          "bound1",
-          "heightfield_masknoise1",
+          "heightfield1",
           "heightfield_masknoise2",
+          "heightfield_maskbyfeature2",
           "heightfield_maskbyobject1",
-          "heightfield_remap3",
+          "bound1",
+          "heightfield_distort1",
+          "heightfield_maskblur1",
+          "heightfield_resample1",
           "heightfield_slump1",
-          "heightfield_maskbyfeature1",
+          "heightfield_noise2",
+          "heightfield_distort4",
+          "heightfield_masknoise1",
+          "heightfield_remap1",
+          "heightfield_maskclear1",
+          "heightfield_distort3",
+          "heightfield_noise1",
+          "heightfield_remap2",
           "heightfield_distort2",
-          "heightfield_remap2"
+          "heightfield_maskbyfeature1"
         ],
         "position": [
           -2.56,
@@ -1385,12 +1385,34 @@
           8.31,
           20.37
         ]
+      },
+      "__netbox1": {
+        "type": "NetworkBox",
+        "title": "GENERATE RIVER",
+        "box_content": [
+          "OUT_RIVER",
+          "trace1",
+          "measure1",
+          "attribpromote1",
+          "keep_the_largest_area",
+          "transform1",
+          "color1",
+          "heightfield_maskbyfeature3"
+        ],
+        "position": [
+          6.54,
+          0.62
+        ],
+        "size": [
+          2.86,
+          7.79
+        ]
       }
     }
   },
   "info": {
     "author": "handongy",
-    "created": "March 06, 2025 - 17:32:17",
+    "created": "March 06, 2025 - 18:31:44",
     "houdini_version": "20.5.487",
     "data_version": "1.0",
     "comment": null
