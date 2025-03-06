@@ -1,0 +1,1427 @@
+{
+  "data": {
+    "tags": {
+      "target_tag": "biome_plant_scatter1",
+      "start_tags": [
+        "TEMPERATE_SHRUB",
+        "heightfield1"
+      ],
+      "end_tags": [
+        "OUT_PLANT_SCATTER_AND_INSTANCE"
+      ]
+    },
+    "children": {
+      "biome_plant_scatter1": {
+        "type": "labs::biome_plant_scatter::1.0",
+        "inputs": [
+          {
+            "from": "ASPEN",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "del_border_line",
+            "from_index": 0,
+            "to_index": 1
+          },
+          {
+            "from": "OUT_RIVER",
+            "from_index": 0,
+            "to_index": 2
+          }
+        ],
+        "position": [
+          0,
+          0
+        ],
+        "color": [
+          1,
+          0.73,
+          0
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "outputage": true,
+          "outputviability": true,
+          "meshvariantsdetailarray": true,
+          "agejitter": 0.3,
+          "colorby": 1,
+          "size": 1000.0
+        }
+      },
+      "SAMPLE_ENV": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "heightfield_remap3",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.28,
+          9
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ]
+      },
+      "PINE": {
+        "type": "labs::biome_plant_define::1.0",
+        "inputs": [
+          {
+            "from": "TEMPERATE_SHRUB",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -4.67,
+          2.92
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Pine",
+          "plantcolor": [
+            0.0,
+            0.5,
+            0.0
+          ],
+          "templower": 5.0,
+          "temppref": 13.0,
+          "tempupper": 18.0,
+          "precpref": 715.0,
+          "densitymax": 1.75,
+          "type": 0,
+          "radius": 1.25,
+          "normterrain": 0.05,
+          "variants": [
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_S",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_S",
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_1.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_1.fbx",
+              "agemax#": 0.33,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            },
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_M",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_M",
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_2.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_2.fbx",
+              "agemin#": 0.33,
+              "agemax#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            },
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_L",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_L",
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_3.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_3.fbx",
+              "agemin#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            }
+          ]
+        }
+      },
+      "OUT_PLANT_POINTS": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "biome_plant_scatter1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.19,
+          -1.05
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ]
+      },
+      "OUT_TERRAIN": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "biome_plant_scatter1",
+            "from_index": 1,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          2.71,
+          -0.99
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ]
+      },
+      "TEMPERATE_SHRUB": {
+        "type": "labs::biome_plant_define::1.0",
+        "position": [
+          -4.67,
+          3.92
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Shrub",
+          "plantcolor": [
+            0.25,
+            0.5,
+            0.0
+          ],
+          "tempupper": 23.0,
+          "preclower": 400.0,
+          "precpref": 715.0,
+          "precupper": 800.0,
+          "densitymax": 0.65,
+          "radius": 1.1,
+          "normterrain": 0.8,
+          "variants": [
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_S",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_S",
+              "filemeshvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.fbx",
+              "deadratio#": 0.3
+            }
+          ]
+        }
+      },
+      "ASPEN": {
+        "type": "labs::biome_plant_define::1.0",
+        "inputs": [
+          {
+            "from": "PINE",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -4.67,
+          1.92
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Aspen",
+          "plantcolor": [
+            0.30000001192092896,
+            0.30000001192092896,
+            0.07500000298023224
+          ],
+          "templower": 12.0,
+          "temppref": 15.0,
+          "densitymax": 0.75,
+          "type": 0,
+          "radius": 3.75,
+          "normterrain": 0.05,
+          "variants": [
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_S",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_S",
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_1.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_1.fbx",
+              "agemax#": 0.33,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            },
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_M",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_M",
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_2.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_2.fbx",
+              "agemin#": 0.33,
+              "agemax#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            },
+            {
+              "meshvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Growth_L",
+              "meshdeadvariant#": "/obj/Scatter_Mountain_Lake_Terrain/Tree_Shrub_Assets/Coniferous_Tree_Dead_L",
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_3.fbx",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_3.fbx",
+              "agemin#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
+            }
+          ]
+        }
+      },
+      "OUT_PLANT_SCATTER_AND_INSTANCE": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "merge1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          2.71,
+          -4.61
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ]
+      },
+      "del_border_line": {
+        "type": "volumewrangle",
+        "inputs": [
+          {
+            "from": "biome_attributes_evolve1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          1.88
+        ],
+        "color": [
+          0.84,
+          0.84,
+          0.84
+        ],
+        "parms": {
+          "Min_Border": 0.01,
+          "Max_Border": 0.99,
+          "snippet": "vector getP = relbbox(0, @P);  \n\nfloat minB = chf(\"Min_Border\"); \nfloat maxB = chf(\"Max_Border\"); \n\n\nif (getP.x > maxB || getP.x < minB || getP.z > maxB || getP.z < minB){\n    @temperature = 0;\n    @precipitation = 0;\n}\n"
+        },
+        "parmtemplates": [
+          {
+            "insert_after": "bindeach",
+            "parmtemplates": {
+              "folder_generatedparms_snippet": {
+                "type": "folder_simple",
+                "label": "Generated Channel Parameters",
+                "tags": {
+                  "group_type": "simple",
+                  "sidefx::look": "blank"
+                },
+                "script_callback_language": "hscript",
+                "parmtemplates": {
+                  "Min_Border": {
+                    "type": "float",
+                    "label": "Min Border",
+                    "script_callback_language": "hscript",
+                    "max_value": 1.0
+                  },
+                  "Max_Border": {
+                    "type": "float",
+                    "label": "Max Border",
+                    "script_callback_language": "hscript",
+                    "max_value": 1.0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "OUT_RIVER": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "color1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          0.96
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ]
+      },
+      "heightfield1": {
+        "type": "heightfield",
+        "position": [
+          -0.14,
+          28.58
+        ],
+        "parms": {
+          "size": [
+            1100.0,
+            1100.0
+          ]
+        }
+      },
+      "heightfield_masknoise1": {
+        "type": "heightfield_noise",
+        "inputs": [
+          {
+            "from": "heightfield_maskbyfeature1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_maskbyfeature1",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.25,
+          16.37
+        ],
+        "parms": {
+          "layer": "mask",
+          "combine": "replace",
+          "centernoise": false,
+          "amp": 1.0,
+          "elementsize": 100.0,
+          "dogain": true,
+          "gain": 0.9
+        }
+      },
+      "heightfield_maskbyfeature1": {
+        "type": "heightfield_maskbyfeature",
+        "inputs": [
+          {
+            "from": "heightfield_distort3",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.25,
+          17.37
+        ],
+        "parms": {
+          "maskbyslope": false,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "maskbyheight": true,
+          "minheight": -23.77125358581543,
+          "maxheight": 219.42367553710938,
+          "heightramp": [
+            {
+              "pos": 0.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 9.999999974752427e-07,
+              "value": 0.9333333373069763,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.31081080436706543,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "curvatureramp": [
+            {
+              "pos": 0.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            }
+          ],
+          "dirramp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "heightfield_maskbyobject1": {
+        "type": "heightfield_maskbyobject",
+        "inputs": [
+          {
+            "from": "heightfield1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "bound1",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.14,
+          26.47
+        ],
+        "parms": {
+          "blurradius": 150.0
+        }
+      },
+      "bound1": {
+        "type": "bound",
+        "inputs": [
+          {
+            "from": "heightfield1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -2.16,
+          27.58
+        ],
+        "parms": {
+          "minpad": [
+            -100.0,
+            0.0,
+            {
+              "expression": "ch(\"minpadx\")"
+            }
+          ],
+          "maxpad": [
+            {
+              "expression": "ch(\"minpadx\")"
+            },
+            0.0,
+            {
+              "expression": "ch(\"minpadx\")"
+            }
+          ]
+        }
+      },
+      "heightfield_distort1": {
+        "type": "heightfield_distort",
+        "inputs": [
+          {
+            "from": "heightfield_remap2",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_noise2",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.36,
+          21.34
+        ],
+        "parms": {
+          "noisetype": "simplex",
+          "amp": 100.0,
+          "element_size": 700.0
+        }
+      },
+      "heightfield_maskblur1": {
+        "type": "heightfield_blur",
+        "inputs": [
+          {
+            "from": "heightfield_masknoise1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_masknoise1",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.25,
+          15.37
+        ],
+        "parms": {
+          "layer": "mask",
+          "method": "boxblur",
+          "radius": 50.0
+        }
+      },
+      "biome_attributes_to_terrain1": {
+        "type": "labs::biome_attributes_to_terrain::1.0",
+        "inputs": [
+          {
+            "from": "SAMPLE_ENV",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          3.92
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "user_data": {
+          "new_toggle": "0",
+          "old_toggle": "0",
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "biomecolor": [
+            0.07357931137084961,
+            0.3357425928115845,
+            0.6289522647857666
+          ]
+        }
+      },
+      "biome_attributes_evolve1": {
+        "type": "labs::biome_attributes_evolve::1.0",
+        "inputs": [
+          {
+            "from": "biome_attributes_to_terrain1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          2.92
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "parms": {
+          "display": 3,
+          "autoremap": 1,
+          "inputmin1": 12.145895004272461,
+          "inputmax1": 14.791894912719727,
+          "evolvetempxz": true,
+          "removebyocclusion": true,
+          "minslopeangle": 35.0,
+          "maxslopeangle": 80.0,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.16500000655651093,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8299999833106995,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "basesoil": 0.1,
+          "intensity": 0.5,
+          "elementsize": 150.0
+        }
+      },
+      "instance1": {
+        "type": "instance",
+        "inputs": [
+          {
+            "from": "OUT_PLANT_POINTS",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.19,
+          -2.15
+        ]
+      },
+      "merge1": {
+        "type": "merge",
+        "inputs": [
+          {
+            "from": "instance1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "OUT_TERRAIN",
+            "from_index": 0,
+            "to_index": 1
+          },
+          {
+            "from": "OUT_RIVER",
+            "from_index": 0,
+            "to_index": 2
+          }
+        ],
+        "position": [
+          2.71,
+          -3.48
+        ]
+      },
+      "trace1": {
+        "type": "trace",
+        "inputs": [
+          {
+            "from": "heightfield_maskbyfeature3",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          6.96
+        ],
+        "parms": {
+          "tracelayer": "mask",
+          "s": [
+            1.005,
+            1.005
+          ],
+          "thresh": 0.53
+        }
+      },
+      "heightfield_resample1": {
+        "type": "heightfield_resample",
+        "inputs": [
+          {
+            "from": "heightfield_maskclear3",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.28,
+          11.38
+        ],
+        "parms": {
+          "resscale": 2.0
+        }
+      },
+      "measure1": {
+        "type": "measure::2.0",
+        "inputs": [
+          {
+            "from": "trace1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          5.96
+        ],
+        "parms": {
+          "colorramp": [
+            {
+              "pos": 0.0,
+              "value": [
+                0.0,
+                0.0,
+                1.0
+              ],
+              "interp": "linear"
+            },
+            {
+              "pos": 0.5,
+              "value": [
+                1.0,
+                1.0,
+                1.0
+              ],
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": [
+                1.0,
+                0.0,
+                0.0
+              ],
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "attribpromote1": {
+        "type": "attribpromote",
+        "inputs": [
+          {
+            "from": "measure1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.63,
+          4.96
+        ],
+        "parms": {
+          "inname": "area",
+          "inclass": "primitive",
+          "outclass": "detail",
+          "method": "max",
+          "deletein": false
+        }
+      },
+      "attribwrangle1": {
+        "type": "attribwrangle",
+        "inputs": [
+          {
+            "from": "attribpromote1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.63,
+          3.92
+        ],
+        "parms": {
+          "class": "primitive",
+          "snippet": "@test = detail(0,'area',0);\n\nif(@test != @area) {\n    removeprim(0,@primnum,1);\n    }"
+        }
+      },
+      "transform1": {
+        "type": "xform",
+        "inputs": [
+          {
+            "from": "attribwrangle1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          2.88
+        ]
+      },
+      "color1": {
+        "type": "color",
+        "inputs": [
+          {
+            "from": "transform1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          1.88
+        ],
+        "parms": {
+          "color": [
+            0.03712500259280205,
+            0.12224999815225601,
+            0.1353750079870224
+          ]
+        }
+      },
+      "heightfield_slump1": {
+        "type": "heightfield_slump",
+        "inputs": [
+          {
+            "from": "heightfield_distort2",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.25,
+          13.37
+        ],
+        "parms": {
+          "iterations": 85,
+          "repose_angle": 12.0,
+          "seed": 2545.0
+        }
+      },
+      "heightfield_noise2": {
+        "type": "heightfield_noise",
+        "inputs": [
+          {
+            "from": "heightfield_noise3",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_noise3",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.25,
+          24.31
+        ],
+        "parms": {
+          "amp": 350.0,
+          "elementsize": 644.0,
+          "offset": [
+            -54.0,
+            20.0,
+            100.0
+          ]
+        }
+      },
+      "heightfield_distort2": {
+        "type": "heightfield_distort",
+        "inputs": [
+          {
+            "from": "heightfield_maskblur1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_maskblur1",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.25,
+          14.37
+        ],
+        "parms": {
+          "amp": 25.0
+        }
+      },
+      "heightfield_masknoise2": {
+        "type": "heightfield_noise",
+        "inputs": [
+          {
+            "from": "heightfield_distort5",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.26,
+          19.53
+        ],
+        "parms": {
+          "layer": "mask",
+          "combine": "replace",
+          "centernoise": false,
+          "amp": 1.0,
+          "elementsize": 250.0,
+          "dogain": true,
+          "gain": 0.9
+        }
+      },
+      "heightfield_remap2": {
+        "type": "heightfield_remap",
+        "inputs": [
+          {
+            "from": "heightfield_maskbyfeature6",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_maskbyfeature6",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          3.35,
+          22.33
+        ],
+        "parms": {
+          "inputmin": -32.92747116088867,
+          "inputmax": 212.75814819335938,
+          "outputmin": -15.0,
+          "outputmax": 212.75814819335938
+        }
+      },
+      "heightfield_maskclear3": {
+        "type": "heightfield_layerclear",
+        "inputs": [
+          {
+            "from": "heightfield_slump1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.25,
+          12.37
+        ],
+        "parms": {
+          "num_clear": [
+            {
+              "layer#": "mask"
+            }
+          ]
+        }
+      },
+      "heightfield_distort3": {
+        "type": "heightfield_distort",
+        "inputs": [
+          {
+            "from": "heightfield_masknoise2",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_masknoise2",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.26,
+          18.42
+        ],
+        "parms": {
+          "amp": 20.0
+        }
+      },
+      "heightfield_noise3": {
+        "type": "heightfield_noise",
+        "inputs": [
+          {
+            "from": "heightfield_maskbyobject1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_maskbyobject1",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.25,
+          25.47
+        ],
+        "parms": {
+          "centernoise": false,
+          "amp": 650.0,
+          "elementsize": 1500.0,
+          "offset": [
+            0.0,
+            5.0,
+            40.0
+          ],
+          "basis": "mworleyFB"
+        }
+      },
+      "heightfield_maskbyfeature3": {
+        "type": "heightfield_maskbyfeature",
+        "inputs": [
+          {
+            "from": "SAMPLE_ENV",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          5.64,
+          7.96
+        ],
+        "parms": {
+          "maskbyslope": false,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "maskbyheight": true,
+          "minheight": -25.0,
+          "maxheight": 220.0,
+          "heightramp": [
+            {
+              "pos": 0.05415162444114685,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.17328520119190216,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "curvatureramp": [
+            {
+              "pos": 0.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            }
+          ],
+          "dirramp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "heightfield_remap3": {
+        "type": "heightfield_remap",
+        "inputs": [
+          {
+            "from": "heightfield_resample1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -0.28,
+          10.23
+        ],
+        "parms": {
+          "inputmin": -9.149580955505371,
+          "inputmax": 201.6939239501953,
+          "outputmin": -25.0,
+          "outputmax": 220.0,
+          "remap": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.000240445137024e-06,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "heightfield_distort5": {
+        "type": "heightfield_distort",
+        "inputs": [
+          {
+            "from": "heightfield_distort1",
+            "from_index": 0,
+            "to_index": 0
+          },
+          {
+            "from": "heightfield_noise2",
+            "from_index": 0,
+            "to_index": 1
+          }
+        ],
+        "position": [
+          -0.36,
+          20.34
+        ],
+        "parms": {
+          "amp": 75.0,
+          "element_size": 650.0
+        }
+      },
+      "heightfield_maskbyfeature6": {
+        "type": "heightfield_maskbyfeature",
+        "inputs": [
+          {
+            "from": "heightfield_noise2",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          3.35,
+          23.31
+        ],
+        "parms": {
+          "invertmask": true,
+          "maskbyslope": false,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "maskbyheight": true,
+          "minheight": -32.92747116088867,
+          "maxheight": 212.75814819335938,
+          "heightramp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.38655462861061096,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            }
+          ],
+          "curvatureramp": [
+            {
+              "pos": 0.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            }
+          ],
+          "dirramp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.10000000149011612,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8999999761581421,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "__netbox5": {
+        "type": "NetworkBox",
+        "title": "GENERATE HEIGHTFIELD",
+        "box_content": [
+          "heightfield_noise3",
+          "heightfield_distort1",
+          "heightfield_resample1",
+          "heightfield1",
+          "SAMPLE_ENV",
+          "heightfield_distort5",
+          "heightfield_maskblur1",
+          "heightfield_maskbyfeature6",
+          "heightfield_maskclear3",
+          "heightfield_noise2",
+          "heightfield_distort3",
+          "bound1",
+          "heightfield_masknoise1",
+          "heightfield_masknoise2",
+          "heightfield_maskbyobject1",
+          "heightfield_remap3",
+          "heightfield_slump1",
+          "heightfield_maskbyfeature1",
+          "heightfield_distort2",
+          "heightfield_remap2"
+        ],
+        "position": [
+          -2.56,
+          8.71
+        ],
+        "size": [
+          8.31,
+          20.37
+        ]
+      }
+    }
+  },
+  "info": {
+    "author": "handongy",
+    "created": "March 06, 2025 - 17:17:08",
+    "houdini_version": "20.5.487",
+    "data_version": "1.0",
+    "comment": null
+  },
+  "properties": {
+    "recipe_category": "tab_tool_recipe",
+    "visible": true,
+    "nodetype_category": "Sop",
+    "nodetype_name": "labs::biome_plant_scatter::1.0"
+  },
+  "tool": {
+    "tab_submenus": [
+      "Labs/World Building/Biomes"
+    ],
+    "network_categories": [
+      "Sop"
+    ],
+    "icon": "SHELF_terrain_fx"
+  },
+  "options": {
+    "nodes_only": false,
+    "anchor_children": true,
+    "children": true,
+    "anchor_editables": true,
+    "editables": true,
+    "flags": false,
+    "parms": true,
+    "parms_as_brief": true,
+    "evaluate_parmvalues": false,
+    "parmtemplates": "spare_only",
+    "metadata": false,
+    "verbose": false
+  }
+}
