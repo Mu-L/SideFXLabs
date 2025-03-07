@@ -32,26 +32,28 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.867647 0.0787582
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -6.26267 -5.85232
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	biome_attributes_to_terrain1 1 1 "input1"
 }
 inputs
 {
+0 	biome_attributes_to_terrain1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author youmnas@pubnico
+  author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.451 0.369 0.796 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
@@ -64,6 +66,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -166,6 +172,164 @@ Content-Type: text/plain
 2
 0 -4.3355385616077937 33.567251893338913 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 0.14499999582767487 0.66699999570846558 0.55699998140335083"
 1 4.9761875720620328 25.288899988299608 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 0.14499999582767487 0.66699999570846558 0.55699998140335083"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.init"
+Content-Type: text/plain
+
+type = heightfield_noise
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 6.54795 15.0535
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_copylayer1 1 1 "input1"
+}
+inputs
+{
+0 	heightfield_copylayer1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.chn"
+Content-Type: text/plain
+
+{
+    channel amp {
+      lefttype = extend
+      righttype = extend
+      default = 6
+      flags = 0
+      segment { length = 0 value = 6 6 expr = ch(\"../amp\") }
+    }
+    channel elementsize {
+      lefttype = extend
+      righttype = extend
+      default = 74
+      flags = 0
+      segment { length = 0 value = 74 74 expr = ch(\"../elementsize\") }
+    }
+    channel basis {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"worleyFA\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../basis\") }
+    }
+    channel fractal {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hmfT\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../fractal\") }
+    }
+    channel oct {
+      lefttype = extend
+      righttype = extend
+      default = 8
+      flags = 0
+      segment { length = 0 value = 8 8 expr = ch(\"../oct\") }
+    }
+    channel lac {
+      lefttype = extend
+      righttype = extend
+      default = 2.0899999999999999
+      flags = 0
+      segment { length = 0 value = 2.0899999999999999 2.0899999999999999 expr = ch(\"../lac\") }
+    }
+    channel rough {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../rough\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+layer	[ 0	locks=0 ]	(	mask	)
+masklayer	[ 0	locks=0 ]	(	mask	)
+combine	[ 0	locks=0 ]	(	"replace"	)
+blend	[ 0	locks=0 ]	(	0.5	)
+centernoise	[ 0	locks=0 ]	(	"off"	)
+amp	[ 0	locks=0 ]	(	[ amp	500 ] 	)
+elementsize	[ 0	locks=0 ]	(	[ elementsize	500 ] 	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	0	0	)
+noise	[ 0	locks=0 ]	(	0	)
+basis	[ 0	locks=0 ]	(	[ basis	sparse ] 	)
+fractal	[ 0	locks=0 ]	(	[ fractal	hmfT ] 	)
+period	[ 0	locks=0 ]	(	2	2	2	)
+oct	[ 0	locks=0 ]	(	[ oct	8 ] 	)
+lac	[ 0	locks=0 ]	(	[ lac	1.841 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
+flowrot	[ 0	locks=0 ]	(	0	)
+output	[ 0	locks=0 ]	(	1	)
+fold	[ 0	locks=0 ]	(	"off"	)
+complement	[ 0	locks=0 ]	(	"off"	)
+dogain	[ 0	locks=0 ]	(	"on"	)
+gain	[ 0	locks=0 ]	(	0.9	)
+dobias	[ 0	locks=0 ]	(	"off"	)
+bias	[ 0	locks=0 ]	(	0.5	)
+Clipping	[ 0	locks=0 ]	(	0	)
+clipmin	[ 0	locks=0 ]	(	0	)
+clipmax	[ 0	locks=0 ]	(	1	)
+distortion	[ 0	locks=0 ]	(	1	)
+latticewarp	[ 0	locks=0 ]	(	0	)
+dolwarp	[ 0	locks=0 ]	(	"off"	)
+accuml	[ 0	locks=0 ]	(	"on"	)
+disp	[ 0	locks=0 ]	(	0.1405	)
+dispfreq	[ 0	locks=0 ]	(	1	)
+folder1	[ 0	locks=0 ]	(	0	)
+dogwarp	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+gflow	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.netbox"
+Content-Type: text/plain
+
+__netbox14
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/vis_layer.init"
@@ -303,7 +467,7 @@ sopflags sopflags =
 comment ""
 position -8.64596 -30.5214
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -659,164 +823,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.init"
-Content-Type: text/plain
-
-type = heightfield_noise
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 6.54795 15.0535
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	heightfield_copylayer1 1 1 "input1"
-}
-inputs
-{
-0 	heightfield_copylayer1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.chn"
-Content-Type: text/plain
-
-{
-    channel amp {
-      lefttype = extend
-      righttype = extend
-      default = 6
-      flags = 0
-      segment { length = 0 value = 6 6 expr = ch(\"../amp\") }
-    }
-    channel elementsize {
-      lefttype = extend
-      righttype = extend
-      default = 74
-      flags = 0
-      segment { length = 0 value = 74 74 expr = ch(\"../elementsize\") }
-    }
-    channel basis {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"worleyFA\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../basis\") }
-    }
-    channel fractal {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"hmfT\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../fractal\") }
-    }
-    channel oct {
-      lefttype = extend
-      righttype = extend
-      default = 8
-      flags = 0
-      segment { length = 0 value = 8 8 expr = ch(\"../oct\") }
-    }
-    channel lac {
-      lefttype = extend
-      righttype = extend
-      default = 2.0899999999999999
-      flags = 0
-      segment { length = 0 value = 2.0899999999999999 2.0899999999999999 expr = ch(\"../lac\") }
-    }
-    channel rough {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../rough\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-layer	[ 0	locks=0 ]	(	mask	)
-masklayer	[ 0	locks=0 ]	(	mask	)
-combine	[ 0	locks=0 ]	(	"replace"	)
-blend	[ 0	locks=0 ]	(	0.5	)
-centernoise	[ 0	locks=0 ]	(	"off"	)
-amp	[ 0	locks=0 ]	(	[ amp	500 ] 	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	500 ] 	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 0	locks=0 ]	(	0	0	0	)
-noise	[ 0	locks=0 ]	(	0	)
-basis	[ 0	locks=0 ]	(	[ basis	sparse ] 	)
-fractal	[ 0	locks=0 ]	(	[ fractal	hmfT ] 	)
-period	[ 0	locks=0 ]	(	2	2	2	)
-oct	[ 0	locks=0 ]	(	[ oct	8 ] 	)
-lac	[ 0	locks=0 ]	(	[ lac	1.841 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
-flowrot	[ 0	locks=0 ]	(	0	)
-output	[ 0	locks=0 ]	(	1	)
-fold	[ 0	locks=0 ]	(	"off"	)
-complement	[ 0	locks=0 ]	(	"off"	)
-dogain	[ 0	locks=0 ]	(	"on"	)
-gain	[ 0	locks=0 ]	(	0.9	)
-dobias	[ 0	locks=0 ]	(	"off"	)
-bias	[ 0	locks=0 ]	(	0.5	)
-Clipping	[ 0	locks=0 ]	(	0	)
-clipmin	[ 0	locks=0 ]	(	0	)
-clipmax	[ 0	locks=0 ]	(	1	)
-distortion	[ 0	locks=0 ]	(	1	)
-latticewarp	[ 0	locks=0 ]	(	0	)
-dolwarp	[ 0	locks=0 ]	(	"off"	)
-accuml	[ 0	locks=0 ]	(	"on"	)
-disp	[ 0	locks=0 ]	(	0.1405	)
-dispfreq	[ 0	locks=0 ]	(	1	)
-folder1	[ 0	locks=0 ]	(	0	)
-dogwarp	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-gflow	[ 0	locks=0 ]	(	0	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.netbox"
-Content-Type: text/plain
-
-__netbox14
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/heightfield_masknoise_for_clumping.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
 	}
 }
 
@@ -5484,7 +5490,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.82747 14.46
+position -5.40832 13.6058
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5494,12 +5500,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	heightfield_maskclear1 1 1 "input1"
-1 	heightfield_occluded_moist_areas 1 1 "input2"
+1 	heightfield_blur1 2 1 "input2"
 }
 inputs
 {
 0 	heightfield_maskclear1 0 1
-1 	heightfield_occluded_moist_areas 0 1
+1 	heightfield_blur1 0 1
 }
 stat
 {
@@ -11113,7 +11119,7 @@ sopflags sopflags =
 comment ""
 position -8.33092 -11.3788
 connectornextid 3
-flags =  lock off model off template on footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
@@ -11579,7 +11585,7 @@ sopflags sopflags =
 comment ""
 position -1.51062 -31.0491
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
@@ -11646,10 +11652,274 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskshrink1.init"
+Content-Type: text/plain
+
+type = heightfield_blur
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskshrink1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -3.16846 15.8792
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_maskclear1 1 1 "input1"
+}
+inputs
+{
+0 	heightfield_maskclear1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskshrink1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+layer	[ 0	locks=0 ]	(	mask	)
+masklayer	[ 0	locks=0 ]	(	mask	)
+maskaware	[ 0	locks=0 ]	(	"off"	)
+iterations	[ 0	locks=0 ]	(	10	)
+method	[ 0	locks=0 ]	(	"shrink"	)
+radius	[ 0	locks=0 ]	(	2	)
+bordertype	[ 0	locks=0 ]	(	"constant"	)
+borderval	[ 0	locks=0 ]	(	0	)
+sharpenstrength	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskshrink1.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskshrink1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"1"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"geometry_terrain"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskinvert4.init"
+Content-Type: text/plain
+
+type = volumecombine
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskinvert4.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -3.16846 14.8323
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_maskshrink1 1 1 "input1"
+}
+inputs
+{
+0 	heightfield_maskshrink1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskinvert4.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+dstvolume	[ 0	locks=0 ]	(	mask	)
+numcombines	[ 0	locks=0 ]	(	1	)
+folder3	[ 0	locks=0 ]	(	0	)
+postscale	[ 0	locks=0 ]	(	1	)
+dothreshold	[ 0	locks=0 ]	(	"off"	)
+threshold	[ 0	locks=0 ]	(	0.5	)
+doclampmin	[ 0	locks=0 ]	(	"off"	)
+clampmin	[ 0	locks=0 ]	(	0	)
+doclampmax	[ 0	locks=0 ]	(	"off"	)
+clampmax	[ 0	locks=0 ]	(	1	)
+createmissing	[ 0	locks=0 ]	(	"on"	)
+forcescalar	[ 0	locks=0 ]	(	"off"	)
+deletesource	[ 0	locks=0 ]	(	"off"	)
+errormissing	[ 0	locks=0 ]	(	"on"	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+combine1	[ 0	locks=0 ]	(	"copy"	)
+adjust1	[ 0	locks=0 ]	(	"scaleaddprocess"	)
+srcvolume1	[ 0	locks=0 ]	(	mask	)
+scale1	[ 0	locks=0 ]	(	1	)
+add1	[ 0	locks=0 ]	(	0	)
+process1	[ 0	locks=0 ]	(	"complement01"	)
+blend1	[ 0	locks=0 ]	(	1	)
+doblendvolume1	[ 0	locks=0 ]	(	"off"	)
+blendvolume1	[ 0	locks=0 ]	(	""	)
+parm_spacerparm1	[ 0	locks=0 ]	(	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskinvert4.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskinvert4.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_blur1.init"
+Content-Type: text/plain
+
+type = heightfield_blur
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_blur1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.63765 14.373
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_occluded_moist_areas 1 1 "input1"
+1 	heightfield_maskinvert4 1 1 "input2"
+}
+inputs
+{
+0 	heightfield_occluded_moist_areas 0 1
+1 	heightfield_maskinvert4 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_blur1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+layer	[ 0	locks=0 ]	(	mask	)
+masklayer	[ 0	locks=0 ]	(	mask	)
+maskaware	[ 0	locks=0 ]	(	"on"	)
+iterations	[ 0	locks=0 ]	(	10	)
+method	[ 0	locks=0 ]	(	"blur"	)
+radius	[ 0	locks=0 ]	(	19	)
+bordertype	[ 0	locks=0 ]	(	"streak"	)
+borderval	[ 0	locks=0 ]	(	0	)
+sharpenstrength	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_blur1.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_blur1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"1"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"geometry_terrain"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-110
+113
 output0
 HEIGHTFIELD_INPUT
 merge8
@@ -11760,6 +12030,9 @@ replace_mask1
 blast2
 volumevisualization1
 if_biome_display
+heightfield_maskshrink1
+heightfield_maskinvert4
+heightfield_blur1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
