@@ -1,7 +1,14 @@
 {
   "data": {
     "tags": {
-      "target_tag": "biome_plant_scatter1"
+      "target_tag": "biome_plant_scatter1",
+      "start_tags": [
+        "GENERATE_TERRAIN",
+        "TEMPERATE_SHRUB"
+      ],
+      "end_tags": [
+        "OUT_PLANT_SCATTER_AND_INSTANCE"
+      ]
     },
     "children": {
       "biome_plant_scatter1": {
@@ -36,12 +43,723 @@
           "wirestyle": "rounded"
         },
         "parms": {
-          "outputage": true,
-          "vizradii": true,
-          "agejitter": 0.3,
-          "meshvariantsdetailarray": true,
           "size": 1000.0,
-          "outputviability": true
+          "meshvariantsdetailarray": true,
+          "agejitter": 0.3,
+          "outputviability": true,
+          "vizradii": true,
+          "outputage": true
+        }
+      },
+      "GENERATE_TERRAIN": {
+        "type": "subnet",
+        "position": [
+          0,
+          6.49
+        ],
+        "color": [
+          0.57,
+          0.35,
+          0
+        ],
+        "children": {
+          "output0": {
+            "type": "output",
+            "inputs": [
+              {
+                "from": "heightfield_remap2",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -13.13
+            ],
+            "flags": {
+              "display": true,
+              "render": true,
+              "template": true
+            },
+            "parms": {
+              "outputidx": 0
+            }
+          },
+          "heightfield_distort1": {
+            "type": "heightfield_distort",
+            "inputs": [
+              {
+                "from": "heightfield_remap1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_noise2",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -1.13
+            ],
+            "parms": {
+              "noisetype": "simplex",
+              "amp": 100.0,
+              "element_size": 700.0
+            }
+          },
+          "heightfield_masknoise1": {
+            "type": "heightfield_noise",
+            "inputs": [
+              {
+                "from": "heightfield_distort2",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -3.13
+            ],
+            "parms": {
+              "layer": "mask",
+              "combine": "replace",
+              "centernoise": false,
+              "amp": 1.0,
+              "elementsize": 250.0,
+              "dogain": true,
+              "gain": 0.9
+            }
+          },
+          "heightfield_noise1": {
+            "type": "heightfield_noise",
+            "inputs": [
+              {
+                "from": "heightfield_maskbyobject1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_maskbyobject1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.11,
+              3
+            ],
+            "parms": {
+              "centernoise": false,
+              "amp": 650.0,
+              "elementsize": 1500.0,
+              "offset": [
+                0.0,
+                5.0,
+                40.0
+              ],
+              "basis": "mworleyFB"
+            }
+          },
+          "heightfield1": {
+            "type": "heightfield",
+            "position": [
+              0,
+              6.11
+            ],
+            "parms": {
+              "size": [
+                1100.0,
+                1100.0
+              ]
+            }
+          },
+          "heightfield_maskbyobject1": {
+            "type": "heightfield_maskbyobject",
+            "inputs": [
+              {
+                "from": "heightfield1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "bound1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              0,
+              4
+            ],
+            "parms": {
+              "blurradius": 150.0
+            }
+          },
+          "bound1": {
+            "type": "bound",
+            "inputs": [
+              {
+                "from": "heightfield1",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -2.02,
+              5.11
+            ],
+            "parms": {
+              "minpad": [
+                -100.0,
+                0.0,
+                {
+                  "expression": "ch(\"minpadx\")"
+                }
+              ],
+              "maxpad": [
+                {
+                  "expression": "ch(\"minpadx\")"
+                },
+                0.0,
+                {
+                  "expression": "ch(\"minpadx\")"
+                }
+              ]
+            }
+          },
+          "heightfield_maskblur1": {
+            "type": "heightfield_blur",
+            "inputs": [
+              {
+                "from": "heightfield_masknoise2",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_masknoise2",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -7.13
+            ],
+            "parms": {
+              "layer": "mask",
+              "method": "boxblur",
+              "radius": 50.0
+            }
+          },
+          "heightfield_remap1": {
+            "type": "heightfield_remap",
+            "inputs": [
+              {
+                "from": "heightfield_maskbyfeature1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_maskbyfeature1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              1.12,
+              -0.14
+            ],
+            "parms": {
+              "inputmin": -32.92747116088867,
+              "inputmax": 212.75814819335938,
+              "outputmin": -15.0,
+              "outputmax": 212.75814819335938
+            }
+          },
+          "heightfield_maskbyfeature1": {
+            "type": "heightfield_maskbyfeature",
+            "inputs": [
+              {
+                "from": "heightfield_noise2",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              1.12,
+              0.84
+            ],
+            "parms": {
+              "invertmask": true,
+              "maskbyslope": false,
+              "sloperamp": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                }
+              ],
+              "maskbyheight": true,
+              "minheight": -32.92747116088867,
+              "maxheight": 212.75814819335938,
+              "heightramp": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.38655462861061096,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 1.0,
+                  "interp": "linear"
+                }
+              ],
+              "curvatureramp": [
+                {
+                  "pos": 0.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                }
+              ],
+              "dirramp": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                }
+              ]
+            }
+          },
+          "heightfield_slump1": {
+            "type": "heightfield_slump",
+            "inputs": [
+              {
+                "from": "heightfield_distort4",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -9.13
+            ],
+            "parms": {
+              "iterations": 85,
+              "repose_angle": 12.0,
+              "seed": 2545.0
+            }
+          },
+          "heightfield_resample1": {
+            "type": "heightfield_resample",
+            "inputs": [
+              {
+                "from": "heightfield_maskclear1",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -11.13
+            ],
+            "parms": {
+              "resscale": 2.0
+            }
+          },
+          "heightfield_maskclear1": {
+            "type": "heightfield_layerclear",
+            "inputs": [
+              {
+                "from": "heightfield_slump1",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -10.13
+            ],
+            "parms": {
+              "num_clear": [
+                {
+                  "layer#": "mask"
+                }
+              ]
+            }
+          },
+          "heightfield_masknoise2": {
+            "type": "heightfield_noise",
+            "inputs": [
+              {
+                "from": "heightfield_maskbyfeature2",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_maskbyfeature2",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -6.13
+            ],
+            "parms": {
+              "layer": "mask",
+              "combine": "replace",
+              "centernoise": false,
+              "amp": 1.0,
+              "elementsize": 100.0,
+              "dogain": true,
+              "gain": 0.9
+            }
+          },
+          "heightfield_noise2": {
+            "type": "heightfield_noise",
+            "inputs": [
+              {
+                "from": "heightfield_noise1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_noise1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.11,
+              1.84
+            ],
+            "parms": {
+              "amp": 350.0,
+              "elementsize": 644.0,
+              "offset": [
+                -54.0,
+                20.0,
+                100.0
+              ]
+            }
+          },
+          "heightfield_distort2": {
+            "type": "heightfield_distort",
+            "inputs": [
+              {
+                "from": "heightfield_distort1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_noise2",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -2.13
+            ],
+            "parms": {
+              "amp": 75.0,
+              "element_size": 650.0
+            }
+          },
+          "heightfield_maskbyfeature2": {
+            "type": "heightfield_maskbyfeature",
+            "inputs": [
+              {
+                "from": "heightfield_distort3",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -5.13
+            ],
+            "parms": {
+              "maskbyslope": false,
+              "sloperamp": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                }
+              ],
+              "maskbyheight": true,
+              "minheight": -23.77125358581543,
+              "maxheight": 219.42367553710938,
+              "heightramp": [
+                {
+                  "pos": 0.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 9.999999974752427e-07,
+                  "value": 0.9333333373069763,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.31081080436706543,
+                  "value": 0.0,
+                  "interp": "linear"
+                }
+              ],
+              "curvatureramp": [
+                {
+                  "pos": 0.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                }
+              ],
+              "dirramp": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.10000000149011612,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 0.8999999761581421,
+                  "value": 1.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                }
+              ]
+            }
+          },
+          "heightfield_remap2": {
+            "type": "heightfield_remap",
+            "inputs": [
+              {
+                "from": "heightfield_resample1",
+                "from_index": 0,
+                "to_index": 0
+              }
+            ],
+            "position": [
+              -0.22,
+              -12.13
+            ],
+            "parms": {
+              "inputmin": -9.149580955505371,
+              "inputmax": 201.6939239501953,
+              "outputmin": -25.0,
+              "outputmax": 220.0,
+              "remap": [
+                {
+                  "pos": 0.0,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.000240445137024e-06,
+                  "value": 0.0,
+                  "interp": "linear"
+                },
+                {
+                  "pos": 1.0,
+                  "value": 1.0,
+                  "interp": "linear"
+                }
+              ]
+            }
+          },
+          "heightfield_distort3": {
+            "type": "heightfield_distort",
+            "inputs": [
+              {
+                "from": "heightfield_masknoise1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_masknoise1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -4.13
+            ],
+            "parms": {
+              "amp": 20.0
+            }
+          },
+          "heightfield_distort4": {
+            "type": "heightfield_distort",
+            "inputs": [
+              {
+                "from": "heightfield_maskblur1",
+                "from_index": 0,
+                "to_index": 0
+              },
+              {
+                "from": "heightfield_maskblur1",
+                "from_index": 0,
+                "to_index": 1
+              }
+            ],
+            "position": [
+              -0.22,
+              -8.13
+            ],
+            "parms": {
+              "amp": 25.0
+            }
+          }
+        }
+      },
+      "biome_attributes_evolve1": {
+        "type": "labs::biome_attributes_evolve::1.0",
+        "inputs": [
+          {
+            "from": "biome_attributes_to_terrain1",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          1.92
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "user_data": {
+          "sidefx::parm_filter_text_pattern": "re",
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "display": 3,
+          "autoremap": 1,
+          "inputmin1": 12.145895004272461,
+          "inputmax1": 14.791894912719727,
+          "evolvetempxz": true,
+          "removebyocclusion": true,
+          "minslopeangle": 35.0,
+          "maxslopeangle": 80.0,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.16500000655651093,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.8299999833106995,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ],
+          "basesoil": 0.1,
+          "intensity": 0.5,
+          "elementsize": 150.0
         }
       },
       "OUT_SAMPLE_TERRAIN": {
@@ -101,152 +819,26 @@
           "normterrain": 0.05,
           "variants": [
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Growth_1.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Dead_1.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "visible": false
-              },
-              "agemax#": {
-                "value": 0.33,
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_1.bgeo.sc",
+              "agemax#": 0.33,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             },
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Growth_2.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Dead_2.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "value": 0.33,
-                "visible": false
-              },
-              "agemax#": {
-                "value": 0.66,
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_2.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_2.bgeo.sc",
+              "agemin#": 0.33,
+              "agemax#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             },
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Growth_3.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Coniferous_Tree_Dead_3.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "value": 0.66,
-                "visible": false
-              },
-              "agemax#": {
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_3.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_3.bgeo.sc",
+              "agemin#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             }
           ]
         }
@@ -319,51 +911,9 @@
           "normterrain": 0.8,
           "variants": [
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "visible": false
-              },
-              "agemax#": {
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
+              "deadratio#": 0.3
             }
           ]
         }
@@ -405,152 +955,26 @@
           "normterrain": 0.05,
           "variants": [
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Growth_1.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Dead_1.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "visible": false
-              },
-              "agemax#": {
-                "value": 0.33,
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_1.bgeo.sc",
+              "agemax#": 0.33,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             },
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Growth_2.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Dead_2.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "value": 0.33,
-                "visible": false
-              },
-              "agemax#": {
-                "value": 0.66,
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_2.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_2.bgeo.sc",
+              "agemin#": 0.33,
+              "agemax#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             },
             {
-              "reftype#": {
-                "visible": false
-              },
-              "meshvariant#": {
-                "visible": false
-              },
-              "meshdeadvariant#": {
-                "visible": false
-              },
-              "filemeshvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Growth_3.bgeo.sc",
-                "visible": false
-              },
-              "filemeshdeadvariant#": {
-                "value": "opdef:.?SM_Deciduous_Tree_Dead_3.bgeo.sc",
-                "visible": false
-              },
-              "weight#": {
-                "visible": false
-              },
-              "agemin#": {
-                "value": 0.66,
-                "visible": false
-              },
-              "agemax#": {
-                "visible": false
-              },
-              "scalemin#": {
-                "visible": false
-              },
-              "scalemax#": {
-                "value": 2.0,
-                "visible": false
-              },
-              "deadratio#": {
-                "value": 0.3,
-                "visible": false
-              },
-              "fd_unrealengine#": {
-                "visible": false
-              },
-              "unrealassetpath#": {
-                "visible": false
-              },
-              "unrealassetdeadpath#": {
-                "visible": false
-              }
+              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_3.bgeo.sc",
+              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_3.bgeo.sc",
+              "agemin#": 0.66,
+              "scalemax#": 2.0,
+              "deadratio#": 0.3
             }
           ]
         }
@@ -944,665 +1368,6 @@
           }
         }
       },
-      "GENERATE_TERRAIN": {
-        "type": "subnet",
-        "position": [
-          0,
-          6.49
-        ],
-        "color": [
-          0.57,
-          0.35,
-          0
-        ],
-        "children": {
-          "output0": {
-            "type": "output",
-            "inputs": [
-              {
-                "from": "heightfield_remap2",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -13.13
-            ],
-            "flags": {
-              "display": true,
-              "render": true,
-              "template": true
-            },
-            "parms": {
-              "outputidx": 0
-            }
-          },
-          "heightfield_distort1": {
-            "type": "heightfield_distort",
-            "inputs": [
-              {
-                "from": "heightfield_remap1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_noise2",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -1.13
-            ],
-            "parms": {
-              "noisetype": "simplex",
-              "amp": 100.0,
-              "element_size": 700.0
-            }
-          },
-          "heightfield_masknoise1": {
-            "type": "heightfield_noise",
-            "inputs": [
-              {
-                "from": "heightfield_distort2",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -3.13
-            ],
-            "parms": {
-              "layer": "mask",
-              "combine": "replace",
-              "centernoise": false,
-              "amp": 1.0,
-              "elementsize": 250.0,
-              "dogain": true,
-              "gain": 0.9
-            }
-          },
-          "heightfield_noise1": {
-            "type": "heightfield_noise",
-            "inputs": [
-              {
-                "from": "heightfield_maskbyobject1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_maskbyobject1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.11,
-              3
-            ],
-            "parms": {
-              "centernoise": false,
-              "amp": 650.0,
-              "elementsize": 1500.0,
-              "offset": [
-                0.0,
-                5.0,
-                40.0
-              ],
-              "basis": "mworleyFB"
-            }
-          },
-          "heightfield1": {
-            "type": "heightfield",
-            "position": [
-              0,
-              6.11
-            ],
-            "parms": {
-              "size": [
-                1100.0,
-                1100.0
-              ]
-            }
-          },
-          "heightfield_maskbyobject1": {
-            "type": "heightfield_maskbyobject",
-            "inputs": [
-              {
-                "from": "heightfield1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "bound1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              0,
-              4
-            ],
-            "parms": {
-              "blurradius": 150.0
-            }
-          },
-          "bound1": {
-            "type": "bound",
-            "inputs": [
-              {
-                "from": "heightfield1",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -2.02,
-              5.11
-            ],
-            "parms": {
-              "minpad": [
-                -100.0,
-                0.0,
-                {
-                  "expression": "ch(\"minpadx\")"
-                }
-              ],
-              "maxpad": [
-                {
-                  "expression": "ch(\"minpadx\")"
-                },
-                0.0,
-                {
-                  "expression": "ch(\"minpadx\")"
-                }
-              ]
-            }
-          },
-          "heightfield_maskblur1": {
-            "type": "heightfield_blur",
-            "inputs": [
-              {
-                "from": "heightfield_masknoise2",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_masknoise2",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -7.13
-            ],
-            "parms": {
-              "layer": "mask",
-              "method": "boxblur",
-              "radius": 50.0
-            }
-          },
-          "heightfield_remap1": {
-            "type": "heightfield_remap",
-            "inputs": [
-              {
-                "from": "heightfield_maskbyfeature1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_maskbyfeature1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              1.12,
-              -0.14
-            ],
-            "parms": {
-              "inputmin": -32.92747116088867,
-              "inputmax": 212.75814819335938,
-              "outputmin": -15.0,
-              "outputmax": 212.75814819335938
-            }
-          },
-          "heightfield_maskbyfeature1": {
-            "type": "heightfield_maskbyfeature",
-            "inputs": [
-              {
-                "from": "heightfield_noise2",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              1.12,
-              0.84
-            ],
-            "parms": {
-              "invertmask": true,
-              "maskbyslope": false,
-              "sloperamp": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                }
-              ],
-              "maskbyheight": true,
-              "minheight": -32.92747116088867,
-              "maxheight": 212.75814819335938,
-              "heightramp": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.38655462861061096,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 1.0,
-                  "interp": "linear"
-                }
-              ],
-              "curvatureramp": [
-                {
-                  "pos": 0.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                }
-              ],
-              "dirramp": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                }
-              ]
-            }
-          },
-          "heightfield_slump1": {
-            "type": "heightfield_slump",
-            "inputs": [
-              {
-                "from": "heightfield_distort4",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -9.13
-            ],
-            "parms": {
-              "iterations": 85,
-              "repose_angle": 12.0,
-              "seed": 2545.0
-            }
-          },
-          "heightfield_resample1": {
-            "type": "heightfield_resample",
-            "inputs": [
-              {
-                "from": "heightfield_maskclear1",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -11.13
-            ],
-            "parms": {
-              "resscale": 2.0
-            }
-          },
-          "heightfield_maskclear1": {
-            "type": "heightfield_layerclear",
-            "inputs": [
-              {
-                "from": "heightfield_slump1",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -10.13
-            ],
-            "parms": {
-              "num_clear": [
-                {
-                  "layer#": {
-                    "value": "mask",
-                    "visible": false
-                  },
-                  "value#": {
-                    "visible": false
-                  }
-                }
-              ]
-            }
-          },
-          "heightfield_masknoise2": {
-            "type": "heightfield_noise",
-            "inputs": [
-              {
-                "from": "heightfield_maskbyfeature2",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_maskbyfeature2",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -6.13
-            ],
-            "parms": {
-              "layer": "mask",
-              "combine": "replace",
-              "centernoise": false,
-              "amp": 1.0,
-              "elementsize": 100.0,
-              "dogain": true,
-              "gain": 0.9
-            }
-          },
-          "heightfield_noise2": {
-            "type": "heightfield_noise",
-            "inputs": [
-              {
-                "from": "heightfield_noise1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_noise1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.11,
-              1.84
-            ],
-            "parms": {
-              "amp": 350.0,
-              "elementsize": 644.0,
-              "offset": [
-                -54.0,
-                20.0,
-                100.0
-              ]
-            }
-          },
-          "heightfield_distort2": {
-            "type": "heightfield_distort",
-            "inputs": [
-              {
-                "from": "heightfield_distort1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_noise2",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -2.13
-            ],
-            "parms": {
-              "amp": 75.0,
-              "element_size": 650.0
-            }
-          },
-          "heightfield_maskbyfeature2": {
-            "type": "heightfield_maskbyfeature",
-            "inputs": [
-              {
-                "from": "heightfield_distort3",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -5.13
-            ],
-            "parms": {
-              "maskbyslope": false,
-              "sloperamp": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                }
-              ],
-              "maskbyheight": true,
-              "minheight": -23.77125358581543,
-              "maxheight": 219.42367553710938,
-              "heightramp": [
-                {
-                  "pos": 0.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 9.999999974752427e-07,
-                  "value": 0.9333333373069763,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.31081080436706543,
-                  "value": 0.0,
-                  "interp": "linear"
-                }
-              ],
-              "curvatureramp": [
-                {
-                  "pos": 0.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                }
-              ],
-              "dirramp": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.10000000149011612,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 0.8999999761581421,
-                  "value": 1.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                }
-              ]
-            }
-          },
-          "heightfield_remap2": {
-            "type": "heightfield_remap",
-            "inputs": [
-              {
-                "from": "heightfield_resample1",
-                "from_index": 0,
-                "to_index": 0
-              }
-            ],
-            "position": [
-              -0.22,
-              -12.13
-            ],
-            "parms": {
-              "inputmin": -9.149580955505371,
-              "inputmax": 201.6939239501953,
-              "outputmin": -25.0,
-              "outputmax": 220.0,
-              "remap": [
-                {
-                  "pos": 0.0,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.000240445137024e-06,
-                  "value": 0.0,
-                  "interp": "linear"
-                },
-                {
-                  "pos": 1.0,
-                  "value": 1.0,
-                  "interp": "linear"
-                }
-              ]
-            }
-          },
-          "heightfield_distort3": {
-            "type": "heightfield_distort",
-            "inputs": [
-              {
-                "from": "heightfield_masknoise1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_masknoise1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -4.13
-            ],
-            "parms": {
-              "amp": 20.0
-            }
-          },
-          "heightfield_distort4": {
-            "type": "heightfield_distort",
-            "inputs": [
-              {
-                "from": "heightfield_maskblur1",
-                "from_index": 0,
-                "to_index": 0
-              },
-              {
-                "from": "heightfield_maskblur1",
-                "from_index": 0,
-                "to_index": 1
-              }
-            ],
-            "position": [
-              -0.22,
-              -8.13
-            ],
-            "parms": {
-              "amp": 25.0
-            }
-          }
-        }
-      },
       "OUT_DEFINE_PLANTS": {
         "type": "null",
         "inputs": [
@@ -1654,64 +1419,6 @@
           ]
         }
       },
-      "biome_attributes_evolve1": {
-        "type": "labs::biome_attributes_evolve::1.0",
-        "inputs": [
-          {
-            "from": "biome_attributes_to_terrain1",
-            "from_index": 0,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          0,
-          1.92
-        ],
-        "color": [
-          1,
-          0.93,
-          0
-        ],
-        "user_data": {
-          "sidefx::parm_filter_text_pattern": "re",
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "display": 3,
-          "autoremap": 1,
-          "inputmin1": 12.145895004272461,
-          "inputmax1": 14.791894912719727,
-          "evolvetempxz": true,
-          "removebyocclusion": true,
-          "minslopeangle": 35.0,
-          "maxslopeangle": 80.0,
-          "sloperamp": [
-            {
-              "pos": 0.0,
-              "value": 0.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.16500000655651093,
-              "value": 1.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.8299999833106995,
-              "value": 1.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 1.0,
-              "value": 0.0,
-              "interp": "linear"
-            }
-          ],
-          "basesoil": 0.1,
-          "intensity": 0.5,
-          "elementsize": 150.0
-        }
-      },
       "instance1": {
         "type": "instance",
         "inputs": [
@@ -1754,37 +1461,25 @@
   },
   "info": {
     "author": "handongy",
-    "created": "March 10, 2025 - 12:21:29",
-    "houdini_version": "21.0.282",
+    "created": "March 10, 2025 - 13:14:15",
+    "houdini_version": "20.5.487",
     "data_version": "1.0",
-    "comment": ""
+    "comment": null
   },
   "properties": {
-    "recipe_category": "tool_recipe",
+    "recipe_category": "tab_tool_recipe",
     "visible": true,
     "nodetype_category": "Sop",
-    "nodetype_patterns": [
-      "labs::Sop/biome_plant_scatter::1.0"
-    ]
+    "nodetype_name": "labs::biome_plant_scatter::1.0"
   },
   "tool": {
-    "icon": "opdef:/labs::Sop/biome_plant_scatter::1.0?IconSVG",
-    "tool_types": [
-      "tab"
-    ],
-    "tool_labels": [
-      "",
-      ""
-    ],
     "tab_submenus": [
       "Labs/World Building/Biomes"
     ],
-    "shelf_tab": "Recipes",
-    "shelf_ordering_index": -1.0,
-    "example": false,
     "network_categories": [
       "Sop"
-    ]
+    ],
+    "icon": "opdef:/labs::Sop/biome_plant_scatter::1.0?IconSVG"
   },
   "options": {
     "nodes_only": false,
