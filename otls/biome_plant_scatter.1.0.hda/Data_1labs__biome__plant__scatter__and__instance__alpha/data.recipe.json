@@ -39,16 +39,20 @@
           0.73,
           0
         ],
+        "flags": {
+          "colordefault": false,
+          "outputfordisplay": true
+        },
         "user_data": {
           "wirestyle": "rounded"
         },
         "parms": {
           "size": 1000.0,
+          "outputviability": true,
           "meshvariantsdetailarray": true,
           "agejitter": 0.3,
-          "outputviability": true,
-          "vizradii": true,
-          "outputage": true
+          "outputage": true,
+          "vizradii": true
         }
       },
       "GENERATE_TERRAIN": {
@@ -62,6 +66,9 @@
           0.35,
           0
         ],
+        "flags": {
+          "colordefault": false
+        },
         "children": {
           "output0": {
             "type": "output",
@@ -722,6 +729,9 @@
           0.93,
           0
         ],
+        "flags": {
+          "colordefault": false
+        },
         "user_data": {
           "sidefx::parm_filter_text_pattern": "re",
           "wirestyle": "rounded"
@@ -779,7 +789,10 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false
+        }
       },
       "PINE": {
         "type": "labs::biome_plant_define::1.0",
@@ -799,6 +812,10 @@
           0.81,
           0.2
         ],
+        "flags": {
+          "colordefault": false,
+          "outputfordisplay": true
+        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -860,7 +877,10 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false
+        }
       },
       "OUT_TERRAIN": {
         "type": "null",
@@ -879,7 +899,10 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false
+        }
       },
       "TEMPERATE_SHRUB": {
         "type": "labs::biome_plant_define::1.0",
@@ -892,6 +915,10 @@
           0.81,
           0.2
         ],
+        "flags": {
+          "colordefault": false,
+          "outputfordisplay": true
+        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -936,6 +963,10 @@
           0.81,
           0.2
         ],
+        "flags": {
+          "colordefault": false,
+          "outputfordisplay": true
+        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -996,7 +1027,13 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false,
+          "display": true,
+          "render": true,
+          "template": true
+        }
       },
       "OUT_RIVER": {
         "type": "null",
@@ -1015,7 +1052,10 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false
+        }
       },
       "GENERATE_RIVER": {
         "type": "subnet",
@@ -1035,6 +1075,9 @@
           0.53,
           0.46
         ],
+        "flags": {
+          "colordefault": false
+        },
         "children": {
           "keep_the_largest_area": {
             "type": "attribwrangle",
@@ -1385,7 +1428,10 @@
           0.31,
           0.31,
           0.31
-        ]
+        ],
+        "flags": {
+          "colordefault": false
+        }
       },
       "biome_attributes_to_terrain1": {
         "type": "labs::biome_attributes_to_terrain::1.0",
@@ -1405,6 +1451,9 @@
           0.93,
           0
         ],
+        "flags": {
+          "colordefault": false
+        },
         "user_data": {
           "new_toggle": "1",
           "old_toggle": "1",
@@ -1461,7 +1510,7 @@
   },
   "info": {
     "author": "handongy",
-    "created": "March 10, 2025 - 13:14:15",
+    "created": "March 10, 2025 - 13:39:55",
     "houdini_version": "20.5.487",
     "data_version": "1.0",
     "comment": null
@@ -1487,7 +1536,7 @@
     "children": true,
     "anchor_editables": true,
     "editables": true,
-    "flags": false,
+    "flags": true,
     "parms": true,
     "parms_as_brief": true,
     "evaluate_parmvalues": false,
