@@ -32,26 +32,33 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.38725 -0.888562
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position 4.73675 -48.2352
+connectornextid 4
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	heightfield_project2 2 1 "input1"
+2 	Tundra 1 1 "input2"
+3 	biome_region_assign2 2 1 "input3"
 }
 inputs
 {
+0 	heightfield_project2 0 1
+1 	Tundra 0 1
+2 	biome_region_assign2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author youmnas@pubnico
+  author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.565 0.494 0.863 
+color UT_Color RGB 0.996 0.933 0 
 delscript ""
 exprlanguage hscript
 end
@@ -2369,9 +2376,11 @@ for (int prim = 0; prim < chi(\"num_regions\"); prim ++)
         // If this voxel is inside this region:
         
         string region_name = prim(2, \"name\", prim);
-        string biome_name = replace(region_name, \" \", \"_\");
-        int definition_idx = findattribval(1, \"point\", \"biome_name\", biome_name);
+        string biome_name = region_name;
         
+        
+        int definition_idx = findattribval(1, \"point\", \"biome_name\", biome_name);
+        //printf(\"%g \", biome_name);
         // Get Biome Color
         biome_cd = set(dict(point(1, \"biome_definition\", definition_idx))[\"biomecolorr\"],
                               dict(point(1, \"biome_definition\", definition_idx))[\"biomecolorg\"],
@@ -7423,7 +7432,7 @@ stat
   author youmnas@pubnico
   access 0777
 }
-color UT_Color RGB 0.976 0.78 0.263 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end

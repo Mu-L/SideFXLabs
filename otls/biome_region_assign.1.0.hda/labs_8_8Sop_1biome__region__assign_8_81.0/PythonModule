@@ -21,7 +21,6 @@ def biomeMenu(kwargs):
         try:
             for point in geo.points():
                 biom_name = point.attribValue('biome_name')
-                biom_name = biom_name.replace("_", " ")
                 menu_items.extend([biom_name, biom_name])
 
         except hou.OperationFailed:
