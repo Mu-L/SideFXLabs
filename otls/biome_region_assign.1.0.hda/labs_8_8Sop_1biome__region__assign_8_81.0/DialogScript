@@ -16,7 +16,7 @@
     parmtag { inputisref3 1 }
     inputlabel	4	"Sub-Network Input #4"
     outputlabel	1	"Biome Regions"
-    outputlabel	2	"Biome Regions"
+    outputlabel	2	"Guide Geometry"
 
     parm {
         name    "biomelib"
@@ -28,7 +28,7 @@
     }
     parm {
         name    "outputmode"
-        label   "Output"
+        label   "First Output"
         type    ordinal
         default { "1" }
         menu {
@@ -153,39 +153,6 @@
                 }
 
                 parm {
-                    name    "sampleresmode"
-                    label   "Sample Resolution"
-                    type    ordinal
-                    default { "0" }
-                    menu {
-                        "0" "Source Image Resolution"
-                        "1" "Specified Resolution"
-                    }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "sampleres"
-                    label   "Specified Resolution"
-                    type    intvector2
-                    size    2
-                    default { "1024" "1024" }
-                    hidewhen "{ sampleresmode != 1 }"
-                    range   { -1 1 }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "samplecspace"
-                    label   "Sample Color Space"
-                    type    ordinal
-                    default { "auto" }
-                    hidewhen "{ imgsrc != 0 }"
-                    menu {
-                        "auto"      "Automatic"
-                        "linear"    "Linear"
-                    }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
                     name    "clustercount"
                     label   "Color Clusters"
                     type    integer
@@ -194,31 +161,70 @@
                     parmtag { "autoscope" "0000000000000000" }
                     parmtag { "script_callback_language" "python" }
                 }
-                parm {
-                    name    "clusteriter"
-                    label   "Cluster Iterations"
-                    type    integer
-                    default { "10" }
-                    range   { 1! 20 }
-                    parmtag { "script_callback_language" "python" }
+                groupcollapsible {
+                    name    "fd_img_advanced"
+                    label   "Advanced"
+
+                    parm {
+                        name    "sampleresmode"
+                        label   "Sample Resolution"
+                        type    ordinal
+                        default { "0" }
+                        menu {
+                            "0" "Source Image Resolution"
+                            "1" "Specified Resolution"
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sampleres"
+                        label   "Specified Resolution"
+                        type    intvector2
+                        size    2
+                        default { "1024" "1024" }
+                        hidewhen "{ sampleresmode != 1 }"
+                        range   { -1 1 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "samplecspace"
+                        label   "Sample Color Space"
+                        type    ordinal
+                        default { "auto" }
+                        hidewhen "{ imgsrc != 0 }"
+                        menu {
+                            "auto"      "Automatic"
+                            "linear"    "Linear"
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "clusteriter"
+                        label   "Cluster Iterations"
+                        type    integer
+                        default { "10" }
+                        range   { 1! 20 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "refineclusters"
+                        label   "Refine Region Borders"
+                        type    toggle
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "refineiter"
+                        label   "Refine Iterations"
+                        type    integer
+                        default { "1" }
+                        hidewhen "{ refineclusters == 0 }"
+                        range   { 0! 10 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
                 }
-                parm {
-                    name    "refineclusters"
-                    label   "Refine Region Borders"
-                    type    toggle
-                    default { "0" }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "refineiter"
-                    label   "Refine Iterations"
-                    type    integer
-                    default { "1" }
-                    hidewhen "{ refineclusters == 0 }"
-                    range   { 0! 10 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
+
             }
 
             groupsimple {
@@ -320,6 +326,13 @@
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
+                    name    "resetimgparms"
+                    label   "Reset Parameters"
+                    type    toggle
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
                     name    "sepparm2"
                     label   "Separator"
                     type    separator
@@ -344,7 +357,7 @@
                     }
                     parm {
                         name    "img_bhierarchy#"
-                        label   "Biome Hierarchy"
+                        label   "Sort Order"
                         type    integer
                         default { "0" }
                         range   { 0! 20 }
@@ -442,7 +455,7 @@
                 }
                 parm {
                     name    "hf_bhierarchy#"
-                    label   "Biome Hierarchy"
+                    label   "Sort Order"
                     type    integer
                     default { "0" }
                     hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
@@ -545,7 +558,7 @@
                     }
                     parm {
                         name    "biomehierarchy_mesh#"
-                        label   "Biome Hierarchy"
+                        label   "Sort Order"
                         type    integer
                         default { "1" }
                         range   { 1! 20 }
@@ -664,7 +677,7 @@
                     }
                     parm {
                         name    "biomehierarchy_psd#"
-                        label   "Biome Hierarchy"
+                        label   "Sort Order"
                         type    integer
                         default { "1" }
                         range   { 1! 20 }
@@ -876,7 +889,7 @@
                         }
                         parm {
                             name    "biomehierarchy_hf#"
-                            label   "Biome Hierarchy"
+                            label   "Sort Order"
                             type    integer
                             default { "1" }
                             hidewhen "{ layerhierarchy != 1 }"
