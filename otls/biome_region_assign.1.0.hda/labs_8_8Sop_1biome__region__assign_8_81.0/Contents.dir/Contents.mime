@@ -32,23 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.6259 -57.6678
-connectornextid 4
+position -8.43953 -3.17263
+connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-2 "output1"
-3 "output2"
+0 "output1"
 }
 inputsNamed3
 {
-0 	Tundra 1 1 "input1"
-1 	heightfield1 0 1 "input2"
+1 	Pine_Forest 1 1 "input1"
+2 	merge2 0 1 "input2"
 }
 inputs
 {
-0 	Tundra 0 1
-1 	heightfield1 0 1
+0 	Pine_Forest 0 1
+1 	merge2 0 1
 }
 stat
 {
@@ -12526,7 +12525,7 @@ sopflags sopflags =
 comment Ascending
 position -12.5 -21.5732
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 1 "output1"
@@ -16254,7 +16253,7 @@ sopflags sopflags =
 comment ""
 position -16.503 -34.5742
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 0 "output1"
@@ -18918,7 +18917,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"for(int i = 0; i < npoints(-1); i++)
 {
     string biome_name = point(-1, \"biome_name\", i);
-    biome_name = replace(biome_name, \"_\", \" \");
+    
     if(biome_name == s@name)
     {
         dict biome_definitions = point(-1, \"biome_definition\", i);
