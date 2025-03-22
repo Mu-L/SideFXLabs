@@ -3,9 +3,7 @@
 
 SideFX Labs is a widely popular official package developed by SideFX. It is an artist-friendly toolset that extends Houdini’s functionalities. Originated from the Game Development Toolset, SideFX Labs has a strong game industry DNA, but it also features many tools and utilities broadly useful for film & TV, motion graphics, and other industries. It contains hundreds of Houdini Digital Assets (HDAs), various Python modules, game engine plugins, Houdini UI extensions, custom VEX functions, and more.
 
-SideFX Labs differs from native Houdini in that it is free, open-source, and independent of Houdini’s annual or biannual release schedule.
-
-It is also the place where we make available third-party software integrations and some of the more experimental tools and workflows.
+SideFX Labs differs from native Houdini in that it is free, open-source, and independent of Houdini’s annual or biannual release schedule. It is also the place where we make available third-party software integrations and some of the more experimental tools and workflows.
 
 # Roadmap & Changelog
 Please visit our [Public Roadmap](https://portal.productboard.com/sidefx/1-sidefx-labs-public-roadmap/) to see what we are working on, vote on features, and submit new ideas. For more detailed updates in chronological order, please visit our [Changelog](https://github.com/sideeffects/SideFXLabs/blob/Development/CHANGELOG.md). Unlike the raw commit history, this log is curated and updated once every production release.
