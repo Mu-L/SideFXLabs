@@ -32,11 +32,12 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.62672 -5.3184
-connectornextid 0
+position -0.0998873 -12.4198
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
@@ -48,7 +49,7 @@ stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author arvid@sid
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +65,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"sidefx::parm_filter_text_pattern":{
+		"type":"string",
+		"value":" f"
 	},
 	"wirestyle":{
 		"type":"string",
@@ -2581,12 +2586,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	merge2 2 1 "input1"
-1 	attribwrangle1 1 1 "input2"
+1 	pscale_1 1 1 "input2"
 }
 inputs
 {
 0 	merge2 0 1
-1 	attribwrangle1 0 1
+1 	pscale_1 0 1
 }
 stat
 {
@@ -7032,7 +7037,7 @@ Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
 f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIwLjUuNTIyJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFqKwQLdmVydGV4Y291bnQmBBEAKwUOcHJpbWl0aXZlY291bnQmBREAKwYEaW5mbyYGeysHCGhvc3RuYW1lJgc=
-KwgJQmFpbGV5c1BDJggrCQRkYXRlJgkrChMyMDI1LTAzLTI0IDEwOjIzOjUyJgorCwZhcnRpc3QmCysMBkJhaWxleSYMKw0Ic29mdHdhcmUmDSsOEEhvdWRpbmkgMjAuNS41MjImDisPBmJvdW5kcyYPQBkGI9t1wUa26kEGgZU=
+KwgJQmFpbGV5c1BDJggrCQRkYXRlJgkrChMyMDI1LTAzLTI1IDA5OjQ0OjM1JgorCwZhcnRpc3QmCysMBkJhaWxleSYMKw0Ic29mdHdhcmUmDSsOEEhvdWRpbmkgMjAuNS41MjImDisPBmJvdW5kcyYPQBkGI9t1wUa26kEGgZU=
 PScxMUIAAAAAAAAAACsQEWF0dHJpYnV0ZV9zdW1tYXJ5JhAnUSAgICAgMyBwb2ludCBhdHRyaWJ1dGVzOglQLCBiaW9tZSwgbWVyZ2VkX2Jpb21lCiAgICAgMSBnbG9iYWwgYXR0cmlidXRlczoJdmFybWFwCn0rEQh0b3BvbG8=
 Z3kmEVsrEghwb2ludHJlZiYSWysTB2luZGljZXMmE0ASAF1dKxQKYXR0cmlidXRlcyYUWysVD3BvaW50YXR0cmlidXRlcyYVW1tbKxYFc2NvcGUmFisXBnB1YmxpYyYXKxgEdHlwZSYYKxkHbnVtZXJpYyYZKxoEbmFtZSYaKxs=
 AVAmGyscB29wdGlvbnMmHHsmGHsmGCsdBnN0cmluZyYdKx4FdmFsdWUmHisfBXBvaW50Jh99fV1bKyAEc2l6ZSYgEQMrIQdzdG9yYWdlJiErIghmcHJlYWwzMiYiKyMIZGVmYXVsdHMmI1smIBEBJiErJAhmcHJlYWw2NCYkKyU=
@@ -7611,285 +7616,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 14.9148 -13.3458
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	transform_right_of_graph 1 1 "input1"
-}
-inputs
-{
-0 	transform_right_of_graph 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.spareparmdef"
-Content-Type: text/plain
-
-    group {
-        name    "folder1"
-        label   "Code"
-
-        parm {
-            name    "group"
-            baseparm
-            label   "Group"
-            export  none
-            bindselector uvselect "Modify Attribs"
-                "Select the geometry to affect and press Enter to complete."
-                0 1 0xffffffff 0 grouptype 0
-        }
-        parm {
-            name    "grouptype"
-            baseparm
-            label   "Group Type"
-            export  none
-        }
-        parm {
-            name    "class"
-            baseparm
-            label   "Run Over"
-            export  none
-        }
-        parm {
-            name    "vex_numcount"
-            baseparm
-            label   "Number Count"
-            export  none
-        }
-        parm {
-            name    "vex_threadjobsize"
-            baseparm
-            label   "Thread Job Size"
-            export  none
-        }
-        groupsimple {
-            name    "folder_generatedparms_snippet"
-            label   "Generated Channel Parameters"
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "scalemult"
-                label   "Scalemult"
-                type    float
-                default { "0" }
-                range   { 0 1 }
-            }
-        }
-
-        parm {
-            name    "snippet"
-            baseparm
-            label   "VEXpression"
-            export  all
-        }
-        parm {
-            name    "exportlist"
-            baseparm
-            label   "Attributes to Create"
-            export  none
-        }
-        parm {
-            name    "vex_strict"
-            baseparm
-            label   "Enforce Prototypes"
-            export  none
-        }
-    }
-
-    group {
-        name    "folder1_1"
-        label   "Bindings"
-
-        parm {
-            name    "autobind"
-            baseparm
-            label   "Autobind by Name"
-            export  none
-        }
-        multiparm {
-            name    "bindings"
-            label    "Number of Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindname#"
-                baseparm
-                label   "Attribute Name"
-                export  none
-            }
-            parm {
-                name    "bindparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "groupautobind"
-            baseparm
-            label   "Autobind Groups by Name"
-            export  none
-        }
-        multiparm {
-            name    "groupbindings"
-            label    "Group Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindgroupname#"
-                baseparm
-                label   "Group Name"
-                export  none
-            }
-            parm {
-                name    "bindgroupparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "vex_cwdpath"
-            baseparm
-            label   "Evaluation Node Path"
-            export  none
-        }
-        parm {
-            name    "vex_outputmask"
-            baseparm
-            label   "Export Parameters"
-            export  none
-        }
-        parm {
-            name    "vex_updatenmls"
-            baseparm
-            label   "Update Normals If Displaced"
-            export  none
-        }
-        parm {
-            name    "vex_matchattrib"
-            baseparm
-            label   "Attribute to Match"
-            export  none
-        }
-        parm {
-            name    "vex_inplace"
-            baseparm
-            label   "Compute Results In Place"
-            export  none
-        }
-        parm {
-            name    "vex_selectiongroup"
-            baseparm
-            label   "Output Selection Group"
-            export  none
-        }
-        parm {
-            name    "vex_precision"
-            baseparm
-            label   "VEX Precision"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.chn"
-Content-Type: text/plain
-
-{
-    channel scalemult {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../scalemult\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"@pscale = ch('scalemult');"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-vex_precision	[ 0	locks=0 ]	(	auto	)
-folder1	[ 0	locks=0 ]	(	0	0	)
-folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-scalemult	[ 8	locks=0 ]	(	[ scalemult	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/scalemult.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
@@ -8675,19 +8401,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
+Content-Disposition: attachment; filename="hdaroot/pscale_1.init"
 Content-Type: text/plain
 
 type = attribwrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
+Content-Disposition: attachment; filename="hdaroot/pscale_1.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 14.443 -12.2044
+position 14.4206 -13.0022
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -8715,7 +8441,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
+Content-Disposition: attachment; filename="hdaroot/pscale_1.parm"
 Content-Type: text/plain
 
 {
@@ -8743,7 +8469,7 @@ vex_precision	[ 0	locks=0 ]	(	auto	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
+Content-Disposition: attachment; filename="hdaroot/pscale_1.userdata"
 Content-Type: text/plain
 
 {
@@ -8761,7 +8487,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-77
+76
 output0
 merge_with_previous_plant
 attribfromparm1
@@ -8827,7 +8553,6 @@ font_precipitation
 Biome_Data
 missing_or_invalid_mesh_msg
 zoo_grid_of_every_mesh
-scalemult
 color1
 color2
 color3
@@ -8838,7 +8563,7 @@ groupdelete1
 facet1
 facet2
 facet3
-attribwrangle1
+pscale_1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

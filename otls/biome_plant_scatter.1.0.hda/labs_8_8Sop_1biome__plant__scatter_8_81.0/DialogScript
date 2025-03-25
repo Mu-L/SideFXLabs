@@ -576,6 +576,23 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "outputmaterial"
+                label   "outputmaterial"
+                type    toggle
+                nolabel
+                joinnext
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "materialname"
+                label   "Material"
+                type    string
+                default { "shop_materialpath" }
+                disablewhen "{ outputmaterial == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "outputage"
                 label   "outputage"
                 type    toggle
