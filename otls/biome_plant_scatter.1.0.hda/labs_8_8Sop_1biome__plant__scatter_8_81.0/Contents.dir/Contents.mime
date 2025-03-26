@@ -32,26 +32,27 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 2.18812 -15.8876
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+position -9.67432 -19.0048
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-1 "output1"
+3 "output1"
+4 "output2"
 }
 inputsNamed3
 {
-0 	switch1 2 1 "input1"
+0 	Grassland_Desert_Shrub_2 0 1 "input1"
 }
 inputs
 {
-0 	switch1 0 1
+0 	Grassland_Desert_Shrub_2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author handongy@prevost
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -401,9 +402,366 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 3
-0 9.1342811914997188 -4.2555640691915002 2 0 __NO_OWNER_NETWORK_BOX__ "DEFAULT"
+0 9.2406351037913463 -3.4260035533167987 2 0 __NO_OWNER_NETWORK_BOX__ "DEFAULT"
 1 3.87948001117587 14.34400000117421 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 0.14499999582767487 0.66699999570846558 0.55699998140335083"
 2 10.782000011175869 8.3494815531814304 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.init"
+Content-Type: text/plain
+
+type = heightfield_visualize
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 14.7688 -46.9244
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	replace_spaces_from_species 1 1 "input1"
+}
+inputs
+{
+0 	replace_spaces_from_species 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.spareparmdef"
+Content-Type: text/plain
+
+    groupsimple {
+        name    "folder2"
+        label   "Tinting by Layer"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "updatetinting"
+            baseparm
+            label   "Update Tinting"
+            export  none
+        }
+        parm {
+            name    "heightvolume"
+            baseparm
+            label   "Height Layer"
+            export  none
+        }
+        parm {
+            name    "cdvolume"
+            baseparm
+            label   "Color Layer"
+            export  none
+        }
+        parm {
+            name    "computerange"
+            baseparm
+            label   "Compute Range"
+            export  none
+        }
+        parm {
+            name    "cdrangeoverride"
+            baseparm
+            label   "Diffuse Range"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "cdrange"
+            baseparm
+            label   "Diffuse Range"
+            export  none
+        }
+        parm {
+            name    "cdrampmode"
+            baseparm
+            label   "Mode"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "cdpreset"
+            baseparm
+            label   "Diffuse"
+            export  none
+        }
+        parm {
+            name    "cdramp"
+            baseparm
+            label   "Diffuse Ramp"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "folder3"
+        label   "Material"
+        grouptag { "sidefx::switcher" "folder1" }
+
+        parm {
+            name    "updatematerial"
+            baseparm
+            label   "Update Material"
+            export  none
+        }
+        parm {
+            name    "vis_projection"
+            baseparm
+            label   "Projection"
+            export  none
+        }
+        parm {
+            name    "computerange2"
+            baseparm
+            label   "Compute Range"
+            export  none
+        }
+        parm {
+            name    "vis_minelevation"
+            baseparm
+            label   "Min Elevation"
+            export  none
+        }
+        parm {
+            name    "vis_maxelevation"
+            baseparm
+            label   "Max Elevation"
+            export  none
+        }
+        parm {
+            name    "vis_heightramp"
+            baseparm
+            label   "Height Ramp"
+            export  none
+        }
+        parm {
+            name    "vis_layer9"
+            baseparm
+            label   "Layer 9"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color9"
+            baseparm
+            label   "Color 9"
+            export  none
+        }
+        parm {
+            name    "vis_layer8"
+            baseparm
+            label   "Layer 8"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color8"
+            baseparm
+            label   "Color 8"
+            export  none
+        }
+        parm {
+            name    "vis_layer7"
+            baseparm
+            label   "Layer 7"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color7"
+            baseparm
+            label   "Color 7"
+            export  none
+        }
+        parm {
+            name    "vis_layer6"
+            baseparm
+            label   "Layer 6"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color6"
+            baseparm
+            label   "Color 6"
+            export  none
+        }
+        parm {
+            name    "vis_layer5"
+            baseparm
+            label   "Layer 5"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color5"
+            baseparm
+            label   "Color 5"
+            export  none
+        }
+        parm {
+            name    "vis_layer4"
+            baseparm
+            label   "Layer 4"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color4"
+            baseparm
+            label   "Color 4"
+            export  none
+        }
+        parm {
+            name    "vis_layer3"
+            baseparm
+            label   "Layer 3"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color3"
+            baseparm
+            label   "Color 3"
+            export  none
+        }
+        parm {
+            name    "vis_layer2"
+            baseparm
+            label   "Layer 2"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color2"
+            baseparm
+            label   "Color 2"
+            export  none
+        }
+        parm {
+            name    "vis_layer1"
+            baseparm
+            label   "Layer 1"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color1"
+            baseparm
+            label   "Color 1"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+updatetinting	[ 0	locks=0 ]	(	"custom"	)
+heightvolume	[ 0	locks=0 ]	(	height	)
+cdvolume	[ 0	locks=0 ]	(	"_bps_speciesviability_`details(-1, \"species\")`"	)
+computerange	[ 0	locks=0 ]	(	0	)
+cdrangeoverride	[ 0	locks=0 ]	(	"off"	)
+cdrange	[ 0	locks=0 ]	(	0	1	)
+cdrampmode	[ 0	locks=0 ]	(	"clamp"	)
+cdpreset	[ 0	locks=0 ]	(	"none"	)
+cdramp	[ 0	locks=0 ]	(	2	)
+folder1	[ 0	locks=0 ]	(	0	)
+updatematerial	[ 0	locks=0 ]	(	"custom"	)
+vis_projection	[ 0	locks=0 ]	(	"y"	)
+computerange2	[ 0	locks=0 ]	(	0	)
+vis_minelevation	[ 0	locks=0 ]	(	0	)
+vis_maxelevation	[ 0	locks=0 ]	(	250	)
+vis_heightramp	[ 0	locks=0 ]	(	5	)
+vis_layer9	[ 8	locks=0 ]	(	""	)
+vis_color9	[ 0	locks=0 ]	(	1	0	0	1	)
+vis_layer8	[ 0	locks=0 ]	(	""	)
+vis_color8	[ 0	locks=0 ]	(	0	0	1	1	)
+vis_layer7	[ 0	locks=0 ]	(	""	)
+vis_color7	[ 0	locks=0 ]	(	0	1	0	1	)
+vis_layer6	[ 0	locks=0 ]	(	""	)
+vis_color6	[ 0	locks=0 ]	(	0.3	0.3	0.3	1	)
+vis_layer5	[ 0	locks=0 ]	(	""	)
+vis_color5	[ 0	locks=0 ]	(	0.3	0.5	0.03	1	)
+vis_layer4	[ 0	locks=0 ]	(	""	)
+vis_color4	[ 0	locks=0 ]	(	0	0.5	0	1	)
+vis_layer3	[ 0	locks=0 ]	(	""	)
+vis_color3	[ 0	locks=0 ]	(	0.45	0	0.9	1	)
+vis_layer2	[ 0	locks=0 ]	(	""	)
+vis_color2	[ 0	locks=0 ]	(	0	0.9	0.9	1	)
+vis_layer1	[ 0	locks=0 ]	(	""	)
+vis_color1	[ 0	locks=0 ]	(	0.5	0.25	0	1	)
+cdramp1pos	[ 0	locks=0 ]	(	0	)
+cdramp1c	[ 0	locks=0 ]	(	1	1	1	)
+cdramp1interp	[ 0	locks=0 ]	(	"linear"	)
+cdramp2pos	[ 0	locks=0 ]	(	1	)
+cdramp2c	[ 0	locks=0 ]	(	1	0	0	)
+cdramp2interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp1pos	[ 0	locks=0 ]	(	0	)
+vis_heightramp1c	[ 0	locks=0 ]	(	0.5	0.25	0	)
+vis_heightramp1interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp2pos	[ 0	locks=0 ]	(	0.3286624252796173	)
+vis_heightramp2c	[ 0	locks=0 ]	(	0	0.7239999771118164	0	)
+vis_heightramp2interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp3pos	[ 0	locks=0 ]	(	0.6496815085411072	)
+vis_heightramp3c	[ 0	locks=0 ]	(	0	0.28999999165534973	0	)
+vis_heightramp3interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp4pos	[ 0	locks=0 ]	(	0.8458598852157593	)
+vis_heightramp4c	[ 0	locks=0 ]	(	0.3479999899864197	0.3479999899864197	0.3479999899864197	)
+vis_heightramp4interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp5pos	[ 0	locks=0 ]	(	1	)
+vis_heightramp5c	[ 0	locks=0 ]	(	1	1	1	)
+vis_heightramp5interp	[ 0	locks=0 ]	(	"linear"	)
+folder2	[ 0	locks=0 ]	(	0	)
+folder3	[ 0	locks=0 ]	(	0	)
+spare_input0	[ 0	locks=0 ]	(	../replace_spaces_from_species	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/noise_float.init"
@@ -598,121 +956,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.init"
-Content-Type: text/plain
-
-type = heightfield_visualize
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 14.7688 -46.3436
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	HEIGHTFIELD_ONLY 1 1 "input1"
-}
-inputs
-{
-0 	HEIGHTFIELD_ONLY 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-updatetinting	[ 0	locks=0 ]	(	"custom"	)
-heightvolume	[ 0	locks=0 ]	(	height	)
-cdvolume	[ 0	locks=0 ]	(	_bps_speciesviability_`chs(\"../species\")`	)
-computerange	[ 0	locks=0 ]	(	0	)
-cdrangeoverride	[ 0	locks=0 ]	(	"off"	)
-cdrange	[ 0	locks=0 ]	(	0	1	)
-cdrampmode	[ 0	locks=0 ]	(	"clamp"	)
-cdpreset	[ 0	locks=0 ]	(	"none"	)
-cdramp	[ 0	locks=0 ]	(	2	)
-folder1	[ 0	locks=0 ]	(	0	)
-updatematerial	[ 0	locks=0 ]	(	"custom"	)
-vis_projection	[ 0	locks=0 ]	(	"y"	)
-computerange2	[ 0	locks=0 ]	(	0	)
-vis_minelevation	[ 0	locks=0 ]	(	0	)
-vis_maxelevation	[ 0	locks=0 ]	(	250	)
-vis_heightramp	[ 0	locks=0 ]	(	5	)
-vis_layer9	[ 8	locks=0 ]	(	""	)
-vis_color9	[ 0	locks=0 ]	(	1	0	0	1	)
-vis_layer8	[ 0	locks=0 ]	(	""	)
-vis_color8	[ 0	locks=0 ]	(	0	0	1	1	)
-vis_layer7	[ 0	locks=0 ]	(	""	)
-vis_color7	[ 0	locks=0 ]	(	0	1	0	1	)
-vis_layer6	[ 0	locks=0 ]	(	""	)
-vis_color6	[ 0	locks=0 ]	(	0.3	0.3	0.3	1	)
-vis_layer5	[ 0	locks=0 ]	(	""	)
-vis_color5	[ 0	locks=0 ]	(	0.3	0.5	0.03	1	)
-vis_layer4	[ 0	locks=0 ]	(	""	)
-vis_color4	[ 0	locks=0 ]	(	0	0.5	0	1	)
-vis_layer3	[ 0	locks=0 ]	(	""	)
-vis_color3	[ 0	locks=0 ]	(	0.45	0	0.9	1	)
-vis_layer2	[ 0	locks=0 ]	(	""	)
-vis_color2	[ 0	locks=0 ]	(	0	0.9	0.9	1	)
-vis_layer1	[ 0	locks=0 ]	(	""	)
-vis_color1	[ 0	locks=0 ]	(	0.5	0.25	0	1	)
-cdramp1pos	[ 0	locks=0 ]	(	0	)
-cdramp1c	[ 0	locks=0 ]	(	1	1	1	)
-cdramp1interp	[ 0	locks=0 ]	(	"linear"	)
-cdramp2pos	[ 0	locks=0 ]	(	1	)
-cdramp2c	[ 0	locks=0 ]	(	1	0	0	)
-cdramp2interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp1pos	[ 0	locks=0 ]	(	0	)
-vis_heightramp1c	[ 0	locks=0 ]	(	0.5	0.25	0	)
-vis_heightramp1interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp2pos	[ 0	locks=0 ]	(	0.3286624252796173	)
-vis_heightramp2c	[ 0	locks=0 ]	(	0	0.7239999771118164	0	)
-vis_heightramp2interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp3pos	[ 0	locks=0 ]	(	0.6496815085411072	)
-vis_heightramp3c	[ 0	locks=0 ]	(	0	0.28999999165534973	0	)
-vis_heightramp3interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp4pos	[ 0	locks=0 ]	(	0.8458598852157593	)
-vis_heightramp4c	[ 0	locks=0 ]	(	0.3479999899864197	0.3479999899864197	0.3479999899864197	)
-vis_heightramp4interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp5pos	[ 0	locks=0 ]	(	1	)
-vis_heightramp5c	[ 0	locks=0 ]	(	1	1	1	)
-vis_heightramp5interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/output0.init"
 Content-Type: text/plain
 
@@ -845,7 +1088,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 9.13428 -5.36035
+position 9.24063 -4.53079
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1108,7 +1351,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 14.7688 -48.3835
+position 14.7688 -48.9643
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1169,7 +1412,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.385 -75.2603
+position 20.385 -75.8411
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1228,7 +1471,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 14.7654 -47.3707
+position 14.7654 -47.9515
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1382,7 +1625,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.3838 -72.9227
+position 20.3838 -73.5035
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1657,7 +1900,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.9831 -57.1784
+position 13.9831 -57.7592
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1716,7 +1959,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.4133 -56.701
+position 20.4133 -57.2818
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1892,7 +2135,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.385 -74.053
+position 20.385 -74.6338
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -2014,7 +2257,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.8778 -49.5362
+position 13.8778 -50.117
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2089,7 +2332,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.9831 -55.9711
+position 13.9831 -56.5519
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -2159,11 +2402,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	create_single_meshvariant 1 1 "input1"
+0 	replace_spaces_in_plant_name 1 1 "input1"
 }
 inputs
 {
-0 	create_single_meshvariant 0 1
+0 	replace_spaces_in_plant_name 0 1
 }
 stat
 {
@@ -4979,11 +5222,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	create_single_meshvariant 1 1 "input1"
+0 	replace_spaces_in_plant_name 1 1 "input1"
 }
 inputs
 {
-0 	create_single_meshvariant 0 1
+0 	replace_spaces_in_plant_name 0 1
 }
 stat
 {
@@ -5761,7 +6004,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.8778 -50.6355
+position 13.8778 -51.2163
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5822,7 +6065,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 9.13128 -6.37339
+position 9.23763 -5.54383
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -9259,7 +9502,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 14.4574 -52.4628
+position 14.4574 -53.0436
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -9529,7 +9772,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.9831 -53.7221
+position 13.9831 -54.3029
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -9831,7 +10074,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 13.9797 -54.844
+position 13.9797 -55.4248
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -11064,7 +11307,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 7.54301 -7.9858
+position 7.54301 -8.53479
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -11073,11 +11316,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	create_single_meshvariant 1 1 "input1"
+0 	replace_spaces_in_plant_name 1 1 "input1"
 }
 inputs
 {
-0 	create_single_meshvariant 0 1
+0 	replace_spaces_in_plant_name 0 1
 }
 stat
 {
@@ -11134,7 +11377,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 7.54301 -9.1153
+position 7.54141 -9.63513
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -11362,7 +11605,7 @@ version 0.8
 numcopy	[ 0	locks=0 ]	(	1	)
 create1	[ 0	locks=0 ]	(	"on"	)
 srcname1	[ 0	locks=0 ]	(	mask	)
-dstname1	[ 8	locks=0 ]	(	"_bps_speciesviability_`points(-1,0, \"plant_name\")`"	)
+dstname1	[ 8	locks=0 ]	(	"_bps_speciesviability_`points(-1,0, \"_bps_plant_name\")`"	)
 copysrc1	[ 0	locks=0 ]	(	"on"	)
 replacedst1	[ 0	locks=0 ]	(	"off"	)
 spare_input0	[ 0	locks=0 ]	(	../PLANT_TYPE1	)
@@ -11777,7 +12020,7 @@ Content-Type: text/plain
 version 0.8
 numcopy	[ 0	locks=0 ]	(	1	)
 create1	[ 0	locks=0 ]	(	"on"	)
-srcname1	[ 0	locks=0 ]	(	"_bps_speciesviability_`points(-1, 0, \"plant_name\")`"	)
+srcname1	[ 0	locks=0 ]	(	"_bps_speciesviability_`points(-1, 0, \"_bps_plant_name\")`"	)
 dstname1	[ 0	locks=0 ]	(	mask	)
 copysrc1	[ 0	locks=0 ]	(	"on"	)
 replacedst1	[ 0	locks=0 ]	(	"on"	)
@@ -21643,6 +21886,354 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 14.7658 -45.8694
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	HEIGHTFIELD_ONLY 1 1 "input1"
+}
+inputs
+{
+0 	HEIGHTFIELD_ONLY 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.475 0.812 0.204 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "folder1"
+        label   "Code"
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Group"
+            export  none
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            baseparm
+            label   "Group Type"
+            export  none
+        }
+        parm {
+            name    "class"
+            baseparm
+            label   "Run Over"
+            export  none
+        }
+        parm {
+            name    "vex_numcount"
+            baseparm
+            label   "Number Count"
+            export  none
+        }
+        parm {
+            name    "vex_threadjobsize"
+            baseparm
+            label   "Thread Job Size"
+            export  none
+        }
+        groupsimple {
+            name    "folder_generatedparms_snippet"
+            label   "Generated Channel Parameters"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "species"
+                label   "Species"
+                type    string
+                default { "" }
+            }
+        }
+
+        parm {
+            name    "snippet"
+            baseparm
+            label   "VEXpression"
+            export  all
+        }
+        parm {
+            name    "exportlist"
+            baseparm
+            label   "Attributes to Create"
+            export  none
+        }
+        parm {
+            name    "vex_strict"
+            baseparm
+            label   "Enforce Prototypes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            baseparm
+            label   "Autobind by Name"
+            export  none
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                baseparm
+                label   "Attribute Name"
+                export  none
+            }
+            parm {
+                name    "bindparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            baseparm
+            label   "Autobind Groups by Name"
+            export  none
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                baseparm
+                label   "Group Name"
+                export  none
+            }
+            parm {
+                name    "bindgroupparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            baseparm
+            label   "Evaluation Node Path"
+            export  none
+        }
+        parm {
+            name    "vex_outputmask"
+            baseparm
+            label   "Export Parameters"
+            export  none
+        }
+        parm {
+            name    "vex_updatenmls"
+            baseparm
+            label   "Update Normals If Displaced"
+            export  none
+        }
+        parm {
+            name    "vex_matchattrib"
+            baseparm
+            label   "Attribute to Match"
+            export  none
+        }
+        parm {
+            name    "vex_inplace"
+            baseparm
+            label   "Compute Results In Place"
+            export  none
+        }
+        parm {
+            name    "vex_selectiongroup"
+            baseparm
+            label   "Output Selection Group"
+            export  none
+        }
+        parm {
+            name    "vex_precision"
+            baseparm
+            label   "VEX Precision"
+            export  none
+        }
+    }
+
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"s@species = replace(chs('species'), \" \", \"_\");"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+folder1	[ 0	locks=0 ]	(	0	0	)
+folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
+species	[ 8	locks=0 ]	(	`chs(\"../species\")`	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_in_plant_name.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_in_plant_name.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 9.25139 -6.38529
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	create_single_meshvariant 1 1 "input1"
+}
+inputs
+{
+0 	create_single_meshvariant 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.475 0.812 0.204 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_in_plant_name.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"s@_bps_plant_name = replace(s@plant_name, \" \", \"_\");"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/replace_spaces_in_plant_name.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -21673,7 +22264,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-172
+174
 visualize_viability
 output0
 INITIAL_SCATTER
@@ -21846,6 +22437,8 @@ enable_noise
 gradient_biome
 output_material_attribute
 output_material
+replace_spaces_from_species
+replace_spaces_in_plant_name
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
