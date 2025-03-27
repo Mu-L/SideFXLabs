@@ -38,15 +38,16 @@
     }
     parm {
         name    "pathtobiomes"
-        label   "Path to Biomes"
+        label   "Biome Define Path"
         type    oppath
         default { "" }
         parmtag { "oprelative" "." }
+        parmtag { "script_callback" "hou.phm().setDefaultBiome(kwargs['node'])" }
         parmtag { "script_callback_language" "python" }
     }
     parm {
         name    "biome"
-        label   "Biome"
+        label   "Biome Name"
         type    ordinal
         default { "0" }
         menu {
@@ -75,7 +76,7 @@
             [ "    return[\"\", \"No Path to Biomes Defined\"]" ]
             language python
         }
-        parmtag { "script_callback" "hou.phm().changeBiome(kwargs['node'],kwargs[\"node\"].parm('biome').evalAsString())" }
+        parmtag { "script_callback" "hou.phm().changeBiome(kwargs['node'])" }
         parmtag { "script_callback_language" "python" }
     }
     parm {
@@ -134,7 +135,7 @@
     }
     parm {
         name    "biomehierarchy"
-        label   "Biome Hierarchy"
+        label   "Sort Order"
         type    integer
         default { "0" }
         range   { 1! 10 }

@@ -15,7 +15,7 @@ Instead of the biome interface handled through _Labs Biome Region Assign_ for al
 
 == ==
 
-	Path to Biomes:
+	Biome Define Path:
 		#id: pathtobiomes
 		Node path to the last _Labs Biome Define SOP_ in a chain of nodes or a _Biome Definitions File SOP_ set to create geometry from a biome definitions file. A list of biomes defined by this path will populate the __Biome__ ordered menu.
 
@@ -25,13 +25,13 @@ Instead of the biome interface handled through _Labs Biome Region Assign_ for al
         #id: biomename_curve
 	The biome to assign this region. To adjust biome names, settings, or add/delete biomes, see [Labs Biome Define|Node:sop/labs--biome_define-1.0].
         
-    Biome Hierarchy:
+    Sort Order:
         #id: biomehierarchy
-	The priority to assign to the associated curve(s). A higher number will give the biome priority when using __Resolve Overlaps by Hierarchy__ on the [Labs Biome Region Assign|Node:sop/labs--biome_region_assign-1.0] SOP.
+	The priority to assign to the associated curve(s). A lower number will give the biome priority when using __Resolve Overlaps by Hierarchy__ on the [Labs Biome Region Assign|Node:sop/labs--biome_region_assign-1.0] SOP.
         
     Create Next :
         #id: createnext
-	Creates the _Biome Curve Setup_ node for the next curve region and connects the related wires.
+	Creates the _Biome Curve Label_ node for the next curve region, connects the related wires, and auto-populates the __Biome Define Path__ parameter.
     
     
 @related

@@ -1,14 +1,67 @@
-def changeBiome(node, biomename):
+import toolutils
+
+def changeBiome(node):
+    biomename = node.parm("biome").evalAsString()
     biomenode = node.parm('pathtobiomes').evalAsNode()
     
     if biomenode:
         geo = biomenode.geometry()
         if geo:
             for point in geo.points():   
-                biomedict = point.attribValue("biome_definition")    
+                biomedict = point.attribValue("biome_definition")  
+
                 if biomename == biomedict.get("biomename"):
                     temperature =  biomedict.get("tempaverage")
                     precipitation = biomedict.get("precaverage")
+                    biomeColorR = biomedict.get("biomecolorr")
+                    biomeColorG = biomedict.get("biomecolorg")
+                    biomeColorB = biomedict.get("biomecolorb")
                     break           
+                    
     node.parm('temperature').set(temperature)
     node.parm('precipitation').set(precipitation)
+    node.parm('biomecolorr').set(biomeColorR)
+    node.parm('biomecolorg').set(biomeColorG)
+    node.parm('biomecolorb').set(biomeColorB)
+    
+
+# When setting a path to the Biome Define network, will auto-populate the Biome parm with a default biome and 
+# Respective Attributes
+def setDefaultBiome(node):
+
+    try:
+        biomeDefine = node.parm('pathtobiomes').evalAsNode().geometry() 
+        biomeDict = biomeDefine.points()[0].attribValue("biome_definition") 
+        
+        if biomeDefine:
+            biomeName = biomeDict["biomename"]
+            node.parm("biome").set(biomeName)
+            
+            changeBiome(node)
+            
+        else:
+            node.parm("biome").revertToDefaults()
+            
+    except:
+        node.parm("biome").revertToDefaults()
+
+
+
+# Creates a new Biome Curve Label node and connects the second input to the output of this node
+def createNext(node):
+
+    parent = node.parent()
+    connections = node.outputs()
+
+    # If no connections, create a new node and connect it to the output of this node
+    if len(connections) == 0:
+        createNext = parent.createNode('labs::biome_curve_label')
+        createNext.setInput(1, node, 0)
+        createNext.moveToGoodPosition(move_inputs = False)
+        
+        # Set path to Biome Define Network to be the same as previous node
+        createNext.parm("pathtobiomes").set(node.parm("pathtobiomes").eval())
+
+    else:
+        print("Output already connected! Create Next from last Curve Label node in the chain.")
+
