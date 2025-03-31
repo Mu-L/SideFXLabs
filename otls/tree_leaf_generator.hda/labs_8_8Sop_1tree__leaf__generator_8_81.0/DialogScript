@@ -103,7 +103,7 @@
     }
     parm {
         name    "use_variant"
-        label   "Use Variant"
+        label   "Use Variant Attribute"
         type    toggle
         default { "0" }
         disablewhen "{ hasinput(2) == 0 }"
@@ -356,7 +356,7 @@
         }
 
         group {
-            name    "folder0_1"
+            name    "fd_placement_1"
             label   "Prune"
 
             parm {
@@ -447,7 +447,7 @@
         }
 
         group {
-            name    "folder0_2"
+            name    "fd_placement_2"
             label   "Advanced"
 
             parm {
@@ -578,7 +578,7 @@
     }
 
     group {
-        name    "folder3_1"
+        name    "fd_general_1"
         label   "Orientation"
 
         parm {
@@ -760,7 +760,7 @@
     }
 
     group {
-        name    "folder3_2"
+        name    "fd_general_2"
         label   "Tropism"
         disablewhentab "{ pack2 == 1 atlas == 0 hasinput(2) == 1 }"
 
@@ -898,7 +898,7 @@
     }
 
     group {
-        name    "folder3_3"
+        name    "fd_general_3"
         label   "Noise"
         disablewhentab "{ pack2 == 1 atlas == 0 hasinput(2) == 1 }"
 
@@ -1068,7 +1068,7 @@
     }
 
     group {
-        name    "folder3_4"
+        name    "fd_general_4"
         label   "Resolution"
         disablewhentab "{ hasinput(2) == 1 atlas == 0 }"
 
@@ -1093,7 +1093,7 @@
     }
 
     group {
-        name    "folder3_5"
+        name    "fd_general_5"
         label   "Leaf Shape"
         invisibletab
         disablewhentab "{ hasinput(2) == 1 }"
@@ -1169,7 +1169,7 @@
     }
 
     group {
-        name    "folder3_6"
+        name    "fd_general_6"
         label   "Material"
         invisibletab
         disablewhentab "{ hasinput(2) == 1 }"
@@ -1481,7 +1481,7 @@
     }
 
     group {
-        name    "folder3_7"
+        name    "fd_general_7"
         label   "Visualization"
         disablewhentab "{ vis_override == 0 check_attrib == 1 }"
         hidewhentab "{ vis_override == 0 check_attrib == 1 }"
