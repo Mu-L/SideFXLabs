@@ -1,0 +1,34 @@
+# Dialog script for Labs::biome_plant_scatter_import::1.0 automatically generated
+
+{
+    name	Labs::biome_plant_scatter_import::1.0
+    script	Labs::biome_plant_scatter_import::1.0
+    label	"Labs Biome Plant Scatter Import (Alpha)"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Stage"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    parm {
+        name    "pathtoplantscatter"
+        label   "Path to Plant Scatter"
+        type    oppath
+        default { "obj/geo1/biome_plant_scatter1" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "fillmaterials"
+        label   "Auto-fill Materials"
+        type    button
+        default { "0" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+}
