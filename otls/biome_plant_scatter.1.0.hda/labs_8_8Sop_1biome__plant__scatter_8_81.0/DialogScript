@@ -559,20 +559,37 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "outputname"
+                label   "outputname"
+                type    toggle
+                nolabel
+                joinnext
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "namename"
+                label   "Name"
+                type    string
+                default { "name" }
+                disablewhen "{ outputname == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "outputunrealpath"
                 label   "outputunrealpath"
                 type    toggle
                 nolabel
                 joinnext
-                default { "0" }
+                default { "1" }
                 parmtag { "script_callback_language" "python" }
             }
             parm {
                 name    "unrealassetpath"
                 label   "Unreal Asset Path"
                 type    string
-                default { "unreal_instance" }
-                disablewhen "{ outputunrealpath == 0 }"
+                default { "unrealassetpath" }
+                disablewhen "{ outputname == 0 }"
                 parmtag { "script_callback_language" "python" }
             }
             parm {
