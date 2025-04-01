@@ -243,6 +243,27 @@
                     parmtag { "autoscope" "0000000000000000" }
                     parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 1 ) 1interp ( linear ) 2pos ( 0.800000011920929 ) 2value ( 1 ) 2interp ( linear ) 3pos ( 1 ) 3value ( 0 ) 3interp ( linear )" }
                 }
+                parm {
+                    name    "maskbyheight"
+                    label   "Enable Removal Amount by Height"
+                    type    toggle
+                    default { "off" }
+                    hidewhen "{ removebyocclusion == 0 }"
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "heightramp"
+                    label   "Removal Amount over Height"
+                    type    ramp_flt
+                    default { "4" }
+                    disablewhen "{ maskbyheight == 0 }"
+                    hidewhen "{ maskbyheight == 0 } { removebyocclusion == 0 }"
+                    range   { 1! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 0.3935331106185913 ) 2value ( 0 ) 2interp ( linear ) 3pos ( 0.4881703555583954 ) 3value ( 1 ) 3interp ( linear ) 4pos ( 1 ) 4value ( 1 ) 4interp ( linear )" }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
             }
 
             groupsimple {
@@ -575,34 +596,6 @@
             name    "fd_temperature_3"
             label   "Input"
 
-            parm {
-                name    "uenonename"
-                label   "Unreal None"
-                type    string
-                invisible
-                default { "Layer_uenone" }
-                menureplace {
-                    [ "import terraintoolutils" ]
-                    [ "" ]
-                    [ "return terraintoolutils.buildNameMenu(kwargs['node'])" ]
-                    language python
-                }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "uevizname"
-                label   "Unreal Viz"
-                type    string
-                invisible
-                default { "Layer_ueviz" }
-                menureplace {
-                    [ "import terraintoolutils" ]
-                    [ "" ]
-                    [ "return terraintoolutils.buildNameMenu(kwargs['node'])" ]
-                    language python
-                }
-                parmtag { "script_callback_language" "python" }
-            }
             groupsimple {
                 name    "fd_hflayers"
                 label   "HeightField Layers"
@@ -665,6 +658,55 @@
                 }
             }
 
+            groupsimple {
+                name    "fd_detailattributes"
+                label   "Detail Attributes"
+                grouptag { "sidefx::switcher" "fd_hflayers" }
+
+                parm {
+                    name    "minheightname"
+                    label   "Min Height"
+                    type    string
+                    default { "minheight" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "maxheightname"
+                    label   "Max Height"
+                    type    string
+                    default { "maxheight" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            parm {
+                name    "uenonename"
+                label   "Unreal None"
+                type    string
+                invisible
+                default { "Layer_uenone" }
+                menureplace {
+                    [ "import terraintoolutils" ]
+                    [ "" ]
+                    [ "return terraintoolutils.buildNameMenu(kwargs['node'])" ]
+                    language python
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "uevizname"
+                label   "Unreal Viz"
+                type    string
+                invisible
+                default { "Layer_ueviz" }
+                menureplace {
+                    [ "import terraintoolutils" ]
+                    [ "" ]
+                    [ "return terraintoolutils.buildNameMenu(kwargs['node'])" ]
+                    language python
+                }
+                parmtag { "script_callback_language" "python" }
+            }
         }
 
         group {

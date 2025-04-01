@@ -3,7 +3,7 @@
 {
     name	labs::biome_attributes_to_terrain::1.0
     script	labs::objpath_instance::1.0
-    label	"Labs Biome Attributes to Terrain"
+    label	"Labs Biome Attributes to Terrain (Alpha)"
 
     help {
 	""
@@ -313,6 +313,27 @@
                 label   "Biome Average Height"
                 type    string
                 default { "biomeaverageheight" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_detailattributes"
+            label   "Detail Attributes"
+            grouptag { "sidefx::switcher" "fd_hflayers" }
+
+            parm {
+                name    "minheightname"
+                label   "Min Height"
+                type    string
+                default { "minheight" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "maxheightname"
+                label   "Max Height"
+                type    string
+                default { "maxheight" }
                 parmtag { "script_callback_language" "python" }
             }
         }

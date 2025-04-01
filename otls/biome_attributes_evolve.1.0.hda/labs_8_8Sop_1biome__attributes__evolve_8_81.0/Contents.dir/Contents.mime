@@ -32,15 +32,15 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -6.26267 -5.85232
+position -5.07373 -19.6075
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	biome_attributes_to_terrain1 1 1 "input1"
+0 	biome_attributes_to_terrain1 3 1 "input1"
 }
 inputs
 {
@@ -280,8 +280,8 @@ masklayer	[ 0	locks=0 ]	(	mask	)
 combine	[ 0	locks=0 ]	(	"replace"	)
 blend	[ 0	locks=0 ]	(	0.5	)
 centernoise	[ 0	locks=0 ]	(	"off"	)
-amp	[ 0	locks=0 ]	(	[ amp	500 ] 	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	500 ] 	)
+amp	[ 8	locks=0 ]	(	[ amp	500 ] 	)
+elementsize	[ 8	locks=0 ]	(	[ elementsize	500 ] 	)
 elementscale	[ 0	locks=0 ]	(	1	1	1	)
 offset	[ 0	locks=0 ]	(	0	0	0	)
 noise	[ 0	locks=0 ]	(	0	)
@@ -465,7 +465,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -8.64596 -30.5214
+position -8.64596 -31.5214
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1949,7 +1949,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -7.48222 13.4541
+position -7.20905 8.53319
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1959,12 +1959,12 @@ outputsNamed3
 inputsNamed3
 {
 1 	heightfield_maskclear1 1 1 "input1"
-0 	max_occluded_moist_areas 2 1 "input2"
+0 	mask_by_height 2 1 "input2"
 }
 inputs
 {
 0 	heightfield_maskclear1 0 1
-1 	max_occluded_moist_areas 0 1
+1 	mask_by_height 0 1
 }
 stat
 {
@@ -2030,7 +2030,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -7.31377 9.17456
+position -7.20905 4.1688
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2623,7 +2623,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -8.64941 -29.5493
+position -8.64941 -30.5493
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5576,7 +5576,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.82747 9.74529
+position -4.72275 4.73953
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5941,7 +5941,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.74237 10.7453
+position -4.63765 5.73954
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -6031,7 +6031,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.74537 11.5909
+position -4.64065 6.58514
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -6465,7 +6465,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.95206 12.1827
+position -2.84734 7.17694
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -11666,7 +11666,7 @@ sopflags sopflags =
 comment ""
 position -3.16846 15.8792
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -11752,7 +11752,7 @@ sopflags sopflags =
 comment ""
 position -3.16846 14.8323
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -11842,7 +11842,7 @@ sopflags sopflags =
 comment ""
 position -4.63765 14.373
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
@@ -11916,10 +11916,613 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.init"
+Content-Type: text/plain
+
+type = heightfield_maskbyfeature
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.93517 11.9217
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	rename_min_max_height 1 1 "input1"
+}
+inputs
+{
+0 	rename_min_max_height 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.multiparm"
+Content-Type: text/plain
+
+3
+heightramp#pos ../heightramp#pos
+heightramp#value ../heightramp#value
+heightramp#interp ../heightramp#interp
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.chn"
+Content-Type: text/plain
+
+{
+    channel maskbyheight {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../maskbyheight\") }
+    }
+    channel maxheight {
+      lefttype = extend
+      righttype = extend
+      default = 68.272315979003906
+      flags = 0
+      segment { length = 0 value = 68.272315979003906 68.272315979003906 expr = "detail(0, \"_bae_maxheight\" ,0)" }
+    }
+    channel heightramp {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../heightramp\") }
+    }
+    channel minheight {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = "detail(0, \"_bae_minheight\" ,0)" }
+    }
+    channel heightramp1pos {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../heightramp1pos\") }
+    }
+    channel heightramp1value {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../heightramp1value\") }
+    }
+    channel heightramp1interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp1interp\") }
+    }
+    channel heightramp2pos {
+      lefttype = extend
+      righttype = extend
+      default = 0.38643532991409302
+      flags = 0
+      segment { length = 0 value = 0.38643532991409302 0.38643532991409302 expr = ch(\"../heightramp2pos\") }
+    }
+    channel heightramp2value {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../heightramp2value\") }
+    }
+    channel heightramp2interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp2interp\") }
+    }
+    channel heightramp3pos {
+      lefttype = extend
+      righttype = extend
+      default = 0.52129340171813965
+      flags = 0
+      segment { length = 0 value = 0.52129340171813965 0.52129340171813965 expr = ch(\"../heightramp3pos\") }
+    }
+    channel heightramp3value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp3value\") }
+    }
+    channel heightramp3interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp3interp\") }
+    }
+    channel heightramp4pos {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp4pos\") }
+    }
+    channel heightramp4value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp4value\") }
+    }
+    channel heightramp4interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightramp4interp\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder3	[ 0	locks=0 ]	(	0	0	)
+smooth_radius	[ 0	locks=0 ]	(	1	)
+combine	[ 0	locks=0 ]	(	"replace"	)
+blend	[ 0	locks=0 ]	(	0.5	)
+invertmask	[ 0	locks=0 ]	(	"off"	)
+folder1	[ 0	locks=0 ]	(	0	)
+maskbyslope	[ 0	locks=0 ]	(	"off"	)
+min_slopeangle	[ 0	locks=0 ]	(	20	)
+max_slopeangle	[ 0	locks=0 ]	(	70	)
+sloperamp	[ 0	locks=0 ]	(	4	)
+folder2	[ 0	locks=0 ]	(	1	)
+maskbyheight	[ 0	locks=0 ]	(	[ maskbyheight	0 ] 	)
+computerange	[ 0	locks=0 ]	(	0	)
+minheight	[ 8	locks=0 ]	(	[ minheight	0 ] 	)
+maxheight	[ 8	locks=0 ]	(	[ maxheight	1 ] 	)
+heightramp	[ 8	locks=0 ]	(	[ heightramp	4 ] 	)
+folder4	[ 0	locks=0 ]	(	0	)
+maskbycurvature	[ 0	locks=0 ]	(	"off"	)
+computercurvature	[ 0	locks=0 ]	(	0	)
+max_curvature	[ 0	locks=0 ]	(	10	)
+curvatureramp	[ 0	locks=0 ]	(	4	)
+folder0	[ 0	locks=0 ]	(	0	)
+maskbydir	[ 0	locks=0 ]	(	"off"	)
+goal_angle	[ 0	locks=0 ]	(	0	)
+angle_spread	[ 0	locks=0 ]	(	30	)
+dirramp	[ 0	locks=0 ]	(	4	)
+folder5	[ 0	locks=0 ]	(	0	)
+maskbyocclusion	[ 0	locks=0 ]	(	"off"	)
+minexposure	[ 0	locks=0 ]	(	0	)
+maxexposure	[ 0	locks=0 ]	(	1	)
+ramp	[ 0	locks=0 ]	(	2	)
+folder6	[ 0	locks=0 ]	(	0	)
+viewdistance	[ 0	locks=0 ]	(	200	)
+stepscale	[ 0	locks=0 ]	(	1	)
+numsearches	[ 0	locks=0 ]	(	16	)
+heightlayer	[ 0	locks=0 ]	(	height	)
+masklayer	[ 0	locks=0 ]	(	mask	)
+sloperamp1pos	[ 0	locks=0 ]	(	0	)
+sloperamp1value	[ 0	locks=0 ]	(	0	)
+sloperamp1interp	[ 0	locks=0 ]	(	"linear"	)
+sloperamp2pos	[ 0	locks=0 ]	(	0.10000000149011612	)
+sloperamp2value	[ 0	locks=0 ]	(	1	)
+sloperamp2interp	[ 0	locks=0 ]	(	"linear"	)
+sloperamp3pos	[ 0	locks=0 ]	(	0.8999999761581421	)
+sloperamp3value	[ 0	locks=0 ]	(	1	)
+sloperamp3interp	[ 0	locks=0 ]	(	"linear"	)
+sloperamp4pos	[ 0	locks=0 ]	(	1	)
+sloperamp4value	[ 0	locks=0 ]	(	0	)
+sloperamp4interp	[ 0	locks=0 ]	(	"linear"	)
+curvatureramp1pos	[ 0	locks=0 ]	(	0	)
+curvatureramp1value	[ 0	locks=0 ]	(	1	)
+curvatureramp1interp	[ 0	locks=0 ]	(	"linear"	)
+curvatureramp2pos	[ 0	locks=0 ]	(	0.10000000149011612	)
+curvatureramp2value	[ 0	locks=0 ]	(	0	)
+curvatureramp2interp	[ 0	locks=0 ]	(	"linear"	)
+curvatureramp3pos	[ 0	locks=0 ]	(	0.8999999761581421	)
+curvatureramp3value	[ 0	locks=0 ]	(	0	)
+curvatureramp3interp	[ 0	locks=0 ]	(	"linear"	)
+curvatureramp4pos	[ 0	locks=0 ]	(	1	)
+curvatureramp4value	[ 0	locks=0 ]	(	1	)
+curvatureramp4interp	[ 0	locks=0 ]	(	"linear"	)
+dirramp1pos	[ 0	locks=0 ]	(	0	)
+dirramp1value	[ 0	locks=0 ]	(	0	)
+dirramp1interp	[ 0	locks=0 ]	(	"linear"	)
+dirramp2pos	[ 0	locks=0 ]	(	0.10000000149011612	)
+dirramp2value	[ 0	locks=0 ]	(	1	)
+dirramp2interp	[ 0	locks=0 ]	(	"linear"	)
+dirramp3pos	[ 0	locks=0 ]	(	0.8999999761581421	)
+dirramp3value	[ 0	locks=0 ]	(	1	)
+dirramp3interp	[ 0	locks=0 ]	(	"linear"	)
+dirramp4pos	[ 0	locks=0 ]	(	1	)
+dirramp4value	[ 0	locks=0 ]	(	0	)
+dirramp4interp	[ 0	locks=0 ]	(	"linear"	)
+ramp1pos	[ 0	locks=0 ]	(	0	)
+ramp1value	[ 0	locks=0 ]	(	0	)
+ramp1interp	[ 0	locks=0 ]	(	"linear"	)
+ramp2pos	[ 0	locks=0 ]	(	1	)
+ramp2value	[ 0	locks=0 ]	(	1	)
+ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+heightramp1pos	[ 0	locks=0 ]	(	[ heightramp1pos	0 ] 	)
+heightramp1value	[ 0	locks=0 ]	(	[ heightramp1value	0 ] 	)
+heightramp1interp	[ 0	locks=0 ]	(	[ heightramp1interp	1 ] 	)
+heightramp2pos	[ 0	locks=0 ]	(	[ heightramp2pos	0 ] 	)
+heightramp2value	[ 0	locks=0 ]	(	[ heightramp2value	0 ] 	)
+heightramp2interp	[ 0	locks=0 ]	(	[ heightramp2interp	1 ] 	)
+heightramp3pos	[ 0	locks=0 ]	(	[ heightramp3pos	0 ] 	)
+heightramp3value	[ 0	locks=0 ]	(	[ heightramp3value	0 ] 	)
+heightramp3interp	[ 0	locks=0 ]	(	[ heightramp3interp	1 ] 	)
+heightramp4pos	[ 0	locks=0 ]	(	[ heightramp4pos	0 ] 	)
+heightramp4value	[ 0	locks=0 ]	(	[ heightramp4value	0 ] 	)
+heightramp4interp	[ 0	locks=0 ]	(	[ heightramp4interp	1 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"1"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_heightfield_maskbyfeature"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/add_back_based_on_height.init"
+Content-Type: text/plain
+
+type = heightfield_layer
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/add_back_based_on_height.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -3.2716 11.003
+connectornextid 4
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+3 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_maskclear1 1 1 "input1"
+1 	max_occluded_moist_areas 2 1 "input2"
+2 	heightfield_maskbyfeature1 1 1 "input3"
+}
+inputs
+{
+0 	heightfield_maskclear1 0 1
+1 	max_occluded_moist_areas 0 1
+2 	heightfield_maskbyfeature1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/add_back_based_on_height.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+mode	[ 0	locks=0 ]	(	"replace"	)
+blend	[ 0	locks=0 ]	(	0.5	)
+layer	[ 0	locks=0 ]	(	*	)
+folder2	[ 0	locks=0 ]	(	0	)
+masklayer	[ 0	locks=0 ]	(	mask	)
+maskweight	[ 0	locks=0 ]	(	1	)
+invertmask	[ 0	locks=0 ]	(	"off"	)
+folder0	[ 0	locks=0 ]	(	0	)
+base_offset	[ 0	locks=0 ]	(	0	)
+base_scale	[ 0	locks=0 ]	(	1	)
+layer_offset	[ 0	locks=0 ]	(	0	)
+layer_scale	[ 0	locks=0 ]	(	1	)
+final_offset	[ 0	locks=0 ]	(	0	)
+final_scale	[ 0	locks=0 ]	(	1	)
+folder1	[ 0	locks=0 ]	(	0	)
+doclampmin	[ 0	locks=0 ]	(	"off"	)
+clampmin	[ 0	locks=0 ]	(	0	)
+doclampmax	[ 0	locks=0 ]	(	"off"	)
+clampmax	[ 0	locks=0 ]	(	1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/add_back_based_on_height.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/add_back_based_on_height.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -5.40832 9.9639
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+1 	max_occluded_moist_areas 2 1 "input1"
+0 	add_back_based_on_height 3 1 "input2"
+}
+inputs
+{
+0 	max_occluded_moist_areas 0 1
+1 	add_back_based_on_height 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../maskbyheight\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mask_by_height.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_min_max_height.init"
+Content-Type: text/plain
+
+type = attribute
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_min_max_height.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.93862 12.8775
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	heightfield_maskclear1 1 1 "input1"
+}
+inputs
+{
+0 	heightfield_maskclear1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_min_max_height.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+stdswitcher	[ 0	locks=0 ]	(	3	3	3	3	3	)
+_label1_	[ 0	locks=0 ]	(	From	To	)
+ptrenames	[ 0	locks=0 ]	(	0	)
+ptdel	[ 0	locks=0 ]	(	""	)
+ptkeep	[ 0	locks=0 ]	(	*	)
+_label2_	[ 0	locks=0 ]	(	From	To	)
+vtxrenames	[ 0	locks=0 ]	(	5	)
+vtxdel	[ 0	locks=0 ]	(	""	)
+vtxkeep	[ 0	locks=0 ]	(	*	)
+_label3_	[ 0	locks=0 ]	(	From	To	)
+primrenames	[ 0	locks=0 ]	(	5	)
+primdel	[ 0	locks=0 ]	(	""	)
+primkeep	[ 0	locks=0 ]	(	*	)
+_label4_	[ 0	locks=0 ]	(	From	To	)
+detailrenames	[ 0	locks=0 ]	(	5	)
+dtldel	[ 0	locks=0 ]	(	""	)
+dtlkeep	[ 0	locks=0 ]	(	*	)
+_label5_	[ 0	locks=0 ]	(	RiName	RiType	Offset	""	)
+rmanconversions	[ 0	locks=0 ]	(	5	)
+ridefault	[ 0	locks=0 ]	(	"off"	)
+updatevar	[ 0	locks=0 ]	(	"on"	)
+overwrite	[ 0	locks=0 ]	(	"off"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
+fromvtx0	[ 0	locks=0 ]	(	""	)
+tovtx0	[ 0	locks=0 ]	(	""	)
+fromvtx1	[ 0	locks=0 ]	(	""	)
+tovtx1	[ 0	locks=0 ]	(	""	)
+fromvtx2	[ 0	locks=0 ]	(	""	)
+tovtx2	[ 0	locks=0 ]	(	""	)
+fromvtx3	[ 0	locks=0 ]	(	""	)
+tovtx3	[ 0	locks=0 ]	(	""	)
+fromvtx4	[ 0	locks=0 ]	(	""	)
+tovtx4	[ 0	locks=0 ]	(	""	)
+frompr0	[ 0	locks=0 ]	(	""	)
+topr0	[ 0	locks=0 ]	(	""	)
+frompr1	[ 0	locks=0 ]	(	""	)
+topr1	[ 0	locks=0 ]	(	""	)
+frompr2	[ 0	locks=0 ]	(	""	)
+topr2	[ 0	locks=0 ]	(	""	)
+frompr3	[ 0	locks=0 ]	(	""	)
+topr3	[ 0	locks=0 ]	(	""	)
+frompr4	[ 0	locks=0 ]	(	""	)
+topr4	[ 0	locks=0 ]	(	""	)
+fromdtl0	[ 0	locks=0 ]	(	`chs(\"../minheightname\")`	)
+todtl0	[ 0	locks=0 ]	(	_bae_minheight	)
+fromdtl1	[ 0	locks=0 ]	(	`chs(\"../maxheightname\")`	)
+todtl1	[ 0	locks=0 ]	(	_bae_maxheight	)
+fromdtl2	[ 0	locks=0 ]	(	""	)
+todtl2	[ 0	locks=0 ]	(	""	)
+fromdtl3	[ 0	locks=0 ]	(	""	)
+todtl3	[ 0	locks=0 ]	(	""	)
+fromdtl4	[ 0	locks=0 ]	(	""	)
+todtl4	[ 0	locks=0 ]	(	""	)
+hname0	[ 0	locks=0 ]	(	""	)
+riname0	[ 0	locks=0 ]	(	""	)
+ritype0	[ 0	locks=0 ]	(	vtx_float	)
+rioff0	[ 0	locks=0 ]	(	0	)
+hname1	[ 0	locks=0 ]	(	""	)
+riname1	[ 0	locks=0 ]	(	""	)
+ritype1	[ 0	locks=0 ]	(	vtx_float	)
+rioff1	[ 0	locks=0 ]	(	0	)
+hname2	[ 0	locks=0 ]	(	""	)
+riname2	[ 0	locks=0 ]	(	""	)
+ritype2	[ 0	locks=0 ]	(	vtx_float	)
+rioff2	[ 0	locks=0 ]	(	0	)
+hname3	[ 0	locks=0 ]	(	""	)
+riname3	[ 0	locks=0 ]	(	""	)
+ritype3	[ 0	locks=0 ]	(	vtx_float	)
+rioff3	[ 0	locks=0 ]	(	0	)
+hname4	[ 0	locks=0 ]	(	""	)
+riname4	[ 0	locks=0 ]	(	""	)
+ritype4	[ 0	locks=0 ]	(	vtx_float	)
+rioff4	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_min_max_height.netbox"
+Content-Type: text/plain
+
+__netbox13
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_min_max_height.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-113
+117
 output0
 HEIGHTFIELD_INPUT
 merge8
@@ -12033,6 +12636,10 @@ if_biome_display
 heightfield_maskshrink1
 heightfield_maskinvert4
 heightfield_blur1
+heightfield_maskbyfeature1
+add_back_based_on_height
+mask_by_height
+rename_min_max_height
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
