@@ -31,11 +31,12 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -4.0227 7.29526
-connectornextid 0
+position -5.63114 -1.96397
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
@@ -47,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author prisms@threadripper1
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -85,7 +86,7 @@ Content-Disposition: attachment; filename="hdaroot/pythonprocessor1.def"
 Content-Type: text/plain
 
 comment ""
-position -2.57052 3.54005
+position -2.57052 3.19412
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
@@ -346,6 +347,68 @@ Content-Type: text/plain
         nolabel
         export  none
     }
+    parm {
+        name    "requirescookedinputs"
+        baseparm
+        label   "Requires Cooked Inputs"
+        export  none
+    }
+    parm {
+        name    "requiresinputdata"
+        baseparm
+        label   "Requires Input Data"
+        export  none
+    }
+    parm {
+        name    "sepparm6"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    parm {
+        name    "usesdynamicbatching"
+        baseparm
+        label   "Uses Dynamic Batching"
+        export  none
+    }
+    parm {
+        name    "pdg_useschedulewhen"
+        baseparm
+        label   "Use Schedule When"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "pdg_schedulewhen"
+        baseparm
+        label   "Schedule When"
+        export  none
+    }
+    parm {
+        name    "sepparm7"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    parm {
+        name    "usestatefilter"
+        baseparm
+        label   "Use State Filter"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "statefilter"
+        baseparm
+        label   "Input State Filter"
+        export  none
+    }
+    parm {
+        name    "clearfailures"
+        baseparm
+        label   "Ignore Failed Dependencies"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/pythonprocessor1.chn"
@@ -377,7 +440,7 @@ savenodescript	[ 0	locks=0 ]	(	0	)
 savenodehda	[ 0	locks=0 ]	(	0	)
 sepparm2	[ 0	locks=0 ]	(	)
 processor	[ 0	locks=0 ]	(	0	0	0	)
-pdg_workitemgeneration	[ 0	locks=0 ]	(	"3"	)
+pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 pdg_command	[ 0	locks=0 ]	(	""	)
 sepparm	[ 0	locks=0 ]	(	)
 callbacks	[ 0	locks=0 ]	(	0	0	0	0	0	)
@@ -402,7 +465,7 @@ def cook_node(workitem, node):
         hou.hscript(\"texcache -c;\")
         return node.planes()
     
-   
+
 def MakeWorkItems(workitemparent=None):
 
     imageplanes = self.scheduler.runOnMainThread(True, cook_node, workitemparent, hou.node(\"../cop2net1/file1\"))  
@@ -422,6 +485,7 @@ if len(upstream_items) > 0:
         MakeWorkItems(upstream_item)
 else:
     MakeWorkItems()
+
 
 "	)
 useregeneratestatic	[ 0	locks=0 ]	(	"off"	)
@@ -453,10 +517,20 @@ dirtyonregenerate	[ 0	locks=0 ]	(	"off"	)
 dirtyonincomplete	[ 0	locks=0 ]	(	"off"	)
 sepparm4	[ 0	locks=0 ]	(	)
 requiresgeneratedinputs	[ 0	locks=0 ]	(	"off"	)
+requirescookedinputs	[ 0	locks=0 ]	(	"off"	)
 requiresscenefile	[ 0	locks=0 ]	(	"off"	)
+requiresinputdata	[ 0	locks=0 ]	(	"off"	)
+sepparm6	[ 0	locks=0 ]	(	)
+usesdynamicbatching	[ 0	locks=0 ]	(	"off"	)
+sepparm7	[ 0	locks=0 ]	(	)
+usestatefilter	[ 0	locks=0 ]	(	"off"	)
+statefilter	[ 0	locks=0 ]	(	"0"	)
+clearfailures	[ 0	locks=0 ]	(	"off"	)
 pdgnodedeps	[ 0	locks=0 ]	(	1	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
+pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
+pdg_schedulewhen	[ 0	locks=0 ]	(	1	)
 sepparm5	[ 0	locks=0 ]	(	)
 pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
@@ -598,12 +672,12 @@ Content-Type: text/plain
 {
 version 0.8
 stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
-filename	[ 8	locks=0 ]	(	[ filename1	default.pic ] 	"cinspace lin cinlut \"\" cinwhite 685 cingamma 0.6"	)
+filename	[ 0	locks=0 ]	(	[ filename1	default.pic ] 	"cinspace lin cinlut \"\" cinwhite 685 cingamma 0.6"	)
 nodename	[ 0	locks=0 ]	(	"opname"	)
 reload	[ 0	locks=0 ]	(	0	)
 subframes	[ 0	locks=0 ]	(	"off"	)
 overridesize	[ 0	locks=0 ]	(	"1_8"	)
-size	[ 0	locks=0 ]	(	1152	720	)
+size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 filter	[ 0	locks=0 ]	(	box	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
@@ -612,7 +686,8 @@ flipy	[ 0	locks=0 ]	(	"off"	)
 overridedepth	[ 0	locks=0 ]	(	"natural"	)
 linearize	[ 0	locks=0 ]	(	"on"	)
 colorspace	[ 0	locks=0 ]	(	"auto"	)
-depth	[ 0	locks=0 ]	(	"float16"	)
+ocio_space	[ 0	locks=0 ]	(	automatic	)
+depth	[ 0	locks=0 ]	(	"float32"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
 bwpoints	[ 0	locks=0 ]	(	0	1	)
@@ -653,6 +728,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	},
+	"thumbnail_plane":{
+		"type":"string",
+		"value":"C"
 	}
 }
 
@@ -661,7 +740,7 @@ Content-Disposition: attachment; filename="hdaroot/cop2net1/file1.cop2"
 Content-Type: text/plain
 
 2
-971
+988
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
