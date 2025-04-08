@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -17.0324 -19.5491
+position -9.48035 -18.343
 connectornextid 4
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
@@ -8016,7 +8016,7 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 6.52631 -57.9965
-connectornextid 5
+connectornextid 6
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
@@ -8025,16 +8025,18 @@ outputsNamed3
 inputsNamed3
 {
 4 	randomize_color 1 1 "input1"
-3 	viability 1 1 "input2"
-2 	age 1 1 "input3"
-0 	noise 1 1 "input4"
+5 	random_meshpath 1 1 "input2"
+3 	viability 1 1 "input3"
+2 	age 1 1 "input4"
+0 	noise 1 1 "input5"
 }
 inputs
 {
 0 	randomize_color 0 1
-1 	viability 0 1
-2 	age 0 1
-3 	noise 0 1
+1 	random_meshpath 0 1
+2 	viability 0 1
+3 	age 0 1
+4 	noise 0 1
 }
 stat
 {
@@ -8493,7 +8495,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.37879 -55.927
+position 1.16657 -55.9718
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -9335,7 +9337,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.78538 -55.928
+position -1.42684 -55.9728
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -9424,7 +9426,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.64748 -58.9081
+position 0.435258 -59.0104
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -9474,12 +9476,6 @@ Content-Type: text/plain
 version 0.8
 input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/add_point_color1.netbox"
-Content-Type: text/plain
-
-__netbox3
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/add_point_color1.userdata"
@@ -11056,7 +11052,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.530049 -55.927
+position -4.24703 -55.9718
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -11146,7 +11142,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.64748 -57.1902
+position 0.435258 -57.235
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -22421,7 +22417,7 @@ sopflags sopflags =
 comment ""
 position 3.63977 -81.4062
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -22628,6 +22624,119 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.init"
+Content-Type: text/plain
+
+type = color
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.87891 -55.927
+connectornextid 2
+flags =  lock off model off template on footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	noise_float 1 1 "input1"
+}
+inputs
+{
+0 	noise_float 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.89 0.412 0.761 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.chn"
+Content-Type: text/plain
+
+{
+    channel ramprange2 {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = "detail(0, \"_bip_numplanttypes\", 0) - 1" }
+    }
+    channel seed {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../seed2\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
+class	[ 0	locks=0 ]	(	2	)
+colortype	[ 0	locks=0 ]	(	4	)
+color	[ 0	locks=0 ]	(	1	1	1	)
+seed	[ 8	locks=0 ]	(	[ seed	0 ] 	)
+rampattribute	[ 0	locks=0 ]	(	_bps_mesh_path	)
+ramprange	[ 8	locks=0 ]	(	0	[ ramprange2	1 ] 	)
+ramp	[ 0	locks=0 ]	(	3	)
+ramp1pos	[ 0	locks=0 ]	(	0	)
+ramp1c	[ 0	locks=0 ]	(	1	0	0	)
+ramp1interp	[ 0	locks=0 ]	(	"linear"	)
+ramp2pos	[ 0	locks=0 ]	(	0.5	)
+ramp2c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
+ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+ramp3pos	[ 0	locks=0 ]	(	1	)
+ramp3c	[ 0	locks=0 ]	(	0	0	1	)
+ramp3interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.netbox"
+Content-Type: text/plain
+
+__netbox3
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/random_meshpath.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_color"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -22658,7 +22767,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-178
+179
 visualize_viability
 output0
 INITIAL_SCATTER
@@ -22837,6 +22946,7 @@ assign_stable_id
 valid_name_for_prototypes
 output_name
 rename_name
+random_meshpath
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

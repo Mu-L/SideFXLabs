@@ -832,9 +832,10 @@
                 hidewhen "{ vizpoints == 0 }"
                 menu usetokenvalue {
                     "0" "Plant Species"
-                    "1" "Viability"
-                    "2" "Age"
-                    "3" "Noise"
+                    "1" "Mesh Path"
+                    "2" "Viability"
+                    "3" "Age"
+                    "4" "Noise"
                 }
             }
             parm {
@@ -861,8 +862,8 @@
                 label   "Normalized Color Ramp"
                 type    ramp_rgb
                 default { "5" }
-                disablewhen "{ colorby == 0 } { vizpoints == 0 }"
-                hidewhen "{ colorby == 0 } { vizpoints == 0 }"
+                disablewhen "{ colorby <= 1 } { vizpoints == 0 }"
+                hidewhen "{ colorby <= 1 } { vizpoints == 0 }"
                 range   { 1! 10 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "parmvop" "1" }
