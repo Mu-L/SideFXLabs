@@ -1,0 +1,58 @@
+#type:     node
+#context:  sop
+#internal: labs::zibravdb_decompress::1.0
+#icon:     /labs_icons/zibravdb.svg
+#since:    20.5
+
+= Labs ZibraVDB Decompress =
+
+"""Loads a single `.zibravdb` file from disk and decompresses it as a VDB sequence."""
+
+
+As a part of the [ZibraVDB for Houdini |https://www.zibra.ai] plugin, this node loads a single, highly compressed `.zibravdb` file from disk. The file may contain either a single frame or a frame sequence of VDB geometry. In both cases, the entire sequence is loaded at once, with frames decompressed on demand using a frame index parameter.
+
+This significantly speeds up playback for high-resolution VDBs by eliminating the need to load one frame from disk at a time. Additionally, the total size of the data to be loaded is much smaller. The decompression occurs on the GPU and is extremely fast.
+
+:platform:Mac
+    ZibraVDB for Houdini is currently only supported on Windows and Linux.
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#gettingready:
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#aboutzibravdb:
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#feedback:
+
+
+@parameters
+
+    Input File:
+        #id: filename
+        The file path from which to load the compressed VDB geometry. The file extension must be `.zibravdb`.
+
+    Sequence Frame:
+        #id: frame
+        The original Houdini frame number when the cache was compressed. For example, if your VDB sequence was originally cached from frame `1001` to `1240`, set this to `1001` to decompress and display the first frame of the sequence.
+
+    Reload Cache:
+        #id: refresh
+        Forces a reload of the `.zibravdb` file from disk and refreshes the decompressed frame.
+
+    :include /nodes/out/labs--zibravdb_compress-1.0#openmanagement:
+
+
+@examples
+
+    TIP:
+        When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
+
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+
+
+@related
+
+    - [Node:out/labs--zibravdb_compress-1.0]
+    - [Node:sop/labs--rop_zibravdb_compress-1.0]
+    - [Node:sop/labs--zibravdb_filecache-1.0]

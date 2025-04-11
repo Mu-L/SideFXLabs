@@ -1,9 +1,9 @@
-# Dialog script for labs::zibravdb_filecache::0.2 automatically generated
+# Dialog script for labs::zibravdb_filecache::1.0 automatically generated
 
 {
-    name	labs::zibravdb_filecache::0.2
-    script	labs::zibravdb_filecache::0.2
-    label	"Labs ZibraVDB File Cache (Alpha)"
+    name	labs::zibravdb_filecache::1.0
+    script	labs::zibravdb_filecache::1.0
+    label	"Labs ZibraVDB File Cache"
 
     help {
 	""
@@ -29,7 +29,7 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "refresh"
+            name    "reload"
             label   "Reload Cache"
             type    button
             default { "0" }
@@ -52,7 +52,7 @@
         type    file
         default { "$HIP/vol/$HIPNAME.$OS.zibravdb" }
         menureplace {
-            [ "opmenu -l -a rop_zibravdb_compress1 filename" ]
+            [ "opmenu -l -a rop_zibravdb_compress filename" ]
         }
         parmtag { "autoscope" "0000000000000000" }
         parmtag { "script_callback_language" "python" }
@@ -243,7 +243,7 @@
                 type    string
                 default { "_current_" }
                 menu {
-                    [ "opmenu -l -a rop_zibravdb_compress1 take" ]
+                    [ "opmenu -l -a rop_zibravdb_compress take" ]
                 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "script_callback_language" "python" }
@@ -271,7 +271,7 @@
                 joinnext
                 default { "" }
                 menureplace {
-                    [ "opmenu -l -a rop_zibravdb_compress1 prerender" ]
+                    [ "opmenu -l -a rop_zibravdb_compress prerender" ]
                 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "filechooser_mode" "read" }
@@ -306,7 +306,7 @@
                 joinnext
                 default { "" }
                 menureplace {
-                    [ "opmenu -l -a rop_zibravdb_compress1 preframe" ]
+                    [ "opmenu -l -a rop_zibravdb_compress preframe" ]
                 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "filechooser_mode" "read" }
@@ -341,7 +341,7 @@
                 joinnext
                 default { "" }
                 menureplace {
-                    [ "opmenu -l -a rop_zibravdb_compress1 postframe" ]
+                    [ "opmenu -l -a rop_zibravdb_compress postframe" ]
                 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "filechooser_mode" "read" }
@@ -376,7 +376,7 @@
                 joinnext
                 default { "" }
                 menureplace {
-                    [ "opmenu -l -a rop_zibravdb_compress1 postrender" ]
+                    [ "opmenu -l -a rop_zibravdb_compress postrender" ]
                 }
                 parmtag { "autoscope" "0000000000000000" }
                 parmtag { "filechooser_mode" "read" }
@@ -407,8 +407,8 @@
         parmtag { "sidefx::look" "blank" }
     }
     parm {
-        name    "downloadlibrary"
-        label   "Download Library"
+        name    "openmanagement"
+        label   "Open Plugin Management"
         type    button
         default { "0" }
         parmtag { "autoscope" "0000000000000000" }
