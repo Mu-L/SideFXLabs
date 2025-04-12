@@ -29,29 +29,29 @@ NOTE:
 === Download ZibraVDB Core Library ===
 
 The plugin requires the ZibraVDB core library on the back end. (This library and its source code are proprietary to Zibra AI and, therefore, are not included directly in the open-source SideFX Labs package.) The plugin has a built-in method to download this core library, which only needs to be done once (per working environment).
-# Click the __Open Plugin Management__ button on any ZibraVDB node. A window will be opened.
+# Click the __Open Plugin Management__ button on any ZibraVDB node. A pop-up window will appear.
 # Click the __Download Library__ button. You will be redirected to a ZibraVDB for Houdini webpage.
 # Download the ZibraVDB Compression Library from the webpage.
-# Unpack the content of the archive into the Houdini user preferences directory:
+# Unpack the contents of the archive into the Houdini user preference directory:
     * On Windows, the default location is `%userprofile%/documents/houdiniX.Y`.
     * On Linux, the default location is `$HOME/houdiniX.Y`.
-# Return to Houdini and click the __Load Library__ button in the __Plugin Management__ window. You should now see the __Library status__ as "Loaded", and you should also see the library version.
+# Return to Houdini and click the __Load Library__ button in the __Plugin Management__ window. You should now see the __Library status__ as "Loaded", along with the library version.
 
 :disclosure:Install to HSITE
-    To copy the ZibraVDB Compression Library to HSITE for site-wide installation, click the __Copy Library to HSITE__ button in the __Plugin Management__ window and follow on-screen popups.
+    To copy the ZibraVDB Compression Library to HSITE for site-wide installation, click the __Copy Library to HSITE__ button in the __Plugin Management__ window and follow on-screen prompts.
 :disclosure:Install to HQueue
-    To copy the ZibraVDB Compression Library to HQROOT to make it available on HQueue nodes, click the __Copy Library to HQROOT__ button in the __Plugin Management__ window and follow on-screen popups.
+    To copy the ZibraVDB Compression Library to HQROOT to make it available on HQueue nodes, click the __Copy Library to HQROOT__ button in the __Plugin Management__ window and follow on-screen prompts.
 
 === Acquire License Key ===
 
 There are 5 free compressions before you need to purchase a license key to continue using the plugin.
 # Purchase a license key on the [Zibra AI website|https://www.zibra.ai/zibravdb-pricing].
 # Open Houdini and click the __Open Plugin Management__ button on any ZibraVDB node.
-# Input your license key into the __License key__ field.
+# Enter your license key string (not the file path) in the __License key__ field.
 # Click the __Set License Key__ button. You should now see __Activation status__ as "Activated".
 
 :disclosure:Activation using an environment variable
-    # Create a text file in a directory of your choosing and name it `zibravdb_license_key.txt`. Paste your license key into this text file and save it.
+    # Create a text file in a directory of your choice and name it `zibravdb_license_key.txt`. Paste your license key into this text file and save it.
     # Set up a Houdini [environment variable|https://www.sidefx.com/docs/houdini/basics/config_env.html#setting-environment-variables] named `ZIBRAVDB_LICENSE_KEY` and assign it the path to your license key file.
 
     TIP:
