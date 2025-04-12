@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.20267 0.7331
+position -1.52689 0.999144
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author aomai@DESKTOP-RBQDURK
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -77,9 +77,9 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "Set up missing attributes";
-	height := 4.8306063165148831;
+	height := 4.830606316514883;
 	minimized := 0;
-	width := 5.8467335028576368;
+	width := 5.846733502857637;
 	x_position := -2.5422967926015665;
 	y_position := 20.725364015639066;
 }
@@ -102,9 +102,9 @@ Content-Type: text/plain
 	comment := "Clean & Transform to Worldspace";
 	height := 6.407220003087521;
 	minimized := 0;
-	width := 4.3254909640235963;
+	width := 4.325490964023596;
 	x_position := -10.188679160028537;
-	y_position := -5.7819200030875209;
+	y_position := -5.781920003087521;
 }
 {
   create -1
@@ -125,9 +125,9 @@ Content-Type: text/plain
 	comment := Bakes;
 	height := 1.8052201447890797;
 	minimized := 0;
-	width := 3.4441458779038321;
-	x_position := -6.9738318333979574;
-	y_position := -7.6983973165998574;
+	width := 3.444145877903832;
+	x_position := -6.973831833397957;
+	y_position := -7.698397316599857;
 }
 {
   create -1
@@ -148,7 +148,7 @@ Content-Type: text/plain
 	comment := "GUIDE GEOMETRY";
 	height := 9.446198907580353;
 	minimized := 0;
-	width := 7.9255834559338041;
+	width := 7.925583455933804;
 	x_position := -20.843884635609633;
 	y_position := 15.882802518695005;
 }
@@ -169,11 +169,11 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "CAGE / DISTANCE CALCULATIONS";
-	height := 6.1166464256201154;
+	height := 6.116646425620115;
 	minimized := 0;
-	width := 7.0124140789629301;
+	width := 7.01241407896293;
 	x_position := -11.656500551962262;
-	y_position := 5.9671899676644804;
+	y_position := 5.96718996766448;
 }
 {
   create -1
@@ -192,9 +192,9 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "UDIM Calculation";
-	height := 9.3543751672963182;
+	height := 9.354375167296318;
 	minimized := 0;
-	width := 4.0343396217044392;
+	width := 4.034339621704439;
 	x_position := -19.592069810852216;
 	y_position := 3.7647699729633333;
 }
@@ -314,7 +314,7 @@ Content-Type: text/plain
 	height := 1.8792401335716966;
 	minimized := 0;
 	width := 2.652288355393134;
-	x_position := -5.7148266121355258;
+	x_position := -5.714826612135526;
 	y_position := 2.1957935828938724;
 }
 {
@@ -334,7 +334,7 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "";
-	height := 1.8000257294518249;
+	height := 1.800025729451825;
 	minimized := 0;
 	width := 19.794193915781168;
 	x_position := -39.963191953240404;
@@ -2031,6 +2031,15 @@ Content-Type: text/plain
         parmtag { "parmvop" "1" }
         parmtag { "shaderparmcontexts" "cop2" }
     }
+    parm {
+        name    "maxcounter"
+        label   "maxcounter"
+        type    integer
+        default { "50" }
+        range   { 0 500 }
+        parmtag { "parmvop" "1" }
+        parmtag { "shaderparmcontexts" "cop2" }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing.chn"
@@ -2074,6 +2083,13 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = ch(\"../../mBakeMode\") }
     }
+    channel maxcounter {
+      lefttype = extend
+      righttype = extend
+      default = 50
+      flags = 0
+      segment { length = 0 value = 50 50 expr = ch(\"../../maxtranslayers\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2116,10 +2132,11 @@ posthold	[ 0	locks=0 ]	(	0	)
 stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
 HIGH	[ 0	locks=0 ]	(	op:../../OUT_HIGH	)
 LOW	[ 0	locks=0 ]	(	op:../../OUT_LOW_TARGET	)
-opacitytracing	[ 8	locks=0 ]	(	[ opacitytracing	0 ] 	)
+opacitytracing	[ 0	locks=0 ]	(	[ opacitytracing	0 ] 	)
 tracingmode	[ 0	locks=0 ]	(	[ tracingmode	0 ] 	)
 channel	[ 0	locks=0 ]	(	opacity	)
 scalar	[ 0	locks=0 ]	(	__white	)
+maxcounter	[ 0	locks=0 ]	(	[ maxcounter	50 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2138,7 +2155,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing.cop2"
 Content-Type: text/plain
 
 2
-4778
+4780
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2849,7 +2866,7 @@ Content-Type: text/plain
 
 comment ""
 position -6.28756 4.25326
-connectornextid 7
+connectornextid 20
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on lowdetail off mediumdetail off highdetail on material off
 outputsNamed3
 {
@@ -2875,6 +2892,7 @@ inputsNamed3
 17 	bind13 0 1 "lowprim"
 18 	parm10 0 1 "channel"
 19 	parm11 0 1 "scalar"
+7 	parm5 0 1 "maxcounter"
 }
 inputs
 {
@@ -2887,6 +2905,7 @@ inputs
 6 	bind13 0 1
 7 	parm10 0 1
 8 	parm11 0 1
+9 	parm5 0 1
 }
 stat
 {
@@ -2915,7 +2934,7 @@ float contributions[] = {0,0,0,0,0,0,0,0};
 
 // SETTINGS
 float _pixelalpha = 0.0;
-int _maxcounter = 50; 
+int _maxcounter = $maxcounter; 
 
 // TEMP
 vector _hitpos[];
@@ -5114,6 +5133,140 @@ help	[ 0	locks=0 ]	(	""	)
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing/parm11.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing/parm5.init"
+Content-Type: text/plain
+
+type = parameter
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing/parm5.def"
+Content-Type: text/plain
+
+comment ""
+position -10.0662 -1.52763
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on lowdetail off mediumdetail off highdetail on material off
+outputsNamed3
+{
+0 "maxcounter"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author aomai@DESKTOP-RBQDURK
+  access 0777
+}
+color UT_Color RGB 1 1 0.4 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing/parm5.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+parmscope	[ 0	locks=0 ]	(	shaderparm	)
+parmaccess	[ 0	locks=0 ]	(	""	)
+parmname	[ 0	locks=0 ]	(	maxcounter	)
+parmprefix	[ 0	locks=0 ]	(	""	)
+parmpostfix	[ 0	locks=0 ]	(	""	)
+parmlabel	[ 0	locks=0 ]	(	""	)
+showlabel	[ 0	locks=0 ]	(	"on"	)
+parmtype	[ 0	locks=0 ]	(	"int"	)
+parmtypename	[ 0	locks=0 ]	(	""	)
+floatdef	[ 0	locks=0 ]	(	0	)
+intdef	[ 0	locks=0 ]	(	50	)
+toggledef	[ 0	locks=0 ]	(	"off"	)
+angledef	[ 0	locks=0 ]	(	0	)
+logfloatdef	[ 0	locks=0 ]	(	0	)
+float2def	[ 0	locks=0 ]	(	0	0	)
+float3def	[ 0	locks=0 ]	(	0	0	0	)
+vectordef	[ 0	locks=0 ]	(	0	0	0	)
+normaldef	[ 0	locks=0 ]	(	0	0	0	)
+pointdef	[ 0	locks=0 ]	(	0	0	0	)
+directiondef	[ 0	locks=0 ]	(	1	0	0	)
+float4def	[ 0	locks=0 ]	(	0	0	0	0	)
+floatm2def	[ 0	locks=0 ]	(	1	0	0	1	)
+float9def	[ 0	locks=0 ]	(	1	0	0	0	1	0	0	0	1	)
+float16def	[ 0	locks=0 ]	(	1	0	0	0	0	1	0	0	0	0	1	0	0	0	0	1	)
+stringdef	[ 0	locks=0 ]	(	""	)
+filedef	[ 0	locks=0 ]	(	""	)
+imagedef	[ 0	locks=0 ]	(	""	)
+geometrydef	[ 0	locks=0 ]	(	""	)
+colordef	[ 0	locks=0 ]	(	0	0	0	)
+color4def	[ 0	locks=0 ]	(	0	0	0	0	)
+bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
+coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
+floatadef	[ 0	locks=0 ]	(	)
+intadef	[ 0	locks=0 ]	(	)
+vector2adef	[ 0	locks=0 ]	(	)
+vectoradef	[ 0	locks=0 ]	(	)
+pointadef	[ 0	locks=0 ]	(	)
+normaladef	[ 0	locks=0 ]	(	)
+coloradef	[ 0	locks=0 ]	(	)
+floatm2adef	[ 0	locks=0 ]	(	)
+float4adef	[ 0	locks=0 ]	(	)
+float9adef	[ 0	locks=0 ]	(	)
+float16adef	[ 0	locks=0 ]	(	)
+stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
+coshaderadef	[ 0	locks=0 ]	(	""	)
+structdef	[ 0	locks=0 ]	(	""	)
+rangeflt	[ 0	locks=0 ]	(	0	1	)
+rangeint	[ 0	locks=0 ]	(	0	500	)
+stringtype	[ 0	locks=0 ]	(	off	)
+opfilter	[ 0	locks=0 ]	(	!!OBJ/LIGHT!!	)
+parmcomment	[ 0	locks=0 ]	(	""	)
+separator1	[ 0	locks=0 ]	(	)
+useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
+useownexportcontext	[ 0	locks=0 ]	(	"off"	)
+parmuniform	[ 0	locks=0 ]	(	"on"	)
+usebound	[ 0	locks=0 ]	(	"off"	)
+hasconnector	[ 0	locks=0 ]	(	"on"	)
+exportparm	[ 0	locks=0 ]	(	"off"	)
+exportcontext	[ 0	locks=0 ]	(	cop2	)
+providemenu	[ 0	locks=0 ]	(	"off"	)
+menuchoices	[ 0	locks=0 ]	(	""	)
+menuscript	[ 0	locks=0 ]	(	""	)
+menuscriptlanguage	[ 0	locks=0 ]	(	"hscript"	)
+separator2	[ 0	locks=0 ]	(	)
+invisible	[ 0	locks=0 ]	(	"off"	)
+joinnext	[ 0	locks=0 ]	(	"off"	)
+disablewhen	[ 0	locks=0 ]	(	""	)
+hidewhen	[ 0	locks=0 ]	(	""	)
+callback	[ 0	locks=0 ]	(	""	)
+tags	[ 0	locks=0 ]	(	""	)
+help	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing/parm5.userdata"
 Content-Type: text/plain
 
 {
@@ -37764,8 +37917,8 @@ basecolor_usePointColor	[ 0	locks=0 ]	(	"on"	)
 basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
-ior	[ 0	locks=0 ]	(	1.1000000000000001	)
-rough	[ 0	locks=0 ]	(	[ rough	0.29999999999999999 ] 	)
+ior	[ 0	locks=0 ]	(	1.1	)
+rough	[ 0	locks=0 ]	(	[ rough	0.3 ] 	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -37777,7 +37930,7 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
 transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
@@ -37785,7 +37938,7 @@ folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
 sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
 ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
@@ -37952,7 +38105,7 @@ shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 8	locks=0 ]	(	[ baseBumpAndNormal_enable	0 ] 	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -37977,7 +38130,7 @@ separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -38012,7 +38165,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -38521,6 +38674,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -39003,6 +39159,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -39074,7 +39234,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing.order"
 Content-Type: text/plain
 
-21
+22
 parm7
 bind1
 parm4
@@ -39096,6 +39256,7 @@ bind13
 bind14
 parm10
 parm11
+parm5
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing.net"
@@ -39220,6 +39381,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -39391,6 +39556,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -39544,6 +39713,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -39704,6 +39877,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -39885,6 +40062,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -40045,6 +40226,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -40223,6 +40408,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -40401,6 +40590,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -42267,6 +42460,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -46047,6 +46244,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -46382,6 +46583,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -48637,6 +48842,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -48798,6 +49007,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -48952,6 +49165,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -51770,6 +51987,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	__index	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	__material	)
@@ -51778,6 +51996,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -52468,6 +52687,7 @@ Content-Type: text/plain
             baseparm
             label   "enable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -54132,6 +54352,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -55532,6 +55755,7 @@ apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
 scene_style_sheet	[ 0	locks=0 ]	(	""	)
 obj_style_sheet	[ 0	locks=0 ]	(	""	)
 dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -55639,6 +55863,7 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
@@ -55767,6 +55992,7 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
@@ -55986,6 +56212,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"__udimoffset udim"	)
@@ -55994,6 +56221,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -56144,8 +56372,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -56412,8 +56640,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -56680,8 +56908,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -57212,6 +57440,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	materialid	)
@@ -57220,6 +57449,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -57442,6 +57672,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"__udimoffset udim"	)
@@ -57450,6 +57681,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -57829,6 +58061,7 @@ unload	[ 0	locks=0 ]	(	"always"	)
 primarypath	[ 0	locks=0 ]	(	""	)
 forcerecompile	[ 0	locks=0 ]	(	0	)
 delayillegal	[ 0	locks=0 ]	(	"off"	)
+fallback	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

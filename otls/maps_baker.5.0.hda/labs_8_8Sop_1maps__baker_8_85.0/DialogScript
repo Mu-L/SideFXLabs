@@ -849,6 +849,15 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "maxtranslayers"
+                label   "Max Translucent Layers"
+                type    integer
+                default { "50" }
+                disablewhen "{ opacitytracing == 0 }"
+                range   { 0! 200 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "samplesscalar"
                 label   "Samples"
                 type    integer
