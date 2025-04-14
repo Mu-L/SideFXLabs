@@ -1,0 +1,51 @@
+= Labs Hexagon Grid =
+
+#type:     node
+#context:  sop
+#internal: labs::hexagon_grid::1.0
+#icon:     SOP/labs::hexagon_grid::1.0
+#since:    20.5
+
+"""Generates a hexagonal grid."""
+
+[Image:/images/sidefxlabs_banner.jpg]
+
+This node generates a hexagonal point grid that can be filled with hexagonal primitives. You can also change the radius of the hexagon and its orientation, which can be either Pointy Top or Flat Top.
+
+@parameters
+
+    Orientation:
+        #id: orientation
+        The orientation of the grid.
+
+    Size:
+        #id: gridsize
+        Determines the size of the point grid.
+
+    Orientation:
+        #id: tileorientation
+        The orientation of the hexagon primitive. It can be set to Pointy Top or Flat Top.
+
+    Radius:
+        #id: tileradius
+        Sets the radius of the hexagon primitive.
+
+    Add Primitives:
+        #id: addtile
+        Instantiates hexagons primitives in place of the points on the grid.
+
+    Show Guide Geometry:
+        #id: showguidegeometry
+        Shows hexagon primitives overlayed on the point grid.
+
+    Color Coordinate Axes:
+        #id: coloraxes
+        Colours the three axes of the QRS coordinate system, as well as the origin.
+
+    Output Coordinates:
+        #id: outputcoordinates
+        Outputs the QRS cube coordinates as a point attribute. When Add Tile is enabled, the attribute is promoted to primitive.
+
+    Coordinates Attribute:
+        #id: coordinatesattribute
+        The name of the coordinates attribute.

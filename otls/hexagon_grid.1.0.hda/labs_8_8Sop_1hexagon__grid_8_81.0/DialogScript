@@ -1,0 +1,220 @@
+# Dialog script for labs::hexagon_grid::1.0 automatically generated
+
+{
+    name	labs::hexagon_grid::1.0
+    script	hexagon_grid::1.0
+    label	"Labs Hexagon Grid"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    groupsimple {
+        name    "fd_grid"
+        label   "Grid"
+
+        parm {
+            name    "orientation"
+            label   "Orientation"
+            type    ordinal
+            default { "2" }
+            menu {
+                "0" "XY Plane"
+                "1" "YZ Plane"
+                "2" "ZX Plane"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "gridshape"
+            label   "Shape"
+            type    ordinal
+            invisible
+            default { "0" }
+            menu {
+                "0" "Hexagon"
+                "1" "Triangle"
+                "2" "Rectangle"
+                "3" "Parallelogram"
+            }
+            range   { 0 10 }
+        }
+        groupsimple {
+            name    "fd_shapehexagon"
+            label   "Hexagon Shape"
+            hidewhen "{ gridshape > 1 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "gridsize"
+                label   "Size"
+                type    integer
+                default { "2" }
+                range   { 0! 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fd_shaperectangle"
+            label   "Rectangle Shape"
+            hidewhen "{ gridshape != 2 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "qmin"
+                label   "Q Min"
+                type    integer
+                default { "-5" }
+                range   { -10 10 }
+            }
+            parm {
+                name    "qmax"
+                label   "Q Max"
+                type    integer
+                default { "5" }
+                range   { -10 10 }
+            }
+            parm {
+                name    "rmin"
+                label   "R Min"
+                type    integer
+                default { "-5" }
+                range   { -10 10 }
+            }
+            parm {
+                name    "rmax"
+                label   "R Max"
+                type    integer
+                default { "5" }
+                range   { -10 10 }
+            }
+        }
+
+        groupsimple {
+            name    "fd_shapeparallelogram"
+            label   "Parallelogram Shape"
+            hidewhen "{ gridshape != 3 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "axes"
+                label   "Axes"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "0" "QR"
+                    "1" "SQ"
+                    "2" "RS"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "axis1min"
+                label   "Axis 1 Min"
+                type    integer
+                default { "-5" }
+                range   { -10 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "axis1max"
+                label   "Axis 1 Max"
+                type    integer
+                default { "5" }
+                range   { -10 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "axis2min"
+                label   "Axis 2 Min"
+                type    integer
+                default { "-5" }
+                range   { -10 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "axis2max"
+                label   "Axis 2 Max"
+                type    integer
+                default { "5" }
+                range   { -10 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    groupsimple {
+        name    "fd_hexagon"
+        label   "Hexagon"
+
+        parm {
+            name    "tileorientation"
+            label   "Orientation"
+            type    ordinal
+            default { "0" }
+            menu {
+                "0" "Pointy Top"
+                "1" "Flat Top"
+            }
+            range   { 0 10 }
+        }
+        parm {
+            name    "tilesize"
+            label   "Radius"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+        }
+        parm {
+            name    "addtile"
+            label   "Add Primitives"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_advanced"
+        label   "Advanced"
+
+        parm {
+            name    "showguidegeometry"
+            label   "Show Guide Geometry"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "coloraxes"
+            label   "Color Coordinate Axes"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputcoordinates"
+            label   "coordinatestoggle"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "coordinatesattribute"
+            label   "Output Coordinates"
+            type    string
+            default { "outputcoordinates" }
+            disablewhen "{ outputcoordinates == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
