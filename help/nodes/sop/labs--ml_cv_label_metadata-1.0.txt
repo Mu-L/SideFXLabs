@@ -1,0 +1,73 @@
+#type:     node
+#context:  sop
+#internal: labs::ml_cv_label_metadata::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
+#since:    20.5
+
+= Labs ML CV Label Metadata =
+
+"""Prepares the label metadata."""
+
+
+This node prepares the label metadata that will be written to a [COCO JSON|https://cocodataset.org/#home] at render time. It also prepares the ID attribute for Karma to render the appropriate ground truth data.
+
+Optionally this node takes the output of the [Labs ML CV Keypoint Metadata|Node:sop/labs--ml_cv_keypoint_metadata-1.0] in the second input, which prepares the mesh/keypoints for the [Labs ML CV ROP Annotation Output SOP|Node:sop/labs--ml_cv_rop_annotation_output-1.0] and associates the keypoints with the label created by this node.
+
+
+@parameters
+
+    Group:
+        #id: group
+        A subset of points in the input geometry to run the program on.
+        Leave this blank to affect all points in the input.
+        
+    Group Type:
+        #id: grouptype
+        What the group is made of (point, vertex, primitive etc.)
+            
+    ==== Category ID ====
+
+    Category ID:
+        #id: categoryid
+        The integer that will represent the category in the COCO JSON.
+        
+    Category Name:
+        #id: categoryname
+        The string name of the category that will be associated with the integer category ID.
+        
+    Enable Instance ID:
+        #id: enableid
+        Enables the creation of the Instance ID attribute.
+        
+    ==== Instance ID ====
+
+    ID Type:
+        #id: idtype
+        The type of instance ID to create.
+
+        ID from Index: 
+            Instance ID will match the Category ID, generally used for single objects.
+
+        ID from Attribute: 
+            Instance ID will be generated from an attribute in Houdini such as crowd ID or connectivity, used when multiple objects exist for the same category.
+        
+    Instance ID:
+        #id: instid
+        An integer used to distinguish objects within the same category as
+        separate entities. This value is the pixel value rendered in the ID
+        pass from the Karma GT ROP and used to generate COCO
+        bounding boxes and segmentation.
+
+
+@examples
+
+    TIP:
+        When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
+
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.hip]
+
+
+@related
+
+    - [Node:sop/labs--ml_cv_keypoint_metadata-1.0]
+    - [Node:sop/labs--ml_cv_rop_annotation_output-1.0]

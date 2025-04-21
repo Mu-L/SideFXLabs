@@ -1,0 +1,95 @@
+#type:     node
+#context:  sop
+#internal: labs::ml_cv_promote_synth_attribute::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
+#since:    20.5
+
+= Labs ML CV Promote Synth Attribute =
+
+"""Converts an attribute into a format compatible with COCO JSON."""
+
+
+This node takes a Houdini attribute and converts it into a standardized format that can be
+read by the script that builds the [COCO JSON|https://cocodataset.org/#home] file.
+
+NOTE:
+
+    The node does the format conversion automatically, but below is a useful reference if you decide to
+    make further manipulations to these synth attributes after the attribute is promoted.
+    
+    A synth attribute:
+    
+    * has the prefix "synth_" in the attribute name for the [Labs ML CV ROP Annotation Output SOP|Node:sop/labs--ml_cv_rop_annotation_output-1.0] to identify this attribute
+    
+    * is always a string (although the string may represent a non-string attribute)
+    
+    * follows the following structure `[attribute_type_index, attribute_value]`
+
+    Attribute type ||
+        Index ||
+            Example synth attribute ||
+
+    integer |
+        0 |
+            `[0, 1]`
+
+    float |
+        1 |
+            `[1, {1.0}]`
+
+    string |
+        2 |
+            `[2, 'string']`
+
+    integer array |
+        3 |
+            `[3, {1,2}]`
+
+    float array |
+        4 |
+            `[4, {1.0,2.0}]`
+
+    string array |
+        5 |
+            `[5, {'string1','string2'}]`
+
+
+@parameters
+
+    Attribute Name:
+        #id: attrname
+        The name of the attribute to promote.
+        
+    Promote to Point Attribute:
+        #id: attrpromote
+        Enables the conversion of the specified attribute to a point
+        attribute (as required by the [Labs ML CV ROP Annotation Output SOP|Node:sop/labs--ml_cv_rop_annotation_output-1.0]).
+        
+    Original Class:
+        #id: inclass
+        The class the attribute starts in.
+            
+    Promotion Method:
+        #id: method
+        Whenever there is more than one attribute in the original class that
+        matches a single entity in the new class, some method must be
+        used to determine the new value. For example, if converting from
+        point attribute to primitive attribute, there will be many points
+        corresponding to a single polygon.
+
+    Delete Original:
+        #id: delorig
+        Deletes the original attribute after promotion.
+
+
+@examples
+
+    TIP:
+        When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
+
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.hip]
+
+
+@related
+
+    - [Node:sop/labs--ml_cv_rop_annotation_output-1.0]
