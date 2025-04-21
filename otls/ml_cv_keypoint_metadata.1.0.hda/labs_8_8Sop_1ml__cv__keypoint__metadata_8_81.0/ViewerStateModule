@@ -1,0 +1,220 @@
+import hou
+import viewerstate.utils as su
+import re
+from hutil.Qt import QtGui
+
+
+HUD_TEMPLATE = {
+    
+    "title" : "Skeleton Connections",
+    "desc"  : "for Keypoint Metadata",
+    "icon"  : "",
+    "rows"  : [
+
+        { "id": "my_label", "label": "Add Connections", "key": "LMB" },
+        { "id": "my_label", "label": "Delete Connections", "key": "ctrl + LMB" },
+        { "id": "my_label", "label": "Scale Spheres", "key": "mousewheel" }
+    ]
+}
+
+class State(object):
+    def __init__(self, state_name, scene_viewer):
+        self.state_name = state_name
+        self.scene_viewer = scene_viewer
+        self.scene_viewer.hudInfo(hud_template=HUD_TEMPLATE)
+
+        self.node = None
+        self.shift = 0
+        self.ctrl = 0
+        self.prim = -1
+        self.intersected = None
+        self.arr_prims = []
+        self.strpair = ""
+        self.pair = []
+        self.reversedpair = []
+        self.listofpairs = []
+        self.strpts = ""
+        self.MySimpleDrawable = None
+        self.multiparm_count = 0
+        self.multiparm = None
+        self.vissize = 0.01
+
+
+    def onMenuAction(self, kwargs):
+        menu_item = kwargs["menu_item"]
+        state_parms = kwargs["state_parms"]
+
+
+    def onEnter(self,kwargs):
+        """ Called on node bound states when it starts
+        """
+        self.node = kwargs["node"]
+        state_parms = kwargs["state_parms"]
+        self.scene_viewer.hudInfo(show=True)
+        self.vissize = self.node.evalParm("radx")
+        self.multiparm = self.node.parm("skeletons")
+
+        self.strpts = self.node.evalParm("skelconnections")
+        matches = re.findall(r"\[(\d+),(\d+)\]", self.strpts)
+        self.arr_prims = [[int(a), int(b)] for a, b in matches]
+        #print(self.arr_prims)
+
+        self.geometry = self.node.node("OUT").geometry()
+        self.MySimpleDrawable = hou.SimpleDrawable(self.scene_viewer, self.geometry , "MySimpleDrawable")
+        self.MySimpleDrawable.setDisplayMode(hou.drawableDisplayMode.CurrentViewportMode)
+        #self.MySimpleDrawable.setWireframeColor(hou.Color(0,1,0.5))
+        self.MySimpleDrawable.enable(True)
+        self.MySimpleDrawable.show(True)
+
+        self.node.parm("visskelcolor").set(1)
+
+    def onExit(self,kwargs):
+        """ Called when the state terminates
+        """
+        state_parms = kwargs["state_parms"]
+        self.node.parm("visskelcolor").set(0)
+
+
+    def onMouseEvent(self, kwargs):
+        """ Process mouse and tablet events
+        """
+        ui_event = kwargs["ui_event"]
+        dev = ui_event.device()
+        origin, direction = ui_event.ray()
+        reason = ui_event.reason()
+        if dev.isLeftButton():
+            if reason == hou.uiEventReason.Picked:
+
+                if self.ctrl == 0:
+                    self.geometry = self.node.node("OUT").geometry(0)
+                    position = hou.Vector3()
+                    normal = hou.Vector3()
+                    uvw = hou.Vector3()
+                    self.intersected = self.geometry.intersect(origin, direction, position, normal, uvw)
+                    if self.intersected != -1:
+                        self.prim = self.geometry.prim(self.intersected)
+                        if self.prim:
+                            self.pair.append(self.prim.number())
+                            if(len(self.pair)) == 1:
+                                self.node.parm("visprim").set(self.pair[0]) # set highlight on first selected prim
+                            if(len(self.pair)) > 1:
+                                if(self.pair[0] != self.pair[1]): # first selected point not the same as the 2nd point
+                                    self.reversedpair = []
+                                    self.reversedpair.append(self.pair[1])
+                                    self.reversedpair.append(self.pair[0])
+                                    #print(self.reversedpair)
+                                    if(self.pair not in self.arr_prims and self.reversedpair not in self.arr_prims): # make sure the new pair doesnt exist in array
+                                        self.arr_prims.append(self.pair)
+                                        self.strpts = ",".join([f"[{a},{b}]" for a, b in self.arr_prims]) # array to string
+                                        self.strpair = "[" + str(self.pair[0]) + "," + str(self.pair[1]) + "]"
+                                        self.node.parm("skelconnections").set(self.strpts) # set string to HDA
+                                        self.addPointToMultiparm() # Add multiparm entry
+                                        self.pair = []
+                                        self.node.parm("visprim").set(-1) # remove highlight
+
+                if self.ctrl == 1:
+                    self.geometrylines = self.node.node("OUT_Lines").geometry(0)
+                    position = hou.Vector3()
+                    normal = hou.Vector3()
+                    uvw = hou.Vector3()
+                    self.intersected = self.geometrylines.intersect(origin, direction, position, normal, uvw)
+                    if self.intersected != -1:
+                        self.prim = self.geometrylines.prim(self.intersected)
+                        if self.prim:
+                            primpair = list(self.prim.attribValue("primpair")) # get prim pair attribute
+                            self.arr_prims = [p for p in self.arr_prims if p != primpair] # remove primpair from array
+                            self.strpts = ",".join([f"[{a},{b}]" for a, b in self.arr_prims]) # array to string
+                            self.node.parm("skelconnections").set(self.strpts) # set string to HDA
+
+                            self.multiparm.removeMultiParmInstance(self.prim.number()) # remove the multiparm corresponding to the deleted prim
+                    else:
+                        self.node.parm("visprim").set(-1) # remove highlight
+                        self.reversedpair = []
+                        self.pair = []
+
+                if self.shift == 1:
+                    self.geometrylines = self.node.node("OUT_Lines").geometry(0)
+                    position = hou.Vector3()
+                    normal = hou.Vector3()
+                    uvw = hou.Vector3()
+                    self.intersected = self.geometrylines.intersect(origin, direction, position, normal, uvw)
+                    if self.intersected != -1:
+                        self.prim = self.geometrylines.prim(self.intersected)
+                        if self.prim:
+                            #print(self.prim.number())
+                            return
+
+        return True
+
+
+    def onKeyTransitEvent(self, kwargs):
+        ui_event = kwargs["ui_event"]
+        state_parms = kwargs["state_parms"]
+
+        if ui_event.device().isCtrlKey() == 1:
+            self.ctrl = 1
+        else:
+            self.ctrl = 0
+
+        if ui_event.device().isShiftKey() == 1:
+            self.shift = 1
+        else:
+            self.shift = 0
+
+
+    def onDraw(self, kwargs):
+        """ Called for rendering a state e.g. required for 
+        hou.AdvancedDrawable objects
+        """
+        draw_handle = kwargs["draw_handle"]
+
+
+    def multiparmCount(self):
+        self.multiparm_count = self.node.parm("skeletons").evalAsInt()
+        return self.multiparm_count
+
+
+    def addPointToMultiparm(self):
+        #self.scene_viewer.beginStateUndo("Add point")
+        self.index = self.multiparmCount()
+        self.multiparm.insertMultiParmInstance(self.index)
+        self.node.parm("connection%d" % (self.index+1)).set(str(self.strpair))
+
+
+    def onMouseWheelEvent(self, kwargs):
+        # Get the UI device object
+        device = kwargs["ui_event"].device()
+        scroll = device.mouseWheel()*0.001
+        self.vissize = self.node.evalParm("radx") + scroll
+        self.vissize = max(0.000001, min(self.vissize, 1))
+        self.node.parm("radx").set(abs(self.vissize))
+
+
+def createViewerStateTemplate():
+    """ Mandatory entry point to create and return the viewer state 
+        template to register. """
+
+    state_typename = kwargs["type"].definition().sections()["DefaultState"].contents()
+    state_label = "Labs::select points to string::1.0"
+    state_cat = hou.sopNodeTypeCategory()
+
+    template = hou.ViewerStateTemplate(state_typename, state_label, state_cat)
+    template.bindFactory(State)
+    template.bindIcon(kwargs["type"].icon())
+
+    #menu = hou.ViewerStateMenu("menu", "State Menu")
+    #menu.addRadioStrip("type", "Gizmo", "0")
+    #menu.addRadioStripItem("type", "0", "Translate")
+    #menu.addRadioStripItem("type", "1", "Rotate")
+    #menu.addRadioStripItem("type", "2", "Scale")
+    #template.bindMenu(menu)
+
+    # The selector will start when the state enters
+    template.bindGeometrySelector("Left Mouse to select points, Ctrl Left Mouse to delete connections, Scroll Wheel to scale spheres", quick_select=True, name="My Primitive Selector")
+
+    #    "my_slider_state",
+    #    "Slider State",
+    #    "Sop",
+    #    "State"
+
+    return template

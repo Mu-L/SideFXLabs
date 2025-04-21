@@ -1,0 +1,102 @@
+# Dialog script for labs::ml_cv_promote_synth_attribute::1.0 automatically generated
+
+{
+    name	labs::ml_cv_promote_synth_attribute::1.0
+    script	promote_synth_attribute::1.0
+    label	"Labs ML CV Promote Synth Attribute"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    parm {
+        name    "attrname"
+        label   "Attribute Name"
+        type    string
+        default { "" }
+        help    "Specifies the name of the attribute to promote. For example, Cd will pick color."
+        menutoggle {
+            [ "from functools import reduce" ]
+            [ "" ]
+            [ "node = kwargs['node']" ]
+            [ "input = node.input(0)" ]
+            [ "" ]
+            [ "if input:" ]
+            [ "    geo = input.geometry()" ]
+            [ "    sep = [\"_separator_\", \"_separator_\"]" ]
+            [ "    pt_menu = list(geo.generateAttribMenu(attrib_type=hou.attribType.Point))" ]
+            [ "    prim_menu = list(geo.generateAttribMenu(attrib_type=hou.attribType.Prim))" ]
+            [ "    vtx_menu = list(geo.generateAttribMenu(attrib_type=hou.attribType.Vertex))" ]
+            [ "    menu2 = [pt_menu, prim_menu, vtx_menu]" ]
+            [ "    menu = reduce(lambda a,b:a+sep+b,menu2)" ]
+            [ "    return menu" ]
+            [ "" ]
+            [ "else:" ]
+            [ "    return [\"\", \"No Input Connected\"]" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "attrpromote"
+        label   "Promote to Point Attribute"
+        type    toggle
+        default { "0" }
+        help    "Enables the conversion of the specified attribute to a point attribute (as required by the ROP Annotation Output node)."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "inclass"
+        label   "Original Class"
+        type    ordinal
+        default { "point" }
+        help    "The class the attribute starts in. It can be one of point, prim, detail, or vertex."
+        hidewhen "{ attrpromote == 0 }"
+        menu {
+            "detail"    "Detail"
+            "primitive" "Primitive"
+            "point"     "Point"
+            "vertex"    "Vertex"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "method"
+        label   "Promotion Method"
+        type    ordinal
+        default { "mean" }
+        help    "Whenever there is more than one attribute in the original class that matches a single entity in the new class, some method must be used to determine the new value. For example, if converting from point attribute to primitive attribute, there will be many points corresponding to a single polygon."
+        hidewhen "{ attrpromote == 0 }"
+        menu {
+            "max"       "Maximum"
+            "min"       "Minimum"
+            "mean"      "Average"
+            "mode"      "Mode"
+            "median"    "Median"
+            "sum"       "Sum"
+            "sumsquare" "Sum of Squares"
+            "rms"       "Root Mean Square"
+            "first"     "First Match"
+            "last"      "Last Match"
+            "array"     "Array of All"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "delorig"
+        label   "Delete Original"
+        type    toggle
+        default { "0" }
+        help    "When enabled, the original attribute is deleted after promotion. Note that in cases such as promoting a vertex attribute to a point attribute of the same name, the original attribute will always be deleted. To prevent this, rename the attribute before promoting."
+        range   { 0 1 }
+        parmtag { "script_callback_language" "python" }
+    }
+}

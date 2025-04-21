@@ -1,0 +1,105 @@
+def show_custom_message(messages):
+
+    from PySide2 import QtWidgets, QtGui
+    
+    # Create a dialog
+    dialog = QtWidgets.QDialog()
+    
+    # Set window title
+    dialog.setWindowTitle("Validate Labels")
+
+    # Create a layout for the dialog
+    layout = QtWidgets.QVBoxLayout()
+
+    # Create a QTextEdit for the message text
+    text_edit = QtWidgets.QTextEdit()
+    text_edit.setReadOnly(True)  # Make it read-only
+    
+    # Set the background color
+    text_edit.setStyleSheet("background-color: rgb(58, 58, 58);")
+    
+    # Add lines of text with specific colors
+    for message, color in messages:
+        text_edit.append("<p style='color:{};'>{}</p>".format(color, message))
+        
+    # Add the QTextEdit to the layout
+    layout.addWidget(text_edit)
+
+    # Add an OK button
+    button = QtWidgets.QPushButton("OK")
+    button.clicked.connect(dialog.accept)
+    layout.addWidget(button)
+
+    # Set the dialog layout
+    dialog.setLayout(layout)
+
+    # Show the dialog
+    dialog.exec_()
+
+
+def validate_labels(kwargs):
+
+    import hou
+    
+    # Get node info
+    parent = kwargs['node']
+    geo = parent.geometry()
+    catinstances = parent.parm('categories').multiParmInstances()
+    
+    # Get all catagroy id values
+    all_cat_values = [point.attribValue('category_id') for point in geo.points()]
+
+    # Get unique catagroy id values values
+    unique_cat_values = list(set(all_cat_values))
+    
+    # Get all catagroy id values
+    all_ints_values = [point.attribValue('instance_id') for point in geo.points()]
+
+    # Get unique catagroy id values values
+    unique_inst_values = list(set(all_ints_values))
+    
+    # Get camera lop value
+    cam_lop = parent.parm('loppath').eval()
+   
+    # Get camera lop value
+    cam_prim = parent.parm('primpath').eval()
+
+    # Generate message
+    cat_count = "Incoming Catagory Count: {}".format(len(unique_cat_values))
+    cat_values = "Incoming Catagory Values: {}".format(unique_cat_values)
+    inst_count = "Incoming Instance Count: {}".format(len(unique_inst_values))
+    inst_value = "Incoming Instance Values: {}".format(unique_inst_values)
+    
+    message = [
+        (cat_count, "white"),
+        (cat_values, "white"),
+        (inst_count, "white"),
+        (inst_value, "white")
+        ]
+    
+    # check number of categories in multiparm ui against incoming values
+    if len(catinstances) != len(unique_cat_values):
+        warning = ('WARNING: Incoming category count does not match the count of defined GT categories', 'yellow')
+        message.append(warning)
+        
+    # Check if camera lop feild is populated and exists
+    if cam_lop == '':
+       warning = ('WARNING: Camera Lop Path field cannot be empty', 'yellow')
+       message.append(warning)
+       
+    # Check if camera lop feild is populated and exists
+    if cam_prim == '':
+       warning = ('WARNING: Camera Primitive field cannot be empty', 'yellow')
+       message.append(warning) 
+    
+    # Check if category id zero exists
+    if 0 in unique_cat_values:
+       warning = ('ERROR: Incoming category_id value cannot be set to zero', 'red')
+       message.append(warning)   
+       
+    if 0 in unique_inst_values:
+       warning = ('WARNING: There is an incoming instance_id value of zero. This may cause unexpected results with transparent backgrounds.', 'yellow')
+       message.append(warning)    
+    
+    # Call the custom message function
+    show_custom_message(message)

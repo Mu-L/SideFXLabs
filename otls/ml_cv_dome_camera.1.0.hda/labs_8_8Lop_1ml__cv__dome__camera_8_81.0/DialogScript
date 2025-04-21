@@ -1,0 +1,258 @@
+# Dialog script for labs::ml_cv_dome_camera::1.0 automatically generated
+
+{
+    name	labs::ml_cv_dome_camera::1.0
+    script	ltiday::dev::Camera_Dome::1.0
+    label	"Labs ML CV Dome Camera"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Focus Object"
+    inputlabel	2	"Template Camera"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+    outputlabel	1	"Output Stage"
+
+    parm {
+        name    "usewithpdg"
+        label   "Use with PDG"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "seed_pdg"
+        label   "Seed"
+        type    float
+        default { "@variant" }
+        help    "Randomizes the distribution of cameras. Defaults to the frame seed from the ROP Synthetic Data TOP"
+        hidewhen "{ usewithpdg == 0 }"
+        range   { 0 100 }
+        parmtag { "export_disable" "1" }
+    }
+    parm {
+        name    "seed"
+        label   "Seed"
+        type    float
+        default { "0" }
+        help    "Randomizes the distribution of cameras. Defaults to the frame seed from the ROP Synthetic Data TOP"
+        hidewhen "{ usewithpdg == 1 }"
+        range   { 0 100 }
+        parmtag { "export_disable" "1" }
+    }
+    parm {
+        name    "savepath_pdg"
+        label   "Save Path"
+        type    file
+        default { "$HIP/usd/cams/cam_`@variant`_`@frame_index`.usd" }
+        help    "Disk location where the USD prim will be saved if exported. Defaults to the usd/cams folder."
+        hidewhen "{ usewithpdg == 0 }"
+        menureplace {
+            [ "opmenu -l -a configurelayer1 savepath" ]
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "filechooser_pattern" "*.usd, *.usda, *.usdc" }
+    }
+    parm {
+        name    "savepath"
+        label   "Save Path"
+        type    file
+        default { "$HIP/usd/cams/cam.usd" }
+        help    "Disk location where the USD prim will be saved if exported. Defaults to the usd/cams folder."
+        hidewhen "{ usewithpdg == 1 }"
+        menureplace {
+            [ "opmenu -l -a configurelayer1 savepath" ]
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "filechooser_pattern" "*.usd, *.usda, *.usdc" }
+    }
+    parm {
+        name    "showpreview"
+        label   "Show Preview"
+        type    toggle
+        default { "0" }
+        help    "Toggles the creation of points to visualize where a camera could spawn."
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "fd_dome"
+        label   "Dome"
+
+        groupsimple {
+            name    "fd_angle"
+            label   "Angle"
+
+            parm {
+                name    "latitude_min"
+                label   "Latitude Min"
+                type    float
+                default { "0" }
+                help    "Defines the allowable range in elevation around the centroid of the focus object."
+                range   { -90! 90! }
+            }
+            parm {
+                name    "latitude_max"
+                label   "Latitude Max"
+                type    float
+                default { "90" }
+                help    "Defines the allowable range in elevation around the centroid of the focus object."
+                range   { -90! 90! }
+            }
+            parm {
+                name    "azimuth_min"
+                label   "Azimuth Min"
+                type    float
+                default { "0" }
+                help    "Defines the allowable range of azimuth (which refers to the horizontal angle) around the centroid of the focus object"
+                range   { 0! 360! }
+            }
+            parm {
+                name    "azimuth_max"
+                label   "Azimuth Max"
+                type    float
+                default { "360" }
+                help    "Defines the allowable range of azimuth (which refers to the horizontal angle) around the centroid of the focus object"
+                range   { 0! 360! }
+            }
+        }
+
+        groupsimple {
+            name    "fd_distandspct"
+            label   "Distance and Screen Percentage"
+
+            parm {
+                name    "screenpct_min"
+                label   "Screen Percentage Min"
+                type    float
+                default { "25" }
+                help    "Defines the allowable minimum percentage of screen space an object can occupy along the smaller of the two screen space axes, determined by the camera's aspect ratio."
+                disablewhen "{ enable_distance_range == 1 }"
+                range   { 1! 100! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "screenpct_max"
+                label   "Screen Percentage Max"
+                type    float
+                default { "90" }
+                help    "Defines the allowable maximum percentage of screen space an object can occupy along the smaller of the two screen space axes, determined by the camera's aspect ratio."
+                disablewhen "{ enable_distance_range == 1 }"
+                range   { 1 100 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "enabledistrange"
+                label   "Enable Distance Range"
+                type    toggle
+                default { "0" }
+                help    "Enables the use of a custom distance range. If this box is not checked the camera dome will default to an automatic range calculation based on the object size and the cameras, aperture and focal length settings. Depending on the cameras aspect ratio the auto distance will calculate by either the horizontal aperture or vertical aperture, whichever aperture is smaller."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "distrange_min"
+                label   "Distance Range Min"
+                type    float
+                default { "19" }
+                hidewhen "{ enabledistrange == 0 }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "distrange_max"
+                label   "Distance Range Max"
+                type    float
+                default { "20" }
+                hidewhen "{ enabledistrange == 0 }"
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_dome_1"
+        label   "Camera"
+
+        groupsimple {
+            name    "fd_prim"
+            label   "Primitive"
+
+            parm {
+                name    "primpath"
+                label   "Primitive Path"
+                type    string
+                default { "/camdome" }
+                help    "USD primitive path where the node will generate the camera dome"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "cambasename"
+                label   "Camera Base Name"
+                type    string
+                default { "cam" }
+                help    "Base name for the camera object. A number will be appended to this name."
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_xform"
+            label   "Transform"
+
+            parm {
+                name    "rollrange"
+                label   "Roll Range"
+                type    float
+                size    2
+                default { "0" "0" }
+                help    "Defines the allowable range for the camera's roll (rotation along the camera's view vector)"
+                range   { 0 50 }
+            }
+            parm {
+                name    "centerobj"
+                label   "Center Object"
+                type    toggle
+                default { "0" }
+                help    "Disables random camera orientation (default behavior), centering the camera on the object instead"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "objscreenpct"
+                label   "Maintain Object Screen Percentage"
+                type    toggle
+                default { "1" }
+                help    "Distributes cameras to achieve an equal distribution of the focus object's screen space size, rather than equalizing the distances between the focus object and the camera. Useful when there is significant variation in camera distance"
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupcollapsible {
+            name    "fd_advanced"
+            label   "Advanced"
+
+            parm {
+                name    "frameminimum"
+                label   "Frame Minimum"
+                type    toggle
+                default { "0" }
+                help    "Orients the camera so the focus object is toward the bottom left corner. Useful for setting the desired frustum padding."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "padding"
+                label   "Padding"
+                type    vector2
+                size    2
+                default { "0" "0" }
+                help    "Adds padding rotation (in degrees) to the camera to create a buffer between the focus object and the edge of the camera frustum"
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}

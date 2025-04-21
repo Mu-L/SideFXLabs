@@ -1,0 +1,56 @@
+import colorsys
+import random
+import hou
+
+def generate_random_rgb_color(base_hue=None, hue_offset_range=(0, 360)):
+
+    if base_hue is None:
+        base_hue = random.random()  # Random hue between 0 and 1
+
+    hue_offset = random.uniform(hue_offset_range[0], hue_offset_range[1]) / 360.0  # Convert offset to range [0, 1]
+    new_hue = (base_hue + hue_offset) % 1  # Ensure hue stays within [0, 1]
+
+    # For this example, saturation and value are set to 1. You can randomize them if needed.
+    saturation = 1.0
+    value = 1.0
+
+    return colorsys.hsv_to_rgb(new_hue, saturation, value)
+
+
+def multiparm_from_input(kwargs):
+
+    import hou
+    
+    parent = kwargs['node'] 
+    in_pt_node = parent.node('IN_PT')
+    geo = in_pt_node.geometry()
+  
+    multiparm = parent.parm('keypoints')
+    multiparm.set(0)
+    
+    for point in geo.points():
+        pt_num = point.number()
+        
+        # Add a multiparm input per category id value
+        multiparm.insertMultiParmInstance(pt_num)
+        
+        #Set multiparm category name per category id value if one exists
+        keypoint_id = pt_num+1
+        parent.parm('kpid{}'.format(pt_num+1)).set(keypoint_id)
+        
+        #Set color values
+        rgb_color = generate_random_rgb_color(None, (10, 50))  # Offset hue by 10 to 50 degrees
+        
+        parent.parm('kpcolor{}r'.format(pt_num+1)).set(round(rgb_color[0],3))
+        parent.parm('kpcolor{}g'.format(pt_num+1)).set(round(rgb_color[1],3))
+        parent.parm('kpcolor{}b'.format(pt_num+1)).set(round(rgb_color[2],3))
+        
+        node = hou.pwd()
+        kp_node = node.node('check_kp_name')
+        kp_node.cook(force=True)
+   
+        if geo.findPointAttrib('kp_name'):
+            kp_name = point.attribValue('kp_name')
+            parent.parm('kpname{}'.format(pt_num+1)).set(kp_name)
+
+    

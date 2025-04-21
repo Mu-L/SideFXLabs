@@ -1,0 +1,44 @@
+# Dialog script for labs::ml_cv_texture_mask::1.0 automatically generated
+
+{
+    name	labs::ml_cv_texture_mask::1.0
+    script	Endava::Texture_Mask::1.0
+    label	"Labs ML CV Texture Mask"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    parm {
+        name    "texinstid"
+        label   "Texture Instance ID"
+        type    integer
+        default { "point(0,0,'instance_id',0)+1000" }
+        help    "An integer used to distinguish objects within the same category as separate entities. This value is the pixel value rendered in the ID pass from the ML CV Synthetics Karma ROP and used to generate COCO bounding boxes and segmentation."
+        range   { 1! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "categoryid"
+        label   "Category ID"
+        type    integer
+        default { "0" }
+        help    "Integer that will represent the category in the COCO JSON. "
+        range   { 1! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "categoryname"
+        label   "Category_Name"
+        type    string
+        default { "" }
+        help    "String name of the category that will be associated with the integer category ID"
+        parmtag { "script_callback_language" "python" }
+    }
+}

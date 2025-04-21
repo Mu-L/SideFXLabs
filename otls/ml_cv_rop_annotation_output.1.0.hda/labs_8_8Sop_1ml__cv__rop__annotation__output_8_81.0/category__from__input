@@ -1,0 +1,44 @@
+def catagory_from_input(kwargs):
+    import hou
+
+    parent = kwargs['node'] 
+    bbox_node = parent.node('OUT_bbox')
+    bbox_geo = bbox_node.geometry()
+    multiparm = parent.parm('categories')
+    
+    # Get all catagroy id and name values
+    all_cat_values = [(point.attribValue('category_id'), point.attribValue('category_name')) for point in bbox_geo.points()]
+    
+    if bbox_geo.findPointAttrib('texture_category_id'):
+        all_tex_cat_values = [(point.attribValue('texture_category_id'), point.attribValue('texture_category_name')) 
+                                for point in bbox_geo.points() 
+                                if point.attribValue('texture_category_id') != 0]
+                                
+        all_cat_values += all_tex_cat_values
+    
+    # Filter to unique values
+    unique_cat_values = list(set(all_cat_values))
+    for cat in unique_cat_values:
+        if cat[0] == 0:
+            hou.ui.displayMessage('ERROR: Geometry without set catagory value present')
+    
+    # Sort the categories by index
+    unique_cat_values.sort()
+    
+    for category in unique_cat_values:
+
+        # Add a multiparm input per category id value
+        category_id = category[0]
+        multiparm.insertMultiParmInstance(category_id-1)
+        
+        # Set multiparm category name per category id value if one exists
+        category_name = category[1]
+        parent.parm('cat_name{}'.format(category_id)).set(category_name)
+
+   
+        
+    
+    
+   
+    
+    

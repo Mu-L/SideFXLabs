@@ -1,0 +1,264 @@
+def export_coco(kwargs):
+    import hou
+    import os
+    import json
+    import ast
+    
+    ##Get the base information
+    parent = kwargs['node']
+    null_node = parent.node('OUT_bbox')
+    dir = parent.parm('outputpath').eval()
+    data_dir = os.path.join(dir, 'data')
+    filename = parent.parm('filename').eval() + '.json'
+    file_path = os.path.join(data_dir,filename)
+    
+    frame = parent.parm('framenum').eval()
+    ##print(frame)
+    if frame is None:
+        frame = 1
+    hou.setFrame(float(frame))
+    
+    ##Check if main directory exists
+    if not os.path.isdir(dir):
+        os.makedirs(dir)
+        
+    ##Check if data directory exists
+    if not os.path.isdir(data_dir):
+        os.makedirs(data_dir)
+    
+    ##get all the params from annotation multiparm
+    attrmultiparm = parent.parm('synthattr')
+    attrinstances = attrmultiparm.multiParmInstances()
+    
+    # Get camera pose node
+    pose_node = parent.node('get_cam_pos')
+    pose_geo = pose_node.geometry()
+
+    ##Get all user specified attrs
+    attrs = []
+    for x in attrinstances:
+        attrs.append(x.eval()) 
+    
+    ##Create the Data Structure
+    data = []
+      
+    geo = null_node.geometry()
+    points = geo.points()
+    
+    for point in points:
+        
+               
+        #get id attrib
+        category_id = None
+        if geo.findPointAttrib('category_id'):
+            category_id = point.attribValue('category_id')
+            
+        else:
+            raise hou.NodeError('category_id attrib is missing')
+            
+            
+        instance_id = None
+        if geo.findPointAttrib('instance_id'):
+            instance_id = point.attribValue('instance_id')
+            
+        else:
+            raise hou.NodeError('instance_id attrib is missing')
+            
+        category_name = None
+        if geo.findPointAttrib('category_name'):
+            category_name = point.attribValue('category_name')
+            
+        else:
+            raise hou.NodeError('category_name attrib is missing')
+            
+            
+        joint_poses = []
+        joint_poses_3d = []
+
+        if geo.findPointAttrib('haskp'):
+            haskp = point.attribValue('haskp')
+            has3Dkp = point.attribValue('has3Dkp')
+
+            if haskp:
+                joint_poses = getkp(parent, instance_id)
+
+            if has3Dkp:
+                joint_poses_3d = get3Dkp(parent, instance_id)
+
+                
+        point_data = {
+            "category_id":category_id,
+            "category_name":category_name,
+            "instance_id":instance_id,
+            "area": [],
+            "bbox": []
+            }
+        
+        # Get visibility percent attrib
+        vis_toggle = parent.parm('compvis')
+        if vis_toggle.eval():
+            if geo.findPointAttrib('percent_visible'):
+               pct_in_frame = point.attribValue('percent_visible')    
+               point_data["percent_in_frame"] = round(pct_in_frame,4)
+                
+            # Get visibility percent attrib
+            if geo.findPointAttrib('percent_visible_occ'):
+               pct_in_frame = point.attribValue('percent_visible_occ')    
+               point_data["percent_in_frame_occ"] = round(pct_in_frame,4)  
+            
+        # Add keypoint pose data if it exists   
+        if len(joint_poses) != 0:
+            point_data["keypoints"] = joint_poses
+            
+        # Add 3D keypoint pose data if it exists   
+        if len(joint_poses_3d) != 0:
+            point_data["keypoints_3d"] = joint_poses_3d
+            
+        # Get camera pose
+        if pose_geo.findPointAttrib('xform'):
+            xform = pose_geo.points()[0].attribValue('xform')  
+            point_data["camera_matrix"] = xform
+            
+        # Get camera focal length
+        if pose_geo.findPointAttrib('focalLength'):
+            focal_length = pose_geo.points()[0].attribValue('focalLength')  
+            point_data["camera_focal_length"] = focal_length
+            
+        # Get custom user attributes from multiparm
+        for x in attrs:
+            if geo.findPointAttrib(x) is not None:
+                attr = geo.findPointAttrib(x)
+                if str(point.attribValue(x)) != '':
+
+                    # parse attributes and add to json array
+                    attr_type = ast.literal_eval(point.attribValue(x))[0]
+                    
+                    # parse float/vector
+                    if attr_type == 1:
+                        value = point.attribValue(x).replace('{', '[').replace('}', ']')
+                        value = ast.literal_eval(value)[1]    
+                        # determine if value is a float or a vector
+                        if len(value)>1:
+                            point_data[x] = value
+                        else:
+                            point_data[x] = value[0]
+                    
+                    # parse string
+                    elif attr_type == 2:
+                        point_data[x] = str(ast.literal_eval(point.attribValue(x))[1])
+                    
+                    # parse int arry, float array, string array
+                    elif attr_type in [3, 4, 5]:
+                        value = point.attribValue(x).replace('{', '[').replace('}', ']')
+                        value = ast.literal_eval(value)[1]
+                        point_data[x] = value
+                    
+                    #parse dictionary
+                    elif attr_type == 6:
+                        dict = ast.literal_eval(point.attribValue(x))[1]
+                        parsed_dict = {}
+                        for i in dict:
+                            parsed_dict[i] = dict[i]['value']
+                        point_data[x] = parsed_dict
+                    
+                    #parse other
+                    else:
+                        point_data[x] = ast.literal_eval(point.attribValue(x))[1]
+     
+        data.append(point_data)
+
+
+    for point in points:
+        
+        # Check if texture mask in use
+        if geo.findPointAttrib('texture_category_id') and point.attribValue('texture_category_id') != 0:
+             
+            #get texture id attrib
+            category_id = None
+            if geo.findPointAttrib('texture_category_id'):
+                category_id = point.attribValue('texture_category_id')
+                            
+            instance_id = None
+            if geo.findPointAttrib('texture_mask_id'):
+                instance_id = point.attribValue('texture_mask_id')
+                
+            category_name = None
+            if geo.findPointAttrib('texture_category_name'):
+                category_name = point.attribValue('texture_category_name')
+       
+            point_data = {
+                "category_id":category_id,
+                "instance_id":instance_id,
+                "category_name":category_name,
+                "area": [],
+                "bbox": []
+                }
+                
+            # Get camera pose
+            if pose_geo.findPointAttrib('xform'):
+                xform = pose_geo.points()[0].attribValue('xform')  
+                point_data["camera_matrix"] = xform
+                
+            data.append(point_data)
+       
+    json_obj = json.dumps(data, indent=4, sort_keys=False)
+    with open(file_path, "w") as outfile: 
+        outfile.write(json_obj)
+        outfile.close()
+
+    
+def getkp(parent_node, id):
+
+    kp_node = parent_node.node('OUT_keypoints')
+
+    skeleton = kp_node.geometry()
+    skelpts = skeleton.points()
+    joint_poses = []
+    
+
+    for point in skelpts:
+        # Get the points instance id
+        pt_instance_id = point.attribValue("instance_id")
+        
+        if pt_instance_id == id:
+
+            # Get joint pos
+            kp_ndcX = point.attribValue('kp_ndcX')
+            kp_ndcY = point.attribValue('kp_ndcY')
+            kp_vis = point.attribValue('kp_vis')
+            
+            joint_poses.append(kp_ndcX)
+            joint_poses.append(kp_ndcY)
+            joint_poses.append(kp_vis)
+
+    return joint_poses
+    
+    
+def get3Dkp(parent_node, id):
+
+    kp_node = parent_node.node('OUT_keypoints')
+
+    skeleton = kp_node.geometry()
+    skelpts = skeleton.points()
+    joint_poses_3d = []
+    
+
+    for point in skelpts:
+        # Get the points instance id
+        pt_instance_id = point.attribValue("instance_id")
+        
+        if pt_instance_id == id:
+
+            # Get joint pos
+            position = point.attribValue('P')
+            kp_X = position[0]
+            kp_Y = position[1]
+            kp_Z = position[2]
+            kp_vis = point.attribValue('kp_vis')
+            
+            joint_poses_3d.append(kp_X)
+            joint_poses_3d.append(kp_Y)
+            joint_poses_3d.append(kp_Z)
+            joint_poses_3d.append(kp_vis)
+
+    return joint_poses_3d

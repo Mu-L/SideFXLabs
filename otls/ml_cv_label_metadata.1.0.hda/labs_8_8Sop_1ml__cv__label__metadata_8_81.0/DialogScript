@@ -1,0 +1,136 @@
+# Dialog script for labs::ml_cv_label_metadata::1.0 automatically generated
+
+{
+    name	labs::ml_cv_label_metadata::1.0
+    script	jaber::Coco_Data::1.0
+    label	"Labs ML CV Label Metadata"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Keypoints with Metadata"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        help    "A subset of points in the input geometry to run the program on. Leave this blank to affect all points in the input."
+        menutoggle {
+            [ "opmenu -l -a set_category_id groupname" ]
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        default { "guess" }
+        help    "What the group is made of. Primitive, point, edge, or vertex."
+        menu {
+            "guess"     "Guess from Group"
+            "vertices"  "Vertices"
+            "edges"     "Edges"
+            "points"    "Points"
+            "prims"     "Primitives"
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    groupsimple {
+        name    "fd_categoryid"
+        label   "Category ID"
+
+        parm {
+            name    "categoryid"
+            label   "Category ID"
+            type    integer
+            default { "0" }
+            help    "Integer that will represent the category in the COCO JSON. "
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "categoryname"
+            label   "Category Name"
+            type    string
+            default { "" }
+            help    "String name of the category that will be associated with the integer Category ID."
+            menureplace {
+                [ "kwargs['node'].generateInputGroupMenu(0, include_name_attrib=False)" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "enableinstid"
+            label   "Enable Instance ID"
+            type    toggle
+            default { "1" }
+            help    "Enables the creation of the Instance ID attribute."
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_instid"
+        label   "Instance ID"
+        hidewhentab "{ enableinstid == 0 }"
+
+        parm {
+            name    "idtype"
+            label   "ID Type"
+            type    integer
+            default { "0" }
+            help    "ID from Index should be used for single objects. ID from Attribute should be used when multiple objects exist for the same category."
+            menu {
+                "0" "ID from Index"
+                "1" "ID from Attribute"
+            }
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "attribute"
+            label   "Attribute"
+            type    string
+            default { "" }
+            help    "Name of the attribute that will be used for the Instance ID. This must be an integer."
+            hidewhen "{ idtype == 0 }"
+            menutoggle {
+                [ "types = (" ]
+                [ "    hou.attribType.Global," ]
+                [ "    hou.attribType.Prim," ]
+                [ "    hou.attribType.Point," ]
+                [ "    hou.attribType.Vertex" ]
+                [ ")" ]
+                [ "" ]
+                [ "return hou.pwd().generateInputAttribMenu(0, hou.attribType.Point, " ]
+                [ "                array_type=False, data_type = hou.attribType.Point)" ]
+                language python
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "instid"
+            label   "Instance ID"
+            type    integer
+            default { "ch(\"categoryid\")" }
+            help    "An integer used to distinguish objects within the same category as separate entities. This value is the pixel value rendered in the ID pass from the ML CV Synthetics Karma ROP and used to generate COCO bounding boxes and segmentation."
+            hidewhen "{ idtype == 1 }"
+            range   { 1! 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

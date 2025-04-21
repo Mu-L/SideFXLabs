@@ -1,0 +1,286 @@
+# Dialog script for labs::ml_cv_keypoint_metadata::1.0 automatically generated
+
+{
+    name	labs::ml_cv_keypoint_metadata::1.0
+    script	keypoint_metadata::1.0
+    label	"Labs ML CV Keypoint Metadata"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Points
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Keypoints with Metadata"
+
+    groupsimple {
+        name    "fd_render"
+        label   "Render"
+
+        parm {
+            name    "radx"
+            label   "Radius X"
+            type    float
+            invisible
+            default { "0.01" }
+            help    "Using Scroll wheel you can scale point guide geometry"
+            range   { 0! 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "loppath"
+            label   "Dome Camera LOP Path"
+            type    oppath
+            default { "" }
+            help    "Specifies the path to the LOP node from which the camera primitive is sourced. Usually this should point to a ML CV Dome Camera LOP."
+            disablewhen "{ compgt == 0 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!LOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "primpath"
+            label   "Camera Primitive"
+            type    string
+            default { "" }
+            help    "USD primitive path that points to the camera, used for obtaining screen space coordinates of the keypoints."
+            disablewhen "{ compgt == 0 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, False, lopparmname='loppath')" }
+            parmtag { "script_action_help" "Select primitives using the primitive picker dialog." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "camres"
+            label   "Camera Resolution"
+            type    intvector2
+            size    2
+            default { "@res.x" "@res.y" }
+            help    "Specifies the camera resolution. Defaults to @res, a PDG attribute created by the ML CV ROP Synthetic Data TOP."
+            disablewhen "{ compgt == 0 }"
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "compgt"
+            label   "Compute Ground Truth"
+            type    toggle
+            default { "1" }
+            help    "Enables the calculation of Ground Truth (GT) for keypoint positions (both screen-space and global). Useful when separating this node's functions and computing GT further downstream."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "kp3d"
+            label   "Include 3D Keypoints "
+            type    toggle
+            default { "0" }
+            help    "Adds 3D Keypoint Metadata to exported JSON file."
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "fd_skelmetadata"
+        label   "Skeleton Metadata"
+
+        parm {
+            name    "hasSkel"
+            label   "Include Skeleton Connectivity"
+            type    toggle
+            default { "1" }
+            help    "Enables the creation of the skeleton connectivity map. This connectivity is used to optionally generate a skeleton from keypoints and is useful for visualizing results within the ML training pipeline."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "visskel"
+            label   "Visualize Connectivity"
+            type    toggle
+            default { "1" }
+            help    "Enables the creation of edges between skeleton points that will be connected in the Ground Truth, allowing preview of this connectivity in the Houdini viewport."
+            disablewhen "{ hasSkel == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "visprim"
+            label   "Highlight Prim"
+            type    integer
+            invisible
+            default { "-1" }
+            range   { -1! 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "visskelcolor"
+            label   "Visualize Skeleton Color"
+            type    toggle
+            invisible
+            default { "0" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "skelconnections"
+            label   "Skeleton Connections"
+            type    string
+            default { "[]" }
+            help    "List of ordered pair point connections separated by commas. ie: [0,1],[1,2]"
+            disablewhen "{ hasSkel == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "skelfrominput"
+            label   "Add Connections"
+            type    button
+            default { "0" }
+            help    "Creates the connections multiparm from the Skeleton Connections parameter and input points."
+            parmtag { "button_icon" "" }
+            parmtag { "script_callback" "hou.pwd().hdaModule().skel_input.multiparm_from_skelconn(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "skeletons"
+            label    "Skeletons"
+
+            parm {
+                name    "connection#"
+                label   "Connection"
+                type    string
+                default { "" }
+                help    "Specifies the ordered pair for defining the skeleton connection."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "skelweight#"
+                label   "Skeleton Weight"
+                type    float
+                default { "0" }
+                help    "Indicates the importance of the skeleton link between keypoints."
+                range   { 0! 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "skelcolor#"
+                label   "Skeleton Color"
+                type    color
+                size    3
+                default { "1" "1" "1" }
+                help    "Defines the color of the skeleton connection. (Not visualized in Houdini viewport)"
+                range   { 0 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "skel_sep__#"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_skelmetadata_1"
+        label   "Keypoint Metadata"
+
+        parm {
+            name    "assignkp"
+            label   "Assign Keypoint Metadata"
+            type    toggle
+            default { "1" }
+            help    "Enables the creation of keypoint metadata by this node."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "viscolor"
+            label   "Assign Point Colors"
+            type    toggle
+            default { "1" }
+            help    "Enables the assignment of colors to the keypoints."
+            disablewhen "{ assignkp == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "metadatafrominput"
+            label   "Add Input Keys"
+            type    button
+            default { "0" }
+            help    "Generates the Keypoints Multiparm based on the input points."
+            disablewhen "{ assignkp == 0 }"
+            parmtag { "button_icon" "" }
+            parmtag { "export_disable" "1" }
+            parmtag { "script_callback" "hou.pwd().hdaModule().multi_input.multiparm_from_input(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "keypoints"
+            label    "Keypoints"
+            disablewhen "{ assignkp == 0 }"
+
+            parm {
+                name    "kpid#"
+                label   "Keypoint ID"
+                type    integer
+                default { "0" }
+                help    "Specifies the index of the keypoint. This number cannot be 0. The ID defaults to @ptnum + 1."
+                range   { 1! 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kpname#"
+                label   "Keypoint Name"
+                type    string
+                default { "kp_#" }
+                help    "Specifies the name of the keypoint, initially set by the attribute @kp_name."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kpsigma#"
+                label   "Keypoint Sigma"
+                type    float
+                default { "0" }
+                help    "Specifies the weight used in the Object Keypoint Similarity (OKS) calculation during evaluation. Adjusted to indicate the expected precision of the model."
+                range   { 0! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kpcolor#"
+                label   "Keypoint Color"
+                type    color
+                size    3
+                default { "1" "1" "1" }
+                help    "Specifies the color of the keypoint."
+                range   { 0 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kptype#"
+                label   "Keypoint Type"
+                type    string
+                default { "" }
+                help    "Defines the type of the keypoint, used for grouping multiple keypoints. For example, all keypoints of a left hand would have the type \"hand.\""
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kpswap#"
+                label   "Swapable"
+                type    string
+                default { "" }
+                help    "Specifies the mirror point for each keypoint, if one exists (e.g., elbow_left, elbow_right). Useful for data augmentation when flipping the image horizontally."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "kp_sep_#"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+        }
+
+    }
+
+}

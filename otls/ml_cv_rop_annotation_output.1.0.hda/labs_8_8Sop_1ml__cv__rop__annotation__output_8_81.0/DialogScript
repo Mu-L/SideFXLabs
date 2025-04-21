@@ -1,0 +1,314 @@
+# Dialog script for labs::ml_cv_rop_annotation_output::1.0 automatically generated
+
+{
+    name	labs::ml_cv_rop_annotation_output::1.0
+    script	jaber::dev::Coco_Json_from_geo::1.0
+    label	"Labs ML CV ROP Annotation Output"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Keypoint Vis Collision Geometry"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	Geometry
+    outputlabel	2	GT_Points
+
+    parm {
+        name    "validate_labels"
+        label   "Validate Labels"
+        type    button
+        invisible
+        default { "0" }
+        parmtag { "script_callback" "hou.pwd().hdaModule().validate.validate_labels(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "fd_General"
+        label   "General"
+
+        parm {
+            name    "partitionby"
+            label   "Partition By"
+            type    ordinal
+            default { "0" }
+            help    "Change between using the Piece attribute or 3D Connectivity to loop through objects."
+            menu {
+                "0" "Piece"
+                "1" "3D Connectivity"
+            }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "class"
+            label   "Piece Elements"
+            type    ordinal
+            default { "primitive" }
+            help    "Specifies the class of attribute to use for defining pieces in the `for each` loop within this node."
+            hidewhen "{ partitionby == 1 }"
+            menu {
+                "primitive" "Primitives"
+                "point"     "Points"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "pieceattr"
+            label   "Piece Attribute"
+            type    string
+            default { "instance_id" }
+            help    "Specifies the name of the attribute to use for defining pieces in the `for each` loop within this node."
+            hidewhen "{ partitionby == 1 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "visid"
+            label   "Visualize IDs"
+            type    toggle
+            nolabel
+            joinnext
+            default { "1" }
+            help    "Toggles random color assignment to visualize the assignment of IDs."
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "vis"
+            label   "Visualize"
+            type    integer
+            default { "0" }
+            help    "Changes between visualizing Instance IDs or Category IDs."
+            disablewhen "{ visid == 0 }"
+            menu {
+                "0" "Category ID"
+                "1" "Instance ID"
+            }
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm3"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "loppath"
+            label   "Dome Camera LOP Path"
+            type    oppath
+            default { "" }
+            help    "Specifies the Houdini path to the LOP node from which the camera primitive is retrieved. Usually this should point to a ML CV Dome Camera LOP."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!LOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "primpath"
+            label   "Camera Primitive"
+            type    string
+            default { "" }
+            help    "Specifies the USD primitive path pointing to the camera (used to get screen space)."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, False, lopparmname='loppath')" }
+            parmtag { "script_action_help" "Select primitives using the primitive picker dialog." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "compvis"
+            label   "Compute Object Screen Percentage"
+            type    toggle
+            default { "0" }
+            help    "Enables ground truth defining what percentage of each object is visible to the camera."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "resmult"
+            label   "Resolution Multiplier"
+            type    float
+            default { "0.01" }
+            help    "Adjusts the precision level for calculating the Visibility Percentage."
+            hidewhen "{ compvis == 0 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "visobjscreenpct"
+            label   "Visualize Object Screen Percentage"
+            type    toggle
+            default { "0" }
+            help    "Previews the calculation of the Visibility Percentage."
+            hidewhen "{ compvis != 1 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        groupcollapsible {
+            name    "fd_packgeo"
+            label   "Pack Geometry"
+            grouptag { "sidefx::switcher" "folder3" }
+
+            parm {
+                name    "group"
+                label   "Group"
+                type    string
+                default { "" }
+                help    "A subset of points in the input geometry to run the program on. Leave this blank to affect all points in the input."
+                menutoggle {
+                    [ "opmenu -l -a geo_to_pack group" ]
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+                parmtag { "script_action_help" "Select geometry from an available viewport." }
+                parmtag { "script_action_icon" "BUTTONS_reselect" }
+            }
+            parm {
+                name    "grouptype"
+                label   "Group Type"
+                type    ordinal
+                default { "guess" }
+                help    "What the group is made of (point, vertex, primitive etc)."
+                menu {
+                    "guess"         "Guess from Group"
+                    "breakpoints"   "Breakpoints"
+                    "edges"         "Edges"
+                    "points"        "Points"
+                    "prims"         "Primitives"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "removegrp"
+                label   "Delete Unused Groups"
+                type    toggle
+                default { "off" }
+                help    "Deletes any geometry that does not belong to a group listed above."
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_outputattr"
+            label   "Output Attributes"
+
+            parm {
+                name    "attrfrominput"
+                label   "Auto Add Existing Synth Attributes"
+                type    button
+                default { "0" }
+                help    "Finds existing synth attributes in the scene geometry and build a multiparm element for each one."
+                parmtag { "script_callback" "hou.pwd().hdaModule().attr_input.attribute_from_input(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            multiparm {
+                name    "synthattr"
+                label    "Synth Attributes"
+
+                parm {
+                    name    "synthattr#"
+                    label   "Synth Attribute"
+                    type    string
+                    default { "" }
+                    help    "Name of the synth attribute to be exported to COCO JSON."
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "fd_General_1"
+        label   "PDG"
+
+        parm {
+            name    "execute"
+            label   "Export JSON"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Exports the ground truth JSON for the active frame/work item. This button is generally executed using a ROP Fetch in a ML CV ROP Synthetic Data TOP node."
+            parmtag { "script_callback" "hou.pwd().hdaModule().render.export_coco(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "aggregate"
+            label   "Aggregate JSON"
+            type    button
+            default { "0" }
+            help    "Consolidates all individual frame JSON files into a single COCO JSON file for the entire dataset. This button is generally executed using a ROP Fetch in a ML CV ROP Synthetic Data TOP node."
+            parmtag { "script_callback" "hou.pwd().hdaModule().agg.aggregate_json(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "framenum"
+            label   "Frame Number"
+            type    float
+            default { "@frame_index" }
+            help    "the number of the current frame. defaults to `@frame_index`, an attribute created by the ML CV ROP Synthetic Data TOP."
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "camres"
+            label   "Camera Resolution"
+            type    intvector2
+            size    2
+            default { "@res.x" "@res.y" }
+            help    "Specifies the camera resolution. Defaults to @res, a PDG attribute created by the ML CV ROP Synthetic Data TOP."
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "outputpath"
+            label   "Output Path"
+            type    directory
+            default { "`@ds_dir`" }
+            help    "Specifies the location of the dataset directory. By default, this calls an attribute created by the ML CV ROP Synthetic Data TOP node."
+            menureplace {
+                [ "opmenu -l -a json_exporter1 output_path" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "filename"
+            label   "Filename"
+            type    string
+            default { "`@frame_name`_rgba" }
+            help    "Path and filename pattern specifying where per dataset frames should be rendered and what they should be named."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "fullpath"
+            label   "JSON Path"
+            type    string
+            default { "`@ds_dir`data/`@frame_name`_rgba.json" }
+            help    "Path and filename pattern specifying where per image JSONs should be generated and what they should be named."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "aggpath"
+            label   "COCO Path"
+            type    string
+            default { "`@ds_dir`coco.json" }
+            help    "Path and filename pattern specifying the location where the aggregated COCO JSON for the dataset should be generated and what it should be named."
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

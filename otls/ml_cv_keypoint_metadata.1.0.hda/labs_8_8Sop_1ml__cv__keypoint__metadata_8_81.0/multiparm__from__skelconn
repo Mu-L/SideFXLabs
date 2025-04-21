@@ -1,0 +1,14 @@
+def multiparm_from_skelconn(kwargs):
+
+    import hou
+    import ast
+    
+    parent_node = kwargs['node'] 
+    skel_multiparm = parent_node.parm('skeletons')
+    skel_conns = parent_node.parm('skelconnections').eval()
+    skel_multiparm.set(0)
+    
+    for i,conn in enumerate(ast.literal_eval(skel_conns)):
+        skel_multiparm.insertMultiParmInstance(i)
+        parent_node.parm('connection{}'.format(i+1)).set(str(conn))
+        parent_node.parm('connection{}'.format(i+1)).lock(True)

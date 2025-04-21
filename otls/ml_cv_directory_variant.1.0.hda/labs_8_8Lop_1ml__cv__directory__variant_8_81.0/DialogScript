@@ -1,0 +1,112 @@
+# Dialog script for labs::ml_cv_directory_variant::1.0 automatically generated
+
+{
+    name	labs::ml_cv_directory_variant::1.0
+    script	berri::directory_variant::1.0
+    label	"Labs ML CV Directory Variant"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Stage"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+    outputlabel	1	"Output Stage"
+
+    groupsimple {
+        name    "fd_reference"
+        label   "Reference"
+
+        parm {
+            name    "primpath"
+            label   "Primitive Path"
+            type    string
+            default { "/$OS" }
+            help    "USD primitive path in the stage that the variant set will be added."
+            menureplace {
+                [ "opmenu -l -a create_variants primpath" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nloputils.selectPrimsInParm(kwargs, False)" }
+            parmtag { "script_action_help" "Select a primitive in the Scene Viewer or Scene Graph Tree pane.\nCtrl-click to select using the primitive picker dialog.\nAlt-click to toggle movement of the display flag." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "filepath"
+            label   "File Pattern"
+            type    string
+            default { "$HFS/houdini/usd/assets/*/<LASTMATCH>.usd" }
+            help    "Defines the file pattern for the referenced USD files (e.g., $HIP/USD/HDR/*.usd). If the file path contains spaces, enclose the path in quotes."
+            menureplace {
+                [ "opmenu -l -a find_files filepath1" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import parmutils\nparmutils.selectMultipleFilesForParm(kwargs['parmtuple'][0])" }
+            parmtag { "script_action_help" "Open floating file chooser" }
+            parmtag { "script_action_icon" "BUTTONS_chooser_file" }
+        }
+        parm {
+            name    "reftype"
+            label   "Reference Type"
+            type    string
+            default { "file" }
+            help    "The type of composition arc to create to the referenced prim."
+            menu {
+                "file"          "Reference File"
+                "payload"       "Payload File"
+                "prim"          "Reference from First Input"
+                "inherit"       "Inherit from First Input"
+                "specialize"    "Specialize from First Input"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "refop"
+            label   "Reference Operation"
+            type    string
+            default { "prependfront" }
+            help    "Defines how new references added by this node will interact with existing references."
+            menu {
+                "prependfront"  "Add as Strongest References in Prepend List"
+                "prependback"   "Add as Weakest References in Prepend List"
+                "appendfront"   "Add as Strongest References in Append List"
+                "appendback"    "Add as Weakest References in Append List"
+                "remove"        "Remove References"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "parentprimtype"
+            label   "Parent Primitive Type"
+            type    string
+            default { "UsdGeomXform" }
+            help    "Specifies the type assigned to any intermediate prims created if the prim at the specified Primitive Path does not exist."
+            menu {
+                [ "opmenu -l -a find_files parentprimtype" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_variant"
+        label   "Variant"
+
+        parm {
+            name    "variantsetname"
+            label   "Variant Set Name"
+            type    string
+            default { "model" }
+            help    "Specifies the name of the variant set on the primitive."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

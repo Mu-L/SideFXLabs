@@ -1,0 +1,7 @@
+import toolutils
+
+agg = toolutils.createModuleFromSection("aggregate_json", kwargs["type"], "aggregate_json")
+render = toolutils.createModuleFromSection("render_json", kwargs["type"], "render_json")
+validate = toolutils.createModuleFromSection("validate", kwargs["type"], "validate")
+cat_input = toolutils.createModuleFromSection("category_from_input", kwargs["type"], "category_from_input")
+attr_input = toolutils.createModuleFromSection("attribute_from_input", kwargs["type"], "attribute_from_input")

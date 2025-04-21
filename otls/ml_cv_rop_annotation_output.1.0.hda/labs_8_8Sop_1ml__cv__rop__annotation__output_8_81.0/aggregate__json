@@ -1,0 +1,257 @@
+def skel_connections(kp_node, cat_id):
+
+    import ast
+    
+    skel_pts = [point for point in kp_node.geometry().points() if point.attribValue('category_id') == cat_id]
+    connections = skel_pts[0].attribValue('skel_conn')
+    connections = ast.literal_eval(connections)
+
+    return connections
+
+
+    
+def get_joint_names(kp_node, cat_id):
+
+    # Get Joint Names
+    joint_names_set = set()
+    joint_names = []
+
+    skel_pts = [point for point in kp_node.geometry().points() if point.attribValue('category_id') == cat_id]
+  
+    for point in skel_pts:
+        joint_name = point.attribValue('kp_name')
+        if joint_name not in joint_names_set:
+            joint_names.append(joint_name)
+            joint_names_set.add(joint_name)
+     
+    return joint_names
+    
+    
+def get_keypoint_metadata(kp_node, cat_id):
+    keypoint_metadata = []
+    skel_pts = [point for point in kp_node.geometry().points()]
+    joint_names = []
+    seen_kp_ids = set()  # Set to keep track of kp_id values already processed
+    
+    for point in skel_pts:
+        kp_id = point.attribValue('kp_id')
+        if kp_id not in seen_kp_ids:
+            seen_kp_ids.add(kp_id)  # Mark this kp_id as seen
+            
+            kp_name = point.attribValue('kp_name')
+            kp_sigma = point.attribValue('kp_sigma')
+            kp_color = point.attribValue('kp_color')
+            kp_type = point.attribValue('kp_type')
+            kp_swap = point.attribValue('kp_swap')
+            
+            metadata = {
+                "id": kp_id, 
+                "name": kp_name, 
+                "sigma": kp_sigma, 
+                "color": kp_color, 
+                "type": kp_type, 
+                "swap": kp_swap
+            }
+            
+            keypoint_metadata.append(metadata)
+            joint_names.append(kp_name)
+
+    return [joint_names, keypoint_metadata]
+    
+
+def get_skeleton_metadata(kp_node):
+    
+    import ast
+
+    # Query skel connections detail attr
+    skel_conn = kp_node.geometry().attribValue('skel_conn')
+    skel_conn = ast.literal_eval(skel_conn)
+
+    # Query skel color detail attr
+    skel_color = kp_node.geometry().attribValue('skel_color')
+    # Convert to tupil list
+    skel_color = [(skel_color[i], skel_color[i + 1], skel_color[i + 2]) for i in range(0, len(skel_color), 3)]   
+    
+    # Query skel weight detail attr
+    skel_weight = kp_node.geometry().attribValue('skel_weight')    
+    
+    skeleton_metadata = []
+
+
+    for conn, color, weight in zip(skel_conn, skel_color, skel_weight):
+        
+        try:
+            from_point = kp_node.geometry().point(conn[0])
+            to_point = kp_node.geometry().point(conn[1])
+            
+            from_kp_name = from_point.attribValue('kp_name')
+            to_kp_name = to_point.attribValue('kp_name')
+              
+            metadata = {
+                    "from": from_kp_name,
+                    "to": to_kp_name,
+                    "weight": round(weight,4), 
+                    "color": color
+                    }
+    
+            skeleton_metadata.append(metadata)
+            
+        except Exception as e: 
+            print(e)
+            pass
+
+    return skeleton_metadata
+
+
+def log_missing_file(log_path, missing_file):
+    from datetime import datetime
+    log_file="{}\error.log".format(log_path)
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    with open(log_file, "a") as log:
+        log.write(f"{timestamp} - Missing file: {missing_file}\n")
+        
+  
+def aggregate_json(kwargs):
+    import os, hou, json, pdg, sys
+    from datetime import date
+    from PIL import Image
+    
+    parent = kwargs['node']
+    
+    # Get JSON output dir apth
+    dir = parent.parm('outputpath').eval()
+    full_path = os.path.join(dir, 'coco.json')
+    render_dir = os.path.join(dir, 'data/')
+    kp_node = parent.node('OUT_keypoints')
+   
+    # Get haskkp value
+    bbox_node = parent.node('OUT_bbox')
+    bbox_geo = bbox_node.geometry()
+    
+    
+    # Get haskkp value
+    KP_to_category = {}
+    for point in bbox_geo.points():
+    
+        if bbox_geo.findPointAttrib('haskp'):
+            KP_to_category[point.attribValue('category_id')] = point.attribValue('haskp')
+        else:
+            KP_to_category[point.attribValue('category_id')] = 0
+            
+        if bbox_geo.findPointAttrib('texture_category_id'):
+            if point.attribValue('texture_category_id') != 0:
+                KP_to_category[point.attribValue('texture_category_id')] = 0
+        
+    # Get hasSkel value
+    skel_to_category = {}
+    for point in bbox_geo.points():
+    
+        if bbox_geo.findPointAttrib('hasSkel'):
+            skel_to_category[point.attribValue('category_id')] = point.attribValue('hasSkel')
+        else:
+            skel_to_category[point.attribValue('category_id')] = 0
+            
+        if bbox_geo.findPointAttrib('texture_category_id'):
+            if point.attribValue('texture_category_id') != 0:
+                skel_to_category[point.attribValue('texture_category_id')] = 0  
+
+    coco_data = {
+        "info": {},
+        "licenses": [],
+        "images": [],
+        "categories": [],
+        "annotations": []
+    }
+
+                              
+    # Iterate through per-render json    
+    render_json = [i for i in os.listdir(render_dir) if i.endswith('.json')]
+    
+    # global id counter for annotation id
+    global_id = 1
+    
+    # Empty list for all categories
+    catinstances = []
+    
+    # Build images array information
+    for id_num, json_file in enumerate(render_json):
+        json_fullpath = os.path.join(render_dir, json_file)
+        file_name = json_file.replace('.json', '.png')
+        image_path = os.path.join(render_dir, file_name)
+        
+        if os.path.exists(image_path):
+                
+    
+            image = Image.open(os.path.join(render_dir, file_name))
+            width, height = image.size
+    
+            image_data = {
+                "id": id_num+1,
+                "file_name": 'data/{}'.format(file_name),
+                "height": height,
+                "width": width,
+                "licence": 1,
+            }
+    
+            coco_data["images"].append(image_data)
+            
+            # Get annotation information from each render json
+            with open(json_fullpath) as f:
+                annotation_data = json.load(f)
+    
+                for annotation in annotation_data:
+                    catinstances.append((annotation['category_name'], annotation['category_id']))
+                    annotation['image_id'] = id_num+1
+                    annotation["id"] = global_id
+                    coco_data["annotations"].append(annotation)
+                    global_id += 1
+                    
+        else:
+            log_missing_file(dir, image_path)
+            
+    
+    # Remove duplicate categories and sort
+    catinstances = (set(catinstances)) 
+    catinstances = sorted(list(catinstances), key=lambda x: x[1])
+
+
+    # Add keypoint info to catagory array
+    for idx, cat in enumerate(catinstances):
+    
+        category = cat[0]
+        id = cat[1]
+        categorydata = {'name': category, 'id': id}
+        
+        #check number of catagories matches number of keys
+        try:
+            #Add keypoint name data if available
+            if KP_to_category[id] == 1:
+                joint_names = get_joint_names(kp_node, id)
+                categorydata['keypoints'] = joint_names
+            
+            #Add Skeleton connectivity data if available
+            if skel_to_category[id] == 1:
+                skel_conn = skel_connections(kp_node, id)  
+                categorydata['skeleton'] = skel_connections(kp_node, id)    
+                
+        
+        except:
+            pass   
+
+        coco_data['categories'].append(categorydata)
+        
+    try:
+        if get_keypoint_metadata(kp_node, id) != [[], []]:
+            #Add keypoint metadata if available
+            jt_full_names, coco_data['info']['keypoints_metadata'] = get_keypoint_metadata(kp_node, id)
+    except:
+        pass
+        
+    try:    
+        #Add skeleton metadata if available
+        coco_data['info']['skeleton_metadata'] = get_skeleton_metadata(kp_node)
+    except:
+        pass  
+    
+    with open(full_path, 'w') as outfile:
+        json.dump(coco_data, outfile, indent=4)

@@ -1,0 +1,51 @@
+# Dialog script for labs::ml_cv_directory_import::1.0 automatically generated
+
+{
+    name	labs::ml_cv_directory_import::1.0
+    script	directory_import::1.0
+    label	"Labs ML CV Directory Import"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    parm {
+        name    "dir"
+        label   "Directory"
+        type    directory
+        default { "$HFS/houdini/usd/assets" }
+        help    "Specifies the file path to the directory from which files will be imported."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "filepattern"
+        label   "File Name Pattern"
+        type    string
+        default { "*crag.usd" }
+        help    "Every matching file found within the directory (including subdirectories) will be added to the list of files to import. This parameter can contain wildcards."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "importnum"
+        label   "Import Number"
+        type    integer
+        default { "0" }
+        help    "Specifies the index of the file to be imported from the folder."
+        range   { 0! 30 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "importall"
+        label   "Import All"
+        type    toggle
+        default { "0" }
+        help    " When enabled, imports the entire directory matching the pattern. When disabled, the specified index determines which file is imported."
+        parmtag { "script_callback_language" "python" }
+    }
+}

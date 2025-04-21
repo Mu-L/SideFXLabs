@@ -1,0 +1,37 @@
+def attribute_from_input(kwargs):
+    import hou
+
+    parent = kwargs['node'] 
+    bbox_node = parent.node('OUT_bbox')
+    bbox_geo = bbox_node.geometry()
+    multiparm = parent.parm('synthattr')
+    
+    # Get all catagroy id and name values
+    attributes = [ x.name() for x in bbox_geo.pointAttribs() ]
+    filtered_attributes = [attr for attr in attributes if attr.startswith('synth_')]
+    
+    # Filter to unique values
+    unique_cat_values = list(set(filtered_attributes))
+    
+    # Sort the categories by index
+    unique_cat_values.sort()
+    
+    # Get existing multiparm values
+    multiparm_values = [value.eval() for value in multiparm.multiParmInstances()]
+    
+    for i, attribute in enumerate(unique_cat_values):
+        
+        # Check if attribute already exists and skip if it does
+        if attribute not in multiparm_values:
+        
+            # Add a multiparm input per category id value
+            multiparm.insertMultiParmInstance(i)
+            
+            # Set multiparm category name per category id value if one exists
+            parent.parm('synthattr{}'.format(i+1)).set(attribute)
+
+    
+   
+
+
+    

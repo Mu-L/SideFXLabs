@@ -1,0 +1,16 @@
+import platform
+
+node = kwargs['node']
+
+if platform.system() == 'Windows':
+    node.parm('os').set('Windows')
+    msg = 'Labs ML CV ROP Synthetic Data TOP:\nPlease follow the instructions in the Custom Python Bin parameter tooltip.'
+    node_msg = 'Please follow the instructions in the Custom Python Bin parameter tooltip.'
+    node.setComment(node_msg)
+    node.setGenericFlag(hou.nodeFlag.DisplayComment, True)
+    print(msg)
+elif platform.system() == 'Darwin':
+    node.parm('os').set('Darwin')
+
+else:
+    node.parm('os.').set('Linux')

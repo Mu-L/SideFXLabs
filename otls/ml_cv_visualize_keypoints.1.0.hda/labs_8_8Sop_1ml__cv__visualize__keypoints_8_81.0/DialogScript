@@ -1,0 +1,85 @@
+# Dialog script for labs::ml_cv_visualize_keypoints::1.0 automatically generated
+
+{
+    name	labs::ml_cv_visualize_keypoints::1.0
+    script	visualize_keypoints::1.0
+    label	"Labs ML CV Visualize Keypoints"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Keypoints with Metadata"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "viskp"
+        label   "View Keypoints"
+        type    toggle
+        default { "1" }
+        help    "Visualizes keypoints by displaying a sphere sprite on each point. The sphere sprite inherits its color from the point attribute @kp_color."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "vistype"
+        label   "View Keypoint Type"
+        type    toggle
+        default { "0" }
+        help    "Assigns colors to keypoints based on their @kp_type attribute, ensuring that keypoints of the same type share the same color."
+        disablewhen "{ viskp == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "jointscale"
+        label   "Keypoint Scale"
+        type    float
+        default { "0.3" }
+        help    "Defines the radius of the sphere sprite in meters, with an additional multiplier from @pscale."
+        disablewhen "{ viskp == 0 }"
+        range   { 0.1 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "visskel"
+        label   "View Skeleton Connectivity"
+        type    toggle
+        default { "1" }
+        help    "Displays the skeletal connections between keypoints with lines to visualize how they are connected."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "wirewidth"
+        label   "Wire Width"
+        type    float
+        default { "0.05" }
+        help    "Defines the thickness in meters of the skelleton connection lines."
+        disablewhen "{ visskel == 0 }"
+        range   { 0.01 0.5 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "visswap"
+        label   "View Keypoint Swapable"
+        type    toggle
+        default { "0" }
+        help    "Shows connection lines between points that are swappable mirrors of each other, such as the right elbow and left elbow."
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "radius"
+        label   "Wire Width"
+        type    float
+        default { "0.15" }
+        help    "Defines the thickness in meters of the swappable lines."
+        disablewhen "{ visswap == 0 }"
+        range   { 0.01 0.5 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+}

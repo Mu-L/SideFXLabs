@@ -1,0 +1,93 @@
+# Dialog script for labs::ml_cv_vector_data::1.0 automatically generated
+
+{
+    name	labs::ml_cv_vector_data::1.0
+    script	Endava::gaze_data::1.0
+    label	"Labs ML CV Vector Data"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Source Point"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    parm {
+        name    "srcept"
+        label   "Source Point"
+        type    string
+        default { "" }
+        help    "Specifies the point index or the name of the group to which the vector point belongs."
+        menureplace {
+            [ "opmenu -l -a attribwrangle2 group" ]
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Points,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "visvector"
+        label   "Visualize Vector"
+        type    toggle
+        default { "1" }
+        help    "Toggle to enable visualization of the vector as a line within the scene geometry."
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_domecam"
+        label   "Dome Camera"
+
+        parm {
+            name    "loppath"
+            label   "Dome Camera LOP Path"
+            type    oppath
+            default { "" }
+            help    "Specifies the path to the LOP node from which the camera primitive is sourced. Usually this should point to a ML CV Dome Camera LOP."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!LOP!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "primpath"
+            label   "Camera Primitive"
+            type    string
+            default { "" }
+            help    "USD primitive path that points to the camera, used for obtaining screen space coordinates of the keypoints."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import loputils\nkwargs['ctrl'] = True\nloputils.selectPrimsInParm(kwargs, False, lopparmname='loppath')" }
+            parmtag { "script_action_help" "Select primitives using the primitive picker dialog." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+            parmtag { "sidefx::usdpathtype" "prim" }
+        }
+        parm {
+            name    "camres"
+            label   "Camera Resolution"
+            type    intvector2
+            size    2
+            default { "if(@res.x<1, 480, @res.x)" "if(@res.y<1, 360, @res.y)" }
+            help    "Specifies the camera resolution. Defaults to @res, a PDG attribute created by the ML CV ROP Synthetic Data TOP."
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_output"
+        label   "Output"
+
+        parm {
+            name    "vectorattrprefix"
+            label   "Vector Attribute Prefix"
+            type    string
+            default { "" }
+            help    "Specifies the name of the vector attribute to be imported as Ground Truth"
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

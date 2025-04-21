@@ -1,0 +1,21 @@
+import platform
+
+node = kwargs['node']
+
+if platform.system() == 'Windows':
+    node.parm('os').set('Windows')
+    if node.parm('python').eval() ==  '':
+        msg = 'Please see Custom Python Bin parameter tooltip.'
+        node.setComment(msg)
+        node.setGenericFlag(hou.nodeFlag.DisplayComment, True)
+        print(msg)
+elif platform.system() == 'Darwin':
+    node.parm('os').set('Darwin')
+    if node.parm('python').eval() != '':
+        node.parm('python').set('')
+        node.setGenericFlag(hou.nodeFlag.DisplayComment, False)
+else:
+    node.parm('os').set('Linux')
+    if node.parm('python').eval() != '':
+        node.parm('python').set('')
+        node.setGenericFlag(hou.nodeFlag.DisplayComment, False)
