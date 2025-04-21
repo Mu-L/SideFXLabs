@@ -1,0 +1,58 @@
+#type:     node
+#context:  sop
+#internal: labs::ml_cv_texture_mask::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
+#since:    20.5
+
+= Labs ML CV Texture Mask =
+
+"""Utilizes image masks as UV textures to create ground truth on the surface of objects."""
+
+
+The Texture Map SOP is a key node in the texture mask GT pipeline. The Texture Map GT
+pipeline allows you to use image masks as UV textures to create ground truth on the
+surface of objects. This node adds 3 attributes to the geometry before it gets imported to
+LOPs for mask texturing.
+
+`texture_mask_id`: the unique instance ID of texture mask (which helps separate it
+from other objects of the same category)
+
+`texture_category_id`: the ID for the category that the mask GT will be categorized as
+
+`texture_category_name`: the category name that the mask GT will be categorized as
+
+
+NOTE:
+    In addition to the node setup, the output of this information into the resulting
+    annotation requires a specific shader setup which can be seen in the synthetics demo file.
+
+
+@parameters
+
+    == Texture Mask ==
+
+    Texture Instance ID:
+        #id: texinstid
+        An integer used to distinguish objects within the same category
+        as separate entities. This value is the pixel value rendered in the
+        ID pass from the Karma GT ROP and used to generate COCO
+        bounding boxes and segmentation.
+        
+    Category ID:
+        #id: categoryid
+        Integer that will represent the category in the COCO JSON.
+        
+    Category_Name:
+        #id: categoryname
+        String name of the category that will be associated with the integer category ID.
+
+
+@examples
+
+    TIP:
+        When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
+
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+
+
+@related
