@@ -30,10 +30,10 @@ matchesdef = 0
 Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
-comment ""
-position -2.73299 -2.51331
+comment "Please follow the instructions in the Custom Python Bin parameter tooltip."
+position -3.42062 -1.30624
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -47,7 +47,7 @@ stat
 {
   create -1
   modify -1
-  author josh@joshs-macbook-pro.local
+  author maia@craik
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -191,6 +191,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -215,6 +216,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 outputfilepath1	[ 0	locks=0 ]	(	"$HIP/ds2/data/exr/testkp_`padzero(4, @frame)`.exr"	)
 usecustomtag1	[ 0	locks=0 ]	(	"off"	)
@@ -363,6 +366,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -387,6 +391,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 }
 
@@ -523,6 +529,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -547,6 +554,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 }
 
@@ -2182,7 +2191,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
 	}
 }
 
@@ -2650,6 +2659,19 @@ Content-Type: text/plain
         label   "Cook Batch When"
         export  none
     }
+    parm {
+        name    "pdg_commandtype"
+        baseparm
+        label   "Work Item Command"
+        export  none
+    }
+    parm {
+        name    "pdg_command"
+        baseparm
+        label   "Custom Command"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/header_info.chn"
@@ -2795,6 +2817,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 folder1	[ 0	locks=0 ]	(	0	0	0	)
 exectuable2	[ 0	locks=0 ]	(	0	)
 version	[ 8	locks=0 ]	(	[ versionx	0 ] 	0	)
@@ -3065,6 +3089,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -3089,6 +3114,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 outputfilepath1	[ 0	locks=0 ]	(	"$HIP/ds2/data/exr/testkp_`padzero(4, @frame)`.exr"	)
 usecustomtag1	[ 0	locks=0 ]	(	"off"	)
@@ -3726,6 +3753,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -3750,6 +3778,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 outputfilepath1	[ 0	locks=0 ]	(	"$HIP/ds2/data/exr/testkp_`padzero(4, @frame)`.exr"	)
 usecustomtag1	[ 0	locks=0 ]	(	"off"	)
@@ -3889,6 +3919,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -3913,6 +3944,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 outputfilepath1	[ 0	locks=0 ]	(	"$HIP/ds2/data/exr/testkp_`padzero(4, @frame)`.exr"	)
 usecustomtag1	[ 0	locks=0 ]	(	"off"	)
@@ -5736,6 +5769,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5894,6 +5929,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5976,6 +6013,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6145,6 +6184,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6397,6 +6438,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7116,6 +7159,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7279,6 +7324,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7594,6 +7641,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7993,6 +8042,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -8389,6 +8440,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -8647,6 +8700,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9567,6 +9622,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -10691,6 +10748,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11129,6 +11188,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11777,6 +11838,19 @@ Content-Type: text/plain
         label   "Cook Batch When"
         export  none
     }
+    parm {
+        name    "pdg_commandtype"
+        baseparm
+        label   "Work Item Command"
+        export  none
+    }
+    parm {
+        name    "pdg_command"
+        baseparm
+        label   "Custom Command"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/validate_dataset/pass_attrs.chn"
@@ -11882,6 +11956,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 folder1	[ 0	locks=0 ]	(	0	0	0	0	)
 evaluation2	[ 0	locks=0 ]	(	1	)
 exectuable2	[ 0	locks=0 ]	(	0	)
@@ -13707,6 +13783,7 @@ setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -13731,6 +13808,8 @@ pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 pdgnodedeps	[ 0	locks=0 ]	(	0	)
 }
 

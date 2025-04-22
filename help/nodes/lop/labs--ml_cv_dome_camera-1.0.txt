@@ -6,16 +6,23 @@
 
 = Labs ML CV Dome Camera =
 
-"""Frames an object in camera frustrum."""
+"""Generates a camera from one of the random positions within a specified 3D camera dome and frames the focus object within the camera's view."""
 
 
-Takes a camera at origin and places it around a focus object or proxy ensuring that it is always in frame. 
+This node takes a camera at world origin (from the second input) and places it around a focus object or proxy (from the first input) ensuring that it is always in frame.
+
+
+:box:
+    #display: raised yellow
+
+    The original ML Computer Vision tools were developed by the Synthetic Data team at Endava PLC.
 
 
 @parameters
 
     Use with PDG:
         #id: usewithpdg
+        Uses this node with a PDG setup.
         
     Seed:
         #id: seed_pdg
@@ -27,7 +34,7 @@ Takes a camera at origin and places it around a focus object or proxy ensuring t
         
     Show Preview:
         #id: showpreview
-        Toggles the creation of points to visualize where a camera could spawn.
+        Visualizes the area where a camera can spawn.
         
     == Dome ==
 
@@ -85,11 +92,11 @@ Takes a camera at origin and places it around a focus object or proxy ensuring t
 
     Primitive Path:
         #id: primpath
-        USD primitive path where the node will generate the camera dome.
+        The USD primitive path where the node will generate the camera dome.
         
     Camera Base Name:
         #id: cambasename
-        Base name for the camera object. A number will be appended to this name.
+        The base name for the camera object. A number will be appended to this name.
         
     === Transform ===
 
@@ -99,7 +106,7 @@ Takes a camera at origin and places it around a focus object or proxy ensuring t
         
     Center Object:
         #id: centerobj
-        Disables random camera orientation (default behavior), centering the camera on the object instead.
+        Disables random camera orientation (default behavior) and centers the camera on the object.
         
     === Advanced ===
 
@@ -124,7 +131,7 @@ Takes a camera at origin and places it around a focus object or proxy ensuring t
     Too Close Warning:
         #id: tooclosewarning
         Defines the color of points that are too close to the focus object, indicating that the object would exceed the camera's frustum.
-        
+
 
 @examples
 

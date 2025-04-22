@@ -6,13 +6,18 @@
 
 = Labs ML CV ROP Annotation Output =
 
-"""Outputs a ground truth JSON per frame."""
+"""Outputs a ground truth JSON per frame and then aggregates them all into a COCO JSON file for the full dataset."""
 
 
-This node takes a scene with all its Metadata, Labels, and Synth Attributes and outputs a ground truth JSON per frame, then aggregates the per frame JSON files into a [COCO JSON|https://cocodataset.org/#home] file for the full dataset.
+This node takes a scene with all its Metadata, Labels, and Synth Attributes and outputs a ground truth JSON per frame, then aggregates the per frame JSON files into a single [COCO JSON|https://cocodataset.org/#home] file for the full dataset.
 
 WARNING:
     Compute keypoint visibility can be inconsistent if the points are on top of each other.
+
+:box:
+    #display: raised yellow
+
+    The original ML Computer Vision tools were developed by the Synthetic Data team at Endava PLC.
 
 
 @parameters
