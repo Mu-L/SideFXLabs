@@ -9,10 +9,7 @@
 """Outputs a ground truth JSON per frame."""
 
 
-Takes a scene with all its Metadata, Labels, and Synth Attributes and outputs a
-Ground Truth JSON per frame, then aggregates the per frame JSONs into the COCO JSON
-for the full dataset.
-
+This node takes a scene with all its Metadata, Labels, and Synth Attributes and outputs a ground truth JSON per frame, then aggregates the per frame JSON files into a [COCO JSON|https://cocodataset.org/#home] file for the full dataset.
 
 WARNING:
     Compute keypoint visibility can be inconsistent if the points are on top of each other.
@@ -103,6 +100,10 @@ WARNING:
     Auto Add Existing Synth Attributes:
         #id: attrfrominput
         Finds existing synth attributes in the scene geometry and build a multiparm element for each one.
+
+    Synth Attributes:
+        #id: synthattr
+        The number of synthetic attributes.
         
     === Synth Attributes ===
 
@@ -142,7 +143,7 @@ WARNING:
         
     COCO Path:
         #id: aggpath
-        Path and filename pattern specifying the location where the aggregated COCO JSON for the dataset should be generated and what it should be named.
+        Path and filename pattern specifying the location where the aggregated [COCO JSON|https://cocodataset.org/#home] file for the dataset should be generated and what it should be named.
     
 
 @examples
@@ -150,7 +151,7 @@ WARNING:
     TIP:
         When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
 
-    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.zip]
 
 
 @related

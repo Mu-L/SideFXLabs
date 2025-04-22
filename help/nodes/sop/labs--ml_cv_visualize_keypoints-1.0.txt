@@ -9,49 +9,48 @@
 """Visualizes keypoints and their connections."""
 
 
-Provides a set of tools for visualizing keypoints and their connections, enabling a clear representation of types, skeletal structures, and mirrored points.
+This node provides a set of tools for visualizing keypoints and their connections, enabling a clear representation of types, skeletal structures, and mirrored points.
 
 
 @parameters
 
     View Keypoints:
         #id: viskp
-        Enables the calculation of ground truth (GT) for keypoint positions (both screen-space and global).
-        Useful when  separating this node's functions and computing GT further  downstream.
+        Visualizes keypoints by displaying a sphere sprite on each point. The sphere sprite inherits its color from the point attribute `kp_color`.
 
     View Keypoint Type:
         #id: vistype
-        Assigns colors to keypoints based on their `@kp_type` attribute, ensuring that keypoints of the same type share the same color.
+        Assigns colors to keypoints based on their `kp_type` attribute, ensuring that keypoints of the same type share the same color.
 
     Keypoint Scale:
         #id: jointscale
-        Specifies the path to the LOP node from which the camera primitive is sourced
+        In meters, the radius of the sphere sprite, with an additional multiplier from the `pscale` attribute.
         
     View Skeleton Connectivity:
         #id: visskel
-        USD primitive path that points to the camera, used for obtaining screen space coordinates of the keypoints.
+        Visualizes the skeletal connections between keypoints with lines to visualize how they are connected.
         
     Wire Width:
         #id: wirewidth
-        Specifies the camera resolution. Defaults to `@res`, a PDG attribute created by the ROP Synthetic Data TOP.
+        In meters, the thickness in meters of the skelleton connection lines.
         
     View Keypoint Swapable:
         #id: visswap
-        Displays connection lines between points which are swappable mirrors of each other. for example, right elbow, left elbow.
+        Visualizes connection lines between points that are swappable mirrors of each other, such as the left elbow and right elbow.
         
     Wire Width:
         #id: radius
-        Defines the thickness in meters of the swappable lines.
+        In meters, the thickness in meters of the swappable lines.
         
-
-
 
 @examples
 
     TIP:
         When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
 
-    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.zip]
 
 
 @related
+
+    - [Node:sop/labs--ml_cv_keypoint_metadata-1.0]

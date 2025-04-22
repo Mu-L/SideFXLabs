@@ -25,22 +25,20 @@ NOTE:
         
     Camera Primitive:
         #id: primpath
-        USD primitive path that points to the camera, used for obtaining screen space coordinates of the keypoints.
+        The USD primitive path that points to the camera, used for obtaining screen space coordinates of the keypoints.
         
     Camera Resolution:
         #id: camres
-        Specifies the camera resolution. Defaults to @res, a PDG attribute created by the ROP Synthetic Data TOP.
+        The camera resolution. Defaults to @res, a PDG attribute created by the [Labs ML CV ROP Synthetic Data TOP|Node:top/labs--ml_cv_rop_synthetic_data-1.0].
 
     Compute Ground Truth:
         #id: compgt
-        Enables the calculation of Ground Truth (GT) for keypoint
-        positions (both screen-space and global). Useful when
-        separating this node's functions and computing GT further
-        downstream.
+        Enables the calculation of ground truth for keypoint
+        positions (both screen-space and global). This is useful when separating this node's functions and computing ground truth further downstream.
         
-    Include 3D Keypoints :
+    Include Keypoint 3D Metadata:
         #id: kp3d
-        Includes 3D Keypoints.
+        Adds keypoint 3D Metadata to the COCO JSON file exported by the [Labs ML CV ROP Annotation Output SOP|Node:sop/labs--ml_cv_rop_annotation_output-1.0].
         
     == Skeleton Metadata ==
 
@@ -57,73 +55,75 @@ NOTE:
 
     Skeleton Connections:
         #id: skelconnections
-        List of ordered pair point connections separated by commas, for example: `[0,1],[1,2]`
+        The list of ordered pair point connections separated by commas, for example: `[0,1],[1,2]`.
 
     Add Connections:
         #id: skelfrominput
-        Creates the connections multiparm from the Skeleton
-        Connections parameter and input points
+        Creates the connections multiparm from the Skeleton Connections parameter and input points.
+
+    Connections:
+        #id: skeletons
+        The number of skeleton connections.
 
 
     === Skeletons ===
 
     Connection:
         #id: connection#
-        Specifies the ordered pair for defining the skeleton connection
+        The ordered pair for defining the skeleton connection.
         
     Skeleton Weight:
         #id: skel_weight#
-        Indicates the importance of the skeleton link between keypoints.
+        The importance of the skeleton link between keypoints.
         
     Skeleton Color:
         #id: skel_color#
-        Defines the color of the skeleton connection. (Not visualized in
-        Houdini viewport)
+        The color of the skeleton connection. (This is not visualized in the Houdini viewport).
         
     == Keypoint Metadata ==
 
     Assign Keypoint Metadata:
         #id: assignkp
-        Enables the creation of keypoint metadata by this node
+        Enables the creation of keypoint metadata by this node.
 
     Assign Point Colors:
         #id: viscolor
-        Enables the assignment of colors to the keypoints
+        Enables the assignment of colors to the keypoints.
         
     Add Input Keys:
         #id: metadatafrominput
-        Generates the Keypoints Multiparm based on the input points
+        Generates the Keypoints multiparm based on the input points.
         
+    Keypoints:
+        #id: keypoints
+        The number of keypoints.
         
     === Keypoints ===
 
     Keypoint ID:
         #id: kpid#
-        Specifies the index of the keypoint. This number cannot be 0. The ID defaults to `@ptnum + 1`.
+        The index of the keypoint. This number cannot be 0. The ID value defaults to the point number plus 1.
         
     Keypoint Name:
         #id: kpname#
-        Specifies the name of the keypoint, initially set by the attribute `@kp_name`.
+        The name of the keypoint, initially set by the attribute `kp_name`.
         
     Keypoint Sigma:
         #id: kpsigma#
-        Specifies the weight used in the Object Keypoint Similarity (OKS)
-        calculation during evaluation. Adjusted to indicate the expected precision of the model.
+        The weight used in the Object Keypoint Similarity (OKS)
+        calculation during evaluation, adjusted to indicate the expected precision of the model.
         
     Keypoint Color:
         #id: kpcolor#
-        Specifies the color of the Keypoint for ML visualization
+        The color of the Keypoint for ML visualization
         
     Keypoint Type:
         #id: kptype#
-        Defines the type of the keypoint, used for grouping multiple
-        keypoints. For example, all keypoints of a left hand would have the type `hand`.
+        Defines the type of the keypoint, used for grouping multiple keypoints. For example, all keypoints of a left hand would have the type `'hand'`.
         
     Swapable:
         #id: kpswap#
-        Specifies the mirror point for each keypoint, if one exists (e.g.,
-        `elbow_left`, `elbow_right`). Useful for data augmentation when
-        flipping the image horizontally.
+        Specifies the mirror point for each keypoint, if one exists (e.g., `'elbow_left'`, `'elbow_right'`). This is useful for data augmentation when flipping the image horizontally.
 
 
 @examples
@@ -131,7 +131,10 @@ NOTE:
     TIP:
         When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
 
-    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.zip]
 
 
 @related
+
+    - [Node:sop/labs--ml_cv_rop_annotation_output-1.0]
+    - [Node:top/labs--ml_cv_rop_synthetic_data-1.0]

@@ -6,25 +6,16 @@
 
 = Labs ML CV Texture Mask =
 
-"""Utilizes image masks as UV textures to create ground truth on the surface of objects."""
+"""Adds geometry attributes needed for the mask ground truth pipeline."""
 
 
-The Texture Map SOP is a key node in the texture mask GT pipeline. The Texture Map GT
-pipeline allows you to use image masks as UV textures to create ground truth on the
-surface of objects. This node adds 3 attributes to the geometry before it gets imported to
-LOPs for mask texturing.
+This node is a key part of the texture mask ground truth pipeline that allows you to use image masks as UV textures to create the ground truth on the surface of objects.
 
-`texture_mask_id`: the unique instance ID of texture mask (which helps separate it
-from other objects of the same category)
+This node adds 3 attributes to the geometry before it is imported to LOPs for mask texturing:
 
-`texture_category_id`: the ID for the category that the mask GT will be categorized as
-
-`texture_category_name`: the category name that the mask GT will be categorized as
-
-
-NOTE:
-    In addition to the node setup, the output of this information into the resulting
-    annotation requires a specific shader setup which can be seen in the synthetics demo file.
+# `texture_mask_id`: The unique instance ID of texture mask (which helps separate it from other objects of the same category).
+# `texture_category_id`: The ID for the category that the mask ground truth will be categorized as.
+# `texture_category_name`: The category name that the mask ground truth will be categorized as.
 
 
 @parameters
@@ -33,18 +24,15 @@ NOTE:
 
     Texture Instance ID:
         #id: texinstid
-        An integer used to distinguish objects within the same category
-        as separate entities. This value is the pixel value rendered in the
-        ID pass from the Karma GT ROP and used to generate COCO
-        bounding boxes and segmentation.
+        The integer that is used to distinguish objects within the same category as separate entities. This value is the pixel value rendered in the ID pass from the [Labs ML CV Synthetics Karma ROP|Node:lop/labs--ml_cv_synthetics_karma_rop-1.0] and used to generate COCO bounding boxes and segmentation.
         
     Category ID:
         #id: categoryid
-        Integer that will represent the category in the COCO JSON.
+        The integer that represents the category in the [COCO JSON|https://cocodataset.org/#home] file.
         
     Category_Name:
         #id: categoryname
-        String name of the category that will be associated with the integer category ID.
+        The string name of the category that will be associated with the integer category ID.
 
 
 @examples
@@ -52,7 +40,9 @@ NOTE:
     TIP:
         When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
 
-    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/ml_computer_vision/ml_computer_vision.1.0.zip]
 
 
 @related
+
+    - [Node:lop/labs--ml_cv_synthetics_karma_rop-1.0]
