@@ -17,19 +17,8 @@
     groupsimple {
         name    "fd_grid"
         label   "Grid"
+        invisibletab
 
-        parm {
-            name    "orientation"
-            label   "Orientation"
-            type    ordinal
-            default { "2" }
-            menu {
-                "0" "XY Plane"
-                "1" "YZ Plane"
-                "2" "ZX Plane"
-            }
-            parmtag { "script_callback_language" "python" }
-        }
         parm {
             name    "gridshape"
             label   "Shape"
@@ -44,177 +33,220 @@
             }
             range   { 0 10 }
         }
-        groupsimple {
-            name    "fd_shapehexagon"
-            label   "Hexagon Shape"
-            hidewhen "{ gridshape > 1 }"
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "gridsize"
-                label   "Size"
-                type    integer
-                default { "2" }
-                range   { 0! 10 }
-            }
-        }
-
-        groupsimple {
-            name    "fd_shaperectangle"
-            label   "Rectangle Shape"
-            hidewhen "{ gridshape != 2 }"
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "qmin"
-                label   "Q Min"
-                type    integer
-                default { "-5" }
-                range   { -10 10 }
-            }
-            parm {
-                name    "qmax"
-                label   "Q Max"
-                type    integer
-                default { "5" }
-                range   { -10 10 }
-            }
-            parm {
-                name    "rmin"
-                label   "R Min"
-                type    integer
-                default { "-5" }
-                range   { -10 10 }
-            }
-            parm {
-                name    "rmax"
-                label   "R Max"
-                type    integer
-                default { "5" }
-                range   { -10 10 }
-            }
-        }
-
-        groupsimple {
-            name    "fd_shapeparallelogram"
-            label   "Parallelogram Shape"
-            hidewhen "{ gridshape != 3 }"
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "axes"
-                label   "Axes"
-                type    ordinal
-                default { "0" }
-                menu {
-                    "0" "QR"
-                    "1" "SQ"
-                    "2" "RS"
-                }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "axis1min"
-                label   "Axis 1 Min"
-                type    integer
-                default { "-5" }
-                range   { -10 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "axis1max"
-                label   "Axis 1 Max"
-                type    integer
-                default { "5" }
-                range   { -10 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "axis2min"
-                label   "Axis 2 Min"
-                type    integer
-                default { "-5" }
-                range   { -10 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "axis2max"
-                label   "Axis 2 Max"
-                type    integer
-                default { "5" }
-                range   { -10 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
     }
 
     groupsimple {
-        name    "fd_hexagon"
-        label   "Hexagon"
+        name    "fd_primitive"
+        label   "Primitive"
+        invisibletab
 
-        parm {
-            name    "tileorientation"
-            label   "Orientation"
-            type    ordinal
-            default { "0" }
-            menu {
-                "0" "Pointy Top"
-                "1" "Flat Top"
-            }
-            range   { 0 10 }
-        }
-        parm {
-            name    "tilesize"
-            label   "Radius"
-            type    float
-            default { "1" }
-            range   { 0! 10 }
-        }
-        parm {
-            name    "addtile"
-            label   "Add Primitives"
-            type    toggle
-            default { "0" }
-            parmtag { "script_callback_language" "python" }
-        }
     }
 
     groupsimple {
         name    "fd_advanced"
         label   "Advanced"
+        invisibletab
+
+    }
+
+    parm {
+        name    "type"
+        label   "Primitive Type"
+        type    ordinal
+        default { "1" }
+        menu {
+            "0" "Polygon"
+            "1" "Points"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "connectivity"
+        label   "Connectivity"
+        type    ordinal
+        default { "1" }
+        hidewhen "{ type == 1 }"
+        menu {
+            "0" "Individual Elements"
+            "1" "Connected Components"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "orientation"
+        label   "Orientation"
+        type    ordinal
+        default { "2" }
+        menu {
+            "0" "XY Plane"
+            "1" "YZ Plane"
+            "2" "ZX Plane"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_shapehexagon"
+        label   "Hexagon Shape"
+        hidewhen "{ gridshape > 1 }"
+        grouptag { "sidefx::look" "blank" }
 
         parm {
-            name    "showguidegeometry"
-            label   "Show Guide Geometry"
-            type    toggle
-            default { "1" }
-            parmtag { "script_callback_language" "python" }
+            name    "gridsize"
+            label   "Size"
+            type    integer
+            default { "2" }
+            range   { 0! 10 }
+        }
+    }
+
+    groupsimple {
+        name    "fd_shaperectangle"
+        label   "Rectangle Shape"
+        hidewhen "{ gridshape != 2 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "qmin"
+            label   "Q Min"
+            type    integer
+            default { "-5" }
+            range   { -10 10 }
         }
         parm {
-            name    "coloraxes"
-            label   "Color Coordinate Axes"
-            type    toggle
+            name    "qmax"
+            label   "Q Max"
+            type    integer
+            default { "5" }
+            range   { -10 10 }
+        }
+        parm {
+            name    "rmin"
+            label   "R Min"
+            type    integer
+            default { "-5" }
+            range   { -10 10 }
+        }
+        parm {
+            name    "rmax"
+            label   "R Max"
+            type    integer
+            default { "5" }
+            range   { -10 10 }
+        }
+    }
+
+    groupsimple {
+        name    "fd_shapeparallelogram"
+        label   "Parallelogram Shape"
+        hidewhen "{ gridshape != 3 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "axes"
+            label   "Axes"
+            type    ordinal
             default { "0" }
+            menu {
+                "0" "QR"
+                "1" "SQ"
+                "2" "RS"
+            }
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "outputcoordinates"
-            label   "coordinatestoggle"
-            type    toggle
-            nolabel
-            joinnext
-            default { "0" }
+            name    "axis1min"
+            label   "Axis 1 Min"
+            type    integer
+            default { "-5" }
+            range   { -10 10 }
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "coordinatesattribute"
-            label   "Output Coordinates"
-            type    string
-            default { "outputcoordinates" }
-            disablewhen "{ outputcoordinates == 0 }"
+            name    "axis1max"
+            label   "Axis 1 Max"
+            type    integer
+            default { "5" }
+            range   { -10 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "axis2min"
+            label   "Axis 2 Min"
+            type    integer
+            default { "-5" }
+            range   { -10 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "axis2max"
+            label   "Axis 2 Max"
+            type    integer
+            default { "5" }
+            range   { -10 10 }
             parmtag { "script_callback_language" "python" }
         }
     }
 
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "tileorientation"
+        label   "Orientation"
+        type    ordinal
+        default { "0" }
+        menu {
+            "0" "Pointy Top"
+            "1" "Flat Top"
+        }
+        range   { 0 10 }
+    }
+    parm {
+        name    "tilesize"
+        label   "Radius"
+        type    float
+        default { "1" }
+        range   { 0! 10 }
+    }
+    parm {
+        name    "sepparm"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "showguidegeometry"
+        label   "Show Guide Geometry"
+        type    toggle
+        default { "1" }
+        hidewhen "{ type == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "coloraxes"
+        label   "Visualize Coordinate Axes"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "outputcoordinates"
+        label   "coordinatestoggle"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "coordinatesattribute"
+        label   "Output Coordinates"
+        type    string
+        default { "outputcoordinates" }
+        disablewhen "{ outputcoordinates == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
 }

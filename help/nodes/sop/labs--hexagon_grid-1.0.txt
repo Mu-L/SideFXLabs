@@ -8,11 +8,16 @@
 
 """Generates a hexagonal grid."""
 
-[Image:/images/sidefxlabs_banner.jpg]
-
 This node generates a hexagonal point grid that can be filled with hexagonal primitives. You can also change the radius of the hexagon and its orientation, which can be either Pointy Top or Flat Top.
 
 @parameters
+    Primitive Type:
+        #id: type
+        Type of Geometry to create. In the case of Points, no geometry is created. Instead, free floating points are created in the same positions as they would be in a surface.
+
+    Connectivity:
+        #id: connectivity
+        Whether to treat adjacent edges as a group, or as individuals.
 
     Orientation:
         #id: orientation
@@ -24,19 +29,15 @@ This node generates a hexagonal point grid that can be filled with hexagonal pri
 
     Orientation:
         #id: tileorientation
-        The orientation of the hexagon primitive. It can be set to Pointy Top or Flat Top.
+        The orientation of the hexagon primitive. It can be set to Pointy Top or Flat Top. In Pointy Top the hexagons are aligned with their vertices pointing up and down, and the columns are offset, while in Flat Top the hexagons are aligned with their edges flat on the top and bottom, and the rows are offset.
 
     Radius:
         #id: tileradius
         Sets the radius of the hexagon primitive.
 
-    Add Primitives:
-        #id: addtile
-        Instantiates hexagons primitives in place of the points on the grid.
-
     Show Guide Geometry:
         #id: showguidegeometry
-        Shows hexagon primitives overlayed on the point grid.
+        Shows hexagon primitives overlayed on the point grid. Only available when Primitive Type is set to Points.
 
     Color Coordinate Axes:
         #id: coloraxes
