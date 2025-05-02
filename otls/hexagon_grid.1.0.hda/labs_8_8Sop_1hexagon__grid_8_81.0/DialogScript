@@ -14,41 +14,6 @@
     inputlabel	3	"Sub-Network Input #3"
     inputlabel	4	"Sub-Network Input #4"
 
-    groupsimple {
-        name    "fd_grid"
-        label   "Grid"
-        invisibletab
-
-        parm {
-            name    "gridshape"
-            label   "Shape"
-            type    ordinal
-            invisible
-            default { "0" }
-            menu {
-                "0" "Hexagon"
-                "1" "Triangle"
-                "2" "Rectangle"
-                "3" "Parallelogram"
-            }
-            range   { 0 10 }
-        }
-    }
-
-    groupsimple {
-        name    "fd_primitive"
-        label   "Primitive"
-        invisibletab
-
-    }
-
-    groupsimple {
-        name    "fd_advanced"
-        label   "Advanced"
-        invisibletab
-
-    }
-
     parm {
         name    "type"
         label   "Primitive Type"
@@ -84,6 +49,19 @@
         }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "gridshape"
+        label   "Shape"
+        type    ordinal
+        default { "0" }
+        menu {
+            "0" "Hexagon"
+            "1" "Triangle"
+            "2" "Rectangle"
+            "3" "Parallelogram"
+        }
+        range   { 0 10 }
+    }
     groupsimple {
         name    "fd_shapehexagon"
         label   "Hexagon Shape"
@@ -107,28 +85,28 @@
 
         parm {
             name    "qmin"
-            label   "Q Min"
+            label   "Horizontal Min"
             type    integer
             default { "-5" }
             range   { -10 10 }
         }
         parm {
             name    "qmax"
-            label   "Q Max"
+            label   "Horizontal Max"
             type    integer
             default { "5" }
             range   { -10 10 }
         }
         parm {
             name    "rmin"
-            label   "R Min"
+            label   "Vertical Min"
             type    integer
             default { "-5" }
             range   { -10 10 }
         }
         parm {
             name    "rmax"
-            label   "R Max"
+            label   "Vertical Max"
             type    integer
             default { "5" }
             range   { -10 10 }
@@ -187,6 +165,14 @@
         }
     }
 
+    parm {
+        name    "center"
+        label   "Center Grid to Origin"
+        type    toggle
+        default { "0" }
+        hidewhen "{ gridshape == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
     parm {
         name    "sepparm2"
         label   "Separator"

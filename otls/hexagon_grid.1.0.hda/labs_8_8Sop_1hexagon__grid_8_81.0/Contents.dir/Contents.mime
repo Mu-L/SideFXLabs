@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -1.15
+position -4.5 2.85
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -226,17 +226,6 @@ Content-Type: text/plain
             grouptag { "sidefx::look" "blank" }
 
             parm {
-                name    "tileorientation"
-                label   "Orientation"
-                type    ordinal
-                default { "0" }
-                menu {
-                    "0" "Pointy Top"
-                    "1" "Flat Top"
-                }
-                range   { 0 10 }
-            }
-            parm {
                 name    "grid_size"
                 label   "Grid Size"
                 type    integer
@@ -369,12 +358,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/hexagon.chn"
@@ -387,12 +370,6 @@ Content-Type: text/plain
       default = 6
       flags = 0
       segment { length = 0 value = 6 6 expr = ch(\"../gridsize\") }
-    }
-    channel tileorientation {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../tileorientation\") }
     }
   }
 
@@ -409,7 +386,6 @@ class	[ 0	locks=0 ]	(	"detail"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"int grid_size = chi(\"grid_size\");
-int hexagon_orientation = chi(\"hexagon_orientation\");
 int ptnum = 0;
 
 for (int q = -grid_size; q <= grid_size; q++)
@@ -430,7 +406,6 @@ for (int q = -grid_size; q <= grid_size; q++)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -444,7 +419,6 @@ vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
 folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-tileorientation	[ 8	locks=0 ]	(	[ tileorientation	0 ] 	)
 grid_size	[ 0	locks=0 ]	(	[ grid_size	0 ] 	)
 }
 
@@ -565,7 +539,7 @@ sopflags sopflags =
 comment "HDA code: hex"
 position 5.5 -18.15
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -610,19 +584,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.init"
 Content-Type: text/plain
 
 type = attribwrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.497 -4.151
+position 5.497 -3.151
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -631,11 +605,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	hexagon 0 1 "input1"
+0 	grid_shape 4 1 "input1"
 }
 inputs
 {
-0 	hexagon 0 1
+0 	grid_shape 0 1
 }
 stat
 {
@@ -650,7 +624,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.spareparmdef"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.spareparmdef"
 Content-Type: text/plain
 
     group {
@@ -851,15 +825,9 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.chn"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.chn"
 Content-Type: text/plain
 
 {
@@ -886,7 +854,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.parm"
 Content-Type: text/plain
 
 {
@@ -932,7 +900,6 @@ else if (orientation == 2)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -952,13 +919,13 @@ orientation	[ 8	locks=0 ]	(	[ orientation	2 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.netbox"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.netbox"
 Content-Type: text/plain
 
 __netbox3
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
+Content-Disposition: attachment; filename="hdaroot/grid_gen.userdata"
 Content-Type: text/plain
 
 {
@@ -1373,12 +1340,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/construct_shape.chn"
@@ -1455,7 +1416,6 @@ else if (orientation == 2)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1587,7 +1547,7 @@ sopflags sopflags =
 comment ""
 position -2.5 -14.155
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -1806,11 +1766,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	attribwrangle1 1 1 "input1"
+0 	center_grid_to_origin 1 1 "input1"
 }
 inputs
 {
-0 	attribwrangle1 0 1
+0 	center_grid_to_origin 0 1
 }
 stat
 {
@@ -2053,12 +2013,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/color_axes.chn"
@@ -2104,7 +2058,6 @@ if (color_menu == 1)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2159,7 +2112,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 7.5 -3.1502
+position 5.5 -2.1502
 connectornextid 5
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2317,17 +2270,6 @@ Content-Type: text/plain
             grouptag { "sidefx::look" "blank" }
 
             parm {
-                name    "tileorientation"
-                label   "Orientation"
-                type    ordinal
-                default { "0" }
-                menu {
-                    "0" "Pointy Top"
-                    "1" "Flat Top"
-                }
-                range   { 0 10 }
-            }
-            parm {
                 name    "grid_size"
                 label   "Grid Size"
                 type    integer
@@ -2460,12 +2402,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/triangle.chn"
@@ -2478,12 +2414,6 @@ Content-Type: text/plain
       default = 6
       flags = 0
       segment { length = 0 value = 6 6 expr = ch(\"../gridsize\") }
-    }
-    channel tileorientation {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../tileorientation\") }
     }
   }
 
@@ -2500,7 +2430,6 @@ class	[ 0	locks=0 ]	(	"detail"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"int grid_size = chi(\"grid_size\");
-int hexagon_orientation = chi(\"hexagon_orientation\");
 int ptnum = 0;
 
 for (int q = 0; q <= grid_size; q++)
@@ -2518,7 +2447,6 @@ for (int q = 0; q <= grid_size; q++)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2532,7 +2460,6 @@ vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
 folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-tileorientation	[ 8	locks=0 ]	(	[ tileorientation	0 ] 	)
 grid_size	[ 0	locks=0 ]	(	[ grid_size	0 ] 	)
 }
 
@@ -2647,11 +2574,11 @@ Content-Type: text/plain
                     "0" "Pointy Top"
                     "1" "Flat Top"
                 }
-                range   { 0 10 }
             }
             groupsimple {
                 name    "fd_rectangle"
                 label   "Rectangle"
+                grouptag { "group_type" "simple" }
 
                 parm {
                     name    "qmin"
@@ -2680,56 +2607,6 @@ Content-Type: text/plain
                     type    integer
                     default { "3" }
                     range   { -10 10 }
-                }
-            }
-
-            groupsimple {
-                name    "fd_parallelogram"
-                label   "Parallelogram"
-
-                parm {
-                    name    "axes"
-                    label   "Axes"
-                    type    ordinal
-                    default { "0" }
-                    menu {
-                        "0" "QR"
-                        "1" "SQ"
-                        "2" "RS"
-                    }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "axis1min"
-                    label   "Axis 1 Min"
-                    type    integer
-                    default { "-3" }
-                    range   { -10 10 }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "axis1max"
-                    label   "Axis 1 Max"
-                    type    integer
-                    default { "3" }
-                    range   { -10 10 }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "axis2min"
-                    label   "Axis 2 Min"
-                    type    integer
-                    default { "-3" }
-                    range   { -10 10 }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "axis2max"
-                    label   "Axis 2 Max"
-                    type    integer
-                    default { "3" }
-                    range   { -10 10 }
-                    parmtag { "script_callback_language" "python" }
                 }
             }
 
@@ -2859,12 +2736,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/rectangle.chn"
@@ -2898,40 +2769,6 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 5 5 expr = ch(\"../rmax\") }
     }
-    channel axis1min {
-      lefttype = extend
-      righttype = extend
-      default = -3
-      flags = 0
-      segment { length = 0 value = -3 -3 expr = ch(\"../axis1min\") }
-    }
-    channel axes {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../axes\") }
-    }
-    channel axis1max {
-      lefttype = extend
-      righttype = extend
-      default = 3
-      flags = 0
-      segment { length = 0 value = 3 3 expr = ch(\"../axis1max\") }
-    }
-    channel axis2min {
-      lefttype = extend
-      righttype = extend
-      default = -3
-      flags = 0
-      segment { length = 0 value = -3 -3 expr = ch(\"../axis2min\") }
-    }
-    channel axis2max {
-      lefttype = extend
-      righttype = extend
-      default = 3
-      flags = 0
-      segment { length = 0 value = 3 3 expr = ch(\"../axis2max\") }
-    }
     channel tileorientation {
       lefttype = extend
       righttype = extend
@@ -2952,18 +2789,14 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"detail"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"int hexagon_orientation = chi(\"hexagon_orientation\");
+snippet	[ 0	locks=0 ]	(	"int tile_orientation = chi(\"tileorientation\");
 int qmin = chi(\"qmin\");
 int qmax = chi(\"qmax\");
 int rmin = chi(\"rmin\");
 int rmax = chi(\"rmax\");
-int axis1min = chi(\"axis1min\");
-int axis1max = chi(\"axis1max\");
-int axis2min = chi(\"axis2min\");
-int axis2max = chi(\"axis2max\");
 int ptnum = 0;
 
-if (hexagon_orientation == 0)
+if (tile_orientation == 0)
 {
     for (int r = rmin; r <= rmax; r++)
     {   
@@ -2981,7 +2814,7 @@ if (hexagon_orientation == 0)
         }
     }
 }
-else if (hexagon_orientation == 1)
+else if (tile_orientation == 1)
 {
     for (int q = qmin; q <= qmax; q++)
     {   
@@ -3001,7 +2834,6 @@ else if (hexagon_orientation == 1)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3021,12 +2853,6 @@ qmin	[ 0	locks=0 ]	(	[ qmin	0 ] 	)
 qmax	[ 0	locks=0 ]	(	[ qmax	0 ] 	)
 rmin	[ 0	locks=0 ]	(	[ rmin	0 ] 	)
 rmax	[ 0	locks=0 ]	(	[ rmax	3 ] 	)
-fd_parallelogram	[ 0	locks=0 ]	(	0	)
-axes	[ 8	locks=0 ]	(	[ axes	0 ] 	)
-axis1min	[ 0	locks=0 ]	(	[ axis1min	-3 ] 	)
-axis1max	[ 0	locks=0 ]	(	[ axis1max	3 ] 	)
-axis2min	[ 0	locks=0 ]	(	[ axis2min	-3 ] 	)
-axis2max	[ 0	locks=0 ]	(	[ axis2max	3 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3312,12 +3138,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/parallelogram.chn"
@@ -3427,7 +3247,6 @@ for (int axis1 = axis1min; axis1 <= axis1max; axis1++)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4167,6 +3986,120 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.init"
+Content-Type: text/plain
+
+type = matchsize
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 5.5 -4.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	grid_gen 1 1 "input1"
+}
+inputs
+{
+0 	grid_gen 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.chn"
+Content-Type: text/plain
+
+{
+    channel dotranslate {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../center\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+sepparm	[ 0	locks=0 ]	(	)
+justifytarget	[ 0	locks=0 ]	(	"auto"	)
+doboundgroup	[ 0	locks=0 ]	(	"off"	)
+folder2	[ 0	locks=0 ]	(	0	)
+sourcegroup	[ 0	locks=0 ]	(	""	)
+sourcegrouptype	[ 0	locks=0 ]	(	"guess"	)
+refgroup	[ 0	locks=0 ]	(	""	)
+refgrouptype	[ 0	locks=0 ]	(	"guess"	)
+folder1	[ 0	locks=0 ]	(	0	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+size	[ 0	locks=0 ]	(	1	1	1	)
+folder0	[ 0	locks=0 ]	(	0	)
+dotranslate	[ 8	locks=0 ]	(	[ dotranslate	1 ] 	)
+justify_x	[ 0	locks=0 ]	(	"center"	)
+goal_x	[ 0	locks=0 ]	(	"same"	)
+offset_x	[ 0	locks=0 ]	(	0	)
+justify_y	[ 0	locks=0 ]	(	"center"	)
+goal_y	[ 0	locks=0 ]	(	"same"	)
+offset_y	[ 0	locks=0 ]	(	0	)
+justify_z	[ 0	locks=0 ]	(	"center"	)
+goal_z	[ 0	locks=0 ]	(	"same"	)
+offset_z	[ 0	locks=0 ]	(	0	)
+doscale	[ 0	locks=0 ]	(	"off"	)
+uniformscale	[ 0	locks=0 ]	(	"on"	)
+scale_axis	[ 0	locks=0 ]	(	"min"	)
+scale_x	[ 0	locks=0 ]	(	"on"	)
+scale_y	[ 0	locks=0 ]	(	"on"	)
+scale_z	[ 0	locks=0 ]	(	"on"	)
+restorexform	[ 0	locks=0 ]	(	"off"	)
+restoreattrib	[ 0	locks=0 ]	(	xform	)
+stashxform	[ 0	locks=0 ]	(	"off"	)
+stashattrib	[ 0	locks=0 ]	(	xform	)
+stashmerge	[ 0	locks=0 ]	(	"replace"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.netbox"
+Content-Type: text/plain
+
+__netbox3
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/center_grid_to_origin.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
 Content-Type: text/plain
 
@@ -4210,11 +4143,11 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-25
+26
 hexagon
 copytopoints1
 output0
-attribwrangle1
+grid_gen
 primitive_type
 add_fill_shape
 construct_shape
@@ -4236,6 +4169,7 @@ primitives_switch
 fuse1
 promote_color_attribute
 primitive_type1
+center_grid_to_origin
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
