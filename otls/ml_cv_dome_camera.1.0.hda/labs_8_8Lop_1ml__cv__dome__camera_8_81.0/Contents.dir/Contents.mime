@@ -31,21 +31,20 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position 2.52448 -8.9556
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on debug off
+position -0.510616 -0.194586
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on debug off
 outputsNamed3
 {
-2 "output1"
 }
 inputsNamed3
 {
-0 	IMPORT_BBOX 0 1 "input1"
+0 	cube1 0 1 "input1"
 1 	camera1 0 1 "input2"
 }
 inputs
 {
-0 	IMPORT_BBOX 0 1
+0 	cube1 0 1
 1 	camera1 0 1
 }
 stat
@@ -13642,6 +13641,12 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = ch(\"../frameminimum\") }
     }
+    channel roll {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = "fit(rand(if(ch(\"../usewithpdg\")==1, ch(\"../seed_pdg\"), ch(\"../seed\"))), 0, 1, ch(\"../rollrange1\"), ch(\"../rollrange2\"))" }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -13654,7 +13659,7 @@ fd_general	[ 0	locks=0 ]	(	0	0	)
 seed	[ 8	locks=0 ]	(	0	)
 primpath	[ 8	locks=0 ]	(	`chs(\"../primpath\")`	)
 cambasename	[ 8	locks=0 ]	(	`chs(\"../cambasename\")`	)
-roll	[ 8	locks=0 ]	(	0	)
+roll	[ 8	locks=0 ]	(	[ roll	0 ] 	)
 objcentered	[ 0	locks=0 ]	(	[ objcentered	0 ] 	)
 lb_message	[ 0	locks=0 ]	(	"Note:   This node assumes that the point distribution 
 was set up relative to the origin. If your point cloud 
