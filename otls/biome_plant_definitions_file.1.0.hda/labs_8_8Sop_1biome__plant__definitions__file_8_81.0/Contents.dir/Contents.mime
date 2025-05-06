@@ -32,26 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.08949 -14.2711
-connectornextid 2
+position -6.35222 12.7293
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	biome_plant_define1 0 1 "input1"
+0 	Cactus 1 1 "input1"
 }
 inputs
 {
-0 	biome_plant_define1 0 1
+0 	Cactus 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author baile@Chappell
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -789,10 +788,10 @@ Content-Disposition: attachment; filename="hdaroot/point_create.inp"
 Content-Type: text/plain
 
 4
-0 -13.53245049823189 203.58338868983765 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-1 -11.332450523563866 203.58338868983765 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-2 -9.1324505488958376 203.58338868983765 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-3 -6.9324505742278113 203.58338868983765 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -13.53245049823189 204.47758868983766 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 -11.332450523563866 204.47758868983766 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+2 -9.1324505488958376 204.47758868983766 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+3 -6.9324505742278113 204.47758868983766 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/point_create/IN.init"
@@ -807,7 +806,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -13.5019 202.412
+position -13.5019 203.306
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -868,7 +867,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -13.5019 198.033
+position -13.5019 198.927
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -876,11 +875,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	biome_plant_define1 1 1 "input1"
+0 	Desert_Cactus 1 1 "input1"
 }
 inputs
 {
-0 	biome_plant_define1 0 1
+0 	Desert_Cactus 0 1
 }
 stat
 {
@@ -915,19 +914,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/point_create/biome_plant_define1.init"
+Content-Disposition: attachment; filename="hdaroot/point_create/Desert_Cactus.init"
 Content-Type: text/plain
 
 type = labs::biome_plant_define::1.0
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/point_create/biome_plant_define1.def"
+Content-Disposition: attachment; filename="hdaroot/point_create/Desert_Cactus.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -13.5019 201.518
+position -13.5019 202.412
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
@@ -946,7 +945,7 @@ stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author baile@Chappell
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -955,7 +954,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/point_create/biome_plant_define1.parm"
+Content-Disposition: attachment; filename="hdaroot/point_create/Desert_Cactus.parm"
 Content-Type: text/plain
 
 {
@@ -963,8 +962,8 @@ version 0.8
 fd_speciessetup	[ 0	locks=0 ]	(	0	)
 fd_speciessettings	[ 0	locks=0 ]	(	0	0	)
 fd_speciesid	[ 0	locks=0 ]	(	0	)
-plantname	[ 0	locks=0 ]	(	biome_plant_define1	)
-plantcolor	[ 0	locks=0 ]	(	0.513073205947876	0.7736771106719971	0.30035197734832764	)
+plantname	[ 0	locks=0 ]	(	Desert_Cactus	)
+plantcolor	[ 0	locks=0 ]	(	1	0.5	0	)
 fd_temperature	[ 0	locks=0 ]	(	0	)
 templower	[ 0	locks=0 ]	(	10	)
 temppref	[ 0	locks=0 ]	(	14	)
@@ -974,61 +973,62 @@ preclower	[ 0	locks=0 ]	(	500	)
 precpref	[ 0	locks=0 ]	(	700	)
 precupper	[ 0	locks=0 ]	(	900	)
 fd_spacing	[ 0	locks=0 ]	(	0	)
-densitymax	[ 0	locks=0 ]	(	1	)
-type	[ 0	locks=0 ]	(	1	)
-radius	[ 0	locks=0 ]	(	0.69	)
-trunkradius	[ 0	locks=0 ]	(	0.69	)
+densitymax	[ 0	locks=0 ]	(	0.02	)
+type	[ 0	locks=0 ]	(	0	)
+radius	[ 0	locks=0 ]	(	0.6871526837348938	)
+trunkradius	[ 0	locks=0 ]	(	0.21645086682588704	)
 fd_scale	[ 0	locks=0 ]	(	0	)
-scalemult	[ 0	locks=0 ]	(	0.01	)
+scalemult	[ 0	locks=0 ]	(	1	)
 fd_advanced	[ 0	locks=0 ]	(	0	)
 randscale	[ 0	locks=0 ]	(	"on"	)
 hardiness	[ 0	locks=0 ]	(	0	)
-normterrain	[ 0	locks=0 ]	(	0	)
-shop_materialpath	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/matnet1/Var1_LOD0_MATX	)
-autofillmode	[ 0	locks=0 ]	(	"1"	)
-variantsmergepath	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/merge_Variations	)
-variantsdir	[ 0	locks=0 ]	(	""	)
+normterrain	[ 0	locks=0 ]	(	0.05	)
+randomizeyaw	[ 0	locks=0 ]	(	0	)
+shop_materialpath	[ 0	locks=0 ]	(	""	)
+autofillmode	[ 0	locks=0 ]	(	"0"	)
+variantsmergepath	[ 0	locks=0 ]	(	""	)
+variantsdir	[ 0	locks=0 ]	(	C:/Houdini/	)
 pattern	[ 0	locks=0 ]	(	*.fbx	)
 recursive	[ 0	locks=0 ]	(	"on"	)
 autofillvariants	[ 0	locks=0 ]	(	0	)
 sepparm	[ 0	locks=0 ]	(	)
 enginepaths	[ 0	locks=0 ]	(	"off"	)
-variants	[ 0	locks=0 ]	(	9	)
-reftype1	[ 0	locks=0 ]	(	"1"	)
-meshvariant1	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var1_LOD0	)
+variants	[ 0	locks=0 ]	(	3	)
+reftype1	[ 0	locks=0 ]	(	"0"	)
+meshvariant1	[ 0	locks=0 ]	(	""	)
 meshdeadvariant1	[ 0	locks=0 ]	(	""	)
-filemeshvariant1	[ 0	locks=0 ]	(	""	)
+filemeshvariant1	[ 0	locks=0 ]	(	opdef:.?SM_Saguro_Cactus_Growth_1.bgeo.sc	)
 filemeshdeadvariant1	[ 0	locks=0 ]	(	""	)
 weight1	[ 0	locks=0 ]	(	1	)
 agemin1	[ 0	locks=0 ]	(	0	)
-agemax1	[ 0	locks=0 ]	(	1	)
+agemax1	[ 0	locks=0 ]	(	0.33	)
 scalemin1	[ 0	locks=0 ]	(	1	)
 scalemax1	[ 0	locks=0 ]	(	1.5	)
 deadratio1	[ 0	locks=0 ]	(	0	)
 fd_unrealengine1	[ 0	locks=0 ]	(	0	)
 unrealassetpath1	[ 0	locks=0 ]	(	""	)
 unrealassetdeadpath1	[ 0	locks=0 ]	(	""	)
-reftype2	[ 0	locks=0 ]	(	"1"	)
-meshvariant2	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var2_LOD0	)
+reftype2	[ 0	locks=0 ]	(	"0"	)
+meshvariant2	[ 0	locks=0 ]	(	""	)
 meshdeadvariant2	[ 0	locks=0 ]	(	""	)
-filemeshvariant2	[ 0	locks=0 ]	(	""	)
+filemeshvariant2	[ 0	locks=0 ]	(	opdef:.?SM_Saguro_Cactus_Growth_2.bgeo.sc	)
 filemeshdeadvariant2	[ 0	locks=0 ]	(	""	)
 weight2	[ 0	locks=0 ]	(	1	)
-agemin2	[ 0	locks=0 ]	(	0	)
-agemax2	[ 0	locks=0 ]	(	1	)
+agemin2	[ 0	locks=0 ]	(	0.33	)
+agemax2	[ 0	locks=0 ]	(	0.66	)
 scalemin2	[ 0	locks=0 ]	(	1	)
 scalemax2	[ 0	locks=0 ]	(	1.5	)
 deadratio2	[ 0	locks=0 ]	(	0	)
 fd_unrealengine2	[ 0	locks=0 ]	(	0	)
 unrealassetpath2	[ 0	locks=0 ]	(	""	)
 unrealassetdeadpath2	[ 0	locks=0 ]	(	""	)
-reftype3	[ 0	locks=0 ]	(	"1"	)
-meshvariant3	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var3_LOD0	)
+reftype3	[ 0	locks=0 ]	(	"0"	)
+meshvariant3	[ 0	locks=0 ]	(	""	)
 meshdeadvariant3	[ 0	locks=0 ]	(	""	)
-filemeshvariant3	[ 0	locks=0 ]	(	""	)
+filemeshvariant3	[ 0	locks=0 ]	(	opdef:.?SM_Saguro_Cactus_Growth_3.bgeo.sc	)
 filemeshdeadvariant3	[ 0	locks=0 ]	(	""	)
 weight3	[ 0	locks=0 ]	(	1	)
-agemin3	[ 0	locks=0 ]	(	0	)
+agemin3	[ 0	locks=0 ]	(	0.66	)
 agemax3	[ 0	locks=0 ]	(	1	)
 scalemin3	[ 0	locks=0 ]	(	1	)
 scalemax3	[ 0	locks=0 ]	(	1.5	)
@@ -1036,104 +1036,16 @@ deadratio3	[ 0	locks=0 ]	(	0	)
 fd_unrealengine3	[ 0	locks=0 ]	(	0	)
 unrealassetpath3	[ 0	locks=0 ]	(	""	)
 unrealassetdeadpath3	[ 0	locks=0 ]	(	""	)
-reftype4	[ 0	locks=0 ]	(	"1"	)
-meshvariant4	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var4_LOD0	)
-meshdeadvariant4	[ 0	locks=0 ]	(	""	)
-filemeshvariant4	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant4	[ 0	locks=0 ]	(	""	)
-weight4	[ 0	locks=0 ]	(	1	)
-agemin4	[ 0	locks=0 ]	(	0	)
-agemax4	[ 0	locks=0 ]	(	1	)
-scalemin4	[ 0	locks=0 ]	(	1	)
-scalemax4	[ 0	locks=0 ]	(	1.5	)
-deadratio4	[ 0	locks=0 ]	(	0	)
-fd_unrealengine4	[ 0	locks=0 ]	(	0	)
-unrealassetpath4	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath4	[ 0	locks=0 ]	(	""	)
-reftype5	[ 0	locks=0 ]	(	"1"	)
-meshvariant5	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var5_LOD0	)
-meshdeadvariant5	[ 0	locks=0 ]	(	""	)
-filemeshvariant5	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant5	[ 0	locks=0 ]	(	""	)
-weight5	[ 0	locks=0 ]	(	1	)
-agemin5	[ 0	locks=0 ]	(	0	)
-agemax5	[ 0	locks=0 ]	(	1	)
-scalemin5	[ 0	locks=0 ]	(	1	)
-scalemax5	[ 0	locks=0 ]	(	1.5	)
-deadratio5	[ 0	locks=0 ]	(	0	)
-fd_unrealengine5	[ 0	locks=0 ]	(	0	)
-unrealassetpath5	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath5	[ 0	locks=0 ]	(	""	)
-reftype6	[ 0	locks=0 ]	(	"1"	)
-meshvariant6	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var6_LOD0	)
-meshdeadvariant6	[ 0	locks=0 ]	(	""	)
-filemeshvariant6	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant6	[ 0	locks=0 ]	(	""	)
-weight6	[ 0	locks=0 ]	(	1	)
-agemin6	[ 0	locks=0 ]	(	0	)
-agemax6	[ 0	locks=0 ]	(	1	)
-scalemin6	[ 0	locks=0 ]	(	1	)
-scalemax6	[ 0	locks=0 ]	(	1.5	)
-deadratio6	[ 0	locks=0 ]	(	0	)
-fd_unrealengine6	[ 0	locks=0 ]	(	0	)
-unrealassetpath6	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath6	[ 0	locks=0 ]	(	""	)
-reftype7	[ 0	locks=0 ]	(	"1"	)
-meshvariant7	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var7_LOD0	)
-meshdeadvariant7	[ 0	locks=0 ]	(	""	)
-filemeshvariant7	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant7	[ 0	locks=0 ]	(	""	)
-weight7	[ 0	locks=0 ]	(	1	)
-agemin7	[ 0	locks=0 ]	(	0	)
-agemax7	[ 0	locks=0 ]	(	1	)
-scalemin7	[ 0	locks=0 ]	(	1	)
-scalemax7	[ 0	locks=0 ]	(	1.5	)
-deadratio7	[ 0	locks=0 ]	(	0	)
-fd_unrealengine7	[ 0	locks=0 ]	(	0	)
-unrealassetpath7	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath7	[ 0	locks=0 ]	(	""	)
-reftype8	[ 0	locks=0 ]	(	"1"	)
-meshvariant8	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var8_LOD0	)
-meshdeadvariant8	[ 0	locks=0 ]	(	""	)
-filemeshvariant8	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant8	[ 0	locks=0 ]	(	""	)
-weight8	[ 0	locks=0 ]	(	1	)
-agemin8	[ 0	locks=0 ]	(	0	)
-agemax8	[ 0	locks=0 ]	(	1	)
-scalemin8	[ 0	locks=0 ]	(	1	)
-scalemax8	[ 0	locks=0 ]	(	1.5	)
-deadratio8	[ 0	locks=0 ]	(	0	)
-fd_unrealengine8	[ 0	locks=0 ]	(	0	)
-unrealassetpath8	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath8	[ 0	locks=0 ]	(	""	)
-reftype9	[ 0	locks=0 ]	(	"1"	)
-meshvariant9	[ 0	locks=0 ]	(	/stage/shelves/sopnet/create/Var9_LOD0	)
-meshdeadvariant9	[ 0	locks=0 ]	(	""	)
-filemeshvariant9	[ 0	locks=0 ]	(	""	)
-filemeshdeadvariant9	[ 0	locks=0 ]	(	""	)
-weight9	[ 0	locks=0 ]	(	1	)
-agemin9	[ 0	locks=0 ]	(	0	)
-agemax9	[ 0	locks=0 ]	(	1	)
-scalemin9	[ 0	locks=0 ]	(	1	)
-scalemax9	[ 0	locks=0 ]	(	1.5	)
-deadratio9	[ 0	locks=0 ]	(	0	)
-fd_unrealengine9	[ 0	locks=0 ]	(	0	)
-unrealassetpath9	[ 0	locks=0 ]	(	""	)
-unrealassetdeadpath9	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/point_create/biome_plant_define1.userdata"
+Content-Disposition: attachment; filename="hdaroot/point_create/Desert_Cactus.userdata"
 Content-Type: text/plain
 
 {
 	"___Version___":{
 		"type":"string",
 		"value":""
-	},
-	"sidefx::parm_filter_text_pattern":{
-		"type":"string",
-		"value":" f"
 	},
 	"wirestyle":{
 		"type":"string",
@@ -1148,7 +1060,7 @@ Content-Type: text/plain
 3
 IN
 output0
-biome_plant_define1
+Desert_Cactus
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/point_create.net"
