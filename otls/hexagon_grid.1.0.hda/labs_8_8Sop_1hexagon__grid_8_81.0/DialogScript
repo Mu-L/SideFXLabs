@@ -16,7 +16,7 @@
 
     parm {
         name    "type"
-        label   "Primitive Type"
+        label   "Type"
         type    ordinal
         default { "1" }
         menu {
@@ -166,22 +166,14 @@
     }
 
     parm {
-        name    "center"
-        label   "Center Grid to Origin"
-        type    toggle
-        default { "0" }
-        hidewhen "{ gridshape == 0 }"
-        parmtag { "script_callback_language" "python" }
-    }
-    parm {
         name    "sepparm2"
         label   "Separator"
         type    separator
         default { "" }
     }
     parm {
-        name    "tileorientation"
-        label   "Orientation"
+        name    "cellorientation"
+        label   "Cell Orientation"
         type    ordinal
         default { "0" }
         menu {
@@ -191,8 +183,8 @@
         range   { 0 10 }
     }
     parm {
-        name    "tilesize"
-        label   "Radius"
+        name    "cellradius"
+        label   "Cell Radius"
         type    float
         default { "1" }
         range   { 0! 10 }
@@ -209,6 +201,14 @@
         type    toggle
         default { "1" }
         hidewhen "{ type == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "showgizmo"
+        label   "Show Coordinate Gizmo"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback" "hou.pwd().hdaModule().displaypy(kwargs)" }
         parmtag { "script_callback_language" "python" }
     }
     parm {
@@ -231,7 +231,7 @@
         name    "coordinatesattribute"
         label   "Output Coordinates"
         type    string
-        default { "outputcoordinates" }
+        default { "hexcoords" }
         disablewhen "{ outputcoordinates == 0 }"
         parmtag { "script_callback_language" "python" }
     }

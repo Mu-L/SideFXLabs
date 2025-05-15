@@ -3,7 +3,7 @@
 #type:     node
 #context:  sop
 #internal: labs::hexagon_grid::1.0
-#icon:     SOP/labs::hexagon_grid::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
 #since:    20.5
 
 """Generates a hexagonal grid."""
@@ -67,10 +67,6 @@ This node generates a hexagonal point grid that can be filled with hexagonal pri
         #id: axis2max
         The maximum coordinate of the second axis of the shape.
 
-    Center Grid to Origin:
-        #id: center
-        Translates the grid to the origin of the world.
-
     Orientation:
         #id: tileorientation
         The orientation of the hexagon primitive. It can be set to Pointy Top or Flat Top. In Pointy Top the hexagons are aligned with their vertices pointing up and down, and the columns are offset, while in Flat Top the hexagons are aligned with their edges flat on the top and bottom, and the rows are offset.
@@ -83,7 +79,11 @@ This node generates a hexagonal point grid that can be filled with hexagonal pri
         #id: showguidegeometry
         Shows hexagon primitives overlayed on the point grid. Only available when Primitive Type is set to Points.
 
-    Color Coordinate Axes:
+    Show Coordinate Gizmo:
+        #id: showgizmo
+        Shows a color-coded gizmo with three arrows indicating the direction of the QRS axes.
+
+    Visualize Coordinate Axes:
         #id: coloraxes
         Colours the three axes of the QRS coordinate system, as well as the origin.
 
