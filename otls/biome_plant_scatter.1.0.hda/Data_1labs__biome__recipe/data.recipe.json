@@ -1,17 +1,17 @@
 {
   "data": {
     "tags": {
-      "target_tag": "biome_plant_scatter1",
+      "target_tag": "biome_plant_scatter",
       "start_tags": [
-        "GENERATE_TERRAIN",
-        "TEMPERATE_SHRUB"
+        "TEMPERATE_SHRUB",
+        "GENERATE_TERRAIN"
       ],
       "end_tags": [
         "OUT_PLANT_SCATTER_AND_INSTANCE"
       ]
     },
     "children": {
-      "biome_plant_scatter1": {
+      "biome_plant_scatter": {
         "type": "labs::biome_plant_scatter::1.0",
         "inputs": [
           {
@@ -20,7 +20,7 @@
             "to_index": 0
           },
           {
-            "from": "biome_attributes_evolve1",
+            "from": "biome_attributes_evolve",
             "from_index": 0,
             "to_index": 1
           },
@@ -39,35 +39,31 @@
           0.73,
           0
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
         "parms": {
-          "size": 1000.0,
+          "species": 2,
           "outputviability": true,
-          "meshvariantsdetailarray": true,
+          "size": 1000.0,
           "agejitter": 0.3,
-          "outputage": true,
-          "vizradii": true
+          "meshvariantsdetailarray": true,
+          "outputage": true
         }
       },
       "GENERATE_TERRAIN": {
         "type": "subnet",
         "position": [
-          0,
-          6.49
+          0.19,
+          6.33
         ],
         "color": [
           0.57,
           0.35,
           0
         ],
-        "flags": {
-          "colordefault": false
+        "user_data": {
+          "wirestyle": "rounded"
         },
         "children": {
           "output0": {
@@ -110,6 +106,9 @@
               -0.22,
               -1.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "noisetype": "simplex",
               "amp": 100.0,
@@ -129,6 +128,9 @@
               -0.22,
               -3.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "layer": "mask",
               "combine": "replace",
@@ -157,6 +159,9 @@
               -0.11,
               3
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "centernoise": false,
               "amp": 650.0,
@@ -175,6 +180,9 @@
               0,
               6.11
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "size": [
                 1100.0,
@@ -200,6 +208,9 @@
               0,
               4
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "blurradius": 150.0
             }
@@ -254,6 +265,9 @@
               -0.22,
               -7.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "layer": "mask",
               "method": "boxblur",
@@ -278,6 +292,9 @@
               1.12,
               -0.14
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "inputmin": -32.92747116088867,
               "inputmax": 212.75814819335938,
@@ -298,6 +315,9 @@
               1.12,
               0.84
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "invertmask": true,
               "maskbyslope": false,
@@ -402,6 +422,9 @@
               -0.22,
               -9.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "iterations": 85,
               "repose_angle": 12.0,
@@ -421,6 +444,9 @@
               -0.22,
               -11.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "resscale": 2.0
             }
@@ -438,10 +464,19 @@
               -0.22,
               -10.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "num_clear": [
                 {
-                  "layer#": "mask"
+                  "layer#": {
+                    "value": "mask",
+                    "visible": false
+                  },
+                  "value#": {
+                    "visible": false
+                  }
                 }
               ]
             }
@@ -464,6 +499,9 @@
               -0.22,
               -6.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "layer": "mask",
               "combine": "replace",
@@ -492,6 +530,9 @@
               -0.11,
               1.84
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "amp": 350.0,
               "elementsize": 644.0,
@@ -520,6 +561,9 @@
               -0.22,
               -2.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "amp": 75.0,
               "element_size": 650.0
@@ -538,6 +582,9 @@
               -0.22,
               -5.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "maskbyslope": false,
               "sloperamp": [
@@ -641,6 +688,9 @@
               -0.22,
               -12.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "inputmin": -9.149580955505371,
               "inputmax": 201.6939239501953,
@@ -683,6 +733,9 @@
               -0.22,
               -4.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "amp": 20.0
             }
@@ -705,71 +758,13 @@
               -0.22,
               -8.13
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "amp": 25.0
             }
           }
-        }
-      },
-      "biome_attributes_evolve1": {
-        "type": "labs::biome_attributes_evolve::1.0",
-        "inputs": [
-          {
-            "from": "biome_attributes_to_terrain1",
-            "from_index": 0,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          0,
-          1.92
-        ],
-        "color": [
-          1,
-          0.93,
-          0
-        ],
-        "flags": {
-          "colordefault": false
-        },
-        "user_data": {
-          "sidefx::parm_filter_text_pattern": "re",
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "display": 3,
-          "autoremap": 1,
-          "inputmin1": 12.145895004272461,
-          "inputmax1": 14.791894912719727,
-          "evolvetempxz": true,
-          "removebyocclusion": true,
-          "minslopeangle": 35.0,
-          "maxslopeangle": 80.0,
-          "sloperamp": [
-            {
-              "pos": 0.0,
-              "value": 0.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.16500000655651093,
-              "value": 1.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.8299999833106995,
-              "value": 1.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 1.0,
-              "value": 0.0,
-              "interp": "linear"
-            }
-          ],
-          "basesoil": 0.1,
-          "intensity": 0.5,
-          "elementsize": 150.0
         }
       },
       "OUT_SAMPLE_TERRAIN": {
@@ -782,258 +777,52 @@
           }
         ],
         "position": [
-          0,
-          4.98
+          0.19,
+          4.82
         ],
         "color": [
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
-      },
-      "PINE": {
-        "type": "labs::biome_plant_define::1.0",
-        "inputs": [
-          {
-            "from": "TEMPERATE_SHRUB",
-            "from_index": 0,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          -4.69,
-          3.34
-        ],
-        "color": [
-          0.47,
-          0.81,
-          0.2
-        ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
-        "user_data": {
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "plantname": "Pine",
-          "plantcolor": [
-            0.0,
-            1.0,
-            0.0
-          ],
-          "templower": 5.0,
-          "temppref": 13.0,
-          "tempupper": 18.0,
-          "precpref": 715.0,
-          "densitymax": 1.75,
-          "type": 0,
-          "radius": 1.25,
-          "normterrain": 0.05,
-          "variants": [
-            {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_1.bgeo.sc",
-              "agemax#": 0.33,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            },
-            {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_2.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_2.bgeo.sc",
-              "agemin#": 0.33,
-              "agemax#": 0.66,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            },
-            {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_3.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_3.bgeo.sc",
-              "agemin#": 0.66,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            }
-          ]
-        }
+        ]
       },
       "OUT_PLANT_POINTS": {
         "type": "null",
         "inputs": [
           {
-            "from": "biome_plant_scatter1",
+            "from": "biome_plant_scatter",
             "from_index": 0,
             "to_index": 0
           }
         ],
         "position": [
-          -0.19,
-          -1.05
+          0,
+          -1.21
         ],
         "color": [
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
-      },
-      "OUT_TERRAIN": {
-        "type": "null",
-        "inputs": [
-          {
-            "from": "biome_plant_scatter1",
-            "from_index": 1,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          2.71,
-          -0.99
-        ],
-        "color": [
-          0.31,
-          0.31,
-          0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
-      },
-      "TEMPERATE_SHRUB": {
-        "type": "labs::biome_plant_define::1.0",
-        "position": [
-          -4.69,
-          4.34
-        ],
-        "color": [
-          0.47,
-          0.81,
-          0.2
-        ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
-        "user_data": {
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "plantname": "Shrub",
-          "plantcolor": [
-            1.0,
-            0.0,
-            0.0
-          ],
-          "tempupper": 23.0,
-          "preclower": 400.0,
-          "precpref": 715.0,
-          "precupper": 800.0,
-          "densitymax": 0.65,
-          "radius": 1.1,
-          "normterrain": 0.8,
-          "variants": [
-            {
-              "filemeshvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
-              "deadratio#": 0.3
-            }
-          ]
-        }
-      },
-      "ASPEN": {
-        "type": "labs::biome_plant_define::1.0",
-        "inputs": [
-          {
-            "from": "PINE",
-            "from_index": 0,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          -4.69,
-          2.34
-        ],
-        "color": [
-          0.47,
-          0.81,
-          0.2
-        ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
-        "user_data": {
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "plantname": "Aspen",
-          "plantcolor": [
-            0.0,
-            0.0,
-            1.0
-          ],
-          "templower": 12.0,
-          "temppref": 15.0,
-          "densitymax": 0.75,
-          "type": 0,
-          "radius": 3.75,
-          "trunkradius": 0.43,
-          "normterrain": 0.05,
-          "variants": [
-            {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_1.bgeo.sc",
-              "agemax#": 0.33,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            },
-            {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_2.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_2.bgeo.sc",
-              "agemin#": 0.33,
-              "agemax#": 0.66,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            },
-            {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_3.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_3.bgeo.sc",
-              "agemin#": 0.66,
-              "scalemax#": 2.0,
-              "deadratio#": 0.3
-            }
-          ]
-        }
+        ]
       },
       "OUT_PLANT_SCATTER_AND_INSTANCE": {
         "type": "null",
         "inputs": [
           {
-            "from": "merge1",
+            "from": "merge",
             "from_index": 0,
             "to_index": 0
           }
         ],
         "position": [
-          2.71,
-          -4.61
+          2.9,
+          -4.77
         ],
         "color": [
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false,
-          "display": true,
-          "render": true,
-          "template": true
-        }
+        ]
       },
       "OUT_RIVER": {
         "type": "null",
@@ -1045,17 +834,14 @@
           }
         ],
         "position": [
-          6.98,
-          0.91
+          7.17,
+          0.75
         ],
         "color": [
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "GENERATE_RIVER": {
         "type": "subnet",
@@ -1067,16 +853,16 @@
           }
         ],
         "position": [
-          6.98,
-          3.73
+          7.17,
+          3.57
         ],
         "color": [
           0.19,
           0.53,
           0.46
         ],
-        "flags": {
-          "colordefault": false
+        "user_data": {
+          "wirestyle": "rounded"
         },
         "children": {
           "keep_the_largest_area": {
@@ -1092,6 +878,9 @@
               0,
               2.07
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "class": "primitive",
               "snippet": "@delA = detail(0,'area',0);\n\nif(@delA != @area) {\n    removeprim(0,@primnum,1);\n}"
@@ -1220,6 +1009,9 @@
               0,
               -2.97
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "color": [
                 0.03248799592256546,
@@ -1317,6 +1109,9 @@
               0,
               6.11
             ],
+            "user_data": {
+              "wirestyle": "rounded"
+            },
             "parms": {
               "maskbyslope": false,
               "sloperamp": [
@@ -1421,19 +1216,68 @@
           }
         ],
         "position": [
-          -4.69,
-          1.24
+          -4.5,
+          1.08
         ],
         "color": [
           0.31,
           0.31,
           0.31
+        ]
+      },
+      "biome_attributes_evolve": {
+        "type": "labs::biome_attributes_evolve::1.0",
+        "inputs": [
+          {
+            "from": "biome_attributes_to_terrain",
+            "from_index": 0,
+            "to_index": 0
+          }
         ],
-        "flags": {
-          "colordefault": false
+        "position": [
+          0.19,
+          1.76
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "user_data": {
+          "sidefx::parm_filter_text_pattern": "re",
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "display": 1,
+          "autoremap": 1,
+          "inputmin1": 12.145895004272461,
+          "inputmax1": 14.791894912719727,
+          "removebyocclusion": true,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ]
         }
       },
-      "biome_attributes_to_terrain1": {
+      "biome_attributes_to_terrain": {
         "type": "labs::biome_attributes_to_terrain::1.0",
         "inputs": [
           {
@@ -1443,17 +1287,14 @@
           }
         ],
         "position": [
-          0,
-          2.92
+          0.19,
+          2.76
         ],
         "color": [
           1,
           0.93,
           0
         ],
-        "flags": {
-          "colordefault": false
-        },
         "user_data": {
           "new_toggle": "1",
           "old_toggle": "1",
@@ -1461,6 +1302,7 @@
           "wirestyle": "rounded"
         },
         "parms": {
+          "display": 1,
           "biomecolor": [
             0.07357931137084961,
             0.3357425928115845,
@@ -1468,7 +1310,7 @@
           ]
         }
       },
-      "instance1": {
+      "instance": {
         "type": "instance",
         "inputs": [
           {
@@ -1478,15 +1320,18 @@
           }
         ],
         "position": [
-          -0.19,
-          -2.15
-        ]
+          0,
+          -2.31
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        }
       },
-      "merge1": {
+      "merge": {
         "type": "merge",
         "inputs": [
           {
-            "from": "instance1",
+            "from": "instance",
             "from_index": 0,
             "to_index": 0
           },
@@ -1502,16 +1347,489 @@
           }
         ],
         "position": [
-          2.71,
-          -3.48
+          2.9,
+          -3.64
+        ]
+      },
+      "PINE": {
+        "type": "labs::biome_plant_define::1.0",
+        "inputs": [
+          {
+            "from": "TEMPERATE_SHRUB",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -4.5,
+          3.17
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Pine",
+          "plantcolor": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "templower": 12.5,
+          "temppref": 13.7,
+          "tempupper": 16.5,
+          "densitymax": 1.2,
+          "type": 0,
+          "radius": 1.25,
+          "normterrain": 0.05,
+          "variants": [
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Growth_1.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Dead_1.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "visible": false
+              },
+              "agemax#": {
+                "value": 0.33,
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            },
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Growth_2.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Dead_2.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "value": 0.33,
+                "visible": false
+              },
+              "agemax#": {
+                "value": 0.66,
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            },
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Growth_3.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Coniferous_Tree_Dead_3.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "value": 0.66,
+                "visible": false
+              },
+              "agemax#": {
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            }
+          ]
+        }
+      },
+      "TEMPERATE_SHRUB": {
+        "type": "labs::biome_plant_define::1.0",
+        "position": [
+          -4.5,
+          4.17
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Shrub",
+          "plantcolor": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "templower": 11.0,
+          "temppref": 14.5,
+          "tempupper": 16.0,
+          "preclower": 400.0,
+          "precupper": 800.0,
+          "radius": 1.3976526777021625,
+          "randscale": false,
+          "normterrain": 0.8,
+          "variants": [
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "visible": false
+              },
+              "agemax#": {
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            }
+          ]
+        }
+      },
+      "ASPEN": {
+        "type": "labs::biome_plant_define::1.0",
+        "inputs": [
+          {
+            "from": "PINE",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -4.5,
+          2.17
+        ],
+        "color": [
+          0.47,
+          0.81,
+          0.2
+        ],
+        "user_data": {
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "plantname": "Aspen",
+          "plantcolor": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "templower": 13.8,
+          "temppref": 14.5,
+          "tempupper": 17.0,
+          "type": 0,
+          "radius": 3.75,
+          "trunkradius": 0.43,
+          "normterrain": 0.05,
+          "variants": [
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Growth_1.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Dead_1.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "visible": false
+              },
+              "agemax#": {
+                "value": 0.33,
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            },
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Growth_2.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Dead_2.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "value": 0.33,
+                "visible": false
+              },
+              "agemax#": {
+                "value": 0.66,
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            },
+            {
+              "reftype#": {
+                "visible": false
+              },
+              "meshvariant#": {
+                "visible": false
+              },
+              "meshdeadvariant#": {
+                "visible": false
+              },
+              "filemeshvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Growth_3.bgeo.sc",
+                "visible": false
+              },
+              "filemeshdeadvariant#": {
+                "value": "opdef:.?SM_Deciduous_Tree_Dead_3.bgeo.sc",
+                "visible": false
+              },
+              "weight#": {
+                "visible": false
+              },
+              "agemin#": {
+                "value": 0.66,
+                "visible": false
+              },
+              "agemax#": {
+                "visible": false
+              },
+              "scalemin#": {
+                "visible": false
+              },
+              "scalemax#": {
+                "value": 2.0,
+                "visible": false
+              },
+              "deadratio#": {
+                "value": 0.3,
+                "visible": false
+              },
+              "fd_unrealengine#": {
+                "visible": false
+              },
+              "unrealassetpath#": {
+                "visible": false
+              },
+              "unrealassetdeadpath#": {
+                "visible": false
+              }
+            }
+          ]
+        }
+      },
+      "OUT_TERRAIN": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "biome_plant_scatter",
+            "from_index": 1,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          2.9,
+          -1.15
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
         ]
       }
     }
   },
   "info": {
-    "author": "handongy",
-    "created": "March 10, 2025 - 13:39:55",
-    "houdini_version": "20.5.487",
+    "author": "Bailey",
+    "created": "May 16, 2025 - 17:18:20",
+    "houdini_version": "20.5.526",
     "data_version": "1.0",
     "comment": null
   },
@@ -1536,7 +1854,7 @@
     "children": true,
     "anchor_editables": true,
     "editables": true,
-    "flags": true,
+    "flags": false,
     "parms": true,
     "parms_as_brief": true,
     "evaluate_parmvalues": false,
