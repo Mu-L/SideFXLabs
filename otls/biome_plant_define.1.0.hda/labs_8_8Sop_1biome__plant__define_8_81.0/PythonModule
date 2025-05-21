@@ -17,22 +17,28 @@ def get_all_files(dir, recursive):
 def initVariants(kwargs , mode):
     node = kwargs['node']
     autofillmode = node.parm(mode).eval()
-    
+    nvariants = 0
+    all_filtered_files = []
     if autofillmode == 0:
         dir = node.parm('variantsdir').eval()
         pattern = node.parm('pattern').eval()
+        splitpattern = pattern.split()
         recursive = 0
         recursive = node.parm('recursive').eval()
         all_files = get_all_files(dir, recursive)
-        ##filtered_files = list(filter(lambda i : hou.hscriptExpression('strmatch("%s", "%s")' % (pattern, i)), all_files))
-        filtered_files = fnmatch.filter(all_files, pattern)
-        nvariants = len(filtered_files)
+        ##filtered_files = list(filter(lambda i : hou.hscriptExpression('strmatch("%s", "%s")' % (pattern, i)), all_files))  
+        for string in splitpattern:
+            filtered_files = fnmatch.filter(all_files, string)
+            for file in filtered_files:
+                if file not in all_filtered_files:
+                    all_filtered_files.append(file)
+        nvariants = len(all_filtered_files)
         node.parm('variants').set(nvariants)
         for i in range(nvariants):
             parmname = 'filemeshvariant' + '%d' % (i+1)
             reftypeparmname = 'reftype' + '%d' % (i+1)
             node.parm(reftypeparmname).set(0)
-            node.parm(parmname).set(str(filtered_files[i]))
+            node.parm(parmname).set(str(all_filtered_files[i]))
     ## from merge path
     elif autofillmode == 1:
         mergepath = node.parm('variantsmergepath').eval()
