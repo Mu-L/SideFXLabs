@@ -32,7 +32,7 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
         Method for defining the test terrain biome attributes.
         <p>__Specified__: Biome attributes are manually set with __Temperature__ and __Precipitation__ parameters.</p>   
         <p>__From Existing Biome__: Biome attributes are read from an existing biome.</p> 
-            
+        <p>__Gradient__: Biome attributes are laid out with temperature increasing towards +X and precipitation increasing towards +Z.</p>    
     Path to Biomes:
         #id: pathtobiomes
         Node path to the last _Labs Biome Define SOP_ in a chain of nodes or a _Biome Definitions File SOP_ set to create geometry from a biome definitions file. A list of biomes defined by this path will populate the __Biome__ ordered menu. 
@@ -65,22 +65,46 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
     Age Jitter:
         #id: agejitter
         Scale of the offset to slightly alter the plant ages. Ages are jittered by a value of -0.5 to 0.5 times this scale. Jittering the age will introduce chaos and break up the artificial smooth profile of a forest. Age is then clamped between 0 and 1. 
-    Random Seed:
+    Global Seed:
         #id: seed
-        The random number seed used to scatter points. 
-    Tree Overlap Allowance:
-        #id: treeoverlapallowance
-        The distance in meters that trees are allowed to overlap each other. If the overlap distance of two tree bounds radii is greater than this value, they are considered intersecting and one of the trees is removed from the scatter. 
-    Shrub Overlap Allowance:
-        #id: shruboverlapallowance
-        The distance in meters that shrubs are allowed to overlap each other. If the overlap distance of two shrub bounds radii is greater than this value, they are considered intersecting and one of the shrubs is removed from the scatter. 
+        The random number seed used to scatter points. This seed will randomize the mesh variants, pscale, point positions, and more. 
+    Mesh Variant Seed:
+        #id: seed
+        This seed will randomize the mesh variants without affecting the pscale or position of the points. 
+    Enable Mask:
+        #id: enablemask
+        Enables the masking of points by the third input. A heightfield mask and/or geometry will be subtracted from the soil mask to prevent plants from scattering in the masked area. 
+    Invert Mask:
+        #id: invertmask  
+	Enable to invert the mask of input 3. If enabled, the red areas of the input mask will be subtracted from the scatter. 
+	
+    === Overlap ===
+
     Keep Plants by:
         #id: keepplantsby
         Method used to determine which intersecting plant is kept and which is culled.        
         <p>__Greatest Age__: Method for keeping points with the greatest age.</p>
 	<p>__Greatest Viability__: Method for keeping points with the greatest viability.</p>
         <p>__Random__: Method for keeping points randomly.</p>
+    Tree Tolerance:
+        #id: treetolerance
+        The distance in meters that trees are allowed to overlap each other. If the overlap distance of two tree bounds radii is greater than this value, they are considered intersecting and one of the trees is removed from the scatter. 
+    Shrub Tolerance:
+        #id: shrubtolerance
+        The distance in meters that shrubs are allowed to overlap each other. If the overlap distance of two shrub bounds radii is greater than this value, they are considered intersecting and one of the shrubs is removed from the scatter. 
 
+    === Noise ===
+
+    Noise Type:
+        #id: basis
+        The type of noise to generate.
+    Element Size:
+	#id: elementsize
+	Uniform scale of elements in the noise.  
+    Offset:
+	#id: offset
+	Offset within the evaluated noise field (added to each axis). If you have the general noise effect you want, but want to get a different set of values for a different look, try changing the offset. 
+ 
     === Culling ===
 
     Enable Culling:
@@ -98,12 +122,7 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
     Percentage to Keep:
         #id: percentagetokeep
         Percentage of points that are not culled.
-    Enable Mask:
-        #id: enablemask
-        Enables the masking of points by the third input. A heightfield mask and/or geometry will be subtracted from the soil mask to prevent plants from scattering in the masked area. 
-    Invert Mask:
-        #id: invertmask  
-	Enable to invert the mask of input 3. If enabled, the red areas of the input mask will be subtracted from the scatter. 
+    
 
     === Incomplete Age Coverage ===
 
@@ -189,7 +208,19 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
         Output the __Viability__ point attribute. 
     Viability:
         #id: viabilityname
-        Name of the Viability point attribute. 
+        Name of the Viability point attribute.
+    Enable Noise:
+        #id: enablenoise
+        Output the __Noise__ point attribute. This attribute is set by the Noise settings under the Scatter tab.
+    Noise:
+        #id: noisename
+        Name of the Noise point attribute. 
+    Enable Unique ID:
+        #id: enableuniqueid
+        Output the __Unique ID__ point attribute. This attribute is unique per point.
+    Unique ID:
+        #id: uniqueidname
+        Name of the Unique ID point attribute.
     Enable Mesh ID:
         #id: enablemeshid
         Output the __Mesh ID__ integer piece attribute. 
@@ -228,10 +259,14 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
     Visualize Points:
         #id: vizpoints
         Visualizes the points colored by their attributes. 
+    Visualize Spacing Radii:
+        #id: vizradii
+        Visualizes the circles representing the bounds radii and trunk radii of the points. 
     Color By:
         #id: colorby
         Attribute to color the points by. 
-        <p>__Plant Species__: Color by the Species ID Color defined by the _Biome Plant Define SOP_ or assign random colors from the Species ID Name attribute when __Assign Random Colors__ is enabled.</p>     
+        <p>__Plant Species__: Color by the Species ID Color defined by the _Biome Plant Define SOP_ or assign random colors from the Species ID Name attribute when __Assign Random Colors__ is enabled.</p>  
+	<p>__Mesh Path__: Color by the Mesh Path attribute.</p>     
         <p>__Viability__: Color by the Viability attribute. </p>    
         <p>__Age__: Color by the Age attribute. </p> 
             

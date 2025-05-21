@@ -33,10 +33,11 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position -2.65918 -0.803061
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
@@ -968,7 +969,7 @@ sopflags sopflags =
 comment ""
 position 3.47836 -106.752
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -15208,7 +15209,7 @@ instancenewpoints	[ 0	locks=0 ]	(	"on"	)
 piecemode	[ 0	locks=0 ]	(	"connectivity"	)
 pieceattrib	[ 0	locks=0 ]	(	class	)
 quant	[ 0	locks=0 ]	(	0.01	)
-seed	[ 8	locks=0 ]	(	[ seed	0 ] 	)
+seed	[ 0	locks=0 ]	(	[ seed	0 ] 	)
 useemergencylimit	[ 0	locks=0 ]	(	"off"	)
 emergencylimit	[ 8	locks=0 ]	(	1e6	)
 folder3	[ 0	locks=0 ]	(	0	)
@@ -19909,7 +19910,7 @@ sopflags sopflags =
 comment ""
 position 3.34633 -38.1086
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -19988,6 +19989,20 @@ Content-Type: text/plain
             }
             parmtag { "script_callback_language" "python" }
         }
+        groupsimple {
+            name    "folder_generatedparms_snippet"
+            label   "Generated Channel Parameters"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "variantseed"
+                label   "Variant Seed"
+                type    integer
+                default { "0" }
+                range   { 0 10 }
+            }
+        }
+
         parm {
             name    "snippet"
             baseparm
@@ -20011,6 +20026,7 @@ Content-Type: text/plain
     group {
         name    "folder1_1"
         label   "Bindings"
+        grouptag { "sidefx::switcher" "folder0" }
 
         parm {
             name    "autobind"
@@ -20124,6 +20140,12 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = ch(\"../replacewith2\") }
     }
+    channel variantseed {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../variantseed\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20158,6 +20180,10 @@ float difference;
 float diff_min;
 int closest_index;
 int enginepaths = 0;
+i@_bps_variant_seed = chi('variantseed');
+//variant seed allows the user to randomize the plant variants without affecting the scatter positions. 
+
+
 @group__bps_incompleteagecoverage = 0;
 
 if(isvalidindex(d@plant_definition, \"enginepaths\"))
@@ -20241,7 +20267,7 @@ else if(len(@_bps_possiblevariations)==1)
 }
 else
 {
-    int weightedrandindex = sample_discrete(@_bps_weights, rand(@_bps_stableid + 20 * 30));
+    int weightedrandindex = sample_discrete(@_bps_weights, rand(@_bps_stableid*(i@_bps_variant_seed+1) + 20 * 30));
     variation = @_bps_possiblevariations[weightedrandindex];
 }
 
@@ -20332,6 +20358,8 @@ vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
 missingmeshvariation	[ 8	locks=0 ]	(	[ missingmeshvariation	0 ] 	)
+folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
+variantseed	[ 0	locks=0 ]	(	[ variantseed	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

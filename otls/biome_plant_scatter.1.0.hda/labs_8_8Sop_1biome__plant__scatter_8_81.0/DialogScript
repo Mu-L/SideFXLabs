@@ -190,7 +190,15 @@
         }
         parm {
             name    "seed"
-            label   "Random Seed"
+            label   "Global Seed"
+            type    integer
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "variantseed"
+            label   "Mesh Variant Seed"
             type    integer
             default { "0" }
             range   { 0 10 }
