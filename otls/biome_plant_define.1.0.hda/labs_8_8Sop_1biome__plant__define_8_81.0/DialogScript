@@ -439,6 +439,48 @@
 
         }
 
+        group {
+            name    "fd_speciessettings_2"
+            label   "Visualize"
+
+            groupsimple {
+                name    "fd_Graph"
+                label   "Graph"
+
+                parm {
+                    name    "vizgraph"
+                    label   "Visualize Graph"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_Plants"
+                label   "Plants"
+
+                parm {
+                    name    "vizplants"
+                    label   "Visualize Plants"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "variantspacing"
+                    label   "Variant Spacing"
+                    type    float
+                    default { "15" }
+                    disablewhen "{ vizplants == 0 }"
+                    hidewhen "{ vizplants == 0 }"
+                    range   { 0 30 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
     }
 
 }
