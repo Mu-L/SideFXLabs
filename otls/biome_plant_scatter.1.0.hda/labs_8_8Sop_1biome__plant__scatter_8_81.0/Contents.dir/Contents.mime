@@ -32,27 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.98166 19.6993
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+position -2.65918 -0.803061
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-1 "output1"
-2 "output2"
 }
 inputsNamed3
 {
-0 	Cactus 1 1 "input1"
+0 	biome_plant_define2 0 1 "input1"
 }
 inputs
 {
-0 	Cactus 0 1
+0 	biome_plant_define2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author baile@Chappell
+  author Bailey@BaileysPC
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -15144,7 +15142,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../seed\")*detail(-2,\"iteration\",0) }
+      segment { length = 0 expr = ch(\"../seed\")*(detail(-2,\"iteration\",0)+1) }
     }
     channel density {
       lefttype = extend
@@ -15601,7 +15599,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../seed\")*detail(-2,\"iteration\",0) }
+      segment { length = 0 expr = ch(\"../seed\")*(detail(-2,\"iteration\",0)+1) }
     }
     channel randomyaw {
       lefttype = extend
