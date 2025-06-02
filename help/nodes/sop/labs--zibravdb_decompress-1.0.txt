@@ -13,8 +13,13 @@ As a part of the [ZibraVDB for Houdini |https://www.zibra.ai] plugin, this node 
 
 This significantly speeds up playback for high-resolution VDBs by eliminating the need to load one frame from disk at a time. Additionally, the total size of the data to be loaded is much smaller. The decompression occurs on the GPU and is extremely fast.
 
-:platform:Mac
-    ZibraVDB for Houdini is currently only supported on Windows and Linux.
+TIP:
+    You can force the compression and decompression to run on CPU instead of GPU via an environment variable: 
+    `ZIBRAVDB_FOR_HOUDINI_FORCE_SOFTWARE_DEVICE = 1`
+
+    On Windows, you can force the choice of graphics API via an environment variable:
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = D3D12`
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = VULKAN`
 
 
 :include /nodes/out/labs--zibravdb_compress-1.0#gettingready:

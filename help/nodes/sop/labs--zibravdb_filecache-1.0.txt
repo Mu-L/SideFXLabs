@@ -22,11 +22,13 @@ When reading back from disk, the entire sequence is loaded at once, with frames 
 TIP:
     You may also compress SDF VDBs indirectly. Convert SDF VDBs to Fog VDBs before compression and back to SDF VDBs after decompression using the [Convert VDB SOP|Node:/sop/convertvdb].
 
-NOTE:
-    Vector VDBs currently cannot be compressed. This feature will be supported in the future. In the meantime, you can split vector VDBs to float VDBs using the [VDB Vector Split SOP|Node:/sop/vdbvectorsplit] before compression. After decompression, merge the float VDBs back to vector VDBs using the [VDB Vector from Scalar SOP|Node:/sop/vdbvectormerge]. Please note that compressing vectors is not exactly the same as compressing vector components independently, so this current workaround may yield unexpected results.
+TIP:
+    You can force the compression and decompression to run on CPU instead of GPU via an environment variable: 
+    `ZIBRAVDB_FOR_HOUDINI_FORCE_SOFTWARE_DEVICE = 1`
 
-:platform:Mac
-    ZibraVDB for Houdini is currently only supported on Windows and Linux.
+    On Windows, you can force the choice of graphics API via an environment variable:
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = D3D12`
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = VULKAN`
 
 
 :include /nodes/out/labs--zibravdb_compress-1.0#gettingready:
