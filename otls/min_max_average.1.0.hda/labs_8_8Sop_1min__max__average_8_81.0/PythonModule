@@ -1,0 +1,29 @@
+def changePrefixSuffix(kwargs):
+    node = kwargs["node"]
+    multiparm_index = kwargs["script_multiparm_index"]
+    mode = kwargs["script_value0"]
+    mode_names = {
+        "max": "max",
+        "min": "min",
+        "mean": "average",
+        "mode": "mode",
+        "median": "median",
+        "sum": "sum",
+        "sumsquare": "sumsquare",
+        "rms": "rootmeansquare",
+        "first": "firstmatch",
+        "last": "lastmatch"  
+    }
+    
+    if node.parm("attribute_rename").evalAsInt() == 0:
+        name = mode_names[mode] + "_"
+        node_parm = "prefix"
+    
+    elif node.parm("attribute_rename").evalAsInt() == 1:
+        name = "_" + mode_names[mode]
+        node_parm = "suffix"
+        
+    node.parm(node_parm + multiparm_index).set(name)
+    
+    
+    

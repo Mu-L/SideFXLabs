@@ -19,6 +19,35 @@
         label   "Attribute"
         type    string
         default { "" }
+        menureplace {
+            [ "" ]
+            [ "r = []" ]
+            [ "node = kwargs['node']" ]
+            [ "inputs = node.inputs()" ]
+            [ "" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    attribute_type = node.parm(\"attribute_type\").eval()" ]
+            [ "    " ]
+            [ "    if geo:" ]
+            [ "    " ]
+            [ "        if attribute_type == 0:" ]
+            [ "            attrs = geo.primAttribs()" ]
+            [ "            " ]
+            [ "        if attribute_type == 1:" ]
+            [ "            attrs = geo.pointAttribs()" ]
+            [ "            " ]
+            [ "        if attribute_type == 2:" ]
+            [ "            attrs = geo.vertexAttribs()" ]
+            [ "       " ]
+            [ "        for a in attrs:" ]
+            [ "            if a.dataType() != hou.attribData.String:" ]
+            [ "                r.extend([a.name(), a.name()])" ]
+            [ "                " ]
+            [ "return r" ]
+            language python
+        }
     }
     parm {
         name    "attribute_type"
@@ -40,6 +69,7 @@
             "0" "Add Prefix"
             "1" "Add Suffix"
         }
+        parmtag { "script_callback" "" }
         parmtag { "script_callback_language" "python" }
     }
     parm {
@@ -50,7 +80,7 @@
     }
     multiparm {
         name    "folder0"
-        label    "Number of Analysis"
+        label    "Number of Analyses"
         default 1
 
         parm {
@@ -71,6 +101,8 @@
                 "last"      "Last Match"
             }
             parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "hou.phm().changePrefixSuffix(kwargs)" }
+            parmtag { "script_callback_language" "python" }
         }
         parm {
             name    "prefix#"
