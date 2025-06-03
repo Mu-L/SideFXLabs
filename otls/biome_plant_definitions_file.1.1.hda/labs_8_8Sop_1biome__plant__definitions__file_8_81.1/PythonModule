@@ -43,7 +43,7 @@ def getAttrib(node):
     file_path = node.parm('librarypath').eval()
      
     #reference node
-    type_to_find = 'labs::biome_plant_define::1.0'
+    type_to_find = 'labs::biome_plant_define::1.1'
     
     #template dictionnaries
     parm_dict = orderedDict(node, 'Species Settings') 
@@ -95,6 +95,11 @@ def getAttrib(node):
         #manually add the recursive toggle
         iter = attr_to_find["recursive"]
         inc_title = {node.parm("recursive").eval():attr_to_find["recursive"]}
+        plant.update(inc_title)
+        
+        #manually add the maxshrubheight string
+        iter = attr_to_find["maxshrubheight"]
+        inc_title = {node.parm("maxshrubheight").eval():attr_to_find["maxshrubheight"]}
         plant.update(inc_title)
         
         #manually add the include asset path
@@ -161,7 +166,7 @@ def recreateNodesfromGeo(node):
             return
             
         # type of node to create
-        type_to_create = 'labs::biome_plant_define::1.0'
+        type_to_create = 'labs::biome_plant_define::1.1'
         parent = node.parent()
         input_node = node
         
@@ -215,7 +220,7 @@ def recreateNodes(node):
     data = readJson(file_path)
 
     # type of node to create
-    type_to_create = 'labs::biome_plant_define::1.0'
+    type_to_create = 'labs::biome_plant_define::1.1'
     
     # references for connections
     if node.parm("create").eval()==0:

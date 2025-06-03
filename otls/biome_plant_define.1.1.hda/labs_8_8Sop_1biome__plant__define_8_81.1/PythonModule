@@ -50,4 +50,35 @@ def initVariants(kwargs , mode):
             reftypeparmname = 'reftype' + '%d' % (i+1)
             node.parm(reftypeparmname).set(1)
             node.parm(parmname).set(str(mergenode.inputs()[i].path()))
-    
+            
+def calculateBounds(kwargs):
+    node = kwargs['node']
+    nvariants = node.parm('variants').eval()
+    for i in range(nvariants):
+        radiusparmname = 'radius' + '%d' % (i+1)
+        trunkradiusparmname = 'trunkradius' + '%d' % (i+1)
+        filemeshparmname = 'filemeshvariant' + '%d' % (i+1)
+        meshparmname = 'meshvariant' + '%d' % (i+1)
+        reftypeparmname = 'reftype' + '%d' % (i+1)
+        filenode = node.node("editable_file")
+        clipnode = node.node("trunk_bounds")
+        if node.parm(reftypeparmname).eval() == 0:
+            path = node.parm(filemeshparmname).eval()
+        else:
+            objpath = node.parm(meshparmname).eval()
+            path = "op:" + hou.node(objpath).path()
+        filenode.parm("file").set(path)
+        
+        #set radius by file node bounds 
+        boundsgeo = filenode.geometry()
+        bbox = boundsgeo.boundingBox()
+        size = bbox.sizevec()
+        maxsize = max(size[0], size[2]);
+        node.parm(radiusparmname).set(maxsize / 2.0)
+        
+        #set trunk radius by clip node bounds 
+        boundsgeo = clipnode.geometry()
+        bbox = boundsgeo.boundingBox()
+        size = bbox.sizevec()
+        maxsize = max(size[0], size[2]);
+        node.parm(trunkradiusparmname).set(maxsize / 2.0)
