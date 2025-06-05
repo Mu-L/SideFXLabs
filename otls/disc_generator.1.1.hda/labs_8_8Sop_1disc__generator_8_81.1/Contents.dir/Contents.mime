@@ -32,12 +32,11 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.5 2.85
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -0.712895 -4.59328
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
@@ -352,7 +351,7 @@ Content-Type: text/plain
       righttype = extend
       default = 5000
       flags = 0
-      segment { length = 0 value = 5000 5000 expr = "(ch(\"../sides\") + 1) * (ch(\"../segments\") + 1)" }
+      segment { length = 0 value = 5000 5000 expr = "(ch(\"../sides\") + 1) * (ch(\"../divisions\") + 1)" }
     }
   }
 
@@ -622,8 +621,8 @@ Content-Type: text/plain
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "segments"
-        label   "Segments"
+        name    "divisions"
+        label   "Divisions"
         type    integer
         default { "8" }
         range   { 1! 10 }
@@ -726,12 +725,12 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 16 16 expr = ch(\"../sides\") }
     }
-    channel segments {
+    channel divisions {
       lefttype = extend
       righttype = extend
       default = 8
       flags = 0
-      segment { length = 0 value = 8 8 expr = ch(\"../segments\") }
+      segment { length = 0 value = 8 8 expr = ch(\"../divisions\") }
     }
     channel arcstart {
       lefttype = extend
@@ -796,7 +795,7 @@ snippet	[ 0	locks=0 ]	(	"// Declaration of Variables
 float inner_radius = chf(\"innerradius\");
 float outer_radius = chf(\"outerradius\");
 float sides = chf(\"sides\");
-float segments = chf(\"segments\");
+float divisions = chf(\"divisions\");
 float arc_start = radians(chf(\"arcstart\"));
 float arc_end = radians(chf(\"arcend\"));
 
@@ -814,19 +813,19 @@ vector pos;
 float dif_radius = outer_radius - inner_radius;
 
 float sides_counter = @ptnum % (sides + 1);
-float segments_counter = (int)(@ptnum / (@numpt / (segments + 1)));
+float segments_counter = (int)(@ptnum / (@numpt / (divisions + 1)));
 
 // Shape Generation
-radius = inner_radius + ((dif_radius / segments) * segments_counter);
+radius = inner_radius + ((dif_radius / divisions) * segments_counter);
 // angle = (((arc_end - arc_start)) / sides * sides_counter) - arc_end;
 angle = (((arc_start - arc_end)) / sides * sides_counter) - arc_start;
 
 ramp_uposition = fit(sides_counter, 0, sides, 0.0, 1.0);
-ramp_vposition = fit(segments_counter, 0, segments, 0.0, 1.0);
+ramp_vposition = fit(segments_counter, 0, divisions, 0.0, 1.0);
         
 // Position
 x = cos(angle) * radius;
-y = fit(segments_counter, 0, segments, inner_height, outer_height);
+y = fit(segments_counter, 0, divisions, inner_height, outer_height);
 
 if (enable_ramp) {
     y = y + (chramp(\"../curveramp\", ramp_vposition) * ramp_multiplier);
@@ -860,7 +859,7 @@ folder1	[ 0	locks=0 ]	(	0	0	)
 innerradius	[ 0	locks=0 ]	(	[ innerradius	0 ] 	)
 outerradius	[ 0	locks=0 ]	(	[ outerradius	1 ] 	)
 sides	[ 0	locks=0 ]	(	[ sides	16 ] 	)
-segments	[ 0	locks=0 ]	(	[ segments	8 ] 	)
+divisions	[ 0	locks=0 ]	(	[ divisions	8 ] 	)
 arcstart	[ 0	locks=0 ]	(	[ arcstart	0 ] 	)
 arcend	[ 0	locks=0 ]	(	[ arcend	360 ] 	)
 sepparm	[ 0	locks=0 ]	(	)
@@ -1365,7 +1364,7 @@ Content-Type: text/plain
       righttype = extend
       default = 8
       flags = 0
-      segment { length = 0 value = 8 8 expr = ch(\"../segments\") }
+      segment { length = 0 value = 8 8 expr = ch(\"../divisions\") }
     }
     channel adduvs {
       lefttype = extend
