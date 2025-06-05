@@ -32,12 +32,11 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.15305 4.36783
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -0.712895 -8.33328
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
@@ -175,7 +174,7 @@ Content-Type: text/plain
       righttype = extend
       default = 5000
       flags = 0
-      segment { length = 0 value = 5000 5000 expr = "(ch(\"../sides\") + 1) * (ch(\"../segments\") + 1)" }
+      segment { length = 0 value = 5000 5000 expr = "(ch(\"../sides\") + 1) * (ch(\"../divisions\") + 1)" }
     }
   }
 
@@ -305,6 +304,13 @@ Content-Type: text/plain
             label   "Thread Job Size"
             export  none
         }
+        groupsimple {
+            name    "folder_generatedparms_snippet"
+            label   "Generated Channel Parameters"
+            grouptag { "sidefx::look" "blank" }
+
+        }
+
         parm {
             name    "snippet"
             baseparm
@@ -430,20 +436,34 @@ Content-Type: text/plain
     }
 
     parm {
-        name    "innerradius"
-        label   "Inner Radius"
+        name    "baseradius"
+        label   "Base Radius"
         type    float
         default { "0" }
         range   { 0 10 }
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "outerradius"
-        label   "Outer Radius"
+        name    "topradius"
+        label   "Top Radius"
         type    float
         default { "1" }
         range   { 0 10 }
         parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "enableuniformradius"
+        label   "Enable Uniform Radius"
+        type    float
+        default { "0" }
+        range   { 0 1 }
+    }
+    parm {
+        name    "uniformradius"
+        label   "Uniform Radius"
+        type    float
+        default { "0" }
+        range   { 0 1 }
     }
     parm {
         name    "sides"
@@ -454,8 +474,8 @@ Content-Type: text/plain
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "segments"
-        label   "Segments"
+        name    "divisions"
+        label   "Divisions"
         type    integer
         default { "8" }
         range   { 1! 10 }
@@ -479,13 +499,13 @@ Content-Type: text/plain
     }
     parm {
         name    "sepparm"
-        label   "Separator"
+        label   "sepparm"
         type    separator
         default { "" }
     }
     parm {
-        name    "orientation"
-        label   "Orientation"
+        name    "direction"
+        label   "Direction"
         type    ordinal
         default { "1" }
         menu {
@@ -497,7 +517,7 @@ Content-Type: text/plain
     }
     parm {
         name    "sepparm6"
-        label   "Separator"
+        label   "sepparm6"
         type    separator
         default { "" }
     }
@@ -578,19 +598,19 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 1 1 expr = ch(\"../curveramp2interp\") }
     }
-    channel innerradius {
+    channel baseradius {
       lefttype = extend
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../innerradius\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../baseradius\") }
     }
-    channel outerradius {
+    channel topradius {
       lefttype = extend
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../outerradius\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../topradius\") }
     }
     channel sides {
       lefttype = extend
@@ -599,12 +619,12 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 16 16 expr = ch(\"../sides\") }
     }
-    channel segments {
+    channel divisions {
       lefttype = extend
       righttype = extend
       default = 8
       flags = 0
-      segment { length = 0 value = 8 8 expr = ch(\"../segments\") }
+      segment { length = 0 value = 8 8 expr = ch(\"../divisions\") }
     }
     channel arcstart {
       lefttype = extend
@@ -619,12 +639,12 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 360 360 expr = ch(\"../arcend\") }
     }
-    channel orientation {
+    channel direction {
       lefttype = extend
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../orientation\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../direction\") }
     }
     channel height {
       lefttype = extend
@@ -653,6 +673,18 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 2 2 expr = ch(\"../curveramp\") }
     }
+    channel uniformradius {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../radius\") }
+    }
+    channel enableuniformradius {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../uniformradius\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -668,14 +700,16 @@ class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"// Declaration of Variables
-float inner_radius = chf(\"innerradius\");
-float outer_radius = chf(\"outerradius\");
+int enable_uniform_radius = chi(\"enableuniformradius\");
+float uniform_radius = chf(\"uniformradius\");
+float base_radius = chf(\"baseradius\");
+float top_radius = chf(\"topradius\");
 float sides = chf(\"sides\");
-float segments = chf(\"segments\");
+float divisions = chf(\"divisions\");
 float arc_start = radians(chf(\"arcstart\"));
 float arc_end = radians(chf(\"arcend\"));
 
-int orientation = chi(\"orientation\");
+int direction = chi(\"direction\");
 
 float height = chf(\"height\");
 int enable_ramp = chi(\"enableramp\");
@@ -685,16 +719,21 @@ float pi = 3.14159265359;
 float x, y, z, angle, radius, ramp_vposition;
 vector pos;
 
-float dif_radius = outer_radius - inner_radius;
+if (enable_uniform_radius)
+{
+    base_radius = uniform_radius;
+    top_radius = uniform_radius;
+}
+float dif_radius = top_radius - base_radius;
 
 float sides_counter = @ptnum % (sides + 1);
-float segments_counter = (int)(@ptnum / (@numpt / (segments + 1)));
+float segments_counter = (int)(@ptnum / (@numpt / (divisions + 1)));
 
 // Shape Generation
-radius = inner_radius + ((dif_radius / segments) * segments_counter);
+radius = base_radius + ((dif_radius / divisions) * segments_counter);
 angle = (((arc_end - arc_start)) / sides * sides_counter) - arc_end;
 
-ramp_vposition = fit(segments_counter, 0, segments, 0.0, 1.0);
+ramp_vposition = fit(segments_counter, 0, divisions, 0.0, 1.0);
         
 // Position
 if (enable_ramp) {
@@ -702,12 +741,12 @@ if (enable_ramp) {
 }
 
 x = cos(angle) * radius;
-y = fit(segments_counter, 0, segments, 0, height);
+y = fit(segments_counter, 0, divisions, 0, height);
 z = sin(angle) * radius;
 
-if (orientation == 0) {
+if (direction == 0) {
     pos = set(y, x, -z);
-} else if (orientation == 1) {
+} else if (direction == 1) {
     pos = set(x, y, z);
 } else {
     pos = set(-x, z,y);
@@ -732,14 +771,17 @@ vex_inplace	[ 0	locks=0 ]	(	"off"	)
 vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
-innerradius	[ 0	locks=0 ]	(	[ innerradius	0 ] 	)
-outerradius	[ 0	locks=0 ]	(	[ outerradius	1 ] 	)
+folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
+baseradius	[ 0	locks=0 ]	(	[ baseradius	0 ] 	)
+topradius	[ 0	locks=0 ]	(	[ topradius	1 ] 	)
+enableuniformradius	[ 0	locks=0 ]	(	[ enableuniformradius	0 ] 	)
+uniformradius	[ 0	locks=0 ]	(	[ uniformradius	0 ] 	)
 sides	[ 0	locks=0 ]	(	[ sides	16 ] 	)
-segments	[ 0	locks=0 ]	(	[ segments	8 ] 	)
+divisions	[ 0	locks=0 ]	(	[ divisions	8 ] 	)
 arcstart	[ 0	locks=0 ]	(	[ arcstart	0 ] 	)
 arcend	[ 0	locks=0 ]	(	[ arcend	360 ] 	)
 sepparm	[ 0	locks=0 ]	(	)
-orientation	[ 8	locks=0 ]	(	[ orientation	1 ] 	)
+direction	[ 0	locks=0 ]	(	[ direction	1 ] 	)
 sepparm6	[ 0	locks=0 ]	(	)
 height	[ 0	locks=0 ]	(	[ height	1 ] 	)
 enableramp	[ 8	locks=0 ]	(	[ enableramp	0 ] 	)

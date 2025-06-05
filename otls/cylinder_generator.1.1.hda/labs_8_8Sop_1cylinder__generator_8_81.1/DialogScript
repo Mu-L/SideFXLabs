@@ -16,8 +16,8 @@
     inputlabel	4	"Sub-Network Input #4"
 
     parm {
-        name    "orientation"
-        label   "Orientation"
+        name    "direction"
+        label   "Direction"
         type    ordinal
         default { "1" }
         menu {
@@ -28,25 +28,36 @@
         parmtag { "script_callback_language" "python" }
     }
     parm {
-        name    "endcaps"
-        label   "End Caps"
+        name    "uniformradius"
+        label   "Use Uniform Radius"
         type    toggle
-        default { [ "off" hscript-expr ] }
-        parmtag { "autoscope" "0000000000000000" }
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
     }
     parm {
-        name    "innerradius"
-        label   "Inner Radius"
+        name    "radius"
+        label   "Radius"
         type    float
         default { "0.5" }
+        hidewhen "{ uniformradius == 0 }"
         range   { 0 10 }
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "outerradius"
-        label   "Outer Radius"
+        name    "baseradius"
+        label   "Base Radius"
         type    float
         default { "0.5" }
+        hidewhen "{ uniformradius == 1 }"
+        range   { 0 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "topradius"
+        label   "Top Radius"
+        type    float
+        default { "0.5" }
+        hidewhen "{ uniformradius == 1 }"
         range   { 0 10 }
         parmtag { "autoscope" "0000000000000000" }
     }
@@ -68,11 +79,18 @@
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "segments"
-        label   "Segments"
+        name    "divisions"
+        label   "Divisions"
         type    integer
         default { "8" }
         range   { 1! 64 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "endcaps"
+        label   "End Caps"
+        type    toggle
+        default { [ "off" hscript-expr ] }
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
