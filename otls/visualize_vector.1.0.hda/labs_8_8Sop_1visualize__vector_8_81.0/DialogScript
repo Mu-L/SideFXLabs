@@ -1,0 +1,372 @@
+# Dialog script for labs::visualize_vector::1.0 automatically generated
+
+{
+    name	labs::visualize_vector::1.0
+    script	visualize_vector
+    label	"Labs Visualize Vector"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "display"
+        label   "Display"
+        type    ordinal
+        invisible
+        default { "0" }
+        menu {
+            ""  "Geo"
+            "1" "Viz"
+        }
+        range   { 0! 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "hou.pwd().hdaModule().displaypy(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "fd_visualizers"
+        label   "Visualizers"
+        parmtag { "script_callback" "" }
+        grouptag { "units" "" }
+
+        multiparm {
+            name    "viznum"
+            label    "Number of Visualizers"
+            default 1
+            parmtag { "multistartoffset" "1" }
+            parmtag { "script_callback" "hou.pwd().hdaModule().vectorrandomcolor(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+
+            parm {
+                name    "enable#"
+                label   "Enable Visualizer"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "fd_visualizer#"
+                label   "Visualizer #"
+                parmtag { "group_default" "1" }
+                parmtag { "script_callback" "" }
+                grouptag { "sidefx::header_label" "labelheader#" }
+                parmtag { "sidefx::header_toggle" "enable#" }
+
+                parm {
+                    name    "labelheader#"
+                    label   "Label"
+                    type    label
+                    nolabel
+                    default { "`chs(\"vectorattribute\" + substr($CH, 11, 5))`" }
+                }
+                groupsimple {
+                    name    "borderless#"
+                    label   "borderless#"
+                    disablewhen "{ enable# == 0 }"
+                    grouptag { "sidefx::look" "blank" }
+
+                    parm {
+                        name    "vectorattribute#"
+                        label   "Attribute"
+                        type    string
+                        default { "P" }
+                        menureplace {
+                            [ "node = hou.pwd()" ]
+                            [ "attrib_menu = node.generateInputAttribMenu(0, hou.attribType.Point, hou.attribData.Float, 1, 4)" ]
+                            [ "return attrib_menu" ]
+                            language python
+                        }
+                        parmtag { "editor" "0" }
+                        parmtag { "script_callback" "" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "vectortype_#"
+                        label   "Vector Direction"
+                        type    ordinal
+                        invisible
+                        default { "0" }
+                        menu {
+                            "0" "From Attribute"
+                            "1" "Custom Direction"
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "connect_#"
+                        label   "Connect Points"
+                        type    toggle
+                        invisible
+                        default { "1" }
+                        hidewhen "{ vectortype# != 2 }"
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "cusvec_#"
+                        label   "Custom Vector"
+                        type    direction
+                        invisible
+                        size    3
+                        default { "1" "0" "0" }
+                        disablewhen "{ vectortype# == 0 }"
+                        hidewhen "{ vectortype# == 0 } { vectortype# == 2 }"
+                        range   { 0 1 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm2__#"
+                        label   "Spacer"
+                        type    separator
+                        default { "" }
+                        parmtag { "sidefx::layout_height" "small" }
+                        parmtag { "sidefx::look" "blank" }
+                    }
+                    parm {
+                        name    "normalize#"
+                        label   "Normalize Vectors"
+                        type    toggle
+                        default { "0" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "multiplier#"
+                        label   "Length Multiplier"
+                        type    float
+                        default { "1" }
+                        range   { 0! 1 }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "sepparm2___2_#"
+                        label   "Spacer"
+                        type    separator
+                        default { "" }
+                        parmtag { "sidefx::layout_height" "small" }
+                        parmtag { "sidefx::look" "blank" }
+                    }
+                    parm {
+                        name    "coloring#"
+                        label   "Coloring"
+                        type    ordinal
+                        default { "0" }
+                        menu {
+                            "0" "Fixed Color"
+                            "1" "From Attribute"
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "fixedcolor#"
+                        label   "Fixed Color"
+                        type    color
+                        size    3
+                        default { "1.123" "1.321" "1.231" }
+                        hidewhen "{ coloring# != 0 }"
+                        range   { 0 1 }
+                        parmtag { "script_callback" "" }
+                        parmtag { "script_callback_language" "python" }
+                        parmtag { "units" "" }
+                    }
+                    parm {
+                        name    "colorattrib__#"
+                        label   "Color Attribute"
+                        type    string
+                        invisible
+                        default { "" }
+                        help    "Remaps Attribute Vector Length min and max values between zero and one and visualizes them with a color ramp. If no attribute was provided it will default to the vertex order gradient."
+                        hidewhen "{ coloring# != 1 }"
+                        menureplace {
+                            [ "node = hou.pwd()" ]
+                            [ "attrib_menu = node.generateInputAttribMenu(0, hou.attribType.Point, hou.attribData.Float, 1, 4)" ]
+                            [ "return attrib_menu" ]
+                            language python
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "attribcol_#"
+                        label   "Attribute Color"
+                        type    string
+                        invisible
+                        default { "" }
+                        hidewhen "{ coloring# != 2 }"
+                        menureplace {
+                            [ "node = hou.pwd()" ]
+                            [ "attrib_menu = node.generateInputAttribMenu(0, hou.attribType.Point, hou.attribData.Float, 1, 3)" ]
+                            [ "return attrib_menu" ]
+                            language python
+                        }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    groupcollapsible {
+                        name    "fd_colorramp#"
+                        label   "Color Mapping"
+                        hidewhen "{ coloring# != 1 }"
+                        parmtag { "group_default" "1" }
+
+                        parm {
+                            name    "colorramp#"
+                            label   "Color Mapping #"
+                            type    ramp_rgb
+                            default { "5" }
+                            range   { 1! 10 }
+                            parmtag { "autoscope" "0000000000000000" }
+                            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0.20000000298023224 0 1 ) 1interp ( linear ) 2pos ( 0.25 ) 2c ( 0 0.8500000238418579 1 ) 2interp ( linear ) 3pos ( 0.5 ) 3c ( 0 1 0.10000000149011612 ) 3interp ( linear ) 4pos ( 0.75 ) 4c ( 0.949999988079071 1 0 ) 4interp ( linear ) 5pos ( 1 ) 5c ( 1 0 0 ) 5interp ( linear )" }
+                            parmtag { "script_callback_language" "python" }
+                        }
+                    }
+
+                }
+
+                parm {
+                    name    "crs_#"
+                    label   "Vector Tangent"
+                    type    integer
+                    invisible
+                    default { "0" }
+                    hidewhen "{ enable# == 0 } { vectortype# == 2 }"
+                    range   { 0! 2! }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "fd_visualizers_1"
+        label   "Settings"
+
+        parm {
+            name    "arrows"
+            label   "Show Arrow Heads"
+            type    toggle
+            invisible
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "keeporiginal"
+            label   "Show Input Geometry"
+            type    toggle
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_arrow"
+            label   "Arrow"
+
+            parm {
+                name    "arrowbody"
+                label   "Body"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "0" "Line"
+                    "1" "Tube"
+                    "2" "Cone"
+                }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "arrowthickness"
+                label   "Thickness"
+                type    float
+                invisible
+                default { "1" }
+                range   { 0! 10 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "arrowradius"
+                label   "Radius"
+                type    float
+                invisible
+                default { "1" }
+                hidewhen "{ arrows == 0 }"
+                range   { 0! 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "arrowscale"
+                label   "Scale"
+                type    float
+                default { "0.025" }
+                range   { 0! 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "scale_to_magnitude"
+            label   "Scale To Magnitude"
+            type    toggle
+            invisible
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "orientation"
+            label   "Orientation"
+            type    ordinal
+            invisible
+            default { "0" }
+            hidewhen "{ arrows == 0 }"
+            menu {
+                "none"  "None"
+                "right" "Right Hand"
+                "left"  "Left Hand"
+            }
+            range   { 0! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_origin"
+            label   "Origin"
+
+            parm {
+                name    "showorigin"
+                label   "Show Origin"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "originradius"
+                label   "Radius"
+                type    float
+                default { "0.005" }
+                disablewhen "{ showorigin == 0 }"
+                range   { 0! 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "origincolor"
+                label   "Color"
+                type    color
+                size    3
+                default { "0.2" "0.2" "0.2" }
+                disablewhen "{ showorigin == 0 }"
+                range   { 0 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}

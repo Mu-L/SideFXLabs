@@ -1,0 +1,26 @@
+import random
+
+def displaypy(kwargs):
+    node = kwargs['node']
+    display = kwargs["parm"].evalAsInt()
+    #output = -1 if display else 0
+    #node.setOutputForViewFlag(output)
+
+
+def vectorrandomcolor(kwargs):
+    node = kwargs['node']
+    randcols = [(1,0,0.5), (0,1,0.5), (0,0.5,1), (1,1,0.5), (1,0.5,1), (0.5,1,1), (0.25,1,0.25), (0.25,0.25,1), (1,0.25,0.25), (1,0.75,0.15), (0.15,0.75,1), (0.15,1,0.75), (0,0.15,0.5), (0,0.5,0.15), (0.5,0.15,0.15), (0.7,1,0.2), (1,0.1,0.6), (0.1,0.6,1), (1,0.2,0.1), (0,0.9,0.1), (0.1,0,0.8)]
+    lencols = len(randcols)
+
+    nums = node.parm("viznum").eval()
+    for index in range(nums):
+        namer = "fixedcolor" + str(index+1) + "r"
+        nameg = "fixedcolor" + str(index+1) + "g"
+        nameb = "fixedcolor" + str(index+1) + "b"
+
+        if(index == nums-1):
+            if( node.parm(namer).eval() == 1.123 and node.parm(nameg).eval() == 1.321 and node.parm(nameb).eval() == 1.231):
+                rand = random.randrange(0,lencols)
+                node.parm(namer).set(randcols[rand%(lencols)][0])
+                node.parm(nameg).set(randcols[rand%(lencols)][1])
+                node.parm(nameb).set(randcols[rand%(lencols)][2])

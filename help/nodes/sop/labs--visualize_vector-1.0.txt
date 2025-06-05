@@ -1,0 +1,76 @@
+= Labs Visualize Vector =
+
+#type:     node
+#context:  sop
+#internal: labs::visualize_vector::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
+#since:    20.5
+
+"""Visualizes vectors as arrows."""
+
+This node visualizes vector attributes with arrows. There are options for coloring the arrows, changing their length and arrow body type, and visualizing their origin.
+
+@parameters        
+    == Visualizers ==
+
+    Number of Visualizers:
+        #id: viznum
+        The number of attributes to visualize.
+
+    Enable Visualizer:
+        #id: enable
+        Enables the visualizer.
+
+    Label:
+        #id: labelheader
+        The name of the visualizer which derives from the attribute that is being visualized.
+
+    Attribute:
+        #id: vectorattribute
+        The vector attribute that is being visualized.
+
+    Normalize Vectors:
+        #id: normalize
+        Normalizes the vectors to a unit.
+
+    Length Multiplier:
+        #id: multiplier
+        Multiplies the length of the vector.
+
+    Coloring:
+        #id: coloring
+        The way the visualized vectors are being colored.
+
+    Fixed Color:
+        #id: fixedcolor
+        The fixed and uniform color of the vectors that are being visualized.
+
+    Color Mapping:
+        #id: colorramp
+        The ramp that colorizes the vectors that are being visualized, based on the minimum and maximum values of the attribute.
+
+    == Settings ==
+
+    Show Input Geometry:
+        #id: keeporiginal
+        Shows the input geometry alongside the visualizers.
+    
+    Body:
+        #id: arrowbody
+        The style of the arrow body. Options include Line, Tube, and Cone.
+    
+    Scale:
+        #id: arrowscale
+        Sets the size of the vector arrows.
+    
+    Show Origin:
+        #id: showorigin
+        Show the origin sphere.
+
+    Radius:
+        #id: originradius
+        Sets the radius of the origin sphere.
+
+    Color:
+        #id: origincolor
+        Sets the color of the origin sphere.
