@@ -1,0 +1,77 @@
+# Dialog script for labs::capsule::1.0 automatically generated
+
+{
+    name	labs::capsule::1.0
+    script	labs::capsule::1.0
+    label	"Labs Capsule"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "direction"
+        label   "Direction"
+        type    ordinal
+        default { "1" }
+        menu {
+            "0" "X Axis"
+            "1" "Y Axis"
+            "2" "Z Axis"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "radius"
+        label   "Radius"
+        type    float
+        default { "0.25" }
+        range   { 0 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "height"
+        label   "Height"
+        type    float
+        default { "0.5" }
+        hidewhen "{ hasinput(0) == 1 }"
+        range   { 0 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "totalheight"
+        label   "Total Height"
+        type    label
+        default { "Total height: `(floor((2.0 * ch(\"radius\") + ch(\"height\")) * 10000))/10000`" }
+        parmtag { "sidefx::look" "block" }
+    }
+    parm {
+        name    "sides"
+        label   "Sides"
+        type    integer
+        default { "8" }
+        range   { 3! 32 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "bodysegments"
+        label   "Body Segments"
+        type    integer
+        default { "1" }
+        range   { 1! 8 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "capsegments"
+        label   "Cap Segments"
+        type    integer
+        default { "4" }
+        range   { 1! 8 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+}

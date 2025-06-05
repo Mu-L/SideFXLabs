@@ -1,0 +1,34 @@
+= Labs Capsule =
+
+#type:     node
+#context:  sop
+#internal: labs::capsule::1.0
+#icon:     /labs_icons/sidefxlabs_default.svg
+#since:    20.5
+
+This node generates a capsule mesh. The capsule is a cylinder with hemispherical caps at each end.
+
+@parameters
+    Direction:
+        #id: direction
+        The direction of the shape.
+
+    Radius:
+        #id: radius
+        Defines the radius of the capsule.
+
+    Height:
+        #id: height
+        Determines the height of the cylinder where the hemispherical ends are excluded.
+
+    Sides:
+        #id: sides
+        Determines the number of sides the capsule has.
+
+    Body Segments:
+        #id: bodysegments
+        Determines the number of polygon segments the cylindrical part of the capsule has along its height.
+
+    Cap Segments:
+        #id: capsegments
+        Determines the number of polygon segments the hemispherical ends have along their height.
