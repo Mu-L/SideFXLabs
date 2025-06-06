@@ -61,6 +61,7 @@ def calculateBounds(kwargs):
         meshparmname = 'meshvariant' + '%d' % (i+1)
         reftypeparmname = 'reftype' + '%d' % (i+1)
         filenode = node.node("editable_file")
+        boundsnode = node.node("file_bounds")
         clipnode = node.node("trunk_bounds")
         if node.parm(reftypeparmname).eval() == 0:
             path = node.parm(filemeshparmname).eval()
@@ -70,7 +71,7 @@ def calculateBounds(kwargs):
         filenode.parm("file").set(path)
         
         #set radius by file node bounds 
-        boundsgeo = filenode.geometry()
+        boundsgeo = boundsnode.geometry()
         bbox = boundsgeo.boundingBox()
         size = bbox.sizevec()
         maxsize = max(size[0], size[2]);
