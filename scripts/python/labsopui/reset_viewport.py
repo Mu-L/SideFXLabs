@@ -1,25 +1,24 @@
 import hou
 
-def resetSceneViewers(external_object_visibility = 0):
+
+def resetSceneViewers(external_object_visibility=0):
 
     scene_viewers = [pane_tab for pane_tab in hou.ui.paneTabs() if pane_tab.type() == hou.paneTabType.SceneViewer]
-
     for old_scene_viewer in scene_viewers:
         resetSceneViewer(old_scene_viewer, external_object_visibility)
 
 
-def resetSceneViewer(old_scene_viewer, external_object_visibility = 0):
+def resetSceneViewer(old_scene_viewer, external_object_visibility=0):
 
         desktop = hou.ui.curDesktop()
         desktop_name = desktop.name()
 
         pane = old_scene_viewer.pane()
 
-        if pane is not None:
-            new_scene_viewer = pane.createTab(hou.paneTabType.SceneViewer)
-
+        if pane is None:
+            new_scene_viewer = desktop.createFloatingPaneTab(hou.paneTabType.SceneViewer, (0, 100), old_scene_viewer.size(), immediate=True)
         else:
-            new_scene_viewer = desktop.createFloatingPaneTab(hou.paneTabType.SceneViewer, (0, 100), old_scene_viewer.size(), None, True)
+            new_scene_viewer = pane.createTab(hou.paneTabType.SceneViewer)
 
         old_scene_viewer_name = old_scene_viewer.name()
         new_scene_viewer_name = new_scene_viewer.name()
@@ -98,24 +97,37 @@ def resetSceneViewer(old_scene_viewer, external_object_visibility = 0):
 
             # Sets view transform or camera to look through
             if old_viewport.camera() is None:
-
                 view_transform = hou.hscript("viewtransform -p {}".format(old_viewport_name))[0]
                 new_transform = view_transform.replace(old_viewport_name, new_viewport_name)
                 hou.hscript("{}".format(new_transform))
-
             else:
-
                 # Currently if the camera is ortho., only in the main viewport can it be properly set.
                 # In any other viewport, only the view transform is set but the camera is not.
                 new_viewport.setCamera(hou.node(old_viewport.cameraPath()))
                 new_viewport.lockCameraToView(old_viewport.isCameraLockedToView())
 
-            old_display_options = old_viewport.settings()
-            new_display_options = new_viewport.settings()
-            new_display_options.showsName(old_display_options.showName())
-            new_display_options.showsCameraName(old_display_options.showCameraName())
-            new_display_options.setLighting(old_display_options.lighting())
-            hou.hscript('colorsettings -g {0} -v'.format(old_display_options.sceneGamma()))
-        
+            old_viewport_settings = old_viewport.settings()
+            new_viewport_settings = new_viewport.settings()
+            new_viewport_settings.showsName(old_viewport_settings.showName())
+            new_viewport_settings.showsCameraName(old_viewport_settings.showCameraName())
+            new_viewport_settings.geometryInfo(old_viewport_settings.geometryInfo())
+            new_viewport_settings.setLighting(old_viewport_settings.lighting())
+            
+
+            new_viewport_settings.enableGuide(hou.viewportGuide.CameraMask, old_viewport_settings.guideEnabled(hou.viewportGuide.CameraMask))
+            new_viewport_settings.enableGuide(hou.viewportGuide.FieldGuide, old_viewport_settings.guideEnabled(hou.viewportGuide.FieldGuide))
+            new_viewport_settings.enableGuide(hou.viewportGuide.FloatingGnomon, old_viewport_settings.guideEnabled(hou.viewportGuide.FloatingGnomon))
+            new_viewport_settings.enableGuide(hou.viewportGuide.FollowSelection, old_viewport_settings.guideEnabled(hou.viewportGuide.FollowSelection))
+            new_viewport_settings.enableGuide(hou.viewportGuide.GroupList, old_viewport_settings.guideEnabled(hou.viewportGuide.GroupList))
+            new_viewport_settings.enableGuide(hou.viewportGuide.NodeGuides, old_viewport_settings.guideEnabled(hou.viewportGuide.NodeGuides))
+            new_viewport_settings.enableGuide(hou.viewportGuide.NodeHandles, old_viewport_settings.guideEnabled(hou.viewportGuide.NodeHandles))
+            new_viewport_settings.enableGuide(hou.viewportGuide.OriginGnomon, old_viewport_settings.guideEnabled(hou.viewportGuide.OriginGnomon))
+            new_viewport_settings.enableGuide(hou.viewportGuide.ShowDrawTime, old_viewport_settings.guideEnabled(hou.viewportGuide.ShowDrawTime))
+            new_viewport_settings.enableGuide(hou.viewportGuide.TemplateGeometry, old_viewport_settings.guideEnabled(hou.viewportGuide.TemplateGeometry))
+            new_viewport_settings.enableGuide(hou.viewportGuide.XYPlane, old_viewport_settings.guideEnabled(hou.viewportGuide.XYPlane))
+            new_viewport_settings.enableGuide(hou.viewportGuide.XZPlane, old_viewport_settings.guideEnabled(hou.viewportGuide.XZPlane))
+            new_viewport_settings.enableGuide(hou.viewportGuide.YZPlane, old_viewport_settings.guideEnabled(hou.viewportGuide.YZPlane))
+
+            hou.hscript('colorsettings -g {0} -v'.format(old_viewport_settings.sceneGamma()))
 
         old_scene_viewer.close()
