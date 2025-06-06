@@ -832,6 +832,15 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "vizvariant"
+                label   "Visualize Variant Number"
+                type    toggle
+                default { "0" }
+                disablewhen "{ vizpoints == 0 }"
+                hidewhen "{ vizpoints == 0 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "colorby"
                 label   "Color By"
                 type    ordinal

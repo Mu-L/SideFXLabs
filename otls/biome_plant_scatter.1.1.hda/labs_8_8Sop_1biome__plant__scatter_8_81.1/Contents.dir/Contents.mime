@@ -32,19 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.37293 -0.37316
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position 10.1761 -0.375459
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
+3 "output1"
+4 "output2"
 }
 inputsNamed3
 {
-0 	Boreal_Pine 1 1 "input1"
+0 	OUT_DEFINE_PLANTS 0 1 "input1"
+1 	biome_attributes_evolve 0 1 "input2"
 }
 inputs
 {
-0 	Boreal_Pine 0 1
+0 	OUT_DEFINE_PLANTS 0 1
+1 	biome_attributes_evolve 0 1
 }
 stat
 {
@@ -53,7 +57,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 1 0.73 0 
 delscript ""
 exprlanguage hscript
 end
@@ -1410,7 +1414,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.385 -75.8411
+position 20.3678 -83.7348
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1623,7 +1627,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.3838 -73.5035
+position 20.3666 -81.3972
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1684,7 +1688,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 33.6337 -71.6794
+position 30.5273 -78.3859
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1778,7 +1782,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 36.7684 -68.3375
+position 33.662 -74.1699
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2133,7 +2137,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 20.385 -74.6338
+position 20.3678 -82.5275
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -7851,8 +7855,8 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 27.5261 -68.7866
-connectornextid 4
+position 27.5261 -69.6607
+connectornextid 5
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
@@ -7863,12 +7867,14 @@ inputsNamed3
 2 	VIZ_RADIUS 1 1 "input1"
 3 	VIZ_TRUNK_RADIUS 1 1 "input2"
 0 	VIZ_POINTS 1 1 "input3"
+4 	enable_cull 1 1 "input4"
 }
 inputs
 {
 0 	VIZ_RADIUS 0 1
 1 	VIZ_TRUNK_RADIUS 0 1
 2 	VIZ_POINTS 0 1
+3 	enable_cull 0 1
 }
 stat
 {
@@ -7920,7 +7926,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 30.5273 -70.2487
+position 30.5273 -71.1228
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18553,7 +18559,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 32.4166 -67.4338
+position 32.4166 -67.5467
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18562,11 +18568,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	enable_cull 1 1 "input1"
+0 	no_viz_spacing_radii1 1 1 "input1"
 }
 inputs
 {
-0 	enable_cull 0 1
+0 	no_viz_spacing_radii1 0 1
 }
 stat
 {
@@ -20120,7 +20126,7 @@ sopflags sopflags =
 comment ""
 position 3.34633 -38.1086
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -20567,7 +20573,7 @@ if(enginepaths == 1)
 
 @scale = {1, 1, 1};
 
-
+i@_bps_variation = variation;
 
 @pscale *= ch('pscalemult');
 
@@ -22914,6 +22920,467 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.init"
+Content-Type: text/plain
+
+type = visualize
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 32.4166 -64.1792
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	enable_cull 1 1 "input1"
+}
+inputs
+{
+0 	enable_cull 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "setvisualizers"
+        baseparm
+        label   "Update Visualizers"
+        export  none
+    }
+    parm {
+        name    "clearvisualizers"
+        baseparm
+        label   "Clear Incoming Visualizers"
+        export  none
+    }
+    parm {
+        name    "wireframe"
+        baseparm
+        label   "Wireframe"
+        export  none
+    }
+    parm {
+        name    "shadeopencurves"
+        baseparm
+        label   "Shade Open Curves"
+        export  none
+    }
+    parm {
+        name    "lit"
+        baseparm
+        label   "Lighting"
+        export  none
+    }
+    parm {
+        name    "xray"
+        baseparm
+        label   "X-Ray"
+        export  none
+    }
+    parm {
+        name    "setcuspangle"
+        baseparm
+        label   "Set Cusp Angle"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "cuspangle"
+        baseparm
+        label   "Cusp Angle"
+        export  none
+    }
+    parm {
+        name    "showpoints"
+        baseparm
+        label   "Show Points"
+        export  none
+    }
+    parm {
+        name    "spherepoints"
+        baseparm
+        label   "Points as Spheres"
+        export  none
+    }
+    parm {
+        name    "spriteblend"
+        baseparm
+        label   "Sprite Blending"
+        export  none
+    }
+    parm {
+        name    "setspritecutoff"
+        baseparm
+        label   "Set Sprite Cutoff"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "spritecutoff"
+        baseparm
+        label   "Sprite Cutoff"
+        export  none
+    }
+    parm {
+        name    "node_vis_enabled"
+        label   "Visualization Enabled"
+        type    toggle
+        invisible
+        default { "1" }
+    }
+    multiparm {
+        name    "num_visualizers"
+        label    "Visualizers"
+        invisible
+        default 0
+        parmtag { "multistartoffset" "0" }
+
+        parm {
+            name    "vis_active#"
+            label   "Active #"
+            type    toggle
+            invisible
+            default { "0" }
+        }
+        parm {
+            name    "vis_data#"
+            label   "Raw Data #"
+            type    string
+            invisible
+            nolabel
+            default { "" }
+            parmtag { "editor" "1" }
+        }
+    }
+
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+setvisualizers	[ 0	locks=0 ]	(	"on"	)
+clearvisualizers	[ 0	locks=0 ]	(	"off"	)
+wireframe	[ 0	locks=0 ]	(	"nochange"	)
+shadeopencurves	[ 0	locks=0 ]	(	"nochange"	)
+lit	[ 0	locks=0 ]	(	"nochange"	)
+xray	[ 0	locks=0 ]	(	"nochange"	)
+setcuspangle	[ 0	locks=0 ]	(	"off"	)
+cuspangle	[ 0	locks=0 ]	(	60	)
+showpoints	[ 0	locks=0 ]	(	"nochange"	)
+spherepoints	[ 0	locks=0 ]	(	"nochange"	)
+spriteblend	[ 0	locks=0 ]	(	"nochange"	)
+setspritecutoff	[ 0	locks=0 ]	(	"off"	)
+spritecutoff	[ 0	locks=0 ]	(	0.5	)
+node_vis_enabled	[ 0	locks=0 ]	(	"on"	)
+num_visualizers	[ 0	locks=0 ]	(	1	)
+vis_active0	[ 0	locks=0 ]	(	"on"	)
+vis_data0	[ 0	locks=0 ]	(	"{
+	\"flags\":{
+		\"type\":\"int\",
+		\"value\":27
+	},
+	\"icon\":{
+		\"type\":\"string\",
+		\"value\":\"VIEW_visualization_color\"
+	},
+	\"label\":{
+		\"type\":\"string\",
+		\"value\":\"Color 1\"
+	},
+	\"name\":{
+		\"type\":\"string\",
+		\"value\":\"vis_color_1\"
+	},
+	\"parameters\":{
+		\"type\":\"string\",
+		\"value\":\"{\\nversion 0.8\\nstyle\\t[ 0\\tlocks=0 ]\\t(\\t\\\"text\\\"\\t)\\nclass\\t[ 0\\tlocks=0 ]\\t(\\t\\\"point\\\"\\t)\\nattrib\\t[ 0\\tlocks=0 ]\\t(\\t_bps_variation\\t)\\nvisibility\\t[ 0\\tlocks=0 ]\\t(\\t\\\"always\\\"\\t)\\ndecorradius\\t[ 0\\tlocks=0 ]\\t(\\t0.5\\t)\\ngroup\\t[ 0\\tlocks=0 ]\\t(\\t\\\"\\\"\\t)\\npointsize\\t[ 0\\tlocks=0 ]\\t(\\t3\\t)\\nlengthscale\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\nunitlength\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\nnormalize\\t[ 0\\tlocks=0 ]\\t(\\t\\\"off\\\"\\t)\\narrowheads\\t[ 0\\tlocks=0 ]\\t(\\t\\\"off\\\"\\t)\\nvectorcoloring\\t[ 0\\tlocks=0 ]\\t(\\t\\\"fixed\\\"\\t)\\ncolorattrib\\t[ 0\\tlocks=0 ]\\t(\\tCd\\t)\\nramptype\\t[ 0\\tlocks=0 ]\\t(\\t\\\"false\\\"\\t)\\ncolorramp\\t[ 0\\tlocks=0 ]\\t(\\t2\\t)\\nrangespec\\t[ 0\\tlocks=0 ]\\t(\\t\\\"min-max\\\"\\t)\\nminscalar\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nmaxscalar\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\ncenterscalar\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nwidthscalar\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\nclamptype\\t[ 0\\tlocks=0 ]\\t(\\t\\\"edge\\\"\\t)\\ntreatasscalar\\t[ 0\\tlocks=0 ]\\t(\\t\\\"off\\\"\\t)\\nusing\\t[ 0\\tlocks=0 ]\\t(\\t\\\"comp\\\"\\t)\\ncomponent\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\nrefvec\\t[ 0\\tlocks=0 ]\\t(\\t0\\t1\\t0\\t)\\nmarkercolor\\t[ 0\\tlocks=0 ]\\t(\\t1\\t1\\t0\\t1\\t)\\ntrail\\t[ 0\\tlocks=0 ]\\t(\\t1\\t1\\t0\\t0.5\\t)\\ntextcolor\\t[ 0\\tlocks=0 ]\\t(\\t0.95\\t0.95\\t0.95\\t)\\nfontsize\\t[ 0\\tlocks=0 ]\\t(\\t\\\"guidefont\\\"\\t)\\nxcolor\\t[ 0\\tlocks=0 ]\\t(\\t1\\t0\\t0\\t1\\t)\\nycolor\\t[ 0\\tlocks=0 ]\\t(\\t0\\t1\\t0\\t1\\t)\\nzcolor\\t[ 0\\tlocks=0 ]\\t(\\t0\\t0\\t1\\t1\\t)\\ncolorramp1pos\\t[ 0\\tlocks=0 ]\\t(\\t0\\t)\\ncolorramp1c\\t[ 0\\tlocks=0 ]\\t(\\t0\\t0\\t1\\t)\\ncolorramp1interp\\t[ 0\\tlocks=0 ]\\t(\\t\\\"linear\\\"\\t)\\ncolorramp2pos\\t[ 0\\tlocks=0 ]\\t(\\t1\\t)\\ncolorramp2c\\t[ 0\\tlocks=0 ]\\t(\\t1\\t0\\t0\\t)\\ncolorramp2interp\\t[ 0\\tlocks=0 ]\\t(\\t\\\"linear\\\"\\t)\\n}\\n\"
+	},
+	\"scope\":{
+		\"type\":\"int\",
+		\"value\":2
+	},
+	\"type\":{
+		\"type\":\"string\",
+		\"value\":\"vis_marker\"
+	}
+}
+"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.netbox"
+Content-Type: text/plain
+
+__netbox12
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_mesh_variation.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/VIZ_MESH_VARIATION.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/VIZ_MESH_VARIATION.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 32.4166 -65.3294
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	visualize_mesh_variation 1 1 "input1"
+}
+inputs
+{
+0 	visualize_mesh_variation 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.6 0.7 0.77 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/VIZ_MESH_VARIATION.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/VIZ_MESH_VARIATION.netbox"
+Content-Type: text/plain
+
+__netbox12
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/VIZ_MESH_VARIATION.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.init"
+Content-Type: text/plain
+
+type = switchif
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 32.4166 -66.433
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	VIZ_MESH_VARIATION 1 1 "input1"
+2 	NO_VIZ_MESH_VARIATION 0 1 "input2"
+}
+inputs
+{
+0 	VIZ_MESH_VARIATION 0 1
+1 	NO_VIZ_MESH_VARIATION 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.chn"
+Content-Type: text/plain
+
+{
+    channel expr1 {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = !ch(\"../vizvariant\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+mergecondition	[ 0	locks=0 ]	(	"all"	)
+testinput	[ 0	locks=0 ]	(	"first"	)
+tests	[ 0	locks=0 ]	(	1	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+type1	[ 0	locks=0 ]	(	"expr"	)
+expr1	[ 8	locks=0 ]	(	[ expr1	1 ] 	)
+attribtype1	[ 0	locks=0 ]	(	"all"	)
+attribowner1	[ 0	locks=0 ]	(	"point"	)
+attributes1	[ 0	locks=0 ]	(	""	)
+attribvaltype1	[ 0	locks=0 ]	(	"flt"	)
+attribfloatcomp1	[ 0	locks=0 ]	(	"equal"	)
+attribstringcomp1	[ 0	locks=0 ]	(	"equal"	)
+attribval1	[ 0	locks=0 ]	(	0	)
+attribsval1	[ 0	locks=0 ]	(	""	)
+counttype1	[ 0	locks=0 ]	(	"points"	)
+countgroup1	[ 0	locks=0 ]	(	""	)
+countcomp1	[ 0	locks=0 ]	(	"equal"	)
+countval1	[ 0	locks=0 ]	(	0	)
+hasinputtype1	[ 0	locks=0 ]	(	"wired"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.netbox"
+Content-Type: text/plain
+
+__netbox12
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/no_viz_spacing_radii1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/NO_VIZ_MESH_VARIATION.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/NO_VIZ_MESH_VARIATION.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 36.5954 -65.3294
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.6 0.7 0.77 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/NO_VIZ_MESH_VARIATION.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/NO_VIZ_MESH_VARIATION.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -22944,7 +23411,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-178
+182
 visualize_viability
 output0
 INITIAL_SCATTER
@@ -23123,6 +23590,10 @@ rename_name
 random_meshpath
 invalid_mesh_msg
 assign_mesh_based_on_age_and_ifalive2
+visualize_mesh_variation
+VIZ_MESH_VARIATION
+no_viz_spacing_radii1
+NO_VIZ_MESH_VARIATION
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
