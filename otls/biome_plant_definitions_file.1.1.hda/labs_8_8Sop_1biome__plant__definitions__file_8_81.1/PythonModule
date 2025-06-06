@@ -102,6 +102,11 @@ def getAttrib(node):
         inc_title = {node.parm("maxshrubheight").eval():attr_to_find["maxshrubheight"]}
         plant.update(inc_title)
         
+        #manually add the groundcoverheight string
+        iter = attr_to_find["groundcoverheight"]
+        inc_title = {node.parm("groundcoverheight").eval():attr_to_find["groundcoverheight"]}
+        plant.update(inc_title)
+        
         #manually add the include asset path
         iter = attr_to_find["enginepaths"]
         inc_title = {node.parm("enginepaths").eval():attr_to_find["enginepaths"]}
