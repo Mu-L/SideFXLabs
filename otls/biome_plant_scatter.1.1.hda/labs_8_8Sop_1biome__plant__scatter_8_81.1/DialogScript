@@ -671,6 +671,78 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "enablespeciesid"
+                label   "Enable Species ID"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "speciesidname"
+                label   "Species ID"
+                type    string
+                default { "speciesid" }
+                disablewhen "{ enablespeciesid == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "enablevariantid"
+                label   "Enable Variant ID"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "variantidname"
+                label   "Variant ID"
+                type    string
+                default { "variantid" }
+                disablewhen "{ enablevariantid == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "enabledead"
+                label   "Enable Dead"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "deadname"
+                label   "Dead"
+                type    string
+                default { "dead" }
+                disablewhen "{ enabledead == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "enableplantid"
+                label   "Enable Plant ID"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "plantidname"
+                label   "Plant ID"
+                type    string
+                default { "plantid" }
+                disablewhen "{ enableplantid == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "enableuniqueid"
                 label   "Enable Unique ID"
                 type    toggle
