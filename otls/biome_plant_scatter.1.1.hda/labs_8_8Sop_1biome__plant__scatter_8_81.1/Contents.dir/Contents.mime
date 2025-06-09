@@ -969,7 +969,7 @@ sopflags sopflags =
 comment ""
 position 3.52866 -119.379
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -5282,12 +5282,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	fuse_all_including_overlap_tolerance2 1 1 "input1"
+0 	fuse_shrubs_including_overlap_tolerance4 1 1 "input1"
 1 	(__dot2) "" 1 "input2"
 }
 inputs
 {
-0 	fuse_all_including_overlap_tolerance2 0 1
+0 	fuse_shrubs_including_overlap_tolerance4 0 1
 1 	(__dot2) 0 1
 }
 stat
@@ -22562,21 +22562,21 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/fuse_all_including_overlap_tolerance2.init"
+Content-Disposition: attachment; filename="hdaroot/fuse_trees_including_overlap_tolerance2.init"
 Content-Type: text/plain
 
 type = fuse::2.0
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/fuse_all_including_overlap_tolerance2.def"
+Content-Disposition: attachment; filename="hdaroot/fuse_trees_including_overlap_tolerance2.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.35233 -48.3647
+position 3.34933 -46.7964
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -22602,7 +22602,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/fuse_all_including_overlap_tolerance2.spareparmdef"
+Content-Disposition: attachment; filename="hdaroot/fuse_trees_including_overlap_tolerance2.spareparmdef"
 Content-Type: text/plain
 
     parm {
@@ -22932,12 +22932,12 @@ Content-Type: text/plain
     }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/fuse_all_including_overlap_tolerance2.parm"
+Content-Disposition: attachment; filename="hdaroot/fuse_trees_including_overlap_tolerance2.parm"
 Content-Type: text/plain
 
 {
 version 0.8
-querygroup	[ 0	locks=0 ]	(	""	)
+querygroup	[ 0	locks=0 ]	(	@_bps_type==0	)
 usetargetgroup	[ 0	locks=0 ]	(	"off"	)
 targetgroup	[ 0	locks=0 ]	(	""	)
 modifyboth	[ 0	locks=0 ]	(	"off"	)
@@ -22987,7 +22987,7 @@ spare_input0	[ 0	locks=0 ]	(	../min_radius	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/fuse_all_including_overlap_tolerance2.userdata"
+Content-Disposition: attachment; filename="hdaroot/fuse_trees_including_overlap_tolerance2.userdata"
 Content-Type: text/plain
 
 {
@@ -24506,6 +24506,442 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_shrubs_including_overlap_tolerance4.init"
+Content-Type: text/plain
+
+type = fuse::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_shrubs_including_overlap_tolerance4.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.34933 -47.7964
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	fuse_trees_including_overlap_tolerance2 1 1 "input1"
+}
+inputs
+{
+0 	fuse_trees_including_overlap_tolerance2 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_shrubs_including_overlap_tolerance4.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "querygroup"
+        baseparm
+        label   "Group"
+        export  none
+        bindselector points "Fuse Points"
+            "Select the points to fuse or snap and press Enter to complete."
+            0 1 0xffffffff 0 "" 0
+    }
+    parm {
+        name    "usetargetgroup"
+        baseparm
+        label   "Target Group"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "targetgroup"
+        baseparm
+        label   "Target Group"
+        export  none
+    }
+    parm {
+        name    "modifyboth"
+        baseparm
+        label   "Modify Target"
+        export  none
+    }
+    parm {
+        name    "posattrib"
+        baseparm
+        label   "Position Attribute"
+        export  none
+    }
+    groupsimple {
+        name    "snapgroup2"
+        label   "Snap"
+        grouptag { "sidefx::switcher" "snapgroup" }
+
+        parm {
+            name    "snaptype"
+            baseparm
+            label   "Snap To"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "algorithm"
+            baseparm
+            label   "Using"
+            export  none
+        }
+        parm {
+            name    "usetol3d"
+            baseparm
+            label   "Use Snap Distance"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "tol3d"
+            baseparm
+            label   "Snap Distance"
+            export  all
+        }
+        parm {
+            name    "targetptattrib"
+            baseparm
+            label   "Target Points Attribute"
+            export  none
+        }
+        parm {
+            name    "targetclass"
+            baseparm
+            label   "Target Class"
+            export  none
+        }
+        parm {
+            name    "usepositionsnapmethod"
+            baseparm
+            label   "Snap Positions"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "positionsnapmethod"
+            baseparm
+            label   "Output Positions"
+            export  none
+        }
+        parm {
+            name    "positionsnapweightname"
+            baseparm
+            label   "Weight Attribute"
+            export  none
+        }
+        parm {
+            name    "useradiusattrib"
+            baseparm
+            label   "Radius Attribute"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "radiusattrib"
+            baseparm
+            label   "Radius Attribute"
+            export  none
+        }
+        parm {
+            name    "usematchattrib"
+            baseparm
+            label   "Match Attribute"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "matchattrib"
+            baseparm
+            label   "Match Attribute"
+            export  none
+        }
+        parm {
+            name    "matchtype"
+            baseparm
+            label   "Match Condition"
+            export  none
+        }
+        parm {
+            name    "matchtol"
+            baseparm
+            label   "Match Tolerance"
+            export  none
+        }
+        parm {
+            name    "gridtype"
+            baseparm
+            label   "Grid Type"
+            export  none
+        }
+        parm {
+            name    "gridspacing"
+            baseparm
+            label   "Grid Spacing"
+            export  none
+        }
+        parm {
+            name    "gridlines"
+            baseparm
+            label   "Grid Lines"
+            export  none
+        }
+        parm {
+            name    "gridpow2"
+            baseparm
+            label   "Grid Power 2"
+            export  none
+        }
+        parm {
+            name    "gridoffset"
+            baseparm
+            label   "Grid Offset"
+            export  none
+        }
+        parm {
+            name    "gridround"
+            baseparm
+            label   "Grid Rounding"
+            export  none
+        }
+        parm {
+            name    "usegridtol"
+            baseparm
+            label   "Use Grid Tolerance"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "gridtol"
+            baseparm
+            label   "Grid Tolerance"
+            export  all
+        }
+    }
+
+    groupsimple {
+        name    "consolidategroup2"
+        label   "Fuse"
+        grouptag { "sidefx::switcher" "consolidategroup" }
+
+        parm {
+            name    "consolidatesnappedpoints"
+            baseparm
+            label   "Fuse Snapped Points"
+            export  none
+        }
+        parm {
+            name    "keepconsolidatedpoints"
+            baseparm
+            label   "Keep Fused Points"
+            export  none
+        }
+        parm {
+            name    "deldegen"
+            baseparm
+            label   "Remove Repeated Vertices and Degenerate Primitives"
+            export  none
+        }
+        parm {
+            name    "deldegenpoints"
+            baseparm
+            label   "Remove Unused Points from Degenerate Primitives"
+            export  none
+        }
+        parm {
+            name    "delunusedpoints"
+            baseparm
+            label   "Remove All Unused Points"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "outputgroup2"
+        label   "Output Attributes and Groups"
+        grouptag { "sidefx::switcher" "outputgroup" }
+
+        parm {
+            name    "recomputenml"
+            baseparm
+            label   "Recompute Affected Normals"
+            export  none
+        }
+        parm {
+            name    "createsnappedgroup"
+            baseparm
+            label   "Create Snapped Points Group"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "snappedgroupname"
+            baseparm
+            label   "Snapped Points Group"
+            export  none
+        }
+        parm {
+            name    "createsnappedattrib"
+            baseparm
+            label   "Create Snapped Destination Attribute"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "snappedattribname"
+            baseparm
+            label   "Snapped Destination Attribute"
+            export  none
+        }
+        multiparm {
+            name    "numpointattribs"
+            label    "Attributes to Snap"
+            baseparm
+            default 0
+
+            parm {
+                name    "attribsnapmethod#"
+                baseparm
+                label   "Output Values"
+                export  none
+            }
+            parm {
+                name    "pointattribnames#"
+                baseparm
+                label   "Point Attributes"
+                export  none
+            }
+            parm {
+                name    "pointattribweightname#"
+                baseparm
+                label   "Weight Attribute"
+                export  none
+            }
+        }
+
+        multiparm {
+            name    "numgroups"
+            label    "Groups to Snap"
+            baseparm
+            default 0
+
+            parm {
+                name    "grouppropagation#"
+                baseparm
+                label   "Group Propagation"
+                export  none
+            }
+            parm {
+                name    "pointgroupnames#"
+                baseparm
+                label   "Point Group Names"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_shrubs_including_overlap_tolerance4.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+querygroup	[ 0	locks=0 ]	(	@_bps_type==1	)
+usetargetgroup	[ 0	locks=0 ]	(	"off"	)
+targetgroup	[ 0	locks=0 ]	(	""	)
+modifyboth	[ 0	locks=0 ]	(	"off"	)
+posattrib	[ 0	locks=0 ]	(	P	)
+snapgroup	[ 0	locks=0 ]	(	0	)
+snaptype	[ 0	locks=0 ]	(	"distancesnap"	)
+algorithm	[ 0	locks=0 ]	(	"lowest"	)
+usetol3d	[ 0	locks=0 ]	(	"on"	)
+tol3d	[ 0	locks=0 ]	(	1e-9	)
+targetptattrib	[ 0	locks=0 ]	(	snap_to	)
+targetclass	[ 0	locks=0 ]	(	"point"	)
+usepositionsnapmethod	[ 0	locks=0 ]	(	"on"	)
+positionsnapmethod	[ 0	locks=0 ]	(	"lowest"	)
+positionsnapweightname	[ 0	locks=0 ]	(	weight	)
+useradiusattrib	[ 0	locks=0 ]	(	"on"	)
+radiusattrib	[ 0	locks=0 ]	(	_bps_tolradius	)
+usematchattrib	[ 0	locks=0 ]	(	"off"	)
+matchattrib	[ 0	locks=0 ]	(	name	)
+matchtype	[ 0	locks=0 ]	(	"match"	)
+matchtol	[ 0	locks=0 ]	(	0	)
+gridtype	[ 0	locks=0 ]	(	"spacing"	)
+gridspacing	[ 0	locks=0 ]	(	0.1	0.1	0.1	)
+gridlines	[ 0	locks=0 ]	(	10	10	10	)
+gridpow2	[ 0	locks=0 ]	(	3	3	3	)
+gridoffset	[ 0	locks=0 ]	(	0	0	0	)
+gridround	[ 0	locks=0 ]	(	"nearest"	)
+usegridtol	[ 0	locks=0 ]	(	"on"	)
+gridtol	[ 0	locks=0 ]	(	10	)
+consolidategroup	[ 0	locks=0 ]	(	0	)
+consolidatesnappedpoints	[ 0	locks=0 ]	(	"on"	)
+keepconsolidatedpoints	[ 0	locks=0 ]	(	"off"	)
+deldegen	[ 0	locks=0 ]	(	"on"	)
+deldegenpoints	[ 0	locks=0 ]	(	"on"	)
+delunusedpoints	[ 0	locks=0 ]	(	"off"	)
+outputgroup	[ 0	locks=0 ]	(	0	)
+recomputenml	[ 0	locks=0 ]	(	"on"	)
+createsnappedgroup	[ 0	locks=0 ]	(	"off"	)
+snappedgroupname	[ 0	locks=0 ]	(	snapped_points	)
+createsnappedattrib	[ 0	locks=0 ]	(	"off"	)
+snappedattribname	[ 0	locks=0 ]	(	snapped_to	)
+numpointattribs	[ 0	locks=0 ]	(	0	)
+numgroups	[ 0	locks=0 ]	(	0	)
+snapgroup2	[ 0	locks=0 ]	(	0	)
+consolidategroup2	[ 0	locks=0 ]	(	0	)
+outputgroup2	[ 0	locks=0 ]	(	0	)
+spare_input0	[ 0	locks=0 ]	(	../min_radius	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_shrubs_including_overlap_tolerance4.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -24536,7 +24972,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-196
+197
 visualize_viability
 output0
 INITIAL_SCATTER
@@ -24725,7 +25161,7 @@ output_variantid_attribute
 enable_variantid
 output_dead_attribute
 enable_dead
-fuse_all_including_overlap_tolerance2
+fuse_trees_including_overlap_tolerance2
 radius_subtract_tolerance1
 min_treetolradius
 fuse_all_trees_by_min_radius2
@@ -24733,6 +25169,7 @@ fuse_all_shrubs_by_min_radius3
 trees
 shrubs
 min_shrubtolradius
+fuse_shrubs_including_overlap_tolerance4
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
