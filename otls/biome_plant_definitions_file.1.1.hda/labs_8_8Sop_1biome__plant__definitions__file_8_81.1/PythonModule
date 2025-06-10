@@ -97,6 +97,11 @@ def getAttrib(node):
         inc_title = {node.parm("recursive").eval():attr_to_find["recursive"]}
         plant.update(inc_title)
         
+#        #manually add the autofillradii toggle
+#        iter = attr_to_find["autofillradii"]
+#        inc_title = {node.parm("autofillradii").eval():attr_to_find["autofillradii"]}
+#        plant.update(inc_title)
+        
         #manually add the maxshrubheight string
         iter = attr_to_find["maxshrubheight"]
         inc_title = {node.parm("maxshrubheight").eval():attr_to_find["maxshrubheight"]}

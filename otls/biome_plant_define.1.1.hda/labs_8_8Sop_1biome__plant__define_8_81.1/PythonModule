@@ -50,6 +50,10 @@ def initVariants(kwargs , mode):
             reftypeparmname = 'reftype' + '%d' % (i+1)
             node.parm(reftypeparmname).set(1)
             node.parm(parmname).set(str(mergenode.inputs()[i].path()))
+     
+    autofillradii = node.parm('autofillradii').eval()
+    if autofillradii == 1:
+        calculateBounds(kwargs)
             
 def calculateBounds(kwargs):
     node = kwargs['node']
