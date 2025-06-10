@@ -32,20 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.6829 -1.0239
+position 10.1761 -0.375459
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
-0 "output1"
+3 "output1"
+4 "output2"
 }
 inputsNamed3
 {
-1 	Boreal_Pine 0 1 "input1"
+0 	OUT_DEFINE_PLANTS 0 1 "input1"
+1 	biome_attributes_evolve 0 1 "input2"
 }
 inputs
 {
-0 	Boreal_Pine 0 1
+0 	OUT_DEFINE_PLANTS 0 1
+1 	biome_attributes_evolve 0 1
 }
 stat
 {
@@ -54,7 +57,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 1 0.73 0 
 delscript ""
 exprlanguage hscript
 end
@@ -969,7 +972,7 @@ sopflags sopflags =
 comment ""
 position 3.52866 -119.379
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -21481,18 +21484,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 36.5954 -65.3294
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position 36.7087 -66.3791
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
 }
 inputsNamed3
 {
+1 	enable_cull 1 1 "input1"
 }
 inputs
 {
+0 	enable_cull 0 1
 }
 stat
 {
