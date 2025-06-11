@@ -774,6 +774,44 @@
                 label   "Attribute"
                 type    string
                 default { "" }
+                menureplace {
+                    [ "import hou" ]
+                    [ "" ]
+                    [ "attributes = []" ]
+                    [ "node = kwargs['node']" ]
+                    [ "inputs = node.inputs()" ]
+                    [ "" ]
+                    [ "if inputs and inputs[0]:" ]
+                    [ "" ]
+                    [ "    geo = inputs[0].geometry()" ]
+                    [ "    " ]
+                    [ "    if geo:" ]
+                    [ "  " ]
+                    [ "        attrs = geo.primAttribs()" ]
+                    [ "        attrs += geo.pointAttribs()" ]
+                    [ "        attrs += geo.vertexAttribs()" ]
+                    [ "       " ]
+                    [ "        for a in attrs:" ]
+                    [ "            if a.dataType() == hou.attribData.Int or a.dataType() == hou.attribData.Float and a.size() <= 3:" ]
+                    [ "                attributes.extend([a.name(), a.name()])" ]
+                    [ "                " ]
+                    [ "return attributes" ]
+                    language python
+                }
+            }
+            parm {
+                name    "depth#"
+                label   "Raster Depth"
+                type    ordinal
+                default { "2" }
+                menu usetokenvalue {
+                    "0" "8 Bit Integer"
+                    "2" "16 Bit Integer"
+                    "6" "16 Bit Floating Point"
+                    "7" "32 Bit Floating Point"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
             }
         }
 

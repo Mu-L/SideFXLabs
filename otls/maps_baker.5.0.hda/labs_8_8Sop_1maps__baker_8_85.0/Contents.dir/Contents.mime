@@ -32,23 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.52689 0.999144
-connectornextid 0
+position 1.65286 -15.5748
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	attribrandomize1 1 1 "input1"
 }
 inputs
 {
+0 	attribrandomize1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author aomai@DESKTOP-RBQDURK
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -9948,7 +9950,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/CustomAttributes.
 Content-Type: text/plain
 
 comment ""
-position 15.3586 -5.685
+position 15.3586 -4.64335
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault off exposed on
 outputsNamed3
@@ -32939,7 +32941,7 @@ Content-Type: text/plain
 comment ""
 position -25.9957 -12.8838
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault off exposed on
 outputsNamed3
 {
 0 "output1"
@@ -40395,7 +40397,7 @@ version 0.8
 execute	[ 0	locks=0 ]	(	0	)
 renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
-f	[ 0	locks=0 ]	(	1	240	1	)
+f	[ 0	locks=0 ]	(	1	300	1	)
 take	[ 0	locks=0 ]	(	_current_	)
 copswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
 coppath	[ 0	locks=0 ]	(	""	)
@@ -43209,7 +43211,7 @@ Content-Type: text/plain
 comment ""
 position 15.3586 -6.70349
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -43235,13 +43237,27 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cops_baking/convert7.chn"
+Content-Type: text/plain
+
+{
+    channel depth {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../../depth1\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cops_baking/convert7.parm"
 Content-Type: text/plain
 
 {
 version 0.8
 stdswitcher	[ 0	locks=0 ]	(	0	)
-depth	[ 0	locks=0 ]	(	"int16"	)
+depth	[ 8	locks=0 ]	(	[ depth	0 ] 	)
 bwpoints	[ 0	locks=0 ]	(	0	255	)
 scope	[ 0	locks=0 ]	(	C	)
 }
@@ -43262,7 +43278,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/convert7.cop2"
 Content-Type: text/plain
 
 2
-0
+1
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -43566,7 +43582,7 @@ foutside	[ 0	locks=0 ]	(	0	)
 flist	[ 0	locks=0 ]	(	*	)
 fmenu	[ 0	locks=0 ]	(	"scopeall"	)
 fautoadjust	[ 0	locks=0 ]	(	"on"	)
-currange	[ 0	locks=0 ]	(	240	)
+currange	[ 0	locks=0 ]	(	300	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -45660,7 +45676,7 @@ foutside	[ 0	locks=0 ]	(	0	)
 flist	[ 0	locks=0 ]	(	*	)
 fmenu	[ 0	locks=0 ]	(	"scopeall"	)
 fautoadjust	[ 0	locks=0 ]	(	"on"	)
-currange	[ 0	locks=0 ]	(	240	)
+currange	[ 0	locks=0 ]	(	300	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -53720,7 +53736,7 @@ sopflags sopflags =
 comment ""
 position -9.75843 6.17679
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -58639,7 +58655,7 @@ sopflags sopflags =
 comment ""
 position -4.83048 17.3913
 connectornextid 2
-flags =  lock off model off template on footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template on footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
