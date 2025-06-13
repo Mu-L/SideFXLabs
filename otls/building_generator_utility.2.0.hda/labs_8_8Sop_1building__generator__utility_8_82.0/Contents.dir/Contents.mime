@@ -32,17 +32,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.12354 -0.850557
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -4.5 13.85
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	single_prim 0 1 "input1"
 }
 inputs
 {
+0 	single_prim 0 1
 }
 stat
 {
@@ -74,6 +77,31 @@ Content-Type: text/plain
 2
 0 -4.4008099768078326 4.3742676482330349 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 1 0.36072481883387719 7.5088326873286313 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__stickynote2.postitinit"
+Content-Type: text/plain
+
+type = postitnote
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__stickynote2.postitdef"
+Content-Type: text/plain
+
+text "Note! The module syntax on Building Generator Utility for different floors is written left-to-right, but the building populates these modules right-to-left in Building from Patterns. The ordering is based on intrinsic primuvs in the module_instantiation wrangle inside Place_Pieces."
+position -13.8466 5.92308
+size 3.15708 3.06348
+flags = minimize off
+stat
+{
+  create 1749826944
+  modify 1749827217
+  author Danicka@DESKTOP-2416QFR
+  access 0777
+}
+color UT_Color RGB 1 0.969 0.522 
+end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group2.init"
@@ -134,6 +162,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -144,6 +173,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"off"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -160,6 +190,12 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"off"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
+switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -391,7 +427,7 @@ sopflags sopflags =
 comment ""
 position -4.5 -6.15
 connectornextid 1
-flags =  lock off model off template on footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template on footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -1038,6 +1074,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 8	locks=0 ]	(	[ value1v1	0 ] 	[ value1v2	0 ] 	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 enable2	[ 0	locks=0 ]	(	"on"	)
 name2	[ 0	locks=0 ]	(	module_priority	)
 existing2	[ 0	locks=0 ]	(	"better"	)
@@ -1049,11 +1086,12 @@ type2	[ 0	locks=0 ]	(	"int"	)
 typeinfo2	[ 0	locks=0 ]	(	"guess"	)
 precision2	[ 0	locks=0 ]	(	"auto"	)
 size2	[ 0	locks=0 ]	(	1	)
-default2v	[ 8	locks=0 ]	(	[ default2v1	0 ] 	0	0	0	)
+default2v	[ 0	locks=0 ]	(	[ default2v1	0 ] 	0	0	0	)
 writevalues2	[ 0	locks=0 ]	(	"on"	)
 uselocal2	[ 0	locks=0 ]	(	"on"	)
-value2v	[ 8	locks=0 ]	(	[ value2v1	0 ] 	0	0	0	)
+value2v	[ 0	locks=0 ]	(	[ value2v1	0 ] 	0	0	0	)
 string2	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1147,6 +1185,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 8	locks=0 ]	(	[ string1	"" ] 	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1449,6 +1488,12 @@ Content-Type: text/plain
         label   "Sprite Cutoff"
         export  none
     }
+    parm {
+        name    "shadeopencurves"
+        baseparm
+        label   "Shade Open Curves"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/visualize1.parm"
@@ -1459,6 +1504,7 @@ version 0.8
 setvisualizers	[ 0	locks=0 ]	(	"on"	)
 clearvisualizers	[ 0	locks=0 ]	(	"off"	)
 wireframe	[ 0	locks=0 ]	(	"nochange"	)
+shadeopencurves	[ 0	locks=0 ]	(	"nochange"	)
 lit	[ 0	locks=0 ]	(	"nochange"	)
 xray	[ 0	locks=0 ]	(	"nochange"	)
 setcuspangle	[ 0	locks=0 ]	(	"off"	)
@@ -1876,8 +1922,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2117,7 +2163,7 @@ sopflags sopflags =
 comment ""
 position -7.85472 -0.592071
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -2155,8 +2201,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2497,6 +2543,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	[ value1v1	0 ] 	[ value1v2	0 ] 	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 enable2	[ 0	locks=0 ]	(	"on"	)
 name2	[ 0	locks=0 ]	(	module_priority	)
 existing2	[ 0	locks=0 ]	(	"better"	)
@@ -2513,6 +2560,7 @@ writevalues2	[ 0	locks=0 ]	(	"on"	)
 uselocal2	[ 0	locks=0 ]	(	"on"	)
 value2v	[ 0	locks=0 ]	(	[ value2v1	0 ] 	0	0	0	)
 string2	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2786,6 +2834,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	[ value1v1	0 ] 	[ value1v2	0 ] 	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 enable2	[ 0	locks=0 ]	(	"on"	)
 name2	[ 0	locks=0 ]	(	module_priority	)
 existing2	[ 0	locks=0 ]	(	"better"	)
@@ -2802,6 +2851,7 @@ writevalues2	[ 0	locks=0 ]	(	"on"	)
 uselocal2	[ 0	locks=0 ]	(	"on"	)
 value2v	[ 8	locks=0 ]	(	[ value2v1	0 ] 	0	0	0	)
 string2	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2933,6 +2983,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	0.5	0	)
@@ -3017,9 +3068,9 @@ orient	[ 0	locks=0 ]	(	"y"	)
 cap	[ 0	locks=0 ]	(	"on"	)
 consolidatepts	[ 0	locks=0 ]	(	"on"	)
 vertexnormals	[ 0	locks=0 ]	(	"off"	)
-t	[ 0	locks=0 ]	(	0	0.71132177114486694	0	)
+t	[ 0	locks=0 ]	(	0	0.7113217711448669	0	)
 r	[ 0	locks=0 ]	(	0	0	0	)
-rad	[ 0	locks=0 ]	(	0.089463587094219768	0.089463587094219768	)
+rad	[ 0	locks=0 ]	(	0.08946358709421977	0.08946358709421977	)
 radscale	[ 0	locks=0 ]	(	1	)
 height	[ 0	locks=0 ]	(	1.1080408014415553	)
 rows	[ 0	locks=0 ]	(	2	)
@@ -3153,7 +3204,7 @@ consolidatepts	[ 0	locks=0 ]	(	"on"	)
 vertexnormals	[ 0	locks=0 ]	(	"off"	)
 t	[ 0	locks=0 ]	(	0	1.3287845849990845	0	)
 r	[ 0	locks=0 ]	(	0	0	0	)
-rad	[ 0	locks=0 ]	(	0	0.32459107786417007	)
+rad	[ 0	locks=0 ]	(	0	0.3245910778641701	)
 radscale	[ 0	locks=0 ]	(	1	)
 height	[ 0	locks=0 ]	(	0.45814835206258797	)
 rows	[ 0	locks=0 ]	(	2	)
@@ -3289,7 +3340,7 @@ t	[ 0	locks=0 ]	(	0	0.5	0.5	)
 r	[ 0	locks=0 ]	(	0	0	-90	)
 s	[ 0	locks=0 ]	(	1	1	1	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
-scale	[ 0	locks=0 ]	(	0.20999999999999999	)
+scale	[ 0	locks=0 ]	(	0.21	)
 parmgroup_pivotxform	[ 0	locks=0 ]	(	0	)
 p	[ 0	locks=0 ]	(	0	0	0	)
 pr	[ 0	locks=0 ]	(	0	0	0	)
@@ -3301,6 +3352,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
