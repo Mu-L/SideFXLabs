@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.525413 6.0287
+position -1.24572 -0.859046
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author aomai@DESKTOP-RBQDURK
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -63,7 +63,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
 	}
 }
 
@@ -813,11 +813,19 @@ cookbutton	[ 8	locks=0 ]	(	0	)
 dirtybutton	[ 0	locks=0 ]	(	0	)
 cancelbutton	[ 0	locks=0 ]	(	0	)
 taskgraphsection	[ 0	locks=0 ]	(	0	)
+checkpointformat	[ 0	locks=0 ]	(	"1"	)
+taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 savetaskgraph	[ 0	locks=0 ]	(	0	)
 loadtaskgraph	[ 0	locks=0 ]	(	0	)
-taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 taskgraphautosave	[ 0	locks=0 ]	(	"off"	)
 taskgraphsaverate	[ 0	locks=0 ]	(	10	)
+checkpointfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.checkpoint.json	)
+loadcheckpoint	[ 0	locks=0 ]	(	0	)
+checkpointload	[ 0	locks=0 ]	(	"0"	)
+checkpointenabled	[ 0	locks=0 ]	(	"off"	)
+checkpointrate	[ 0	locks=0 ]	(	10	)
+sep2	[ 0	locks=0 ]	(	)
+savegraphattribs	[ 0	locks=0 ]	(	"on"	)
 schedulersection	[ 0	locks=0 ]	(	0	)
 topscheduler	[ 0	locks=0 ]	(	`ifs(!ch(\"../usecustomtopscheduler\"),\"localscheduler\",chsop(\"../topscheduler\"))`	)
 usedefaultlabel	[ 0	locks=0 ]	(	"off"	)
@@ -826,6 +834,7 @@ sep1	[ 0	locks=0 ]	(	)
 regenerationtype	[ 0	locks=0 ]	(	"0"	)
 evaluationtime	[ 0	locks=0 ]	(	"0"	)
 customtime	[ 0	locks=0 ]	(	0	)
+savescenefile	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -947,14 +956,20 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	1	1	)
+folder0	[ 0	locks=0 ]	(	1	1	0	)
 folder5	[ 0	locks=0 ]	(	0	)
 maxprocsmenu	[ 8	locks=0 ]	(	"1"	)
 maxprocs	[ 8	locks=0 ]	(	[ maxprocs	1 ] 	)
+pdg_usemaxtasks	[ 0	locks=0 ]	(	"off"	)
+pdg_maxtasks	[ 0	locks=0 ]	(	0	)
 verbose	[ 0	locks=0 ]	(	"off"	)
 pdg_waitforfailures	[ 0	locks=0 ]	(	"off"	)
 folder4	[ 0	locks=0 ]	(	0	)
 pdg_workingdir	[ 0	locks=0 ]	(	$HIP	)
+uselogfilename	[ 0	locks=0 ]	(	"off"	)
+logfilename	[ 0	locks=0 ]	(	`@pdg_name`.log	)
+hythonbin	[ 0	locks=0 ]	(	"0"	)
+hythonbincustomuniversal	[ 0	locks=0 ]	(	""	)
 pdg_workitemdatasource	[ 0	locks=0 ]	(	"0"	)
 pdg_compressworkitemdata	[ 0	locks=0 ]	(	"on"	)
 pdg_validateoutputs	[ 0	locks=0 ]	(	"on"	)
@@ -963,13 +978,20 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
-sepparm3	[ 0	locks=0 ]	(	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
 tempdircustom	[ 0	locks=0 ]	(	$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp	)
+pdg_deletetempdir	[ 0	locks=0 ]	(	"0"	)
 socketcallbacks	[ 0	locks=0 ]	(	1	)
-folder0_2	[ 0	locks=0 ]	(	0	)
+pdg_rpcignoreerrors	[ 0	locks=0 ]	(	"0"	)
+pdg_rpcmaxerrors	[ 0	locks=0 ]	(	5	)
+pdg_rpctimeout	[ 0	locks=0 ]	(	4	)
+pdg_rpcretries	[ 0	locks=0 ]	(	2	)
+pdg_rpcbackoff	[ 0	locks=0 ]	(	2	)
+pdg_rpcbatch	[ 0	locks=0 ]	(	1	)
+pdg_rpcrelease	[ 0	locks=0 ]	(	"on"	)
+folder0_3	[ 0	locks=0 ]	(	0	)
 local_single	[ 8	locks=0 ]	(	[ local_single	0 ] 	)
 local_is_CPU_number_set	[ 0	locks=0 ]	(	[ local_is_CPU_number_set	0 ] 	)
 local_CPUs_to_use	[ 0	locks=0 ]	(	[ local_CPUs_to_use	1 ] 	)
@@ -982,6 +1004,10 @@ local_enabletimeout	[ 0	locks=0 ]	(	"off"	)
 local_maxtime	[ 0	locks=0 ]	(	0	)
 local_handletimeout	[ 0	locks=0 ]	(	"0"	)
 sepparm4	[ 0	locks=0 ]	(	)
+local_enablemaxmemory	[ 0	locks=0 ]	(	"off"	)
+local_maxmemory	[ 0	locks=0 ]	(	0	)
+local_handlememory	[ 0	locks=0 ]	(	"0"	)
+sepparm5	[ 0	locks=0 ]	(	)
 local_echandleby	[ 0	locks=0 ]	(	"0"	)
 local_echandleall	[ 0	locks=0 ]	(	"on"	)
 local_eccustomcode	[ 0	locks=0 ]	(	1	)
@@ -995,6 +1021,7 @@ local_houdinimaxthreads	[ 0	locks=0 ]	(	[ local_houdinimaxthreads	0 ] 	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
+local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
 }
 
@@ -1224,9 +1251,9 @@ Content-Type: text/plain
         groupcollapsible {
             name    "folder14"
             label   "Cache"
-            grouptag { "group_default" "1" }
+            parmtag { "group_default" "1" }
             grouptag { "group_type" "collapsible" }
-            grouptag { "sidefx::header_parm" "pdg_cachemode" }
+            parmtag { "sidefx::header_parm" "pdg_cachemode" }
 
             parm {
                 name    "soppath"
@@ -1246,7 +1273,7 @@ Content-Type: text/plain
             name    "folder8"
             label   "Sequence"
             hidewhentab "{ timedependent != 1 }"
-            grouptag { "group_default" "1" }
+            parmtag { "group_default" "1" }
             grouptag { "group_type" "collapsible" }
 
             parm {
@@ -1307,8 +1334,8 @@ Content-Type: text/plain
             name    "folder9"
             label   "Wedging"
             grouptag { "group_type" "collapsible" }
-            grouptag { "sidefx::header_parm" "wedgecount" }
-            grouptag { "sidefx::header_toggle" "enablewedging" }
+            parmtag { "sidefx::header_parm" "wedgecount" }
+            parmtag { "sidefx::header_toggle" "enablewedging" }
 
             parm {
                 name    "enablewedging"
@@ -1356,73 +1383,83 @@ Content-Type: text/plain
                 parmtag { "autoselect" "0000000000000000" }
                 parmtag { "multistartoffset" "1" }
 
-                parm {
-                    name    "attrib#"
+                groupcollapsible {
+                    name    "fd_attribute_#"
+                    label   "Attribute #"
                     baseparm
-                    label   "Attribute Name"
-                    export  none
+                    parmtag { "sidefx::header_parm" "attrib#" }
+
+                    parm {
+                        name    "attrib#"
+                        baseparm
+                        label   "Attribute Name"
+                        joinnext
+                        export  none
+                    }
+                    parm {
+                        name    "wedgetype#"
+                        baseparm
+                        label   "Wedge Type"
+                        nolabel
+                        export  none
+                    }
+                    parm {
+                        name    "minvalue#"
+                        baseparm
+                        label   "Min Value"
+                        export  none
+                    }
+                    parm {
+                        name    "maxvalue#"
+                        baseparm
+                        label   "Max Value"
+                        export  none
+                    }
+                    parm {
+                        name    "randomseed#"
+                        baseparm
+                        label   "Seed"
+                        export  none
+                    }
+                    parm {
+                        name    "batchsize#"
+                        baseparm
+                        label   "Batch Size"
+                        export  none
+                    }
+                    parm {
+                        name    "periodsize#"
+                        baseparm
+                        label   "Period Size"
+                        export  none
+                    }
+                    parm {
+                        name    "values#"
+                        baseparm
+                        label   "List of Values"
+                        export  none
+                    }
+                    parm {
+                        name    "geopath#"
+                        baseparm
+                        label   "Geometry Path"
+                        joinnext
+                        export  none
+                    }
+                    parm {
+                        name    "createwedgegeo#"
+                        baseparm
+                        label   "Create Geometry    "
+                        export  none
+                    }
+                    parm {
+                        name    "valuesdefault#"
+                        baseparm
+                        label   "Default Value"
+                        export  none
+                    }
                 }
-                parm {
-                    name    "wedgetype#"
-                    baseparm
-                    label   "Wedge Type"
-                    nolabel
-                    export  none
-                }
-                parm {
-                    name    "minvalue#"
-                    baseparm
-                    label   "Min Value"
-                    export  none
-                }
-                parm {
-                    name    "maxvalue#"
-                    baseparm
-                    label   "Max Value"
-                    export  none
-                }
-                parm {
-                    name    "randomseed#"
-                    baseparm
-                    label   "Seed"
-                    export  none
-                }
-                parm {
-                    name    "batchsize#"
-                    baseparm
-                    label   "Batch Size"
-                    export  none
-                }
-                parm {
-                    name    "periodsize#"
-                    baseparm
-                    label   "Period Size"
-                    export  none
-                }
-                parm {
-                    name    "values#"
-                    baseparm
-                    label   "List of Values"
-                    export  none
-                }
-                parm {
-                    name    "geopath#"
-                    baseparm
-                    label   "Geometry Path"
-                    export  none
-                }
-                parm {
-                    name    "createwedgegeo#"
-                    baseparm
-                    label   "Create Geometry    "
-                    export  none
-                }
-                parm {
-                    name    "valuesdefault#"
-                    baseparm
-                    label   "Default Value"
-                    export  none
-                }
+
             }
 
         }
@@ -1530,7 +1567,7 @@ Content-Type: text/plain
         groupcollapsible {
             name    "folder16"
             label   "Scheduler"
-            grouptag { "group_default" "1" }
+            parmtag { "group_default" "1" }
             grouptag { "group_type" "collapsible" }
 
             parm {
@@ -1558,7 +1595,7 @@ Content-Type: text/plain
         groupcollapsible {
             name    "local2"
             label   "Local"
-            grouptag { "group_default" "1" }
+            parmtag { "group_default" "1" }
             grouptag { "group_type" "collapsible" }
 
             parm {
@@ -1680,12 +1717,11 @@ Content-Type: text/plain
     group {
         name    "folder5_2"
         label   "Advanced"
-        baseparm
 
         groupcollapsible {
             name    "folder18"
             label   "Save"
-            grouptag { "group_default" "0" }
+            parmtag { "group_default" "0" }
             grouptag { "group_type" "collapsible" }
 
             parm {
@@ -1846,9 +1882,9 @@ Content-Type: text/plain
         groupcollapsible {
             name    "folder19"
             label   "Performance Logging"
-            grouptag { "group_default" "0" }
+            parmtag { "group_default" "0" }
             grouptag { "group_type" "collapsible" }
-            grouptag { "sidefx::header_toggle" "enableperfmon" }
+            parmtag { "sidefx::header_toggle" "enableperfmon" }
 
             parm {
                 name    "enableperfmon"
@@ -1868,9 +1904,9 @@ Content-Type: text/plain
             name    "folder20"
             label   "Path Construction"
             hidewhen "{ filemethod != constructed }"
-            grouptag { "group_default" "0" }
+            parmtag { "group_default" "0" }
             grouptag { "group_type" "collapsible" }
-            grouptag { "sidefx::header_parm" "sopoutput" }
+            parmtag { "sidefx::header_parm" "sopoutput" }
 
             parm {
                 name    "frame"
@@ -2579,11 +2615,11 @@ version	[ 0	locks=0	autoscope=0 ]	(	[ version	1 ] 	)
 versiondown	[ 0	locks=0 ]	(	0	)
 versionup	[ 0	locks=0 ]	(	0	)
 sepparm4	[ 0	locks=0 ]	(	)
-folder1	[ 0	locks=0	autoscope=0 ]	(	0	0	0	)
-folder10	[ 0	locks=0	autoscope=0 ]	(	1	)
+fd_caching	[ 0	locks=0 ]	(	0	0	0	)
+fd_cache	[ 0	locks=0 ]	(	1	)
 soppath	[ 0	locks=0	autoscope=0 ]	(	../../OUT_CACHE	)
 pdg_cachemode	[ 0	locks=0	autoscope=0 ]	(	[ pdg_cachemode	0 ] 	)
-folder4	[ 0	locks=0	autoscope=0 ]	(	1	)
+fd_sequence	[ 0	locks=0 ]	(	1	)
 trange	[ 0	locks=0	autoscope=0 ]	(	[ trange	1 ] 	)
 cachesim	[ 0	locks=0	autoscope=0 ]	(	[ cachesim	1 ] 	)
 f	[ 0	locks=0	autoscope=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	[ f3	1 ] 	)
@@ -2592,7 +2628,7 @@ substeps	[ 0	locks=0	autoscope=0 ]	(	[ substeps	1 ] 	)
 useframeoverride	[ 0	locks=0	autoscope=0 ]	(	[ useframeoverride	0 ] 	)
 frameoverride	[ 0	locks=0	autoscope=0 ]	(	[ frameoverride	1 ] 	)
 specificrange	[ 0	locks=0	autoscope=1 ]	(	[ specificrange	`chs(\"f1\")`-`chs(\"f2\")`:`chs(\"f3\")` ] 	)
-folder7	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_wedging	[ 0	locks=0 ]	(	0	)
 enablewedging	[ 0	locks=0	autoscope=0 ]	(	[ enablewedging	0 ] 	)
 wrange	[ 0	locks=0	autoscope=0 ]	(	[ wrange	0 ] 	)
 wedgeoverride	[ 0	locks=0	autoscope=0 ]	(	[ wedgeoverride	0 ] 	)
@@ -2600,7 +2636,7 @@ wedgerange	[ 0	locks=0	autoscope=0 ]	(	[ wedgerangemin	0 ] 	[ wedgerangemax	0 ] 
 specificwedges	[ 0	locks=0	autoscope=1 ]	(	[ specificwedges	0-`ch(\"wedgecount\")-1` ] 	)
 wedgecount	[ 0	locks=0	autoscope=0 ]	(	[ wedgecount	1 ] 	)
 nwedgeattribs	[ 0	locks=0	autoscope=0 ]	(	[ nwedgeattribs	0 ] 	)
-folder6	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_load	[ 0	locks=0 ]	(	0	)
 doclampfirst	[ 0	locks=0	autoscope=0 ]	(	[ doclampfirst	0 ] 	)
 clampfirst	[ 0	locks=0	autoscope=0 ]	(	[ clampfirst	0 ] 	)
 doclamplast	[ 0	locks=0	autoscope=0 ]	(	[ doclamplast	0 ] 	)
@@ -2614,21 +2650,21 @@ domergewedges	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 mergewedges	[ 0	locks=0	autoscope=0 ]	(	"all"	)
 mergewedgeidxrange	[ 0	locks=0	autoscope=0 ]	(	[ mergewedgeidxrangemin	0 ] 	[ mergewedgeidxrangemax	1 ] 	)
 mergespecificwedges	[ 0	locks=0	autoscope=1 ]	(	[ mergespecificwedges	0-1 ] 	)
-folder0	[ 0	locks=0	autoscope=0 ]	(	1	)
+fd_scheduler	[ 0	locks=0 ]	(	1	)
 topscheduler	[ 0	locks=0	autoscope=0 ]	(	""	)
 priorityoverride	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 pdg_workitempriorityexpr	[ 0	locks=0	autoscope=0 ]	(	0	)
-local	[ 0	locks=0	autoscope=0 ]	(	1	)
+fd_local	[ 0	locks=0 ]	(	1	)
 cookwhen	[ 0	locks=0	autoscope=0 ]	(	"1"	)
 framesperbatch	[ 0	locks=0	autoscope=0 ]	(	[ framesperbatch	10 ] 	)
-folder3	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_save	[ 0	locks=0 ]	(	0	)
 mkpath	[ 0	locks=0	autoscope=0 ]	(	[ mkpath	1 ] 	)
 initsim	[ 0	locks=0	autoscope=0 ]	(	[ initsim	0 ] 	)
 alfprogress	[ 0	locks=0	autoscope=0 ]	(	[ alfprogress	0 ] 	)
 savebackground	[ 0	locks=0	autoscope=0 ]	(	[ savebackground	1 ] 	)
 savebackuphip	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 saveretry	[ 0	locks=0	autoscope=0 ]	(	[ saveretry	0 ] 	)
-folder5_2	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_scripts	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0	autoscope=0 ]	(	[ tprerender	0 ] 	)
 prerender	[ 0	locks=0	autoscope=1 ]	(	[ prerender	"" ] 	)
 lprerender	[ 0	locks=0	autoscope=1 ]	(	[ lprerender	hscript ] 	)
@@ -2644,10 +2680,10 @@ lpostwrite	[ 0	locks=0	autoscope=1 ]	(	[ lpostwrite	hscript ] 	)
 tpostrender	[ 0	locks=0	autoscope=0 ]	(	[ tpostrender	0 ] 	)
 postrender	[ 0	locks=0	autoscope=1 ]	(	[ postrender	"" ] 	)
 lpostrender	[ 0	locks=0	autoscope=1 ]	(	[ lpostrender	hscript ] 	)
-folder2	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_performancelogging	[ 0	locks=0 ]	(	0	)
 enableperfmon	[ 0	locks=0	autoscope=0 ]	(	[ enableperfmon	0 ] 	)
 openperffile	[ 0	locks=0 ]	(	0	)
-folder12	[ 0	locks=0	autoscope=0 ]	(	0	)
+fd_pathconstruction	[ 0	locks=0 ]	(	0	)
 frame	[ 0	locks=0	autoscope=0 ]	(	[ frame	0 ] 	)
 framestr	[ 0	locks=0	autoscope=1 ]	(	[ framestr	"`ifs(ch(\"timedependent\"),\".\" + padzero(4,floor(ch(\"frame\"))) + ifs(frac(abs(ch(\"frame\"))) > 0, \".\" + substr(ftoa(frac(ch(\"frame\"))) + \"000\", 2, 3),\"\"),\"\")`" ] 	)
 versionstr	[ 0	locks=0	autoscope=1 ]	(	[ versionstr	v`chs(\"version\")` ] 	)
@@ -2688,7 +2724,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
 	}
 }
 
@@ -3976,6 +4012,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"on"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	`chs(\"../deletegroups\")`	)
@@ -4354,11 +4393,19 @@ cookbutton	[ 0	locks=0 ]	(	0	)
 dirtybutton	[ 0	locks=0 ]	(	0	)
 cancelbutton	[ 0	locks=0 ]	(	0	)
 taskgraphsection	[ 0	locks=0 ]	(	0	)
+checkpointformat	[ 0	locks=0 ]	(	"1"	)
+taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 savetaskgraph	[ 0	locks=0 ]	(	0	)
 loadtaskgraph	[ 0	locks=0 ]	(	0	)
-taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 taskgraphautosave	[ 0	locks=0 ]	(	"off"	)
 taskgraphsaverate	[ 0	locks=0 ]	(	10	)
+checkpointfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.checkpoint.json	)
+loadcheckpoint	[ 0	locks=0 ]	(	0	)
+checkpointload	[ 0	locks=0 ]	(	"0"	)
+checkpointenabled	[ 0	locks=0 ]	(	"off"	)
+checkpointrate	[ 0	locks=0 ]	(	10	)
+sep2	[ 0	locks=0 ]	(	)
+savegraphattribs	[ 0	locks=0 ]	(	"on"	)
 schedulersection	[ 0	locks=0 ]	(	0	)
 topscheduler	[ 0	locks=0 ]	(	localscheduler	)
 usedefaultlabel	[ 0	locks=0 ]	(	"off"	)
@@ -4367,6 +4414,7 @@ sep1	[ 0	locks=0 ]	(	)
 regenerationtype	[ 0	locks=0 ]	(	"0"	)
 evaluationtime	[ 0	locks=0 ]	(	"0"	)
 customtime	[ 0	locks=0 ]	(	0	)
+savescenefile	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4422,14 +4470,20 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
+folder0	[ 0	locks=0 ]	(	0	0	0	)
 folder5	[ 0	locks=0 ]	(	0	)
 maxprocsmenu	[ 0	locks=0 ]	(	"1"	)
 maxprocs	[ 0	locks=0 ]	(	128	)
+pdg_usemaxtasks	[ 0	locks=0 ]	(	"off"	)
+pdg_maxtasks	[ 0	locks=0 ]	(	0	)
 verbose	[ 0	locks=0 ]	(	"off"	)
 pdg_waitforfailures	[ 0	locks=0 ]	(	"off"	)
 folder4	[ 0	locks=0 ]	(	0	)
 pdg_workingdir	[ 0	locks=0 ]	(	$HIP	)
+uselogfilename	[ 0	locks=0 ]	(	"off"	)
+logfilename	[ 0	locks=0 ]	(	`@pdg_name`.log	)
+hythonbin	[ 0	locks=0 ]	(	"0"	)
+hythonbincustomuniversal	[ 0	locks=0 ]	(	""	)
 pdg_workitemdatasource	[ 0	locks=0 ]	(	"0"	)
 pdg_compressworkitemdata	[ 0	locks=0 ]	(	"on"	)
 pdg_validateoutputs	[ 0	locks=0 ]	(	"on"	)
@@ -4438,13 +4492,20 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
-sepparm3	[ 0	locks=0 ]	(	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
 tempdircustom	[ 0	locks=0 ]	(	$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp	)
+pdg_deletetempdir	[ 0	locks=0 ]	(	"0"	)
 socketcallbacks	[ 0	locks=0 ]	(	1	)
-folder0_2	[ 0	locks=0 ]	(	0	)
+pdg_rpcignoreerrors	[ 0	locks=0 ]	(	"0"	)
+pdg_rpcmaxerrors	[ 0	locks=0 ]	(	5	)
+pdg_rpctimeout	[ 0	locks=0 ]	(	4	)
+pdg_rpcretries	[ 0	locks=0 ]	(	2	)
+pdg_rpcbackoff	[ 0	locks=0 ]	(	2	)
+pdg_rpcbatch	[ 0	locks=0 ]	(	1	)
+pdg_rpcrelease	[ 0	locks=0 ]	(	"on"	)
+folder0_3	[ 0	locks=0 ]	(	0	)
 local_single	[ 0	locks=0 ]	(	"off"	)
 local_is_CPU_number_set	[ 0	locks=0 ]	(	"off"	)
 local_CPUs_to_use	[ 0	locks=0 ]	(	1	)
@@ -4457,6 +4518,10 @@ local_enabletimeout	[ 0	locks=0 ]	(	"off"	)
 local_maxtime	[ 0	locks=0 ]	(	0	)
 local_handletimeout	[ 0	locks=0 ]	(	"0"	)
 sepparm4	[ 0	locks=0 ]	(	)
+local_enablemaxmemory	[ 0	locks=0 ]	(	"off"	)
+local_maxmemory	[ 0	locks=0 ]	(	0	)
+local_handlememory	[ 0	locks=0 ]	(	"0"	)
+sepparm5	[ 0	locks=0 ]	(	)
 local_echandleby	[ 0	locks=0 ]	(	"0"	)
 local_echandleall	[ 0	locks=0 ]	(	"on"	)
 local_eccustomcode	[ 0	locks=0 ]	(	1	)
@@ -4470,6 +4535,7 @@ local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
+local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
 }
 
@@ -4642,7 +4708,11 @@ sepparm	[ 0	locks=0 ]	(	)
 folder0	[ 0	locks=0 ]	(	0	0	)
 usedelay	[ 0	locks=0 ]	(	"off"	)
 delay	[ 0	locks=0 ]	(	1	)
+platformcommand	[ 0	locks=0 ]	(	"off"	)
 pdg_command	[ 0	locks=0 ]	(	""	)
+linuxcommand	[ 0	locks=0 ]	(	""	)
+maccommand	[ 0	locks=0 ]	(	""	)
+windowscommand	[ 0	locks=0 ]	(	""	)
 basecommand	[ 0	locks=0 ]	(	""	)
 shellcommand	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
@@ -4654,6 +4724,8 @@ expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
+pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
+pdg_schedulewhen	[ 0	locks=0 ]	(	1	)
 sepparm4	[ 0	locks=0 ]	(	)
 pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
@@ -4736,6 +4808,9 @@ Content-Type: text/plain
 {
 version 0.8
 input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+invalidindex	[ 0	locks=0 ]	(	"1"	)
+invalidate	[ 0	locks=0 ]	(	"on"	)
+keepfailed	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5586,6 +5661,7 @@ Content-Type: text/plain
             baseparm
             label   "enable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -6030,6 +6106,7 @@ Content-Type: text/plain
             baseparm
             label   "enable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -6796,6 +6873,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	`chs(\"../filepath\")`	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7087,8 +7165,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -7359,6 +7437,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	`chs(\"../index\")`	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7639,6 +7718,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	`chs(\"../filepath\")`	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7930,8 +8010,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -8202,6 +8282,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	`chs(\"../index\")`	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
