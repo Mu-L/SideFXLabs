@@ -8,7 +8,7 @@ except ImportError:
     from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget
     from PySide2.QtGui import QColor, QPainter, QPen, QPixmap, QGuiApplication
 
-import hou, datetime, os, labutils
+import hou, datetime, os, labutils, warnings
 
 
 class ScreensCapture(QWidget):
@@ -53,11 +53,13 @@ class ScreensCapture(QWidget):
             view.close()
 
     def getMousePos(self, event):
-        screen = QGuiApplication.screenAt(event.globalPos())
-        screenid = self._screens.index(screen)
-        cursorloc = [event.globalPos().x()-screen.geometry().x(), event.globalPos().y()-screen.geometry().y()]
-        self.mouseX = [screenid, cursorloc[0]]
-        self.mouseY = [screenid, cursorloc[1]]
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", category=DeprecationWarning)
+            screen = QGuiApplication.screenAt(event.globalPos())
+            screenid = self._screens.index(screen)
+            cursorloc = [event.globalPos().x()-screen.geometry().x(), event.globalPos().y()-screen.geometry().y()]
+            self.mouseX = [screenid, cursorloc[0]]
+            self.mouseY = [screenid, cursorloc[1]]
 
         return [screenid, cursorloc[0], cursorloc[1]]
 
