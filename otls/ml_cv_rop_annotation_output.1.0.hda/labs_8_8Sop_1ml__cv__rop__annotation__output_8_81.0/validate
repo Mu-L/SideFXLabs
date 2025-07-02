@@ -1,6 +1,9 @@
 def show_custom_message(messages):
 
-    from PySide2 import QtWidgets, QtGui
+    try:
+        from hutil.PySide import QtWidgets, QtGui
+    except ImportError:
+        from PySide2 import QtWidgets, QtGui
     
     # Create a dialog
     dialog = QtWidgets.QDialog()
