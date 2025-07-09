@@ -31,7 +31,7 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -5.18993 0.05825
+position -4.67073 -0.00154999
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
@@ -2672,6 +2672,24 @@ Content-Type: text/plain
         nolabel
         export  none
     }
+    parm {
+        name    "scriptsource"
+        baseparm
+        label   "Define Script Using"
+        export  none
+    }
+    parm {
+        name    "scriptfile"
+        baseparm
+        label   "Python Script File"
+        export  none
+    }
+    parm {
+        name    "expectedscript"
+        baseparm
+        label   "Expected Outputs Script"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/header_info.chn"
@@ -2733,6 +2751,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	0	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import hou
 import json
 from datetime import date
@@ -2800,6 +2819,7 @@ else:
 # Write the modified JSON string back to the file
 with open(coco_json, 'w') as file:
     json.dump(data, file, indent=4)"	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -2808,6 +2828,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	../synth_scheduler	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -2867,7 +2900,7 @@ Content-Type: text/plain
 comment ""
 position -4.29233 8.31839
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -2917,6 +2950,9 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
@@ -4099,6 +4135,8 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"clamp"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
 }
@@ -4145,7 +4183,7 @@ stat
   author Synthetics_01@Synthetics-01
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.65 0.4 0.5 
 delscript ""
 exprlanguage hscript
 end
@@ -4181,9 +4219,10 @@ executebackground	[ 0	locks=0 ]	(	0	)
 renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
 f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	1	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	1001	)
 take	[ 0	locks=0 ]	(	_current_	)
 coppath	[ 0	locks=0 ]	(	../over1	)
-addaovs	[ 0	locks=0 ]	(	0	)
 copoutput	[ 8	locks=0 ]	(	`@aov_output`ID.exr	)
 docompile	[ 0	locks=0 ]	(	"off"	)
 setres	[ 0	locks=0 ]	(	"off"	)
@@ -4202,16 +4241,22 @@ ociodisplay	[ 0	locks=0 ]	(	Default	)
 ocioview	[ 0	locks=0 ]	(	Default	)
 saveretry	[ 0	locks=0 ]	(	0	)
 reloadfiles	[ 0	locks=0 ]	(	"off"	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+addaovs	[ 0	locks=0 ]	(	0	)
 outputaovs	[ 0	locks=0 ]	(	1	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 alfprogress	[ 0	locks=0 ]	(	"off"	)
 savebackground	[ 0	locks=0 ]	(	"on"	)
+exportattribs	[ 0	locks=0 ]	(	"on"	)
+attribfilter	[ 0	locks=0 ]	(	""	)
 vm_image_artist	[ 0	locks=0 ]	(	""	)
 vm_image_comment	[ 0	locks=0 ]	(	""	)
 vm_image_hostname	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_label	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
+mktx	[ 0	locks=0 ]	(	"off"	)
+txtilesize	[ 0	locks=0 ]	(	64	64	)
+txmipmapfilter	[ 0	locks=0 ]	(	box	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -4283,7 +4328,7 @@ stat
   author Synthetics_01@Synthetics-01
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -4318,16 +4363,22 @@ filename	[ 0	locks=0 ]	(	`@aov_dir``@frame_name`_`@gt_name`.exr	)
 clonename	[ 0	locks=0 ]	(	""	)
 clonesession	[ 0	locks=0 ]	(	""	)
 clonemenu	[ 0	locks=0 ]	(	""	)
+liverenderpath	[ 0	locks=0 ]	(	""	)
+liverenderstart	[ 0	locks=0 ]	(	0	)
+liverenderstop	[ 0	locks=0 ]	(	0	)
 reload	[ 0	locks=0 ]	(	0	)
 videoframemethod	[ 0	locks=0 ]	(	"start"	)
 videoframestart	[ 0	locks=0 ]	(	[ videoframestart	0 ] 	)
 videoframe	[ 0	locks=0 ]	(	[ videoframe	0 ] 	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 border	[ 0	locks=0 ]	(	"default"	)
 missingdata	[ 0	locks=0 ]	(	"color"	)
 missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
-addaovs	[ 0	locks=0 ]	(	0	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
+loadcamera	[ 0	locks=0 ]	(	"off"	)
+addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	4	)
 aov1	[ 0	locks=0 ]	(	C	)
 type1	[ 0	locks=0 ]	(	"vector4"	)
@@ -4408,11 +4459,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	f1	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"over"	)
 alpha	[ 0	locks=0 ]	(	"on"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4457,7 +4511,7 @@ stat
   author Synthetics_01@Synthetics-01
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.65 0.4 0.5 
 delscript ""
 exprlanguage hscript
 end
@@ -4493,9 +4547,10 @@ executebackground	[ 0	locks=0 ]	(	0	)
 renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
 f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	1	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	1001	)
 take	[ 0	locks=0 ]	(	_current_	)
 coppath	[ 0	locks=0 ]	(	../file1	)
-addaovs	[ 0	locks=0 ]	(	0	)
 copoutput	[ 8	locks=0 ]	(	`@aov_output`ID.exr	)
 docompile	[ 0	locks=0 ]	(	"off"	)
 setres	[ 0	locks=0 ]	(	"off"	)
@@ -4514,16 +4569,22 @@ ociodisplay	[ 0	locks=0 ]	(	Default	)
 ocioview	[ 0	locks=0 ]	(	Default	)
 saveretry	[ 0	locks=0 ]	(	0	)
 reloadfiles	[ 0	locks=0 ]	(	"off"	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+addaovs	[ 0	locks=0 ]	(	0	)
 outputaovs	[ 0	locks=0 ]	(	1	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 alfprogress	[ 0	locks=0 ]	(	"off"	)
 savebackground	[ 0	locks=0 ]	(	"on"	)
+exportattribs	[ 0	locks=0 ]	(	"on"	)
+attribfilter	[ 0	locks=0 ]	(	""	)
 vm_image_artist	[ 0	locks=0 ]	(	""	)
 vm_image_comment	[ 0	locks=0 ]	(	""	)
 vm_image_hostname	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_label	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
+mktx	[ 0	locks=0 ]	(	"off"	)
+txtilesize	[ 0	locks=0 ]	(	64	64	)
+txmipmapfilter	[ 0	locks=0 ]	(	box	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -4757,7 +4818,7 @@ Content-Type: text/plain
 comment ""
 position -3.0881 -13.1414
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -4807,6 +4868,9 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
@@ -5727,6 +5791,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	1	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import fiftyone as fo
 
 # get command parameters
@@ -5752,6 +5817,7 @@ if __name__ == \"__main__\":
     session.wait()
     
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -5760,6 +5826,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -7139,15 +7218,17 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`	)
 pythonbin	[ 8	locks=0 ]	(	[ pythonbin	1 ] 	)
 python	[ 0	locks=0 ]	(	[ python	__PDG_PYTHON__ ] 	)
 venvsymlink	[ 8	locks=0 ]	(	[ venvsymlink	1 ] 	)
+venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
+userequirementshfs	[ 0	locks=0 ]	(	"off"	)
+requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 filetype	[ 0	locks=0 ]	(	"1"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
+filestring	[ 0	locks=0 ]	(	"# Add requirements here, e.g. requests==2.7.0"	)
 requirementlist	[ 0	locks=0 ]	(	""	)
 requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"attrs\":\"23.2.0\",\"certifi\":\"2023.11.17\",\"charset-normalizer\":\"3.3.2\",\"future\":\"0.18.3\",\"jinja2\":\"3.1.3\",\"markupsafe\":\"2.1.4\",\"numpy\":\"1.26.3\",\"opencv-python\":\"4.9.0.80\",\"pipwin\":\"0.5.2\",\"psutil\":\"5.9.8\",\"pycocotools\":\"2.0.7\",\"pyparsing\":\"3.1.1\",\"requests\":\"2.31.0\",\"urllib3\":\"1.26.18\",\"openexr\":\"3.3.3\"}	)
-userequirementshfs	[ 0	locks=0 ]	(	"off"	)
-requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 outputs	[ 0	locks=0 ]	(	1	)
 venvoutput	[ 0	locks=0 ]	(	"on"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
@@ -7304,15 +7385,17 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
+userequirementshfs	[ 0	locks=0 ]	(	"off"	)
+requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 filetype	[ 0	locks=0 ]	(	"0"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
+filestring	[ 0	locks=0 ]	(	"# Add requirements here, e.g. requests==2.7.0"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
-requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"1.4.1\",\"pycocotools\":\"2.0.8\",\"numpy\":\"2.2.5\"}	)
-userequirementshfs	[ 0	locks=0 ]	(	"off"	)
-requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
+requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"1.6.0\",\"numpy\":\"2.2.5\",\"pycocotools\":\"2.0.8\"}	)
 outputs	[ 0	locks=0 ]	(	1	)
 venvoutput	[ 0	locks=0 ]	(	"on"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
@@ -7483,7 +7566,7 @@ stringenable2	[ 0	locks=0 ]	(	"on"	)
 stringname2	[ 0	locks=0 ]	(	render_dir	)
 stringconflict2	[ 0	locks=0 ]	(	"0"	)
 stringscope2	[ 0	locks=0 ]	(	"0"	)
-stringvalue2	[ 0	locks=0 ]	(	/Users/josh/Documents/_tmp/Endava/example_file/datasets/render/ds1.0/	)
+stringvalue2	[ 0	locks=0 ]	(	/Users/josh/Documents/_tmp/gsplat_test/datasets/render/ds1.0/	)
 usestringindex2	[ 0	locks=0 ]	(	"off"	)
 stringindex2	[ 0	locks=0 ]	(	0	)
 sepparm2_3	[ 0	locks=0 ]	(	)
@@ -7621,15 +7704,17 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
+userequirementshfs	[ 0	locks=0 ]	(	"off"	)
+requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 filetype	[ 0	locks=0 ]	(	"0"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
+filestring	[ 0	locks=0 ]	(	"# Add requirements here, e.g. requests==2.7.0"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
-requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"1.4.1\",\"numpy\":\"2.0.8\",\"pycocotools\":\"2.2.5\"}	)
-userequirementshfs	[ 0	locks=0 ]	(	"off"	)
-requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
+requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"1.6.0\",\"numpy\":\"2.2.5\",\"pycocotools\":\"2.0.8\"}	)
 outputs	[ 0	locks=0 ]	(	1	)
 venvoutput	[ 0	locks=0 ]	(	"on"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
@@ -7712,6 +7797,7 @@ renames	[ 0	locks=0 ]	(	1	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	venvroot	)
 renameto1	[ 0	locks=0 ]	(	venvroot_fo	)
@@ -7997,6 +8083,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	0	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import fiftyone as fo
 
 delivery_dir = r'`@delivery_dir`'
@@ -8025,6 +8112,7 @@ if __name__ == \"__main__\":
     session.wait()
     
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -8033,6 +8121,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -8234,6 +8335,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	0	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import json
 import os
 import matplotlib.pyplot as plt
@@ -8423,6 +8525,7 @@ else:
 # Analyze the attributes with category filter for bbox
 analyse_attr(attr_list, annotations, filter_category=filter_category)
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -8431,6 +8534,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -8680,15 +8796,17 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
+userequirementshfs	[ 0	locks=0 ]	(	"off"	)
+requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 filetype	[ 0	locks=0 ]	(	"0"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
+filestring	[ 0	locks=0 ]	(	"# Add requirements here, e.g. requests==2.7.0"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
 requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"\",\"numpy\":\"\",\"pycocotools\":\"\"}	)
-userequirementshfs	[ 0	locks=0 ]	(	"off"	)
-requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
 outputs	[ 0	locks=0 ]	(	1	)
 venvoutput	[ 0	locks=0 ]	(	"on"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
@@ -8771,6 +8889,7 @@ renames	[ 0	locks=0 ]	(	1	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	venvroot	)
 renameto1	[ 0	locks=0 ]	(	venvroot_fo	)
@@ -8959,6 +9078,7 @@ renames	[ 0	locks=0 ]	(	1	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	venvroot	)
 renameto1	[ 0	locks=0 ]	(	venvroot_fo	)
@@ -9031,6 +9151,7 @@ renames	[ 0	locks=0 ]	(	1	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	venvroot	)
 renameto1	[ 0	locks=0 ]	(	venvroot_core	)
@@ -9570,6 +9691,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	1	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import OpenEXR
 import Imath
 import numpy as np
@@ -9605,6 +9727,7 @@ if OpenEXR.isOpenExrFile(exr_file_path):
     np.save(os.path.join(directory.replace('/exr', ''), npy_name), depth_array)
 else:
     print(\"Failed to open EXR file.\")"	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -9613,6 +9736,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -9992,7 +10128,7 @@ Content-Type: text/plain
 comment ""
 position -3.66393 -8.18974
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -10042,6 +10178,9 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
@@ -10587,6 +10726,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	1	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import argparse
 import json
 import numpy as np
@@ -10684,7 +10824,7 @@ def update_detection_gt(json_file, exr_file, force_poly=False):
     for item in coco_data:
             
         # Get the coordinates of the pixels with this ID value
-        b_mask = (id_data == item['instance_id']).astype(np.uint8)
+        b_mask = (id_data == item['hou_instance_id']).astype(np.uint8)
 
         if not np.any(b_mask):  # if this is an empty mask
             item.pop(\"bbox\", None)
@@ -10731,6 +10871,7 @@ def main():
 if __name__ == \"__main__\":
     main()
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -10739,6 +10880,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	../segmentation_scheduler	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -11033,6 +11187,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	1	)
 expandscript	[ 0	locks=0 ]	(	"on"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import json
 import argparse
 import ast
@@ -11171,6 +11326,7 @@ clean_coco = annotations_validation(render_json_filepath)
 #json.dump(clean_coco, open(output_json_filepath, \"w\"), indent=3)
 
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -11179,6 +11335,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -11851,6 +12020,24 @@ Content-Type: text/plain
         nolabel
         export  none
     }
+    parm {
+        name    "scriptsource"
+        baseparm
+        label   "Define Script Using"
+        export  none
+    }
+    parm {
+        name    "scriptfile"
+        baseparm
+        label   "Python Script File"
+        export  none
+    }
+    parm {
+        name    "expectedscript"
+        baseparm
+        label   "Expected Outputs Script"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/validate_dataset/pass_attrs.chn"
@@ -11912,6 +12099,7 @@ prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
 expansion	[ 0	locks=0 ]	(	0	)
 expandscript	[ 0	locks=0 ]	(	"off"	)
 expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"import hou
 
 ##get all the params from annotation multiparm
@@ -11939,6 +12127,7 @@ for cat in range(len(catnames)):
 
 cats = str(cats)
 work_item.setStringAttrib(\"categories\", cats)"	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -11947,6 +12136,19 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
 pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
@@ -13568,6 +13770,7 @@ renames	[ 0	locks=0 ]	(	2	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	filename	)
 renameto1	[ 0	locks=0 ]	(	fg_name	)
@@ -13643,6 +13846,7 @@ renames	[ 0	locks=0 ]	(	2	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	filename	)
 renameto1	[ 0	locks=0 ]	(	bg_name	)
@@ -14899,6 +15103,8 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"clamp"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
 }
@@ -14946,7 +15152,7 @@ stat
   author Luke_Tiday@Ltiday
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -14981,16 +15187,22 @@ filename	[ 0	locks=0 ]	(	`@bg_dir`/`@bg_name``@extension`	)
 clonename	[ 0	locks=0 ]	(	""	)
 clonesession	[ 0	locks=0 ]	(	""	)
 clonemenu	[ 0	locks=0 ]	(	""	)
+liverenderpath	[ 0	locks=0 ]	(	""	)
+liverenderstart	[ 0	locks=0 ]	(	0	)
+liverenderstop	[ 0	locks=0 ]	(	0	)
 reload	[ 0	locks=0 ]	(	0	)
 videoframemethod	[ 0	locks=0 ]	(	"start"	)
 videoframestart	[ 0	locks=0 ]	(	[ videoframestart	0 ] 	)
 videoframe	[ 0	locks=0 ]	(	[ videoframe	0 ] 	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 border	[ 0	locks=0 ]	(	"default"	)
 missingdata	[ 0	locks=0 ]	(	"color"	)
 missingcolor	[ 0	locks=0 ]	(	0	0	0	0	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
-addaovs	[ 0	locks=0 ]	(	0	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
+loadcamera	[ 0	locks=0 ]	(	"off"	)
+addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	1	)
 aov1	[ 0	locks=0 ]	(	C	)
 type1	[ 0	locks=0 ]	(	"vector4"	)
@@ -15254,11 +15466,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15320,11 +15535,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15447,11 +15665,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15513,11 +15734,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	7	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15723,6 +15947,7 @@ units	[ 0	locks=0 ]	(	[ units	0 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
 size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15802,6 +16027,7 @@ bright	[ 0	locks=0 ]	(	[ bright	1 ] 	)
 brighttint	[ 0	locks=0 ]	(	1	1	1	)
 shift	[ 0	locks=0 ]	(	0	)
 shifttint	[ 0	locks=0 ]	(	1	1	1	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16104,6 +16330,7 @@ units	[ 0	locks=0 ]	(	[ units	0 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
 size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16183,6 +16410,7 @@ bright	[ 8	locks=0 ]	(	[ bright	1 ] 	)
 brighttint	[ 0	locks=0 ]	(	1	1	1	)
 shift	[ 0	locks=0 ]	(	0	)
 shifttint	[ 0	locks=0 ]	(	1	1	1	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16435,11 +16663,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"over"	)
 alpha	[ 0	locks=0 ]	(	"on"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -17692,6 +17923,7 @@ units	[ 0	locks=0 ]	(	[ units	0 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
 size	[ 0	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -17771,6 +18003,7 @@ bright	[ 0	locks=0 ]	(	[ bright	1 ] 	)
 brighttint	[ 0	locks=0 ]	(	1	1	1	)
 shift	[ 0	locks=0 ]	(	0	)
 shifttint	[ 0	locks=0 ]	(	1	1	1	)
+scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -18440,7 +18673,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -18577,7 +18810,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -18810,6 +19043,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/comped_levels/fg_input_levels1.chn"
@@ -18871,12 +19160,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -19090,7 +19388,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -19227,7 +19525,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -19460,6 +19758,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/comped_levels/fg_input_levels2.chn"
@@ -19521,12 +19875,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -20172,9 +20535,10 @@ executebackground	[ 0	locks=0 ]	(	0	)
 renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
 f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	1	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	1001	)
 take	[ 0	locks=0 ]	(	_current_	)
 coppath	[ 0	locks=0 ]	(	../out_comped_image	)
-addaovs	[ 0	locks=0 ]	(	0	)
 copoutput	[ 0	locks=0 ]	(	`@gt_dir``@filenum`rgba.png	)
 docompile	[ 0	locks=0 ]	(	"off"	)
 setres	[ 0	locks=0 ]	(	"off"	)
@@ -20193,16 +20557,22 @@ ociodisplay	[ 0	locks=0 ]	(	Default	)
 ocioview	[ 0	locks=0 ]	(	Default	)
 saveretry	[ 0	locks=0 ]	(	0	)
 reloadfiles	[ 0	locks=0 ]	(	"off"	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+addaovs	[ 0	locks=0 ]	(	0	)
 outputaovs	[ 0	locks=0 ]	(	1	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 alfprogress	[ 0	locks=0 ]	(	"off"	)
 savebackground	[ 0	locks=0 ]	(	"on"	)
+exportattribs	[ 0	locks=0 ]	(	"on"	)
+attribfilter	[ 0	locks=0 ]	(	""	)
 vm_image_artist	[ 0	locks=0 ]	(	""	)
 vm_image_comment	[ 0	locks=0 ]	(	""	)
 vm_image_hostname	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_label	[ 0	locks=0 ]	(	""	)
 vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
+mktx	[ 0	locks=0 ]	(	"off"	)
+txtilesize	[ 0	locks=0 ]	(	64	64	)
+txmipmapfilter	[ 0	locks=0 ]	(	box	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -20764,7 +21134,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -20901,7 +21271,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -21134,6 +21504,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/fg_levels/fg_input_levels1.chn"
@@ -21195,12 +21621,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -21414,7 +21849,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -21551,7 +21986,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -21784,6 +22219,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/fg_levels/fg_input_levels2.chn"
@@ -21845,12 +22336,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -22457,7 +22957,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -22594,7 +23094,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -22827,6 +23327,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/bg_levels/fg_input_levels1.chn"
@@ -22888,12 +23444,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -23107,7 +23672,7 @@ Content-Type: text/plain
         parm {
             name    "options_tile"
             baseparm
-            label   "Tile Size"
+            label   "Layer Tile Size"
             export  none
         }
         parm {
@@ -23244,7 +23809,7 @@ Content-Type: text/plain
             parm {
                 name    "output#_metaname"
                 baseparm
-                label   "Input for Metaada"
+                label   "Input for Metadata"
                 export  none
             }
         }
@@ -23477,6 +24042,62 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "options_runover"
+        baseparm
+        label   "Run Over"
+        export  none
+    }
+    parm {
+        name    "kernelname"
+        baseparm
+        label   "Kernel Name"
+        export  none
+    }
+    parm {
+        name    "writebackkernelname"
+        baseparm
+        label   "Write Back Kernel Name"
+        export  none
+    }
+    parm {
+        name    "options_usevdbtile"
+        baseparm
+        label   "Use VDB Tile Size"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "options_vdbtile"
+        baseparm
+        label   "VDB Tile Size"
+        export  none
+    }
+    parm {
+        name    "options_timeinccontext"
+        baseparm
+        label   "Use Context's Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timeinc"
+        baseparm
+        label   "Include Timestep"
+        export  none
+    }
+    parm {
+        name    "options_timescale"
+        baseparm
+        label   "Time Scale"
+        export  none
+    }
+    parm {
+        name    "options_timemethod"
+        baseparm
+        label   "Time Method"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/bg_levels/fg_input_levels2.chn"
@@ -23538,12 +24159,21 @@ kernelcode	[ 0	locks=0 ]	(	"#bind layer src? val=0
     @dst.set(src);
 }
 "	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
 options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
 options_iterations	[ 0	locks=0 ]	(	1	)
 options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
 options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
@@ -23773,6 +24403,7 @@ folder2	[ 0	locks=0 ]	(	1	)
 noisetype	[ 0	locks=0 ]	(	"white"	)
 percomp	[ 0	locks=0 ]	(	"on"	)
 metric	[ 0	locks=0 ]	(	"euclidean"	)
+jitter	[ 0	locks=0 ]	(	1	)
 elementsize	[ 0	locks=0 ]	(	[ elementsize	0.1 ] 	)
 elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
 elementscale	[ 0	locks=0 ]	(	1	1	)
@@ -23791,6 +24422,21 @@ folder0	[ 0	locks=0 ]	(	1	)
 oct	[ 0	locks=0 ]	(	8	)
 lac	[ 0	locks=0 ]	(	2.01234	)
 rough	[ 0	locks=0 ]	(	0.5	)
+folder4	[ 0	locks=0 ]	(	0	)
+post_dofold	[ 0	locks=0 ]	(	"off"	)
+post_docomplement	[ 0	locks=0 ]	(	"off"	)
+post_dobias	[ 0	locks=0 ]	(	"off"	)
+post_bias	[ 0	locks=0 ]	(	0.5	)
+post_dogain	[ 0	locks=0 ]	(	"off"	)
+post_gain	[ 0	locks=0 ]	(	0.5	)
+post_dogamma	[ 0	locks=0 ]	(	"off"	)
+post_gamma	[ 0	locks=0 ]	(	2.2	)
+post_docontrast	[ 0	locks=0 ]	(	"off"	)
+post_contrast	[ 0	locks=0 ]	(	0	)
+post_doclampmin	[ 0	locks=0 ]	(	"off"	)
+post_minimum	[ 0	locks=0 ]	(	0	)
+post_doclampmax	[ 0	locks=0 ]	(	"off"	)
+post_maximum	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -23840,7 +24486,7 @@ stat
   author Luke_Tiday@Ltiday
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -23875,16 +24521,22 @@ filename	[ 0	locks=0 ]	(	`@fg_dir`/`@fg_name`.exr	)
 clonename	[ 0	locks=0 ]	(	""	)
 clonesession	[ 0	locks=0 ]	(	""	)
 clonemenu	[ 0	locks=0 ]	(	""	)
+liverenderpath	[ 0	locks=0 ]	(	""	)
+liverenderstart	[ 0	locks=0 ]	(	0	)
+liverenderstop	[ 0	locks=0 ]	(	0	)
 reload	[ 0	locks=0 ]	(	0	)
 videoframemethod	[ 0	locks=0 ]	(	"start"	)
 videoframestart	[ 0	locks=0 ]	(	[ videoframestart	0 ] 	)
 videoframe	[ 0	locks=0 ]	(	[ videoframe	0 ] 	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 border	[ 0	locks=0 ]	(	"default"	)
 missingdata	[ 0	locks=0 ]	(	"color"	)
 missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
-addaovs	[ 0	locks=0 ]	(	0	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
+loadcamera	[ 0	locks=0 ]	(	"off"	)
+addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	5	)
 aov1	[ 0	locks=0 ]	(	C	)
 type1	[ 0	locks=0 ]	(	"vector4"	)
@@ -24239,11 +24891,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24305,11 +24960,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24432,11 +25090,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24498,11 +25159,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	7	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24566,11 +25230,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24779,11 +25446,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"overlay"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -26085,6 +26755,7 @@ matchname	[ 0	locks=0 ]	(	""	)
 matchtype	[ 0	locks=0 ]	(	"0"	)
 excludeunmatched	[ 0	locks=0 ]	(	"off"	)
 sepparm2	[ 0	locks=0 ]	(	)
+copyop	[ 0	locks=0 ]	(	"2"	)
 copyname	[ 0	locks=0 ]	(	max_pool	)
 copyresults	[ 0	locks=0 ]	(	"off"	)
 }
@@ -26216,6 +26887,7 @@ renames	[ 0	locks=0 ]	(	1	)
 sepparm	[ 0	locks=0 ]	(	)
 onattributenotfound	[ 0	locks=0 ]	(	"1"	)
 overwriteexisting	[ 0	locks=0 ]	(	"off"	)
+keeporiginal	[ 0	locks=0 ]	(	"off"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 renamefrom1	[ 0	locks=0 ]	(	pool_id	)
 renameto1	[ 0	locks=0 ]	(	max_pool	)
@@ -26582,6 +27254,7 @@ matchname	[ 0	locks=0 ]	(	pool_id	)
 matchtype	[ 0	locks=0 ]	(	"0"	)
 excludeunmatched	[ 0	locks=0 ]	(	"off"	)
 sepparm2	[ 0	locks=0 ]	(	)
+copyop	[ 0	locks=0 ]	(	"2"	)
 copyname	[ 0	locks=0 ]	(	[ copyname	* ] 	)
 copyresults	[ 0	locks=0 ]	(	"off"	)
 }
