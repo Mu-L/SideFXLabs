@@ -394,21 +394,19 @@
             grouptag { "sidefx::switcher" "fd_img_assign" }
 
             parm {
-                name    "sepparm5"
-                label   "Spacer"
-                type    separator
-                default { "" }
-                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
-                parmtag { "sidefx::layout_height" "small" }
-                parmtag { "sidefx::look" "blank" }
-            }
-            parm {
                 name    "hf_generatecolors"
                 label   "Recreate Region List"
                 type    button
                 default { "0" }
-                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
+                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 } { definitionmatch == 1 }"
                 parmtag { "script_callback" "hou.phm().buildRegionMultiparmFromhHeightfields(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "definitionmatch"
+                label   "Match Biome Definitions to Layers"
+                type    toggle
+                default { "0" }
                 parmtag { "script_callback_language" "python" }
             }
             parm {
@@ -416,12 +414,12 @@
                 label   "Separator"
                 type    separator
                 default { "" }
-                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
+                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 } { definitionmatch == 1 }"
             }
             multiparm {
                 name    "hf_img_regions"
                 label    "Number of Regions"
-                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
+                hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 } { definitionmatch == 1 }"
                 parmtag { "multistartoffset" "1" }
                 parmtag { "script_callback" "hou.phm().forceUpdateHeightfield(kwargs)" }
 
@@ -468,7 +466,7 @@
                     label   "Separator"
                     type    separator
                     default { "" }
-                    hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 }"
+                    hidewhen "{ src_depth == 0 src_single != 2 } { src_depth == 1 src_multi != 2 } { definitionmatch == 1 }"
                 }
             }
 

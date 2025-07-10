@@ -32,28 +32,29 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.04034 -59.3173
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position 7.56479 16.8402
+connectornextid 4
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
+2 "output1"
+3 "output2"
 }
 inputsNamed3
 {
-1 	Pine_Forest 1 1 "input1"
-2 	heightfield1 0 1 "input2"
+0 	biome_define3 1 1 "input1"
+1 	heightfield_copylayer1 1 1 "input2"
 }
 inputs
 {
-0 	Pine_Forest 0 1
-1 	heightfield1 0 1
+0 	biome_define3 0 1
+1 	heightfield_copylayer1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author handongy@prevost
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -77,10 +78,6 @@ Content-Type: text/plain
 	"___toolid___":{
 		"type":"string",
 		"value":"generic_delete"
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
@@ -300,111 +297,6 @@ Content-Type: text/plain
 2
 0 -24.062729389537626 7.6189023668628639 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 0.83899998664855957 0.83899998664855957 0.83899998664855957"
 1 -29.171592330506801 5.1293918963930167 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.init"
-Content-Type: text/plain
-
-type = attribfrommap
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -12.5034 -1.5732
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-2 "output1"
-}
-inputsNamed3
-{
-0 	create_uv 1 1 "input1"
-1 	add_vol_name 1 1 "input2"
-}
-inputs
-{
-0 	create_uv 0 1
-1 	add_vol_name 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author aomai@DESKTOP-RBQDURK
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-use_file	[ 0	locks=0 ]	(	"vol"	)
-filename	[ 0	locks=0 ]	(	UVcolor.rat	)
-reload	[ 0	locks=0 ]	(	0	)
-udim	[ 0	locks=0 ]	(	"off"	)
-texture_channel	[ 0	locks=0 ]	(	""	)
-volume_name	[ 0	locks=0 ]	(	mask	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-export_attribute	[ 0	locks=0 ]	(	Cd	)
-attrib_type	[ 0	locks=0 ]	(	"vector"	)
-color_settings	[ 0	locks=0 ]	(	0	0	0	)
-srccolorspace	[ 0	locks=0 ]	(	auto	)
-color_channel	[ 0	locks=0 ]	(	4	)
-rgb_color_influence	[ 0	locks=0 ]	(	0.5	0.6	0.1	0	)
-visualize_map	[ 0	locks=0 ]	(	"on"	)
-doremap	[ 0	locks=0 ]	(	"off"	)
-rgb_scale	[ 0	locks=0 ]	(	1	)
-rgb_contrast	[ 0	locks=0 ]	(	0	)
-rgb_contrast_rolloff	[ 0	locks=0 ]	(	1	)
-remap_influence	[ 0	locks=0 ]	(	2	)
-filter	[ 0	locks=0 ]	(	gauss	)
-filter_width	[ 0	locks=0 ]	(	0	)
-wrap	[ 0	locks=0 ]	(	streak	)
-border	[ 0	locks=0 ]	(	0	0	0	)
-vertexmethod	[ 0	locks=0 ]	(	"first"	)
-uv_invertu	[ 0	locks=0 ]	(	"off"	)
-uv_invertv	[ 0	locks=0 ]	(	"off"	)
-uv_scale	[ 0	locks=0 ]	(	1	)
-uv_rz	[ 0	locks=0 ]	(	0	)
-uv_t	[ 0	locks=0 ]	(	0	0	)
-remap_influence1pos	[ 0	locks=0 ]	(	0	)
-remap_influence1value	[ 0	locks=0 ]	(	0	)
-remap_influence1interp	[ 0	locks=0 ]	(	"linear"	)
-remap_influence2pos	[ 0	locks=0 ]	(	1	)
-remap_influence2value	[ 0	locks=0 ]	(	1	)
-remap_influence2interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"2"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"dynamics_fuelfromtexture"
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/switch_region_selection_type.init"
@@ -838,9 +730,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment "HDA Code: brga"
-position -16.5707 -73.148
+position -16.5649 -73.2931
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on displaycomment on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -1283,6 +1175,8 @@ group	[ 0	locks=0 ]	(	""	)
 contrainedboundary	[ 0	locks=0 ]	(	"groupboundary"	)
 constrainedpoints	[ 0	locks=0 ]	(	_bin_attrib_boundary	)
 attributes	[ 0	locks=0 ]	(	P	)
+useweightattribute	[ 0	locks=0 ]	(	"off"	)
+weightattribute	[ 0	locks=0 ]	(	weight	)
 method	[ 0	locks=0 ]	(	"uniform"	)
 strength	[ 0	locks=0 ]	(	50	)
 filterquality	[ 0	locks=0 ]	(	1	)
@@ -1352,6 +1246,7 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"primitive"	)
 useattribute	[ 0	locks=0 ]	(	"on"	)
 attrib	[ 0	locks=0 ]	(	_bin_biome_tag	)
+tol	[ 0	locks=0 ]	(	0	)
 removedegen	[ 0	locks=0 ]	(	"on"	)
 includeunshared	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared	[ 0	locks=0 ]	(	"on"	)
@@ -1720,6 +1615,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_bin_temp_tag = -1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1803,6 +1699,7 @@ snippet	[ 0	locks=0 ]	(	"if(i@_bin_temp_tag == -1)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2341,6 +2238,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/match_attrib_value_to_parm_label.chn"
@@ -2412,6 +2315,7 @@ else if(attrtype == 2)          //If input is string
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2486,7 +2390,10 @@ Content-Type: text/plain
 version 0.8
 cookcontrols	[ 0	locks=0 ]	(	0	)
 forcerecook	[ 0	locks=0 ]	(	0	)
+useexternaltop	[ 0	locks=0 ]	(	"off"	)
+externaltop	[ 0	locks=0 ]	(	/tasks/topnet1	)
 attribute	[ 0	locks=0 ]	(	*	)
+topscheduler	[ 0	locks=0 ]	(	localscheduler	)
 dirtyoncook	[ 0	locks=0 ]	(	"on"	)
 outputsection	[ 0	locks=0 ]	(	0	)
 outputtype	[ 0	locks=0 ]	(	"1"	)
@@ -2501,8 +2408,6 @@ caching	[ 0	locks=0 ]	(	0	)
 cachetaskgraph	[ 0	locks=0 ]	(	"off"	)
 taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.$OS.taskgraph.py	)
 loadfromdisk	[ 0	locks=0 ]	(	"off"	)
-schedulersection	[ 0	locks=0 ]	(	0	)
-topscheduler	[ 0	locks=0 ]	(	localscheduler	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2530,7 +2435,7 @@ Content-Type: text/plain
 comment ""
 position -4 0
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -2568,6 +2473,8 @@ verbose	[ 0	locks=0 ]	(	"off"	)
 pdg_waitforfailures	[ 0	locks=0 ]	(	"off"	)
 folder4	[ 0	locks=0 ]	(	0	)
 pdg_workingdir	[ 0	locks=0 ]	(	$HIP	)
+uselogfilename	[ 0	locks=0 ]	(	"off"	)
+logfilename	[ 0	locks=0 ]	(	`@pdg_name`.log	)
 hythonbin	[ 0	locks=0 ]	(	"0"	)
 hythonbincustomuniversal	[ 0	locks=0 ]	(	""	)
 pdg_workitemdatasource	[ 0	locks=0 ]	(	"0"	)
@@ -2578,6 +2485,9 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
@@ -2701,12 +2611,14 @@ attributetype	[ 0	locks=0 ]	(	"0"	)
 preserveinput	[ 0	locks=0 ]	(	"0"	)
 preserveinputattrib	[ 0	locks=0 ]	(	sourcefile	)
 extractmult	[ 0	locks=0 ]	(	1	)
+skipinvalid	[ 0	locks=0 ]	(	"off"	)
 splitarray	[ 0	locks=0 ]	(	"off"	)
 extracts	[ 0	locks=0 ]	(	"[('biomes', 'biome', 7, 0)]"	)
 query1	[ 0	locks=0 ]	(	biomes	)
 attributename1	[ 0	locks=0 ]	(	biome	)
 valtype1	[ 0	locks=0 ]	(	"7"	)
 valindex1	[ 0	locks=0 ]	(	0	)
+skipinvalid1	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3082,12 +2994,14 @@ attributetype	[ 0	locks=0 ]	(	"2"	)
 preserveinput	[ 0	locks=0 ]	(	"0"	)
 preserveinputattrib	[ 0	locks=0 ]	(	sourcefile	)
 extractmult	[ 0	locks=0 ]	(	1	)
+skipinvalid	[ 0	locks=0 ]	(	"off"	)
 splitarray	[ 0	locks=0 ]	(	"off"	)
 extracts	[ 0	locks=0 ]	(	"[('biomes', 'biome', 2, 0)]"	)
 query1	[ 0	locks=0 ]	(	biomes	)
 attributename1	[ 0	locks=0 ]	(	biome	)
 valtype1	[ 0	locks=0 ]	(	"2"	)
 valindex1	[ 0	locks=0 ]	(	0	)
+skipinvalid1	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3166,12 +3080,14 @@ attributetype	[ 0	locks=0 ]	(	"2"	)
 preserveinput	[ 0	locks=0 ]	(	"0"	)
 preserveinputattrib	[ 0	locks=0 ]	(	sourcefile	)
 extractmult	[ 0	locks=0 ]	(	1	)
+skipinvalid	[ 0	locks=0 ]	(	"off"	)
 splitarray	[ 0	locks=0 ]	(	"off"	)
 extracts	[ 0	locks=0 ]	(	"[('biomes', 'biome', 7, 0)]"	)
 query1	[ 0	locks=0 ]	(	biomes	)
 attributename1	[ 0	locks=0 ]	(	biome	)
 valtype1	[ 0	locks=0 ]	(	"7"	)
 valindex1	[ 0	locks=0 ]	(	0	)
+skipinvalid1	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3277,6 +3193,7 @@ f@_bin_avg_temp = average_temps[count];
 f@_bin_avg_precip = average_precips[count];"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3598,6 +3515,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/assign_index_to_biomes.chn"
@@ -3637,6 +3560,7 @@ for(int i  = 0; i < n_biomes; i++)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3735,6 +3659,7 @@ if(prim(0,\"_bin_biome_tag\",i) == biome_names[i])
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4220,6 +4145,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -4481,6 +4407,7 @@ i@_bin_temp_tag = atoi(index) - 1;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4587,6 +4514,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -5631,6 +5559,7 @@ s@_bin_psd_layer = s@_bin_psd_layer[6:];
 i@_bin_temp_tag = i@PSDLayerNumber - 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5879,6 +5808,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	6	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -6225,7 +6155,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -6237,7 +6172,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_bin_hierarchy	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -6526,6 +6466,7 @@ i@_bin_hierarchy = hierarchy_value;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6882,6 +6823,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -7897,6 +7839,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"on"	)
 singlepass	[ 0	locks=0 ]	(	1	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -8099,6 +8042,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@group__fus_unshared = neighbourcount(0, @ptnum) != len(pointprims(0, @ptnum));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8303,6 +8247,7 @@ while (hedge != -1) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8418,6 +8363,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -9123,6 +9069,8 @@ group	[ 0	locks=0 ]	(	""	)
 contrainedboundary	[ 0	locks=0 ]	(	"groupboundary"	)
 constrainedpoints	[ 0	locks=0 ]	(	original_edge	)
 attributes	[ 0	locks=0 ]	(	P	)
+useweightattribute	[ 0	locks=0 ]	(	"off"	)
+weightattribute	[ 0	locks=0 ]	(	weight	)
 method	[ 0	locks=0 ]	(	"uniform"	)
 strength	[ 0	locks=0 ]	(	50	)
 filterquality	[ 0	locks=0 ]	(	1	)
@@ -9366,6 +9314,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"on"	)
 singlepass	[ 0	locks=0 ]	(	6	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -9491,6 +9440,7 @@ version 0.8
 usecoppath	[ 0	locks=0 ]	(	"off"	)
 coppath	[ 0	locks=0 ]	(	""	)
 singleoutput	[ 0	locks=0 ]	(	"on"	)
+useinput	[ 0	locks=0 ]	(	"off"	)
 output	[ 0	locks=0 ]	(	0	)
 plane	[ 0	locks=0 ]	(	"xy"	)
 docompile	[ 0	locks=0 ]	(	"on"	)
@@ -9504,6 +9454,8 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"wrap"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
 }
@@ -9550,7 +9502,7 @@ stat
   author aomai@DESKTOP-RBQDURK
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -9598,14 +9550,21 @@ filename	[ 0	locks=0 ]	(	[ filename	default.pic ] 	)
 clonename	[ 0	locks=0 ]	(	""	)
 clonesession	[ 0	locks=0 ]	(	""	)
 clonemenu	[ 0	locks=0 ]	(	""	)
+liverenderpath	[ 0	locks=0 ]	(	""	)
+liverenderstart	[ 0	locks=0 ]	(	0	)
+liverenderstop	[ 0	locks=0 ]	(	0	)
 reload	[ 0	locks=0 ]	(	[ reload	0 ] 	)
 videoframemethod	[ 0	locks=0 ]	(	"start"	)
 videoframestart	[ 0	locks=0 ]	(	[ videoframestart	0 ] 	)
 videoframe	[ 0	locks=0 ]	(	[ videoframe	0 ] 	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 border	[ 0	locks=0 ]	(	"default"	)
 missingdata	[ 0	locks=0 ]	(	"error"	)
 missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"raw"	)
+premultiplied	[ 0	locks=0 ]	(	"on"	)
+loadcamera	[ 0	locks=0 ]	(	"off"	)
 addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	1	)
 aov1	[ 0	locks=0 ]	(	C	)
@@ -9824,6 +9783,111 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.init"
+Content-Type: text/plain
+
+type = attribfrommap
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -12.5034 -1.5732
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	create_uv 1 1 "input1"
+1 	add_vol_name 1 1 "input2"
+}
+inputs
+{
+0 	create_uv 0 1
+1 	add_vol_name 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author aomai@DESKTOP-RBQDURK
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+use_file	[ 0	locks=0 ]	(	"vol"	)
+filename	[ 0	locks=0 ]	(	UVcolor.rat	)
+reload	[ 0	locks=0 ]	(	0	)
+udim	[ 0	locks=0 ]	(	"off"	)
+texture_channel	[ 0	locks=0 ]	(	""	)
+volume_name	[ 0	locks=0 ]	(	mask	)
+uvattrib	[ 0	locks=0 ]	(	uv	)
+export_attribute	[ 0	locks=0 ]	(	Cd	)
+attrib_type	[ 0	locks=0 ]	(	"vector"	)
+color_settings	[ 0	locks=0 ]	(	0	0	0	)
+srccolorspace	[ 0	locks=0 ]	(	auto	)
+color_channel	[ 0	locks=0 ]	(	4	)
+rgb_color_influence	[ 0	locks=0 ]	(	0.5	0.6	0.1	0	)
+visualize_map	[ 0	locks=0 ]	(	"on"	)
+doremap	[ 0	locks=0 ]	(	"off"	)
+rgb_scale	[ 0	locks=0 ]	(	1	)
+rgb_contrast	[ 0	locks=0 ]	(	0	)
+rgb_contrast_rolloff	[ 0	locks=0 ]	(	1	)
+remap_influence	[ 0	locks=0 ]	(	2	)
+filter	[ 0	locks=0 ]	(	gauss	)
+filter_width	[ 0	locks=0 ]	(	0	)
+wrap	[ 0	locks=0 ]	(	streak	)
+border	[ 0	locks=0 ]	(	0	0	0	)
+vertexmethod	[ 0	locks=0 ]	(	"first"	)
+uv_invertu	[ 0	locks=0 ]	(	"off"	)
+uv_invertv	[ 0	locks=0 ]	(	"off"	)
+uv_scale	[ 0	locks=0 ]	(	1	)
+uv_rz	[ 0	locks=0 ]	(	0	)
+uv_t	[ 0	locks=0 ]	(	0	0	)
+remap_influence1pos	[ 0	locks=0 ]	(	0	)
+remap_influence1value	[ 0	locks=0 ]	(	0	)
+remap_influence1interp	[ 0	locks=0 ]	(	"linear"	)
+remap_influence2pos	[ 0	locks=0 ]	(	1	)
+remap_influence2value	[ 0	locks=0 ]	(	1	)
+remap_influence2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Cd_from_vol.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"dynamics_fuelfromtexture"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/add_vol_name.init"
 Content-Type: text/plain
 
@@ -9878,6 +9942,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@name = \"mask\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10134,6 +10199,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/create_uv.chn"
@@ -10231,6 +10302,7 @@ int row_idx = @ptnum / x;
 @uv += 0.5;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10405,6 +10477,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -10730,6 +10803,7 @@ i@_brga_hierarchy = chi(\"../img_bhierarchy\" + idx);
 i@_brga_stable_idx = prim(1, \"_brga_stable_idx\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10978,6 +11052,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/set_layer_value.parm"
@@ -10991,6 +11071,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask = xyzdist(1, @P) < 0.001;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -12370,6 +12451,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/add_region_center.chn"
@@ -12404,6 +12491,7 @@ setprimattrib(0, \"_brga_perimeter\", prim, int(prim(0, \"_brga_perimeter\", 0))
 setprimgroup(0, chs(\"center_group_name\"), prim, 1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -12567,7 +12655,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -12579,7 +12672,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_hsv	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -12651,7 +12749,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -12663,7 +12766,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_hsv	)
 primattribcomp	[ 0	locks=0 ]	(	1	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"on"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -12735,7 +12843,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -12747,7 +12860,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_hsv	)
 primattribcomp	[ 0	locks=0 ]	(	2	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"on"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -12884,6 +13002,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@_brga_hsv = rgbtohsv(clamp(@Cd, {0, 0, 0}, {1, 1, 1}));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -13173,6 +13292,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_brga_num_biomes_defined = npoints(0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -13919,6 +14039,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/preview_layer_offset.chn"
@@ -13949,6 +14075,7 @@ snippet	[ 0	locks=0 ]	(	"float step_size = 0.01 * chf(\"max_width\");
 @P.y += step_size * chf(\"../img_bhierarchy\" + itoa(i@_brga_stable_idx));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14101,6 +14228,7 @@ i@_brga_hierarchy = chi(\"../img_bhierarchy\" + itoa(i@_brga_stable_idx));
 @Cd = chv(\"../img_bcolor\" + itoa(i@_brga_stable_idx));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14595,6 +14723,7 @@ snippet	[ 0	locks=0 ]	(	"// Stable index should start with 1
 i@_brga_stable_idx += 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14677,6 +14806,7 @@ umbiliccutoff	[ 0	locks=0 ]	(	0	)
 integrationmode	[ 0	locks=0 ]	(	"componentwise"	)
 srcattrib	[ 0	locks=0 ]	(	P	)
 srccomp	[ 0	locks=0 ]	(	"x"	)
+divideelementarea	[ 0	locks=0 ]	(	"off"	)
 scalenormalize	[ 0	locks=0 ]	(	"on"	)
 sepparm	[ 0	locks=0 ]	(	)
 integrationdomain	[ 0	locks=0 ]	(	"throughout"	)
@@ -14784,7 +14914,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -14796,7 +14931,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -15738,6 +15878,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/resolve_overlaps.chn"
@@ -15778,6 +15924,7 @@ snippet	[ 0	locks=0 ]	(	"for (int prim = chi(\"max_primnum\"); prim > @primnum; 
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -15858,7 +16005,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -15870,7 +16022,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_hierarchy	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -15942,7 +16099,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -15954,7 +16116,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_stable_idx	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -16294,6 +16461,7 @@ snippet	[ 0	locks=0 ]	(	"// Matches the Y position of the flat newly generated h
 @P.y = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16628,133 +16796,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.init"
-Content-Type: text/plain
-
-type = heightfield_copylayer
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -36.8317 -43.059
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	foreach_begin12 1 1 "input1"
-}
-inputs
-{
-0 	foreach_begin12 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Danicka@DESKTOP-2416QFR
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.spareparmdef"
-Content-Type: text/plain
-
-    multiparm {
-        name    "numcopy"
-        label    "Number of Copies"
-        baseparm
-        default 1
-
-        parm {
-            name    "create#"
-            baseparm
-            label   "Source"
-            nolabel
-            joinnext
-            export  none
-        }
-        parm {
-            name    "srcname#"
-            baseparm
-            label   "Source"
-            export  none
-        }
-        parm {
-            name    "dstname#"
-            baseparm
-            label   "Destination"
-            export  none
-        }
-        parm {
-            name    "copysrc#"
-            baseparm
-            label   "Copy Source Data"
-            export  none
-        }
-        parm {
-            name    "replacedst#"
-            baseparm
-            label   "Replace Existng"
-            export  none
-        }
-    }
-
-    parm {
-        name    "spare_input0"
-        label   "Spare Input 0"
-        type    oppath
-        default { "" }
-        help    "Refer to this in expressions as -1, such as: npoints(-1)"
-        parmtag { "cook_dependent" "1" }
-        parmtag { "opfilter" "!!SOP!!" }
-        parmtag { "oprelative" "." }
-    }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-numcopy	[ 8	locks=0 ]	(	1	)
-create1	[ 0	locks=0 ]	(	"on"	)
-srcname1	[ 0	locks=0 ]	(	"`chs(\"../hflayername\" + detail(\"../foreach_count1\", \"ivalue\", 0))`"	)
-dstname1	[ 0	locks=0 ]	(	"`chs(\"../hf_bname\" + detail(\"../foreach_count1\", \"ivalue\", 0))`"	)
-copysrc1	[ 0	locks=0 ]	(	"on"	)
-replacedst1	[ 0	locks=0 ]	(	"on"	)
-spare_input0	[ 0	locks=0 ]	(	../number_of_biomes_defined	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/change_biome_name.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/foreach_end8.init"
 Content-Type: text/plain
 
@@ -16767,20 +16808,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8301 -46.1832
+position -35.9862 -48.9571
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	remove_other_layers 1 1 "input1"
+0 	switch_if_matching_layer_names_to_biomes 0 1 "input1"
 }
 inputs
 {
-0 	remove_other_layers 0 1
+0 	switch_if_matching_layer_names_to_biomes 0 1
 }
 stat
 {
@@ -16913,6 +16954,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "stopattrib"
+        baseparm
+        label   "Stop Attribute"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/foreach_end8.chn"
@@ -16948,8 +16995,9 @@ blockpath	[ 0	locks=0 ]	(	../foreach_begin12	)
 templatepath	[ 0	locks=0 ]	(	../foreach_begin12	)
 resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
-singlepass	[ 0	locks=0 ]	(	2	)
+singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 spare_input0	[ 0	locks=0 ]	(	../number_of_biomes_defined	)
 }
@@ -17054,7 +17102,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -33.7589 -42.019
+position -32.6662 -42.019
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -17121,7 +17169,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8317 -48.403
+position -36.8317 -51.0816
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17188,7 +17236,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8347 -45.0989
+position -36.8347 -43.0989
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17197,11 +17245,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	hierarchy_attrib 0 1 "input1"
+0 	foreach_begin12 1 1 "input1"
 }
 inputs
 {
-0 	hierarchy_attrib 0 1
+0 	foreach_begin12 0 1
 }
 stat
 {
@@ -17391,6 +17439,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/remove_other_layers.parm"
@@ -17404,9 +17458,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"primitive"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"string name = chs(\"../hf_bname\" + itoa(detail(-1, \"ivalue\", 0)));
-//s@_brga_biome_name = replace(name, \" \", \"_\");
-
+snippet	[ 0	locks=0 ]	(	"string name = chs(\"../hflayername\" + itoa(detail(-1, \"ivalue\", 0)));
 
 if(@name != name)
 {
@@ -17414,6 +17466,7 @@ if(@name != name)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17459,7 +17512,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -16.5649 -69.5549
+position -16.5649 -72.2335
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17576,7 +17629,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -35.583 -67.7256
+position -35.583 -70.4042
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17676,7 +17729,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8352 -44.059
+position -36.8351 -45.2146
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17685,11 +17738,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	change_biome_name 1 1 "input1"
+1 	rename_layer 1 1 "input1"
 }
 inputs
 {
-0 	change_biome_name 0 1
+0 	rename_layer 0 1
 }
 stat
 {
@@ -17799,7 +17852,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8317 -49.4957
+position -36.8317 -52.1743
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17843,7 +17896,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -17855,7 +17913,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_hierarchy	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -17889,7 +17952,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8317 -51.3918
+position -36.8317 -54.0704
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -17933,7 +17996,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -17945,7 +18013,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	_brga_stable_idx	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -17979,7 +18052,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4455 -62.5936
+position -32.4455 -65.2722
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -18028,6 +18101,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -18061,7 +18135,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4455 -53.232
+position -32.4455 -55.9106
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -18131,7 +18205,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4472 -54.272
+position -32.4472 -56.9506
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18240,7 +18314,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4471 -58.272
+position -32.4471 -60.9506
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18322,7 +18396,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4471 -57.272
+position -32.4471 -59.9506
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18391,7 +18465,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4506 -55.272
+position -32.4506 -57.9506
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18473,7 +18547,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4506 -56.272
+position -32.4506 -58.9506
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18547,7 +18621,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4471 -61.4876
+position -32.4471 -64.1662
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18698,7 +18772,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4501 -59.3119
+position -32.4501 -61.9905
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -18901,6 +18975,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/assign_biome_color.parm"
@@ -18935,6 +19015,7 @@ snippet	[ 0	locks=0 ]	(	"for(int i = 0; i < npoints(-1); i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18988,7 +19069,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8347 -50.5356
+position -36.8347 -53.2142
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -19140,6 +19221,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/resolve_overlaps1.chn"
@@ -19180,6 +19267,7 @@ snippet	[ 0	locks=0 ]	(	"for (int prim = chi(\"max_primnum\"); prim > @primnum; 
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -19222,7 +19310,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4505 -65.5732
+position -32.4505 -68.2518
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -19298,7 +19386,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4501 -64.7179
+position -32.4501 -67.3965
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -19505,6 +19593,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/preview_layer_offset1.chn"
@@ -19535,6 +19629,7 @@ snippet	[ 0	locks=0 ]	(	"float step_size = 0.01 * chf(\"max_width\");
 @P.y += step_size * chf(\"../hf_bhierarchy\" + itoa(i@_brga_stable_idx));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -19581,7 +19676,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -32.4506 -63.717
+position -32.4506 -66.3956
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -19655,7 +19750,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -36.8347 -47.3197
+position -36.8347 -49.9983
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -19701,6 +19796,7 @@ else
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -19744,7 +19840,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment GUIDE_GEO
-position -11.5562 -69.5547
+position -11.3464 -70.8031
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on displaycomment on
 outputsNamed3
@@ -19803,7 +19899,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -11.3464 -67.0649
+position -11.3464 -69.7435
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -19954,6 +20050,7 @@ version 0.8
 usecoppath	[ 0	locks=0 ]	(	"on"	)
 coppath	[ 0	locks=0 ]	(	`chsop(\"../coppath\")`	)
 singleoutput	[ 0	locks=0 ]	(	"on"	)
+useinput	[ 0	locks=0 ]	(	"off"	)
 output	[ 0	locks=0 ]	(	0	)
 plane	[ 0	locks=0 ]	(	"zx"	)
 docompile	[ 0	locks=0 ]	(	"off"	)
@@ -19967,6 +20064,8 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"wrap"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
 }
@@ -19989,10 +20088,785 @@ Content-Type: text/plain
 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -35.9878 -47.8511
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+2 	hierarchy_attrib 0 1 "input1"
+1 	hierarchy_attrib1 0 1 "input2"
+}
+inputs
+{
+0 	hierarchy_attrib 0 1
+1 	hierarchy_attrib1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../definitionmatch\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch_if_matching_layer_names_to_biomes.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -32.6708 -44.0008
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	foreach_begin12 1 1 "input1"
+}
+inputs
+{
+0 	foreach_begin12 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "folder1"
+        label   "Code"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Group"
+            export  none
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            baseparm
+            label   "Group Type"
+            export  none
+        }
+        parm {
+            name    "class"
+            baseparm
+            label   "Run Over"
+            export  none
+        }
+        parm {
+            name    "vex_numcount"
+            baseparm
+            label   "Number Count"
+            export  none
+        }
+        parm {
+            name    "vex_threadjobsize"
+            baseparm
+            label   "Thread Job Size"
+            export  none
+        }
+        parm {
+            name    "snippet"
+            baseparm
+            label   "VEXpression"
+            export  all
+        }
+        parm {
+            name    "exportlist"
+            baseparm
+            label   "Attributes to Create"
+            export  none
+        }
+        parm {
+            name    "vex_strict"
+            baseparm
+            label   "Enforce Prototypes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            baseparm
+            label   "Autobind by Name"
+            export  none
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                baseparm
+                label   "Attribute Name"
+                export  none
+            }
+            parm {
+                name    "bindparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            baseparm
+            label   "Autobind Groups by Name"
+            export  none
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                baseparm
+                label   "Group Name"
+                export  none
+            }
+            parm {
+                name    "bindgroupparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            baseparm
+            label   "Evaluation Node Path"
+            export  none
+        }
+        parm {
+            name    "vex_outputmask"
+            baseparm
+            label   "Export Parameters"
+            export  none
+        }
+        parm {
+            name    "vex_updatenmls"
+            baseparm
+            label   "Update Normals If Displaced"
+            export  none
+        }
+        parm {
+            name    "vex_matchattrib"
+            baseparm
+            label   "Attribute to Match"
+            export  none
+        }
+        parm {
+            name    "vex_inplace"
+            baseparm
+            label   "Compute Results In Place"
+            export  none
+        }
+        parm {
+            name    "vex_selectiongroup"
+            baseparm
+            label   "Output Selection Group"
+            export  none
+        }
+        parm {
+            name    "vex_precision"
+            baseparm
+            label   "VEX Precision"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
+    parm {
+        name    "spare_input1"
+        label   "Spare Input 1"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -2, such as: npoints(-2)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"string name = point(-2, \"biome_name\", detail(-1, \"iteration\", 0));
+string valid_name = makevalidvarname(name);
+
+// Nullifies spaces/underscores for comparisons
+if(makevalidvarname(@name) != valid_name)
+{
+   removeprim(0, @primnum, 1);
+}
+
+// Set layer name to exact biome name if not already
+if(@name != name)
+{
+   @name = name;
+}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+folder1	[ 0	locks=0 ]	(	0	0	)
+spare_input0	[ 0	locks=0 ]	(	../foreach_count1	)
+spare_input1	[ 0	locks=0 ]	(	../number_of_biomes_defined	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_other_layers_matching_layers.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.init"
+Content-Type: text/plain
+
+type = attribcreate::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -32.6712 -45.0387
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	remove_other_layers_matching_layers 1 1 "input1"
+}
+inputs
+{
+0 	remove_other_layers_matching_layers 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.chn"
+Content-Type: text/plain
+
+{
+    channel value2v1 {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      segment { length = 0 value = 3 3 expr = "detail(\"../foreach_count1\", \"ivalue\", 0)" }
+    }
+    channel value1v1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = "detail(\"../foreach_count1\", \"ivalue\", 0)" }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+encodenames	[ 0	locks=0 ]	(	"off"	)
+numattr	[ 0	locks=0 ]	(	2	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+name1	[ 0	locks=0 ]	(	_brga_hierarchy	)
+existing1	[ 0	locks=0 ]	(	"better"	)
+createvarmap1	[ 0	locks=0 ]	(	"off"	)
+varname1	[ 0	locks=0 ]	(	""	)
+class1	[ 0	locks=0 ]	(	"primitive"	)
+savetoinfo1	[ 0	locks=0 ]	(	"off"	)
+type1	[ 0	locks=0 ]	(	"int"	)
+typeinfo1	[ 0	locks=0 ]	(	"guess"	)
+precision1	[ 0	locks=0 ]	(	"auto"	)
+size1	[ 0	locks=0 ]	(	1	)
+default1v	[ 0	locks=0 ]	(	0	0	0	0	)
+writevalues1	[ 0	locks=0 ]	(	"on"	)
+uselocal1	[ 0	locks=0 ]	(	"on"	)
+value1v	[ 8	locks=0 ]	(	[ value1v1	0 ] 	0	0	0	)
+string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
+enable2	[ 0	locks=0 ]	(	"on"	)
+name2	[ 0	locks=0 ]	(	_brga_stable_idx	)
+existing2	[ 0	locks=0 ]	(	"better"	)
+createvarmap2	[ 0	locks=0 ]	(	"off"	)
+varname2	[ 0	locks=0 ]	(	""	)
+class2	[ 0	locks=0 ]	(	"primitive"	)
+savetoinfo2	[ 0	locks=0 ]	(	"off"	)
+type2	[ 0	locks=0 ]	(	"int"	)
+typeinfo2	[ 0	locks=0 ]	(	"guess"	)
+precision2	[ 0	locks=0 ]	(	"auto"	)
+size2	[ 0	locks=0 ]	(	1	)
+default2v	[ 0	locks=0 ]	(	0	0	0	0	)
+writevalues2	[ 0	locks=0 ]	(	"on"	)
+uselocal2	[ 0	locks=0 ]	(	"on"	)
+value2v	[ 8	locks=0 ]	(	[ value2v1	0 ] 	0	0	0	)
+string2	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/hierarchy_attrib1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -36.8347 -44.1767
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	remove_other_layers 1 1 "input1"
+}
+inputs
+{
+0 	remove_other_layers 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "folder1"
+        label   "Code"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Group"
+            export  none
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            baseparm
+            label   "Group Type"
+            export  none
+        }
+        parm {
+            name    "class"
+            baseparm
+            label   "Run Over"
+            export  none
+        }
+        parm {
+            name    "vex_numcount"
+            baseparm
+            label   "Number Count"
+            export  none
+        }
+        parm {
+            name    "vex_threadjobsize"
+            baseparm
+            label   "Thread Job Size"
+            export  none
+        }
+        parm {
+            name    "snippet"
+            baseparm
+            label   "VEXpression"
+            export  all
+        }
+        parm {
+            name    "exportlist"
+            baseparm
+            label   "Attributes to Create"
+            export  none
+        }
+        parm {
+            name    "vex_strict"
+            baseparm
+            label   "Enforce Prototypes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            baseparm
+            label   "Autobind by Name"
+            export  none
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                baseparm
+                label   "Attribute Name"
+                export  none
+            }
+            parm {
+                name    "bindparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            baseparm
+            label   "Autobind Groups by Name"
+            export  none
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                baseparm
+                label   "Group Name"
+                export  none
+            }
+            parm {
+                name    "bindgroupparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            baseparm
+            label   "Evaluation Node Path"
+            export  none
+        }
+        parm {
+            name    "vex_outputmask"
+            baseparm
+            label   "Export Parameters"
+            export  none
+        }
+        parm {
+            name    "vex_updatenmls"
+            baseparm
+            label   "Update Normals If Displaced"
+            export  none
+        }
+        parm {
+            name    "vex_matchattrib"
+            baseparm
+            label   "Attribute to Match"
+            export  none
+        }
+        parm {
+            name    "vex_inplace"
+            baseparm
+            label   "Compute Results In Place"
+            export  none
+        }
+        parm {
+            name    "vex_selectiongroup"
+            baseparm
+            label   "Output Selection Group"
+            export  none
+        }
+        parm {
+            name    "vex_precision"
+            baseparm
+            label   "VEX Precision"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"string name = chs(\"../hf_bname\" + itoa(detail(-1, \"ivalue\", 0)));
+
+if(@name != name)
+{
+    @name = name;
+}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+folder1	[ 0	locks=0 ]	(	0	0	)
+spare_input0	[ 0	locks=0 ]	(	../foreach_count1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/rename_layer.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-182
+185
 switch_region_selection_type
 attribdelete1
 fast_group_unshared5
@@ -20146,7 +21020,6 @@ enum_curve_id
 switch_curve_grouping
 enum_path
 attrib_cleanup1
-change_biome_name
 foreach_end8
 foreach_begin12
 foreach_count1
@@ -20175,6 +21048,10 @@ threshold_values
 output1
 switch_heightfields1
 copnet_path
+switch_if_matching_layer_names_to_biomes
+remove_other_layers_matching_layers
+hierarchy_attrib1
+rename_layer
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
