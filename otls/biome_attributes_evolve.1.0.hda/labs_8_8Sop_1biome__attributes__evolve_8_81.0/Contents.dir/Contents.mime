@@ -32,15 +32,16 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -5.07373 -19.6075
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+position 10.4574 -5.99711
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
-0 	biome_attributes_to_terrain1 3 1 "input1"
+0 	biome_attributes_to_terrain1 1 1 "input1"
 }
 inputs
 {
@@ -131,7 +132,7 @@ Content-Type: text/plain
 	comment := "Evolve Soil Based on Heightfield and Noise";
 	height := 26.270490032889843;
 	minimized := 0;
-	width := 15.954032090430328;
+	width := 16.97779695338185;
 	x_position := 0.35916791553013594;
 	y_position := -8.98209000308752;
 }
@@ -467,7 +468,7 @@ sopflags sopflags =
 comment ""
 position -8.64596 -31.5214
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -1000,6 +1001,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/evolve_temperature_with_elevation.chn"
@@ -1031,6 +1038,7 @@ float rate = ch('lapserate')/1000;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -2847,6 +2855,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask = clamp(@mask,0,1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -3266,6 +3275,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@_bae_soil = clamp(@_bae_soil,0,1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -3505,6 +3515,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@volvis_cdfield = \"mask\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3584,6 +3595,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@volvis_cdfield = \"mask\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3932,7 +3944,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment "Referenced from heightfield_subtractsteepslopes"
-position 12.0468 1.44969
+position 12.1656 1.36921
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
@@ -3964,9 +3976,9 @@ Content-Disposition: attachment; filename="hdaroot/heightfield_subtractsteepslop
 Content-Type: text/plain
 
 3
-sloperamp#pos ../sloperamp#pos
-sloperamp#value ../sloperamp#value
-sloperamp#interp ../sloperamp#interp
+sloperamp#pos ../heightfield_subtractsteepslopes/sloperamp#pos
+sloperamp#value ../heightfield_subtractsteepslopes/sloperamp#value
+sloperamp#interp ../heightfield_subtractsteepslopes/sloperamp#interp
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/heightfield_subtractsteepslopes1.chn"
@@ -4256,44 +4268,6 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/heightramp1pos\") }
     }
-    channel sloperamp1pos {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1pos\") }
-    }
-    channel sloperamp1value {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1value\") }
-    }
-    channel sloperamp1interp {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1interp\") }
-    }
-    channel sloperamp2pos {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2pos\") }
-    }
-    channel sloperamp2value {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2value\") }
-    }
-    channel sloperamp2interp {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2interp\") }
-    }
     channel masklayer {
       lefttype = extend
       righttype = extend
@@ -4446,6 +4420,95 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/smooth_radius\") }
     }
+    channel sloperamp1pos {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1pos\") }
+    }
+    channel sloperamp1value {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1value\") }
+    }
+    channel sloperamp1interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp1interp\") }
+    }
+    channel sloperamp2pos {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2pos\") }
+    }
+    channel sloperamp2value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2value\") }
+    }
+    channel sloperamp2interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp2interp\") }
+    }
+    channel sloperamp3pos {
+      lefttype = extend
+      righttype = extend
+      default = 0.67213112115859985
+      flags = 0
+      segment { length = 0 value = 0.67213112115859985 0.67213112115859985 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp3pos\") }
+    }
+    channel sloperamp3value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp3value\") }
+    }
+    channel sloperamp3interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp3interp\") }
+    }
+    channel sloperamp4pos {
+      lefttype = extend
+      righttype = extend
+      default = 0.99989998340606689
+      flags = 0
+      segment { length = 0 value = 0.99989998340606689 0.99989998340606689 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp4pos\") }
+    }
+    channel sloperamp4value {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp4value\") }
+    }
+    channel sloperamp4interp {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp4interp\") }
+    }
+    channel sloperamp {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../heightfield_subtractsteepslopes/sloperamp\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4461,9 +4524,9 @@ blend	[ 0	locks=0 ]	(	[ blend	0.5 ] 	)
 invertmask	[ 0	locks=0 ]	(	"off"	)
 folder1	[ 0	locks=0 ]	(	0	)
 maskbyslope	[ 0	locks=0 ]	(	[ maskbyslope	1 ] 	)
-min_slopeangle	[ 8	locks=0 ]	(	[ min_slopeangle	20 ] 	)
-max_slopeangle	[ 8	locks=0 ]	(	[ max_slopeangle	70 ] 	)
-sloperamp	[ 8	locks=0 ]	(	5	)
+min_slopeangle	[ 0	locks=0 ]	(	[ min_slopeangle	20 ] 	)
+max_slopeangle	[ 0	locks=0 ]	(	[ max_slopeangle	70 ] 	)
+sloperamp	[ 8	locks=0 ]	(	[ sloperamp	4 ] 	)
 folder2	[ 0	locks=0 ]	(	0	)
 maskbyheight	[ 0	locks=0 ]	(	[ maskbyheight	0 ] 	)
 computerange	[ 0	locks=0 ]	(	[ computerange	0 ] 	)
@@ -4497,12 +4560,12 @@ sloperamp1interp	[ 0	locks=0 ]	(	[ sloperamp1interp	1 ] 	)
 sloperamp2pos	[ 0	locks=0 ]	(	[ sloperamp2pos	0 ] 	)
 sloperamp2value	[ 0	locks=0 ]	(	[ sloperamp2value	0 ] 	)
 sloperamp2interp	[ 0	locks=0 ]	(	[ sloperamp2interp	1 ] 	)
-sloperamp3pos	[ 0	locks=0 ]	(	0.6721311211585999	)
-sloperamp3value	[ 0	locks=0 ]	(	1	)
-sloperamp3interp	[ 0	locks=0 ]	(	"linear"	)
-sloperamp4pos	[ 0	locks=0 ]	(	0.9998999834060669	)
-sloperamp4value	[ 0	locks=0 ]	(	1	)
-sloperamp4interp	[ 0	locks=0 ]	(	"linear"	)
+sloperamp3pos	[ 0	locks=0 ]	(	[ sloperamp3pos	0 ] 	)
+sloperamp3value	[ 0	locks=0 ]	(	[ sloperamp3value	0 ] 	)
+sloperamp3interp	[ 0	locks=0 ]	(	[ sloperamp3interp	1 ] 	)
+sloperamp4pos	[ 0	locks=0 ]	(	[ sloperamp4pos	0 ] 	)
+sloperamp4value	[ 0	locks=0 ]	(	[ sloperamp4value	0 ] 	)
+sloperamp4interp	[ 0	locks=0 ]	(	[ sloperamp4interp	1 ] 	)
 heightramp1pos	[ 0	locks=0 ]	(	[ heightramp1pos	0 ] 	)
 heightramp1value	[ 0	locks=0 ]	(	[ heightramp1value	0 ] 	)
 heightramp1interp	[ 0	locks=0 ]	(	[ heightramp1interp	1 ] 	)
@@ -4545,9 +4608,6 @@ ramp1interp	[ 0	locks=0 ]	(	[ ramp1interp	1 ] 	)
 ramp2pos	[ 0	locks=0 ]	(	[ ramp2pos	0 ] 	)
 ramp2value	[ 0	locks=0 ]	(	[ ramp2value	0 ] 	)
 ramp2interp	[ 0	locks=0 ]	(	[ ramp2interp	1 ] 	)
-sloperamp5pos	[ 0	locks=0 ]	(	1	)
-sloperamp5value	[ 0	locks=0 ]	(	0	)
-sloperamp5interp	[ 0	locks=0 ]	(	"linear"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4632,6 +4692,7 @@ snippet	[ 0	locks=0 ]	(	"@mask=1;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -4791,6 +4852,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask = 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -4901,7 +4963,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.378499 -20.1888
+position -0.378499 -20.0225
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5069,6 +5131,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/if_same_value.chn"
@@ -5109,6 +5177,7 @@ if (min == max)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -5662,7 +5731,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.08164 -22.2942
+position -1.07472 -23.3876
 connectornextid 4
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -6230,6 +6299,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/rain_shadow.chn"
@@ -6400,6 +6475,7 @@ alpha = falloff_rad > 0 ? alpha : 1;
 @mask = chramp(\"anglefallofframp\", alpha);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"off"	)
 bindings	[ 0	locks=0 ]	(	2	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -7468,6 +7544,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/auto_get_values.parm"
@@ -7485,6 +7567,7 @@ snippet	[ 0	locks=0 ]	(	"@_bae_in_min = primintrinsic(0, \"volumeminvalue\", 0);
 @_bae_in_max = primintrinsic(0, \"volumemaxvalue\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7811,6 +7894,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/instensity.chn"
@@ -7838,6 +7927,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask *= ch(\"intensity\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -9067,6 +9157,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@_bae_filter = clamp(@_bae_filter,0,1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -9139,6 +9230,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask= 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -9311,6 +9403,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@mask = clamp(@mask,0,1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -9589,6 +9682,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/get_values.chn"
@@ -9622,6 +9721,7 @@ snippet	[ 0	locks=0 ]	(	"string num = itoa(chi(\"number\"));
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -9909,6 +10009,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/hardcoded_values.chn"
@@ -9948,6 +10054,7 @@ if (num == 3) {min=0; max=1;};
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -9996,9 +10103,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.375499 -19.1489
+position -0.375499 -19.0145
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -11491,6 +11598,7 @@ setambientshadows	[ 0	locks=0 ]	(	"off"	)
 ambientshadows	[ 0	locks=0 ]	(	1	)
 setshadowcolor	[ 0	locks=0 ]	(	"off"	)
 shadowcolor	[ 0	locks=0 ]	(	1	1	1	)
+usedict	[ 0	locks=0 ]	(	"on"	)
 quality	[ 0	locks=0 ]	(	0	)
 setmaxres	[ 0	locks=0 ]	(	"off"	)
 maxres	[ 0	locks=0 ]	(	128	)
@@ -11969,33 +12077,6 @@ Content-Disposition: attachment; filename="hdaroot/heightfield_maskbyfeature1.ch
 Content-Type: text/plain
 
 {
-    channel maskbyheight {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../maskbyheight\") }
-    }
-    channel maxheight {
-      lefttype = extend
-      righttype = extend
-      default = 68.272315979003906
-      flags = 0
-      segment { length = 0 value = 68.272315979003906 68.272315979003906 expr = "detail(0, \"_bae_maxheight\" ,0)" }
-    }
-    channel heightramp {
-      lefttype = extend
-      righttype = extend
-      default = 5
-      flags = 0
-      segment { length = 0 value = 5 5 expr = ch(\"../heightramp\") }
-    }
-    channel minheight {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = "detail(0, \"_bae_minheight\" ,0)" }
-    }
     channel heightramp1pos {
       lefttype = extend
       righttype = extend
@@ -12077,6 +12158,33 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 1 1 expr = ch(\"../heightramp4interp\") }
     }
+    channel maskbyheight {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../maskbyheight\") }
+    }
+    channel maxheight {
+      lefttype = extend
+      righttype = extend
+      default = 68.272315979003906
+      flags = 0
+      segment { length = 0 value = 68.272315979003906 68.272315979003906 expr = "detail(0, \"_bae_maxheight\" ,0)" }
+    }
+    channel heightramp {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../heightramp\") }
+    }
+    channel minheight {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = "detail(0, \"_bae_minheight\" ,0)" }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -12134,6 +12242,18 @@ sloperamp3interp	[ 0	locks=0 ]	(	"linear"	)
 sloperamp4pos	[ 0	locks=0 ]	(	1	)
 sloperamp4value	[ 0	locks=0 ]	(	0	)
 sloperamp4interp	[ 0	locks=0 ]	(	"linear"	)
+heightramp1pos	[ 0	locks=0 ]	(	[ heightramp1pos	0 ] 	)
+heightramp1value	[ 0	locks=0 ]	(	[ heightramp1value	0 ] 	)
+heightramp1interp	[ 0	locks=0 ]	(	[ heightramp1interp	1 ] 	)
+heightramp2pos	[ 0	locks=0 ]	(	[ heightramp2pos	0 ] 	)
+heightramp2value	[ 0	locks=0 ]	(	[ heightramp2value	0 ] 	)
+heightramp2interp	[ 0	locks=0 ]	(	[ heightramp2interp	1 ] 	)
+heightramp3pos	[ 0	locks=0 ]	(	[ heightramp3pos	0 ] 	)
+heightramp3value	[ 0	locks=0 ]	(	[ heightramp3value	0 ] 	)
+heightramp3interp	[ 0	locks=0 ]	(	[ heightramp3interp	1 ] 	)
+heightramp4pos	[ 0	locks=0 ]	(	[ heightramp4pos	0 ] 	)
+heightramp4value	[ 0	locks=0 ]	(	[ heightramp4value	0 ] 	)
+heightramp4interp	[ 0	locks=0 ]	(	[ heightramp4interp	1 ] 	)
 curvatureramp1pos	[ 0	locks=0 ]	(	0	)
 curvatureramp1value	[ 0	locks=0 ]	(	1	)
 curvatureramp1interp	[ 0	locks=0 ]	(	"linear"	)
@@ -12164,18 +12284,6 @@ ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 ramp2pos	[ 0	locks=0 ]	(	1	)
 ramp2value	[ 0	locks=0 ]	(	1	)
 ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-heightramp1pos	[ 0	locks=0 ]	(	[ heightramp1pos	0 ] 	)
-heightramp1value	[ 0	locks=0 ]	(	[ heightramp1value	0 ] 	)
-heightramp1interp	[ 0	locks=0 ]	(	[ heightramp1interp	1 ] 	)
-heightramp2pos	[ 0	locks=0 ]	(	[ heightramp2pos	0 ] 	)
-heightramp2value	[ 0	locks=0 ]	(	[ heightramp2value	0 ] 	)
-heightramp2interp	[ 0	locks=0 ]	(	[ heightramp2interp	1 ] 	)
-heightramp3pos	[ 0	locks=0 ]	(	[ heightramp3pos	0 ] 	)
-heightramp3value	[ 0	locks=0 ]	(	[ heightramp3value	0 ] 	)
-heightramp3interp	[ 0	locks=0 ]	(	[ heightramp3interp	1 ] 	)
-heightramp4pos	[ 0	locks=0 ]	(	[ heightramp4pos	0 ] 	)
-heightramp4value	[ 0	locks=0 ]	(	[ heightramp4value	0 ] 	)
-heightramp4interp	[ 0	locks=0 ]	(	[ heightramp4interp	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
