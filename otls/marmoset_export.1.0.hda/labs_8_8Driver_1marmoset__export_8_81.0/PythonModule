@@ -1,8 +1,14 @@
 import hou, subprocess, os, shutil, threading, tempfile, labutils, json
-from PySide2.QtWebEngineWidgets import QWebEngineView
-from PySide2.QtCore import *
-from PySide2.QtGui import *
-from PySide2.QtWidgets import *
+try:
+    from hutil.PySide.QtWebEngineWidgets import QWebEngineView
+    from hutil.PySide.QtCore import *
+    from hutil.PySide.QtGui import *
+    from hutil.PySide.QtWidgets import *
+except ImportError:
+    from PySide2.QtWebEngineWidgets import QWebEngineView
+    from PySide2.QtCore import *
+    from PySide2.QtGui import *
+    from PySide2.QtWidgets import *
 
 # Parms
 Camera, FrameType, FrameRange, Objects, bSkyLight, SkyLightPreset, CustomSkyLight, ExportDir = tuple(range(8)) 
