@@ -27,10 +27,16 @@ License:
 import os
 import logging
 
-from PySide2 import QtGui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from PySide2 import QtUiTools
+try:
+    from hutil.PySide import QtGui
+    from hutil.PySide import QtCore
+    from hutil.PySide import QtWidgets
+    from hutil.PySide import QtUiTools
+except ImportError:
+    from PySide2 import QtGui
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
+    from PySide2 import QtUiTools
 
 
 class UiLoader(QtUiTools.QUiLoader):

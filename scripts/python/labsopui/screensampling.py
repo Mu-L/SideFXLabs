@@ -2,7 +2,6 @@ try:
     from hutil.PySide.QtCore import Qt, QPoint, QRect
     from hutil.PySide.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget
     from hutil.PySide.QtGui import QColor, QPainter, QPen, QPixmap, QGuiApplication
-
 except ImportError:
     from PySide2.QtCore import Qt, QPoint, QRect
     from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget

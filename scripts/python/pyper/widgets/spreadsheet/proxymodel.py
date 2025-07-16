@@ -26,7 +26,10 @@ License:
 
 import logging
 
-from PySide2 import QtCore
+try:
+    from hutil.PySide import QtCore
+except ImportError:
+    from PySide2 import QtCore
 
 from .model import FLAGS
 

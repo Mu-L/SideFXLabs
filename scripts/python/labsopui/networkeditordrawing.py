@@ -1,6 +1,13 @@
-from PySide2.QtCore import Qt, QRect, QEvent, QPoint
-from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget, QLabel, QGraphicsPixmapItem
-from PySide2.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication
+try:
+    from hutil.PySide.QtCore import Qt, QRect, QEvent, QPoint
+    from hutil.PySide.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget, QLabel, QGraphicsPixmapItem
+    from hutil.PySide.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication
+except ImportError:
+    from PySide2.QtCore import Qt, QRect, QEvent, QPoint
+    from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget, QLabel, QGraphicsPixmapItem
+    from PySide2.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication
+
+
 import hou, datetime, os, labutils
 
 
@@ -76,7 +83,7 @@ class NetworkEditorPainter(QWidget):
         _adjustedcrop = QRect(self.networkeditorbottomleftglobalpos.x()-screen.geometry().x(),self.networkeditortoprightglobalpos.y()-screen.geometry().y(), self.networkeditorsize[0], self.networkeditorsize[1])
 
         self.graphicsscene.addPixmap(self.screenshots[screenid].copy(_adjustedcrop))
-        self.instructiontext = QLabel("Hold LMB to draw. ENTER to store drawing or ESC to cancel\nPress i to enable the color picker, then LMB click canvas to pick color\nScrollwheel changes brush size")
+        self.instructiontext = QLabel("Hold LMB to draw. ENTER to store drawing or ESC to cancel\nPress i to enable the color picker, then LMB click canvas to pick color\nScrollwheel changes brush size\nCTRL + i to transform stored drawing")
         self.instructiontext.setAlignment(Qt.AlignCenter)
         self.instructiontext.setFocusPolicy(Qt.NoFocus)
         self.instructiontext.adjustSize()
@@ -89,20 +96,32 @@ class NetworkEditorPainter(QWidget):
 
     def eventFilter(self, source, event):
         if source == self.graphicsview.viewport():
+
+            # globalPos() is marked as deprecated in Qt6 and may be remove in future versions. Updating with globalPosition().toPoint()
             try:
-                screen = QGuiApplication.screenAt(event.globalPos())
+                screen = QGuiApplication.screenAt(event.globalPosition().toPoint())
                 screenid = self.screens.index(screen)
-                cursorloc = [event.globalPos().x()-screen.geometry().x(), event.globalPos().y()-screen.geometry().y()]
-            except: pass
+                cursorloc = [event.globalPosition().toPoint().x()-screen.geometry().x(), event.globalPosition().toPoint().y()-screen.geometry().y()]
+            except:
+                try:
+                    screen = QGuiApplication.screenAt(event.globalPos())
+                    screenid = self.screens.index(screen)
+                    cursorloc = [event.globalPos().x()-screen.geometry().x(), event.globalPos().y()-screen.geometry().y()]
+                except: pass
 
             # LMB Click
             if event.type() == QEvent.MouseButtonPress:
 
                 if event.button() == Qt.LeftButton:
-
-                    self.startdragpos = event.pos()
-                    self.mouseX = [screenid, event.x(), cursorloc[0]]
-                    self.mouseY = [screenid, event.y(), cursorloc[1]]
+                    # pos() is marked as deprecated in Qt6 and may be remove in future versions. Updating with position()
+                    try:
+                        self.startdragpos = event.position()
+                        self.mouseX = [screenid, event.position().x(), cursorloc[0]]
+                        self.mouseY = [screenid, event.position().y(), cursorloc[1]]
+                    except:
+                        self.startdragpos = event.pos()
+                        self.mouseX = [screenid, event.x(), cursorloc[0]]
+                        self.mouseY = [screenid, event.y(), cursorloc[1]]
 
                     if self.colorpickeractive:
                         self.pickScreenColorForBrush(screenid)
@@ -115,11 +134,19 @@ class NetworkEditorPainter(QWidget):
             if event.type() == QEvent.MouseMove:
 
                 if self.startdragpos != -1:
-                    if (event.pos() - self.startdragpos).manhattanLength() > QApplication.startDragDistance():
-                        self.mouseX = [screenid, event.x(), cursorloc[0]]
-                        self.mouseY = [screenid, event.y(), cursorloc[1]]
-                        self.update()
-                        return True
+                    # pos() is marked as deprecated in Qt6 and may be remove in future versions. Updating with position()
+                    try:
+                        if (event.position() - self.startdragpos).manhattanLength() > QApplication.startDragDistance():
+                            self.mouseX = [screenid, event.position().x(), cursorloc[0]]
+                            self.mouseY = [screenid, event.position().y(), cursorloc[1]]
+                            self.update()
+                            return True
+                    except:
+                        if (event.pos() - self.startdragpos).manhattanLength() > QApplication.startDragDistance():
+                            self.mouseX = [screenid, event.x(), cursorloc[0]]
+                            self.mouseY = [screenid, event.y(), cursorloc[1]]
+                            self.update()
+                            return True
 
             # Done painting
             if event.type() == QEvent.MouseButtonRelease:
@@ -139,7 +166,11 @@ class NetworkEditorPainter(QWidget):
 
     def wheelEvent(self,event):
         if not self.colorpickeractive:
-            self.brushsize = max(1, self.brushsize + event.delta()/120)
+            # delta() deprecated in Qt6. Updating with angleDelta()
+            try:
+                self.brushsize = max(1, self.brushsize + event.angleDelta().y()/120)
+            except:
+                self.brushsize = max(1, self.brushsize + event.delta()/120)
             self.updateBrush()
         event.setAccepted(True)
 
@@ -155,7 +186,11 @@ class NetworkEditorPainter(QWidget):
                     painter = QPainter(pix)
                     pen = QPen()
                     painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
-                    painter.setRenderHint(QPainter.HighQualityAntialiasing, True)
+                    # HighQualityAntialiasing is obsolete in Qt6. Updating with Antialiasing
+                    try:
+                        painter.setRenderHint(QPainter.Antialiasing, True)
+                    except:
+                        painter.setRenderHint(QPainter.HighQualityAntialiasing, True)
                     pen.setWidth(self.brushsize)
                     pen.setColor(self.brushcolor)
                     pen.setCapStyle(Qt.RoundCap)

@@ -27,9 +27,14 @@ License:
 import logging
 import copy
 
-from PySide2 import QtGui
-from PySide2 import QtCore
-from PySide2 import QtWidgets
+try:
+    from hutil.PySide import QtGui
+    from hutil.PySide import QtCore
+    from hutil.PySide import QtWidgets
+except ImportError:
+    from PySide2 import QtGui
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
 
 
 def enum(*enumerated):

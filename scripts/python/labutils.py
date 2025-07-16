@@ -11,11 +11,16 @@ except:
     # requests library missing
     requests_enabled = False
 
+
 try:
-    from PySide2.QtCore import QSettings
+    from hutil.PySide.QtCore import QSettings
     settings = QSettings("SideFX", "SideFXLabs")
-except:
-    settings = None
+except ImportError:
+    try:
+        from PySide2.QtCore import QSettings
+        settings = QSettings("SideFX", "SideFXLabs")
+    except:
+        settings = None
 
 
 home = os.environ["HOUDINI_USER_PREF_DIR"]

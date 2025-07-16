@@ -93,4 +93,6 @@ class StickerPlacer(QtWidgets.QDialog):
                     item.setData(QtCore.Qt.UserRole, _relpath)
                     self.listwidget.addItem(item)
 
-            self.listwidget.update()
+            try:
+                self.listwidget.update()
+            except: pass

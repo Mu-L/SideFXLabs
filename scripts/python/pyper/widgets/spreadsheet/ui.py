@@ -28,9 +28,14 @@ from __future__ import absolute_import
 import os
 import logging
 
-from PySide2 import QtCore
-from PySide2 import QtWidgets
-from PySide2 import QtUiTools
+try:
+    from hutil.PySide import QtCore
+    from hutil.PySide import QtWidgets
+    from hutil.PySide import QtUiTools
+except ImportError:
+    from PySide2 import QtCore
+    from PySide2 import QtWidgets
+    from PySide2 import QtUiTools
 
 from . import model
 from . import proxymodel
@@ -175,7 +180,13 @@ class MainWidget(QtWidgets.QWidget):
         self.setLayout(self.uiVerticalLayout)
         self.uiVerticalLayout.addWidget(self.uiLineEdit)
         self.uiVerticalLayout.addWidget(self.uiTableView)
-        self.uiVerticalLayout.setMargin(0)
+
+        # setMargin deprecated for Qt6. Will use setContentsMargins on the case of failure
+        try:
+            self.uiVerticalLayout.setMargin(0)
+        except AttributeError:
+            self.uiVerticalLayout.setContentsMargins(0, 0, 0, 0)
+
 
         # configure the view
         self.uiTableView.setModel(self._proxyModel) # tell the view which model to display

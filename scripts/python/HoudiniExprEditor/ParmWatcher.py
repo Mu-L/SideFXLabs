@@ -30,19 +30,24 @@ import tempfile
 import hashlib
 
 try:
-    from PySide2 import QtCore
-    from PySide2 import QtWidgets
+    from hutil.PySide import QtCore
+    from hutil.PySide import QtWidgets
     Slot = QtCore.Slot(str)
 except ImportError:
-
     try:
-        from PySide import QtCore
-        from PySide import QtGui as QtWidgets
+        from PySide2 import QtCore
+        from PySide2 import QtWidgets
         Slot = QtCore.Slot(str)
     except ImportError:
-        from PyQt import QtCore
-        from PyQt import QtGui as QtWidgets
-        Slot = QtCore.pyqtSlot(str)
+        try:
+            from PySide import QtCore
+            from PySide import QtGui as QtWidgets
+            Slot = QtCore.Slot(str)
+        except ImportError:
+            from PyQt import QtCore
+            from PyQt import QtGui as QtWidgets
+            Slot = QtCore.pyqtSlot(str)
+
 
 TEMP_FOLDER = os.environ.get("EXTERNAL_EDITOR_TEMP_PATH",
                              tempfile.gettempdir())
