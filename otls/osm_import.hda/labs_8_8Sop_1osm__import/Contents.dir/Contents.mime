@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 18.4491 -1.42376
+position -5.62622 2.50378
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author Mo@SideFX_Mo
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -82,7 +82,7 @@ sopflags sopflags =
 comment ""
 position -2.68731 10.914
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
@@ -121,9 +121,12 @@ except ImportError:
     from io import StringIO #Python 3
 
 try:
-    from PySide2.QtGui import QColor
+    from hutil.PySide.QtGui import QColor
 except:
-    pass 
+    try:
+        from PySide2.QtGui import QColor
+    except:
+        pass 
     
 # approximate radius of earth in km
 R = 6373.0
@@ -894,7 +897,7 @@ sopflags sopflags =
 comment ""
 position -2.68731 6.99354
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
