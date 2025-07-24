@@ -3,7 +3,7 @@
 {
     name	labs::biome_attributes_evolve::1.0
     script	labs::objpath_instance::1.0
-    label	"Labs Biome Attributes Evolve (Alpha)"
+    label	"Labs Biome Attributes Evolve (Beta)"
 
     help {
 	""
@@ -368,6 +368,32 @@
                     range   { 1! 10 }
                     parmtag { "autoscope" "0000000000000000" }
                     parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear ) " }
+                    parmtag { "rampshowcontrolsdefault" "0" }
+                }
+                parm {
+                    name    "sepparm"
+                    label   "Separator"
+                    type    separator
+                    default { "" }
+                }
+                parm {
+                    name    "removebyheight"
+                    label   "Remove by Height"
+                    type    toggle
+                    default { "0" }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                }
+                parm {
+                    name    "hfheightramp"
+                    label   "Removal Amount over Height"
+                    type    ramp_flt
+                    default { "2" }
+                    disablewhen "{ removebyheight == 0 }"
+                    hidewhen "{ removebyheight == 0 }"
+                    range   { 1! 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "rampfloatdefault" "1pos ( 0.3499999940395355 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 0.4000000059604645 ) 2value ( 1 ) 2interp ( linear )" }
                     parmtag { "rampshowcontrolsdefault" "0" }
                 }
             }
