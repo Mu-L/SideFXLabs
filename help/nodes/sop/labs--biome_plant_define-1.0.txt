@@ -10,6 +10,11 @@
 
 This node creates the dictionary attribute `plant_definition` used in the rest of the Biome Toolset. It is used to define all the preferences of an individual plant species including __Temperature__, __Precipitation__, and __Spacing__. The __Species Variants__ tab is where different growth stages or variations of meshes are defined alongside dead version meshes. This tab is also where the ranges of random variation per variant are defined. Multiple of these nodes can be chained together to define a full library of plants. The _Biome Plant Definitions File SOP_ can take a chain of these nodes as input to help read and write the plant library from a .json or .bgeo file. The first input of the _Biome Plant Scatter SOP_ expects a chain of _Biome Plant Define SOP_ nodes or the output of the _Biome Plant Definitions File SOP_ set to create geometry.
 
+:box:
+    #display: raised
+
+    This node's viewport UI features the Whittaker Biome Diagram, originally proposed by Robert Harding Whittaker (1975), modified by Robert Eric Ricklefs (2000). The exact [image|https://commons.wikimedia.org/wiki/File:Climate_influence_on_terrestrial_biome.svg] this node used was released under the [CC0 1.0 Universal|https://creativecommons.org/publicdomain/zero/1.0/deed.en] license.
+
 
 @parameters
 
