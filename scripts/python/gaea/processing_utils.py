@@ -45,10 +45,10 @@ class NodeMessages:
     )
     NON_MATCHING_RESOLUTION = "The resolution of the Heightfield provided as input differs from the previous cook"
     GENERIC_GAEA_ERROR = "An error occurred inside Gaea. Please check the Gaea logs for more information."
-    BAD_LICENSE = "Gaea has run into a licensing issue. If you have not yet activated your license, please do so now. If you already have, your license may not be valid for this operation. Please consult the Gaea documentation for more information."
+    BAD_LICENSE = "Gaea has run into a licensing issue. If you have not yet activated your license, please do so now."
+    UNSUPPORTED_LICENSE = "To run this plugin you need at least a professional license. Please consult the Gaea documentation for more information."
     UNSUPPORTED_PLATFORM = "The current platform is not supported by the plugin. Please use a supported platform to run this node. (Windows)"
     SWARMHOST_TIMEOUT = "Gaea SwarmHost did not start in time. Please check if Gaea is installed correctly and the SwarmHost service is running."
-
 
 class ParmType(Enum):
     Undefined = ""
@@ -675,6 +675,8 @@ def run_gaea_swarm(
                 if p.returncode != 0:
                     if p.returncode == 666:
                         raise hou.NodeError(NodeMessages.BAD_LICENSE)
+                    elif p.returncode == 6666:
+                        raise hou.NodeError(NodeMessages.UNSUPPORTED_LICENSE)
                     raise hou.NodeError(
                         NodeMessages.GENERIC_GAEA_ERROR
                         + f", Process failed with exit code {p.returncode}. Check log at {log_path}"
