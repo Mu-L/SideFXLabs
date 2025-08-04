@@ -3,7 +3,7 @@
 {
     name	labs::biome_plant_define::1.1
     script	labs::plant_setup::1.0
-    label	"Labs Biome Plant Define (Alpha)"
+    label	"Labs Biome Plant Define (Beta)"
 
     help {
 	""
@@ -258,7 +258,7 @@
             }
             parm {
                 name    "autofillradii"
-                label   "Autofill Radii On Load"
+                label   "Autofill Radii on Load"
                 type    toggle
                 default { "1" }
                 parmtag { "script_callback_language" "python" }
@@ -295,7 +295,7 @@
             }
             parm {
                 name    "calculatebounds"
-                label   "Autofill Radii From Mesh Bounds"
+                label   "Autofill Radii from Mesh Bounds"
                 type    button
                 default { "0" }
                 parmtag { "script_callback" "hou.phm().calculateBounds(kwargs)" }
@@ -489,6 +489,7 @@
                     label   "Visualize Graph"
                     type    toggle
                     default { "1" }
+                    parmtag { "script_callback" "kwargs[\"node\"].setOutputForViewFlag(-1 if kwargs[\"node\"].parm('vizplants').eval() != 0 or kwargs[\"node\"].parm('vizgraph').eval() != 0 else 0)" }
                     parmtag { "script_callback_language" "python" }
                 }
             }
@@ -502,6 +503,7 @@
                     label   "Visualize Plants"
                     type    toggle
                     default { "1" }
+                    parmtag { "script_callback" "kwargs[\"node\"].setOutputForViewFlag(-1 if kwargs[\"node\"].parm('vizplants').eval() != 0 or kwargs[\"node\"].parm('vizgraph').eval() != 0 else 0)" }
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
