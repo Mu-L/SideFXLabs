@@ -8,7 +8,7 @@
 
 """Assign the base biome attributes onto the terrain """
 
-This node takes the default attributes and/or the dictionary attribute `biome_definition` of the second input and transfers them to the terrain depending on the biome regions of the third input. It also fills the areas with no biome regions with a background, created from default biome parameter.
+This node takes the default attributes and/or the dictionary attribute `biome_definition` of the second input and transfers them to the terrain depending on the biome regions of the third input. It also fills the areas with no biome regions with a background, created from the __Default Attributes__ tab parameters.
 
 @parameters
 
@@ -28,7 +28,7 @@ Auto Remap:
     <p>__Auto Normalize Range__: Show a normalized preview of the __Display__ following the minimum and maximum volume values.</p>
     <p>__Manual Range__: Show a remapped preview of the __Display__ following __Min__ and __Max__ values.</p>
 
-=== AUTOREMAP ===
+=== Manual Range ===
 
 Compute Range:
     #id: computerange
@@ -42,7 +42,6 @@ Max:
     #id: inputmax
     The highest value in the input to map from.
 
-== Parameters ==
 
 == Default Attributes ==
 
@@ -51,9 +50,9 @@ Background:
 
     This node checks if the `output layers` already exist on input and create new ones when needed. When all the layers are already present, this gives you the possibility to change the background mode to transparent, not using the biome default parameters. 
 
-    Transparent: Keep empty regions as is, without filling nor overriding the information
+    <p>Transparent: Keep empty regions as is, without filling nor overriding the information.</p>
 
-    Fill: Fill empty regions with default attribute
+    <p>Fill: Fill empty regions with default attributes.</p>
 
 Color:
     #id: biomecolor
@@ -61,15 +60,14 @@ Color:
 
 Temperature:
     #id: temperature
-    Average annual temperature (in °C) of this biome.
+    Average annual temperature (in °C) of the default background biome.
 
 Precipitation:
     #id: precipitation
-    Average annual precipitation (in mm) of this biome.
+    Average annual precipitation (in mm) of the default background biome.
 
-== Output ==
 
-=== HeightField Layers ===
+=== Output: HeightField Layers ===
 
 Temperature:
     #id: tempname
@@ -101,8 +99,17 @@ Biome Color B:
 
 Biome Average Height:
     #id: biomeavgheightname
-    Name of `average height` mask.
+    Name of `biome average height` mask.
 
+
+=== Output: Detail Attributes ===
+
+Min Height:
+    #id: minheightname
+    Name of output 'min height' detail attribute. 
+Max Height:
+    #id: maxheightname
+    Name of output 'max height' detail attribute.
 
 
 @locals
