@@ -45,7 +45,8 @@ def export(node):
                     out = {}  
                     for i in range(size):
                         out[components[i]] = val[i]
-
+                elif size == 1:
+                    out = val
                 else:
                     raise hou.NodeError("Attribute {} not supported! Please report with SideFX support.".format(attrib))
                            
