@@ -2,6 +2,18 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="node_type"
 Content-Type: text/plain
 
@@ -20,32 +32,31 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 11.3405 -4.17583
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
+position -1.54381 -1.94619
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-3 "output1"
-4 "output2"
+1 "output1"
 }
 inputsNamed3
 {
-0 	attribcopy_plant_name 2 1 "input1"
-1 	biome_attributes_evolve1 0 1 "input2"
+0 	biome_plant_define1 0 1 "input1"
+2 	biome_attributes_to_terrain1 1 1 "input2"
 }
 inputs
 {
-0 	attribcopy_plant_name 0 1
-1 	biome_attributes_evolve1 0 1
+0 	biome_plant_define1 0 1
+1 	biome_attributes_to_terrain1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author baile@Chappell
   access 0777
 }
-color UT_Color RGB 1 0.73 0 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
@@ -13242,7 +13253,7 @@ sopflags sopflags =
 comment ""
 position 17.3891 -39.73
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight on unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -18461,7 +18472,7 @@ Content-Type: text/plain
       righttype = extend
       default = 20
       flags = 0
-      segment { length = 0 value = 20 20 expr = ch(\"../spacing\") }
+      segment { length = 0 value = 20 20 expr = ch(\"../spacing\")*2 }
     }
   }
 
@@ -18546,13 +18557,13 @@ foreach(int pt; pts)
         {
             scalemin = d@plant_definition[\"scalemin\" + itoa(i)];  
         }
-        if(isvalidindex(d@plant_definition, \"radius\"))
+        if(isvalidindex(d@plant_definition, \"radius\" + itoa(i)))
         {
-            radius = d@plant_definition[\"radius\"];  
+            radius = d@plant_definition[\"radius\" + itoa(i)];  
         }
-        if(isvalidindex(d@plant_definition, \"trunkradius\"))
+        if(isvalidindex(d@plant_definition, \"trunkradius\" + itoa(i)))
         {
-            trunkradius = d@plant_definition[\"trunkradius\"];  
+            trunkradius = d@plant_definition[\"trunkradius\" + itoa(i)];  
         }
         if(isvalidindex(d@plant_definition, \"scalemult\"))
         {
@@ -24890,7 +24901,7 @@ sopflags sopflags =
 comment ""
 position 3.63453 -70.1939
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
