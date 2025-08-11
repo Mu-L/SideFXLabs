@@ -1,0 +1,5 @@
+def displaypy(kwargs):
+    node = kwargs['node']
+    display = kwargs["parm"].evalAsInt()
+    output = -1 if display else 0
+    node.setOutputForViewFlag(output)

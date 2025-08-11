@@ -1,0 +1,202 @@
+import hou
+import viewerstate.utils as su
+
+class State(object):
+    def __init__(self, state_name, scene_viewer):
+        self.state_name = state_name
+        self.scene_viewer = scene_viewer
+        self.node = None
+
+        # Mouse variables
+        self.x_start = 0
+        self.y_start = 0
+        self.last_mouse_x = 0
+        self.last_mouse_y = 0
+        self.pt_num = -1
+        self.guide_index = -1
+        self.started_undo = False
+        self.isClicked = False
+        self.handle_direction = hou.Vector3()
+
+        # Shape variables - Stores last offset to prevent resets
+        self.previous_values = {
+            "toppoint": 0,
+            "midpoint": 0,
+            "singleradius": 0,
+            "shear": 0,
+            "curve": 0,
+            "innerradius": 0,
+            # for v.2.1 "outercircle": 0, 
+            # for v.2.1 "innercircle": 0,
+            "pointradius": 0,
+            "cutout": 0
+        }
+
+    def __start_undo(self):
+        if not self.started_undo:
+            self.scene_viewer.beginStateUndo("Click and drag")
+        self.started_undo = True
+
+    def __end_undo(self):
+        if self.started_undo:
+            self.scene_viewer.endStateUndo()
+        self.started_undo = False
+
+    def mouseToPlane(self, viewport, origin, direction):
+        # Define the XZ plane with a point and a normal
+        plane_origin = hou.Vector3(0, 0, 0)       # Point on XZ plane
+        plane_normal = hou.Vector3(0, 1, 0)       # Normal pointing up (Y+)
+
+        hit_position = hou.hmath.intersectPlane(
+            plane_origin,
+            plane_normal,
+            origin,
+            direction
+        )
+
+        return hit_position
+
+    def setGuideIndex(self, intersected):
+        self.prim = self.geometry.prim(intersected)
+        self.guide_index = self.prim.attribValue("index")
+        self.node.parm("guideindex").set(self.guide_index)
+
+    def controlHandle(self):
+        self.handle_direction = hou.Vector3(self.prim.floatListAttribValue("handle_direction"))
+        self.x_start = self.world_pos[0]
+        self.y_start = self.world_pos[2]
+        
+        if self.snap_attr:
+            self.snap_values = self.geometry.attribValue(self.snap_attr)
+        else:
+            self.snap_values = []
+
+        # Store attribute values before dragging
+        for key in self.previous_values:
+            self.previous_values[key] = self.node.parm(key).eval()
+
+    def setParms(self):
+        x_offset = self.world_pos[0] - self.x_start
+        y_offset = self.world_pos[2] - self.y_start
+
+        offset_mouse = hou.Vector3(x_offset, 0.0, y_offset)
+        dotproduct = self.handle_direction.dot(offset_mouse)
+
+        # Shape-specific changes with a dictionary of shape parameters
+        shape_parameters = {
+            0: ("toppoint", dotproduct),
+            1: ("midpoint", dotproduct),
+            2: ("singleradius", -dotproduct * 2.0),
+            3: ("shear", dotproduct),
+            4: ("curve", dotproduct * 7.0),
+            5: ("innerradius", dotproduct), # for v.2.1  ("outercircle", -dotproduct), ("innercircle", -dotproduct)],
+            6: [("innerradius", dotproduct), ("pointradius", dotproduct)],
+            7: ("cutout", -dotproduct)
+        }
+
+        with hou.undos.group("Set parameters"):
+            if self.shape in shape_parameters:
+                if isinstance(shape_parameters[self.shape], list):  # Handle multiple attributes
+                    for idx, (parameter, offset) in enumerate(shape_parameters[self.shape]):
+                        if self.guide_index == idx:
+
+                            new_value = self.previous_values[parameter] + offset # * self.speed
+                            self.node.parm(parameter).set(new_value)
+
+                            for snap_value in self.snap_values:
+                                distance = abs(new_value - snap_value)
+
+                                if distance < self.snap_threshold:
+                                    self.node.parm(parameter).set(snap_value)
+
+                else:  # Handle single attribute
+                    parameter, offset = shape_parameters[self.shape]
+                    new_value = self.previous_values[parameter] + offset # * self.speed
+                    self.node.parm(parameter).set(new_value)
+
+                    for snap_value in self.snap_values:
+                        distance = abs(new_value - snap_value)
+
+                        if distance < self.snap_threshold:
+                            self.node.parm(parameter).set(snap_value)
+
+    def onEnter(self, kwargs):
+        self.node = kwargs["node"]
+        self.state_parms = kwargs["state_parms"]
+
+        # Shape variables - Store current offset when entering the state
+        for key in self.previous_values:
+            parm = self.node.parm(key)
+            self.previous_values[key] = parm.eval()
+
+    # MOUSE EVENT HANDLER
+    def onMouseEvent(self, kwargs):
+        ui_event = kwargs["ui_event"]
+        reason = ui_event.reason()
+        self.device = ui_event.device()
+        viewport = self.scene_viewer.curViewport()
+
+        if not self.node.parm("showhandles").eval():
+            return
+
+        self.geometry = self.node.node("HANDLE").geometry()
+        self.shape = self.node.parm("shape").eval()
+        self.snap_threshold = self.node.parm("snapthreshold").eval()
+        self.snap_attr = self.geometry.findGlobalAttrib("snap_values")
+
+        origin, direction = ui_event.ray()
+        position = hou.Vector3()
+        normal = hou.Vector3()
+        uvw = hou.Vector3()
+
+        intersected = self.geometry.intersect(origin, direction, position, normal, uvw)
+        self.world_pos = self.mouseToPlane(viewport, origin, direction)
+        
+        # MOUSE HOVER
+        if reason == hou.uiEventReason.Located:
+            with hou.undos.disabler():
+                if intersected != -1:
+                    self.setGuideIndex(intersected)
+                else:
+                    if self.isClicked == True:
+                        return
+                    else:
+                        self.node.parm("guideindex").set(-1)
+                        self.pt_num = -1
+
+        # MOUSE CLICK
+        if reason == hou.uiEventReason.Start:
+            if intersected != -1:
+                self.__start_undo()
+                self.isClicked = True
+
+                with hou.undos.disabler():
+                    self.controlHandle()
+                    self.pt_num = self.prim.attribValue("pt_num")
+            else:
+                return
+
+        # MOUSE DOWN
+        elif reason == hou.uiEventReason.Active:
+            if self.pt_num != -1:
+                self.setParms()
+
+        # MOUSE RELEASE
+        elif reason == hou.uiEventReason.Changed:
+            self.isClicked = False
+            self.node.parm("guideindex").set(-1)
+            self.__end_undo()
+
+        return False
+
+
+def createViewerStateTemplate():
+    state_typename = kwargs["type"].definition().sections()["DefaultState"].contents()
+    state_label = "Labs Simple Shapes"
+    state_cat = hou.sopNodeTypeCategory()
+
+    template = hou.ViewerStateTemplate(state_typename, state_label, state_cat)
+    template.bindFactory(State)
+    template.bindIcon(kwargs["type"].icon())
+
+    return template

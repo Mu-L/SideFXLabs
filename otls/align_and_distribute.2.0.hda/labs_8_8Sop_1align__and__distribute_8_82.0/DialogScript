@@ -1,0 +1,215 @@
+# Dialog script for labs::align_and_distribute::2.0 automatically generated
+
+{
+    name	labs::align_and_distribute::2.0
+    script	gamedev::sop_align_and_distribute
+    label	"Labs Align and Distribute"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Merged Meshes"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    groupsimple {
+        name    "fd_pieces"
+        label   "Split and Sort"
+
+        parm {
+            name    "splitby"
+            label   "Split By "
+            type    ordinal
+            default { "0" }
+            help    "How to identify elements to be distributed; by contiguous islands (connectivity), or by @name."
+            menu {
+                "0" "Connectivity"
+                "1" "Piece Attribute"
+            }
+        }
+        parm {
+            name    "attributename"
+            label   "Attribute Name"
+            type    string
+            default { "name" }
+            hidewhen "{ splitby != 1 }"
+            menutoggle {
+                [ "opmenu -l -a attribcopy1 attribname" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "sop_input" "2else1" }
+        }
+        parm {
+            name    "sortby"
+            label   "Sort By"
+            type    ordinal
+            default { "0" }
+            help    "Choose to not sort, or sort by name, or by size."
+            menu {
+                "0" "None"
+                "1" "Area"
+                "2" "Polycount"
+                "3" "Random"
+            }
+        }
+        parm {
+            name    "seed"
+            label   "Random Seed"
+            type    float
+            default { "1" }
+            hidewhen "{ sortby != 3 }"
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "spacing"
+            label   "Spacing"
+            type    float
+            default { "1" }
+            help    "Spacing applied between each element."
+            range   { 0 10 }
+        }
+    }
+
+    groupsimple {
+        name    "fd_alignanddistribute"
+        label   "Align and Distribute"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "layout"
+            label   "Layout"
+            type    ordinal
+            default { "1" }
+            menu {
+                "0" "Linear"
+                "1" "Grid"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_linear"
+            label   "Linear"
+            hidewhen "{ layout == 1 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "axis"
+                label   "Axis"
+                type    ordinal
+                default { "0" }
+                help    "Determine which axis the elements should be spread along."
+                menu {
+                    "0" "X"
+                    "1" "Y"
+                    "2" "Z"
+                }
+            }
+            parm {
+                name    "alignment"
+                label   "Alignment"
+                type    ordinal
+                default { "0" }
+                help    "Determine if elements should be spread along the positive or negative direction of the selected axis."
+                menu {
+                    "0" "Positive"
+                    "1" "Center"
+                    "2" "Negative"
+                }
+            }
+        }
+
+        groupsimple {
+            name    "fd_grid"
+            label   "Grid"
+            hidewhen "{ layout != 1 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "orientation"
+                label   "Orientation"
+                type    ordinal
+                default { "zx" }
+                disablewhen "{ layout != 1 }"
+                menu {
+                    "xy"    "XY Plane"
+                    "yz"    "YZ Plane"
+                    "zx"    "ZX Plane"
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        parm {
+            name    "sepparm"
+            label   "Spacer"
+            type    separator
+            default { "" }
+            parmtag { "sidefx::layout_height" "small" }
+            parmtag { "sidefx::look" "blank" }
+        }
+        parm {
+            name    "justifyx"
+            label   "Justify X"
+            type    ordinal
+            default { "2" }
+            disablewhen "{ axis == 0 layout == 0 }"
+            menu {
+                "0" "None"
+                "1" "Min"
+                "2" "Center"
+                "3" "Max"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "justifyy"
+            label   "Justify Y"
+            type    ordinal
+            default { "1" }
+            disablewhen "{ axis == 1 layout == 0 }"
+            menu {
+                "0" "None"
+                "1" "Min"
+                "2" "Center"
+                "3" "Max"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "justifyz"
+            label   "Justify Z"
+            type    ordinal
+            default { "2" }
+            disablewhen "{ axis == 2 layout == 0 }"
+            menu {
+                "0" "None"
+                "1" "Min"
+                "2" "Center"
+                "3" "Max"
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_visualize"
+        label   "Visualize"
+
+        parm {
+            name    "visualizebounds"
+            label   "Visualize Mesh Bounds"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
