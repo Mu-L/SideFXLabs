@@ -1,0 +1,106 @@
+= Labs Simple Shapes =
+
+#type:     node
+#context:  sop
+#internal: labs::simple_shapes::2.0
+#icon:     SOP/labs::simple_shapes::2.0
+#since:    21.0
+
+"""Creates simple 2D shapes."""
+
+This node creates simple 2D shapes. The base shapes are Triangle, Diamond, Rectangle, Trapezoid, Polygon, Star, Double Star, and Square Star, rendered as an open or closed polygon. There are advanced options unique for each shape. All values are measured in world units unless specified otherwise.
+
+@parameters
+    Shape:
+        #id: shape
+        The type of shape created. The options include *Triangle*, *Diamond*, *Rectangle*, *Trapezoid*, *Polygon*, *Star*, *Double Star*, and *Square Star*.
+
+    Base:
+        #id: base
+        The horizontal length of the *Triangle*, *Diamond*, *Rectangle*, and *Trapezoid* shapes.
+
+    Top:
+        #id: height
+        The vertical length of the *Triangle*, *Diamond*, *Rectangle*, and *Trapezoid* shapes.
+
+    Top Point:
+        #id: toppoint
+        Offsets horizontally the position of the top point of the *Triangle* shape.
+
+    Mid Point:
+        #id: midpoint
+        Offsets vertically the position of the mid point of the *Diamond* shape.
+
+    Corner:
+        #id: singlecorner
+        Choose the style of the rectangle's corners. Options include *None*, *Round*, *Round Inverse*, *Straight*, and *Cutout*.
+
+    Radius:
+        #id: singleradius
+        Sets the radius, as a normalized value, for the rounding effect on all four corners of the rectangle.
+    
+    Divisions:
+        #id: divisions
+        Sets the divisions for the rounding effect on all four corners of the rectangle.
+
+    Top:
+        #id: top
+        The horizontal length of the top of the *Trapezoid* shape.
+
+    Shear:
+        #id: shear
+        Offsets horizontally the position of the top edge of the *Trapezoid* shape.
+
+    Sides:
+        #id: sides
+        Determines the number of sides the *Polygon*, and *Square Star* shapes will have.
+
+    Points:
+        #id: sides
+        Determines the number of protrusions the *Star*, and *Double Star* shapes will have.
+
+    Radius:
+        #id: radius
+        The radius of the *Polygon*, *Star*, *Double Star*, and *Square Star* shapes.
+
+    Inner Radius:
+        #id: radiusinner
+        The inner radius, as a normalized value, of the *Star*, and *Square Star* shape. A value of 1 represents the value of the *Radius*.
+
+    Point Radius:
+        #id: pointradius
+        The radius, as a normalized value, of the inner points of the *Double Star* shape. A value of 1 represents the value of the *Radius*.
+
+    Cutout:
+        #id: cutout
+        This represents the width, as a normalized value, of all the squared points.
+
+    Curve:
+        #id: curve
+        Sets the convex or concave nature of the sides of the *Polygon* shape. This is a normalized value in the range of -1 to 1.
+
+    Closed:
+        #id: closed
+        Render the shape as a filled or unfilled polygon.
+
+    Add UVs:
+        #id: adduvs
+        Generates world scale UVs for the fill of the shape.
+
+    == Viewport Handles ==
+
+    Show Viewport Handles:
+        #id: showhandles
+        Enables and show interactive handles in the viewport to control parameters with.
+
+    Snap Threshold:
+        #id: snapthreshold
+        The threshold where the snapping of values occurs when dragging the viewport handles. Raising this will make the snapping more sensitive.
+
+    Handles Color:
+        #id: handlescolor
+        The color for the spherical viewport handles.
+
+    Guides Color:
+        #id: guidescolor
+        The color for the various viewport guides.

@@ -1,0 +1,491 @@
+# Dialog script for labs::simple_shapes::2.0 automatically generated
+
+{
+    name	labs::simple_shapes::2.0
+    script	polygon_generator
+    label	"Labs Simple Shapes"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "shape"
+        label   "Shape"
+        type    ordinal
+        default { "5" }
+        menu {
+            "0" "Triangle"
+            "1" "Diamond"
+            "2" "Rectangle"
+            "3" "Trapezoid"
+            "4" "Polygon"
+            "5" "Star"
+            "6" "Double Star"
+            "7" "Square Star"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_nonsym"
+        label   "Non Symmetrical"
+        hidewhen "{ shape > 3 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "base"
+            label   "Base"
+            type    float
+            default { "1" }
+            range   { 0! 2 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "height"
+            label   "Height"
+            type    float
+            default { "1" }
+            range   { 0! 2 }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_triangle"
+            label   "Triangle"
+            hidewhen "{ shape != 0 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "toppoint"
+                label   "Top Point"
+                type    float
+                default { "0" }
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_diamond"
+            label   "Diamond"
+            hidewhen "{ shape != 1 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "midpoint"
+                label   "Mid Point"
+                type    float
+                default { "0" }
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_roundedrectangle"
+            label   "Rounded Rectangle"
+            hidewhen "{ shape != 2 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "sepparm2"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "matchedcorners"
+                label   "Matched Corners"
+                type    toggle
+                invisible
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupsimple {
+                name    "fd_single"
+                label   "Single Corner"
+                hidewhen "{ matchedcorners == 0 }"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "singlecorner"
+                    label   "Corner"
+                    type    ordinal
+                    default { "0" }
+                    menu {
+                        "0" "None"
+                        "1" "Round"
+                        "2" "Round Inverse"
+                        "3" "Straight"
+                        "4" "Cutout"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "singleradius"
+                    label   "Radius"
+                    type    float
+                    default { "0.25" }
+                    hidewhen "{ singlecorner == 0 }"
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "divisions"
+                    label   "Divisions"
+                    type    integer
+                    default { "16" }
+                    hidewhen "{ singlecorner == 0 } { singlecorner > 2 }"
+                    range   { 2! 32 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_corners"
+                label   "Corners"
+                hidewhen "{ matchedcorners == 1 }"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "tlcorner"
+                    label   "Top Left Corner"
+                    type    ordinal
+                    default { "1" }
+                    menu {
+                        "0" "None"
+                        "1" "Rounded"
+                        "2" "Straight"
+                        "3" "Concave"
+                        "4" "Cutout"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tlradius"
+                    label   "Top Level Radius"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "trcorner"
+                    label   "Top Right Corner"
+                    type    ordinal
+                    default { "1" }
+                    menu {
+                        "0" "None"
+                        "1" "Rounded"
+                        "2" "Straight"
+                        "3" "Concave"
+                        "4" "Cutout"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "trradius"
+                    label   "Top Right Radius"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "blcorner"
+                    label   "Bottom Left Corner"
+                    type    ordinal
+                    default { "1" }
+                    menu {
+                        "0" "None"
+                        "1" "Rounded"
+                        "2" "Straight"
+                        "3" "Concave"
+                        "4" "Cutout"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "blradius"
+                    label   "Bottom Level Radius"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "brcorner"
+                    label   "Bottom Right Corner"
+                    type    ordinal
+                    default { "1" }
+                    menu {
+                        "0" "None"
+                        "1" "Rounded"
+                        "2" "Straight"
+                        "3" "Concave"
+                        "4" "Cutout"
+                    }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "brradius"
+                    label   "Bottom Right Radius"
+                    type    float
+                    default { "0.25" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "fd_trapezoid"
+            label   "Trapezoid"
+            hidewhen "{ shape != 3 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "top"
+                label   "Top"
+                type    float
+                default { "0.25" }
+                range   { 0! 2 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "shear"
+                label   "Shear"
+                type    float
+                default { "0" }
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    groupsimple {
+        name    "fd_symmetrical"
+        label   "Symmetrical"
+        hidewhen "{ shape < 4 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "radius"
+            label   "Radius"
+            type    float
+            default { "1" }
+            range   { 0! 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sides"
+            label   "Sides"
+            type    integer
+            default { "6" }
+            hidewhen "{ shape != 4 shape != 7 }"
+            range   { 3! 32 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "points"
+            label   "Points"
+            type    integer
+            default { "6" }
+            hidewhen "{ shape != 5 shape != 6 }"
+            range   { 3! 32 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "innerradius"
+            label   "Inner Radius"
+            type    float
+            default { "0.5" }
+            hidewhen "{ shape != 5 shape != 6 }"
+            range   { 0! 1! }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_polygon"
+            label   "Polygon"
+            hidewhen "{ shape != 4 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "sepparm5"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "curve"
+                label   "Curve"
+                type    float
+                default { "0" }
+                range   { -1! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_star"
+            label   "Star"
+            hidewhen "{ shape != 5 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "outercircle"
+                label   "Outer Circle"
+                type    float
+                invisible
+                default { "0" }
+                range   { 0! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "innercircle"
+                label   "Inner Circle"
+                type    float
+                invisible
+                default { "0" }
+                range   { 0! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "outdivs"
+                label   "Outer Circle Divisions"
+                type    integer
+                invisible
+                default { "16" }
+                range   { 2! 32 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "indivs"
+                label   "Inner Circle Divisions"
+                type    integer
+                invisible
+                default { "16" }
+                range   { 2! 32 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_doudlestar"
+            label   "Double Star"
+            hidewhen "{ shape != 6 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "pointradius"
+                label   "Point Radius"
+                type    float
+                default { "0.75" }
+                range   { 0! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_squarestar"
+            label   "Square Star"
+            hidewhen "{ shape != 7 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "cutout"
+                label   "Cutout"
+                type    float
+                default { "0.61" }
+                range   { 0! 1! }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    parm {
+        name    "sepparm"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "closed"
+        label   "Closed"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "adduvs"
+        label   "Add UVs"
+        type    toggle
+        default { "0" }
+        hidewhen "{ closed == 0 }"
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_viewport"
+        label   "Viewport Handles"
+
+        parm {
+            name    "showhandles"
+            label   "Show Viewport Handles"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback" "hou.pwd().hdaModule().displaypy(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_advanced"
+            label   "Advanced"
+            hidewhen "{ showhandles == 0 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "snapthreshold"
+                label   "Snap Threshold"
+                type    float
+                default { "0.025" }
+                range   { 0! 0.5! }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "handlescolor"
+                label   "Handles"
+                type    color
+                size    3
+                default { "0.5" "1" "0" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "guidescolor"
+                label   "Guides"
+                type    color
+                size    3
+                default { "1" "1" "0" }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "guideindex"
+                label   "Guide Index"
+                type    integer
+                invisible
+                default { "-1" }
+                range   { 0 2 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}
