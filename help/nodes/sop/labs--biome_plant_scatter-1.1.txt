@@ -234,17 +234,29 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
         #id: noisename
         Name of the Noise point attribute. 
 	Enable Species ID:
-	    #enablespeciesid
+	    #id: enablespeciesid
 		Output the __Species ID__ point attribute. The __Species ID__ is a unique index per species sorted by the order the plant species were defined. 
 	Species ID:
-	    #speciesidname
+	    #id: speciesidname
 		Name of the Species ID point attribute.
 	Enable Variant ID:
-	    #enablevariantid
+	    #id: enablevariantid
 		Output the __Variant ID__ point attribute. The __Variant ID__ is a unique index per variant sorted by the order the variants are listed in the variants multiparm. Two different species variants can share the same variant id.   
-	Species ID:
-	    #speciesidname
-		Name of the Species ID point attribute.
+	Variant ID:
+	    #id: variantidname
+		Name of the Variant ID point attribute.
+    Enable Dead:
+		#id: enabledead
+	    Output the __Dead__ point attribute. __Dead__ is an integer attribute that is set to 1 when a dead mesh has been chosen and 0 when a live mesh has been chosen. 
+	Dead:
+		#id: deadname
+		Name of the Dead point attribute. 
+	Enable Plant ID:
+		#id: enableplantid
+		Output the __Plant ID__ point attribute. __Plant ID__ is an underscore separated id containing the speciesid, variantid, and dead attributes in that order. 
+	Plant ID:
+		#id: plantidname
+		Name of the Plant ID point attribute. 
     Enable Unique ID:
         #id: enableuniqueid
         Output the __Unique ID__ point attribute. This attribute is unique per point.
@@ -253,22 +265,23 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
         Name of the Unique ID point attribute.
     Enable Mesh ID:
         #id: enablemeshid
-        Output the __Mesh ID__ integer piece attribute. 
+        Output the __Mesh ID__ integer piece attribute. __Mesh ID__ is the enumeration of the __Mesh Path__ attribute.
     Mesh ID:
         #id: meshidname
-        Name of the Mesh ID integer piece attribute. This attribute is the enumeration of the __Mesh Path__ attribute.
+        Name of the Mesh ID integer piece attribute. 
     Enable Unreal Mesh ID:
         #id: enableuemeshid
-        Output the __Unreal Mesh ID__ integer piece attribute. This attribute is needed for the _PCG Export SOP_.
+        Output the __Unreal Mesh ID__ integer piece attribute. __Unreal Mesh ID__ is the enumeration of the __Unreal Asset Path__ attribute. This is needed for the _PCG Export SOP_.
     Unreal Mesh ID:
         #id: uemeshidname
-        Name of the Unreal Mesh ID integer piece attribute. This attribute is the enumeration of the __Unreal Asset Path__ attribute.
+        Name of the Unreal Mesh ID integer piece attribute.
+
 
     === Output: Point Groups ===
 
     Plant Points Group:
         #id: outputplantpointsgroup
-        Output __Plant Points__ group.
+        Output __Plant Points__ group. 
     Plant Points:
         #id: plantpointsname
         Name of Plant Points group. This is a group of all the points of the first output. 
@@ -291,17 +304,20 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
     Visualize Spacing Radii:
         #id: vizradii
         Visualizes the circles representing the bounds radii and trunk radii of the points. 
+	Visualize Variant ID:
+		#id: vizvariant
+		Visualizes the text marker for the 'variantid' of the points. 
     Color By:
         #id: colorby
         Attribute to color the points by. 
-        <p>__Plant Species__: Color by the Species ID Color defined by the _Biome Plant Define SOP_ or assign random colors from the Species ID Name attribute when __Assign Random Colors__ is enabled.</p>  
-	<p>__Mesh Path__: Color by the Mesh Path attribute.</p>     
-        <p>__Viability__: Color by the Viability attribute. </p>    
-        <p>__Age__: Color by the Age attribute. </p> 
+        <p>__Plant Species__: Color by the Species ID Color defined by the _Biome Plant Define SOP_ or assign random colors from the 'plant_name' attribute when __Assign Random Colors__ is enabled.</p>  
+	<p>__Mesh Path__: Color by the 'instancepath' attribute.</p>     
+        <p>__Viability__: Color by the 'viability' attribute. </p>    
+        <p>__Age__: Color by the 'age' attribute. </p> 
             
     Assign Random Colors:
         #id: assignrandomcolors
-        Assign random colors from the Species ID Name.
+        Assign random colors from the 'plant_name' attribute.
     Seed:
         #id: seed2
         Seed for the random colors.
@@ -313,13 +329,13 @@ This node scatters plant species points defined by multiple _Labs Biome Plant De
 
     Visualize Terrain:
         #id: vizterrain
-        Visualizes the terrain. Note: If __Mode__ is set to __Display Plant Inventory__ there is no terrain to display. 
+        Visualizes the terrain. Note: If __Mode__ is set to "Display Plant Inventory" there is no terrain to display. 
     Visualize Species Viability:
         #id: vizspeciesviability
         Visualizes a Species Viability heightfield layer as a red mask. The more red, the more likely the plant species will be scattered in that area. Navigate to the __Output__ tab and enable __Output Plant Viability Layers__ to output these heightfield layers to the second output. 
     Species:
         #id: species
-        The current plant species to visualize.
+        The current plant species's viability layer to visualize.
 @locals
     
     
