@@ -1,0 +1,100 @@
+= Labs Align and Distribute =
+
+#type:      node
+#context:   sop
+#internal:  labs::align_and_distribute::2.0
+#icon:      /labs_icons/sidefxlabs_default.svg
+#since:     21.0
+
+"""Aligns and arranges geometry pieces in linear or grid layouts."""
+
+This tool splits input geometry into discrete pieces using either connectivity or a custom attribute, then sorts and arranges them in a configurable layout. It supports linear and grid layouts, offers various alignment and justification options, and includes mesh bounds visualization for previewing results. Useful for inspecting geometry, or simply to generate contact sheets showing variations of multiple objects.
+
+@parameters
+    == Split and Sort ==
+
+    Split By:
+        #id: splitby
+        Determines how the input geometry is split into separate pieces for alignment. Choose between connected components or a custom attribute.
+
+        Connectivity:
+            Splits the input geometry into pieces based on disconnected mesh islands.
+
+        Piece Attribute:
+            Splits the geometry using a specified attribute (e.g. name). All primitives sharing the same attribute value are treated as a single piece.
+
+    Attribute Name:
+        #id: attributename
+        Specifies the name of the attribute whose unique values will define how the geometry is split into pieces.
+
+    Sort By:
+        #id: sortby
+        Controls the sorting method used to order the pieces before alignment. This affects the layout direction and positioning. Options include polycount, area, or randomized order.
+
+        None:
+            Keeps the original order of the pieces.
+        
+        Area:
+            Sorts the pieces from smallest to largest by surface area.
+        
+        Polycount:
+            Sorts the pieces by their total polygon count, from lowest to highest.
+        
+        Random:
+            Randomizes the order of the pieces.
+
+
+    Random Seed:
+        #id: seed
+        Controls the seed value for the random sorting. Changing this will produce a different randomized order for otherwise identical inputs.
+
+    Spacing:
+        #id: spacing
+        Controls the amount of padding between pieces in the layout. Measured in world units.
+
+    == Align and Distribute ==
+
+    Layout:
+        #id: layout
+        Defines the overall arrangement style for the aligned pieces. Use *Linear* for sequential placement along a single axis, or *Grid* to position pieces in a 2D matrix.
+
+        Linear:
+            Arranges pieces in a straight line along a specified axis.
+        
+        Grid:
+            Arranges pieces in a two-dimensional grid.
+    
+    Axis:
+        #id: axis
+        Defines the axis along which to align the pieces. Only visible when Layout is set to Linear.
+    
+    Alignment:
+        #id: alignment
+        Adjusts how each piece is positioned relative to the layout direction. Choose to align pieces toward the positive end, negative end, or center of the layout axis.
+
+        Positive:
+            Aligns pieces starting from the origin and distributes them toward the positive axis direction.
+        
+        Center:
+            Centers the layout so the combined bounding box of all pieces is centered at world origin.
+        
+        Negative:
+            Aligns pieces starting from the origin and distributes them toward the negative axis direction.
+
+    Justify X:
+        #id: justifyx
+        How the individual pieces should be aligned on their local X axis.
+
+    Justify Y:
+        #id: justifyy
+        How the individual pieces should be aligned on their local Y axis.
+
+    Justify Z:
+        #id: justifyz
+        How the individual pieces should be aligned on their local Z axis.
+
+    == Visualize ==
+
+    Visualize Mesh Bounds:
+        #id: visualizebounds
+        When enabled, displays the bounding box of each piece to help debug alignment and spacing behavior.
