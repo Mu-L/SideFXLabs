@@ -34,7 +34,7 @@ sopflags sopflags =
 comment ""
 position -1.54381 -1.94619
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
 1 "output1"
@@ -408,198 +408,6 @@ Content-Type: text/plain
 2 10.782000007709486 9.4810570878528555 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.init"
-Content-Type: text/plain
-
-type = attribnoise::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 3.25751 -55.6956
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	blend_orient 1 1 "input1"
-}
-inputs
-{
-0 	blend_orient 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.chn"
-Content-Type: text/plain
-
-{
-    channel basis {
-      lefttype = extend
-      righttype = extend
-      default = 5
-      flags = 0
-      segment { length = 0 value = 5 5 expr = ch(\"../basis\") }
-    }
-    channel elementsize {
-      lefttype = extend
-      righttype = extend
-      default = 500
-      flags = 0
-      segment { length = 0 value = 500 500 expr = ch(\"../elementsize\") }
-    }
-    channel offset {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../offset\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-group	[ 0	locks=0 ]	(	""	)
-doblend	[ 0	locks=0 ]	(	"off"	)
-blendweight	[ 0	locks=0 ]	(	1	)
-blendmode	[ 0	locks=0 ]	(	"value"	)
-blendattrib	[ 0	locks=0 ]	(	mask	)
-attribtype	[ 0	locks=0 ]	(	"float"	)
-attribs	[ 0	locks=0 ]	(	_bps_noise	)
-componentscope	[ 0	locks=0 ]	(	111	)
-class	[ 0	locks=0 ]	(	"point"	)
-displace	[ 0	locks=0 ]	(	"off"	)
-displaceattrib	[ 0	locks=0 ]	(	N	)
-folder1	[ 0	locks=0 ]	(	1	)
-operation	[ 0	locks=0 ]	(	"set"	)
-noiserange	[ 0	locks=0 ]	(	"custom"	)
-amplitude	[ 0	locks=0 ]	(	1	)
-amplitudev	[ 0	locks=0 ]	(	1	)
-amplitudetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-amplitudescalev	[ 0	locks=0 ]	(	1	1	1	)
-rangemin	[ 0	locks=0 ]	(	0	)
-rangeminv	[ 0	locks=0 ]	(	0	)
-rangemintype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangeminscalev	[ 0	locks=0 ]	(	0	0	0	)
-rangemax	[ 0	locks=0 ]	(	1	)
-rangemaxv	[ 0	locks=0 ]	(	1	)
-rangemaxtype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangemaxscalev	[ 0	locks=0 ]	(	1	1	1	)
-midvalue	[ 0	locks=0 ]	(	0	)
-midvaluev	[ 0	locks=0 ]	(	0	)
-midvaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-midvaluescalev	[ 0	locks=0 ]	(	1	1	1	)
-rangevalue	[ 0	locks=0 ]	(	1	)
-rangevaluev	[ 0	locks=0 ]	(	1	)
-rangevaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangevaluescalev	[ 0	locks=0 ]	(	1	1	1	)
-outputraw	[ 0	locks=0 ]	(	"on"	)
-enableremap	[ 0	locks=0 ]	(	"off"	)
-remapramp	[ 0	locks=0 ]	(	2	)
-folder3	[ 0	locks=0 ]	(	0	)
-dobias	[ 0	locks=0 ]	(	"off"	)
-bias	[ 0	locks=0 ]	(	0.5	)
-dogain	[ 0	locks=0 ]	(	"off"	)
-gain	[ 0	locks=0 ]	(	0.5	)
-dogamma	[ 0	locks=0 ]	(	"off"	)
-gamma	[ 0	locks=0 ]	(	2.2	)
-docontrast	[ 0	locks=0 ]	(	"off"	)
-contrast	[ 0	locks=0 ]	(	0	)
-folder7	[ 0	locks=0 ]	(	1	)
-basis	[ 0	locks=0 ]	(	[ basis	5 ] 	)
-locationattrib	[ 0	locks=0 ]	(	P	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
-elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 0	locks=0 ]	(	[ offset	0 ] 	)
-offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-offsetv	[ 0	locks=0 ]	(	0	0	0	)
-usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
-noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
-// Location Attribute - pos
-// Element Size - elementsize
-// Offset - offset
-
-"	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-folder6	[ 0	locks=0 ]	(	0	)
-animated	[ 0	locks=0 ]	(	"off"	)
-pulseduration	[ 0	locks=0 ]	(	1	)
-folder4	[ 0	locks=0 ]	(	0	)
-fractal	[ 0	locks=0 ]	(	"fBm"	)
-oct	[ 0	locks=0 ]	(	3	)
-lac	[ 0	locks=0 ]	(	2.01234	)
-rough	[ 0	locks=0 ]	(	0.5	)
-folder2	[ 0	locks=0 ]	(	0	)
-disp	[ 0	locks=0 ]	(	0	)
-dispesize	[ 0	locks=0 ]	(	1	)
-gflow	[ 0	locks=0 ]	(	0	)
-flowrot	[ 0	locks=0 ]	(	0	)
-accuml	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-distort	[ 0	locks=0 ]	(	1	)
-stretch	[ 0	locks=0 ]	(	1	1	1	)
-dodroop	[ 0	locks=0 ]	(	"off"	)
-droop	[ 0	locks=0 ]	(	1	)
-droopdir	[ 0	locks=0 ]	(	1	0	0	)
-folder8	[ 0	locks=0 ]	(	0	)
-doworleydetails	[ 0	locks=0 ]	(	"off"	)
-worleyblend	[ 0	locks=0 ]	(	1	)
-worleyerosion	[ 0	locks=0 ]	(	0.5	)
-worleyelementsizescale	[ 0	locks=0 ]	(	2	)
-folder5	[ 0	locks=0 ]	(	0	)
-doclampmin	[ 0	locks=0 ]	(	"off"	)
-clampminvalue	[ 0	locks=0 ]	(	0	)
-doclampmax	[ 0	locks=0 ]	(	"off"	)
-clampmaxvalue	[ 0	locks=0 ]	(	1	)
-normalize	[ 0	locks=0 ]	(	"off"	)
-updatenmls	[ 0	locks=0 ]	(	"on"	)
-remapramp1pos	[ 0	locks=0 ]	(	0	)
-remapramp1value	[ 0	locks=0 ]	(	0	)
-remapramp1interp	[ 0	locks=0 ]	(	"linear"	)
-remapramp2pos	[ 0	locks=0 ]	(	1	)
-remapramp2value	[ 0	locks=0 ]	(	1	)
-remapramp2interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/visualize_viability.init"
 Content-Type: text/plain
 
@@ -953,6 +761,198 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.init"
+Content-Type: text/plain
+
+type = attribnoise::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.25751 -55.6956
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	blend_orient 1 1 "input1"
+}
+inputs
+{
+0 	blend_orient 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.chn"
+Content-Type: text/plain
+
+{
+    channel basis {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../basis\") }
+    }
+    channel elementsize {
+      lefttype = extend
+      righttype = extend
+      default = 500
+      flags = 0
+      segment { length = 0 value = 500 500 expr = ch(\"../elementsize\") }
+    }
+    channel offset {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../offset\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+doblend	[ 0	locks=0 ]	(	"off"	)
+blendweight	[ 0	locks=0 ]	(	1	)
+blendmode	[ 0	locks=0 ]	(	"value"	)
+blendattrib	[ 0	locks=0 ]	(	mask	)
+attribtype	[ 0	locks=0 ]	(	"float"	)
+attribs	[ 0	locks=0 ]	(	_bps_noise	)
+componentscope	[ 0	locks=0 ]	(	111	)
+class	[ 0	locks=0 ]	(	"point"	)
+displace	[ 0	locks=0 ]	(	"off"	)
+displaceattrib	[ 0	locks=0 ]	(	N	)
+folder1	[ 0	locks=0 ]	(	1	)
+operation	[ 0	locks=0 ]	(	"set"	)
+noiserange	[ 0	locks=0 ]	(	"custom"	)
+amplitude	[ 0	locks=0 ]	(	1	)
+amplitudev	[ 0	locks=0 ]	(	1	)
+amplitudetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+amplitudescalev	[ 0	locks=0 ]	(	1	1	1	)
+rangemin	[ 0	locks=0 ]	(	0	)
+rangeminv	[ 0	locks=0 ]	(	0	)
+rangemintype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangeminscalev	[ 0	locks=0 ]	(	0	0	0	)
+rangemax	[ 0	locks=0 ]	(	1	)
+rangemaxv	[ 0	locks=0 ]	(	1	)
+rangemaxtype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangemaxscalev	[ 0	locks=0 ]	(	1	1	1	)
+midvalue	[ 0	locks=0 ]	(	0	)
+midvaluev	[ 0	locks=0 ]	(	0	)
+midvaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+midvaluescalev	[ 0	locks=0 ]	(	1	1	1	)
+rangevalue	[ 0	locks=0 ]	(	1	)
+rangevaluev	[ 0	locks=0 ]	(	1	)
+rangevaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangevaluescalev	[ 0	locks=0 ]	(	1	1	1	)
+outputraw	[ 0	locks=0 ]	(	"on"	)
+enableremap	[ 0	locks=0 ]	(	"off"	)
+remapramp	[ 0	locks=0 ]	(	2	)
+folder3	[ 0	locks=0 ]	(	0	)
+dobias	[ 0	locks=0 ]	(	"off"	)
+bias	[ 0	locks=0 ]	(	0.5	)
+dogain	[ 0	locks=0 ]	(	"off"	)
+gain	[ 0	locks=0 ]	(	0.5	)
+dogamma	[ 0	locks=0 ]	(	"off"	)
+gamma	[ 0	locks=0 ]	(	2.2	)
+docontrast	[ 0	locks=0 ]	(	"off"	)
+contrast	[ 0	locks=0 ]	(	0	)
+folder7	[ 0	locks=0 ]	(	1	)
+basis	[ 0	locks=0 ]	(	[ basis	5 ] 	)
+locationattrib	[ 0	locks=0 ]	(	P	)
+elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
+elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	[ offset	0 ] 	)
+offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+offsetv	[ 0	locks=0 ]	(	0	0	0	)
+usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
+noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
+// Location Attribute - pos
+// Element Size - elementsize
+// Offset - offset
+
+"	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+folder6	[ 0	locks=0 ]	(	0	)
+animated	[ 0	locks=0 ]	(	"off"	)
+pulseduration	[ 0	locks=0 ]	(	1	)
+folder4	[ 0	locks=0 ]	(	0	)
+fractal	[ 0	locks=0 ]	(	"fBm"	)
+oct	[ 0	locks=0 ]	(	3	)
+lac	[ 0	locks=0 ]	(	2.01234	)
+rough	[ 0	locks=0 ]	(	0.5	)
+folder2	[ 0	locks=0 ]	(	0	)
+disp	[ 0	locks=0 ]	(	0	)
+dispesize	[ 0	locks=0 ]	(	1	)
+gflow	[ 0	locks=0 ]	(	0	)
+flowrot	[ 0	locks=0 ]	(	0	)
+accuml	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+distort	[ 0	locks=0 ]	(	1	)
+stretch	[ 0	locks=0 ]	(	1	1	1	)
+dodroop	[ 0	locks=0 ]	(	"off"	)
+droop	[ 0	locks=0 ]	(	1	)
+droopdir	[ 0	locks=0 ]	(	1	0	0	)
+folder8	[ 0	locks=0 ]	(	0	)
+doworleydetails	[ 0	locks=0 ]	(	"off"	)
+worleyblend	[ 0	locks=0 ]	(	1	)
+worleyerosion	[ 0	locks=0 ]	(	0.5	)
+worleyelementsizescale	[ 0	locks=0 ]	(	2	)
+folder5	[ 0	locks=0 ]	(	0	)
+doclampmin	[ 0	locks=0 ]	(	"off"	)
+clampminvalue	[ 0	locks=0 ]	(	0	)
+doclampmax	[ 0	locks=0 ]	(	"off"	)
+clampmaxvalue	[ 0	locks=0 ]	(	1	)
+normalize	[ 0	locks=0 ]	(	"off"	)
+updatenmls	[ 0	locks=0 ]	(	"on"	)
+remapramp1pos	[ 0	locks=0 ]	(	0	)
+remapramp1value	[ 0	locks=0 ]	(	0	)
+remapramp1interp	[ 0	locks=0 ]	(	"linear"	)
+remapramp2pos	[ 0	locks=0 ]	(	1	)
+remapramp2value	[ 0	locks=0 ]	(	1	)
+remapramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
