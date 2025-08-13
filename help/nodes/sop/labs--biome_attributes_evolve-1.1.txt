@@ -1,6 +1,6 @@
 #type:     node
 #context:  sop
-#internal: labs::biome_attributes_evolve::1.0
+#internal: labs::biome_attributes_evolve::1.1
 #icon:     /labs_icons/sidefx_labs_beta.svg
 #since:    20.5
 
@@ -8,7 +8,7 @@
 
 """Evolve all the attributes on the terrain to create more realistic results."""
 
-Algorithms, noise, and Houdini’s Heightfield Mask by Feature tools evolve our attributes (e.g., `temperature`, `precipitation`, and `soil`) and generate micro-biomes. This attribute evolution allows the plant distribution to be coherent with the topography of the terrain. Parameters are exposed to control this process so artists can achieve the vision they have for their unique environment.
+Algorithms, noise, and Houdini’s Heightfield Mask by Feature tools evolve our attributes (e.g., `temperature`, `precipitation`, and `soil`) and generate micro-biomes. This attribute evolution allows the plant distribution to be coherent with the topography of the terrain. Parameters are exposed to control this process so artists can achieve the vision they have for their unique environment. This node follows the _Biome Attributes to Terrain SOP_ and precedes the _Biome Plant Scatter SOP_.
 
 @parameters
 
@@ -48,7 +48,7 @@ Max:
 
 Evolve with Elevation:
     #id: evolvetemp
-    Enables the evolution of temperature depending on the elevation.
+    Enables the evolution of 'temperature' depending on the elevation.
 
 Lapse Rate:
     #id: lapserate
@@ -69,21 +69,30 @@ Blur Iterations:
 
 Remove by Convexity:
     #id: removebyocclusion
-    Remove mask based on nearby obstructed terrain areas.
+    Remove 'precipitation' in areas based on the terrain convexity. By default, more convex areas are assumed to have higher wind exposure, giving rise to increased evaporation and drier terrain.  
 
 Removal Amount over Convexity:
     #id: occlusionramp
     Modify this ramp to use a custom remapping. 
 
+Enable Removal Amount by Height:
+	#id: maskbyheight
+	Control __Remove by Convexity__ removal amount by height. By default, this removes 'precipitation' from the convex high mountain peaks without removing 'precipitation' from the low flat plains. The mask by height is multiplied by the mask by convexity. 
+	
+Removal Amount over Height:
+	#id: heightramp
+	Modify this ramp to use a custom remapping.
+	
+	
 === Precipitation: Rain Shadow ===
 
 Remove by Direction:
     #id: removebydir
-    Remove mask based on the “horizontal” direction the terrain surface faces at a given point.
+    Remove 'precipitation' based on the “horizontal” direction the terrain surface faces at a given point.
 
 Rain XZ Direction:
-    #id: startxz
-    Start direction vector of Rain Shadow. This could be the location of the ocean that is causing the rain shadow. 
+    #id: startzx
+    Start direction vector of Rain Shadow. This could be a vector derived from the location of the ocean that is causing the rain shadow. 
 
 Rotate Direction:
     #id: goalangle
@@ -98,69 +107,51 @@ Removal Amount over Falloff  Angle:
     Modify this ramp to use a custom remapping of __Falloff Angle__.
 
 
-
-
 === Soil: Cliffs ===
 
 Remove by Slope:
     #id: removebyslope
-    Remove mask based on the slope of the terrain.
+    Remove 'soil' based on the slope of the terrain.
 
 Min Slope Angle:
     #id: minslopeangle
-    Add areas with a slope greater than or equal to this value to the mask.
+    Add areas with a slope greater than or equal to this value to the mask. If the __Removal Amount over Slope Angle__ ramp is set to default, any slope less than this value will have a `soil` value of 1. 
 
 Max Slope Angle:
     #id: maxslopeangle
-    Add areas with a slope less than or equal to this value to the mask.
+    Add areas with a slope less than or equal to this value to the mask. If the __Removal Amount over Slope Angle__ ramp is set to default, any slope greater than this value will have a `soil` value of 0. 
 
 Removal Amount over Slope Angle:
     #id: sloperamp
-    Controls the value of the mask over the range from the __Min Slope Angle__ to the __Max Slope Angle__
+    Controls the value of the mask over the range from the __Min Slope Angle__ to the __Max Slope Angle__. This lets you control the feathering of the mask.
+	
 
 Remove by Height:
     #id: removebyheight
-    Remove mask based on the height level of the terrain.
+    Remove 'soil' based on the height level of the terrain. By default, when this is enabled, this will prevent plants from spawning at extremely high elevations, regardless of the slope. When both __Remove by Height__ and __Remove by Slope__ are enabled the masks are multiplied. The inverse of this product is the 'cliff' layer. 
 
 Removal Amount over Height:
     #id: hfheightramp
     Controls the value of the mask over the range from the minimum height level to the maximum height level of the heightfield.
 
-=== Soil: Soil Mask ===
-
-Enable Mask:
-    #id: enablemask
-    Use custom mask for soil.
-
-Mask Layer:
-    #id: soilmaskname
-    The name of the custom mask to use.
-
-Combine with Noise:
-    #id: layermode
-    How to composite the mask with the __Soil Noise__ mask. If __Remove by Noise__ is disabled, this value is disabled.
-
-Blend Mask:
-    #id: blend
-    The amount to blend the custom mask with the soil mask, when __Combine with Noise__ is “blend”. A value of 0 uses the soil mask, a value of 1 uses the custom mask, a value of 0.5 blends equally between the two masks.
 
 === Soil: Soil Noise ===
 
 Remove by Noise:
     #id: removebynoise
-    Remove mask based on a noise.
+    Remove 'soil' based on a noise.
 
 Constant Value:
     #id: basesoil
     The base or minimum value of the soil mask.
 
-Intensity:
-    #intensity
-    The intensity of the noise. Lower values fade the noise away.
-
 Invert Noise:
     #id: input
     Reverse the noise mask values. 
+	
+Intensity:
+    #intensity
+    The intensity of the noise. Lower values fade the noise away.
 
 Amplitude:
     #id: amp
@@ -179,19 +170,19 @@ Fractal:
     
     Whether to do multiple iterations of smaller noise on top of bigger noise.
 
-    None
+    __None__:
 
     Does not add any additional noise on top of the basic noise.
 
-    Standard
+    __Standard__:
 
     Adds pseudo-random noise on top of the basic output.
 
-    Terrain
+    __Terrain__:
 
     Adds noise like “standard” but dampens the noise in the valleys, which generates more realistic-looking terrain.
 
-    Hybrid Terrain
+    __Hybrid Terrain__:
 
     Like terrain, but with more sharpness in the valleys.
 
@@ -203,64 +194,88 @@ Lacunarity:
     #id: lac
     The frequency increment between iterations of fractal noise is added to the basic output. Note you can use negative values.
 
-
 Roughness:
     #id: rough
     Fractal roughness. The roughness parameter determines the coarseness of the noise.
+	
 
+=== Soil: Soil Mask ===
+
+Enable Mask:
+    #id: enablemask
+    Use custom mask from the first input for soil.
+
+Mask Layer:
+    #id: soilmaskname
+    The name of the custom mask from the first input to use. Ensure that the mask is mapped with values from 0 to 1. 
+
+Combine with Noise:
+    #id: layermode
+    How to composite the mask with the __Soil Noise__ mask. If __Remove by Noise__ is disabled, this value is disabled.
+
+Blend Mask:
+    #id: blend
+    The amount to blend the custom mask with the soil mask, when __Combine with Noise__ is “blend”. A value of 0 uses the soil mask, a value of 1 uses the custom mask, a value of 0.5 blends equally between the two masks. Visualize this change by setting __Display__ to "Soil" and "Use Real-World Range". 
 
 
 === Input: HeightField Layers ===
 
 Temperature:
     #id: tempname
-    Name of `temperature` mask.
+    Name of `temperature` layer.
 
 Precipitation:
     #id: precname
-    Name of `precipitation` mask.
+    Name of `precipitation` layer.
 
 Soil:
     #id: soilname
-    Name of `soil` mask.
+    Name of `soil` layer.
 
 Biome ID:
     #id: biomeidname
-    Name of `biome ID` mask.
+    Name of `biomeid` layer.
 
 Biome Color R:
     #id: biomecolorrname
-    Name of the red channel of the `biome color` mask.
+    Name of the red channel of the `biomecolor` layer.
 
 Biome Color G:
     #id: biomecolorgname
-    Name of the green channel of the `biome color` mask.
+    Name of the green channel of the `biomecolor` layer.
 
 Biome Color B:
     #id: biomecolorbname
-    Name of the blue channel of the `biome color` mask.
+    Name of the blue channel of the `biomecolor` layer.
 
 Biome Average Height:
     #id: biomeavgheightname
-    Name of `average height` mask.
+    Name of `biomeaverageheight` layer.
 
 === Input: Detail Attributes ===
 
+Min Height:
+	#id: minheightname
+	Name of 'minheight' detail attribute.
 
+Max Height:
+	#id: maxheightname
+	Name of 'maxheight' detail attribute.
 
 === Output: HeightField Layers ===
 
 Generate Cliff:
     #id: generatecliff
-    Create cliff mask.
+    Output 'cliff' layer. This is the layer generated by the settings in the __Soil__ tab under __Cliffs__. 
 
 Cliff:
     #id: cliffname
-    Name of the created cliff mask.
+    Name of the output 'cliff' layer.
 
 @locals
 
 
 @related
 - [Labs Biome Define|Node:sop/labs--biome_define-1.0]
-- [Labs Biome Definitions File|Node:sop/labs--biome_definitions_file-1.0]
+- [Labs Biome Attributes to Terrain|Node:sop/labs--biome_attributes_to_terrain-1.0]
+- [Labs Biome Plant Scatter|Node:sop/labs--biome_plant_scatter-1.1]
