@@ -31,7 +31,6 @@ catsubs = { "chop":"Chop",
             "vop": "Vop",
             "top": "Top" }
 
-
 def writeHeader(node, nodename, context):
     sys.stdout.write("#type:     node\n")
     sys.stdout.write("#context:  " + context + "\n")
@@ -77,7 +76,6 @@ def writeTemplates(templates, indent):
                                      + ":\n"+prefix + prefix+ prefix+"\n")
                 
 def create_node_help(nodetypename, context, directory):
-
     if context not in catsubs.keys():
         raise hou.NodeError("Specified context not found. Available contexts: {}".format([x + " " for x in catsubs.keys()]))
 
@@ -90,11 +88,12 @@ def create_node_help(nodetypename, context, directory):
     
     namecomponents = node.nameComponents()
     txtname = namecomponents[1]+"--"+namecomponents[2]
-
+    
     if namecomponents[3] != "":
         txtname += "-"+namecomponents[3]
     txtname += ".txt"
 
+    stdout = sys.stdout
     sys.stdout = open(os.path.join(hou.text.expandString(directory), txtname), 'w')
 
     writeHeader(node, nodetypename, context)
@@ -102,6 +101,9 @@ def create_node_help(nodetypename, context, directory):
     writeFooter()
 
     sys.stdout.close()
+
+    # Reset sys.stdout to what it was previously to prevent Python errors with other scripts using it
+    sys.stdout = stdout
 
 
 def create_node_help_auto(node):
