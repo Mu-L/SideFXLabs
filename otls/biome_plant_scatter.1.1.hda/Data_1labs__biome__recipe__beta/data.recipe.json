@@ -1,40 +1,16 @@
 {
   "data": {
     "tags": {
-      "target_tag": "merge",
+      "target_tag": "biome_plant_scatter",
       "start_tags": [
-        "GENERATE_TERRAIN",
-        "TEMPERATE_SHRUB"
+        "TEMPERATE_SHRUB",
+        "GENERATE_TERRAIN"
       ],
       "end_tags": [
         "OUT_PLANT_SCATTER_AND_INSTANCE"
       ]
     },
     "children": {
-      "merge": {
-        "type": "merge",
-        "inputs": [
-          {
-            "from": "instance",
-            "from_index": 0,
-            "to_index": 0
-          },
-          {
-            "from": "OUT_TERRAIN",
-            "from_index": 0,
-            "to_index": 1
-          },
-          {
-            "from": "OUT_RIVER",
-            "from_index": 0,
-            "to_index": 2
-          }
-        ],
-        "position": [
-          0,
-          0
-        ]
-      },
       "biome_plant_scatter": {
         "type": "labs::biome_plant_scatter::1.1",
         "inputs": [
@@ -55,8 +31,8 @@
           }
         ],
         "position": [
-          -1.62,
-          4
+          0,
+          0
         ],
         "color": [
           1,
@@ -67,14 +43,14 @@
           "wirestyle": "rounded"
         },
         "parms": {
-          "size": 1000.0,
-          "agejitter": 0.3,
-          "meshvariantsdetailarray": true,
-          "outputage": true,
           "outputviability": true,
           "species": {
             "expression": "Aspen"
-          }
+          },
+          "agejitter": 0.3,
+          "meshvariantsdetailarray": true,
+          "size": 1000.0,
+          "outputage": true
         }
       },
       "ASPEN": {
@@ -87,8 +63,8 @@
           }
         ],
         "position": [
-          -5.62,
-          6
+          -4,
+          2
         ],
         "color": [
           0.47,
@@ -305,8 +281,8 @@
           }
         ],
         "position": [
-          -5.62,
-          7
+          -4,
+          3
         ],
         "color": [
           0.47,
@@ -516,8 +492,8 @@
       "TEMPERATE_SHRUB": {
         "type": "labs::biome_plant_define::1.1",
         "position": [
-          -5.62,
-          8
+          -4,
+          4
         ],
         "color": [
           0.47,
@@ -608,11 +584,93 @@
           }
         }
       },
+      "biome_attributes_evolve": {
+        "type": "labs::biome_attributes_evolve::1.1",
+        "inputs": [
+          {
+            "from": "biome_attributes_to_terrain",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          2
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "user_data": {
+          "sidefx::parm_filter_text_pattern": "re",
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "inputmin1": 12.145895004272461,
+          "inputmax1": 14.791894912719727,
+          "removebyocclusion": true,
+          "sloperamp": [
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 1.0,
+              "value": 1.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            },
+            {
+              "pos": 0.0,
+              "value": 0.0,
+              "interp": "linear"
+            }
+          ]
+        }
+      },
+      "biome_attributes_to_terrain": {
+        "type": "labs::biome_attributes_to_terrain::1.0",
+        "inputs": [
+          {
+            "from": "OUT_SAMPLE_TERRAIN",
+            "from_index": 0,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          0,
+          3
+        ],
+        "color": [
+          1,
+          0.93,
+          0
+        ],
+        "user_data": {
+          "new_toggle": "0",
+          "old_toggle": "0",
+          "sidefx::parm_filter_text_pattern": "re",
+          "wirestyle": "rounded"
+        },
+        "parms": {
+          "biomecolor": [
+            0.43492984771728516,
+            0.07076406478881836,
+            0.3218725919723511
+          ]
+        }
+      },
       "GENERATE_TERRAIN": {
         "type": "subnet",
         "position": [
-          -1.62,
-          9
+          0,
+          5
         ],
         "color": [
           0.57,
@@ -1334,8 +1392,8 @@
           }
         ],
         "position": [
-          -5.62,
-          5
+          -4,
+          1
         ],
         "color": [
           0.31,
@@ -1353,8 +1411,8 @@
           }
         ],
         "position": [
-          -3.06,
-          2
+          -1.44,
+          -2
         ],
         "color": [
           0.31,
@@ -1372,8 +1430,8 @@
           }
         ],
         "position": [
-          -3.06,
-          0.9
+          -1.44,
+          -3.1
         ],
         "user_data": {
           "wirestyle": "rounded"
@@ -1389,8 +1447,8 @@
           }
         ],
         "position": [
-          -1.62,
-          8
+          0,
+          4
         ],
         "color": [
           0.31,
@@ -1408,8 +1466,8 @@
           }
         ],
         "position": [
-          0,
-          2
+          1.62,
+          -2
         ],
         "color": [
           0.31,
@@ -1427,8 +1485,8 @@
           }
         ],
         "position": [
-          0,
-          -1
+          1.62,
+          -5
         ],
         "color": [
           0.31,
@@ -1446,8 +1504,8 @@
           }
         ],
         "position": [
-          3.42,
-          5
+          5.04,
+          1
         ],
         "color": [
           0.31,
@@ -1465,8 +1523,8 @@
           }
         ],
         "position": [
-          3.42,
-          7
+          5.04,
+          3
         ],
         "color": [
           0.19,
@@ -1818,93 +1876,35 @@
           }
         }
       },
-      "biome_attributes_to_terrain": {
-        "type": "labs::biome_attributes_to_terrain::1.0",
+      "merge": {
+        "type": "merge",
         "inputs": [
           {
-            "from": "OUT_SAMPLE_TERRAIN",
+            "from": "instance",
             "from_index": 0,
             "to_index": 0
+          },
+          {
+            "from": "OUT_TERRAIN",
+            "from_index": 0,
+            "to_index": 1
+          },
+          {
+            "from": "OUT_RIVER",
+            "from_index": 0,
+            "to_index": 2
           }
         ],
         "position": [
-          -1.62,
-          7
-        ],
-        "color": [
-          1,
-          0.93,
-          0
-        ],
-        "user_data": {
-          "new_toggle": "1",
-          "old_toggle": "1",
-          "sidefx::parm_filter_text_pattern": "re",
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "biomecolor": [
-            0.07357931137084961,
-            0.3357425928115845,
-            0.6289522647857666
-          ]
-        }
-      },
-      "biome_attributes_evolve": {
-        "type": "labs::biome_attributes_evolve::1.1",
-        "inputs": [
-          {
-            "from": "biome_attributes_to_terrain",
-            "from_index": 0,
-            "to_index": 0
-          }
-        ],
-        "position": [
-          -1.62,
-          6
-        ],
-        "color": [
-          1,
-          0.93,
-          0
-        ],
-        "user_data": {
-          "sidefx::parm_filter_text_pattern": "re",
-          "wirestyle": "rounded"
-        },
-        "parms": {
-          "inputmin1": 12.145895004272461,
-          "inputmax1": 14.791894912719727,
-          "removebyocclusion": true,
-          "sloperamp": [
-            {
-              "pos": 0.0,
-              "value": 0.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 1.0,
-              "value": 1.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.0,
-              "value": 0.0,
-              "interp": "linear"
-            },
-            {
-              "pos": 0.0,
-              "value": 0.0,
-              "interp": "linear"
-            }
-          ]
-        }
+          1.62,
+          -4
+        ]
       }
     }
   },
   "info": {
     "author": "baile",
-    "created": "August 18, 2025 - 16:12:13",
+    "created": "August 18, 2025 - 16:41:20",
     "houdini_version": "20.5.550",
     "data_version": "1.0",
     "comment": null
@@ -1913,7 +1913,7 @@
     "recipe_category": "tab_tool_recipe",
     "visible": true,
     "nodetype_category": "Sop",
-    "nodetype_name": "merge"
+    "nodetype_name": "labs::biome_plant_scatter::1.1"
   },
   "tool": {
     "tab_submenus": [

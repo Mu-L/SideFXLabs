@@ -32,22 +32,17 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.54381 -1.94619
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+position 4.42307 -2.88562
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	biome_plant_define1 0 1 "input1"
-2 	biome_attributes_to_terrain1 1 1 "input2"
 }
 inputs
 {
-0 	biome_plant_define1 0 1
-1 	biome_attributes_to_terrain1 0 1
 }
 stat
 {
@@ -761,198 +756,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.init"
-Content-Type: text/plain
-
-type = attribnoise::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 3.25751 -55.6956
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	blend_orient 1 1 "input1"
-}
-inputs
-{
-0 	blend_orient 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.chn"
-Content-Type: text/plain
-
-{
-    channel basis {
-      lefttype = extend
-      righttype = extend
-      default = 5
-      flags = 0
-      segment { length = 0 value = 5 5 expr = ch(\"../basis\") }
-    }
-    channel elementsize {
-      lefttype = extend
-      righttype = extend
-      default = 500
-      flags = 0
-      segment { length = 0 value = 500 500 expr = ch(\"../elementsize\") }
-    }
-    channel offset {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../offset\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-group	[ 0	locks=0 ]	(	""	)
-doblend	[ 0	locks=0 ]	(	"off"	)
-blendweight	[ 0	locks=0 ]	(	1	)
-blendmode	[ 0	locks=0 ]	(	"value"	)
-blendattrib	[ 0	locks=0 ]	(	mask	)
-attribtype	[ 0	locks=0 ]	(	"float"	)
-attribs	[ 0	locks=0 ]	(	_bps_noise	)
-componentscope	[ 0	locks=0 ]	(	111	)
-class	[ 0	locks=0 ]	(	"point"	)
-displace	[ 0	locks=0 ]	(	"off"	)
-displaceattrib	[ 0	locks=0 ]	(	N	)
-folder1	[ 0	locks=0 ]	(	1	)
-operation	[ 0	locks=0 ]	(	"set"	)
-noiserange	[ 0	locks=0 ]	(	"custom"	)
-amplitude	[ 0	locks=0 ]	(	1	)
-amplitudev	[ 0	locks=0 ]	(	1	)
-amplitudetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-amplitudescalev	[ 0	locks=0 ]	(	1	1	1	)
-rangemin	[ 0	locks=0 ]	(	0	)
-rangeminv	[ 0	locks=0 ]	(	0	)
-rangemintype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangeminscalev	[ 0	locks=0 ]	(	0	0	0	)
-rangemax	[ 0	locks=0 ]	(	1	)
-rangemaxv	[ 0	locks=0 ]	(	1	)
-rangemaxtype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangemaxscalev	[ 0	locks=0 ]	(	1	1	1	)
-midvalue	[ 0	locks=0 ]	(	0	)
-midvaluev	[ 0	locks=0 ]	(	0	)
-midvaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-midvaluescalev	[ 0	locks=0 ]	(	1	1	1	)
-rangevalue	[ 0	locks=0 ]	(	1	)
-rangevaluev	[ 0	locks=0 ]	(	1	)
-rangevaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-rangevaluescalev	[ 0	locks=0 ]	(	1	1	1	)
-outputraw	[ 0	locks=0 ]	(	"on"	)
-enableremap	[ 0	locks=0 ]	(	"off"	)
-remapramp	[ 0	locks=0 ]	(	2	)
-folder3	[ 0	locks=0 ]	(	0	)
-dobias	[ 0	locks=0 ]	(	"off"	)
-bias	[ 0	locks=0 ]	(	0.5	)
-dogain	[ 0	locks=0 ]	(	"off"	)
-gain	[ 0	locks=0 ]	(	0.5	)
-dogamma	[ 0	locks=0 ]	(	"off"	)
-gamma	[ 0	locks=0 ]	(	2.2	)
-docontrast	[ 0	locks=0 ]	(	"off"	)
-contrast	[ 0	locks=0 ]	(	0	)
-folder7	[ 0	locks=0 ]	(	1	)
-basis	[ 0	locks=0 ]	(	[ basis	5 ] 	)
-locationattrib	[ 0	locks=0 ]	(	P	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
-elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 0	locks=0 ]	(	[ offset	0 ] 	)
-offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-offsetv	[ 0	locks=0 ]	(	0	0	0	)
-usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
-noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
-// Location Attribute - pos
-// Element Size - elementsize
-// Offset - offset
-
-"	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-folder6	[ 0	locks=0 ]	(	0	)
-animated	[ 0	locks=0 ]	(	"off"	)
-pulseduration	[ 0	locks=0 ]	(	1	)
-folder4	[ 0	locks=0 ]	(	0	)
-fractal	[ 0	locks=0 ]	(	"fBm"	)
-oct	[ 0	locks=0 ]	(	3	)
-lac	[ 0	locks=0 ]	(	2.01234	)
-rough	[ 0	locks=0 ]	(	0.5	)
-folder2	[ 0	locks=0 ]	(	0	)
-disp	[ 0	locks=0 ]	(	0	)
-dispesize	[ 0	locks=0 ]	(	1	)
-gflow	[ 0	locks=0 ]	(	0	)
-flowrot	[ 0	locks=0 ]	(	0	)
-accuml	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-distort	[ 0	locks=0 ]	(	1	)
-stretch	[ 0	locks=0 ]	(	1	1	1	)
-dodroop	[ 0	locks=0 ]	(	"off"	)
-droop	[ 0	locks=0 ]	(	1	)
-droopdir	[ 0	locks=0 ]	(	1	0	0	)
-folder8	[ 0	locks=0 ]	(	0	)
-doworleydetails	[ 0	locks=0 ]	(	"off"	)
-worleyblend	[ 0	locks=0 ]	(	1	)
-worleyerosion	[ 0	locks=0 ]	(	0.5	)
-worleyelementsizescale	[ 0	locks=0 ]	(	2	)
-folder5	[ 0	locks=0 ]	(	0	)
-doclampmin	[ 0	locks=0 ]	(	"off"	)
-clampminvalue	[ 0	locks=0 ]	(	0	)
-doclampmax	[ 0	locks=0 ]	(	"off"	)
-clampmaxvalue	[ 0	locks=0 ]	(	1	)
-normalize	[ 0	locks=0 ]	(	"off"	)
-updatenmls	[ 0	locks=0 ]	(	"on"	)
-remapramp1pos	[ 0	locks=0 ]	(	0	)
-remapramp1value	[ 0	locks=0 ]	(	0	)
-remapramp1interp	[ 0	locks=0 ]	(	"linear"	)
-remapramp2pos	[ 0	locks=0 ]	(	1	)
-remapramp2value	[ 0	locks=0 ]	(	1	)
-remapramp2interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/noise_float.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
@@ -2684,12 +2487,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/create_meshpaths_detail_array.chn"
@@ -2736,7 +2533,6 @@ if(chi('unrealpathtoggle') == 1)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3114,12 +2910,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cull_by_percentage.chn"
@@ -3153,7 +2943,6 @@ snippet	[ 0	locks=0 ]	(	"if((float(@ptnum) + 1.0) / @numpt > ch('percentagetokee
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3588,12 +3377,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cull_by_max_points1.chn"
@@ -3627,7 +3410,6 @@ snippet	[ 0	locks=0 ]	(	"if(@ptnum >= chi('maxnumpts'))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3712,12 +3494,7 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
-pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
-sepparm	[ 0	locks=0 ]	(	)
-usepointindices	[ 0	locks=0 ]	(	"off"	)
-pointindices	[ 0	locks=0 ]	(	indices	)
-combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -3729,12 +3506,7 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
-primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
-useprimindices	[ 0	locks=0 ]	(	"off"	)
-primindices	[ 0	locks=0 ]	(	indices	)
-combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -5500,12 +5272,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/missing_layers_msg.parm"
@@ -5545,7 +5311,6 @@ if(len(missinglayers))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5909,7 +5674,6 @@ for (int i = 1; i <= numvariations; i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6060,7 +5824,6 @@ if(primtype == \"Volume\")
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6811,7 +6574,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_bps_uniqueid = i@_bps_stableid;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6827,6 +6589,198 @@ vex_precision	[ 0	locks=0 ]	(	auto	)
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/uniqueid1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.init"
+Content-Type: text/plain
+
+type = attribnoise::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.25751 -55.6956
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	blend_orient 1 1 "input1"
+}
+inputs
+{
+0 	blend_orient 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.chn"
+Content-Type: text/plain
+
+{
+    channel basis {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../basis\") }
+    }
+    channel elementsize {
+      lefttype = extend
+      righttype = extend
+      default = 500
+      flags = 0
+      segment { length = 0 value = 500 500 expr = ch(\"../elementsize\") }
+    }
+    channel offset {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../offset\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+doblend	[ 0	locks=0 ]	(	"off"	)
+blendweight	[ 0	locks=0 ]	(	1	)
+blendmode	[ 0	locks=0 ]	(	"value"	)
+blendattrib	[ 0	locks=0 ]	(	mask	)
+attribtype	[ 0	locks=0 ]	(	"float"	)
+attribs	[ 0	locks=0 ]	(	_bps_noise	)
+componentscope	[ 0	locks=0 ]	(	111	)
+class	[ 0	locks=0 ]	(	"point"	)
+displace	[ 0	locks=0 ]	(	"off"	)
+displaceattrib	[ 0	locks=0 ]	(	N	)
+folder1	[ 0	locks=0 ]	(	1	)
+operation	[ 0	locks=0 ]	(	"set"	)
+noiserange	[ 0	locks=0 ]	(	"custom"	)
+amplitude	[ 0	locks=0 ]	(	1	)
+amplitudev	[ 0	locks=0 ]	(	1	)
+amplitudetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+amplitudescalev	[ 0	locks=0 ]	(	1	1	1	)
+rangemin	[ 0	locks=0 ]	(	0	)
+rangeminv	[ 0	locks=0 ]	(	0	)
+rangemintype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangeminscalev	[ 0	locks=0 ]	(	0	0	0	)
+rangemax	[ 0	locks=0 ]	(	1	)
+rangemaxv	[ 0	locks=0 ]	(	1	)
+rangemaxtype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangemaxscalev	[ 0	locks=0 ]	(	1	1	1	)
+midvalue	[ 0	locks=0 ]	(	0	)
+midvaluev	[ 0	locks=0 ]	(	0	)
+midvaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+midvaluescalev	[ 0	locks=0 ]	(	1	1	1	)
+rangevalue	[ 0	locks=0 ]	(	1	)
+rangevaluev	[ 0	locks=0 ]	(	1	)
+rangevaluetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+rangevaluescalev	[ 0	locks=0 ]	(	1	1	1	)
+outputraw	[ 0	locks=0 ]	(	"on"	)
+enableremap	[ 0	locks=0 ]	(	"off"	)
+remapramp	[ 0	locks=0 ]	(	2	)
+folder3	[ 0	locks=0 ]	(	0	)
+dobias	[ 0	locks=0 ]	(	"off"	)
+bias	[ 0	locks=0 ]	(	0.5	)
+dogain	[ 0	locks=0 ]	(	"off"	)
+gain	[ 0	locks=0 ]	(	0.5	)
+dogamma	[ 0	locks=0 ]	(	"off"	)
+gamma	[ 0	locks=0 ]	(	2.2	)
+docontrast	[ 0	locks=0 ]	(	"off"	)
+contrast	[ 0	locks=0 ]	(	0	)
+folder7	[ 0	locks=0 ]	(	1	)
+basis	[ 0	locks=0 ]	(	[ basis	5 ] 	)
+locationattrib	[ 0	locks=0 ]	(	P	)
+elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
+elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	[ offset	0 ] 	)
+offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+offsetv	[ 0	locks=0 ]	(	0	0	0	)
+usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
+noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
+// Location Attribute - pos
+// Element Size - elementsize
+// Offset - offset
+
+"	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+folder6	[ 0	locks=0 ]	(	0	)
+animated	[ 0	locks=0 ]	(	"off"	)
+pulseduration	[ 0	locks=0 ]	(	1	)
+folder4	[ 0	locks=0 ]	(	0	)
+fractal	[ 0	locks=0 ]	(	"fBm"	)
+oct	[ 0	locks=0 ]	(	3	)
+lac	[ 0	locks=0 ]	(	2.01234	)
+rough	[ 0	locks=0 ]	(	0.5	)
+folder2	[ 0	locks=0 ]	(	0	)
+disp	[ 0	locks=0 ]	(	0	)
+dispesize	[ 0	locks=0 ]	(	1	)
+gflow	[ 0	locks=0 ]	(	0	)
+flowrot	[ 0	locks=0 ]	(	0	)
+accuml	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+distort	[ 0	locks=0 ]	(	1	)
+stretch	[ 0	locks=0 ]	(	1	1	1	)
+dodroop	[ 0	locks=0 ]	(	"off"	)
+droop	[ 0	locks=0 ]	(	1	)
+droopdir	[ 0	locks=0 ]	(	1	0	0	)
+folder8	[ 0	locks=0 ]	(	0	)
+doworleydetails	[ 0	locks=0 ]	(	"off"	)
+worleyblend	[ 0	locks=0 ]	(	1	)
+worleyerosion	[ 0	locks=0 ]	(	0.5	)
+worleyelementsizescale	[ 0	locks=0 ]	(	2	)
+folder5	[ 0	locks=0 ]	(	0	)
+doclampmin	[ 0	locks=0 ]	(	"off"	)
+clampminvalue	[ 0	locks=0 ]	(	0	)
+doclampmax	[ 0	locks=0 ]	(	"off"	)
+clampmaxvalue	[ 0	locks=0 ]	(	1	)
+normalize	[ 0	locks=0 ]	(	"off"	)
+updatenmls	[ 0	locks=0 ]	(	"on"	)
+remapramp1pos	[ 0	locks=0 ]	(	0	)
+remapramp1value	[ 0	locks=0 ]	(	0	)
+remapramp1interp	[ 0	locks=0 ]	(	"linear"	)
+remapramp2pos	[ 0	locks=0 ]	(	1	)
+remapramp2value	[ 0	locks=0 ]	(	1	)
+remapramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/noise_float.userdata"
 Content-Type: text/plain
 
 {
@@ -7058,12 +7012,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/replace_spaces_from_species.parm"
@@ -7080,7 +7028,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@species = replace(chs('species'), \" \", \"_\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7167,7 +7114,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@_bps_plant_name = replace(s@plant_name, \" \", \"_\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7251,7 +7197,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_bps_stableid = i@ptnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7339,7 +7284,6 @@ s@_bps_name = replace(s@_bps_name, \"?\", \"_\");
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7590,7 +7534,6 @@ snippet	[ 0	locks=0 ]	(	"@pscale = @_bps_radius;
 p@orient = p@_bps_terrainorient;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8138,12 +8081,7 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	_bps_age	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
-pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"on"	)
-sepparm	[ 0	locks=0 ]	(	)
-usepointindices	[ 0	locks=0 ]	(	"off"	)
-pointindices	[ 0	locks=0 ]	(	indices	)
-combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -8155,12 +8093,7 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
-primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
-useprimindices	[ 0	locks=0 ]	(	"off"	)
-primindices	[ 0	locks=0 ]	(	indices	)
-combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -8400,12 +8333,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/age_from_viability_plus_jitter.chn"
@@ -8445,7 +8372,6 @@ float agejitter = ch('agejitter') / 2.0;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8705,7 +8631,6 @@ p@orient = blend;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -9449,12 +9374,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/existing_biome_temp_and_prec_values.chn"
@@ -9496,7 +9415,6 @@ snippet	[ 0	locks=0 ]	(	"
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -9868,7 +9786,6 @@ snippet	[ 0	locks=0 ]	(	"
 @Cd = set(v@_bps_vizcol[0], v@_bps_vizcol[1], v@_bps_vizcol[2]);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10117,12 +10034,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/remove_species_viability_layers.parm"
@@ -10142,7 +10053,6 @@ snippet	[ 0	locks=0 ]	(	"if(startswith(s@name, chs(\"viabilityprefix\")))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10723,7 +10633,6 @@ if(isvalidindex(d@plant_definition, \"shop_materialpath\"))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -11128,7 +11037,6 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	1	)
 stopcondition	[ 0	locks=0 ]	(	0	)
-stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -11545,7 +11453,6 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
-stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -12544,12 +12451,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/set_meshpath_of_incomplete_age_coverage.parm"
@@ -12566,7 +12467,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@_bps_mesh_path = \"op:\" + opfullpath(chs('incompleteagemeshpath'));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -12830,12 +12730,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/assign_new_mesh_path_to_invalid_meshes.chn"
@@ -12876,7 +12770,6 @@ snippet	[ 0	locks=0 ]	(	"if(chi(\"replacewith\") == 1)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -13521,12 +13414,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/specified_biome_temp_and_prec_values.chn"
@@ -13567,7 +13454,6 @@ snippet	[ 0	locks=0 ]	(	"
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -14443,12 +14329,6 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/measure_viability.parm"
@@ -14542,7 +14422,6 @@ float viability = pa * ta * @_bps_soil;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -14645,7 +14524,6 @@ if(isvalidindex(d@plant_definition, \"randomizeyaw\"))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15794,12 +15672,6 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/transfer_uporient.parm"
@@ -15820,7 +15692,6 @@ snippet	[ 0	locks=0 ]	(	"
 p@_bps_uporient = point(-1, \"orient\", @ptnum);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16696,7 +16567,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@P.y = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16945,12 +16815,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/init_unique_meshpath_vals.parm"
@@ -16968,7 +16832,6 @@ snippet	[ 0	locks=0 ]	(	"s[]@vals = uniquevals(0, \"point\", chs(\"meshpath\"));
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17133,12 +16996,7 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	mask	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
-pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"on"	)
-sepparm	[ 0	locks=0 ]	(	)
-usepointindices	[ 0	locks=0 ]	(	"off"	)
-pointindices	[ 0	locks=0 ]	(	indices	)
-combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -17150,12 +17008,7 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
-primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
-useprimindices	[ 0	locks=0 ]	(	"off"	)
-primindices	[ 0	locks=0 ]	(	indices	)
-combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -17395,12 +17248,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/remove_shrubs_within_the_trunk_radius_of_trees.parm"
@@ -17438,7 +17285,6 @@ if (len(pts) > limit)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17802,7 +17648,6 @@ snippet	[ 0	locks=0 ]	(	"@pscale = @_bps_trunkradius;
 p@orient = p@_bps_terrainorient;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18178,12 +18023,7 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	_bps_viability	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
-pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"on"	)
-sepparm	[ 0	locks=0 ]	(	)
-usepointindices	[ 0	locks=0 ]	(	"off"	)
-pointindices	[ 0	locks=0 ]	(	indices	)
-combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -18195,12 +18035,7 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
-primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
-useprimindices	[ 0	locks=0 ]	(	"off"	)
-primindices	[ 0	locks=0 ]	(	indices	)
-combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -18455,12 +18290,6 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/zoo_grid_of_every_mesh.chn"
@@ -18605,7 +18434,6 @@ foreach(int pt; pts)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18882,12 +18710,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/assign_mesh_based_on_age_and_ifalive1.chn"
@@ -19132,7 +18954,6 @@ if(isvalidindex(d@plant_definition, \"trunkradius\" + itoa(variation)))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -20082,12 +19903,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/gradient_biome.parm"
@@ -20111,7 +19926,6 @@ f@normalizedy = float(@iy+1)/@resy;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -20917,12 +20731,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/invalid_mesh_msg.parm"
@@ -20954,7 +20762,6 @@ foreach(string mesh_path; s[]@vals)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -21506,7 +21313,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@_bps_plantid = itoa(i@_bps_speciesid) + \"_\" + itoa(i@_bps_variation)  + \"_\" + itoa(i@_bps_dead);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -23081,12 +22887,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/radius_subtract_tolerance1.chn"
@@ -23129,7 +22929,6 @@ else
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -24861,7 +24660,6 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_bps_speciesid = @ptnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -25105,12 +24903,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "vex_strictvariables"
-        baseparm
-        label   "Standard Variable Names Only"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/set_pscale_if_pscale_doesnt_exist.parm"
@@ -25133,7 +24925,6 @@ if(!hasattrib(0, \"point\", \"pscale\"))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
