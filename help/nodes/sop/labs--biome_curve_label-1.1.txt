@@ -1,0 +1,35 @@
+#type:     node
+#context:  sop
+#internal: labs::biome_curve_label::1.0
+#icon:     /labs_icons/sidefx_labs_beta.svg
+#since:    20.5
+
+= Labs Biome Curve Label (Beta) =
+
+"""This node sets the necessary attributes on curves created in Houdini to use with _Labs Biome Region Assign SOP_."""
+
+Instead of the biome interface handled through _Labs Biome Region Assign_ for all other region assignment methods, this node assigns the necessary attributes to curves as they are created. The first input is the chain of biome definitions generated from [Labs Biome Define|Node:sop/labs--biome_define-1.0], the second input is the corresponding curve/primitive, and the third input is the Previous _Labs Biome Curve Label_ SOP in the chain. For curves that can share a biome assignment, it is possible to merge them together first before wiring into the second input. The resulting Biome Regions output is wired into the third input of _Labs Biome Region Assign_.
+
+
+
+@parameters
+
+== ==
+
+    Biome Name:
+        #id: biomename_curve
+	The biome to assign this region. To adjust biome names, settings, or add/delete biomes, see [Labs Biome Define|Node:sop/labs--biome_define-1.1].
+        
+    Sort Order:
+        #id: biomehierarchy
+	The priority to assign to the associated curve(s). A lower number will give the biome greater priority when resolving overlapping regions, putting it on top of regions with higher values. Biomes with the same value will have their biome attributes averaged. 
+        
+    Create Next :
+        #id: createnext
+	Creates the _Biome Curve Label_ node for the next curve region and connects the related wires.
+    
+    
+@related
+- [Labs Biome Region Assign|Node:sop/labs--biome_region_assign-1.0]
+
+
