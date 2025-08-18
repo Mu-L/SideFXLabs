@@ -30,7 +30,7 @@
             }
         }
         parm {
-            name    "min_lot_size"
+            name    "minlotsize"
             label   "Minimum Lot Size"
             type    float
             default { "0.1" }
@@ -46,7 +46,7 @@
             range   { 1! 10 }
         }
         parm {
-            name    "shape_seed"
+            name    "shapeseed"
             label   "Random Seed"
             type    float
             default { "0" }
@@ -86,21 +86,19 @@
             range   { 1! 10 }
         }
         parm {
-            name    "cluster_lots"
+            name    "clusterlots"
             label   "Cluster Lots"
             type    toggle
-            joinnext
             default { "0" }
             help    "Enables joining of lots into clusters"
         }
         parm {
-            name    "number_of_clusters"
+            name    "numberofclusters"
             label   "Number of Clusters"
             type    integer
-            joinnext
             default { "50" }
             help    "Final Number of Lots after merging them into clusters"
-            disablewhen "{ cluster_lots == 0 }"
+            hidewhen "{ clusterlots == 0 }"
             range   { 1! 200 }
         }
         parm {
@@ -109,7 +107,7 @@
             type    float
             default { "0" }
             help    "Randomization control"
-            disablewhen "{ cluster_lots == 0 }"
+            hidewhen "{ clusterlots == 0 }"
             range   { 0 10 }
         }
     }

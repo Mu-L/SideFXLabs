@@ -1,0 +1,52 @@
+= Labs Lot Subdivision =
+
+#type:      node
+#context:   sop
+#internal:  labs::lot_subdivision::2.0
+#icon:      lotsubdivision
+
+"""Divides polygons into panels."""
+
+:video:
+    #src:/movies/lotsubdivision.mp4
+
+This node divides polygons into panels. Spaceships, sci-fi interiors, city blocks, irregular walls, all require flat sections of geometry to be subdivided into panels of varying sizes. This node iteratively subdivides polygons into smaller 'lots', with control over minimum size, number of iterations, irregularity.
+
+It also has the ability to cluster lots together to form even more interesting shapes.
+    
+@parameters
+    == Base Settings ==
+
+    Alignment:
+        #id: alignment
+        Method of orientating the cuts. "Bounding Box" is for world space cutting, while "Longest Edge" is relative to the shape.
+    
+    Minimum Lot Size:
+        #id: minlotsize
+        Primitives smaller than this size will no longer be considered for cutting.
+    
+    Iterations:
+        #id: iterations
+        Number of subdivisions of cutting. A value of 1 will give back 2 primitives, a value of 2 will give back 4 primitives, etc.
+    
+    Random Seed:
+        #id: shapeseed
+        Controls the seed value for the random sorting.
+    
+    == Shape Settings ==
+    
+    Irregularity:
+        #id: irregularity
+        Smaller values mean the cuts will be halfway along a primitive, higher values will yield primitives of different sizes.
+    
+    Cluster Lots:
+        #id: clusterlots
+        Enables joining of lots into clusters.
+    
+    Number of Clusters:
+        #id: numberofclusters
+        The number of lots after merging them into clusters.
+    
+    Random Seed:
+        #id: seed
+        Controls the seed value for the random sorting of the cluster grouping.
