@@ -32,18 +32,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -35.2491 119.22
-connectornextid 1
+position 4.27854 1.80546
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
-0 "output1"
+1 "output1"
 }
 inputsNamed3
 {
+0 	PINE 0 1 "input1"
 }
 inputs
 {
+0 	PINE 0 1
 }
 stat
 {
@@ -52,7 +54,7 @@ stat
   author baile@Chappell
   access 0777
 }
-color UT_Color RGB 1 0.725 0 
+color UT_Color RGB 0.47 0.81 0.2 
 delscript ""
 exprlanguage hscript
 end
@@ -127,6 +129,7 @@ version 0.8
 usecoppath	[ 0	locks=0 ]	(	"off"	)
 coppath	[ 0	locks=0 ]	(	""	)
 singleoutput	[ 0	locks=0 ]	(	"on"	)
+useinput	[ 0	locks=0 ]	(	"off"	)
 output	[ 0	locks=0 ]	(	0	)
 plane	[ 0	locks=0 ]	(	"xy"	)
 docompile	[ 0	locks=0 ]	(	"off"	)
@@ -140,6 +143,8 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"wrap"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
 }
@@ -302,10 +307,12 @@ Content-Type: text/plain
 version 0.8
 geotype	[ 0	locks=0 ]	(	"grid"	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+r	[ 0	locks=0 ]	(	0	0	0	)
 geoscale	[ 0	locks=0 ]	(	1	)
 geouvscale	[ 0	locks=0 ]	(	1	)
 geores	[ 0	locks=0 ]	(	10	)
 geowaviness	[ 0	locks=0 ]	(	0	)
+georemovecaps	[ 0	locks=0 ]	(	"off"	)
 geobevel	[ 0	locks=0 ]	(	"off"	)
 geobevelshape	[ 0	locks=0 ]	(	"round"	)
 geobeveloffset	[ 0	locks=0 ]	(	0.1	)
@@ -337,6 +344,7 @@ emissionscale	[ 0	locks=0 ]	(	1	)
 default_emission_color	[ 0	locks=0 ]	(	1	1	1	)
 folder7	[ 0	locks=0 ]	(	0	)
 normalmap_scale	[ 0	locks=0 ]	(	1	)
+karma_mikkt	[ 0	locks=0 ]	(	"off"	)
 heightscale	[ 0	locks=0 ]	(	1	)
 folder5	[ 0	locks=0 ]	(	0	)
 default_transmission_amount	[ 0	locks=0 ]	(	0	)
@@ -4263,11 +4271,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4320,7 +4331,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -4944,11 +4955,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5203,11 +5217,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5385,11 +5402,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5457,11 +5477,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5515,7 +5538,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -5691,6 +5714,8 @@ rotationmethod	[ 0	locks=0 ]	(	"both"	)
 numstamps	[ 0	locks=0 ]	(	1	)
 filter	[ 0	locks=0 ]	(	"box"	)
 blend	[ 0	locks=0 ]	(	"sorted"	)
+wrap	[ 0	locks=0 ]	(	"off"	)
+tilesize	[ 0	locks=0 ]	(	2	2	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5874,7 +5899,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -5934,7 +5959,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -5993,7 +6018,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -6028,16 +6053,22 @@ filename	[ 0	locks=0 ]	(	opdef:../../?whittakerbiome_darkmode.png	)
 clonename	[ 0	locks=0 ]	(	""	)
 clonesession	[ 0	locks=0 ]	(	""	)
 clonemenu	[ 0	locks=0 ]	(	""	)
+liverenderpath	[ 0	locks=0 ]	(	""	)
+liverenderstart	[ 0	locks=0 ]	(	0	)
+liverenderstop	[ 0	locks=0 ]	(	0	)
 reload	[ 0	locks=0 ]	(	0	)
 videoframemethod	[ 0	locks=0 ]	(	"start"	)
 videoframestart	[ 0	locks=0 ]	(	[ videoframestart	0 ] 	)
 videoframe	[ 0	locks=0 ]	(	[ videoframe	0 ] 	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
 border	[ 0	locks=0 ]	(	"default"	)
 missingdata	[ 0	locks=0 ]	(	"error"	)
 missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
-addaovs	[ 0	locks=0 ]	(	0	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
+loadcamera	[ 0	locks=0 ]	(	"off"	)
+addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	1	)
 aov1	[ 0	locks=0 ]	(	C	)
 type1	[ 0	locks=0 ]	(	"vector4"	)
@@ -6166,11 +6197,14 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+border	[ 0	locks=0 ]	(	"auto"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
 mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
+uselength	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6628,7 +6662,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.6 0.7 0.77 
 delscript ""
 exprlanguage hscript
 end
@@ -7197,6 +7231,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/vector_into_float.chn"
@@ -7251,6 +7291,7 @@ s@plant_name = chs(\"plantname\");
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7422,6 +7463,7 @@ for (int i = 1; i <= numvariations; i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8515,6 +8557,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "stopattrib"
+        baseparm
+        label   "Stop Attribute"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/instance_plants_compilable/foreach_end2.chn"
@@ -8552,6 +8600,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 spare_input0	[ 0	locks=0 ]	(	../POINTS	)
 }
@@ -8747,6 +8796,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@__path = uniqueval(1, \"point\", chs(\"../instanceattrib\"), i@iteration);"	)
 exportlist	[ 0	locks=0 ]	(	__path	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10534,6 +10584,7 @@ for (int i = 1; i <= numvariations; i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -10785,6 +10836,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/zoo_grid_of_every_mesh.parm"
@@ -10930,6 +10987,7 @@ foreach(int pt; pts)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -11318,6 +11376,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@pscale = @_bps_trunkradius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -11464,6 +11523,7 @@ s@name = replace(s@name, \"?\", \"_\");
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -11554,6 +11614,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -11825,6 +11886,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@P = {0.0, 0.0, 0.0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -12384,6 +12446,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -13328,8 +13391,8 @@ Content-Disposition: attachment; filename="hdaroot/facet4.data"
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
-f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIwLjUuNTUwJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJZAisEC3ZlcnRleGNvdW50JgQSWwIrBQ5wcmltaXRpdmVjb3VudCYFEQIrBgRpbmZvJgZ7KwcIaG9zdG5hbWU=
-JgcrCAhDaGFwcGVsbCYIKwkEZGF0ZSYJKwoTMjAyNS0wOC0xNSAxMToyNDo1NSYKKwsGYXJ0aXN0JgsrDAViYWlsZSYMKw0Ic29mdHdhcmUmDSsOEEhvdWRpbmkgMjAuNS41NTAmDisPBmJvdW5kcyYPQBkGkPnVv5H51T+R+dU=
+f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNDM0JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJZAisEC3ZlcnRleGNvdW50JgQSWwIrBQ5wcmltaXRpdmVjb3VudCYFEQIrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
+KwgFYmFpbGUmCCsJCHNvZnR3YXJlJgkrChBIb3VkaW5pIDIxLjAuNDM0JgorCwRkYXRlJgsrDBMyMDI1LTA4LTE5IDEwOjMwOjQ5JgwrDQhob3N0bmFtZSYNKw4IQ2hhcHBlbGwmDisPBmJvdW5kcyYPQBkGkPnVv5H51T+R+dU=
 v5D51T8lB2ylJgdsJSsQEXByaW1jb3VudF9zdW1tYXJ5JhAnFSAgICAgICAgICAyIFBvbHlnb25zCisREWF0dHJpYnV0ZV9zdW1tYXJ5JhEnGyAgICAgMSBwb2ludCBhdHRyaWJ1dGVzOglQCn0rEgh0b3BvbG9neSYSWysTCHA=
 b2ludHJlZiYTWysUB2luZGljZXMmFEAS8lsCAAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADI=
 ADMANAA1ADYANwA4ADkAOgA7ADwAPQA+AD8AQABBAEIAQwBEAEUARgBHAEgASQBKAEsATABNAE4ATwBQAFEAUgBTAFQAVQBWAFcAWABZAFoAWwBcAF0AXgBfAGAAYQBiAGMAZABlAGYAZwBoAGkAagBrAGwAbQBuAG8AcABxAHI=
@@ -14726,6 +14789,7 @@ snippet	[ 0	locks=0 ]	(	"@pscale = @_bps_radius;
 @_bps_dist = @_bps_radius - @_bps_trunkradius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15034,6 +15098,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/set_variant_positions.chn"
@@ -15079,6 +15149,7 @@ for (int i = 0; i < npts; i++) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15394,6 +15465,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/move_forward.chn"
@@ -15423,6 +15500,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@P.z += @_bps_radius + ch('fontsize') / 2.0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15519,6 +15597,7 @@ if(isvalidindex(d@plant_definition2, \"trunkradius\" + itoa(i@_bps_variantid)))
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15771,6 +15850,7 @@ for (int i = 0; i < len(@numvariations); i++)
  d@plant_definition[\"variants\"] = len(@numvariations);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16153,6 +16233,7 @@ snippet	[ 0	locks=0 ]	(	"@P.z += @_bps_trunkradius;
 @dist = @_bps_radius-@_bps_trunkradius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16236,6 +16317,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@P.x += @_bps_radius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16705,6 +16787,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@Cd *=3;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17183,8 +17266,8 @@ Content-Disposition: attachment; filename="hdaroot/facet7.data"
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
-f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIwLjUuNTUwJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFbKwQLdmVydGV4Y291bnQmBBFbKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHCGhvc3RuYW1lJgc=
-KwgIQ2hhcHBlbGwmCCsJBGRhdGUmCSsKEzIwMjUtMDgtMTUgMTE6MjQ6NTUmCisLBmFydGlzdCYLKwwFYmFpbGUmDCsNCHNvZnR3YXJlJg0rDhBIb3VkaW5pIDIwLjUuNTUwJg4rDwZib3VuZHMmD0AZBn8swL5+LMA+t6t5o7U=
+f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNDM0JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFbKwQLdmVydGV4Y291bnQmBBFbKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHBmFydGlzdCYHKwg=
+BWJhaWxlJggrCQhzb2Z0d2FyZSYJKwoQSG91ZGluaSAyMS4wLjQzNCYKKwsEZGF0ZSYLKwwTMjAyNS0wOC0xOSAxMDozMDo0OSYMKw0IaG9zdG5hbWUmDSsOCENoYXBwZWxsJg4rDwZib3VuZHMmD0AZBn8swL5+LMA+t6t5o7U=
 q3kjzldivsxXYj4rEBFwcmltY291bnRfc3VtbWFyeSYQJxQgICAgICAgICAgMSBQb2x5Z29uCisREWF0dHJpYnV0ZV9zdW1tYXJ5JhEnGyAgICAgMSBwb2ludCBhdHRyaWJ1dGVzOglQCn0rEgh0b3BvbG9neSYSWysTCHBvaW4=
 dHJlZiYTWysUB2luZGljZXMmFEASWwAAAQACAAMABAAFAAYABwAIAAkACgALAAwADQAOAA8AEAARABIAEwAUABUAFgAXABgAGQAaABsAHAAdAB4AHwAgACEAIgAjACQAJQAmACcAKAApACoAKwAsAC0ALgAvADAAMQAyADMANAA=
 NQA2ADcAOAA5ADoAOwA8AD0APgA/AEAAQQBCAEMARABFAEYARwBIAEkASgBLAEwATQBOAE8AUABRAFIAUwBUAFUAVgBXAFgAWQBaAF1dKxUKYXR0cmlidXRlcyYVWysWD3BvaW50YXR0cmlidXRlcyYWW1tbKxcFc2NvcGUmFys=
@@ -17576,6 +17659,7 @@ v@_bps_direction = set(0, 1, 0);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17788,6 +17872,7 @@ snippet	[ 0	locks=0 ]	(	"i@_bps_trunk = 1;
 @pscale = @_bps_trunkradius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17872,6 +17957,7 @@ snippet	[ 0	locks=0 ]	(	"i@_bps_trunk = 0;
 @pscale = @_bps_radius;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18192,6 +18278,7 @@ snippet	[ 0	locks=0 ]	(	"@Alpha = 0;
 @group__bps_hitbox = 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18424,6 +18511,7 @@ snippet	[ 0	locks=0 ]	(	"@Alpha = 0;
 @group__bps_hitbox = 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -19390,6 +19478,7 @@ for (int i = 1; i <= numvariations; i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

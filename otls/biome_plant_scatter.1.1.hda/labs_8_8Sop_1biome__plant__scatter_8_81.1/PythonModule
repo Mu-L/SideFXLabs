@@ -12,3 +12,6 @@ def changeBiome(node, biomename):
                     break           
     node.parm('temperature').set(temperature)
     node.parm('precipitation').set(precipitation)
+
+def setViewFlag(node):
+    node.setOutputForViewFlag(-1)
