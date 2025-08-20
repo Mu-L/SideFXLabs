@@ -105,7 +105,7 @@ def get_skeleton_metadata(kp_node):
 
 def log_missing_file(log_path, missing_file):
     from datetime import datetime
-    log_file="{}\error.log".format(log_path)
+    log_file="{}/error.log".format(log_path)
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(log_file, "a") as log:
         log.write(f"{timestamp} - Missing file: {missing_file}\n")
