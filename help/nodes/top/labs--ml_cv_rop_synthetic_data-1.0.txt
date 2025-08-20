@@ -68,10 +68,6 @@ NOTE:
         #id: deletefileoutputs
         Deletes all previous cook files from disk and then dirties all the work items in all of the TOP nodes inside the network.
 
-    Custom Python Bin:
-        #id: python
-        The path to a custom Python 3.11 executable. (If you are on macOS or Linux, please leave this field blank). This is temporarily necessary for Windows users due to an OpenEXR compatibility issue with the current Houdini version. Please download a Python 3.11 executable of your choice. For example, you can visit the official [Python Release Python 3.11.0|https://www.python.org/downloads/release/python-3110/], scroll to the Files section, and download Windows installer (64-bit). Unless you manually changed it during installation, the default executable path may be: `C:\Users\<username>\AppData\Local\Programs\Python\Python311\python.exe`.
-        
     == Dataset Controls ==
 
     Render Directory:
@@ -84,9 +80,7 @@ NOTE:
         
     Debug Dataset and Skip Delivery:
         #id: debugds
-        Specifies the major and minor version of the dataset.
-        Major version: Typically used for major changes to a dataset, will cause dataset seed to change and shuffle per frame seeds. 
-        Minor version: Used for incremental changes that maintain the same master variant seed.
+        Skips dataset validation, does not create delivery directory, and does not save hip file backups to disk. 
         
     Annotations ROP:
         #id: annotationroppath
