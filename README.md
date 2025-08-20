@@ -1,5 +1,5 @@
 ![SideFXLabs logo](https://github.com/sideeffects/SideFXLabs/blob/Development/help/icons/sidefxlabs_full.png)
-# SideFX Labs - Houdini 20.5
+# SideFX Labs - Houdini 21.0
 
 SideFX Labs is a widely popular official package developed by SideFX. It is an artist-friendly toolset that extends Houdini’s functionalities. Originated from the Game Development Toolset, SideFX Labs has a strong game industry DNA, but it also features many tools and utilities broadly useful for film & TV, motion graphics, and other industries. It contains hundreds of Houdini Digital Assets (HDAs), various Python modules, game engine plugins, Houdini UI extensions, custom VEX functions, and more.
 
@@ -18,19 +18,19 @@ Open **Houdini Launcher** and navigate to the **Labs/Packages** section to insta
 
 The SideFX Labs package will be installed to `C:\Program Files\Side Effects Software\sidefx_packages`.
 
-Please note that if you have (perhaps accidentally) installed multiple copies of the same version of SideFX Labs (e.g. SideFXLabs20.5), the copy located in `sidefx_packages` will typically take precedence.
+Please note that if you have (perhaps accidentally) installed multiple copies of the same version of SideFX Labs (e.g. SideFXLabs21.0), the copy located in `sidefx_packages` will typically take precedence.
 
 ## Method 2 (Deployment): Command Line
 
-You can also install the SideFX Labs package through command line, for example, using **Command Prompt** or **Houdini Command Line Tools** (C:\Program Files\Side Effects Software\Houdini 20.5.100\bin\hcmd.exe). This is especially useful for deployment in a studio environment.
+You can also install the SideFX Labs package through command line, for example, using **Command Prompt** or **Houdini Command Line Tools** (C:\Program Files\Side Effects Software\Houdini 21.0.100\bin\hcmd.exe). This is especially useful for deployment in a studio environment.
 
 To install the latest production build, the latest daily build, or to uninstall (listed in this order), the commands are:
 ```
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 20.5 Production Build" --installdir "D:\studio\sidefxlabs"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 21.0 Production Build" --installdir "D:\studio\sidefxlabs"
 
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 20.5 Daily Build" --installdir "D:\studio\sidefxlabs"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 21.0 Daily Build" --installdir "D:\studio\sidefxlabs"
 
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" uninstall-package "D:\studio\sidefxlabs\SideFXLabs20.5.json"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" uninstall-package "D:\studio\sidefxlabs\SideFXLabs21.0.json"
 ```
 ("D:\studio\sidefxlabs" is just an example path.)
 
@@ -43,11 +43,11 @@ Please note that Houdini-specific environment variables, such as `HSITE`, `HOME`
 Once the environment variable is set (e.g. MY_SIDEFXLABS = D:\studio\sidefxlabs), then the commands become:
 
 ```
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 20.5 Production Build" --installdir "%MY_SIDEFXLABS%"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 21.0 Production Build" --installdir "%MY_SIDEFXLABS%"
 
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 20.5 Daily Build" --installdir "%MY_SIDEFXLABS%"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" install-package --package-name "SideFX Labs 21.0 Daily Build" --installdir "%MY_SIDEFXLABS%"
 
-"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" uninstall-package "%MY_SIDEFXLABS%\SideFXLabs20.5.json"
+"C:\Program Files\Side Effects Software\Launcher\bin\houdini_installer.exe" uninstall-package "%MY_SIDEFXLABS%\SideFXLabs21.0.json"
 ```
 
 For more on how to download, install, upgrade, and uninstall Houdini and its components, please visit [here](https://www.sidefx.com/docs/houdini/ref/utils/launcher.html).
@@ -56,11 +56,11 @@ For more on how to download, install, upgrade, and uninstall Houdini and its com
 
 Sometimes you may need to access an earlier release or to get the same-day updates before the next day's release is downloadable. In those cases, you can get the package directly from this GitHub repository.
 
-Step 1. [Option A] Download one of the releases from [here](https://github.com/sideeffects/SideFXLabs/releases). Choose a release version/date, expand **Assets** and select either one of the **Source code** zip files. This step can be automated with a script that downloads the zip files from either one of the following URLs (replace 20.5.100 with the desired version number).
+Step 1. [Option A] Download one of the releases from [here](https://github.com/sideeffects/SideFXLabs/releases). Choose a release version/date, expand **Assets** and select either one of the **Source code** zip files. This step can be automated with a script that downloads the zip files from either one of the following URLs (replace 21.0.100 with the desired version number).
 
 ```
-https://github.com/sideeffects/SideFXLabs/archive/refs/tags/20.5.100.zip
-https://github.com/sideeffects/SideFXLabs/archive/refs/tags/20.5.100.tar.gz
+https://github.com/sideeffects/SideFXLabs/archive/refs/tags/21.0.100.zip
+https://github.com/sideeffects/SideFXLabs/archive/refs/tags/21.0.100.tar.gz
 ```
 
 Step 1. [Option B] Click on the top-right **Code** button on the main page of this repository and select **Download ZIP**. This allows you to get the same-day updates before the next day's release is downloadable.
@@ -69,7 +69,7 @@ Step 1. [Option C] (Advanced) Clone this repository into a custom SideFXLabs dir
 
 Step 2. If you have downloaded a zipped version of the package in Step 1, unzip it into a custom SideFXLabs directory of your choosing.
 
-Step 3. Go to your custom SideFXLabs directory that now contains the unzipped contents, copy the package definition template file `SideFXLabs.json` to `C:\Users\...\Documents\houdini20.5\packages`. Rename the destination copy to `SideFXLabs20.5.json`. Open this file and replace `"$HOUDINI_PACKAGE_PATH/SideFXLabs20.5"` with the path to your own SideFXLabs directory. When Houdini launches, it relies on this file to discover the location of your SideFX Labs package.
+Step 3. Go to your custom SideFXLabs directory that now contains the unzipped contents, copy the package definition template file `SideFXLabs.json` to `C:\Users\...\Documents\houdini21.0\packages`. Rename the destination copy to `SideFXLabs21.0.json`. Open this file and replace `"$HOUDINI_PACKAGE_PATH/SideFXLabs21.0"` with the path to your own SideFXLabs directory. When Houdini launches, it relies on this file to discover the location of your SideFX Labs package.
 
 (Step 3 only needs to be done once for every major Houdini X.Y release. To update SideFX Labs for the same Houdini X.Y version, simply delete the existing contents of your custom SideFXLabs directory and unzip the updated package into that folder.)
 
