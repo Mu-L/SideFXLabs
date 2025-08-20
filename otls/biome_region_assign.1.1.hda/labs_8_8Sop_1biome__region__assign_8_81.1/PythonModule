@@ -1,0 +1,271 @@
+#################################################################################################
+# Switch between 0 and -1 for display output
+#################################################################################################
+def outputViewFlag(kwargs):
+    node = kwargs["node"]
+    if node.parm("outputmode").eval() == 0:
+        node.setOutputForViewFlag(-1)
+    elif node.parm("outputmode").eval() == 1:
+        node.setOutputForViewFlag(0)
+
+def forceUpdate(kwargs):
+
+    kwargs['node'].node('OUT_REGION_CENTERS').cook(force=True)
+
+    return
+    
+def forceUpdateHeightfield(kwargs):
+
+    kwargs['node'].node('OUT_HF_REGIONS').cook(force=True)
+
+    return
+
+
+def biomeMenu(kwargs):
+
+    menu_items = []
+    geo = kwargs['node'].inputGeometry(0)
+
+    if geo:
+
+        try:
+            for point in geo.points():
+                biom_name = point.attribValue('biome_name')
+                menu_items.extend([biom_name, biom_name])
+
+        except hou.OperationFailed:
+            print ("Error: The point attribute \"biome_name\" is missing "
+                    "from the first input).")
+
+    return menu_items
+
+
+def biomeMenuSafe(kwargs):
+
+    menu_items = []
+    biome_definitions = kwargs['node'].input(0)
+
+    # Builds the menu only if the dependent input geometry is already cooked.
+    # This prevents any premature attempts to build the UI.
+    if biome_definitions and not biome_definitions.needsToCook():
+        menu_items = biomeMenu(kwargs)
+
+    if kwargs['parm'].evalAsString() == '' and menu_items != []:
+        kwargs['parm'].set(menu_items[0])
+
+    return menu_items
+
+
+def buildRegionMultiparmFromImage(kwargs):
+
+    node = kwargs['node']
+    region_centers_sop = node.node('OUT_REGION_CENTERS')
+    region_centers_sop.cook(force=False)
+    geo = region_centers_sop.geometry()
+    initial_multiparm_num = node.parm('mp_img_regions').evalAsInt()
+    biomeNum = len(node.inputs()[0].geometry().points())
+    
+
+
+    if geo:
+        region_count = geo.intrinsicValue('primitivecount')
+        input_type = node.parm("source").evalAsInt()
+        
+        if(input_type == 3):
+            psd_layers = node.node('psd_input1/cop2net/remove_default_planes').planes()
+            region_count = len(psd_layers)
+            
+        if(input_type == 1):
+            refreshValues(node)
+            attribVals = node.parm("attribvalcontainer").eval()
+            splitVals = list(attribVals.split(","))
+            region_count = len(splitVals)
+            
+        node.parm('mp_img_regions').set(region_count)
+        
+
+        
+        for i in range(region_count):
+            index_str = str(i + 1)
+            
+            if(input_type == 3):
+                node.parm('layer_name' + index_str).set(psd_layers[i])
+            
+            if(input_type == 1):
+                node.parm('attrvalue' + index_str).set(splitVals[i])
+            
+            
+            # If reset parameters is enabled or rebuilding the list from nothing
+            if node.parm('resetimgparms').eval() or initial_multiparm_num == 0:
+                
+                biome_geo = node.inputGeometry(0)
+                biome_name = ""
+                if biome_geo:
+                    try:
+                        biome_name = biome_geo.point(i % biomeNum).attribValue('biome_name')
+                        
+                    except:
+                        biome_name = biome_geo.point(0).attribValue('biome_name')
+                        
+                node.parm('img_bname' + index_str).set(biome_name)
+                node.parm('img_bhierarchy' + index_str).set(i)
+                
+             
+        if node.parm('resetimgparms').eval() or initial_multiparm_num == 0:
+            for i in range(region_count):               # Ensures the color is calculated after the multiparm is set. Needed for PSD inputs
+                index_str = str(i + 1)
+                
+                node.parmTuple('img_bcolor' + index_str).set(geo.prim(i % biomeNum).attribValue('Cd'))
+          
+                
+
+    forceUpdate(kwargs)
+
+    return
+    
+def buildRegionMultiparmFromhHeightfields(kwargs):
+
+    node = kwargs['node']
+    region_centers_sop = node.node('number_of_biomes_defined')
+    region_centers_sop.cook(force=False)
+    geo = region_centers_sop.geometry()
+
+    if geo:
+        region_count = geo.intrinsicValue('pointcount')
+        node.parm('hf_img_regions').set(region_count)
+        if node.parm('resetimgparms_hf').eval() or initial_multiparm_num == 0:
+            for i in range(region_count):
+                index_str = str(i + 1)
+                #node.parm('hf_bname' + index_str).revertToDefaults()
+                #node.parm('hf_bhierarchy' + index_str).revertToDefaults()
+                #node.parmTuple('hf_bcolor' + index_str).set(geo.prim(i).attribValue('Cd'))
+    
+        forceUpdateHeightfield(kwargs)
+
+    return
+
+
+#################################################################################################
+# Refreshes Attribute Values for Mesh with Attributes
+# Script that finds unique values from the Attribute Name parameter to store and refer to later
+# Running this script as needed prevents unnecessary calculation times
+#################################################################################################
+def refreshValues(node):
+
+    inputs = node.inputs()
+    uniqueVals = []
+    uniqueValsStr = ""
+    nameVal = node.parm("attrname").evalAsString()
+    test = 1
+    
+    #Prints message if Attribute Name has not been initialized yet
+    if not nameVal:
+        print("No attribute name found.")
+    
+    #Only runs if the third input is wired in
+    elif inputs and inputs[2]:
+        geo = inputs[2].geometry()
+        type = geo.findPrimAttrib(nameVal).dataType()
+        
+        #Looks through prims and finds the Attribute Name values and populates the list if they're unique
+        if geo:
+            prims = geo.prims()
+            
+            for p in prims:
+                attrVal = p.attribValue(nameVal)
+                
+                if type == hou.attribData.Float:
+                    attrVal = int(attrVal)
+                if attrVal not in uniqueVals:
+                    uniqueVals.append(attrVal)
+
+                    
+    #We store the results on an invisible parm in the HDA, so must be converted to a string to match the data type
+    for u in uniqueVals:
+        uniqueValsStr += str(u) + ","
+    
+    uniqueValsStr = uniqueValsStr[:-1]
+    node.parm("attribvalcontainer").set(uniqueValsStr)
+
+    return
+
+
+#######################################################################
+# Button to load unique values of selected attribute
+#######################################################################    
+def loadValues(node):
+
+    inputs = node.inputs()
+    uniqueVals = []
+
+    if inputs and inputs[0]:
+        uniqueVals = node.parm("attribvalcontainer").eval()
+        #Formatting list from the stored string value into correct data type, so we eliminate unecessary characters
+        uniqueVals = list(uniqueVals.split(","))
+        uniqueVals = uniqueVals[:-1]            #Last value using split is empty, so we remove it
+        
+        node.parm("fd_attribute").set(len(uniqueVals))
+        count = 1
+        #print("attrval" + str(count))
+
+        for u in uniqueVals:
+            node.parm("attrvalue" + str(count)).set(u)
+            count += 1
+            
+    return
+
+
+#######################################################################
+# Button to create curve setup node for curve option in biome input
+#######################################################################
+def createCurveNode(node):
+
+    parent = node.parent()
+    createNext = parent.createNode('labs::biome_curve_label')
+    secondInput = None
+    
+
+    if len(node.inputConnectors()[2]) != 0:
+        secondInput = node.inputs()[2]
+        createNext.setInput(2, secondInput, 0)    
+    
+    node.setInput(2, createNext, 0)
+    createNext.setInput(0, node.inputs()[0], 0)
+    createNext.moveToGoodPosition()
+
+    
+    return
+
+
+def generateCurveBiomes(node):
+
+    HDAnode = hou.node(".")
+    inputs = node.inputs()
+    uniqueVals = []
+    
+    if inputs[0]:
+        geo = inputs[0].geometry()
+        
+        if geo:
+            prims = geo.prims()
+            
+            for p in prims:
+                attrVal = p.attribValue("_bin_biome_tag")
+                
+                if attrVal not in uniqueVals:
+                    uniqueVals.append(attrVal)
+
+    HDAnode.parm('fd_curvebiomeviz').set(len(uniqueVals))
+    
+    count = 1
+    for val in uniqueVals:
+        HDAnode.parm('biomename_curve' + str(count)).set(val)
+        count += 1
+
+    return
+
+def cookNode(node):
+
+    node.cook(force=True)
+
+    return
