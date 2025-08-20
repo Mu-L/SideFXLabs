@@ -1,5 +1,5 @@
 
- Copyright (c) 2024
+ Copyright (c) 2025
 	Side Effects Software Inc.  All rights reserved.
 
  Redistribution and use of in source and binary forms, with or without
@@ -22,3 +22,4 @@
  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
