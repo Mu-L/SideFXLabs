@@ -70,7 +70,7 @@
             label   "Compute Range"
             type    button
             default { "0" }
-            hidewhen "{ display == 0 }"
+            hidewhen "{ display == 0 } { display == 4 }"
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "script_callback" "hou.pwd().hdaModule().computeRange(kwargs)" }
             parmtag { "script_callback_language" "python" }
