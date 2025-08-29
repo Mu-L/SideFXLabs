@@ -20,32 +20,225 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.98112 -1.23128
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+position -14.4651 -1.16527
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
-1 	av_initialize1 0 1 "input1"
 }
 inputs
 {
-0 	av_initialize1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author prisms@threadripper1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
-color UT_Color RGB 0.29 0.565 0.886 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder5"
+        label   "Feature Extraction"
+        grouptag { "sidefx::switcher" "folder2" }
+
+        parm {
+            name    "dsc_type"
+            baseparm
+            label   "Describer Types"
+            export  none
+        }
+        parm {
+            name    "dsc_pre"
+            baseparm
+            label   "Describer Preset"
+            export  none
+        }
+        parm {
+            name    "cpu"
+            baseparm
+            label   "Force CPU Extraction"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder5_1"
+        label   "Image Matching"
+
+        parm {
+            name    "minNImg"
+            baseparm
+            label   "Min Number of Images"
+            export  none
+        }
+        parm {
+            name    "max_desc"
+            baseparm
+            label   "Max Descriptors"
+            export  none
+        }
+        parm {
+            name    "nMatch"
+            baseparm
+            label   "Number of Matches"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder5_2"
+        label   "Feature Matching"
+
+        parm {
+            name    "dsc_type2"
+            baseparm
+            label   "Describer Types"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder6"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder3" }
+
+            parm {
+                name    "photo"
+                baseparm
+                label   "Photometric Matching Method"
+                export  none
+            }
+            parm {
+                name    "geoEst"
+                baseparm
+                label   "Geometric Estimator"
+                export  none
+            }
+            parm {
+                name    "geoFilter"
+                baseparm
+                label   "Geometric Filter type"
+                export  none
+            }
+            parm {
+                name    "dist"
+                baseparm
+                label   "Distance Ratio"
+                export  none
+            }
+            parm {
+                name    "maxIter"
+                baseparm
+                label   "Max Iteration"
+                export  none
+            }
+            parm {
+                name    "maxMatch"
+                baseparm
+                label   "Max Matches"
+                export  none
+            }
+            parm {
+                name    "savePut"
+                baseparm
+                label   "Save Putative Matches"
+                export  none
+            }
+            parm {
+                name    "guide"
+                baseparm
+                label   "Guided Matching"
+                export  none
+            }
+            parm {
+                name    "expDebug"
+                baseparm
+                label   "Export Debug Files"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        baseparm
+        label   "Environment"
+        export  none
+    }
+    parm {
+        name    "maxThreads"
+        baseparm
+        label   "Max CPU Threads"
+        export  none
+    }
+    parm {
+        name    "nbNeighbors"
+        baseparm
+        label   "Number of Nighbors"
+        export  none
+    }
+    parm {
+        name    "geometricError"
+        baseparm
+        label   "Geometric Validation Error"
+        export  none
+    }
+    parm {
+        name    "knownPosesGeometricErrorMax"
+        baseparm
+        label   "Known Poses Geometric Error Max"
+        export  none
+    }
+    parm {
+        name    "matchFilePerImage"
+        baseparm
+        label   "Match File Per Image"
+        export  none
+    }
+    parm {
+        name    "useGridSort"
+        baseparm
+        label   "Use Grid Sort"
+        export  none
+    }
+    parm {
+        name    "enablecustomenv"
+        baseparm
+        label   "Use Custom Environment"
+        nolabel
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -155,6 +348,7 @@ cmd.append(\"--verboseLevel\")
 cmd.append(\"Error\")
 
 alicevisionutils.process(cmd, cache, \"02_FeatureExtraction\", node) "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -261,6 +455,7 @@ cmd.append(\"--output\")
 cmd.append(os.path.join(cache, \"03_ImageMatching\", \"imageMatches.txt\"))
 
 alicevisionutils.process(cmd, cache, \"03_ImageMatching\", node) "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -400,6 +595,7 @@ cmd.append(\"--verboseLevel\")
 cmd.append(\"error\")
 
 alicevisionutils.process(cmd, cache, \"04_FeatureMatching\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -474,7 +670,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
