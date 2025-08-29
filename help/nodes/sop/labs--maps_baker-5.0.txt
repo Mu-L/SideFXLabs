@@ -10,6 +10,9 @@
 
 The MapsBaker can transfer texture and data maps from high resolution to low resolution geometry. Unlike the games baker which relies on a mantra render, the maps baker uses a COPS network that is orders of magnitude faster than the mantra equivalent.
 
+NOTE: 
+    Replaced by [Bake Geometry Textures COP|Node:cop/bakegeometrytextures] and [Karma Texture Baker LOP|Node:lop/karmatexturebaker]. To be removed in Houdini 23.0.
+
 NOTE:
     The MapsBaker can do almost everything the Mantra based baker can, with the exception of baking lighting and procedural shaders.
 
@@ -118,4 +121,8 @@ TIP:
 
     Material Mapping:
         This is the material mapping file used to translate from any material node to a format that the baker understands. Adding your own material definitions to this file would allow you to bake that type of material using the baker as well.
+
+@related
+- [Bake Geometry Textures COP|Node:cop/bakegeometrytextures]
+- [Karma Texture Baker LOP|Node:lop/karmatexturebaker]
     
