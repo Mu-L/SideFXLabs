@@ -2,6 +2,12 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename=".OPdummydefs"
 Content-Type: application/external-reference
 
@@ -17,7 +23,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_av_structure_from_motion::2.0
+type = labs::av_structure_from_motion::2.0
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -26,32 +32,220 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.3329 -2.34536
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -14.4651 -3.65549
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
-1 	sop_av_analyze_images1 0 1 "input1"
 }
 inputs
 {
-0 	sop_av_analyze_images1 0 1
 }
 stat
 {
-  create 1569625699
-  modify 1569625764
-  author paula@DESKTOP-5213MPP
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "reload"
+        baseparm
+        label   "Reload"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder2"
+        label   "Structure from Motion"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "dsc_type"
+            baseparm
+            label   "Describer Types"
+            export  none
+        }
+        parm {
+            name    "locl_es"
+            baseparm
+            label   "Localizer Estimator"
+            export  none
+        }
+        parm {
+            name    "maxN"
+            baseparm
+            label   "Max Num of Matches"
+            export  none
+        }
+        parm {
+            name    "fileExt"
+            baseparm
+            label   "Inter File Extension"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder3"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder1" }
+
+            parm {
+                name    "lock"
+                baseparm
+                label   "Lock Scene Previously Reconstructed"
+                export  none
+            }
+            parm {
+                name    "local"
+                baseparm
+                label   "Local Bundle Adjustment"
+                export  none
+            }
+            parm {
+                name    "useInputMatches"
+                baseparm
+                label   "Use Only Inputfolder Matches"
+                export  none
+            }
+            parm {
+                name    "lockAllIntrinsics"
+                baseparm
+                label   "Force Lock of All Intrinsic Camera Parameters"
+                export  none
+            }
+            parm {
+                name    "useRigConstraint"
+                baseparm
+                label   "Use Rig Constraint"
+                export  none
+            }
+            parm {
+                name    "localizerEstimatorMaxIterations"
+                baseparm
+                label   "Localizer Max Ransac Error"
+                export  none
+            }
+            parm {
+                name    "ba"
+                baseparm
+                label   "LocalBA Graph Distance"
+                export  none
+            }
+            parm {
+                name    "minInput"
+                baseparm
+                label   "Min Input Track Length"
+                export  none
+            }
+            parm {
+                name    "minTri"
+                baseparm
+                label   "Min Observation for Triangulation"
+                export  none
+            }
+            parm {
+                name    "minAngle"
+                baseparm
+                label   "Min Angle for Triangulation"
+                export  none
+            }
+            parm {
+                name    "localizerEstimatorError"
+                baseparm
+                label   "Localizer Max Ransac Error"
+                export  none
+            }
+            parm {
+                name    "minLandmark"
+                baseparm
+                label   "Min Angle for Landmark"
+                export  none
+            }
+            parm {
+                name    "maxReprEr"
+                baseparm
+                label   "Max Reprojection Error"
+                export  none
+            }
+            parm {
+                name    "minAngInit"
+                baseparm
+                label   "Min Angle Initial Pair"
+                export  none
+            }
+            parm {
+                name    "maxAngInit"
+                baseparm
+                label   "Max Angle Initial Pair"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder2_1"
+        label   "Prepare Dense Scene"
+
+        parm {
+            name    "outputFileType"
+            baseparm
+            label   "Output File Type"
+            export  none
+        }
+        parm {
+            name    "saveMetadata"
+            baseparm
+            label   "Save Metadata"
+            export  none
+        }
+        parm {
+            name    "saveMatricesTxtFiles"
+            baseparm
+            label   "Save Matrices Text Files"
+            export  none
+        }
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -101,8 +295,8 @@ inputs
 }
 stat
 {
-  create 1546895086
-  modify 1569625729
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -219,6 +413,7 @@ hou.pwd().parent().hdaModule().log(cmd, cache, \"05_StructureFromMotion\", node)
 
 # --initialPairA \"\" --initialPairB \"\"
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -228,7 +423,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -262,8 +457,8 @@ inputs
 }
 stat
 {
-  create 1546895924
-  modify 1569625736
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -317,6 +512,7 @@ hou.pwd().parent().hdaModule().log(cmd, cache, \"06_PrepareDenseScene\", node)
 
 #--rangeStart 0 --rangeSize 10
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -326,7 +522,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -360,8 +556,8 @@ inputs
 }
 stat
 {
-  create 1546896163
-  modify 1554248639
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -410,6 +606,7 @@ cmd.append(\"--verboseLevel\")
 cmd.append(\"info\")
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"07_CameraConnection\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -419,7 +616,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -455,8 +652,8 @@ inputs
 }
 stat
 {
-  create 1547592563
-  modify 1569625699
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -484,7 +681,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -494,7 +691,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -528,8 +725,8 @@ inputs
 }
 stat
 {
-  create 1547592645
-  modify 1554915940
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -555,7 +752,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -589,8 +786,8 @@ inputs
 }
 stat
 {
-  create 1547599533
-  modify 1569625699
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -640,7 +837,7 @@ Content-Type: text/plain
 {
 version 0.8
 filemode	[ 0	locks=0 ]	(	"read"	)
-file	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	"" ] 	)
+file	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	default.bgeo ] 	)
 reload	[ 0	locks=0 ]	(	[ reload	0 ] 	)
 objpattern	[ 0	locks=0 ]	(	*	)
 geodatapath	[ 0	locks=0 ]	(	""	)
@@ -666,7 +863,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -702,8 +899,8 @@ inputs
 }
 stat
 {
-  create 1547664610
-  modify 1554915940
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -727,7 +924,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -760,8 +957,8 @@ inputs
 }
 stat
 {
-  create 1549920852
-  modify 1554917201
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -786,7 +983,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -820,8 +1017,8 @@ inputs
 }
 stat
 {
-  create 1550009106
-  modify 1554248688
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -845,6 +1042,8 @@ transfer_groups	[ 0	locks=0 ]	(	""	)
 apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
 scene_style_sheet	[ 0	locks=0 ]	(	""	)
 obj_style_sheet	[ 0	locks=0 ]	(	""	)
+dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -854,7 +1053,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -888,8 +1087,8 @@ inputs
 }
 stat
 {
-  create 1550009135
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -996,7 +1195,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1030,8 +1229,8 @@ inputs
 }
 stat
 {
-  create 1550009169
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -1048,6 +1247,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	_mvgRoot_mvgCloud_mvgPointCloud_particleShape1	)
@@ -1060,7 +1262,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1094,8 +1296,8 @@ inputs
 }
 stat
 {
-  create 1550009188
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -1110,9 +1312,15 @@ Content-Type: text/plain
 
 {
 version 0.8
+usereference	[ 0	locks=0 ]	(	"off"	)
+negate	[ 0	locks=0 ]	(	"off"	)
+doptdel	[ 0	locks=0 ]	(	"on"	)
 ptdel	[ 0	locks=0 ]	(	id	)
+dovtxdel	[ 0	locks=0 ]	(	"on"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
+doprimdel	[ 0	locks=0 ]	(	"on"	)
 primdel	[ 0	locks=0 ]	(	""	)
+dodtldel	[ 0	locks=0 ]	(	"on"	)
 dtldel	[ 0	locks=0 ]	(	""	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 }
@@ -1158,8 +1366,8 @@ inputs
 }
 stat
 {
-  create 1550018617
-  modify 1555448195
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -1187,6 +1395,7 @@ subprocess.call(\"gabc -l houdini %s %s\" % (pre_convert, post_convert), shell=T
 
 
 hou.node(\"../point_cloud\").cook(force=True)  "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1196,7 +1405,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1230,8 +1439,8 @@ inputs
 }
 stat
 {
-  create 1550182956
-  modify 1555448195
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -1253,6 +1462,7 @@ geo = node.geometry()
 # Use drop down menu to select examples.
 import _alembic_hom_extensions as abc
 abc.alembicClearArchiveCache()  "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1262,7 +1472,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1296,8 +1506,8 @@ inputs
 }
 stat
 {
-  create 1550251615
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -1332,6 +1542,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -1349,7 +1560,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1383,8 +1594,8 @@ inputs
 }
 stat
 {
-  create 1554248732
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
   access 0777
 }
@@ -1413,11 +1624,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"off"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1427,7 +1638,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 

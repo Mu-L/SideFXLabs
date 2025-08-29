@@ -19,10 +19,10 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -4.60177 1.75041
+comment "Labs AV nodes versions 1.0, 2.0, and 3.0 to be removed in Houdini 21.0. Please use versions 4.0 and later."
+position -6.27174 0.181112
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -34,15 +34,104 @@ inputs
 }
 stat
 {
-  create 1585768884
-  modify 1585771162
-  author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual Mode"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    parm {
+        name    "proj"
+        baseparm
+        label   "Project Name"
+        export  none
+    }
+    parm {
+        name    "cache_dir"
+        baseparm
+        label   "Cache Directory"
+        export  none
+    }
+    parm {
+        name    "alice_dir"
+        baseparm
+        label   "Alicevision Directory"
+        export  none
+    }
+    group {
+        name    "folder1"
+        label   "Images"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "add_img"
+            baseparm
+            label   "Add Images"
+            export  none
+        }
+        multiscroll {
+            name    "src_img"
+            label    "Images"
+            baseparm
+            default 0
+
+            parm {
+                name    "filename__#"
+                baseparm
+                label   "File"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Camera Init"
+
+        parm {
+            name    "dof"
+            baseparm
+            label   "Default Field of View"
+            export  none
+        }
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -85,8 +174,8 @@ inputs
 }
 stat
 {
-  create 1546553746
-  modify 1585771029
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -143,6 +232,7 @@ if (len(os.listdir(srcimg)) > 0):
     hou.pwd().parent().hdaModule().log(cmd, cache, \"01_CameraInit\", node)
 else:
     raise ValueError(\"No images selected for processing!\")"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -152,7 +242,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -186,8 +276,8 @@ inputs
 }
 stat
 {
-  create 1546628375
-  modify 1585771029
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -255,6 +345,7 @@ labutils.empty_directory_recursive(img_dir)
 for img in images:
     shutil.copy(img, img_dir)
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -264,7 +355,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -300,8 +391,8 @@ inputs
 }
 stat
 {
-  create 1547588824
-  modify 1569623925
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -329,7 +420,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -339,7 +430,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -373,8 +464,8 @@ inputs
 }
 stat
 {
-  create 1547588829
-  modify 1554242460
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -400,7 +491,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -433,8 +524,8 @@ inputs
 }
 stat
 {
-  create 1549914993
-  modify 1550771837
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -459,7 +550,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -491,8 +582,8 @@ inputs
 }
 stat
 {
-  create 1546628375
-  modify 1585771029
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -547,6 +638,7 @@ geo.addAttrib(hou.attribType.Global, \"share\", \"None\", 0)
 geo.setGlobalAttribValue(\"share\", os.path.join(aliceVision_path, \"share\"))
 
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -556,7 +648,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -590,8 +682,8 @@ inputs
 }
 stat
 {
-  create 1550772216
-  modify 1585771029
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -648,7 +740,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.391"
+		"value":"___EXTERNAL___"
 	}
 }
 

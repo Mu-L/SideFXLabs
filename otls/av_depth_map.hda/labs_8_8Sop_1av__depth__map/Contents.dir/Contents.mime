@@ -11,7 +11,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_av_depth_map
+type = labs::av_depth_map
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20,7 +20,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -6.36416 -1.85376
+position -14.4651 -2.43634
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -34,15 +34,188 @@ inputs
 }
 stat
 {
-  create 1550251993
-  modify 1550253821
-  author Paul_Ambrosiussen@DESKTOP-A0373M3
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder3"
+        label   "Depth Map"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "down"
+            baseparm
+            label   "Downscale"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder4"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder1" }
+
+            parm {
+                name    "sNumCam"
+                baseparm
+                label   "SGM: Num Neighbor Cameras"
+                export  none
+            }
+            parm {
+                name    "sWSH"
+                baseparm
+                label   "SGM: WSH"
+                export  none
+            }
+            parm {
+                name    "sGamC"
+                baseparm
+                label   "SGM: GammaC"
+                export  none
+            }
+            parm {
+                name    "sGamP"
+                baseparm
+                label   "SGM: GammaP"
+                export  none
+            }
+            parm {
+                name    "rNumSamp"
+                baseparm
+                label   "Refine: Num of Samples"
+                export  none
+            }
+            parm {
+                name    "rNumDepth"
+                baseparm
+                label   "Refine: Num of Depths"
+                export  none
+            }
+            parm {
+                name    "rNumIter"
+                baseparm
+                label   "Refine: Num of Iterations"
+                export  none
+            }
+            parm {
+                name    "rWSH"
+                baseparm
+                label   "Refine: WSH"
+                export  none
+            }
+            parm {
+                name    "rNumCam"
+                baseparm
+                label   "Refine: Num Neighbor Cameras"
+                export  none
+            }
+            parm {
+                name    "rSigma"
+                baseparm
+                label   "Refine: Sigma"
+                export  none
+            }
+            parm {
+                name    "rGamC"
+                baseparm
+                label   "Refine: GammaC"
+                export  none
+            }
+            parm {
+                name    "rGamP"
+                baseparm
+                label   "Refine: GammaP"
+                export  none
+            }
+            parm {
+                name    "rTcRc"
+                baseparm
+                label   "Refine: Tc or Rc Pixel Size"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder3_1"
+        label   "Depth Map Filter"
+
+        groupcollapsible {
+            name    "folder5"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder2" }
+
+            parm {
+                name    "numCam"
+                baseparm
+                label   "Number of Nearest Cameras"
+                export  none
+            }
+            parm {
+                name    "minCon"
+                baseparm
+                label   "Min Consistent Cameras"
+                export  none
+            }
+            parm {
+                name    "minConBad"
+                baseparm
+                label   "Min Consistent Cameras Bad Similarity"
+                export  none
+            }
+            parm {
+                name    "filter"
+                baseparm
+                label   "Filtering Size in Pixels"
+                export  none
+            }
+            parm {
+                name    "filterBad"
+                baseparm
+                label   "Filtering Size in Pixels Bad Similarity"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -100,8 +273,8 @@ inputs
 }
 stat
 {
-  create 1546896411
-  modify 1550185025
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -220,6 +393,7 @@ length = str(len(list))
 cmd.append(length)
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"08_DepthMap\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -229,7 +403,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.164"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -263,8 +437,8 @@ inputs
 }
 stat
 {
-  create 1546975940
-  modify 1550185491
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -350,6 +524,7 @@ length = str(len(list))
 cmd.append(length)
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"09_DepthMapFilter\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -359,7 +534,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.164"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -395,8 +570,8 @@ inputs
 }
 stat
 {
-  create 1547594900
-  modify 1549921058
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -424,7 +599,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -434,7 +609,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.164"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -468,8 +643,8 @@ inputs
 }
 stat
 {
-  create 1547594905
-  modify 1547596110
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -495,7 +670,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.164"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -528,8 +703,8 @@ inputs
 }
 stat
 {
-  create 1549920941
-  modify 1550018786
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -554,7 +729,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.164"
+		"value":"___EXTERNAL___"
 	}
 }
 

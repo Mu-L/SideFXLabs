@@ -1,8 +1,3 @@
-# track creation usage. For more info, including how to disable this please see
-# https://www.sidefx.com/legal/houdini-anonymous-usage-statistics/
-
-try:
-    import labutils 
-    labutils.send_on_create_analytics(kwargs["node"])
-except:
-    pass
+node = kwargs['node']
+node.setComment("Labs AV nodes versions 1.0, 2.0, and 3.0 to be removed in Houdini 23.0. Please use versions 4.0 and later.")
+node.setGenericFlag(hou.nodeFlag.DisplayComment, True)

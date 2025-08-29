@@ -2,6 +2,12 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename=".OPdummydefs"
 Content-Type: application/external-reference
 
@@ -17,7 +23,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_av_meshing::2.0
+type = labs::av_meshing::2.0
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -26,32 +32,239 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -5.31783 -1.33423
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -14.4651 2.30273
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	sop_av_depth_map1 1 1 "input1"
 }
 inputs
 {
-0 	sop_av_depth_map1 0 1
 }
 stat
 {
-  create 1555450380
-  modify 1555460725
-  author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "reload"
+        baseparm
+        label   "Reload"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual Mode"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder3"
+        label   "Meshing"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "maxInpt"
+            baseparm
+            label   "Max Input Points"
+            export  none
+        }
+        parm {
+            name    "maxPts"
+            baseparm
+            label   "Max Points"
+            export  none
+        }
+        parm {
+            name    "maxPtsVox"
+            baseparm
+            label   "Max Points per Voxel"
+            export  none
+        }
+        parm {
+            name    "minStep"
+            baseparm
+            label   "Min Step"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder4"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder1" }
+
+            parm {
+                name    "part"
+                baseparm
+                label   "Partitioning"
+                export  none
+            }
+            parm {
+                name    "rePart"
+                baseparm
+                label   "Repartition"
+                export  none
+            }
+            parm {
+                name    "angle"
+                baseparm
+                label   "Angle Factor"
+                export  none
+            }
+            parm {
+                name    "sim"
+                baseparm
+                label   "Sim Factor"
+                export  none
+            }
+            parm {
+                name    "pixInit"
+                baseparm
+                label   "pixSizeMarginInitCoef"
+                export  none
+            }
+            parm {
+                name    "pixFinal"
+                baseparm
+                label   "pixSizeMarginFinalCoef"
+                export  none
+            }
+            parm {
+                name    "vote"
+                baseparm
+                label   "voteMarginFactor"
+                export  none
+            }
+            parm {
+                name    "contrib"
+                baseparm
+                label   "contributeMarginFactor"
+                export  none
+            }
+            parm {
+                name    "simGaussInit"
+                baseparm
+                label   "simGaussianSizeInit"
+                export  none
+            }
+            parm {
+                name    "simGaussSize"
+                baseparm
+                label   "simGaussianSize"
+                export  none
+            }
+            parm {
+                name    "minThresh"
+                baseparm
+                label   "minAngleThreshold"
+                export  none
+            }
+            parm {
+                name    "rFuse"
+                baseparm
+                label   "Refine Fuse"
+                export  none
+            }
+            parm {
+                name    "estimateSpaceFromSfM"
+                baseparm
+                label   "Estimate Space From SfM"
+                export  none
+            }
+            parm {
+                name    "estimateSpaceMinObservations"
+                baseparm
+                label   "Min Observations For SfM Space Estimation"
+                export  none
+            }
+            parm {
+                name    "estimateSpaceMinObservationAngle"
+                baseparm
+                label   "Min Observations Angle For SfM Space Estimation"
+                export  none
+            }
+            parm {
+                name    "addLandmarksToTheDensePointCloud"
+                baseparm
+                label   "Add Landmarks To The Dense Point Cloud"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder3_1"
+        label   "Mesh Filtering"
+
+        parm {
+            name    "filterTri"
+            baseparm
+            label   "Filter Large Triangles Factor"
+            export  none
+        }
+        parm {
+            name    "keepLrg"
+            baseparm
+            label   "Keep Only the Largest Mesh"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder5"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder2" }
+
+            parm {
+                name    "numIter"
+                baseparm
+                label   "Num of Iterations"
+                export  none
+            }
+            parm {
+                name    "lambda"
+                baseparm
+                label   "Lambda"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -78,80 +291,6 @@ Content-Type: text/plain
 
 1
 0 1.5054290410574733 7.3447015072586437 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.init"
-Content-Type: text/plain
-
-type = clean
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.50543 -2.69208
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	transform1 1 1 "input1"
-}
-inputs
-{
-0 	transform1 0 1
-}
-stat
-{
-  create 1554851674
-  modify 1554915940
-  author prisms@Threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-fusepts	[ 0	locks=0 ]	(	"off"	)
-deldegengeo	[ 0	locks=0 ]	(	"off"	)
-orientpoly	[ 0	locks=0 ]	(	"off"	)
-reversewinding	[ 0	locks=0 ]	(	"off"	)
-fixoverlap	[ 0	locks=0 ]	(	"off"	)
-deleteoverlap	[ 0	locks=0 ]	(	"on"	)
-delunusedpts	[ 0	locks=0 ]	(	"on"	)
-dodelattribs	[ 0	locks=0 ]	(	"off"	)
-delattribs	[ 0	locks=0 ]	(	*	)
-dodelgroups	[ 0	locks=0 ]	(	"off"	)
-delgroups	[ 0	locks=0 ]	(	*	)
-delnans	[ 0	locks=0 ]	(	"off"	)
-make_manifold	[ 0	locks=0 ]	(	"off"	)
-delete_small	[ 0	locks=0 ]	(	"on"	)
-prim_count	[ 0	locks=0 ]	(	3	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/09_Meshing.init"
@@ -183,8 +322,8 @@ inputs
 }
 stat
 {
-  create 1546978733
-  modify 1555461076
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -300,6 +439,7 @@ cmd.append(\"--output\")
 cmd.append(os.path.join(cache, \"09_Meshing\", \"mesh.obj\"))
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"09_Meshing\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -309,7 +449,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -343,8 +483,8 @@ inputs
 }
 stat
 {
-  create 1546979622
-  modify 1555461087
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -396,6 +536,7 @@ cmd.append(\"--output\")
 cmd.append(os.path.join(cache, \"10_MeshFiltering\", \"mesh.obj\"))
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"10_MeshFiltering\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -405,7 +546,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -441,8 +582,8 @@ inputs
 }
 stat
 {
-  create 1547596139
-  modify 1554407667
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -470,7 +611,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -480,7 +621,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -514,8 +655,8 @@ inputs
 }
 stat
 {
-  create 1547596144
-  modify 1554915940
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -541,7 +682,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -575,8 +716,8 @@ inputs
 }
 stat
 {
-  create 1547663913
-  modify 1555460888
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -626,7 +767,7 @@ Content-Type: text/plain
 {
 version 0.8
 filemode	[ 0	locks=0 ]	(	"read"	)
-file	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	C:\\Projects\\Alicevision-2.1.0\\AV_Cache\\AV_Error_01\\10_MeshFiltering\\mesh.obj ] 	)
+file	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	default.bgeo ] 	)
 reload	[ 0	locks=0 ]	(	[ reload	0 ] 	)
 objpattern	[ 0	locks=0 ]	(	*	)
 geodatapath	[ 0	locks=0 ]	(	""	)
@@ -652,7 +793,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -688,8 +829,8 @@ inputs
 }
 stat
 {
-  create 1547664637
-  modify 1554915940
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -713,7 +854,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -747,8 +888,8 @@ inputs
 }
 stat
 {
-  create 1547664973
-  modify 1550012928
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -778,7 +919,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -811,8 +952,8 @@ inputs
 }
 stat
 {
-  create 1549929013
-  modify 1554920123
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -837,7 +978,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -871,8 +1012,8 @@ inputs
 }
 stat
 {
-  create 1550018617
-  modify 1555460888
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -895,6 +1036,7 @@ geo = node.geometry()
 
 
 hou.node(\"../mesh_geo\").cook(force=True)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -904,7 +1046,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -938,8 +1080,8 @@ inputs
 }
 stat
 {
-  create 1550190242
-  modify 1554915940
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -974,6 +1116,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -991,7 +1134,84 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.219"
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.init"
+Content-Type: text/plain
+
+type = clean
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.50543 -2.69208
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	transform1 1 1 "input1"
+}
+inputs
+{
+0 	transform1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@Threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+fusepts	[ 0	locks=0 ]	(	"off"	)
+fusedist	[ 0	locks=0 ]	(	0.001	)
+deldegengeo	[ 0	locks=0 ]	(	"off"	)
+degentol	[ 0	locks=0 ]	(	0.001	)
+removeunusedgrp	[ 0	locks=0 ]	(	"on"	)
+orientpoly	[ 0	locks=0 ]	(	"off"	)
+reversewinding	[ 0	locks=0 ]	(	"off"	)
+fixoverlap	[ 0	locks=0 ]	(	"off"	)
+deleteoverlap	[ 0	locks=0 ]	(	"on"	)
+delunusedpts	[ 0	locks=0 ]	(	"on"	)
+dodelattribs	[ 0	locks=0 ]	(	"off"	)
+delattribs	[ 0	locks=0 ]	(	*	)
+dodelgroups	[ 0	locks=0 ]	(	"off"	)
+delgroups	[ 0	locks=0 ]	(	*	)
+delnans	[ 0	locks=0 ]	(	"off"	)
+make_manifold	[ 0	locks=0 ]	(	"off"	)
+delete_small	[ 0	locks=0 ]	(	"on"	)
+prim_count	[ 0	locks=0 ]	(	3	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
 	}
 }
 
