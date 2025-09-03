@@ -8,7 +8,7 @@
 
 """Evolve all the attributes on the terrain to create more realistic results."""
 
-Algorithms, noise, and Houdini’s Heightfield Mask by Feature tools evolve our attributes (e.g., temperature, precipitation, and soil) and generate micro-biomes. This attribute evolution allows the plant distribution to be coherent with the topography of the terrain. Parameters are exposed to control this process so artists can achieve the vision they have for their unique environment.
+Algorithms, noise, and Houdini’s Heightfield Mask by Feature tools evolve our attributes (e.g., `temperature`, `precipitation`, and `soil`) and generate micro-biomes. This attribute evolution allows the plant distribution to be coherent with the topography of the terrain. Parameters are exposed to control this process so artists can achieve the vision they have for their unique environment.
 
 @parameters
 
@@ -20,7 +20,7 @@ Display:
     <p>__Temperature__: A remapped preview of the `temperature` attribute on the terrain.</p>
     <p>__Precipitation__:  A remapped preview of the `precipitation` attribute on the terrain.</p>
     <p>__Soil__: A preview of the `soil` attribute on the terrain.</p>
-    <p>__Biome Color__: A preview of the `color` attribute on the terrain.</p>
+    <p>__Biome Color__: A preview of the `biomecolor` attribute on the terrain.</p>
 
 Auto Remap:
     #id: autoremap
@@ -42,11 +42,9 @@ Max:
     #id: inputmax
     The highest value in the input to map from.
 
-== Parameters ==
 
-=== Temperature ===
 
-=== Elevation ===
+=== Temperature: Elevation ===
 
 Evolve with Elevation:
     #id: evolvetemp
@@ -56,7 +54,7 @@ Lapse Rate:
     #id: lapserate
     The rate of temperature decrease with height. Measured in °C/km. If the value is positive, temperature decreases as height increases. If the value is negative, temperature increases as height increases. 
 
-=== Diffusion ===
+=== Temperature: Diffusion ===
 
 Blur between Regions:
     #id: evolvetempxz
@@ -66,9 +64,8 @@ Blur Iterations:
     #id: tempsiter
     Higher values will result in a smoother gradient, but will take longer to calculate.
 
-=== Precipitation ===
 
-=== Topography ===
+=== Precipitation: Topography ===
 
 Remove by Convexity:
     #id: removebyocclusion
@@ -78,7 +75,7 @@ Removal Amount over Convexity:
     #id: occlusionramp
     Modify this ramp to use a custom remapping. 
 
-=== Rain Shadow ===
+=== Precipitation: Rain Shadow ===
 
 Remove by Direction:
     #id: removebydir
@@ -101,9 +98,9 @@ Removal Amount over Falloff  Angle:
     Modify this ramp to use a custom remapping of __Falloff Angle__.
 
 
-=== Soil ===
 
-=== Cliffs ===
+
+=== Soil: Cliffs ===
 
 Remove by Slope:
     #id: removebyslope
@@ -129,7 +126,7 @@ Removal Amount over Height:
     #id: hfheightramp
     Controls the value of the mask over the range from the minimum height level to the maximum height level of the heightfield.
 
-=== Mask ===
+=== Soil: Soil Mask ===
 
 Enable Mask:
     #id: enablemask
@@ -147,7 +144,7 @@ Blend Mask:
     #id: blend
     The amount to blend the custom mask with the soil mask, when __Combine with Noise__ is “blend”. A value of 0 uses the soil mask, a value of 1 uses the custom mask, a value of 0.5 blends equally between the two masks.
 
-=== Soil Noise ===
+=== Soil: Soil Noise ===
 
 Remove by Noise:
     #id: removebynoise
@@ -212,9 +209,8 @@ Roughness:
     Fractal roughness. The roughness parameter determines the coarseness of the noise.
 
 
-=== Input ===
 
-=== HeightField Layers ===
+=== Input: HeightField Layers ===
 
 Temperature:
     #id: tempname
@@ -248,10 +244,11 @@ Biome Average Height:
     #id: biomeavgheightname
     Name of `average height` mask.
 
+=== Input: Detail Attributes ===
 
-=== Output ===
 
-=== HeightField Layers ===
+
+=== Output: HeightField Layers ===
 
 Generate Cliff:
     #id: generatecliff

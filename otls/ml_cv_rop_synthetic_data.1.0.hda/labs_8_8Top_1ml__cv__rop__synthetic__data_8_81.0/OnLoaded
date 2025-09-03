@@ -4,9 +4,6 @@ node = kwargs['node']
 
 if platform.system() == 'Windows':
     node.parm('os').set('Windows')
-    node_msg = 'Please see Custom Python Bin parameter tooltip.'
-    node.setComment(node_msg)
-    node.setGenericFlag(hou.nodeFlag.DisplayComment, True)
 elif platform.system() == 'Darwin':
     node.parm('os').set('Darwin')
 else:

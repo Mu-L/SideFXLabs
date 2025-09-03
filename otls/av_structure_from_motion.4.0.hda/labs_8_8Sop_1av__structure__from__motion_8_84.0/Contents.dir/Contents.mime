@@ -32,30 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.98112 -2.13358
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+position -14.4651 -3.65549
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
-2 "output2"
 }
 inputsNamed3
 {
-1 	av_analyze_images1 0 1 "input1"
 }
 inputs
 {
-0 	av_analyze_images1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author prisms@threadripper1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
-color UT_Color RGB 0.29 0.565 0.886 
+color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
@@ -84,8 +80,8 @@ Content-Type: text/plain
 	height := 2.8677999854087832;
 	minimized := 0;
 	width := 1.8000000000000025;
-	x_position := 8.3329406148430198;
-	y_position := -3.9991442213820401;
+	x_position := 8.33294061484302;
+	y_position := -3.99914422138204;
 }
 {
   create -1
@@ -100,92 +96,6 @@ Content-Type: text/plain
 
 1
 0 0 6 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 8.72994 -2.76124
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	alembic1 0 1 "input1"
-}
-inputs
-{
-0 	alembic1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author paula@DESKTOP-5213MPP
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"if (! startswith(prim(0, \"path\", @ptnum), \"/mvgRoot/mvgCameras/camxform\"))
-    removepoint(0, @ptnum);"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-vex_precision	[ 0	locks=0 ]	(	auto	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/05_Structure_from_Motion.init"
@@ -335,6 +245,7 @@ cmd.append(\"--verboseLevel\")
 cmd.append(\"error\")
 
 alicevisionutils.process(cmd, cache, \"05_StructureFromMotion\", node) "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -431,6 +342,7 @@ cmd.append(\"--verboseLevel\")
 cmd.append(\"error\")
 
 alicevisionutils.process(cmd, cache, \"06_PrepareDenseScene\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -505,7 +417,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -661,7 +573,7 @@ Content-Type: text/plain
 {
 version 0.8
 filemode	[ 0	locks=0 ]	(	"read"	)
-file	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	F:\\SideFX\\SideFXLabs\\hip\\AV_Cache\\alicevision_demoscene\\05_StructureFromMotion\\PC.bgeo ] 	)
+file	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ file	default.bgeo ] 	)
 reload	[ 0	locks=0 ]	(	[ reload	0 ] 	)
 objpattern	[ 0	locks=0 ]	(	*	)
 geodatapath	[ 0	locks=0 ]	(	""	)
@@ -866,6 +778,8 @@ transfer_groups	[ 0	locks=0 ]	(	""	)
 apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
 scene_style_sheet	[ 0	locks=0 ]	(	""	)
 obj_style_sheet	[ 0	locks=0 ]	(	""	)
+dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1069,6 +983,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	_mvgRoot_mvgCloud_mvgPointCloud_particleShape1	)
@@ -1214,6 +1131,7 @@ subprocess.call(\"gabc -l houdini %s %s\" % (pre_convert, post_convert), shell=T
 
 
 hou.node(\"../point_cloud\").cook(force=True)  "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1280,6 +1198,7 @@ geo = node.geometry()
 # Use drop down menu to select examples.
 import _alembic_hom_extensions as abc
 abc.alembicClearArchiveCache()  "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1359,6 +1278,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -1440,11 +1360,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"off"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1455,6 +1375,93 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 8.72994 -2.76124
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	alembic1 0 1 "input1"
+}
+inputs
+{
+0 	alembic1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author paula@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"if (! startswith(prim(0, \"path\", @ptnum), \"/mvgRoot/mvgCameras/camxform\"))
+    removepoint(0, @ptnum);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
 	}
 }
 
@@ -1556,7 +1563,7 @@ stat
   author paula@DESKTOP-5213MPP
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 0.9 0.8 0.55 
 delscript ""
 exprlanguage hscript
 end
@@ -1603,9 +1610,9 @@ Content-Type: text/plain
 
 {
 version 0.8
-reload	[ 0	locks=0 ]	(	0	)
 numlayers	[ 0	locks=0 ]	(	0	)
-fileName	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ fileName	"" ] 	)
+fileName	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ fileName	default.abc ] 	)
+reload	[ 0	locks=0 ]	(	0	)
 frame	[ 0	locks=0 ]	(	[ frame	1 ] 	)
 fps	[ 0	locks=0 ]	(	[ fps	24 ] 	)
 missingfile	[ 0	locks=0 ]	(	"empty"	)

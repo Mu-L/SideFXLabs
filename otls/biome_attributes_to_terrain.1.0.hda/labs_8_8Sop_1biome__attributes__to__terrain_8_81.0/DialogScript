@@ -3,7 +3,7 @@
 {
     name	labs::biome_attributes_to_terrain::1.0
     script	labs::objpath_instance::1.0
-    label	"Labs Biome Attributes to Terrain (Alpha)"
+    label	"Labs Biome Attributes to Terrain (Beta)"
 
     help {
 	""
@@ -21,7 +21,7 @@
         label   "Display"
         type    ordinal
         joinnext
-        default { "0" }
+        default { "1" }
         menu usetokenvalue {
             "0" "Input"
             "1" "Temperature"
@@ -70,7 +70,7 @@
             label   "Compute Range"
             type    button
             default { "0" }
-            hidewhen "{ display == 0 }"
+            hidewhen "{ display == 0 } { display == 4 }"
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "script_callback" "hou.pwd().hdaModule().computeRange(kwargs)" }
             parmtag { "script_callback_language" "python" }

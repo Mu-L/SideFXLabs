@@ -31,10 +31,10 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -3.21956 1.46668
+comment "Labs AV nodes versions 1.0, 2.0, and 3.0 to be removed in Houdini 23.0. Please use versions 4.0 and later."
+position -14.4651 5.53187
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -55,6 +55,883 @@ color UT_Color RGB 0.8 0.8 0.8
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual Mode"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder4"
+        label   "Initialize"
+        grouptag { "sidefx::switcher" "folder3" }
+
+        parm {
+            name    "proj"
+            baseparm
+            label   "Project Name"
+            export  none
+        }
+        parm {
+            name    "cache_dir"
+            baseparm
+            label   "Cache Directory"
+            export  none
+        }
+        parm {
+            name    "alice_dir"
+            baseparm
+            label   "Alice Vision Directory"
+            export  none
+        }
+        parm {
+            name    "dof"
+            baseparm
+            label   "Default Field of View"
+            export  none
+        }
+        parm {
+            name    "sepparm"
+            baseparm
+            label   "Separator"
+            export  none
+        }
+        parm {
+            name    "add_img"
+            baseparm
+            label   "Add Images"
+            export  none
+        }
+        multiscroll {
+            name    "src_img"
+            label    "Images"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+
+            parm {
+                name    "filename__#"
+                baseparm
+                label   "File"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder4_1"
+        label   "Meshing"
+
+        parm {
+            name    "filterTri"
+            baseparm
+            label   "Filter Large Triangles Factor"
+            export  none
+        }
+        parm {
+            name    "numIter"
+            baseparm
+            label   "Smoothing Iterations"
+            export  none
+        }
+        parm {
+            name    "keepLrg"
+            baseparm
+            label   "Keep Only the Largest Mesh"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder4_2"
+        label   "Texturing"
+
+        parm {
+            name    "side"
+            baseparm
+            label   "Texture Side"
+            export  none
+        }
+        parm {
+            name    "down"
+            baseparm
+            label   "Downscale"
+            export  none
+        }
+        parm {
+            name    "file"
+            baseparm
+            label   "Texture File Type"
+            export  none
+        }
+        parm {
+            name    "maxImg"
+            baseparm
+            label   "maxImg"
+            export  none
+        }
+        parm {
+            name    "holes"
+            baseparm
+            label   "Fill Holes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder4_3"
+        label   "Advanced"
+
+        group {
+            name    "folder3_5"
+            label   "Analyze Images"
+            grouptag { "sidefx::switcher" "folder3_4" }
+
+            parm {
+                name    "dsc_type"
+                baseparm
+                label   "Describer Types"
+                export  none
+            }
+            parm {
+                name    "dsc_pre"
+                baseparm
+                label   "Describer Preset"
+                export  none
+            }
+            parm {
+                name    "cpu"
+                baseparm
+                label   "Force CPU Extraction"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder3_5_1"
+            label   "Structure from Motion"
+
+            parm {
+                name    "maxN"
+                baseparm
+                label   "Max Num of Matches"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder3_5_2"
+            label   "Depth Map"
+
+            parm {
+                name    "down2"
+                baseparm
+                label   "Texture Downscale"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        baseparm
+        label   "Environment"
+        export  none
+    }
+    parm {
+        name    "mColorMode"
+        baseparm
+        label   "Color Mode"
+        export  none
+    }
+    parm {
+        name    "enablecustomenv"
+        baseparm
+        label   "Label"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "maxThreads"
+        baseparm
+        label   "Max CPU Threads"
+        export  none
+    }
+    parm {
+        name    "minNImg"
+        baseparm
+        label   "Min Number of Images"
+        export  none
+    }
+    parm {
+        name    "max_desc"
+        baseparm
+        label   "Max Descriptors"
+        export  none
+    }
+    parm {
+        name    "nMatch"
+        baseparm
+        label   "Number of Matches"
+        export  none
+    }
+    parm {
+        name    "nbNeighbors"
+        baseparm
+        label   "Number of Nighbors"
+        export  none
+    }
+    parm {
+        name    "dsc_type2"
+        baseparm
+        label   "Describer Types"
+        export  none
+    }
+    parm {
+        name    "guide"
+        baseparm
+        label   "Guided Matching"
+        export  none
+    }
+    parm {
+        name    "photo"
+        baseparm
+        label   "Photometric Matching Method"
+        export  none
+    }
+    parm {
+        name    "geoEst"
+        baseparm
+        label   "Geometric Estimator"
+        export  none
+    }
+    parm {
+        name    "geoFilter"
+        baseparm
+        label   "Geometric Filter type"
+        export  none
+    }
+    parm {
+        name    "dist"
+        baseparm
+        label   "Distance Ratio"
+        export  none
+    }
+    parm {
+        name    "maxIter"
+        baseparm
+        label   "Max Iteration"
+        export  none
+    }
+    parm {
+        name    "geometricError"
+        baseparm
+        label   "Geometric Validation Error"
+        export  none
+    }
+    parm {
+        name    "knownPosesGeometricErrorMax"
+        baseparm
+        label   "Known Poses Geometric Error Max"
+        export  none
+    }
+    parm {
+        name    "maxMatch"
+        baseparm
+        label   "Max Matches"
+        export  none
+    }
+    parm {
+        name    "savePut"
+        baseparm
+        label   "Save Putative Matches"
+        export  none
+    }
+    parm {
+        name    "matchFilePerImage"
+        baseparm
+        label   "Match File Per Image"
+        export  none
+    }
+    parm {
+        name    "useGridSort"
+        baseparm
+        label   "Use Grid Sort"
+        export  none
+    }
+    parm {
+        name    "expDebug"
+        baseparm
+        label   "Export Debug Files"
+        export  none
+    }
+    parm {
+        name    "dsc_type3"
+        baseparm
+        label   "Describer Types"
+        export  none
+    }
+    parm {
+        name    "lock"
+        baseparm
+        label   "Lock Scene Previously Reconstructed"
+        export  none
+    }
+    parm {
+        name    "local"
+        baseparm
+        label   "Local Bundle Adjustment"
+        export  none
+    }
+    parm {
+        name    "minNumberOfMatches"
+        baseparm
+        label   "Min Num of Matches"
+        export  none
+    }
+    parm {
+        name    "minInput"
+        baseparm
+        label   "Min Input Track Length"
+        export  none
+    }
+    parm {
+        name    "lockAllIntrinsics"
+        baseparm
+        label   "Force Lock of All Intrinsic Camera Parameters"
+        export  none
+    }
+    parm {
+        name    "filterTrackForks"
+        baseparm
+        label   "Filter Track Forks"
+        export  none
+    }
+    parm {
+        name    "locl_es"
+        baseparm
+        label   "Localizer Estimator"
+        export  none
+    }
+    parm {
+        name    "localizerEstimatorMaxIterations"
+        baseparm
+        label   "Localizer Max Ransac Iterations"
+        export  none
+    }
+    parm {
+        name    "localizerEstimatorError"
+        baseparm
+        label   "Localizer Estimator Error"
+        export  none
+    }
+    parm {
+        name    "ba"
+        baseparm
+        label   "LocalBA Graph Distance"
+        export  none
+    }
+    parm {
+        name    "minTri"
+        baseparm
+        label   "Min Observation for Triangulation"
+        export  none
+    }
+    parm {
+        name    "minAngle"
+        baseparm
+        label   "Min Angle for Triangulation"
+        export  none
+    }
+    parm {
+        name    "minLandmark"
+        baseparm
+        label   "Min Angle for Landmark"
+        export  none
+    }
+    parm {
+        name    "maxReprEr"
+        baseparm
+        label   "Max Reprojection Error"
+        export  none
+    }
+    parm {
+        name    "maxAngInit"
+        baseparm
+        label   "Max Angle Initial Pair"
+        export  none
+    }
+    parm {
+        name    "minAngInit"
+        baseparm
+        label   "Min Angle Initial Pair"
+        export  none
+    }
+    parm {
+        name    "useInputMatches"
+        baseparm
+        label   "Use Only Inputfolder Matches"
+        export  none
+    }
+    parm {
+        name    "useRigConstraint"
+        baseparm
+        label   "Use Rig Constraint"
+        export  none
+    }
+    parm {
+        name    "fileExt"
+        baseparm
+        label   "Inter File Extension"
+        export  none
+    }
+    parm {
+        name    "outputFileType"
+        baseparm
+        label   "Output File Type"
+        export  none
+    }
+    parm {
+        name    "saveMetadata"
+        baseparm
+        label   "Save Metadata"
+        export  none
+    }
+    parm {
+        name    "saveMatricesTxtFiles"
+        baseparm
+        label   "Save Matrices Text Files"
+        export  none
+    }
+    parm {
+        name    "evCorrection"
+        baseparm
+        label   "Correct images exposure"
+        export  none
+    }
+    parm {
+        name    "minViewAngle"
+        baseparm
+        label   "Min View Angle"
+        export  none
+    }
+    parm {
+        name    "maxViewAngle"
+        baseparm
+        label   "Max View Angle"
+        export  none
+    }
+    parm {
+        name    "sNumCam"
+        baseparm
+        label   "SGM: Num Neighbor Cameras"
+        export  none
+    }
+    parm {
+        name    "sWSH"
+        baseparm
+        label   "SGM: WSH"
+        export  none
+    }
+    parm {
+        name    "sGamC"
+        baseparm
+        label   "SGM: GammaC"
+        export  none
+    }
+    parm {
+        name    "sGamP"
+        baseparm
+        label   "SGM: GammaP"
+        export  none
+    }
+    parm {
+        name    "rNumCam"
+        baseparm
+        label   "Refine: Num Neighbor Cameras"
+        export  none
+    }
+    parm {
+        name    "rNumSamp"
+        baseparm
+        label   "Refine: Num of Samples"
+        export  none
+    }
+    parm {
+        name    "rNumDepth"
+        baseparm
+        label   "Refine: Num of Depths"
+        export  none
+    }
+    parm {
+        name    "rNumIter"
+        baseparm
+        label   "Refine: Num of Iterations"
+        export  none
+    }
+    parm {
+        name    "rWSH"
+        baseparm
+        label   "Refine: WSH"
+        export  none
+    }
+    parm {
+        name    "rSigma"
+        baseparm
+        label   "Refine: Sigma"
+        export  none
+    }
+    parm {
+        name    "rGamC"
+        baseparm
+        label   "Refine: GammaC"
+        export  none
+    }
+    parm {
+        name    "rGamP"
+        baseparm
+        label   "Refine: GammaP"
+        export  none
+    }
+    parm {
+        name    "rTcRc"
+        baseparm
+        label   "Refine: Tc or Rc Pixel Size"
+        export  none
+    }
+    parm {
+        name    "exportIntermediateResults"
+        baseparm
+        label   "Export Intermediate Results"
+        export  none
+    }
+    parm {
+        name    "nbGPUs"
+        baseparm
+        label   "Number of GPUs"
+        export  none
+    }
+    parm {
+        name    "minCon"
+        baseparm
+        label   "Min Consistent Cameras"
+        export  none
+    }
+    parm {
+        name    "minConBad"
+        baseparm
+        label   "Min Consistent Cameras Bad Similarity"
+        export  none
+    }
+    parm {
+        name    "minViewAngle2"
+        baseparm
+        label   "Min View Angle"
+        export  none
+    }
+    parm {
+        name    "maxViewAngle2"
+        baseparm
+        label   "Max View Angle"
+        export  none
+    }
+    parm {
+        name    "numCam"
+        baseparm
+        label   "Number of Nearest Cameras"
+        export  none
+    }
+    parm {
+        name    "filter"
+        baseparm
+        label   "Filtering Size in Pixels"
+        export  none
+    }
+    parm {
+        name    "filterBad"
+        baseparm
+        label   "Filtering Size in Pixels Bad Similarity"
+        export  none
+    }
+    parm {
+        name    "computeNormalMaps"
+        baseparm
+        label   "Compute Normal Maps"
+        export  none
+    }
+    parm {
+        name    "estimateSpaceMinObservationAngle"
+        baseparm
+        label   "Min Observations Angle For SfM Space Estimation"
+        export  none
+    }
+    parm {
+        name    "maxInpt"
+        baseparm
+        label   "Max Input Points"
+        export  none
+    }
+    parm {
+        name    "maxPts"
+        baseparm
+        label   "Max Points"
+        export  none
+    }
+    parm {
+        name    "colorizeOutput"
+        baseparm
+        label   "Vertex Colors"
+        export  none
+    }
+    parm {
+        name    "estimateSpaceFromSfM"
+        baseparm
+        label   "Estimate Space From SfM"
+        export  none
+    }
+    parm {
+        name    "estimateSpaceMinObservations"
+        baseparm
+        label   "Min Observations For SfM Space Estimation"
+        export  none
+    }
+    parm {
+        name    "maxPtsVox"
+        baseparm
+        label   "Max Points per Voxel"
+        export  none
+    }
+    parm {
+        name    "minStep"
+        baseparm
+        label   "Min Step"
+        export  none
+    }
+    parm {
+        name    "part"
+        baseparm
+        label   "Partitioning"
+        export  none
+    }
+    parm {
+        name    "rePart"
+        baseparm
+        label   "Repartition"
+        export  none
+    }
+    parm {
+        name    "angle"
+        baseparm
+        label   "Angle Factor"
+        export  none
+    }
+    parm {
+        name    "sim"
+        baseparm
+        label   "Sim Factor"
+        export  none
+    }
+    parm {
+        name    "pixInit"
+        baseparm
+        label   "pixSizeMarginInitCoef"
+        export  none
+    }
+    parm {
+        name    "pixFinal"
+        baseparm
+        label   "pixSizeMarginFinalCoef"
+        export  none
+    }
+    parm {
+        name    "vote"
+        baseparm
+        label   "voteMarginFactor"
+        export  none
+    }
+    parm {
+        name    "contrib"
+        baseparm
+        label   "contributeMarginFactor"
+        export  none
+    }
+    parm {
+        name    "simGaussInit"
+        baseparm
+        label   "simGaussianSizeInit"
+        export  none
+    }
+    parm {
+        name    "simGaussSize"
+        baseparm
+        label   "simGaussianSize"
+        export  none
+    }
+    parm {
+        name    "minThresh"
+        baseparm
+        label   "minAngleThreshold"
+        export  none
+    }
+    parm {
+        name    "rFuse"
+        baseparm
+        label   "Refine Fuse"
+        export  none
+    }
+    parm {
+        name    "addLandmarksToTheDensePointCloud"
+        baseparm
+        label   "Add Landmarks To The Dense Point Cloud"
+        export  none
+    }
+    parm {
+        name    "seed"
+        baseparm
+        label   "Seed"
+        export  none
+    }
+    parm {
+        name    "forceTEdgeDelta"
+        baseparm
+        label   "Min Step"
+        export  none
+    }
+    parm {
+        name    "universePercentile"
+        baseparm
+        label   "Universe Percentile"
+        export  none
+    }
+    parm {
+        name    "lambda"
+        baseparm
+        label   "Lambda"
+        export  none
+    }
+    parm {
+        name    "unwrap"
+        baseparm
+        label   "Unwrap Method"
+        export  none
+    }
+    parm {
+        name    "flipN"
+        baseparm
+        label   "Flip Normals"
+        export  none
+    }
+    parm {
+        name    "useUDIM"
+        baseparm
+        label   "Use UDIM UVs"
+        export  none
+    }
+    parm {
+        name    "pad"
+        baseparm
+        label   "Padding"
+        export  none
+    }
+    parm {
+        name    "score"
+        baseparm
+        label   "Best Score Threshold"
+        export  none
+    }
+    parm {
+        name    "angle2"
+        baseparm
+        label   "Angle Hard Threshold"
+        export  none
+    }
+    parm {
+        name    "force"
+        baseparm
+        label   "Force Visible By All Vertices"
+        export  none
+    }
+    parm {
+        name    "visRemap"
+        baseparm
+        label   "Visibility Remapping Method"
+        export  none
+    }
+    parm {
+        name    "bCustomImages"
+        baseparm
+        label   "Use Custom Images for Texturing"
+        export  none
+    }
+    parm {
+        name    "customTextureImages"
+        baseparm
+        label   "Custom Texturing Images"
+        export  none
+    }
+    parm {
+        name    "correctEV"
+        baseparm
+        label   "Correct Exposure"
+        export  none
+    }
+    parm {
+        name    "useScore"
+        baseparm
+        label   "Use Score"
+        export  none
+    }
+    parm {
+        name    "processColorspace"
+        baseparm
+        label   "Process Colorspace"
+        export  none
+    }
+    parm {
+        name    "multiBandDownscale"
+        baseparm
+        label   "Multi Band Downscale"
+        export  none
+    }
+    parm {
+        name    "reload"
+        baseparm
+        label   "Dense Pointcloud"
+        export  none
+    }
+    parm {
+        name    "reload2"
+        baseparm
+        label   "Scan Geometry"
+        export  none
+    }
+    parm {
+        name    "reload3"
+        baseparm
+        label   "Textured Geometry"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -1204,13 +2081,6 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 1 1 expr = ch(\"../enablecustomenv\") }
     }
-    channel filename__1 {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../filename__1\") }
-    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1230,9 +2100,8 @@ enablecustomenv	[ 8	locks=0 ]	(	[ enablecustomenv	0 ] 	)
 customenv	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	`chs(\"../customenv\")`	)
 folder0	[ 0	locks=0	autoscope=0 ]	(	1	1	)
 add_img	[ 0	locks=0 ]	(	0	)
-src_img	[ 0	locks=0	autoscope=0 ]	(	[ src_img	1 ] 	)
+src_img	[ 0	locks=0	autoscope=0 ]	(	[ src_img	0 ] 	)
 dof	[ 0	locks=0	autoscope=0 ]	(	[ dof	45 ] 	)
-filename__1	[ 0	locks=0 ]	(	[ filename__1	"" ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

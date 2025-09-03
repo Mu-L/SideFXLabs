@@ -33,7 +33,7 @@ Extension:
 
 Save to Disk:
     #id: processnodes
-    Read and write input `plant_definition` dictionary attributes in the defined plant definitions file.
+    Write input `plant_definition` dictionary attributes to the defined plant definitions file.
 
 Reload from Disk:
     #id: reload
@@ -41,7 +41,7 @@ Reload from Disk:
 
 Create:
     #id: create
-    <p>__Geometry__: Creates Points with the `plant_definition` dictionary attribute.</p>
+    <p>__Geometry__: Creates points with the `plant_definition` dictionary attribute.</p>
     <p>__Plant Define Nodes__: Creates a _Biome Plant Define SOP_ node from each 'plant_definition'.</p>
 
 == Dictionary Keys ==
@@ -86,15 +86,25 @@ Upper:
 
 === Spacing ===
 
+Maximum Density:
+    #id: densitymax
+    Label of the plant's maximum density.
+
 Type:
     #id: type
     Label of the plant's type.
 
-Density:
-    #id: densitymax
-    Label of the plant's density.
+=== Spacing ===
+
+Scale Multiplier:
+    #id: scalemult
+    Label of scale multiplier. 
 
 === Advanced ===
+
+Randomize Scale:
+    #id: randscale
+    Label of randomize scale. 
 
 Hardiness:
     #id: hardiness
@@ -102,13 +112,50 @@ Hardiness:
 
 Normal from Terrain:
     #id: normterrain
-    Label of Normal from Terrain.
+    Label of normal from terrain.
 
 Randomize Yaw:
     #id: randomizeyaw
-    Label of Randomize Yaw.
+    Label of randomize yaw.
+
+Material:
+    #id: shop_materialpath
+    Label of material.
+
 
 === Species Variants ===
+
+Autofill Mode: 
+    #id: autofillmode
+    Label of autofill mode.
+
+Variants Merge Path:
+    #id: variantsmergepath 
+    Label of variants merge path. 
+
+Variants Directory:
+    #id: variantsdir
+    Label of variants directory.
+
+Pattern:
+    #id: pattern
+    Label of pattern.
+
+Search Child Directories:
+    #id: recursive
+    Label of search child directories.
+
+Autofill Radii on Load:
+    #id: autofillradii
+    Label of autofill radii on load.
+
+Max Shrub Height:
+    #id: maxshrubheight
+    Label of max shrub height.
+
+Ground Cover Height:
+    #id: groundcoverheight
+    Label of ground cover height. 
 
 Include Engine Asset Paths:
     #id: enginepaths
@@ -116,7 +163,11 @@ Include Engine Asset Paths:
 
 Number Of Variants:
     #id: variants
-    Label for Number Of Variants multi-parameter folder.
+    Label for number of variants multi-parameter folder.
+
+Reference Type:
+    #id: reftype
+    Label of reference type. 
 
 Mesh Variant:
     #id: meshvariant
@@ -125,6 +176,14 @@ Mesh Variant:
 Mesh (Dead) Variant:
     #id: meshdeadvariant
     Label for dead plant mesh path.
+
+File Mesh Variant:
+    #id: filemeshvariant
+    Label of file mesh variant.
+
+File Mesh (Dead) Variant:
+    #id: filemeshdeadvariant
+    Label of file mesh (dead) variant.
 
 Weight:
     #id: weight
@@ -146,10 +205,6 @@ Scale Range:
     #id: scalemin scalemax
     Label for minimum and maximum of the scale in range.
 
-Randomize Scale:
-    #id: randscale
-    Label for randomize scale.
-
 Dead Ratio:
     #id: deadratio
     Label for dead ratio.
@@ -168,6 +223,6 @@ Asset (Dead) Path:
 
 
 @related
-- [Labs Biome Plant Define|Node:sop/labs--biome_plant_define-1.0]
-- [Labs Biome Plant Definitions File|Node:sop/labs--biome_plant_definitions_file-1.0]
+- [Labs Biome Plant Define|Node:sop/labs--biome_plant_define-1.1]
+- [Labs Biome Plant Definitions File|Node:sop/labs--biome_plant_definitions_file-1.1]
 - [Labs Biome Attributes Evolve|Node:sop/labs--biome_attributes_evolve-1.0]

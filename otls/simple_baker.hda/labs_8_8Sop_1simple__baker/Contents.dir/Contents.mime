@@ -2,6 +2,18 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="node_type"
 Content-Type: text/plain
 
@@ -11,7 +23,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_simple_baker
+type = labs::simple_baker
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.71768 1.83854
+position -74.1447 81.4293
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -36,13 +48,386 @@ stat
 {
   create -1
   modify -1
-  author prisms@threadripper1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "execute"
+        baseparm
+        label   "Render"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "spacer"
+        baseparm
+        label   "_"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "like_tool"
+        baseparm
+        label   "Like Tool"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "dont_like"
+        baseparm
+        label   "Thumbs Down"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "render"
+        baseparm
+        label   "Render"
+        invisible
+        export  none
+    }
+    group {
+        name    "folder1"
+        label   "Baker"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "vm_uvunwrapres"
+            baseparm
+            label   "Resolution"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "uvresmenu"
+            baseparm
+            label   "uvresmenu"
+            export  none
+        }
+        parm {
+            name    "base_path"
+            baseparm
+            label   "Base Path"
+            export  none
+        }
+        parm {
+            name    "export_fbx"
+            baseparm
+            label   "Label"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "fbx_path"
+            baseparm
+            label   "Export FBX"
+            export  none
+        }
+        group {
+            name    "channels3"
+            label   "Channels"
+            grouptag { "sidefx::switcher" "channels" }
+
+            parm {
+                name    "bake_basecolor"
+                baseparm
+                label   "Base Color"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "basecolor_suffix"
+                baseparm
+                label   "Vertex Color"
+                export  none
+            }
+            parm {
+                name    "bake_Nt"
+                baseparm
+                label   "Normal Map"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "Nt_suffix"
+                baseparm
+                label   "Normal Map"
+                export  none
+            }
+            parm {
+                name    "bake_alpha"
+                baseparm
+                label   "Opacity"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "alpha_suffix"
+                baseparm
+                label   "Opacity Map"
+                export  none
+            }
+            parm {
+                name    "bake_specrough"
+                baseparm
+                label   "Roughness Map"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "specrough_suffix"
+                baseparm
+                label   "Roughness Map"
+                export  none
+            }
+            parm {
+                name    "bake_metallic"
+                baseparm
+                label   "Metallic Map"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "metallic_suffix"
+                baseparm
+                label   "Metallic Map"
+                export  none
+            }
+            parm {
+                name    "bake_N"
+                baseparm
+                label   "World Normal Map"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "N_suffix"
+                baseparm
+                label   "World Normal"
+                export  none
+            }
+            parm {
+                name    "bake_Oc"
+                baseparm
+                label   "Ambient Occlusion"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "Oc_suffix"
+                baseparm
+                label   "Ambient Occlusion"
+                export  none
+            }
+            parm {
+                name    "bake_Cu"
+                baseparm
+                label   "Curvature"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "Cu_suffix"
+                baseparm
+                label   "Curvature"
+                export  none
+            }
+            parm {
+                name    "bake_Th"
+                baseparm
+                label   "Thickness"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "Th_suffix"
+                baseparm
+                label   "Thickness"
+                export  none
+            }
+            parm {
+                name    "bake_P"
+                baseparm
+                label   "Position"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "P_suffix"
+                baseparm
+                label   "Position"
+                export  none
+            }
+            parm {
+                name    "bake_Ds"
+                baseparm
+                label   "Height"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "Ds_suffix"
+                baseparm
+                label   "Height"
+                export  none
+            }
+            multiparm {
+                name    "custom_channels"
+                label    "Custom Channels"
+                baseparm
+                default 0
+                parmtag { "autoscope" "0000000000000000" }
+
+                parm {
+                    name    "custom_attribute_name_#"
+                    baseparm
+                    label   "Attribute Name"
+                    export  none
+                }
+                parm {
+                    name    "custom_attribute_suffix_#"
+                    baseparm
+                    label   "Suffix"
+                    export  none
+                }
+            }
+
+        }
+
+        group {
+            name    "channels3_1"
+            label   "Advanced"
+
+            parm {
+                name    "trange"
+                baseparm
+                label   "Valid Frame Range"
+                export  none
+            }
+            parm {
+                name    "f"
+                baseparm
+                label   "Start/End/Inc"
+                export  none
+            }
+            parm {
+                name    "vm_bake_usemikkt"
+                baseparm
+                label   "Use MikkT Tangent Space"
+                export  none
+            }
+            parm {
+                name    "bBasecolorLinearSpace"
+                baseparm
+                label   "Output basecolor in Linear Space"
+                export  none
+            }
+            parm {
+                name    "vm_bake_tangentnormalflipy"
+                baseparm
+                label   "Tangent Normal Flip Y"
+                export  none
+            }
+            parm {
+                name    "vm_bake_skipcf"
+                baseparm
+                label   "Disable Lighting/Emission"
+                export  none
+            }
+            parm {
+                name    "vm_uvcageobject1"
+                baseparm
+                label   "Cage Mesh"
+                export  none
+            }
+            parm {
+                name    "border_padding"
+                baseparm
+                label   "Border Padding"
+                export  none
+            }
+            parm {
+                name    "baking_samples"
+                baseparm
+                label   "Baking Samples"
+                export  none
+            }
+            parm {
+                name    "ray_bias"
+                baseparm
+                label   "Ray Bias"
+                export  none
+            }
+            parm {
+                name    "ray_distance"
+                baseparm
+                label   "Ray Distance"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Material"
+
+        parm {
+            name    "basecolor"
+            baseparm
+            label   "Base Color"
+            export  none
+        }
+        parm {
+            name    "ior"
+            baseparm
+            label   "IOR"
+            export  none
+        }
+        parm {
+            name    "rough"
+            baseparm
+            label   "Roughness"
+            export  none
+        }
+        parm {
+            name    "visualize_channel"
+            baseparm
+            label   "Diffuse Map"
+            export  none
+        }
+    }
+
+    parm {
+        name    "currentplane"
+        label   "currentplane"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -124,7 +509,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker.init"
 Content-Type: text/plain
 
-type = gamedev::rop_games_baker
+type = labs::games_baker
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -421,9 +806,9 @@ version 0.8
 execute	[ 0	locks=0 ]	(	0	)
 renderdialog	[ 0	locks=0 ]	(	0	)
 meshes	[ 0	locks=0	autoscope=0 ]	(	1	)
-vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	512 ] 	[ vm_uvunwrapresy	512 ] 	)
+vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	2048 ] 	[ vm_uvunwrapresy	2048 ] 	)
 uvresmenu	[ 0	locks=0 ]	(	0	)
-base_path	[ 0	locks=0	autoscope=0 ]	(	[ base_path	"C:/Program Files/SideFX/render/untitled_$(CHANNEL).tga" ] 	)
+base_path	[ 0	locks=0	autoscope=0 ]	(	[ base_path	$HIP/render/${HIPNAME}_$(CHANNEL).tga ] 	)
 channels	[ 0	locks=0 ]	(	1	1	)
 bake_basecolor	[ 0	locks=0	autoscope=0 ]	(	[ bake_basecolor	1 ] 	)
 basecolor_suffix	[ 0	locks=0	autoscope=0 ]	(	[ basecolor_suffix	basecolor ] 	)
@@ -437,7 +822,7 @@ bake_metallic	[ 0	locks=0 ]	(	[ bake_metallic	0 ] 	)
 metallic_suffix	[ 0	locks=0 ]	(	[ metallic_suffix	metallic ] 	)
 bake_N	[ 0	locks=0	autoscope=0 ]	(	[ bake_N	0 ] 	)
 N_suffix	[ 0	locks=0	autoscope=0 ]	(	[ N_suffix	worldnormal ] 	)
-bake_Oc	[ 0	locks=0	autoscope=0 ]	(	[ bake_Oc	1 ] 	)
+bake_Oc	[ 0	locks=0	autoscope=0 ]	(	[ bake_Oc	0 ] 	)
 Oc_suffix	[ 0	locks=0	autoscope=0 ]	(	[ Oc_suffix	ao ] 	)
 bake_Cu	[ 0	locks=0	autoscope=0 ]	(	[ bake_Cu	0 ] 	)
 Cu_suffix	[ 0	locks=0	autoscope=0 ]	(	[ Cu_suffix	curvature ] 	)
@@ -449,7 +834,7 @@ bake_Ds	[ 0	locks=0	autoscope=0 ]	(	[ bake_Ds	0 ] 	)
 Ds_suffix	[ 0	locks=0	autoscope=0 ]	(	[ Ds_suffix	height ] 	)
 custom_channels	[ 0	locks=0	autoscope=0 ]	(	[ custom_channels	0 ] 	)
 trange	[ 0	locks=0	autoscope=0 ]	(	[ trange	0 ] 	)
-f	[ 0	locks=0	autoscope=0 ]	(	[ f1	1 ] 	[ f2	240 ] 	[ f3	1 ] 	)
+f	[ 0	locks=0	autoscope=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	[ f3	1 ] 	)
 vm_bake_usemikkt	[ 0	locks=0	autoscope=0 ]	(	[ vm_bake_usemikkt	1 ] 	)
 bBasecolorLinearSpace	[ 0	locks=0 ]	(	[ bBasecolorLinearSpace	0 ] 	)
 vm_bake_tangentnormalflipy	[ 0	locks=0	autoscope=0 ]	(	[ vm_bake_tangentnormalflipy	0 ] 	)
@@ -457,7 +842,7 @@ vm_bake_skipcf	[ 0	locks=0 ]	(	[ vm_bake_skipcf	1 ] 	)
 vm_uvcageobject1	[ 0	locks=0	autoscope=0 ]	(	[ vm_uvcageobject1	"" ] 	)
 border_padding	[ 0	locks=0	autoscope=0 ]	(	[ border_padding	2 ] 	)
 baking_samples	[ 8	locks=0 ]	(	[ baking_samples	8 ] 	)
-ray_bias	[ 0	locks=0	autoscope=0 ]	(	[ ray_bias	0.01 ] 	)
+ray_bias	[ 0	locks=0	autoscope=0 ]	(	[ ray_bias	0.1 ] 	)
 ray_distance	[ 0	locks=0	autoscope=0 ]	(	[ ray_distance	-1 ] 	)
 target_mesh_1	[ 0	locks=0	autoscope=0 ]	(	../../LOW	)
 source_mesh_1	[ 0	locks=0	autoscope=0 ]	(	../../HIGH	)
@@ -1128,8 +1513,9 @@ Content-Type: text/plain
         label   "Surface"
 
         groupsimple {
-            name    "folder17"
+            name    "folder19"
             label   "Basic"
+            grouptag { "sidefx::switcher" "folder17" }
 
             parm {
                 name    "basecolor"
@@ -1158,8 +1544,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder18"
+            name    "folder20"
             label   "Specular"
+            grouptag { "sidefx::switcher" "folder18" }
 
             parm {
                 name    "ior"
@@ -1186,8 +1573,9 @@ Content-Type: text/plain
                 export  none
             }
             groupsimple {
-                name    "folder19"
+                name    "folder21"
                 label   "Reflection"
+                grouptag { "sidefx::switcher" "folder19" }
 
                 parm {
                     name    "metallic"
@@ -1222,8 +1610,9 @@ Content-Type: text/plain
             }
 
             groupsimple {
-                name    "folder20"
+                name    "folder22"
                 label   "Transparency"
+                grouptag { "sidefx::switcher" "folder20" }
 
                 parm {
                     name    "transparency"
@@ -1260,8 +1649,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder21"
+            name    "folder23"
             label   "Subsurface Scattering"
+            grouptag { "sidefx::switcher" "folder21" }
 
             parm {
                 name    "sss"
@@ -1296,8 +1686,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder22"
+            name    "folder24"
             label   "Sheen"
+            grouptag { "sidefx::switcher" "folder22" }
 
             parm {
                 name    "sheen"
@@ -1314,8 +1705,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder23"
+            name    "folder25"
             label   "Emission"
+            grouptag { "sidefx::switcher" "folder23" }
 
             parm {
                 name    "emitcolor"
@@ -1344,8 +1736,9 @@ Content-Type: text/plain
         label   "Opacity"
 
         groupsimple {
-            name    "folder24"
+            name    "folder26"
             label   "Opacity"
+            grouptag { "sidefx::switcher" "folder24" }
 
             parm {
                 name    "opac"
@@ -1374,8 +1767,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder25"
+            name    "folder27"
             label   "Fake Caustics"
+            grouptag { "sidefx::switcher" "folder25" }
 
             parm {
                 name    "fakecausticsenabled"
@@ -1447,8 +1841,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder26"
+            name    "folder28"
             label   "IOR"
+            grouptag { "sidefx::switcher" "folder26" }
 
             parm {
                 name    "ior_useTexture"
@@ -1647,8 +2042,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder27"
+            name    "folder29"
             label   "Reflectivity"
+            grouptag { "sidefx::switcher" "folder27" }
 
             parm {
                 name    "reflect_useTexture"
@@ -1802,8 +2198,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder28"
+            name    "folder30"
             label   "Transparency"
+            grouptag { "sidefx::switcher" "folder28" }
 
             parm {
                 name    "transparency_useTexture"
@@ -1840,8 +2237,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder29"
+            name    "folder31"
             label   "Transmission Color"
+            grouptag { "sidefx::switcher" "folder29" }
 
             parm {
                 name    "transcolor_useTexture"
@@ -1991,8 +2389,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder30"
+            name    "folder32"
             label   "Subsurface Scattering Distance"
+            grouptag { "sidefx::switcher" "folder30" }
 
             parm {
                 name    "sssdist_useTexture"
@@ -2174,8 +2573,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder31"
+            name    "folder33"
             label   "Opacity"
+            grouptag { "sidefx::switcher" "folder31" }
 
             parm {
                 name    "opaccolor_useTexture"
@@ -2599,8 +2999,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder32"
+            name    "folder34"
             label   "Custom Input"
+            grouptag { "sidefx::switcher" "folder32" }
 
             parm {
                 name    "dispInput_enable"
@@ -2804,8 +3205,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder33"
+            name    "folder35"
             label   "UV"
+            grouptag { "sidefx::switcher" "folder33" }
 
             parm {
                 name    "uvtrans"
@@ -3199,6 +3601,93 @@ Content-Type: text/plain
         invisible
         export  none
     }
+    parm {
+        name    "transcolor_usePointColor"
+        baseparm
+        label   "Use Point Color"
+        export  none
+    }
+    parm {
+        name    "ssscolor_usePointColor"
+        baseparm
+        label   "Use Point Color"
+        export  none
+    }
+    parm {
+        name    "emitcolor_usePointColor"
+        baseparm
+        label   "Use Point Color"
+        export  none
+    }
+    parm {
+        name    "alphablendmode"
+        baseparm
+        label   "Alpha Mode"
+        export  none
+    }
+    parm {
+        name    "alphacutoff"
+        baseparm
+        label   "Alpha Cutoff"
+        export  none
+    }
+    parm {
+        name    "basecolor_useTextureAlpha"
+        baseparm
+        label   "Use Texture Alpha"
+        export  none
+    }
+    parm {
+        name    "occlusion_useTexture"
+        baseparm
+        label   "Use Texture"
+        export  none
+    }
+    parm {
+        name    "occlusion_texture"
+        baseparm
+        label   "Texture"
+        export  none
+    }
+    parm {
+        name    "occlusion_textureWrap"
+        baseparm
+        label   "Wrap"
+        export  none
+    }
+    parm {
+        name    "occlusion_textureIntensity"
+        baseparm
+        label   "Tint Intensity"
+        export  none
+    }
+    parm {
+        name    "occlusion_textureColorSpace"
+        baseparm
+        label   "Source Color Space"
+        export  none
+    }
+    parm {
+        name    "displayColor"
+        baseparm
+        label   "Attribute Color"
+        invisible
+        export  none
+    }
+    parm {
+        name    "st"
+        baseparm
+        label   "st"
+        invisible
+        export  none
+    }
+    parm {
+        name    "displayOpacity"
+        baseparm
+        label   "Attribute Alpha"
+        invisible
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/matnet/plain_white.chn"
@@ -3273,7 +3762,7 @@ basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
 ior	[ 0	locks=0 ]	(	1.5	)
-rough	[ 0	locks=0 ]	(	0.29999999999999999	)
+rough	[ 0	locks=0 ]	(	0.3	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -3285,21 +3774,24 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
+transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
-sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
+sssmodel	[ 0	locks=0 ]	(	pbrsss	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
+ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
 sheen	[ 0	locks=0 ]	(	0	)
 sheentint	[ 0	locks=0 ]	(	0	)
 folder9	[ 0	locks=0 ]	(	0	)
-emitcolor	[ 0	locks=0 ]	(	0	0	0	)
 emitint	[ 0	locks=0 ]	(	1	)
+emitcolor	[ 0	locks=0 ]	(	0	0	0	)
+emitcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 emitillum	[ 0	locks=0 ]	(	"on"	)
 folder15	[ 0	locks=0 ]	(	0	)
 opac	[ 0	locks=0 ]	(	1	)
@@ -3311,12 +3803,16 @@ fakecausticsenabled	[ 0	locks=0 ]	(	"off"	)
 fakecausticstransmit	[ 0	locks=0 ]	(	1	)
 fakecausticsshadow	[ 0	locks=0 ]	(	1	)
 fakecausticsopacity	[ 0	locks=0 ]	(	0	)
+folder17	[ 0	locks=0 ]	(	0	)
+alphablendmode	[ 0	locks=0 ]	(	blend	)
+alphacutoff	[ 0	locks=0 ]	(	0.5	)
 folder54	[ 0	locks=0 ]	(	0	)
 basecolor_useTexture	[ 0	locks=0 ]	(	"off"	)
 basecolor_texture	[ 0	locks=0 ]	(	""	)
 basecolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 basecolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 basecolor_textureColorSpace	[ 0	locks=0 ]	(	auto	)
+basecolor_useTextureAlpha	[ 0	locks=0 ]	(	"off"	)
 folder1	[ 0	locks=0 ]	(	0	)
 ior_useTexture	[ 0	locks=0 ]	(	"off"	)
 ior_texture	[ 0	locks=0 ]	(	""	)
@@ -3437,6 +3933,12 @@ opaccolor_texture	[ 0	locks=0 ]	(	""	)
 opaccolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 opaccolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 opaccolor_textureColorSpace	[ 0	locks=0 ]	(	repeat	)
+folder18	[ 0	locks=0 ]	(	0	)
+occlusion_useTexture	[ 0	locks=0 ]	(	"off"	)
+occlusion_texture	[ 0	locks=0 ]	(	""	)
+occlusion_textureWrap	[ 0	locks=0 ]	(	repeat	)
+occlusion_textureIntensity	[ 0	locks=0 ]	(	1	)
+occlusion_textureColorSpace	[ 0	locks=0 ]	(	auto	)
 folder235	[ 0	locks=0 ]	(	0	)
 surface_textureFilter	[ 0	locks=0 ]	(	catrom	)
 surface_textureFilterWidth	[ 0	locks=0 ]	(	1	)
@@ -3447,7 +3949,7 @@ shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"off"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -3472,7 +3974,7 @@ separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -3491,7 +3993,7 @@ coatNormal_imagePlane	[ 0	locks=0 ]	(	""	)
 coatNormal_space	[ 0	locks=0 ]	(	0	)
 coatNormal_flipX	[ 0	locks=0 ]	(	"off"	)
 coatNormal_flipY	[ 0	locks=0 ]	(	"off"	)
-shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	1 ] 	)
+shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	0 ] 	)
 folder236	[ 0	locks=0 ]	(	0	)
 vm_displacebound	[ 0	locks=0 ]	(	[ vm_displacebound	0 ] 	)
 vm_truedisplace	[ 0	locks=0 ]	(	"on"	)
@@ -3507,7 +4009,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -3581,9 +4083,10 @@ Vdt	[ 0	locks=0 ]	(	0	0	0	)
 baseN	[ 0	locks=0 ]	(	0	0	0	)
 coatN	[ 0	locks=0 ]	(	0	0	0	)
 speccolor	[ 0	locks=0 ]	(	[ speccolorr	1 ] 	[ speccolorg	1 ] 	[ speccolorb	1 ] 	)
+displayColor	[ 0	locks=0 ]	(	1	1	1	)
+st	[ 0	locks=0 ]	(	0	0	)
+displayOpacity	[ 0	locks=0 ]	(	1	)
 diffuse_folder_16	[ 0	locks=0 ]	(	0	0	0	0	0	0	)
-folder17	[ 0	locks=0 ]	(	0	)
-folder18	[ 0	locks=0 ]	(	0	)
 folder19	[ 0	locks=0 ]	(	0	)
 folder20	[ 0	locks=0 ]	(	0	)
 folder21	[ 0	locks=0 ]	(	0	)
@@ -3591,35 +4094,37 @@ folder22	[ 0	locks=0 ]	(	0	)
 folder23	[ 0	locks=0 ]	(	0	)
 folder24	[ 0	locks=0 ]	(	0	)
 folder25	[ 0	locks=0 ]	(	0	)
-folder56	[ 0	locks=0 ]	(	0	)
 folder26	[ 0	locks=0 ]	(	0	)
+folder27	[ 0	locks=0 ]	(	0	)
+folder56	[ 0	locks=0 ]	(	0	)
+folder28	[ 0	locks=0 ]	(	0	)
 folder240	[ 0	locks=0 ]	(	0	)
 folder241	[ 0	locks=0 ]	(	0	)
 folder242	[ 0	locks=0 ]	(	0	)
 folder57	[ 0	locks=0 ]	(	0	)
-folder27	[ 0	locks=0 ]	(	0	)
+folder29	[ 0	locks=0 ]	(	0	)
 folder243	[ 0	locks=0 ]	(	0	)
 folder244	[ 0	locks=0 ]	(	0	)
 folder245	[ 0	locks=0 ]	(	0	)
-folder28	[ 0	locks=0 ]	(	0	)
-folder29	[ 0	locks=0 ]	(	0	)
+folder30	[ 0	locks=0 ]	(	0	)
+folder31	[ 0	locks=0 ]	(	0	)
 folder5_3	[ 0	locks=0 ]	(	0	)
 folder5_4	[ 0	locks=0 ]	(	0	)
 folder246	[ 0	locks=0 ]	(	0	)
-folder30	[ 0	locks=0 ]	(	0	)
+folder32	[ 0	locks=0 ]	(	0	)
 folder3_2	[ 0	locks=0 ]	(	0	)
 folder247	[ 0	locks=0 ]	(	0	)
 folder248	[ 0	locks=0 ]	(	0	)
 diffuse_folder_14_4	[ 0	locks=0 ]	(	0	)
-folder31	[ 0	locks=0 ]	(	0	)
+folder33	[ 0	locks=0 ]	(	0	)
 folder249	[ 0	locks=0 ]	(	0	)
 shading_17	[ 0	locks=0 ]	(	0	0	)
 folder250	[ 0	locks=0 ]	(	0	)
-folder32	[ 0	locks=0 ]	(	0	)
+folder34	[ 0	locks=0 ]	(	0	)
 folder251	[ 0	locks=0 ]	(	0	)
 folder252	[ 0	locks=0 ]	(	0	)
 folder253	[ 0	locks=0 ]	(	0	)
-folder33	[ 0	locks=0 ]	(	0	)
+folder35	[ 0	locks=0 ]	(	0	)
 speccolorr	[ 0	locks=0 ]	(	[ speccolorr	0 ] 	)
 speccolorg	[ 0	locks=0 ]	(	[ speccolorg	0 ] 	)
 speccolorb	[ 0	locks=0 ]	(	[ speccolorb	0 ] 	)
@@ -3669,1100 +4174,10 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.init"
-Content-Type: text/plain
-
-type = geo
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.def"
-Content-Type: text/plain
-
-objflags objflags =  origin off
-pretransform UT_DMatrix4 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
-comment ""
-position 1.40378 7.00592
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on selectable on
-outputsNamed3
-{
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author Luiz@Luiz-PC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.spareparmdef"
-Content-Type: text/plain
-
-    group {
-        name    "stdswitcher4"
-        label   "Transform"
-
-        parm {
-            name    "xOrd"
-            baseparm
-            label   "Transform Order"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "rOrd"
-            baseparm
-            label   "Rotate Order"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "t"
-            baseparm
-            label   "Translate"
-            export  all
-        }
-        parm {
-            name    "r"
-            baseparm
-            label   "Rotate"
-            export  all
-        }
-        parm {
-            name    "s"
-            baseparm
-            label   "Scale"
-            export  none
-        }
-        parm {
-            name    "p"
-            baseparm
-            label   "Pivot Translate"
-            export  none
-        }
-        parm {
-            name    "scale"
-            baseparm
-            label   "Uniform Scale"
-            export  none
-        }
-        parm {
-            name    "pre_xform"
-            baseparm
-            label   "Modify Pre-Transform"
-            export  none
-        }
-        parm {
-            name    "keeppos"
-            baseparm
-            label   "Keep Position When Parenting"
-            export  none
-        }
-        parm {
-            name    "childcomp"
-            baseparm
-            label   "Child Compensation"
-            export  none
-        }
-        parm {
-            name    "constraints_on"
-            baseparm
-            label   "Enable Constraints"
-            export  none
-        }
-        parm {
-            name    "constraints_path"
-            baseparm
-            label   "Constraints"
-            export  none
-        }
-        parm {
-            name    "lookatpath"
-            baseparm
-            label   "Look At"
-            invisible
-            export  none
-        }
-        parm {
-            name    "lookupobjpath"
-            baseparm
-            label   "Look Up Object"
-            invisible
-            export  none
-        }
-        parm {
-            name    "lookup"
-            baseparm
-            label   "Look At Up Vector"
-            invisible
-            export  none
-        }
-        parm {
-            name    "pathobjpath"
-            baseparm
-            label   "Path Object"
-            invisible
-            export  none
-        }
-        parm {
-            name    "roll"
-            baseparm
-            label   "Roll"
-            invisible
-            export  none
-        }
-        parm {
-            name    "pos"
-            baseparm
-            label   "Position"
-            invisible
-            export  none
-        }
-        parm {
-            name    "uparmtype"
-            baseparm
-            label   "Parameterization"
-            invisible
-            export  none
-        }
-        parm {
-            name    "pathorient"
-            baseparm
-            label   "Orient Along Path"
-            invisible
-            export  none
-        }
-        parm {
-            name    "up"
-            baseparm
-            label   "Orient Up Vector"
-            invisible
-            export  none
-        }
-        parm {
-            name    "bank"
-            baseparm
-            label   "Auto-Bank factor"
-            invisible
-            export  none
-        }
-    }
-
-    group {
-        name    "stdswitcher4_1"
-        label   "Render"
-
-        parm {
-            name    "shop_materialpath"
-            baseparm
-            label   "Material"
-            export  none
-        }
-        parm {
-            name    "shop_materialopts"
-            baseparm
-            label   "Options"
-            invisible
-            export  none
-        }
-        parm {
-            name    "tdisplay"
-            baseparm
-            label   "Display"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "display"
-            baseparm
-            label   "Display"
-            export  none
-        }
-        parm {
-            name    "viewportlod"
-            label   "Display As"
-            type    ordinal
-            default { "full" }
-            help    "Choose how the object's geometry should be rendered in the viewport"
-            menu {
-                "full"      "Full Geometry"
-                "points"    "Point Cloud"
-                "box"       "Bounding Box"
-                "centroid"  "Centroid"
-                "hidden"    "Hidden"
-                "subd"      "Subdivision Surface / Curves"
-            }
-            parmtag { "spare_category" "Render" }
-        }
-        parm {
-            name    "vm_rendervisibility"
-            label   "Render Visibility"
-            type    string
-            default { "*" }
-            menureplace {
-                "*"                             "Visible to all"
-                "primary"                       "Visible only to primary rays"
-                "primary|shadow"                "Visible only to primary and shadow rays"
-                "-primary"                      "Invisible to primary rays (Phantom)"
-                "-diffuse"                      "Invisible to diffuse rays"
-                "-diffuse&-reflect&-refract"    "Invisible to secondary rays"
-                ""                              "Invisible (Unrenderable)"
-            }
-            parmtag { "mantra_class" "object" }
-            parmtag { "mantra_name" "rendervisibility" }
-            parmtag { "spare_category" "Render" }
-        }
-        parm {
-            name    "vm_rendersubd"
-            label   "Render Polygons As Subdivision (Mantra)"
-            type    toggle
-            default { "0" }
-            parmtag { "mantra_class" "object" }
-            parmtag { "mantra_name" "rendersubd" }
-            parmtag { "spare_category" "Geometry" }
-        }
-        parm {
-            name    "vm_subdstyle"
-            label   "Subdivision Style"
-            type    string
-            default { "mantra_catclark" }
-            hidewhen "{ vm_rendersubd == 0 }"
-            menu {
-                "mantra_catclark"   "Mantra Catmull-Clark"
-                "osd_catclark"      "OpenSubdiv Catmull-Clark"
-            }
-            parmtag { "mantra_class" "object" }
-            parmtag { "mantra_name" "subdstyle" }
-            parmtag { "spare_category" "Geometry" }
-        }
-        parm {
-            name    "vm_subdgroup"
-            label   "Subdivision Group"
-            type    string
-            default { "" }
-            hidewhen "{ vm_rendersubd == 0 }"
-            parmtag { "mantra_class" "object" }
-            parmtag { "mantra_name" "subdgroup" }
-            parmtag { "spare_category" "Geometry" }
-        }
-        group {
-            name    "folder0"
-            label   "Shading"
-
-            parm {
-                name    "categories"
-                label   "Categories"
-                type    string
-                default { "" }
-                help    "A list of tags which can be used to select the object"
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "reflectmask"
-                label   "Reflection Mask"
-                type    oplist
-                default { "*" }
-                help    "Objects that will be reflected on this object."
-                parmtag { "opexpand" "1" }
-                parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }
-                parmtag { "oprelative" "/obj" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "refractmask"
-                label   "Refraction Mask"
-                type    oplist
-                default { "*" }
-                help    "Objects that will be refracted on this object."
-                parmtag { "opexpand" "1" }
-                parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }
-                parmtag { "oprelative" "/obj" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "lightmask"
-                label   "Light Mask"
-                type    oplist
-                default { "*" }
-                help    "Lights that illuminate this object."
-                parmtag { "opexpand" "1" }
-                parmtag { "opfilter" "!!OBJ/LIGHT!!" }
-                parmtag { "oprelative" "/obj" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "lightcategories"
-                label   "Light Selection"
-                type    string
-                default { "*" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "vm_volumefilter"
-                label   "Volume Filter"
-                type    string
-                default { "box" }
-                menu {
-                    "box"       "Box Filter"
-                    "gaussian"  "Gaussian"
-                    "bartlett"  "Bartlett (triangle)"
-                    "catrom"    "Catmull-Rom"
-                    "hanning"   "Hanning"
-                    "blackman"  "Blackman"
-                    "sinc"      "Sinc (sharpening)"
-                }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "filter" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "vm_volumefilterwidth"
-                label   "Volume Filter Width"
-                type    float
-                default { "1" }
-                range   { 0.001 5 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "filterwidth" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "vm_matte"
-                label   "Matte shading"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "matte" }
-                parmtag { "spare_category" "Shading" }
-            }
-            parm {
-                name    "vm_rayshade"
-                label   "Raytrace Shading"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "rayshade" }
-                parmtag { "spare_category" "Shading" }
-            }
-        }
-
-        group {
-            name    "folder0_1"
-            label   "Sampling"
-
-            parm {
-                name    "geo_velocityblur"
-                label   "Geometry Velocity Blur"
-                type    toggle
-                default { "0" }
-                disablewhen "{ allowmotionblur == 0 }"
-                parmtag { "spare_category" "Sampling" }
-            }
-        }
-
-        group {
-            name    "folder0_2"
-            label   "Dicing"
-
-            parm {
-                name    "vm_shadingquality"
-                label   "Shading Quality"
-                type    float
-                default { "1" }
-                range   { 0 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "shadingquality" }
-                parmtag { "spare_category" "Dicing" }
-            }
-            parm {
-                name    "vm_flatness"
-                label   "Dicing Flatness"
-                type    float
-                default { "0.05" }
-                range   { 0 1 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "flatness" }
-                parmtag { "spare_category" "Dicing" }
-            }
-            parm {
-                name    "vm_raypredice"
-                label   "Ray Predicing"
-                type    integer
-                default { "0" }
-                menu {
-                    "0" "Disable Predicing"
-                    "1" "Full Predicing"
-                    "2" "Precompute Bounds"
-                }
-                range   { 0 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "raypredice" }
-                parmtag { "spare_category" "Dicing" }
-            }
-            parm {
-                name    "vm_curvesurface"
-                label   "Shade Curves As Surfaces"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "curvesurface" }
-                parmtag { "spare_category" "Dicing" }
-            }
-        }
-
-        group {
-            name    "folder0_3"
-            label   "Geometry"
-
-            parm {
-                name    "vm_rmbackface"
-                label   "Backface Removal"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "rmbackface" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "shop_geometrypath"
-                label   "Procedural Shader"
-                type    oppath
-                default { "" }
-                parmtag { "opfilter" "!!SHOP/GEOMETRY!!" }
-                parmtag { "oprelative" "." }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_forcegeometry"
-                label   "Force Procedural Geometry Output"
-                type    toggle
-                default { "1" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_rendersubdcurves"
-                label   "Render Polygon Curves As Subdivision (Mantra)"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "rendersubdcurves" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_renderpoints"
-                label   "Render As Points (Mantra)"
-                type    integer
-                default { "2" }
-                menu {
-                    "0" "No Point Rendering"
-                    "1" "Render Only Points"
-                    "2" "Render Unconnected Points"
-                }
-                range   { 0 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "renderpoints" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_renderpointsas"
-                label   "Render Points As (Mantra)"
-                type    integer
-                default { "0" }
-                disablewhen "{ vm_renderpoints == 0 }"
-                menu {
-                    "0" "Spheres"
-                    "1" "Circles"
-                }
-                range   { 0 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "renderpointsas" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_usenforpoints"
-                label   "Use N For Point Rendering"
-                type    toggle
-                default { "0" }
-                disablewhen "{ vm_renderpoints == 0 }"
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "usenforpoints" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_pointscale"
-                label   "Point Scale"
-                type    float
-                default { "1" }
-                disablewhen "{ vm_renderpoints == 0 }"
-                range   { 0! 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "pointscale" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_pscalediameter"
-                label   "Treat Point Scale as Diameter Instead of Radius"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "pscalediameter" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_metavolume"
-                label   "Metaballs as Volume"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "metavolume" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_coving"
-                label   "Coving"
-                type    integer
-                default { "1" }
-                menu {
-                    "0" "Disable Coving"
-                    "1" "Coving for displacement/sub-d"
-                    "2" "Coving for all primitives"
-                }
-                range   { 0 10 }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "coving" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_materialoverride"
-                label   "Material Override"
-                type    string
-                default { "compact" }
-                menu {
-                    "none"      "Disabled"
-                    "full"      "Evaluate for Each Primitve/Point"
-                    "compact"   "Evaluate Once"
-                }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_overridedetail"
-                label   "Ignore Geometry Attribute Shaders"
-                type    toggle
-                default { "0" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "overridedetail" }
-                parmtag { "spare_category" "Geometry" }
-            }
-            parm {
-                name    "vm_procuseroottransform"
-                label   "Proc Use Root Transform"
-                type    toggle
-                default { "1" }
-                parmtag { "mantra_class" "object" }
-                parmtag { "mantra_name" "procuseroottransform" }
-                parmtag { "spare_category" "Geometry" }
-            }
-        }
-
-    }
-
-    group {
-        name    "stdswitcher4_2"
-        label   "Misc"
-
-        parm {
-            name    "use_dcolor"
-            baseparm
-            label   "Set Wireframe Color"
-            export  none
-        }
-        parm {
-            name    "dcolor"
-            baseparm
-            label   "Wireframe Color"
-            export  none
-        }
-        parm {
-            name    "picking"
-            baseparm
-            label   "Viewport Selecting Enabled"
-            export  none
-        }
-        parm {
-            name    "pickscript"
-            baseparm
-            label   "Select Script"
-            export  none
-        }
-        parm {
-            name    "caching"
-            baseparm
-            label   "Cache Object Transform"
-            export  none
-        }
-        parm {
-            name    "vport_shadeopen"
-            baseparm
-            label   "Shade Open Curves In Viewport"
-            export  none
-        }
-        parm {
-            name    "vport_displayassubdiv"
-            baseparm
-            label   "Display as Subdivision in Viewport"
-            invisible
-            export  none
-        }
-        parm {
-            name    "vport_onionskin"
-            baseparm
-            label   "Onion Skinning"
-            export  none
-        }
-    }
-
-    parm {
-        name    "pr"
-        baseparm
-        label   "Pivot Rotate"
-        export  none
-    }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	0	0	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	1	1	1	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-pr	[ 0	locks=0 ]	(	0	0	0	)
-scale	[ 0	locks=0 ]	(	1	)
-pre_xform	[ 0	locks=0 ]	(	0	)
-keeppos	[ 0	locks=0 ]	(	"off"	)
-childcomp	[ 0	locks=0 ]	(	"off"	)
-constraints_on	[ 0	locks=0 ]	(	"off"	)
-constraints_path	[ 0	locks=0 ]	(	""	)
-lookatpath	[ 0	locks=0 ]	(	""	)
-lookupobjpath	[ 0	locks=0 ]	(	""	)
-lookup	[ 0	locks=0 ]	(	on	)
-pathobjpath	[ 0	locks=0 ]	(	""	)
-roll	[ 0	locks=0 ]	(	0	)
-pos	[ 0	locks=0 ]	(	0	)
-uparmtype	[ 0	locks=0 ]	(	"arc"	)
-pathorient	[ 0	locks=0 ]	(	1	)
-up	[ 0	locks=0 ]	(	0	1	0	)
-bank	[ 0	locks=0 ]	(	0	)
-shop_materialpath	[ 0	locks=0 ]	(	"`opfullpath(\"..\") + \"/matnet/plain_white\"`"	)
-shop_materialopts	[ 0	locks=0 ]	(	0	)
-tdisplay	[ 0	locks=0 ]	(	"off"	)
-display	[ 0	locks=0 ]	(	1	)
-use_dcolor	[ 0	locks=0 ]	(	"off"	)
-dcolor	[ 0	locks=0 ]	(	1	1	1	)
-picking	[ 0	locks=0 ]	(	"on"	)
-pickscript	[ 0	locks=0 ]	(	""	)
-caching	[ 0	locks=0 ]	(	"on"	)
-vport_shadeopen	[ 0	locks=0 ]	(	"off"	)
-vport_displayassubdiv	[ 0	locks=0 ]	(	"off"	)
-vport_onionskin	[ 0	locks=0 ]	(	"off"	)
-stdswitcher4	[ 0	locks=0 ]	(	1	1	1	)
-viewportlod	[ 0	locks=0 ]	(	"full"	)
-vm_rendervisibility	[ 0	locks=0 ]	(	*	)
-vm_rendersubd	[ 0	locks=0 ]	(	"off"	)
-vm_subdstyle	[ 0	locks=0 ]	(	mantra_catclark	)
-vm_subdgroup	[ 0	locks=0 ]	(	""	)
-folder0	[ 0	locks=0 ]	(	3	3	3	3	)
-categories	[ 0	locks=0 ]	(	""	)
-reflectmask	[ 0	locks=0 ]	(	*	)
-refractmask	[ 0	locks=0 ]	(	*	)
-lightmask	[ 0	locks=0 ]	(	*	)
-lightcategories	[ 0	locks=0 ]	(	*	)
-vm_volumefilter	[ 0	locks=0 ]	(	box	)
-vm_volumefilterwidth	[ 0	locks=0 ]	(	1	)
-vm_matte	[ 0	locks=0 ]	(	"off"	)
-vm_rayshade	[ 0	locks=0 ]	(	"off"	)
-geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
-vm_shadingquality	[ 0	locks=0 ]	(	1	)
-vm_flatness	[ 0	locks=0 ]	(	0.050000000000000003	)
-vm_raypredice	[ 0	locks=0 ]	(	0	)
-vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
-vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
-shop_geometrypath	[ 0	locks=0 ]	(	""	)
-vm_forcegeometry	[ 0	locks=0 ]	(	"on"	)
-vm_rendersubdcurves	[ 0	locks=0 ]	(	"off"	)
-vm_renderpoints	[ 0	locks=0 ]	(	2	)
-vm_renderpointsas	[ 0	locks=0 ]	(	0	)
-vm_usenforpoints	[ 0	locks=0 ]	(	"off"	)
-vm_pointscale	[ 0	locks=0 ]	(	1	)
-vm_pscalediameter	[ 0	locks=0 ]	(	"off"	)
-vm_metavolume	[ 0	locks=0 ]	(	"off"	)
-vm_coving	[ 0	locks=0 ]	(	1	)
-vm_materialoverride	[ 0	locks=0 ]	(	compact	)
-vm_overridedetail	[ 0	locks=0 ]	(	"off"	)
-vm_procuseroottransform	[ 0	locks=0 ]	(	"on"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -1.80358 -3.26736
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	switch1 2 1 "input1"
-}
-inputs
-{
-0 	switch1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Luiz@Luiz-PC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.spareparmdef"
-Content-Type: text/plain
-
-    group {
-        name    "folder1"
-        label   "Code"
-
-        parm {
-            name    "group"
-            baseparm
-            label   "Group"
-            export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
-                0 1 0xffffffff 0 grouptype 0
-        }
-        parm {
-            name    "grouptype"
-            baseparm
-            label   "Group Type"
-            export  none
-        }
-        parm {
-            name    "class"
-            baseparm
-            label   "Run Over"
-            export  none
-        }
-        parm {
-            name    "vex_numcount"
-            baseparm
-            label   "Number Count"
-            export  none
-        }
-        parm {
-            name    "vex_threadjobsize"
-            baseparm
-            label   "Thread Job Size"
-            export  none
-        }
-        parm {
-            name    "snippet"
-            baseparm
-            label   "VEXpression"
-            export  all
-        }
-        parm {
-            name    "exportlist"
-            baseparm
-            label   "Attributes to Create"
-            export  none
-        }
-        parm {
-            name    "vex_strict"
-            baseparm
-            label   "Enforce Prototypes"
-            export  none
-        }
-    }
-
-    group {
-        name    "folder1_1"
-        label   "Bindings"
-
-        parm {
-            name    "autobind"
-            baseparm
-            label   "Autobind by Name"
-            export  none
-        }
-        multiparm {
-            name    "bindings"
-            label    "Number of Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindname#"
-                baseparm
-                label   "Attribute Name"
-                export  none
-            }
-            parm {
-                name    "bindparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "groupautobind"
-            baseparm
-            label   "Autobind Groups by Name"
-            export  none
-        }
-        multiparm {
-            name    "groupbindings"
-            label    "Group Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindgroupname#"
-                baseparm
-                label   "Group Name"
-                export  none
-            }
-            parm {
-                name    "bindgroupparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "vex_cwdpath"
-            baseparm
-            label   "Evaluation Node Path"
-            export  none
-        }
-        parm {
-            name    "vex_outputmask"
-            baseparm
-            label   "Export Parameters"
-            export  none
-        }
-        parm {
-            name    "vex_updatenmls"
-            baseparm
-            label   "Update Normals If Displaced"
-            export  none
-        }
-        parm {
-            name    "vex_matchattrib"
-            baseparm
-            label   "Attribute to Match"
-            export  none
-        }
-        parm {
-            name    "vex_inplace"
-            baseparm
-            label   "Compute Results In Place"
-            export  none
-        }
-        parm {
-            name    "vex_selectiongroup"
-            baseparm
-            label   "Output Selection Group"
-            export  none
-        }
-    }
-
-    parm {
-        name    "channel"
-        label   "Channel"
-        type    string
-        default { "" }
-    }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"v@Cd = point(0, chs(\"channel\"), @ptnum);"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-folder1	[ 0	locks=0 ]	(	0	0	)
-channel	[ 0	locks=0 ]	(	convex	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.init"
-Content-Type: text/plain
-
-type = color
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -0.00852317 2.92507
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	LOW 1 1 "input1"
-}
-inputs
-{
-0 	LOW 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author MAINGEAR@DESKTOP-P98C1VA
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
-class	[ 0	locks=0 ]	(	2	)
-colortype	[ 0	locks=0 ]	(	0	)
-color	[ 0	locks=0 ]	(	1	1	1	)
-seed	[ 0	locks=0 ]	(	0	)
-rampattribute	[ 0	locks=0 ]	(	""	)
-ramprange	[ 0	locks=0 ]	(	0	1	)
-ramp	[ 0	locks=0 ]	(	2	)
-ramp1pos	[ 0	locks=0 ]	(	0	)
-ramp1c	[ 0	locks=0 ]	(	0	0	0	)
-ramp1interp	[ 0	locks=0 ]	(	"linear"	)
-ramp2pos	[ 0	locks=0 ]	(	1	)
-ramp2c	[ 0	locks=0 ]	(	1	1	1	)
-ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"2"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"sop_color"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/sop_quickmaterial1.init"
 Content-Type: text/plain
 
-type = gamedev::sop_quickmaterial::2.0
+type = labs::quickmaterial::2.0
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4849,11 +4264,16 @@ roundedEdge_radius_1	[ 0	locks=0 ]	(	0	)
 roundedEdge_mode_1	[ 0	locks=0 ]	(	0	)
 roughnessfolder_1	[ 0	locks=0 ]	(	0	)
 rough_texture_1	[ 0	locks=0 ]	(	"`ifs(ch(\"../bake_specrough\"),strreplace(chs(\"../base_path\"), \"$(CHANNEL)\", chs(\"../specrough_suffix\")),\"\")`"	)
-rough_1	[ 0	locks=0 ]	(	[ rough_1	0.60299999999999998 ] 	)
-ior_1	[ 0	locks=0 ]	(	[ ior_1	1.8200000000000001 ] 	)
+rough_1	[ 0	locks=0 ]	(	[ rough_1	0.652 ] 	)
+ior_1	[ 0	locks=0 ]	(	[ ior_1	1.1 ] 	)
 metallicfolder_1	[ 0	locks=0 ]	(	0	)
 metallic_texture_1	[ 0	locks=0 ]	(	"`ifs(ch(\"../bake_metallic\"),strreplace(chs(\"../base_path\"), \"$(CHANNEL)\", chs(\"../metallic_suffix\")),\"\")`"	)
 metallic_1	[ 8	locks=0 ]	(	[ metallic_1	0 ] 	)
+folder0_1_4	[ 0	locks=0 ]	(	0	)
+dispTex_enable_1	[ 0	locks=0 ]	(	"off"	)
+dispTex_offset_1	[ 0	locks=0 ]	(	-0.5	)
+dispTex_scale_1	[ 0	locks=0 ]	(	1	)
+dispTex_texture_1	[ 0	locks=0 ]	(	""	)
 folder0_1_3	[ 0	locks=0 ]	(	0	)
 basecolorfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_basecolor_1	[ 0	locks=0 ]	(	1	1	1	)
@@ -4861,7 +4281,7 @@ pbr_basecolor_useTexture_1	[ 0	locks=0 ]	(	"off"	)
 pbr_basecolor_texture_1	[ 0	locks=0 ]	(	""	)
 roughnessfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_IOR_1	[ 0	locks=0 ]	(	1.5	)
-pbr_rough_1	[ 0	locks=0 ]	(	0.29999999999999999	)
+pbr_rough_1	[ 0	locks=0 ]	(	0.3	)
 pbr_horizon_fade_1	[ 0	locks=0 ]	(	1	)
 pbr_invert_rough_1	[ 0	locks=0 ]	(	"off"	)
 pbr_rough_useTexture_1	[ 0	locks=0 ]	(	"off"	)
@@ -5648,14 +5068,14 @@ coatspecmodel	[ 0	locks=0 ]	(	ggx	)
 specular_tint	[ 0	locks=0 ]	(	[ specular_tint	0 ] 	)
 diffuse_folder_15	[ 0	locks=0 ]	(	3	3	3	3	3	3	)
 folder7	[ 0	locks=0 ]	(	0	)
-basecolor	[ 0	locks=0 ]	(	[ basecolorr	1 ] 	[ basecolorg	1 ] 	[ basecolorb	1 ] 	)
+basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.2 ] 	[ basecolorg	0.2 ] 	[ basecolorb	0.2 ] 	)
 albedomult	[ 0	locks=0 ]	(	1	)
 basecolor_usePointColor	[ 0	locks=0 ]	(	"on"	)
 basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
-ior	[ 0	locks=0 ]	(	[ ior	1.8200000000000001 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.60299999999999998 ] 	)
+ior	[ 0	locks=0 ]	(	[ ior	1.5 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.3 ] 	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -5667,21 +5087,24 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
+transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
-sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
+sssmodel	[ 0	locks=0 ]	(	pbrsss	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
+ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
 sheen	[ 0	locks=0 ]	(	0	)
 sheentint	[ 0	locks=0 ]	(	0	)
 folder9	[ 0	locks=0 ]	(	0	)
-emitcolor	[ 0	locks=0 ]	(	0	0	0	)
 emitint	[ 0	locks=0 ]	(	1	)
+emitcolor	[ 0	locks=0 ]	(	0	0	0	)
+emitcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 emitillum	[ 0	locks=0 ]	(	"on"	)
 folder15	[ 0	locks=0 ]	(	0	)
 opac	[ 0	locks=0 ]	(	1	)
@@ -5693,12 +5116,16 @@ fakecausticsenabled	[ 0	locks=0 ]	(	"off"	)
 fakecausticstransmit	[ 0	locks=0 ]	(	1	)
 fakecausticsshadow	[ 0	locks=0 ]	(	1	)
 fakecausticsopacity	[ 0	locks=0 ]	(	0	)
+folder17	[ 0	locks=0 ]	(	0	)
+alphablendmode	[ 0	locks=0 ]	(	blend	)
+alphacutoff	[ 0	locks=0 ]	(	0.5	)
 folder54	[ 0	locks=0 ]	(	0	)
 basecolor_useTexture	[ 0	locks=0 ]	(	"on"	)
-basecolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ basecolor_texture	C:/Github/GDT/hip/render/simplebaker_demoscene_ao.tga ] 	)
+basecolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ basecolor_texture	"" ] 	)
 basecolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 basecolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 basecolor_textureColorSpace	[ 0	locks=0 ]	(	auto	)
+basecolor_useTextureAlpha	[ 0	locks=0 ]	(	"off"	)
 folder1	[ 0	locks=0 ]	(	0	)
 ior_useTexture	[ 0	locks=0 ]	(	"off"	)
 ior_texture	[ 0	locks=0 ]	(	""	)
@@ -5819,17 +5246,23 @@ opaccolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ opaccolor_tex
 opaccolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 opaccolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 opaccolor_textureColorSpace	[ 0	locks=0 ]	(	repeat	)
+folder18	[ 0	locks=0 ]	(	0	)
+occlusion_useTexture	[ 0	locks=0 ]	(	"off"	)
+occlusion_texture	[ 0	locks=0 ]	(	""	)
+occlusion_textureWrap	[ 0	locks=0 ]	(	repeat	)
+occlusion_textureIntensity	[ 0	locks=0 ]	(	1	)
+occlusion_textureColorSpace	[ 0	locks=0 ]	(	auto	)
 folder235	[ 0	locks=0 ]	(	0	)
 surface_textureFilter	[ 0	locks=0 ]	(	catrom	)
 surface_textureFilterWidth	[ 0	locks=0 ]	(	1	)
 roundedEdge_enable	[ 0	locks=0 ]	(	[ roundedEdge_enable	0 ] 	)
-roundedEdge_radius	[ 0	locks=0 ]	(	[ roundedEdge_radius	0 ] 	)
+roundedEdge_radius	[ 0	locks=0 ]	(	[ roundedEdge_radius	0.01 ] 	)
 roundedEdge_mode	[ 0	locks=0 ]	(	[ roundedEdge_mode	0 ] 	)
 shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -5839,7 +5272,7 @@ baseBump_imagePlane	[ 0	locks=0 ]	(	""	)
 baseNormal_colorspace	[ 0	locks=0 ]	(	linear	)
 baseNormal_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 baseNormal_scale	[ 0	locks=0 ]	(	1	)
-baseNormal_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ baseNormal_texture	C:/Github/GDT/hip/render/simplebaker_demoscene_normal.tga ] 	)
+baseNormal_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ baseNormal_texture	"" ] 	)
 baseNormal_wrap	[ 0	locks=0 ]	(	repeat	)
 baseNormal_filter	[ 0	locks=0 ]	(	gauss	)
 baseNormal_filterWidth	[ 0	locks=0 ]	(	1	)
@@ -5847,14 +5280,14 @@ baseNormal_channel	[ 0	locks=0 ]	(	0	)
 baseNormal_imagePlane	[ 0	locks=0 ]	(	""	)
 baseNormal_space	[ 0	locks=0 ]	(	0	)
 baseNormal_flipX	[ 0	locks=0 ]	(	"off"	)
-baseNormal_flipY	[ 0	locks=0 ]	(	[ baseNormal_flipY	1 ] 	)
+baseNormal_flipY	[ 0	locks=0 ]	(	[ baseNormal_flipY	0 ] 	)
 baseBump_useTexture	[ 0	locks=0 ]	(	[ baseBump_useTexture	0 ] 	)
-baseNormal_useTexture	[ 0	locks=0 ]	(	[ baseNormal_useTexture	1 ] 	)
+baseNormal_useTexture	[ 0	locks=0 ]	(	[ baseNormal_useTexture	0 ] 	)
 separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -5873,7 +5306,7 @@ coatNormal_imagePlane	[ 0	locks=0 ]	(	""	)
 coatNormal_space	[ 0	locks=0 ]	(	0	)
 coatNormal_flipX	[ 0	locks=0 ]	(	"off"	)
 coatNormal_flipY	[ 0	locks=0 ]	(	"off"	)
-shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	1 ] 	)
+shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	0 ] 	)
 folder236	[ 0	locks=0 ]	(	0	)
 vm_displacebound	[ 0	locks=0 ]	(	[ vm_displacebound	0 ] 	)
 vm_truedisplace	[ 0	locks=0 ]	(	"on"	)
@@ -5889,7 +5322,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -5963,6 +5396,9 @@ Vdt	[ 0	locks=0 ]	(	0	0	0	)
 baseN	[ 0	locks=0 ]	(	0	0	0	)
 coatN	[ 0	locks=0 ]	(	0	0	0	)
 speccolor	[ 0	locks=0 ]	(	1	1	1	)
+displayColor	[ 0	locks=0 ]	(	1	1	1	)
+st	[ 0	locks=0 ]	(	0	0	)
+displayOpacity	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6739,7 +6175,7 @@ vm_matte	[ 0	locks=0 ]	(	"off"	)
 vm_rayshade	[ 0	locks=0 ]	(	"off"	)
 geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
 vm_shadingquality	[ 0	locks=0 ]	(	1	)
-vm_flatness	[ 0	locks=0 ]	(	0.050000000000000003	)
+vm_flatness	[ 0	locks=0 ]	(	0.05	)
 vm_raypredice	[ 0	locks=0 ]	(	0	)
 vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
 vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
@@ -6908,7 +6344,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7120,6 +6556,7 @@ docompute	[ 0	locks=0 ]	(	"on"	)
 type	[ 0	locks=0 ]	(	"typevertex"	)
 cuspangle	[ 0	locks=0 ]	(	60	)
 method	[ 0	locks=0 ]	(	1	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
 modify	[ 0	locks=0 ]	(	0	)
 normalize	[ 0	locks=0 ]	(	"off"	)
 reverse	[ 0	locks=0 ]	(	"off"	)
@@ -7884,7 +7321,7 @@ vm_matte	[ 0	locks=0 ]	(	"off"	)
 vm_rayshade	[ 0	locks=0 ]	(	"off"	)
 geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
 vm_shadingquality	[ 0	locks=0 ]	(	1	)
-vm_flatness	[ 0	locks=0 ]	(	0.050000000000000003	)
+vm_flatness	[ 0	locks=0 ]	(	0.05	)
 vm_raypredice	[ 0	locks=0 ]	(	0	)
 vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
 vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
@@ -8420,6 +7857,7 @@ docompute	[ 0	locks=0 ]	(	"on"	)
 type	[ 0	locks=0 ]	(	"typevertex"	)
 cuspangle	[ 0	locks=0 ]	(	60	)
 method	[ 0	locks=0 ]	(	1	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
 modify	[ 0	locks=0 ]	(	0	)
 normalize	[ 0	locks=0 ]	(	"off"	)
 reverse	[ 0	locks=0 ]	(	"off"	)
@@ -8565,7 +8003,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9215,7 +8653,7 @@ projection	[ 0	locks=0 ]	(	"perspective"	)
 vm_lensshader	[ 0	locks=0 ]	(	""	)
 focal	[ 0	locks=0 ]	(	50	)
 focalunits	[ 0	locks=0 ]	(	mm	)
-aperture	[ 0	locks=0 ]	(	41.421399999999998	)
+aperture	[ 0	locks=0 ]	(	41.4214	)
 orthowidth	[ 0	locks=0 ]	(	2	)
 near	[ 0	locks=0 ]	(	0.001	)
 far	[ 0	locks=0 ]	(	10000	)
@@ -9231,7 +8669,7 @@ cropt	[ 0	locks=0 ]	(	1	)
 cropmask	[ 0	locks=0 ]	(	""	)
 shutter	[ 0	locks=0 ]	(	0.5	)
 focus	[ 0	locks=0 ]	(	5	)
-fstop	[ 0	locks=0 ]	(	5.5999999999999996	)
+fstop	[ 0	locks=0 ]	(	5.6	)
 vm_bokeh	[ 0	locks=0 ]	(	radial	)
 vm_bokehfile	[ 0	locks=0 ]	(	default.pic	)
 vm_bokehrotation	[ 0	locks=0 ]	(	0	)
@@ -9305,11 +8743,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"on"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9489,6 +8927,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -9530,6 +8969,767 @@ Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objne
 Content-Type: text/plain
 
 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.init"
+Content-Type: text/plain
+
+type = geo
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.def"
+Content-Type: text/plain
+
+objflags objflags =  origin off
+pretransform UT_DMatrix4 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
+comment ""
+position 1.40378 7.00592
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on selectable on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author Luiz@Luiz-PC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "stdswitcher4"
+        label   "Transform"
+
+        parm {
+            name    "xOrd"
+            baseparm
+            label   "Transform Order"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "rOrd"
+            baseparm
+            label   "Rotate Order"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "t"
+            baseparm
+            label   "Translate"
+            export  all
+        }
+        parm {
+            name    "r"
+            baseparm
+            label   "Rotate"
+            export  all
+        }
+        parm {
+            name    "s"
+            baseparm
+            label   "Scale"
+            export  none
+        }
+        parm {
+            name    "p"
+            baseparm
+            label   "Pivot Translate"
+            export  none
+        }
+        parm {
+            name    "scale"
+            baseparm
+            label   "Uniform Scale"
+            export  none
+        }
+        parm {
+            name    "pre_xform"
+            baseparm
+            label   "Modify Pre-Transform"
+            export  none
+        }
+        parm {
+            name    "keeppos"
+            baseparm
+            label   "Keep Position When Parenting"
+            export  none
+        }
+        parm {
+            name    "childcomp"
+            baseparm
+            label   "Child Compensation"
+            export  none
+        }
+        parm {
+            name    "constraints_on"
+            baseparm
+            label   "Enable Constraints"
+            export  none
+        }
+        parm {
+            name    "constraints_path"
+            baseparm
+            label   "Constraints"
+            export  none
+        }
+        parm {
+            name    "lookatpath"
+            baseparm
+            label   "Look At"
+            invisible
+            export  none
+        }
+        parm {
+            name    "lookupobjpath"
+            baseparm
+            label   "Look Up Object"
+            invisible
+            export  none
+        }
+        parm {
+            name    "lookup"
+            baseparm
+            label   "Look At Up Vector"
+            invisible
+            export  none
+        }
+        parm {
+            name    "pathobjpath"
+            baseparm
+            label   "Path Object"
+            invisible
+            export  none
+        }
+        parm {
+            name    "roll"
+            baseparm
+            label   "Roll"
+            invisible
+            export  none
+        }
+        parm {
+            name    "pos"
+            baseparm
+            label   "Position"
+            invisible
+            export  none
+        }
+        parm {
+            name    "uparmtype"
+            baseparm
+            label   "Parameterization"
+            invisible
+            export  none
+        }
+        parm {
+            name    "pathorient"
+            baseparm
+            label   "Orient Along Path"
+            invisible
+            export  none
+        }
+        parm {
+            name    "up"
+            baseparm
+            label   "Orient Up Vector"
+            invisible
+            export  none
+        }
+        parm {
+            name    "bank"
+            baseparm
+            label   "Auto-Bank factor"
+            invisible
+            export  none
+        }
+    }
+
+    group {
+        name    "stdswitcher4_1"
+        label   "Render"
+
+        parm {
+            name    "shop_materialpath"
+            baseparm
+            label   "Material"
+            export  none
+        }
+        parm {
+            name    "shop_materialopts"
+            baseparm
+            label   "Options"
+            invisible
+            export  none
+        }
+        parm {
+            name    "tdisplay"
+            baseparm
+            label   "Display"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "display"
+            baseparm
+            label   "Display"
+            export  none
+        }
+        parm {
+            name    "viewportlod"
+            label   "Display As"
+            type    ordinal
+            default { "full" }
+            help    "Choose how the object's geometry should be rendered in the viewport"
+            menu {
+                "full"      "Full Geometry"
+                "points"    "Point Cloud"
+                "box"       "Bounding Box"
+                "centroid"  "Centroid"
+                "hidden"    "Hidden"
+                "subd"      "Subdivision Surface / Curves"
+            }
+            parmtag { "spare_category" "Render" }
+        }
+        parm {
+            name    "vm_rendervisibility"
+            label   "Render Visibility"
+            type    string
+            default { "*" }
+            menureplace {
+                "*"                             "Visible to all"
+                "primary"                       "Visible only to primary rays"
+                "primary|shadow"                "Visible only to primary and shadow rays"
+                "-primary"                      "Invisible to primary rays (Phantom)"
+                "-diffuse"                      "Invisible to diffuse rays"
+                "-diffuse&-reflect&-refract"    "Invisible to secondary rays"
+                ""                              "Invisible (Unrenderable)"
+            }
+            parmtag { "mantra_class" "object" }
+            parmtag { "mantra_name" "rendervisibility" }
+            parmtag { "spare_category" "Render" }
+        }
+        parm {
+            name    "vm_rendersubd"
+            label   "Render Polygons As Subdivision (Mantra)"
+            type    toggle
+            default { "0" }
+            parmtag { "mantra_class" "object" }
+            parmtag { "mantra_name" "rendersubd" }
+            parmtag { "spare_category" "Geometry" }
+        }
+        parm {
+            name    "vm_subdstyle"
+            label   "Subdivision Style"
+            type    string
+            default { "mantra_catclark" }
+            hidewhen "{ vm_rendersubd == 0 }"
+            menu {
+                "mantra_catclark"   "Mantra Catmull-Clark"
+                "osd_catclark"      "OpenSubdiv Catmull-Clark"
+            }
+            parmtag { "mantra_class" "object" }
+            parmtag { "mantra_name" "subdstyle" }
+            parmtag { "spare_category" "Geometry" }
+        }
+        parm {
+            name    "vm_subdgroup"
+            label   "Subdivision Group"
+            type    string
+            default { "" }
+            hidewhen "{ vm_rendersubd == 0 }"
+            parmtag { "mantra_class" "object" }
+            parmtag { "mantra_name" "subdgroup" }
+            parmtag { "spare_category" "Geometry" }
+        }
+        group {
+            name    "folder0"
+            label   "Shading"
+
+            parm {
+                name    "categories"
+                label   "Categories"
+                type    string
+                default { "" }
+                help    "A list of tags which can be used to select the object"
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "reflectmask"
+                label   "Reflection Mask"
+                type    oplist
+                default { "*" }
+                help    "Objects that will be reflected on this object."
+                parmtag { "opexpand" "1" }
+                parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }
+                parmtag { "oprelative" "/obj" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "refractmask"
+                label   "Refraction Mask"
+                type    oplist
+                default { "*" }
+                help    "Objects that will be refracted on this object."
+                parmtag { "opexpand" "1" }
+                parmtag { "opfilter" "!!OBJ/GEOMETRY!!" }
+                parmtag { "oprelative" "/obj" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "lightmask"
+                label   "Light Mask"
+                type    oplist
+                default { "*" }
+                help    "Lights that illuminate this object."
+                parmtag { "opexpand" "1" }
+                parmtag { "opfilter" "!!OBJ/LIGHT!!" }
+                parmtag { "oprelative" "/obj" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "lightcategories"
+                label   "Light Selection"
+                type    string
+                default { "*" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "vm_volumefilter"
+                label   "Volume Filter"
+                type    string
+                default { "box" }
+                menu {
+                    "box"       "Box Filter"
+                    "gaussian"  "Gaussian"
+                    "bartlett"  "Bartlett (triangle)"
+                    "catrom"    "Catmull-Rom"
+                    "hanning"   "Hanning"
+                    "blackman"  "Blackman"
+                    "sinc"      "Sinc (sharpening)"
+                }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "filter" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "vm_volumefilterwidth"
+                label   "Volume Filter Width"
+                type    float
+                default { "1" }
+                range   { 0.001 5 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "filterwidth" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "vm_matte"
+                label   "Matte shading"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "matte" }
+                parmtag { "spare_category" "Shading" }
+            }
+            parm {
+                name    "vm_rayshade"
+                label   "Raytrace Shading"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "rayshade" }
+                parmtag { "spare_category" "Shading" }
+            }
+        }
+
+        group {
+            name    "folder0_1"
+            label   "Sampling"
+
+            parm {
+                name    "geo_velocityblur"
+                label   "Geometry Velocity Blur"
+                type    toggle
+                default { "0" }
+                disablewhen "{ allowmotionblur == 0 }"
+                parmtag { "spare_category" "Sampling" }
+            }
+        }
+
+        group {
+            name    "folder0_2"
+            label   "Dicing"
+
+            parm {
+                name    "vm_shadingquality"
+                label   "Shading Quality"
+                type    float
+                default { "1" }
+                range   { 0 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "shadingquality" }
+                parmtag { "spare_category" "Dicing" }
+            }
+            parm {
+                name    "vm_flatness"
+                label   "Dicing Flatness"
+                type    float
+                default { "0.05" }
+                range   { 0 1 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "flatness" }
+                parmtag { "spare_category" "Dicing" }
+            }
+            parm {
+                name    "vm_raypredice"
+                label   "Ray Predicing"
+                type    integer
+                default { "0" }
+                menu {
+                    "0" "Disable Predicing"
+                    "1" "Full Predicing"
+                    "2" "Precompute Bounds"
+                }
+                range   { 0 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "raypredice" }
+                parmtag { "spare_category" "Dicing" }
+            }
+            parm {
+                name    "vm_curvesurface"
+                label   "Shade Curves As Surfaces"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "curvesurface" }
+                parmtag { "spare_category" "Dicing" }
+            }
+        }
+
+        group {
+            name    "folder0_3"
+            label   "Geometry"
+
+            parm {
+                name    "vm_rmbackface"
+                label   "Backface Removal"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "rmbackface" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "shop_geometrypath"
+                label   "Procedural Shader"
+                type    oppath
+                default { "" }
+                parmtag { "opfilter" "!!SHOP/GEOMETRY!!" }
+                parmtag { "oprelative" "." }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_forcegeometry"
+                label   "Force Procedural Geometry Output"
+                type    toggle
+                default { "1" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_rendersubdcurves"
+                label   "Render Polygon Curves As Subdivision (Mantra)"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "rendersubdcurves" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_renderpoints"
+                label   "Render As Points (Mantra)"
+                type    integer
+                default { "2" }
+                menu {
+                    "0" "No Point Rendering"
+                    "1" "Render Only Points"
+                    "2" "Render Unconnected Points"
+                }
+                range   { 0 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "renderpoints" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_renderpointsas"
+                label   "Render Points As (Mantra)"
+                type    integer
+                default { "0" }
+                disablewhen "{ vm_renderpoints == 0 }"
+                menu {
+                    "0" "Spheres"
+                    "1" "Circles"
+                }
+                range   { 0 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "renderpointsas" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_usenforpoints"
+                label   "Use N For Point Rendering"
+                type    toggle
+                default { "0" }
+                disablewhen "{ vm_renderpoints == 0 }"
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "usenforpoints" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_pointscale"
+                label   "Point Scale"
+                type    float
+                default { "1" }
+                disablewhen "{ vm_renderpoints == 0 }"
+                range   { 0! 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "pointscale" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_pscalediameter"
+                label   "Treat Point Scale as Diameter Instead of Radius"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "pscalediameter" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_metavolume"
+                label   "Metaballs as Volume"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "metavolume" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_coving"
+                label   "Coving"
+                type    integer
+                default { "1" }
+                menu {
+                    "0" "Disable Coving"
+                    "1" "Coving for displacement/sub-d"
+                    "2" "Coving for all primitives"
+                }
+                range   { 0 10 }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "coving" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_materialoverride"
+                label   "Material Override"
+                type    string
+                default { "compact" }
+                menu {
+                    "none"      "Disabled"
+                    "full"      "Evaluate for Each Primitve/Point"
+                    "compact"   "Evaluate Once"
+                }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_overridedetail"
+                label   "Ignore Geometry Attribute Shaders"
+                type    toggle
+                default { "0" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "overridedetail" }
+                parmtag { "spare_category" "Geometry" }
+            }
+            parm {
+                name    "vm_procuseroottransform"
+                label   "Proc Use Root Transform"
+                type    toggle
+                default { "1" }
+                parmtag { "mantra_class" "object" }
+                parmtag { "mantra_name" "procuseroottransform" }
+                parmtag { "spare_category" "Geometry" }
+            }
+        }
+
+    }
+
+    group {
+        name    "stdswitcher4_2"
+        label   "Misc"
+
+        parm {
+            name    "use_dcolor"
+            baseparm
+            label   "Set Wireframe Color"
+            export  none
+        }
+        parm {
+            name    "dcolor"
+            baseparm
+            label   "Wireframe Color"
+            export  none
+        }
+        parm {
+            name    "picking"
+            baseparm
+            label   "Viewport Selecting Enabled"
+            export  none
+        }
+        parm {
+            name    "pickscript"
+            baseparm
+            label   "Select Script"
+            export  none
+        }
+        parm {
+            name    "caching"
+            baseparm
+            label   "Cache Object Transform"
+            export  none
+        }
+        parm {
+            name    "vport_shadeopen"
+            baseparm
+            label   "Shade Open Curves In Viewport"
+            export  none
+        }
+        parm {
+            name    "vport_displayassubdiv"
+            baseparm
+            label   "Display as Subdivision in Viewport"
+            invisible
+            export  none
+        }
+        parm {
+            name    "vport_onionskin"
+            baseparm
+            label   "Onion Skinning"
+            export  none
+        }
+    }
+
+    parm {
+        name    "pr"
+        baseparm
+        label   "Pivot Rotate"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	)
+xOrd	[ 0	locks=0 ]	(	"srt"	)
+rOrd	[ 0	locks=0 ]	(	"xyz"	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+r	[ 0	locks=0 ]	(	0	0	0	)
+s	[ 0	locks=0 ]	(	1	1	1	)
+p	[ 0	locks=0 ]	(	0	0	0	)
+pr	[ 0	locks=0 ]	(	0	0	0	)
+scale	[ 0	locks=0 ]	(	1	)
+pre_xform	[ 0	locks=0 ]	(	0	)
+keeppos	[ 0	locks=0 ]	(	"off"	)
+childcomp	[ 0	locks=0 ]	(	"off"	)
+constraints_on	[ 0	locks=0 ]	(	"off"	)
+constraints_path	[ 0	locks=0 ]	(	""	)
+lookatpath	[ 0	locks=0 ]	(	""	)
+lookupobjpath	[ 0	locks=0 ]	(	""	)
+lookup	[ 0	locks=0 ]	(	on	)
+pathobjpath	[ 0	locks=0 ]	(	""	)
+roll	[ 0	locks=0 ]	(	0	)
+pos	[ 0	locks=0 ]	(	0	)
+uparmtype	[ 0	locks=0 ]	(	"arc"	)
+pathorient	[ 0	locks=0 ]	(	1	)
+up	[ 0	locks=0 ]	(	0	1	0	)
+bank	[ 0	locks=0 ]	(	0	)
+shop_materialpath	[ 0	locks=0 ]	(	"`opfullpath(\"..\") + \"/matnet/plain_white\"`"	)
+shop_materialopts	[ 0	locks=0 ]	(	0	)
+tdisplay	[ 0	locks=0 ]	(	"off"	)
+display	[ 0	locks=0 ]	(	1	)
+use_dcolor	[ 0	locks=0 ]	(	"off"	)
+dcolor	[ 0	locks=0 ]	(	1	1	1	)
+picking	[ 0	locks=0 ]	(	"on"	)
+pickscript	[ 0	locks=0 ]	(	""	)
+caching	[ 0	locks=0 ]	(	"on"	)
+vport_shadeopen	[ 0	locks=0 ]	(	"off"	)
+vport_displayassubdiv	[ 0	locks=0 ]	(	"off"	)
+vport_onionskin	[ 0	locks=0 ]	(	"off"	)
+stdswitcher4	[ 0	locks=0 ]	(	1	1	1	)
+viewportlod	[ 0	locks=0 ]	(	"full"	)
+vm_rendervisibility	[ 0	locks=0 ]	(	*	)
+vm_rendersubd	[ 0	locks=0 ]	(	"off"	)
+vm_subdstyle	[ 0	locks=0 ]	(	mantra_catclark	)
+vm_subdgroup	[ 0	locks=0 ]	(	""	)
+folder0	[ 0	locks=0 ]	(	3	3	3	3	)
+categories	[ 0	locks=0 ]	(	""	)
+reflectmask	[ 0	locks=0 ]	(	*	)
+refractmask	[ 0	locks=0 ]	(	*	)
+lightmask	[ 0	locks=0 ]	(	*	)
+lightcategories	[ 0	locks=0 ]	(	*	)
+vm_volumefilter	[ 0	locks=0 ]	(	box	)
+vm_volumefilterwidth	[ 0	locks=0 ]	(	1	)
+vm_matte	[ 0	locks=0 ]	(	"off"	)
+vm_rayshade	[ 0	locks=0 ]	(	"off"	)
+geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
+vm_shadingquality	[ 0	locks=0 ]	(	1	)
+vm_flatness	[ 0	locks=0 ]	(	0.05	)
+vm_raypredice	[ 0	locks=0 ]	(	0	)
+vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
+vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
+shop_geometrypath	[ 0	locks=0 ]	(	""	)
+vm_forcegeometry	[ 0	locks=0 ]	(	"on"	)
+vm_rendersubdcurves	[ 0	locks=0 ]	(	"off"	)
+vm_renderpoints	[ 0	locks=0 ]	(	2	)
+vm_renderpointsas	[ 0	locks=0 ]	(	0	)
+vm_usenforpoints	[ 0	locks=0 ]	(	"off"	)
+vm_pointscale	[ 0	locks=0 ]	(	1	)
+vm_pscalediameter	[ 0	locks=0 ]	(	"off"	)
+vm_metavolume	[ 0	locks=0 ]	(	"off"	)
+vm_coving	[ 0	locks=0 ]	(	1	)
+vm_materialoverride	[ 0	locks=0 ]	(	compact	)
+vm_overridedetail	[ 0	locks=0 ]	(	"off"	)
+vm_procuseroottransform	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/low_merge.init"
@@ -9765,6 +9965,266 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.80358 -3.26736
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch1 2 1 "input1"
+}
+inputs
+{
+0 	switch1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Luiz@Luiz-PC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "folder1"
+        label   "Code"
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Group"
+            export  none
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            baseparm
+            label   "Group Type"
+            export  none
+        }
+        parm {
+            name    "class"
+            baseparm
+            label   "Run Over"
+            export  none
+        }
+        parm {
+            name    "vex_numcount"
+            baseparm
+            label   "Number Count"
+            export  none
+        }
+        parm {
+            name    "vex_threadjobsize"
+            baseparm
+            label   "Thread Job Size"
+            export  none
+        }
+        parm {
+            name    "snippet"
+            baseparm
+            label   "VEXpression"
+            export  all
+        }
+        parm {
+            name    "exportlist"
+            baseparm
+            label   "Attributes to Create"
+            export  none
+        }
+        parm {
+            name    "vex_strict"
+            baseparm
+            label   "Enforce Prototypes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            baseparm
+            label   "Autobind by Name"
+            export  none
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                baseparm
+                label   "Attribute Name"
+                export  none
+            }
+            parm {
+                name    "bindparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            baseparm
+            label   "Autobind Groups by Name"
+            export  none
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                baseparm
+                label   "Group Name"
+                export  none
+            }
+            parm {
+                name    "bindgroupparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            baseparm
+            label   "Evaluation Node Path"
+            export  none
+        }
+        parm {
+            name    "vex_outputmask"
+            baseparm
+            label   "Export Parameters"
+            export  none
+        }
+        parm {
+            name    "vex_updatenmls"
+            baseparm
+            label   "Update Normals If Displaced"
+            export  none
+        }
+        parm {
+            name    "vex_matchattrib"
+            baseparm
+            label   "Attribute to Match"
+            export  none
+        }
+        parm {
+            name    "vex_inplace"
+            baseparm
+            label   "Compute Results In Place"
+            export  none
+        }
+        parm {
+            name    "vex_selectiongroup"
+            baseparm
+            label   "Output Selection Group"
+            export  none
+        }
+    }
+
+    parm {
+        name    "channel"
+        label   "Channel"
+        type    string
+        default { "" }
+    }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
+    parm {
+        name    "vex_precision"
+        baseparm
+        label   "VEX Precision"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"v@Cd = point(0, chs(\"channel\"), @ptnum);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+folder1	[ 0	locks=0 ]	(	0	0	)
+channel	[ 0	locks=0 ]	(	convex	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export/pointwrangle1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/objnet/custom_export.order"
 Content-Type: text/plain
 
@@ -9968,6 +10428,7 @@ Content-Type: text/plain
             baseparm
             label   "vm_uvobjectenable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -11149,7 +11610,7 @@ Content-Type: text/plain
             parm {
                 name    "soho_foreground"
                 baseparm
-                label   "Block Until Render Complete"
+                label   "Wait for Render to Complete"
                 export  none
             }
             parm {
@@ -11382,7 +11843,7 @@ f	[ 8	locks=0 ]	(	1	10	1	)
 take	[ 0	locks=0 ]	(	_current_	)
 camera	[ 0	locks=0 ]	(	"`opfullpath(\"..\") + \"/objnet/cam1\"`"	)
 vm_uvtype	[ 0	locks=0 ]	(	udim	)
-vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	512 ] 	[ vm_uvunwrapresy	512 ] 	)
+vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	1024 ] 	[ vm_uvunwrapresy	1024 ] 	)
 uvresmenu	[ 0	locks=0 ]	(	[ uvresmenu	0 ] 	)
 vm_ptexmapminres	[ 0	locks=0 ]	(	8	8	)
 vm_uvptexminresmenu	[ 0	locks=0 ]	(	0	)
@@ -11407,7 +11868,7 @@ vm_uv_ray_bias	[ 8	locks=0 ]	(	[ vm_uv_ray_bias	0.01 ] 	)
 vm_uv_ray_maxdist	[ 8	locks=0 ]	(	[ vm_uv_ray_maxdist	-1 ] 	)
 vm_uv_flip_normal	[ 0	locks=0 ]	(	"off"	)
 vm_uvpostprocess	[ 0	locks=0 ]	(	diffusefill	)
-vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	2 ] 	)
+vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	4 ] 	)
 uvborderpixelsmenu	[ 0	locks=0 ]	(	0	)
 vm_ptexwraporient	[ 0	locks=0 ]	(	"on"	)
 vm_uvlightpaths	[ 0	locks=0 ]	(	"-diffuse & -volume"	)
@@ -11455,17 +11916,17 @@ main3	[ 0	locks=0 ]	(	0	0	)
 vm_bake_normalizep	[ 8	locks=0 ]	(	"on"	)
 vm_extractimageplanes	[ 0	locks=0 ]	(	"off"	)
 vm_extractimageplanesformat	[ 0	locks=0 ]	(	Targa	)
-vm_quickplane_Nt	[ 8	locks=0 ]	(	[ vm_quickplane_Nt	1 ] 	)
+vm_quickplane_Nt	[ 8	locks=0 ]	(	[ vm_quickplane_Nt	0 ] 	)
 vm_quickplane_Ds	[ 8	locks=0 ]	(	[ vm_quickplane_Ds	0 ] 	)
 vm_quickplane_Vd	[ 0	locks=0 ]	(	"off"	)
 vm_quickplane_Vdt	[ 0	locks=0 ]	(	"off"	)
-vm_quickplane_Oc	[ 8	locks=0 ]	(	[ vm_quickplane_Oc	1 ] 	)
+vm_quickplane_Oc	[ 8	locks=0 ]	(	[ vm_quickplane_Oc	0 ] 	)
 vm_quickplane_Cv	[ 0	locks=0 ]	(	"off"	)
 vm_quickplane_Th	[ 8	locks=0 ]	(	[ vm_quickplane_Th	0 ] 	)
 vm_quickplane_Cu	[ 8	locks=0 ]	(	[ vm_quickplane_Cu	0 ] 	)
 vm_quickplane_P	[ 8	locks=0 ]	(	[ vm_quickplane_P	0 ] 	)
 vm_quickplane_N	[ 8	locks=0 ]	(	[ vm_quickplane_N	0 ] 	)
-vm_quickplane_basecolor	[ 8	locks=0 ]	(	[ vm_quickplane_basecolor	1 ] 	)
+vm_quickplane_basecolor	[ 8	locks=0 ]	(	[ vm_quickplane_basecolor	0 ] 	)
 vm_quickplane_diffcolor	[ 0	locks=0 ]	(	"off"	)
 vm_quickplane_speccolor	[ 0	locks=0 ]	(	"off"	)
 vm_quickplane_emitcolor	[ 0	locks=0 ]	(	"off"	)
@@ -11506,8 +11967,8 @@ vm_quickplane_P_channel	[ 0	locks=0 ]	(	P	)
 vm_quickplane_N_channel	[ 0	locks=0 ]	(	N	)
 vm_bake_skipcf	[ 0	locks=0 ]	(	"on"	)
 vm_bake_layerexport	[ 0	locks=0 ]	(	"on"	)
-vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	4 ] 	)
-vm_bake_usemikkt	[ 0	locks=0 ]	(	[ vm_bake_usemikkt	1 ] 	)
+vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	16 ] 	)
+vm_bake_usemikkt	[ 0	locks=0 ]	(	[ vm_bake_usemikkt	0 ] 	)
 vm_bake_tangentnormalflipx	[ 0	locks=0 ]	(	"off"	)
 vm_bake_tangentnormalflipy	[ 0	locks=0 ]	(	[ vm_bake_tangentnormalflipy	0 ] 	)
 vm_bake_tangentnormalincludedisp	[ 0	locks=0 ]	(	"on"	)
@@ -11515,7 +11976,7 @@ vm_bake_occlusionbias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_cavitydistance	[ 0	locks=0 ]	(	1	)
 vm_bake_cavitybias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_curvatureocc	[ 0	locks=0 ]	(	"on"	)
-vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.1	)
 vm_bake_curvaturescale	[ 0	locks=0 ]	(	1	)
 vm_bake_curvaturebias	[ 0	locks=0 ]	(	0.5	)
 sampling2	[ 0	locks=0 ]	(	0	)
@@ -11670,11 +12131,12 @@ size	[ 0	locks=0 ]	(	512	512	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 filter	[ 0	locks=0 ]	(	box	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 flipy	[ 0	locks=0 ]	(	"off"	)
 overridedepth	[ 0	locks=0 ]	(	"specific"	)
 linearize	[ 0	locks=0 ]	(	"on"	)
 colorspace	[ 0	locks=0 ]	(	"auto"	)
+ocio_space	[ 0	locks=0 ]	(	automatic	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
@@ -12392,19 +12854,19 @@ maskplane	[ 0	locks=0 ]	(	C	)
 maskresize	[ 0	locks=0 ]	(	"off"	)
 maskinvert	[ 0	locks=0 ]	(	"off"	)
 overridesize	[ 0	locks=0 ]	(	"on"	)
-size	[ 8	locks=0 ]	(	[ size1	256 ] 	[ size2	256 ] 	)
+size	[ 8	locks=0 ]	(	[ size1	0 ] 	[ size2	0 ] 	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgba"	)
 addplanes	[ 0	locks=0 ]	(	"m"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	Ds	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"on"	)
@@ -12433,7 +12895,7 @@ Content-Disposition: attachment; filename="hdaroot/ropnet1/rop_games_baker/extra
 Content-Type: text/plain
 
 2
-14
+15
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -13543,7 +14005,11 @@ color	[ 0	locks=0 ]	(	Oc	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 8	locks=0 ]	(	*	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
-gamma	[ 0	locks=0 ]	(	2.2000000000000002	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
+gamma	[ 0	locks=0 ]	(	2.2	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
 batchmode	[ 0	locks=0 ]	(	"off"	)
@@ -13781,6 +14247,7 @@ Content-Type: text/plain
             baseparm
             label   "vm_uvobjectenable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -14962,7 +15429,7 @@ Content-Type: text/plain
             parm {
                 name    "soho_foreground"
                 baseparm
-                label   "Block Until Render Complete"
+                label   "Wait for Render to Complete"
                 export  none
             }
             parm {
@@ -15076,7 +15543,7 @@ f	[ 8	locks=0 ]	(	1	10	1	)
 take	[ 0	locks=0 ]	(	_current_	)
 camera	[ 0	locks=0 ]	(	"`opfullpath(\"..\") + \"/objnet/cam1\"`"	)
 vm_uvtype	[ 0	locks=0 ]	(	udim	)
-vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	512 ] 	[ vm_uvunwrapresy	512 ] 	)
+vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	1024 ] 	[ vm_uvunwrapresy	1024 ] 	)
 uvresmenu	[ 0	locks=0 ]	(	[ uvresmenu	0 ] 	)
 vm_ptexmapminres	[ 0	locks=0 ]	(	8	8	)
 vm_uvptexminresmenu	[ 0	locks=0 ]	(	0	)
@@ -15101,7 +15568,7 @@ vm_uv_ray_bias	[ 8	locks=0 ]	(	[ vm_uv_ray_bias	0.01 ] 	)
 vm_uv_ray_maxdist	[ 8	locks=0 ]	(	[ vm_uv_ray_maxdist	-1 ] 	)
 vm_uv_flip_normal	[ 0	locks=0 ]	(	"off"	)
 vm_uvpostprocess	[ 0	locks=0 ]	(	borderfill	)
-vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	2 ] 	)
+vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	4 ] 	)
 uvborderpixelsmenu	[ 0	locks=0 ]	(	0	)
 vm_ptexwraporient	[ 0	locks=0 ]	(	"on"	)
 vm_uvlightpaths	[ 0	locks=0 ]	(	"-diffuse & -volume"	)
@@ -15182,7 +15649,7 @@ vm_quickplane_P_channel	[ 0	locks=0 ]	(	P	)
 vm_quickplane_N_channel	[ 0	locks=0 ]	(	N	)
 vm_bake_skipcf	[ 8	locks=0 ]	(	"on"	)
 vm_bake_layerexport	[ 0	locks=0 ]	(	"on"	)
-vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	4 ] 	)
+vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	16 ] 	)
 vm_bake_usemikkt	[ 0	locks=0 ]	(	"on"	)
 vm_bake_tangentnormalflipx	[ 0	locks=0 ]	(	"off"	)
 vm_bake_tangentnormalflipy	[ 0	locks=0 ]	(	"off"	)
@@ -15191,7 +15658,7 @@ vm_bake_occlusionbias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_cavitydistance	[ 0	locks=0 ]	(	1	)
 vm_bake_cavitybias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_curvatureocc	[ 0	locks=0 ]	(	"on"	)
-vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.1	)
 vm_bake_curvaturescale	[ 0	locks=0 ]	(	1	)
 vm_bake_curvaturebias	[ 0	locks=0 ]	(	0.5	)
 sampling2	[ 0	locks=0 ]	(	0	)
@@ -15336,6 +15803,10 @@ color	[ 0	locks=0 ]	(	Nt	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 8	locks=0 ]	(	*	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -15574,6 +16045,7 @@ Content-Type: text/plain
             baseparm
             label   "vm_uvobjectenable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -16755,7 +17227,7 @@ Content-Type: text/plain
             parm {
                 name    "soho_foreground"
                 baseparm
-                label   "Block Until Render Complete"
+                label   "Wait for Render to Complete"
                 export  none
             }
             parm {
@@ -16869,7 +17341,7 @@ f	[ 8	locks=0 ]	(	1	10	1	)
 take	[ 0	locks=0 ]	(	_current_	)
 camera	[ 0	locks=0 ]	(	"`opfullpath(\"..\") + \"/objnet/cam1\"`"	)
 vm_uvtype	[ 0	locks=0 ]	(	udim	)
-vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	512 ] 	[ vm_uvunwrapresy	512 ] 	)
+vm_uvunwrapres	[ 8	locks=0 ]	(	[ vm_uvunwrapresx	1024 ] 	[ vm_uvunwrapresy	1024 ] 	)
 uvresmenu	[ 0	locks=0 ]	(	[ uvresmenu	0 ] 	)
 vm_ptexmapminres	[ 0	locks=0 ]	(	8	8	)
 vm_uvptexminresmenu	[ 0	locks=0 ]	(	0	)
@@ -16894,7 +17366,7 @@ vm_uv_ray_bias	[ 8	locks=0 ]	(	[ vm_uv_ray_bias	0.01 ] 	)
 vm_uv_ray_maxdist	[ 8	locks=0 ]	(	[ vm_uv_ray_maxdist	-1 ] 	)
 vm_uv_flip_normal	[ 0	locks=0 ]	(	"off"	)
 vm_uvpostprocess	[ 0	locks=0 ]	(	"Border Expansion"	)
-vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	2 ] 	)
+vm_uvborderpixels	[ 8	locks=0 ]	(	[ vm_uvborderpixels	4 ] 	)
 uvborderpixelsmenu	[ 0	locks=0 ]	(	0	)
 vm_ptexwraporient	[ 0	locks=0 ]	(	"on"	)
 vm_uvlightpaths	[ 0	locks=0 ]	(	"-diffuse & -volume"	)
@@ -16993,7 +17465,7 @@ vm_quickplane_P_channel	[ 0	locks=0 ]	(	P	)
 vm_quickplane_N_channel	[ 0	locks=0 ]	(	N	)
 vm_bake_skipcf	[ 8	locks=0 ]	(	"on"	)
 vm_bake_layerexport	[ 0	locks=0 ]	(	"on"	)
-vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	4 ] 	)
+vm_bake_samples	[ 8	locks=0 ]	(	[ vm_bake_samples	16 ] 	)
 vm_bake_usemikkt	[ 0	locks=0 ]	(	"on"	)
 vm_bake_tangentnormalflipx	[ 0	locks=0 ]	(	"off"	)
 vm_bake_tangentnormalflipy	[ 0	locks=0 ]	(	"off"	)
@@ -17002,7 +17474,7 @@ vm_bake_occlusionbias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_cavitydistance	[ 0	locks=0 ]	(	1	)
 vm_bake_cavitybias	[ 0	locks=0 ]	(	0.5	)
 vm_bake_curvatureocc	[ 0	locks=0 ]	(	"on"	)
-vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+vm_bake_curvaturesdist	[ 0	locks=0 ]	(	0.1	)
 vm_bake_curvaturescale	[ 0	locks=0 ]	(	1	)
 vm_bake_curvaturebias	[ 0	locks=0 ]	(	0.5	)
 sampling2	[ 0	locks=0 ]	(	0	)
@@ -17238,22 +17710,33 @@ renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
 f	[ 0	locks=0 ]	(	[ f1	1 ] 	[ f2	240 ] 	1	)
 take	[ 0	locks=0 ]	(	_current_	)
-sopoutput	[ 0	locks=0 ]	(	`chs(\"../fbx_path\")`	)
-mkpath	[ 0	locks=0 ]	(	"on"	)
 startnode	[ 0	locks=0 ]	(	""	)
 createsubnetroot	[ 0	locks=0 ]	(	"on"	)
+sopoutput	[ 0	locks=0 ]	(	`chs(\"../fbx_path\")`	)
+mkpath	[ 0	locks=0 ]	(	"on"	)
+buildfrompath	[ 0	locks=0 ]	(	"off"	)
+pathattrib	[ 0	locks=0 ]	(	path	)
+switcher	[ 0	locks=0 ]	(	0	0	)
 exportkind	[ 0	locks=0 ]	(	"off"	)
 sdkversion	[ 0	locks=0 ]	(	"FBX | FBX201400"	)
 vcformat	[ 0	locks=0 ]	(	"mayaformat"	)
 invisobj	[ 0	locks=0 ]	(	"nullnodes"	)
+axissystem	[ 0	locks=0 ]	(	"yupright"	)
+convertaxis	[ 0	locks=0 ]	(	"off"	)
+convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"on"	)
+embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
+exportclips	[ 0	locks=0 ]	(	"off"	)
+numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
 prerender	[ 0	locks=0 ]	(	""	)
 lprerender	[ 0	locks=0 ]	(	hscript	)
@@ -17740,6 +18223,90 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.init"
+Content-Type: text/plain
+
+type = color
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.00852317 2.92507
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	LOW 1 1 "input1"
+}
+inputs
+{
+0 	LOW 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
+class	[ 0	locks=0 ]	(	2	)
+colortype	[ 0	locks=0 ]	(	0	)
+color	[ 0	locks=0 ]	(	1	1	1	)
+seed	[ 0	locks=0 ]	(	0	)
+rampattribute	[ 0	locks=0 ]	(	""	)
+ramprange	[ 0	locks=0 ]	(	0	1	)
+ramp	[ 0	locks=0 ]	(	2	)
+ramp1pos	[ 0	locks=0 ]	(	0	)
+ramp1c	[ 0	locks=0 ]	(	0	0	0	)
+ramp1interp	[ 0	locks=0 ]	(	"linear"	)
+ramp2pos	[ 0	locks=0 ]	(	1	)
+ramp2c	[ 0	locks=0 ]	(	1	1	1	)
+ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_color"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/sop_quickmaterial1/matnet.net"
 Content-Type: text/plain
 
@@ -17901,7 +18468,7 @@ Content-Type: text/plain
 {
 version 0.8
 numerror	[ 0	locks=0 ]	(	1	)
-errormsg1	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ errormsg1	"Output File (Base Path) does not contain any frame number information. Adding $F will assure the baker will output a unique file per frame!" ] 	)
+errormsg1	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ errormsg1	"" ] 	)
 severity1	[ 0	locks=0 ]	(	"warn"	)
 enable1	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ enable1	0 ] 	)
 }

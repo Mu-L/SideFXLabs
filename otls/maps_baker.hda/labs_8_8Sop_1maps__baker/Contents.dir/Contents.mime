@@ -2,6 +2,18 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="node_type"
 Content-Type: text/plain
 
@@ -11,7 +23,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_maps_baker
+type = labs::maps_baker
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -19,35 +31,490 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -11.2142 -4.17547
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+comment "Replaced by Bake Geometry Textures COP. To be removed in Houdini 23.0."
+position -70.2896 80.3559
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
-2 "output1"
 }
 inputsNamed3
 {
-0 	file2 0 1 "input1"
-1 	attribdelete3 1 1 "input2"
 }
 inputs
 {
-0 	file2 0 1
-1 	attribdelete3 0 1
 }
 stat
 {
   create -1
   modify -1
-  author prisms@threadripper1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "intensity"
+        baseparm
+        label   "Label"
+        invisible
+        export  none
+    }
+    parm {
+        name    "gamma"
+        baseparm
+        label   "Gamma"
+        invisible
+        export  none
+    }
+    parm {
+        name    "bManualMode"
+        baseparm
+        label   "Manual Mode"
+        export  none
+    }
+    groupsimple {
+        name    "folder12"
+        label   "Bake Settings"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "sCurAttr"
+            baseparm
+            label   "CurAttr"
+            invisible
+            export  none
+        }
+        parm {
+            name    "sCurAttrName"
+            baseparm
+            label   "CurAttrName"
+            invisible
+            export  none
+        }
+        parm {
+            name    "vop_forcecompile"
+            baseparm
+            label   "Bake Attributes"
+            invisible
+            export  none
+        }
+        parm {
+            name    "sOutputFile"
+            baseparm
+            label   "Output Directory"
+            export  none
+        }
+        parm {
+            name    "i2Resolution"
+            baseparm
+            label   "Resolution"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "parm"
+            baseparm
+            label   "Label"
+            export  none
+        }
+        parm {
+            name    "mBakeMode"
+            baseparm
+            label   "Tracing Mode"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "fMaxTraceDist"
+            baseparm
+            label   "Max Trace Distance"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "preview_channel"
+            baseparm
+            label   "Preview Channel"
+            export  none
+        }
+        parm {
+            name    "fRayDistance"
+            baseparm
+            label   "Ray Distance"
+            invisible
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "folder13"
+        label   "Bake Options"
+        grouptag { "sidefx::switcher" "folder2" }
+
+        groupsimple {
+            name    "folder14"
+            label   "Transfer"
+            grouptag { "sidefx::switcher" "folder6" }
+
+            parm {
+                name    "bDiffuse"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sDiffuse"
+                baseparm
+                label   "Diffuse Map"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bNormal"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sNormal"
+                baseparm
+                label   "Normal Map"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bOpacity"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sOpacity"
+                baseparm
+                label   "Opacity Map"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bRoughness"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sRoughness"
+                baseparm
+                label   "Roughness Map"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bMetallic"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sMetallic"
+                baseparm
+                label   "Metallic Map"
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "folder15"
+            label   "Generate"
+            grouptag { "sidefx::switcher" "folder5" }
+
+            parm {
+                name    "bVertexCd"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sVertexColor"
+                baseparm
+                label   "Vertex Color"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bAO"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sAO"
+                baseparm
+                label   "AO"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bCurvature"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sCurvature"
+                baseparm
+                label   "Curvature"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bWorldNormal"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sWorldNormal"
+                baseparm
+                label   "World Normal"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bHeight"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sHeight"
+                baseparm
+                label   "Height"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bAlpha"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sAlpha"
+                baseparm
+                label   "Alpha"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "bPos"
+                baseparm
+                label   "Label"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sPos"
+                baseparm
+                label   "Position"
+                export  none
+            }
+        }
+
+    }
+
+    groupsimple {
+        name    "folder16"
+        label   "Attributes"
+        grouptag { "sidefx::switcher" "folder4" }
+
+        multiparm {
+            name    "folder3"
+            label    "Custom Attributes"
+            baseparm
+            default 0
+
+            parm {
+                name    "sCustomAttribute#"
+                baseparm
+                label   "Attribute"
+                export  none
+            }
+        }
+
+    }
+
+    groupcollapsible {
+        name    "folder17"
+        label   "Advanced"
+        grouptag { "sidefx::switcher" "folder1" }
+
+        groupsimple {
+            name    "folder18"
+            label   "Sampling"
+            grouptag { "sidefx::switcher" "folder10" }
+
+        }
+
+        groupsimple {
+            name    "folder19"
+            label   "Normal Map"
+            grouptag { "sidefx::switcher" "folder7" }
+
+            parm {
+                name    "bFlipTangentX"
+                baseparm
+                label   "Tangent Normal Flip X"
+                export  none
+            }
+            parm {
+                name    "bFlipTangentY"
+                baseparm
+                label   "Tangent Normal Flip Y"
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "folder20"
+            label   "AO Map"
+            grouptag { "sidefx::switcher" "folder8" }
+
+            parm {
+                name    "numrays"
+                baseparm
+                label   "Number of Rays"
+                export  none
+            }
+            parm {
+                name    "maxdist"
+                baseparm
+                label   "Maximum Ray Distance"
+                export  none
+            }
+            parm {
+                name    "bias"
+                baseparm
+                label   "Bias"
+                export  none
+            }
+            parm {
+                name    "conewidth"
+                baseparm
+                label   "Cone Width"
+                export  none
+            }
+            parm {
+                name    "raybias"
+                baseparm
+                label   "Ray Bias"
+                invisible
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "folder21"
+            label   "Thickness Map"
+            grouptag { "sidefx::switcher" "folder11" }
+
+        }
+
+        groupsimple {
+            name    "folder22"
+            label   "Curvature Map"
+            grouptag { "sidefx::switcher" "folder9" }
+
+            parm {
+                name    "iNumRaysCurvature"
+                baseparm
+                label   "Number of Rays"
+                export  none
+            }
+            parm {
+                name    "fMaxRayDistCurvature"
+                baseparm
+                label   "Maximum Ray Distance"
+                export  none
+            }
+            parm {
+                name    "fCurvatureBias"
+                baseparm
+                label   "Bias"
+                export  none
+            }
+            parm {
+                name    "fConeWidthCurvature"
+                baseparm
+                label   "Cone Width"
+                export  none
+            }
+            parm {
+                name    "fCurvaturescale"
+                baseparm
+                label   "Scale"
+                export  none
+            }
+            parm {
+                name    "fFlatbias"
+                baseparm
+                label   "Flatness Filter"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "framerangex"
+        label   "framerangex"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "framerangey"
+        label   "framerangey"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "newparameter"
+        baseparm
+        label   "Bake"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -70,9 +537,9 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "Set up missing attributes";
-	height := 4.7164128037282307;
+	height := 4.716412803728231;
 	minimized := 0;
-	width := 5.0967349243927087;
+	width := 5.096734924392709;
 	x_position := -1.193924944387087;
 	y_position := 11.682398822983386;
 }
@@ -95,8 +562,8 @@ Content-Type: text/plain
 	comment := "Clean & Transform to Worldspace";
 	height := 4.9732000276446335;
 	minimized := 0;
-	width := 4.3254909640235963;
-	x_position := -4.8933705845985083;
+	width := 4.325490964023596;
+	x_position := -4.893370584598508;
 	y_position := 4.053802882726953;
 }
 {
@@ -116,11 +583,11 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := Bakes;
-	height := 7.2125500480800868;
+	height := 7.212550048080087;
 	minimized := 0;
 	width := 10.258863016297973;
-	x_position := -4.8933705845985092;
-	y_position := -6.6049499996811152;
+	x_position := -4.893370584598509;
+	y_position := -6.604949999681115;
 }
 {
   create -1
@@ -136,92 +603,6 @@ Content-Type: text/plain
 2
 0 0.9404660111758707 20.359979391138577 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 1 8.327063280908547 14.264004670648809 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -4.46612 5.4871
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	vertexsplit1 1 1 "input1"
-}
-inputs
-{
-0 	vertexsplit1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"// To UV-Space
-@P = set(v@uv.x, 0, v@uv.y);
-"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.netbox"
-Content-Type: text/plain
-
-__netbox3
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cops_baking.init"
@@ -282,7 +663,7 @@ Content-Type: text/plain
 version 0.8
 usecoppath	[ 0	locks=0 ]	(	"off"	)
 coppath	[ 0	locks=0 ]	(	""	)
-frame	[ 0	locks=0 ]	(	[ frame	1 ] 	)
+frame	[ 0	locks=0 ]	(	[ frame	0 ] 	)
 planemask	[ 0	locks=0 ]	(	*	)
 method	[ 0	locks=0 ]	(	"volume"	)
 plane	[ 0	locks=0 ]	(	"zx"	)
@@ -634,10 +1015,10 @@ maskplane	[ 0	locks=0 ]	(	A	)
 maskresize	[ 0	locks=0 ]	(	"off"	)
 maskinvert	[ 0	locks=0 ]	(	"off"	)
 overridesize	[ 0	locks=0 ]	(	"on"	)
-size	[ 0	locks=0 ]	(	[ size1	2048 ] 	[ size2	2048 ] 	)
+size	[ 0	locks=0 ]	(	[ size1	0 ] 	[ size2	0 ] 	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"none"	)
 addplanes	[ 0	locks=0 ]	(	"m"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
@@ -651,8 +1032,8 @@ interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -836,7 +1217,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -849,6 +1236,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -1262,7 +1650,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1275,6 +1669,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"on"	)
@@ -1635,7 +2030,7 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
@@ -1649,8 +2044,8 @@ interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -1754,7 +2149,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1767,6 +2168,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -1862,7 +2264,7 @@ Content-Type: text/plain
 version 0.8
 input	[ 0	locks=0 ]	(	$HH/geo/defgeo.bgeo	)
 group	[ 0	locks=0 ]	(	""	)
-maxdist	[ 0	locks=0 ]	(	10000000000	)
+maxdist	[ 0	locks=0 ]	(	1e10	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1945,7 +2347,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1958,6 +2366,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -2049,7 +2458,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2062,6 +2477,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"on"	)
@@ -2153,7 +2569,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2166,6 +2588,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"on"	)
@@ -2343,7 +2766,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2356,6 +2785,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -3239,7 +3669,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3252,6 +3688,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -3607,7 +4044,7 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	1024	1024	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
@@ -3621,8 +4058,8 @@ interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -4187,7 +4624,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4200,6 +4643,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -4446,7 +4890,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4459,6 +4909,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -4568,7 +5019,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4581,6 +5038,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -4671,7 +5129,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4684,6 +5148,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -4774,7 +5239,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4787,6 +5258,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -5152,22 +5624,22 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	512	512	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"none"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -5336,7 +5808,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -5349,6 +5827,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -5463,7 +5942,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -5476,6 +5961,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -5985,7 +6471,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -5998,6 +6490,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -6088,7 +6581,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6101,6 +6600,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -6546,22 +7046,22 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -6792,7 +7292,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6805,6 +7311,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"on"	)
@@ -7200,7 +7707,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7213,6 +7726,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -7322,7 +7836,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7335,6 +7855,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -7425,7 +7946,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7438,6 +7965,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -8173,32 +8701,32 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	512	512	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
 posthold	[ 0	locks=0 ]	(	0	)
 stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
 HIGH	[ 0	locks=0 ]	(	op:../../OUT_HIGH	)
-maxdist	[ 0	locks=0 ]	(	[ maxdist	10 ] 	)
-numrays	[ 0	locks=0 ]	(	[ numrays	50 ] 	)
-conewidth	[ 0	locks=0 ]	(	[ conewidth	90 ] 	)
-gamma	[ 0	locks=0 ]	(	[ gamma	0.5 ] 	)
+maxdist	[ 0	locks=0 ]	(	[ maxdist	0 ] 	)
+numrays	[ 0	locks=0 ]	(	[ numrays	0 ] 	)
+conewidth	[ 0	locks=0 ]	(	[ conewidth	0 ] 	)
+gamma	[ 0	locks=0 ]	(	[ gamma	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -8771,7 +9299,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -8784,6 +9318,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -8893,7 +9428,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -8906,6 +9447,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -8996,7 +9538,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9009,6 +9557,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -9104,7 +9653,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9117,6 +9672,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -9231,7 +9787,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9244,6 +9806,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -9358,7 +9921,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9371,6 +9940,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -9485,7 +10055,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9498,6 +10074,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -9853,7 +10430,7 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
@@ -9867,8 +10444,8 @@ interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -10115,7 +10692,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10128,6 +10711,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -10545,7 +11129,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10558,6 +11148,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"on"	)
@@ -10648,7 +11239,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10661,6 +11258,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -10751,7 +11349,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10764,6 +11368,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -11150,29 +11755,29 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
 posthold	[ 0	locks=0 ]	(	0	)
 stdswitcher5	[ 0	locks=0 ]	(	2	2	2	2	)
 LOW	[ 0	locks=0 ]	(	op:../../OUT_LOW_TARGET	)
-FlipY	[ 0	locks=0 ]	(	[ FlipY	1 ] 	)
+FlipY	[ 0	locks=0 ]	(	[ FlipY	0 ] 	)
 FlipX	[ 0	locks=0 ]	(	[ FlipX	0 ] 	)
 }
 
@@ -11402,7 +12007,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11415,6 +12026,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -11934,7 +12546,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11947,6 +12565,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -12056,7 +12675,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12069,6 +12694,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -12159,7 +12785,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12172,6 +12804,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -12267,7 +12900,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12280,6 +12919,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -12655,22 +13295,22 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -13223,7 +13863,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -13236,6 +13882,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -13345,7 +13992,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -13358,6 +14011,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -13448,7 +14102,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -13461,6 +14121,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -13834,29 +14495,29 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"none"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
 posthold	[ 0	locks=0 ]	(	0	)
 stdswitcher5	[ 0	locks=0 ]	(	2	2	2	2	)
 HIGH	[ 0	locks=0 ]	(	op:../../OUT_HIGH	)
-Attr	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ Attr	myattr ] 	)
+Attr	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ Attr	"" ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -14034,7 +14695,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14047,6 +14714,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -14594,7 +15262,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14607,6 +15281,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -14716,7 +15391,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14729,6 +15410,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -14819,7 +15501,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14832,6 +15520,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -15188,22 +15877,22 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	2048	2048	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"none"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
@@ -15387,7 +16076,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15400,6 +16095,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -15946,7 +16642,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15959,6 +16661,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -16049,7 +16752,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -16062,6 +16771,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -16513,34 +17223,34 @@ overridesize	[ 0	locks=0 ]	(	"on"	)
 size	[ 0	locks=0 ]	(	512	512	)
 sizemenu	[ 0	locks=0 ]	(	0	)
 overrideaspect	[ 0	locks=0 ]	(	"off"	)
-aspect	[ 0	locks=0 ]	(	[ aspect	1 ] 	)
+aspect	[ 0	locks=0 ]	(	[ aspect	0 ] 	)
 planes	[ 0	locks=0 ]	(	"rgb"	)
 addplanes	[ 0	locks=0 ]	(	"none"	)
 addplaneop	[ 0	locks=0 ]	(	"replace"	)
 customplanes	[ 0	locks=0 ]	(	""	)
 depth	[ 0	locks=0 ]	(	"default"	)
 depthmenu	[ 0	locks=0 ]	(	0	)
-depthglobal	[ 0	locks=0 ]	(	[ depthglobal	4 ] 	)
+depthglobal	[ 0	locks=0 ]	(	[ depthglobal	0 ] 	)
 usebwpoints	[ 0	locks=0 ]	(	"off"	)
-bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	1 ] 	)
+bwpoints	[ 0	locks=0 ]	(	[ bwpoints1	0 ] 	[ bwpoints2	0 ] 	)
 interlace	[ 0	locks=0 ]	(	"none"	)
 idominance	[ 0	locks=0 ]	(	"odd"	)
 overriderange	[ 0	locks=0 ]	(	"off"	)
 singleimage	[ 0	locks=0 ]	(	"off"	)
-start	[ 0	locks=0 ]	(	[ start	1 ] 	)
-length	[ 0	locks=0 ]	(	[ length	240 ] 	)
+start	[ 0	locks=0 ]	(	[ start	0 ] 	)
+length	[ 0	locks=0 ]	(	[ length	0 ] 	)
 preextend	[ 0	locks=0 ]	(	"black"	)
 prehold	[ 0	locks=0 ]	(	0	)
 postextend	[ 0	locks=0 ]	(	"black"	)
 posthold	[ 0	locks=0 ]	(	0	)
 stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
 HIGH	[ 0	locks=0 ]	(	op:../../OUT_HIGH	)
-maxdist	[ 0	locks=0 ]	(	[ maxdist	0.10000000000000001 ] 	)
-numrays	[ 0	locks=0 ]	(	[ numrays	50 ] 	)
-conewidth	[ 0	locks=0 ]	(	[ conewidth	90 ] 	)
-bias	[ 0	locks=0 ]	(	[ bias	0.5 ] 	)
-flatbias	[ 0	locks=0 ]	(	[ flatbias	0.02 ] 	)
-curvaturescale	[ 0	locks=0 ]	(	[ curvaturescale	1 ] 	)
+maxdist	[ 0	locks=0 ]	(	[ maxdist	0 ] 	)
+numrays	[ 0	locks=0 ]	(	[ numrays	0 ] 	)
+conewidth	[ 0	locks=0 ]	(	[ conewidth	0 ] 	)
+bias	[ 0	locks=0 ]	(	[ bias	0 ] 	)
+flatbias	[ 0	locks=0 ]	(	[ flatbias	0 ] 	)
+curvaturescale	[ 0	locks=0 ]	(	[ curvaturescale	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -17056,7 +17766,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17069,6 +17785,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -17178,7 +17895,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17191,6 +17914,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -17281,7 +18005,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17294,6 +18024,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 useasparmdefiner	[ 0	locks=0 ]	(	"off"	)
@@ -17389,7 +18120,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17402,6 +18139,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -17516,7 +18254,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17529,6 +18273,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -17643,7 +18388,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17656,6 +18407,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -17770,7 +18522,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17783,6 +18541,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -17897,7 +18656,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17910,6 +18675,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -18024,7 +18790,13 @@ geometrydef	[ 0	locks=0 ]	(	""	)
 colordef	[ 0	locks=0 ]	(	0	0	0	)
 color4def	[ 0	locks=0 ]	(	0	0	0	0	)
 bsdfdef	[ 0	locks=0 ]	(	""	)
+dictdef	[ 0	locks=0 ]	(	""	)
 coshaderdef	[ 0	locks=0 ]	(	""	)
+surfacedef	[ 0	locks=0 ]	(	""	)
+displacementdef	[ 0	locks=0 ]	(	""	)
+atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -18037,6 +18809,7 @@ float4adef	[ 0	locks=0 ]	(	)
 float9adef	[ 0	locks=0 ]	(	)
 float16adef	[ 0	locks=0 ]	(	)
 stringadef	[ 0	locks=0 ]	(	)
+dictadef	[ 0	locks=0 ]	(	)
 coshaderadef	[ 0	locks=0 ]	(	""	)
 structdef	[ 0	locks=0 ]	(	""	)
 rangeflt	[ 0	locks=0 ]	(	0	1	)
@@ -18081,7 +18854,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/sop_quickmaterial1.init"
 Content-Type: text/plain
 
-type = gamedev::sop_quickmaterial::2.0
+type = labs::quickmaterial::2.0
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -18141,11 +18914,16 @@ roundedEdge_radius_1	[ 0	locks=0 ]	(	0	)
 roundedEdge_mode_1	[ 0	locks=0 ]	(	0	)
 roughnessfolder_1	[ 0	locks=0 ]	(	0	)
 rough_texture_1	[ 0	locks=0 ]	(	""	)
-rough_1	[ 0	locks=0 ]	(	0.65200000000000002	)
-ior_1	[ 0	locks=0 ]	(	1.1000000000000001	)
+rough_1	[ 0	locks=0 ]	(	0.652	)
+ior_1	[ 0	locks=0 ]	(	1.1	)
 metallicfolder_1	[ 0	locks=0 ]	(	0	)
 metallic_texture_1	[ 0	locks=0 ]	(	""	)
 metallic_1	[ 0	locks=0 ]	(	0	)
+folder0_1_4	[ 0	locks=0 ]	(	0	)
+dispTex_enable_1	[ 0	locks=0 ]	(	"off"	)
+dispTex_offset_1	[ 0	locks=0 ]	(	-0.5	)
+dispTex_scale_1	[ 0	locks=0 ]	(	1	)
+dispTex_texture_1	[ 0	locks=0 ]	(	""	)
 folder0_1_3	[ 0	locks=0 ]	(	0	)
 basecolorfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_basecolor_1	[ 0	locks=0 ]	(	1	1	1	)
@@ -18153,7 +18931,7 @@ pbr_basecolor_useTexture_1	[ 0	locks=0 ]	(	"off"	)
 pbr_basecolor_texture_1	[ 0	locks=0 ]	(	""	)
 roughnessfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_IOR_1	[ 0	locks=0 ]	(	1.5	)
-pbr_rough_1	[ 0	locks=0 ]	(	0.29999999999999999	)
+pbr_rough_1	[ 0	locks=0 ]	(	0.3	)
 pbr_horizon_fade_1	[ 0	locks=0 ]	(	1	)
 pbr_invert_rough_1	[ 0	locks=0 ]	(	"off"	)
 pbr_rough_useTexture_1	[ 0	locks=0 ]	(	"off"	)
@@ -18940,14 +19718,14 @@ coatspecmodel	[ 0	locks=0 ]	(	ggx	)
 specular_tint	[ 0	locks=0 ]	(	[ specular_tint	0 ] 	)
 diffuse_folder_15	[ 0	locks=0 ]	(	0	0	0	0	0	0	)
 folder7	[ 0	locks=0 ]	(	0	)
-basecolor	[ 0	locks=0 ]	(	[ basecolorr	1 ] 	[ basecolorg	1 ] 	[ basecolorb	1 ] 	)
+basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.2 ] 	[ basecolorg	0.2 ] 	[ basecolorb	0.2 ] 	)
 albedomult	[ 0	locks=0 ]	(	1	)
 basecolor_usePointColor	[ 0	locks=0 ]	(	"on"	)
 basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
-ior	[ 0	locks=0 ]	(	[ ior	1.1000000000000001 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.65200000000000002 ] 	)
+ior	[ 0	locks=0 ]	(	[ ior	1.5 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.3 ] 	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -18959,21 +19737,24 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
+transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
-sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
+sssmodel	[ 0	locks=0 ]	(	pbrsss	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
+ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
 sheen	[ 0	locks=0 ]	(	0	)
 sheentint	[ 0	locks=0 ]	(	0	)
 folder9	[ 0	locks=0 ]	(	0	)
-emitcolor	[ 0	locks=0 ]	(	0	0	0	)
 emitint	[ 0	locks=0 ]	(	1	)
+emitcolor	[ 0	locks=0 ]	(	0	0	0	)
+emitcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 emitillum	[ 0	locks=0 ]	(	"on"	)
 folder15	[ 0	locks=0 ]	(	0	)
 opac	[ 0	locks=0 ]	(	1	)
@@ -18985,12 +19766,16 @@ fakecausticsenabled	[ 0	locks=0 ]	(	"off"	)
 fakecausticstransmit	[ 0	locks=0 ]	(	1	)
 fakecausticsshadow	[ 0	locks=0 ]	(	1	)
 fakecausticsopacity	[ 0	locks=0 ]	(	0	)
+folder17	[ 0	locks=0 ]	(	0	)
+alphablendmode	[ 0	locks=0 ]	(	blend	)
+alphacutoff	[ 0	locks=0 ]	(	0.5	)
 folder54	[ 0	locks=0 ]	(	0	)
 basecolor_useTexture	[ 0	locks=0 ]	(	"on"	)
-basecolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ basecolor_texture	C:/Projects/MapsBaker/render/BapsBaker_Curvature_ao.png ] 	)
+basecolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ basecolor_texture	"" ] 	)
 basecolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 basecolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 basecolor_textureColorSpace	[ 0	locks=0 ]	(	auto	)
+basecolor_useTextureAlpha	[ 0	locks=0 ]	(	"off"	)
 folder1	[ 0	locks=0 ]	(	0	)
 ior_useTexture	[ 0	locks=0 ]	(	"off"	)
 ior_texture	[ 0	locks=0 ]	(	""	)
@@ -19111,17 +19896,23 @@ opaccolor_texture	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ opaccolor_tex
 opaccolor_textureWrap	[ 0	locks=0 ]	(	repeat	)
 opaccolor_textureIntensity	[ 0	locks=0 ]	(	1	)
 opaccolor_textureColorSpace	[ 0	locks=0 ]	(	repeat	)
+folder18	[ 0	locks=0 ]	(	0	)
+occlusion_useTexture	[ 0	locks=0 ]	(	"off"	)
+occlusion_texture	[ 0	locks=0 ]	(	""	)
+occlusion_textureWrap	[ 0	locks=0 ]	(	repeat	)
+occlusion_textureIntensity	[ 0	locks=0 ]	(	1	)
+occlusion_textureColorSpace	[ 0	locks=0 ]	(	auto	)
 folder235	[ 0	locks=0 ]	(	0	)
 surface_textureFilter	[ 0	locks=0 ]	(	catrom	)
 surface_textureFilterWidth	[ 0	locks=0 ]	(	1	)
 roundedEdge_enable	[ 0	locks=0 ]	(	[ roundedEdge_enable	0 ] 	)
-roundedEdge_radius	[ 0	locks=0 ]	(	[ roundedEdge_radius	0 ] 	)
+roundedEdge_radius	[ 0	locks=0 ]	(	[ roundedEdge_radius	0.01 ] 	)
 roundedEdge_mode	[ 0	locks=0 ]	(	[ roundedEdge_mode	0 ] 	)
 shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -19141,12 +19932,12 @@ baseNormal_space	[ 0	locks=0 ]	(	0	)
 baseNormal_flipX	[ 0	locks=0 ]	(	"off"	)
 baseNormal_flipY	[ 0	locks=0 ]	(	[ baseNormal_flipY	0 ] 	)
 baseBump_useTexture	[ 0	locks=0 ]	(	[ baseBump_useTexture	0 ] 	)
-baseNormal_useTexture	[ 0	locks=0 ]	(	[ baseNormal_useTexture	1 ] 	)
+baseNormal_useTexture	[ 0	locks=0 ]	(	[ baseNormal_useTexture	0 ] 	)
 separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -19165,7 +19956,7 @@ coatNormal_imagePlane	[ 0	locks=0 ]	(	""	)
 coatNormal_space	[ 0	locks=0 ]	(	0	)
 coatNormal_flipX	[ 0	locks=0 ]	(	"off"	)
 coatNormal_flipY	[ 0	locks=0 ]	(	"off"	)
-shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	1 ] 	)
+shop_disable_displace_shader	[ 0	locks=0 ]	(	[ shop_disable_displace_shader	0 ] 	)
 folder236	[ 0	locks=0 ]	(	0	)
 vm_displacebound	[ 0	locks=0 ]	(	[ vm_displacebound	0 ] 	)
 vm_truedisplace	[ 0	locks=0 ]	(	"on"	)
@@ -19181,7 +19972,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -19255,6 +20046,9 @@ Vdt	[ 0	locks=0 ]	(	0	0	0	)
 baseN	[ 0	locks=0 ]	(	0	0	0	)
 coatN	[ 0	locks=0 ]	(	0	0	0	)
 speccolor	[ 0	locks=0 ]	(	1	1	1	)
+displayColor	[ 0	locks=0 ]	(	1	1	1	)
+st	[ 0	locks=0 ]	(	0	0	)
+displayOpacity	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -19301,19 +20095,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.init"
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
 Content-Type: text/plain
 
-type = color
+type = attribwrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.def"
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.62626 -13.4984
+position -4.46612 5.4871
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -19322,11 +20116,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	sop_quickmaterial1 1 1 "input1"
+0 	vertexsplit1 1 1 "input1"
 }
 inputs
 {
-0 	sop_quickmaterial1 0 1
+0 	vertexsplit1 0 1
 }
 stat
 {
@@ -19341,90 +20135,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
-class	[ 0	locks=0 ]	(	3	)
-colortype	[ 0	locks=0 ]	(	0	)
-color	[ 0	locks=0 ]	(	1	1	1	)
-seed	[ 0	locks=0 ]	(	0	)
-rampattribute	[ 0	locks=0 ]	(	""	)
-ramprange	[ 0	locks=0 ]	(	0	1	)
-ramp	[ 0	locks=0 ]	(	2	)
-ramp1pos	[ 0	locks=0 ]	(	0	)
-ramp1c	[ 0	locks=0 ]	(	0	0	0	)
-ramp1interp	[ 0	locks=0 ]	(	"linear"	)
-ramp2pos	[ 0	locks=0 ]	(	1	)
-ramp2c	[ 0	locks=0 ]	(	1	1	1	)
-ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"2"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"sop_color"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle2.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle2.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 2.54067 -2.8823
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	Identify_Textures 1 1 "input1"
-}
-inputs
-{
-0 	Identify_Textures 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle2.parm"
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
 Content-Type: text/plain
 
 {
@@ -19432,14 +20143,15 @@ version 0.8
 folder0	[ 0	locks=0 ]	(	0	0	)
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"primitive"	)
+class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"int succ;
-vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
-s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
+snippet	[ 0	locks=0 ]	(	"// To UV-Space
+@P = set(v@uv.x, 0, v@uv.y);
+"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -19450,420 +20162,17 @@ vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
 vex_matchattrib	[ 0	locks=0 ]	(	id	)
 vex_inplace	[ 0	locks=0 ]	(	"off"	)
 vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle2.netbox"
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.netbox"
 Content-Type: text/plain
 
-__netbox1
+__netbox3
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle2.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.init"
-Content-Type: text/plain
-
-type = subnet
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 2.54367 -1.83265
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	(__dot3) "" 1 "input1"
-}
-inputs
-{
-0 	(__dot3) 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-label1	[ 0	locks=0 ]	(	"Sub-Network Input #1"	)
-label2	[ 0	locks=0 ]	(	"Sub-Network Input #2"	)
-label3	[ 0	locks=0 ]	(	"Sub-Network Input #3"	)
-label4	[ 0	locks=0 ]	(	"Sub-Network Input #4"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures.inp"
-Content-Type: text/plain
-
-4
-0 -0.0016000023460951418 8.307972865593829 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -0.0046 1.241
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-2 "output1"
-}
-inputsNamed3
-{
-0 	foreach_begin1 0 1 "input1"
-1 	gather_textures 1 1 "input2"
-}
-inputs
-{
-0 	foreach_begin1 0 1
-1 	gather_textures 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"primitive"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.init"
-Content-Type: text/plain
-
-type = subnet
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -1.0917 0.011746
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	(__dot3) "" 1 "input1"
-}
-inputs
-{
-0 	(__dot3) 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-label1	[ 0	locks=0 ]	(	"Sub-Network Input #1"	)
-label2	[ 0	locks=0 ]	(	"Sub-Network Input #2"	)
-label3	[ 0	locks=0 ]	(	"Sub-Network Input #3"	)
-label4	[ 0	locks=0 ]	(	"Sub-Network Input #4"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.inp"
-Content-Type: text/plain
-
-4
-0 -3.2641412312772022 6.4070474303009313 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -3.26714 -0.852376
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-2 "output1"
-}
-inputsNamed3
-{
-0 	foreach_begin1 0 1 "input1"
-1 	gather_Nt_textures 1 1 "input2"
-}
-inputs
-{
-0 	foreach_begin1 0 1
-1 	gather_Nt_textures 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"primitive"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle3.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle3.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -1.0947 -4.40494
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	mikkT 1 1 "input1"
-}
-inputs
-{
-0 	mikkT 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle3.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"primitive"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"int succ;
-vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
-s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle3.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle3.userdata"
+Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
 Content-Type: text/plain
 
 {
@@ -20177,6 +20486,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -20245,9 +20557,15 @@ Content-Type: text/plain
 
 {
 version 0.8
+usereference	[ 0	locks=0 ]	(	"off"	)
+negate	[ 0	locks=0 ]	(	"off"	)
+doptdel	[ 0	locks=0 ]	(	"on"	)
 ptdel	[ 0	locks=0 ]	(	""	)
+dovtxdel	[ 0	locks=0 ]	(	"on"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
+doprimdel	[ 0	locks=0 ]	(	"on"	)
 primdel	[ 0	locks=0 ]	(	""	)
+dodtldel	[ 0	locks=0 ]	(	"on"	)
 dtldel	[ 0	locks=0 ]	(	*	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 }
@@ -20376,9 +20694,15 @@ Content-Type: text/plain
 
 {
 version 0.8
+usereference	[ 0	locks=0 ]	(	"off"	)
+negate	[ 0	locks=0 ]	(	"off"	)
+doptdel	[ 0	locks=0 ]	(	"on"	)
 ptdel	[ 0	locks=0 ]	(	""	)
+dovtxdel	[ 0	locks=0 ]	(	"on"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
+doprimdel	[ 0	locks=0 ]	(	"on"	)
 primdel	[ 0	locks=0 ]	(	""	)
+dodtldel	[ 0	locks=0 ]	(	"on"	)
 dtldel	[ 0	locks=0 ]	(	""	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 }
@@ -20696,12 +21020,16 @@ coppath	[ 0	locks=0 ]	(	../Position	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_position.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -20892,12 +21220,16 @@ coppath	[ 0	locks=0 ]	(	../../cops_baking/subnet1	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_height.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -21062,12 +21394,16 @@ coppath	[ 0	locks=0 ]	(	../Alpha	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_alpha.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -21232,12 +21568,16 @@ coppath	[ 0	locks=0 ]	(	../WorldNormal	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_worldnormal.png ] 	)
+copoutput	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -21573,13 +21913,17 @@ coppath	[ 0	locks=0 ]	(	/obj/geo1/sop_maps_baker1/cops_baking/AO	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	2048	2048	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_ao.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
-gamma	[ 0	locks=0 ]	(	2.2000000000000002	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
+gamma	[ 0	locks=0 ]	(	2.2	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
 batchmode	[ 0	locks=0 ]	(	"off"	)
@@ -21744,12 +22088,16 @@ coppath	[ 0	locks=0 ]	(	../Nt	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_normal.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -21912,12 +22260,16 @@ coppath	[ 0	locks=0 ]	(	../Color	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_color.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -22082,12 +22434,16 @@ coppath	[ 0	locks=0 ]	(	../CustomAttributes	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_myattr.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -22252,12 +22608,16 @@ coppath	[ 0	locks=0 ]	(	../PBRMaps	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_.png ] 	)
+copoutput	[ 8	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -22677,12 +23037,16 @@ coppath	[ 0	locks=0 ]	(	../Curvature	)
 tres	[ 0	locks=0 ]	(	"natural"	)
 res	[ 0	locks=0 ]	(	2048	2048	)
 resmenu	[ 0	locks=0 ]	(	0	)
-copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	C:/Projects/MapsBaker/render/BapsBaker_Curvature_curvature.png ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/render/$HIPNAME.$OS.$F4.exr ] 	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -22920,6 +23284,7 @@ if hou.parm('../bVertexCd').evalAsInt():
     hou.node(\"../cops_baking/rop_Color/\").parm(\"execute\").pressButton()
     
 hou.hscript(\"glcache -c;\") #refresh textures"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -23287,6 +23652,7 @@ python	[ 0	locks=0 ]	(	"import hou
 
 node = hou.pwd()
 node.parent().hm().Render(node.parent())"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -23496,7 +23862,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -23571,6 +23937,7 @@ docompute	[ 0	locks=0 ]	(	"on"	)
 type	[ 0	locks=0 ]	(	"typevertex"	)
 cuspangle	[ 0	locks=0 ]	(	30	)
 method	[ 0	locks=0 ]	(	0	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
 modify	[ 0	locks=0 ]	(	0	)
 normalize	[ 0	locks=0 ]	(	"off"	)
 reverse	[ 0	locks=0 ]	(	"off"	)
@@ -23590,6 +23957,90 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.init"
+Content-Type: text/plain
+
+type = color
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 5.62626 -13.4984
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	sop_quickmaterial1 1 1 "input1"
+}
+inputs
+{
+0 	sop_quickmaterial1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
+class	[ 0	locks=0 ]	(	3	)
+colortype	[ 0	locks=0 ]	(	0	)
+color	[ 0	locks=0 ]	(	1	1	1	)
+seed	[ 0	locks=0 ]	(	0	)
+rampattribute	[ 0	locks=0 ]	(	""	)
+ramprange	[ 0	locks=0 ]	(	0	1	)
+ramp	[ 0	locks=0 ]	(	2	)
+ramp1pos	[ 0	locks=0 ]	(	0	)
+ramp1c	[ 0	locks=0 ]	(	0	0	0	)
+ramp1interp	[ 0	locks=0 ]	(	"linear"	)
+ramp2pos	[ 0	locks=0 ]	(	1	)
+ramp2c	[ 0	locks=0 ]	(	1	1	1	)
+ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_color"
 	}
 }
 
@@ -23654,7 +24105,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -23809,7 +24260,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24030,6 +24481,255 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle2.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle2.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.54067 -2.8823
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	Identify_Textures 1 1 "input1"
+}
+inputs
+{
+0 	Identify_Textures 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle2.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int succ;
+vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
+s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle2.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle2.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.init"
+Content-Type: text/plain
+
+type = subnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.54367 -1.83265
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(__dot3) "" 1 "input1"
+}
+inputs
+{
+0 	(__dot3) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+label1	[ 0	locks=0 ]	(	"Sub-Network Input #1"	)
+label2	[ 0	locks=0 ]	(	"Sub-Network Input #2"	)
+label3	[ 0	locks=0 ]	(	"Sub-Network Input #3"	)
+label4	[ 0	locks=0 ]	(	"Sub-Network Input #4"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures.inp"
+Content-Type: text/plain
+
+4
+0 -0.0016000023460951418 8.307972865593829 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.0046 1.241
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	foreach_begin1 0 1 "input1"
+1 	gather_textures 1 1 "input2"
+}
+inputs
+{
+0 	foreach_begin1 0 1
+1 	gather_textures 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Textures/attribwrangle3.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Identify_Textures/extract_textures.init"
 Content-Type: text/plain
 
@@ -24091,6 +24791,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -24225,6 +24926,12 @@ Content-Type: text/plain
         type    string
         default { "" }
     }
+    parm {
+        name    "maintainstate"
+        baseparm
+        label   "Maintain State"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Identify_Textures/gather_textures.parm"
@@ -24269,6 +24976,7 @@ if geo.findPrimAttrib(\"shop_materialpath\"):
             #else:
                 #print 'Texture extraction is not supported for the type of material used by %s' % MaterialNode.path()
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 sData	[ 0	locks=0 ]	(	`chs(\"../../sCurAttr\")`	)
 }
 
@@ -24609,6 +25317,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -24642,6 +25351,167 @@ Content-Disposition: attachment; filename="hdaroot/Identify_Textures.net"
 Content-Type: text/plain
 
 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.init"
+Content-Type: text/plain
+
+type = subnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.0917 0.011746
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(__dot3) "" 1 "input1"
+}
+inputs
+{
+0 	(__dot3) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+label1	[ 0	locks=0 ]	(	"Sub-Network Input #1"	)
+label2	[ 0	locks=0 ]	(	"Sub-Network Input #2"	)
+label3	[ 0	locks=0 ]	(	"Sub-Network Input #3"	)
+label4	[ 0	locks=0 ]	(	"Sub-Network Input #4"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.inp"
+Content-Type: text/plain
+
+4
+0 -3.2641412312772022 6.4070474303009313 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 3 6.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+2 6 7 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+3 9 7.5 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -3.26714 -0.852376
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	foreach_begin1 0 1 "input1"
+1 	gather_Nt_textures 1 1 "input2"
+}
+inputs
+{
+0 	foreach_begin1 0 1
+1 	gather_Nt_textures 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/attribwrangle3.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap/extract_textures.init"
@@ -24705,6 +25575,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -24931,6 +25802,7 @@ if geo.findPrimAttrib(\"shop_materialpath\"):
         #else:
             #print 'Texture extraction is not supported for the type of material used by %s' % MaterialNode.path()
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25205,6 +26077,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25238,6 +26111,94 @@ Content-Disposition: attachment; filename="hdaroot/Identify_Normalmap.net"
 Content-Type: text/plain
 
 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle3.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle3.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.0947 -4.40494
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	mikkT 1 1 "input1"
+}
+inputs
+{
+0 	mikkT 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle3.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int succ;
+vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
+s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle3.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribwrangle3.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/normal2.init"
@@ -25294,6 +26255,7 @@ docompute	[ 0	locks=0 ]	(	"on"	)
 type	[ 0	locks=0 ]	(	"typepoint"	)
 cuspangle	[ 0	locks=0 ]	(	60	)
 method	[ 0	locks=0 ]	(	1	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
 modify	[ 0	locks=0 ]	(	0	)
 normalize	[ 0	locks=0 ]	(	"off"	)
 reverse	[ 0	locks=0 ]	(	"off"	)

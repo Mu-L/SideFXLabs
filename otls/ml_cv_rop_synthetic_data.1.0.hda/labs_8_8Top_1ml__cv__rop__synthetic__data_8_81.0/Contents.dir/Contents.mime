@@ -31,7 +31,7 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -4.67073 -0.00154999
+position -4.5 -0.15
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
@@ -2067,11 +2067,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	wedge1 0 1 "input1"
+0 	(0) "" 1 "input1"
 }
 inputs
 {
-0 	wedge1 0 1
+0 	(0) 0 1
 }
 stat
 {
@@ -2106,102 +2106,6 @@ Content-Type: text/plain
 		"value":"___EXTERNAL___"
 	}
 }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant/wedge1.init"
-Content-Type: text/plain
-
-type = labs::wedge::1.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant/wedge1.def"
-Content-Type: text/plain
-
-comment ""
-position 0 2.13
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	(0) "" 1 "input1"
-}
-inputs
-{
-0 	(0) 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author josh@joshs-macbook-pro.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant/wedge1.chn"
-Content-Type: text/plain
-
-{
-    channel wedgecount {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { options = {	 untie  iv ov is os ia oa }
-
-	 length = 0 expr = ch(\"../../varcount\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant/wedge1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-wedgecount	[ 0	locks=0 ]	(	[ wedgecount	1 ] 	)
-nwedgeattribs	[ 0	locks=0 ]	(	1	)
-fd_attribute_1	[ 0	locks=0 ]	(	1	)
-attrib1	[ 0	locks=0 ]	(	w_exp	)
-wedgetype1	[ 0	locks=0 ]	(	"rand"	)
-minvalue1	[ 0	locks=0 ]	(	0	)
-maxvalue1	[ 0	locks=0 ]	(	5.23	)
-randomseed1	[ 0	locks=0 ]	(	0	)
-batchsize1	[ 0	locks=0 ]	(	1	)
-periodsize1	[ 0	locks=0 ]	(	1	)
-values1	[ 0	locks=0 ]	(	0-1	)
-geopath1	[ 0	locks=0 ]	(	""	)
-createwedgegeo1	[ 0	locks=0 ]	(	0	)
-valuesdefault1	[ 0	locks=0 ]	(	0	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant/wedge1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/custom_per_variant.order"
-Content-Type: text/plain
-
-2
-output0
-wedge1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/custom_per_variant.net"
@@ -7150,7 +7054,7 @@ Content-Type: text/plain
 
 comment ""
 position 2.3e-06 32.1941
-connectornextid 2
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault off exposed on
 outputsNamed3
 {
@@ -7158,11 +7062,9 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	error1 0 1 "input1"
 }
 inputs
 {
-0 	error1 0 1
 }
 stat
 {
@@ -7177,34 +7079,6 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/pythonvenv_cv_core.chn"
-Content-Type: text/plain
-
-{
-    channel pythonbin {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = if(ch(\"../os\")==0,2,1) }
-    }
-    channel python {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"__PDG_PYTHON__\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../python\") }
-    }
-    channel venvsymlink {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = if(ch(\"../os\")==0,0,1) }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/pythonvenv_cv_core.parm"
 Content-Type: text/plain
 
@@ -7215,9 +7089,10 @@ pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 environment	[ 0	locks=0 ]	(	1	)
 venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`	)
-pythonbin	[ 8	locks=0 ]	(	[ pythonbin	1 ] 	)
-python	[ 0	locks=0 ]	(	[ python	__PDG_PYTHON__ ] 	)
-venvsymlink	[ 8	locks=0 ]	(	[ venvsymlink	1 ] 	)
+pythonbin	[ 8	locks=0 ]	(	"1"	)
+python	[ 0	locks=0 ]	(	""	)
+venvsymlink	[ 8	locks=0 ]	(	"on"	)
+usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
@@ -7385,6 +7260,7 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
@@ -7566,7 +7442,7 @@ stringenable2	[ 0	locks=0 ]	(	"on"	)
 stringname2	[ 0	locks=0 ]	(	render_dir	)
 stringconflict2	[ 0	locks=0 ]	(	"0"	)
 stringscope2	[ 0	locks=0 ]	(	"0"	)
-stringvalue2	[ 0	locks=0 ]	(	/Users/josh/Documents/_tmp/gsplat_test/datasets/render/ds1.0/	)
+stringvalue2	[ 0	locks=0 ]	(	/Users/josh/Documents/_tmp/Endava/endava_labs_node_test/datasets/delivery/ds1.0/	)
 usestringindex2	[ 0	locks=0 ]	(	"off"	)
 stringindex2	[ 0	locks=0 ]	(	0	)
 sepparm2_3	[ 0	locks=0 ]	(	)
@@ -7704,6 +7580,7 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
@@ -7714,7 +7591,7 @@ filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
 filestring	[ 0	locks=0 ]	(	"# Add requirements here, e.g. requests==2.7.0"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
-requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"1.6.0\",\"numpy\":\"2.2.5\",\"pycocotools\":\"2.0.8\"}	)
+requirementdict	[ 0	locks=0 ]	(	key_value_dict:{\"fiftyone\":\"\",\"numpy\":\"\",\"pycocotools\":\"\"}	)
 outputs	[ 0	locks=0 ]	(	1	)
 venvoutput	[ 0	locks=0 ]	(	"on"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
@@ -8155,14 +8032,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"1"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"object_cop2plane"
 	}
 }
 
@@ -8568,14 +8437,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"1"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"object_cop2plane"
 	}
 }
 
@@ -8796,6 +8657,7 @@ venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
+usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
 requirements	[ 0	locks=0 ]	(	"3"	)
@@ -11009,7 +10871,6 @@ Content-Type: text/plain
         label   "Validation Attrs"
         grouptag { "sidefx::switcher" "folder0" }
         grouptag { "sidefx::switcher:0" "folder0" }
-        grouptag { "visibletabs" "1111" }
 
         parm {
             name    "check_kp"
@@ -27572,92 +27433,10 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/error1.init"
-Content-Type: text/plain
-
-type = error
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/error1.def"
-Content-Type: text/plain
-
-comment ""
-position 2.3e-06 33.7086
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author josh@joshs-macbook-pro.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/error1.chn"
-Content-Type: text/plain
-
-{
-    channel enable1 {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = "import hou
-import platform
-if 'python.exe' not in hou.pwd().parent().parm('python').evalAsString() and platform.system() == 'Windows':
-    return 1
-else:
-    return 0" language = python }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/error1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
-evaluateduring	[ 0	locks=0 ]	(	"0"	)
-pdg_cooktype	[ 0	locks=0 ]	(	"0"	)
-sepparm	[ 0	locks=0 ]	(	)
-numerrors	[ 0	locks=0 ]	(	1	)
-type1	[ 0	locks=0 ]	(	"1"	)
-message1	[ 0	locks=0 ]	(	"Please specify a valid path to python.exe. See help file for setup instructions."	)
-enable1	[ 0	locks=0 ]	(	[ enable1	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/error1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-47
+46
 rop_render
 rop_annotation_json
 rop_aggregate_json
@@ -27704,7 +27483,6 @@ validate_dataset
 image_compositor
 filter_workitems
 sw_render_percent1
-error1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

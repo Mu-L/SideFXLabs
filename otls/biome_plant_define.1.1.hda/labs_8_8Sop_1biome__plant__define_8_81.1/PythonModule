@@ -4,6 +4,9 @@ def printNodeName(node):
 import soptoolutils
 import os
 import fnmatch
+
+def setViewFlag(node):
+    node.setOutputForViewFlag(-1)
     
 def get_all_files(dir, recursive):
     file_list = []
@@ -87,3 +90,5 @@ def calculateBounds(kwargs):
         size = bbox.sizevec()
         maxsize = max(size[0], size[2]);
         node.parm(trunkradiusparmname).set(maxsize / 2.0)
+        
+        

@@ -1,8 +1,3 @@
-# track creation usage. For more info, including how to disable this please see
-# https://www.sidefx.com/legal/houdini-anonymous-usage-statistics/
-
-try:
-    import labutils 
-    labutils.send_on_create_analytics(kwargs["node"])
-except:
-    pass
+node = kwargs['node']
+node.setComment("Replaced by Bake Geometry Textures COP and Karma Texture Baker LOP. To be removed in Houdini 23.0.")
+node.setGenericFlag(hou.nodeFlag.DisplayComment, True)

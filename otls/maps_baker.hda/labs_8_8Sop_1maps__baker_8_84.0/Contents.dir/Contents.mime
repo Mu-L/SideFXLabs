@@ -31,31 +31,24 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -2.67053 -5.85614
-connectornextid 4
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+comment "Replaced by Bake Geometry Textures COP. To be removed in Houdini 23.0."
+position -70.2896 80.3559
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
-3 "output1"
 }
 inputsNamed3
 {
-0 	soften_normals2 1 1 "input1"
-1 	mountain2 1 1 "input2"
-2 	peak2 1 1 "input3"
 }
 inputs
 {
-0 	soften_normals2 0 1
-1 	mountain2 0 1
-2 	peak2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author daniel.maendel@TORWKS0239.tor.gameloft.org
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -84,9 +77,9 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "Set up missing attributes";
-	height := 4.8306063165148831;
+	height := 4.830606316514883;
 	minimized := 0;
-	width := 5.8467335028576368;
+	width := 5.846733502857637;
 	x_position := -2.5422967926015665;
 	y_position := 20.725364015639066;
 }
@@ -109,9 +102,9 @@ Content-Type: text/plain
 	comment := "Clean & Transform to Worldspace";
 	height := 6.407220003087521;
 	minimized := 0;
-	width := 4.3254909640235963;
+	width := 4.325490964023596;
 	x_position := -10.188679160028537;
-	y_position := -5.7819200030875209;
+	y_position := -5.781920003087521;
 }
 {
   create -1
@@ -132,9 +125,9 @@ Content-Type: text/plain
 	comment := Bakes;
 	height := 1.8052201447890797;
 	minimized := 0;
-	width := 3.4441458779038321;
-	x_position := -6.9738318333979574;
-	y_position := -7.6983973165998574;
+	width := 3.444145877903832;
+	x_position := -6.973831833397957;
+	y_position := -7.698397316599857;
 }
 {
   create -1
@@ -155,7 +148,7 @@ Content-Type: text/plain
 	comment := "GUIDE GEOMETRY";
 	height := 9.446198907580353;
 	minimized := 0;
-	width := 7.9255834559338041;
+	width := 7.925583455933804;
 	x_position := -20.843884635609633;
 	y_position := 15.882802518695005;
 }
@@ -176,9 +169,9 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "CAGE / DISTANCE CALCULATIONS";
-	height := 6.1166464256201163;
+	height := 6.116646425620116;
 	minimized := 0;
-	width := 6.5572097655879062;
+	width := 6.557209765587906;
 	x_position := -11.656500551962262;
 	y_position := 5.9671899676644795;
 }
@@ -201,7 +194,7 @@ Content-Type: text/plain
 	comment := "UDIM Calculation";
 	height := 5.868537127511682;
 	minimized := 0;
-	width := 4.0343396217044392;
+	width := 4.034339621704439;
 	x_position := -5.2607257625332755;
 	y_position := 13.725833063963833;
 }
@@ -321,7 +314,7 @@ Content-Type: text/plain
 	height := 1.8792401335716966;
 	minimized := 0;
 	width := 2.652288355393134;
-	x_position := -5.8545883494326691;
+	x_position := -5.854588349432669;
 	y_position := 2.056031845596729;
 }
 {
@@ -695,7 +688,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/UVPos.cop2"
 Content-Type: text/plain
 
 2
-4181
+4182
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -861,6 +854,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1314,6 +1309,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1427,6 +1424,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1555,6 +1554,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1664,6 +1665,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2103,7 +2106,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Tracing.cop2"
 Content-Type: text/plain
 
 2
-4762
+4763
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2185,6 +2188,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2312,6 +2317,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2425,6 +2432,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3394,6 +3403,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3507,6 +3518,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3635,6 +3648,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3744,6 +3759,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3853,6 +3870,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3962,6 +3981,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4071,6 +4092,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4180,6 +4203,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4289,6 +4314,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4398,6 +4425,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4511,6 +4540,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4643,6 +4674,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4770,6 +4803,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4879,6 +4914,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -5307,7 +5344,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Height.cop2"
 Content-Type: text/plain
 
 2
-3823
+3824
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6029,6 +6066,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6156,6 +6195,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6264,6 +6305,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6372,6 +6415,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6485,6 +6530,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6617,6 +6664,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -6744,6 +6793,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7159,7 +7210,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Alpha.cop2"
 Content-Type: text/plain
 
 2
-3705
+3706
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7612,6 +7663,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7809,6 +7862,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -7922,6 +7977,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -8362,7 +8419,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Nt.cop2"
 Content-Type: text/plain
 
 2
-4431
+4432
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -8577,6 +8634,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9136,6 +9195,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9263,6 +9324,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9376,6 +9439,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9503,6 +9568,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -9930,7 +9997,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/CustomAttributes.
 Content-Type: text/plain
 
 2
-3883
+3884
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -10012,6 +10079,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10599,6 +10668,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10709,6 +10780,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10819,6 +10892,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -10929,6 +11004,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11039,6 +11116,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11149,6 +11228,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11259,6 +11340,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11369,6 +11452,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11482,6 +11567,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -11910,7 +11997,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/PBRMaps.cop2"
 Content-Type: text/plain
 
 2
-4505
+4506
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11992,6 +12079,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12254,6 +12343,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12364,6 +12455,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12474,6 +12567,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12584,6 +12679,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12694,6 +12791,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12804,6 +12903,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -12914,6 +13015,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -13024,6 +13127,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -13851,7 +13956,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Curvature.cop2"
 Content-Type: text/plain
 
 2
-3805
+3806
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -14360,6 +14465,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14487,6 +14594,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14595,6 +14704,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14708,6 +14819,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14840,6 +14953,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -14972,6 +15087,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15104,6 +15221,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15236,6 +15355,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15368,6 +15489,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15495,6 +15618,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -15608,6 +15733,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -16092,7 +16219,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Thickness.cop2"
 Content-Type: text/plain
 
 2
-3794
+3795
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16652,6 +16779,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -16779,6 +16908,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -16887,6 +17018,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17000,6 +17133,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17132,6 +17267,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17264,6 +17401,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17396,6 +17535,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17523,6 +17664,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -17636,6 +17779,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -18245,6 +18390,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -18523,7 +18670,7 @@ val_uv	[ 0	locks=0 ]	(	1	1	1	)
 val_up	[ 0	locks=0 ]	(	1	1	1	)
 val_un	[ 0	locks=0 ]	(	1	1	1	)
 val_uc	[ 0	locks=0 ]	(	1	1	1	)
-exp	[ 0	locks=0 ]	(	2.2000000000000002	)
+exp	[ 0	locks=0 ]	(	2.2	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -18920,7 +19067,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Position_Normaliz
 Content-Type: text/plain
 
 2
-4663
+4664
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -19432,6 +19579,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -19559,6 +19708,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -19968,7 +20119,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Color.cop2"
 Content-Type: text/plain
 
 2
-3884
+3885
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20050,6 +20201,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -20635,6 +20788,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -20745,6 +20900,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -20855,6 +21012,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -20965,6 +21124,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -21075,6 +21236,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -21185,6 +21348,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -21295,6 +21460,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -21405,6 +21572,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -21847,7 +22016,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/WorldNormal.cop2"
 Content-Type: text/plain
 
 2
-4014
+4015
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -21929,6 +22098,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22191,6 +22362,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22301,6 +22474,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22411,6 +22586,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22521,6 +22698,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22631,6 +22810,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22741,6 +22922,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22851,6 +23034,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -22961,6 +23146,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -23070,6 +23257,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -23954,6 +24143,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -24086,6 +24277,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -24213,6 +24406,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -24983,7 +25178,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/Position.cop2"
 Content-Type: text/plain
 
 2
-4590
+4591
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25195,6 +25390,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25305,6 +25502,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25415,6 +25614,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25525,6 +25726,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25635,6 +25838,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25745,6 +25950,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25855,6 +26062,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -25965,6 +26174,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -26402,6 +26613,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -26530,6 +26743,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -26996,7 +27211,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/AO.cop2"
 Content-Type: text/plain
 
 2
-3769
+3770
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -27558,6 +27773,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -27685,6 +27902,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -27793,6 +28012,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -27906,6 +28127,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28038,6 +28261,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28170,6 +28395,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28302,6 +28529,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28429,6 +28658,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28542,6 +28773,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -28987,7 +29220,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/MaterialID.cop2"
 Content-Type: text/plain
 
 2
-3911
+3912
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -29069,6 +29302,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -29628,6 +29863,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -29741,6 +29978,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -29878,8 +30117,8 @@ roundedEdge_radius_1	[ 0	locks=0 ]	(	0	)
 roundedEdge_mode_1	[ 0	locks=0 ]	(	0	)
 roughnessfolder_1	[ 0	locks=0 ]	(	0	)
 rough_texture_1	[ 0	locks=0 ]	(	"`ifs(ch(\"../bRoughness\"),strreplace(chs(\"../sOutputFile\"), \"$(CHANNEL)\", chs(\"../sRoughness\")),\"\")`"	)
-rough_1	[ 8	locks=0 ]	(	[ rough_1	0.65200000000000002 ] 	)
-ior_1	[ 0	locks=0 ]	(	1.1000000000000001	)
+rough_1	[ 8	locks=0 ]	(	[ rough_1	0.652 ] 	)
+ior_1	[ 0	locks=0 ]	(	1.1	)
 metallicfolder_1	[ 0	locks=0 ]	(	0	)
 metallic_texture_1	[ 0	locks=0 ]	(	"`ifs(ch(\"../bMetallic\"),strreplace(chs(\"../sOutputFile\"), \"$(CHANNEL)\", chs(\"../sMetallic\")),\"\")`"	)
 metallic_1	[ 8	locks=0 ]	(	[ metallic_1	0 ] 	)
@@ -29895,7 +30134,7 @@ pbr_basecolor_useTexture_1	[ 0	locks=0 ]	(	"off"	)
 pbr_basecolor_texture_1	[ 0	locks=0 ]	(	""	)
 roughnessfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_IOR_1	[ 0	locks=0 ]	(	1.5	)
-pbr_rough_1	[ 0	locks=0 ]	(	0.29999999999999999	)
+pbr_rough_1	[ 0	locks=0 ]	(	0.3	)
 pbr_horizon_fade_1	[ 0	locks=0 ]	(	1	)
 pbr_invert_rough_1	[ 0	locks=0 ]	(	"off"	)
 pbr_rough_useTexture_1	[ 0	locks=0 ]	(	"off"	)
@@ -30682,14 +30921,14 @@ coatspecmodel	[ 0	locks=0 ]	(	ggx	)
 specular_tint	[ 0	locks=0 ]	(	[ specular_tint	0 ] 	)
 diffuse_folder_15	[ 0	locks=0 ]	(	2	2	2	2	2	2	)
 folder7	[ 0	locks=0 ]	(	0	)
-basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.20000000000000001 ] 	[ basecolorg	0.20000000000000001 ] 	[ basecolorb	0.20000000000000001 ] 	)
+basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.2 ] 	[ basecolorg	0.2 ] 	[ basecolorb	0.2 ] 	)
 albedomult	[ 0	locks=0 ]	(	1	)
 basecolor_usePointColor	[ 0	locks=0 ]	(	"on"	)
 basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
 ior	[ 0	locks=0 ]	(	[ ior	1.5 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.29999999999999999 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.3 ] 	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -30701,7 +30940,7 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
 transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
@@ -30709,7 +30948,7 @@ folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
 sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
 ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
@@ -30876,7 +31115,7 @@ shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -30901,7 +31140,7 @@ separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -30936,7 +31175,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -31282,12 +31521,12 @@ Content-Type: text/plain
 version 0.8
 diffuse_folder_15	[ 0	locks=0 ]	(	0	0	)
 folder7	[ 0	locks=0 ]	(	0	)
-basecolor	[ 0	locks=0 ]	(	0.80000000000000004	0.80000000000000004	0.80000000000000004	)
+basecolor	[ 0	locks=0 ]	(	0.8	0.8	0.8	)
 basecolor_useTexture	[ 0	locks=0 ]	(	"on"	)
 basecolor_texture	[ 0	locks=0 ]	(	""	)
 folder4	[ 0	locks=0 ]	(	0	)
 IOR	[ 0	locks=0 ]	(	1.5	)
-rough	[ 0	locks=0 ]	(	0.29999999999999999	)
+rough	[ 0	locks=0 ]	(	0.3	)
 horizon_fade	[ 0	locks=0 ]	(	1	)
 invert_rough	[ 0	locks=0 ]	(	"off"	)
 rough_useTexture	[ 0	locks=0 ]	(	"on"	)
@@ -31398,6 +31637,7 @@ snippet	[ 0	locks=0 ]	(	"// To UV-Space
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -31732,6 +31972,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -32214,6 +32457,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"on"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -32430,6 +32677,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -32601,6 +32852,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -32754,6 +33009,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -32914,6 +33173,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -33095,6 +33358,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -33255,6 +33522,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -33433,6 +33704,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -33618,6 +33893,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -33796,6 +34075,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -34178,7 +34461,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/color1.cop2"
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34261,7 +34544,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/switch1.cop2"
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34363,7 +34646,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale1.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34511,7 +34794,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale2.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34659,7 +34942,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale3.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34807,7 +35090,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale4.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -34955,7 +35238,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale5.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35103,7 +35386,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale6.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35251,7 +35534,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale7.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35399,7 +35682,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale8.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35547,7 +35830,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale9.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35719,7 +36002,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale10.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -35815,6 +36098,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	[ gamma	1 ] 	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -36054,7 +36341,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/switch2.cop2"
 Content-Type: text/plain
 
 2
-1
+2
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -37006,7 +37293,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -37292,7 +37579,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -37578,7 +37865,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -37864,7 +38151,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -38150,7 +38437,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -38436,7 +38723,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -38722,7 +39009,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -39008,7 +39295,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -39294,7 +39581,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -39714,7 +40001,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/extrapolatebounda
 Content-Type: text/plain
 
 2
-2
+3
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -39862,7 +40149,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale11.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -39951,6 +40238,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	""	)
 scopeplanes	[ 0	locks=0 ]	(	"C A"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 8	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -40163,7 +40454,7 @@ Content-Disposition: attachment; filename="hdaroot/cops_baking/scale12.cop2"
 Content-Type: text/plain
 
 2
-3
+4
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -40418,6 +40709,7 @@ if hou.parm('../usematerialid').evalAsInt():
     
     
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -40763,6 +41055,7 @@ python	[ 0	locks=0 ]	(	"import hou
 
 node = hou.pwd()
 node.parent().hm().Render(node.parent())"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -41119,6 +41412,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"on"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	3	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -41565,6 +41859,7 @@ vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
 s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -41647,6 +41942,7 @@ snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);
 v@RenderTextureTint = prim(1, \"RenderTextureTint\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -41733,6 +42029,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -41867,6 +42164,12 @@ Content-Type: text/plain
         type    string
         default { "" }
     }
+    parm {
+        name    "maintainstate"
+        baseparm
+        label   "Maintain State"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Identify_Textures/gather_textures.parm"
@@ -41934,6 +42237,7 @@ if geo.findPrimAttrib(\"shop_materialpath\"):
             #else:
                 #print 'Texture extraction is not supported for the type of material used by %s' % MaterialNode.path()
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 sData	[ 0	locks=0 ]	(	`chs(\"../../sCurAttr\")`	)
 }
 
@@ -42274,6 +42578,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -42559,6 +42864,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -42806,6 +43112,7 @@ if geo.findPrimAttrib(\"shop_materialpath\"):
             prim.setAttribValue(\"RoundedEdge_Enable\", MaterialNode.parm(\"roundedEdge_enable\").evalAsInt())
             prim.setAttribValue(\"RoundedEdge_Radius\", MaterialNode.parm(\"roundedEdge_radius\").evalAsFloat())
             prim.setAttribValue(\"RoundedEdge_Mode\", MaterialNode.parm(\"roundedEdge_mode\").evalAsInt())"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -43080,6 +43387,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -43229,6 +43537,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"RenderTexture RoundedEdge_Enable RoundedEdge_Mode RoundedEdge_Radius"	)
@@ -43237,6 +43546,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -43342,6 +43652,7 @@ vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
 s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -43652,6 +43963,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	1	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -44165,6 +44477,7 @@ Content-Type: text/plain
 {
 version 0.8
 python	[ 0	locks=0 ]	(	"hou.hscript(\"glcache -c;\") #refresh textures"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -44239,6 +44552,12 @@ Content-Type: text/plain
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
+mask	[ 0	locks=0 ]	(	1	)
+enablemaskattrib	[ 0	locks=0 ]	(	"noscaling"	)
+maskattrib	[ 0	locks=0 ]	(	mask	)
+usecustomattrib	[ 0	locks=0 ]	(	"off"	)
+customattrib	[ 0	locks=0 ]	(	N	)
+normalizeattrib	[ 0	locks=0 ]	(	"on"	)
 dist	[ 8	locks=0 ]	(	[ dist	0 ] 	)
 updatenmls	[ 0	locks=0 ]	(	"on"	)
 }
@@ -44611,6 +44930,7 @@ snippet	[ 0	locks=0 ]	(	"v@N *= ch(\"../fMaxTraceDist\");
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -45149,6 +45469,7 @@ else
     s@udim = \"1001\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -45234,6 +45555,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@NumUDIM = nuniqueval(0, \"point\", \"udim\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -45597,6 +45919,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -45739,6 +46064,7 @@ snippet	[ 0	locks=0 ]	(	"v@N *= -ch(\"../fMaxTraceDist\");
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -45830,6 +46156,12 @@ Content-Type: text/plain
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
+mask	[ 0	locks=0 ]	(	1	)
+enablemaskattrib	[ 0	locks=0 ]	(	"noscaling"	)
+maskattrib	[ 0	locks=0 ]	(	mask	)
+usecustomattrib	[ 0	locks=0 ]	(	"off"	)
+customattrib	[ 0	locks=0 ]	(	N	)
+normalizeattrib	[ 0	locks=0 ]	(	"on"	)
 dist	[ 8	locks=0 ]	(	[ dist	0 ] 	)
 updatenmls	[ 0	locks=0 ]	(	"on"	)
 }
@@ -46046,6 +46378,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@uv.z = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -46125,6 +46458,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@uv.z = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -46428,6 +46762,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@uv.z = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -46507,6 +46842,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@uv.z = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -46997,6 +47333,7 @@ apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
 scene_style_sheet	[ 0	locks=0 ]	(	""	)
 obj_style_sheet	[ 0	locks=0 ]	(	""	)
 dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -47165,6 +47502,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@RenderTexture = prim(1, \"RenderTexture\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -47251,6 +47589,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -47494,6 +47833,7 @@ if geo.findPrimAttrib(\"shop_materialpath\"):
         #else:
             #print 'Texture extraction is not supported for the type of material used by %s' % MaterialNode.path()
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -47768,6 +48108,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -47956,6 +48297,7 @@ vector uv = vertexattrib(0, \"uv\" , vertexindex(0, @primnum, 0), succ);
 s@RenderTexture = expand_udim(uv.x, uv.y, s@RenderTexture);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -48199,11 +48541,14 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"on"	)
+embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
 exportclips	[ 0	locks=0 ]	(	"off"	)
 numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
@@ -48325,11 +48670,14 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"on"	)
+embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
 exportclips	[ 0	locks=0 ]	(	"off"	)
 numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
@@ -48542,6 +48890,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"__udimoffset udim"	)
@@ -48550,6 +48899,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -48612,6 +48962,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"on"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	3	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -48699,8 +49050,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector uvselect "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -48858,6 +49209,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle4.chn"
@@ -48888,6 +49245,7 @@ snippet	[ 0	locks=0 ]	(	"if (chi(\"usename\") == 0)
     s@name = \"default\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -48967,8 +49325,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector uvselect "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -49126,6 +49484,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle6.chn"
@@ -49156,6 +49520,7 @@ snippet	[ 0	locks=0 ]	(	"if (chi(\"usename\") == 0)
     s@name = \"default\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -49235,8 +49600,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector uvselect "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -49394,6 +49759,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle7.chn"
@@ -49424,6 +49795,7 @@ snippet	[ 0	locks=0 ]	(	"if (chi(\"usename\") == 0)
     s@name = \"default\";"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -49690,6 +50062,7 @@ snippet	[ 0	locks=0 ]	(	"if (s@shop_materialpath == \"\") {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -49767,6 +50140,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	materialid	)
@@ -49775,6 +50149,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -49843,6 +50218,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@materialid += 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -49997,6 +50373,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"__udimoffset udim"	)
@@ -50005,6 +50382,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -50075,6 +50453,7 @@ v@__udimoffset.y = int(v@__udimoffset.y);
 v@__udimoffset.z = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

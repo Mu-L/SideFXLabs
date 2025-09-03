@@ -11,7 +11,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = gamedev::sop_av_analyze_images::3.0
+type = labs::av_analyze_images::3.0
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20,32 +20,201 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.3329 -1.34536
-connectornextid 2
+position -14.4651 -1.16527
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
 }
 inputsNamed3
 {
-1 	sop_av_initialize1 0 1 "input1"
 }
 inputs
 {
-0 	sop_av_initialize1 0 1
 }
 stat
 {
-  create 1569624135
-  modify 1569624841
-  author paula@DESKTOP-5213MPP
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder2"
+        label   "Feature Extraction"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "dsc_type"
+            baseparm
+            label   "Describer Types"
+            export  none
+        }
+        parm {
+            name    "dsc_pre"
+            baseparm
+            label   "Describer Preset"
+            export  none
+        }
+        parm {
+            name    "cpu"
+            baseparm
+            label   "Force CPU Extraction"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder2_1"
+        label   "Image Matching"
+
+        parm {
+            name    "minNImg"
+            baseparm
+            label   "Min Number of Images"
+            export  none
+        }
+        parm {
+            name    "max_desc"
+            baseparm
+            label   "Max Descriptors"
+            export  none
+        }
+        parm {
+            name    "nMatch"
+            baseparm
+            label   "Number of Matches"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder2_2"
+        label   "Feature Matching"
+
+        parm {
+            name    "dsc_type2"
+            baseparm
+            label   "Describer Types"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder3"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder1" }
+
+            parm {
+                name    "photo"
+                baseparm
+                label   "Photometric Matching Method"
+                export  none
+            }
+            parm {
+                name    "geometricError"
+                baseparm
+                label   "Geometric Error"
+                export  none
+            }
+            parm {
+                name    "geoEst"
+                baseparm
+                label   "Geometric Estimator"
+                export  none
+            }
+            parm {
+                name    "geoFilter"
+                baseparm
+                label   "Geometric Filter type"
+                export  none
+            }
+            parm {
+                name    "dist"
+                baseparm
+                label   "Distance Ratio"
+                export  none
+            }
+            parm {
+                name    "maxIter"
+                baseparm
+                label   "Max Iteration"
+                export  none
+            }
+            parm {
+                name    "maxMatch"
+                baseparm
+                label   "Max Matches"
+                export  none
+            }
+            parm {
+                name    "savePut"
+                baseparm
+                label   "Save Putative Matches"
+                export  none
+            }
+            parm {
+                name    "matchFilePerImage"
+                baseparm
+                label   "Match File Per Image"
+                export  none
+            }
+            parm {
+                name    "useGridSort"
+                baseparm
+                label   "Use Grid Sort"
+                export  none
+            }
+            parm {
+                name    "guide"
+                baseparm
+                label   "Guided Matching"
+                export  none
+            }
+            parm {
+                name    "expDebug"
+                baseparm
+                label   "Export Debug Files"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -95,8 +264,8 @@ inputs
 }
 stat
 {
-  create 1546634656
-  modify 1555463479
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -152,6 +321,7 @@ cmd.append(\"--rangeSize\")
 cmd.append(str(len(os.listdir(srcimg))))
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"02_FeatureExtraction\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -161,7 +331,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -195,8 +365,8 @@ inputs
 }
 stat
 {
-  create 1546639690
-  modify 1555463471
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -255,6 +425,7 @@ cmd.append(\"--output\")
 cmd.append(os.path.join(cache, \"03_ImageMatching\", \"imageMatches.txt\"))
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"03_ImageMatching\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -264,7 +435,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -298,8 +469,8 @@ inputs
 }
 stat
 {
-  create 1546648278
-  modify 1569624843
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -391,6 +562,7 @@ cmd.append(\"--rangeSize\")
 cmd.append(str(len(os.listdir(srcimg))))
 
 hou.pwd().parent().hdaModule().log(cmd, cache, \"04_FeatureMatching\", node)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -400,7 +572,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -436,8 +608,8 @@ inputs
 }
 stat
 {
-  create 1547589222
-  modify 1569624135
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -465,7 +637,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -475,7 +647,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	},
 	"___toolcount___":{
 		"type":"string",
@@ -517,8 +689,8 @@ inputs
 }
 stat
 {
-  create 1547589226
-  modify 1550008156
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -544,7 +716,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	},
 	"___toolcount___":{
 		"type":"string",
@@ -585,8 +757,8 @@ inputs
 }
 stat
 {
-  create 1549916881
-  modify 1554916256
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -611,7 +783,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"17.5.369"
+		"value":"___EXTERNAL___"
 	}
 }
 

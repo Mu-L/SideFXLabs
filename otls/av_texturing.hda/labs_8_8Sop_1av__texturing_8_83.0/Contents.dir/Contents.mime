@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 4.1447 -5.03328
+position -14.4651 0.545603
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -46,15 +46,176 @@ inputs
 }
 stat
 {
-  create 1591734737
-  modify 1591734742
-  author Paul_Ambrosiussen@DESKTOP-5213MPP
+  create -1
+  modify -1
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "cook"
+        baseparm
+        label   "Cook"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "reload"
+        baseparm
+        label   "Reload"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "manual_mode"
+        baseparm
+        label   "Manual Mode"
+        joinnext
+        export  none
+    }
+    parm {
+        name    "bExportLog"
+        baseparm
+        label   "Use Log"
+        export  none
+    }
+    group {
+        name    "folder2"
+        label   "Texturing"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "side"
+            baseparm
+            label   "Texture Side"
+            export  none
+        }
+        parm {
+            name    "down"
+            baseparm
+            label   "Texture Downscale"
+            export  none
+        }
+        parm {
+            name    "file"
+            baseparm
+            label   "Texture File Type"
+            export  none
+        }
+        parm {
+            name    "unwrap"
+            baseparm
+            label   "Unwrap Method"
+            export  none
+        }
+        parm {
+            name    "holes"
+            baseparm
+            label   "Fill Holes"
+            export  none
+        }
+        parm {
+            name    "flipN"
+            baseparm
+            label   "Flip Normals"
+            export  none
+        }
+        parm {
+            name    "useUDIM"
+            baseparm
+            label   "Use UDIM UVs"
+            export  none
+        }
+        groupcollapsible {
+            name    "folder3"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "folder1" }
+
+            parm {
+                name    "pad"
+                baseparm
+                label   "Padding"
+                export  none
+            }
+            parm {
+                name    "score"
+                baseparm
+                label   "Best Score Threshold"
+                export  none
+            }
+            parm {
+                name    "angle"
+                baseparm
+                label   "Angle Hard Threshold"
+                export  none
+            }
+            parm {
+                name    "force"
+                baseparm
+                label   "Force Visible By All Vertices"
+                export  none
+            }
+            parm {
+                name    "visRemap"
+                baseparm
+                label   "Visibility Remapping Method"
+                export  none
+            }
+            parm {
+                name    "bCustomImages"
+                baseparm
+                label   "Use Custom Images for Texturing"
+                export  none
+            }
+            parm {
+                name    "customTextureImages"
+                baseparm
+                label   "Custom Texturing Images"
+                export  none
+            }
+            parm {
+                name    "correctEV"
+                baseparm
+                label   "Correct Exposure"
+                export  none
+            }
+            parm {
+                name    "useScore"
+                baseparm
+                label   "Use Score"
+                export  none
+            }
+            parm {
+                name    "processColorspace"
+                baseparm
+                label   "Process Colorspace"
+                export  none
+            }
+            parm {
+                name    "multiBandDownscale"
+                baseparm
+                label   "Multi Band Downscale"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "customenv"
+        label   "customenv"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -112,8 +273,8 @@ inputs
 }
 stat
 {
-  create 1549995545
-  modify 1591734749
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -138,7 +299,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"0.4"
+		"value":"___EXTERNAL___"
 	},
 	"___toolcount___":{
 		"type":"string",
@@ -169,8 +330,8 @@ inputs
 }
 stat
 {
-  create 1532947640
-  modify 1591734783
+  create -1
+  modify -1
   author paula@DESKTOP-5213MPP
   access 0777
 }
@@ -200,7 +361,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -234,8 +395,8 @@ inputs
 }
 stat
 {
-  create 1546980116
-  modify 1569875109
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -340,6 +501,7 @@ cmd.append(\"error\")
 hou.pwd().parent().hdaModule().log(cmd, cache, \"11_Texturing\", node)
 
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -349,7 +511,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -385,8 +547,8 @@ inputs
 }
 stat
 {
-  create 1547596358
-  modify 1569874470
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -414,7 +576,7 @@ Content-Type: text/plain
 
 {
 version 0.8
-input	[ 8	locks=0 ]	(	[ input	1 ] 	)
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -424,7 +586,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -458,8 +620,8 @@ inputs
 }
 stat
 {
-  create 1547596363
-  modify 1554915940
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -485,7 +647,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -519,8 +681,8 @@ inputs
 }
 stat
 {
-  create 1547664131
-  modify 1569875107
+  create -1
+  modify -1
   author prisms@NEWPORT
   access 0777
 }
@@ -569,7 +731,7 @@ Content-Type: text/plain
 {
 version 0.8
 filemode	[ 0	locks=0 ]	(	"read"	)
-file	[ 0	locks=0 ]	(	[ file	"" ] 	)
+file	[ 0	locks=0 ]	(	[ file	default.bgeo ] 	)
 reload	[ 0	locks=0 ]	(	[ reload	0 ] 	)
 objpattern	[ 0	locks=0 ]	(	*	)
 geodatapath	[ 0	locks=0 ]	(	""	)
@@ -595,7 +757,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -628,8 +790,8 @@ inputs
 }
 stat
 {
-  create 1549935223
-  modify 1569874887
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -654,7 +816,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -687,8 +849,8 @@ inputs
 }
 stat
 {
-  create 1532953615
-  modify 1591734891
+  create -1
+  modify -1
   author paula@DESKTOP-5213MPP
   access 0777
 }
@@ -717,7 +879,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -751,8 +913,8 @@ inputs
 }
 stat
 {
-  create 1549992027
-  modify 1569873886
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -828,6 +990,7 @@ else:
 
 hou.hscript(\"glcache -c;\") #refresh textures
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -837,7 +1000,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -871,8 +1034,8 @@ inputs
 }
 stat
 {
-  create 1550190299
-  modify 1569874421
+  create -1
+  modify -1
   author Paul_Ambrosiussen@DESKTOP-A0373M3
   access 0777
 }
@@ -907,6 +1070,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -924,7 +1088,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -958,8 +1122,8 @@ inputs
 }
 stat
 {
-  create 1554851935
-  modify 1554853032
+  create -1
+  modify -1
   author prisms@Threadripper1
   access 0777
 }
@@ -985,7 +1149,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1021,8 +1185,8 @@ inputs
 }
 stat
 {
-  create 1569864008
-  modify 1569875007
+  create -1
+  modify -1
   author paula@DESKTOP-5213MPP
   access 0777
 }
@@ -1095,6 +1259,7 @@ for mtl in mtls:
         if a in [\"map_Kd\"]:
             point.setAttribValue(a, os.path.join(TexturingDir, av[-1]) )
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1104,7 +1269,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1138,8 +1303,8 @@ inputs
 }
 stat
 {
-  create 1569865496
-  modify 1569874608
+  create -1
+  modify -1
   author paula@DESKTOP-5213MPP
   access 0777
 }
@@ -1165,7 +1330,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -1199,8 +1364,8 @@ inputs
 }
 stat
 {
-  create 1569874370
-  modify 1569874616
+  create -1
+  modify -1
   author paula@DESKTOP-5213MPP
   access 0777
 }
@@ -1217,6 +1382,7 @@ Content-Type: text/plain
 version 0.8
 python	[ 0	locks=0 ]	(	"node = hou.pwd()
 node.parent().hm().cookNode(node.parent())"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1226,7 +1392,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"18.0.491"
+		"value":"___EXTERNAL___"
 	}
 }
 
