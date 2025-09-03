@@ -48,7 +48,7 @@
             name    "size"
             label   "Size"
             type    float
-            default { "100" }
+            default { "300" }
             disablewhen "{ mode != 1 }"
             hidewhen "{ mode != 1 }"
             range   { 0! 2000 }
@@ -64,7 +64,7 @@
             menu usetokenvalue {
                 "0" "Specified"
                 "1" "From Existing Biome"
-                "2" "Gradient"
+                "2" "Biome Graph"
             }
             parmtag { "script_callback" "" }
             parmtag { "script_callback_language" "python" }
@@ -154,6 +154,15 @@
             disablewhen "{ mode != 1 } { biomeattributes != 0 }"
             hidewhen "{ mode != 1 } { biomeattributes != 0 }"
             range   { 0! 4300 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "opacity"
+            label   "Graph Opacity"
+            type    float
+            default { "0.5" }
+            hidewhen "{ mode != 1 } { biomeattributes != 2 }"
+            range   { 0! 1! }
             parmtag { "script_callback_language" "python" }
         }
     }
