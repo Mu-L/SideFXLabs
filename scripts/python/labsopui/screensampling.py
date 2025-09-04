@@ -60,11 +60,18 @@ class ScreensCapture(QWidget):
             self.mouseX = [screenid, cursorloc[0]]
             self.mouseY = [screenid, cursorloc[1]]
 
+
         return [screenid, cursorloc[0], cursorloc[1]]
+
+    def escapeCapture(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.closeCaptures()
+            self.close()
 
 
 class SampleColor(ScreensCapture):
     def __init__(self, parent, parms):
+
         super(SampleColor, self).__init__(parent)
         self.colorparms = parms
         self.samplepositions = []
@@ -72,11 +79,13 @@ class SampleColor(ScreensCapture):
         for view in self._views:
             view.mouseMoveEvent = self.sampleColorAtMousePosition
             view.mouseReleaseEvent = self.populateRampAndExit
+            view.keyPressEvent = self.escapeCapture
 
     def sampleColorAtMousePosition(self, event):
         _mousedata = self.getMousePos(event)
         self.samplepositions.append(_mousedata)
         self.update()
+
 
     def paintEvent(self, QPaintEvent):
         if self.oldMouseX[1] >= 0 and self.mouseX[1] >= 0:
@@ -98,6 +107,7 @@ class SampleColor(ScreensCapture):
                 # Update the visible pixmap
                 self._scenes[self.mouseX[0]].items()[0].setPixmap(pixmap)
 
+
         self.oldMouseX = self.mouseX
         self.oldMouseY = self.mouseY
 
@@ -118,6 +128,8 @@ class SampleColor(ScreensCapture):
         self.close()
 
 
+
+
 class CaptureAndEmbed(ScreensCapture):
     def __init__(self, parent, editor):
         super(CaptureAndEmbed, self).__init__(parent)
@@ -132,6 +144,7 @@ class CaptureAndEmbed(ScreensCapture):
         for i, view in enumerate(self._views):
             view.mouseReleaseEvent = self.captureRegion
             view.mouseMoveEvent = self.drawCaptureRegionRect
+            view.keyPressEvent = self.escapeCapture
             self.originalscreenshots.append(self._screenshots[i].copy())
 
     def getSortedScreenRect(self, pos1, pos2):
