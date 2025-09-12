@@ -23,7 +23,7 @@ Sop
 Content-Disposition: attachment; filename="hdaroot.init"
 Content-Type: text/plain
 
-type = labs::mandelbulb_generator::1.0
+type = labs::mandelbulb_generator::1.1
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.32712 5.96046e-09
+position -86.3601 75.1144
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -80,9 +80,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.114345 8.86412
+position 0.161121 7.86623
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
@@ -183,9 +183,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.114345 7.46458
+position 0.161121 6.73176
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -269,7 +269,7 @@ sopflags sopflags =
 comment ""
 position -0.00843707 5.00447
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -504,13 +504,12 @@ version 0.8
 folder0	[ 0	locks=0 ]	(	0	0	)
 group	[ 0	locks=0 ]	(	""	)
 bindeach	[ 0	locks=0 ]	(	"off"	)
-snippet	[ 0	locks=0 ]	(	"function int mandelbrot(const vector orig; const int imax) 
-{
+snippet	[ 0	locks=0 ]	(	"function int mandelbrot(const vector orig; const int imax) {
 
     float x, y, z; 
     float xnew, ynew, znew;
     float r, theta, phi;
-    float n = chf('nvalue');    
+    float n=chf('nvalue');    
     float phase = chf('phase');
     float power = chf('power');
         
@@ -520,19 +519,18 @@ snippet	[ 0	locks=0 ]	(	"function int mandelbrot(const vector orig; const int im
     
     z = orig.z;
     
-    for(int i = 0 ; i < imax ; i++) 
-    {
+    for(int i=0; i < imax ; i++) {
     
        
-        r = length(set(x, y, z));
-        theta = power * acos(z / r) + phase;
-        phi = atan2(y, x);
+        r = length(set(x,y,z));
+        theta = power * acos(z/r) + phase;
+        phi = atan2(y,x);
     
-        xnew = pow(r, n) * sin(theta * n) * cos(phi * n) + orig.x ;
-        ynew = pow(r, n) * sin(theta * n) * sin(phi * n) + orig.y ;
-        znew = pow(r, n) * cos(theta * n) + orig.z ;
+        xnew = pow(r,n) * sin(theta*n) * cos(phi*n) + orig.x ;
+        ynew = pow(r,n) * sin(theta*n) * sin(phi*n) + orig.y ;
+        znew = pow(r,n) * cos(theta*n) + orig.z ;
         
-        if(pow(xnew,2) + pow(ynew,2) + pow(znew,2) > chf('iteration'))
+        if( pow(xnew,2) + pow(ynew,2) + pow(znew,2) > chf('iteration')  )
             
             return i;
 
@@ -600,18 +598,18 @@ sopflags sopflags =
 comment ""
 position -0.00843707 1.5548
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	switch_opencl 1 1 "input1"
+0 	switch2 1 1 "input1"
 }
 inputs
 {
-0 	switch_opencl 0 1
+0 	switch2 0 1
 }
 stat
 {
@@ -649,7 +647,7 @@ usehull	[ 0	locks=0 ]	(	"off"	)
 boundptgroup	[ 0	locks=0 ]	(	""	)
 voxeloffset	[ 0	locks=0 ]	(	0	)
 worldoffset	[ 0	locks=0 ]	(	0	)
-bgtolerance	[ 0	locks=0 ]	(	0	)
+bgtolerance	[ 0	locks=0 ]	(	0.867	)
 prune	[ 0	locks=0 ]	(	"off"	)
 tolerance	[ 0	locks=0 ]	(	0	)
 }
@@ -684,7 +682,7 @@ sopflags sopflags =
 comment ""
 position 3.38016 -0.604675
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -761,14 +759,14 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_between_output_types.init"
+Content-Disposition: attachment; filename="hdaroot/switch1.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_between_output_types.def"
+Content-Disposition: attachment; filename="hdaroot/switch1.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
@@ -807,7 +805,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_between_output_types.chn"
+Content-Disposition: attachment; filename="hdaroot/switch1.chn"
 Content-Type: text/plain
 
 {
@@ -820,7 +818,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_between_output_types.parm"
+Content-Disposition: attachment; filename="hdaroot/switch1.parm"
 Content-Type: text/plain
 
 {
@@ -829,7 +827,7 @@ input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_between_output_types.userdata"
+Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
 Content-Type: text/plain
 
 {
@@ -852,9 +850,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 6.06571 -0.570425
+position 5.97216 -0.570425
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -957,33 +955,33 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.init"
+Content-Disposition: attachment; filename="hdaroot/switchif1.init"
 Content-Type: text/plain
 
 type = switchif
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.def"
+Content-Disposition: attachment; filename="hdaroot/switchif1.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
 position 0.133209 -13.9397
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
 }
 inputsNamed3
 {
-0 	switch_between_output_types 2 1 "input1"
+0 	switch1 2 1 "input1"
 1 	add_color 2 1 "input2"
 }
 inputs
 {
-0 	switch_between_output_types 0 1
+0 	switch1 0 1
 1 	add_color 0 1
 }
 stat
@@ -999,7 +997,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.spareparmdef"
+Content-Disposition: attachment; filename="hdaroot/switchif1.spareparmdef"
 Content-Type: text/plain
 
     parm {
@@ -1132,7 +1130,7 @@ Content-Type: text/plain
     }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.chn"
+Content-Disposition: attachment; filename="hdaroot/switchif1.chn"
 Content-Type: text/plain
 
 {
@@ -1141,12 +1139,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../switch_between_output_types/input\")>1 }
+      segment { length = 0 value = 1 1 expr = ch(\"../switch1/input\")>1 }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.parm"
+Content-Disposition: attachment; filename="hdaroot/switchif1.parm"
 Content-Type: text/plain
 
 {
@@ -1170,11 +1168,11 @@ countgroup1	[ 0	locks=0 ]	(	""	)
 countcomp1	[ 0	locks=0 ]	(	"equal"	)
 countval1	[ 0	locks=0 ]	(	0	)
 hasinputtype1	[ 0	locks=0 ]	(	"wired"	)
-spare_input0	[ 0	locks=0 ]	(	../switch_between_output_types	)
+spare_input0	[ 0	locks=0 ]	(	../switch1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_if_points.userdata"
+Content-Disposition: attachment; filename="hdaroot/switchif1.userdata"
 Content-Type: text/plain
 
 {
@@ -1199,7 +1197,7 @@ sopflags sopflags =
 comment ""
 position 1.78742 -9.27646
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 0 "output1"
@@ -1606,12 +1604,12 @@ class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"float l = length(v@P);
-float min = detail(0, \"_mdl_minl\");
-float max = detail(0, \"_mdl_maxl\");
+float min = detail(0,\"_mdl_minl\");
+float max = detail(0,\"_mdl_maxl\");
 
-float normalized_l = fit(l, min, max, 0, 1);
+float normalized_l = fit(l,min,max,0,1);
 
-v@Cd = vector(chramp('ramp_color', normalized_l));
+v@Cd = vector(chramp('ramp_color',normalized_l));
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
@@ -1673,7 +1671,7 @@ sopflags sopflags =
 comment ""
 position 0.860761 -12.0825
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
@@ -1749,7 +1747,7 @@ sopflags sopflags =
 comment ""
 position 1.78742 -5.78658
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -1831,7 +1829,7 @@ sopflags sopflags =
 comment ""
 position 1.78397 -10.6436
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -1901,7 +1899,7 @@ sopflags sopflags =
 comment ""
 position 1.78397 -6.84625
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -1969,7 +1967,7 @@ sopflags sopflags =
 comment ""
 position 1.78397 -7.98052
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -2037,17 +2035,17 @@ sopflags sopflags =
 comment "HDA Code : mdl"
 position 0.133209 -15.0447
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	switch_if_points 2 1 "input1"
+0 	switchif1 2 1 "input1"
 }
 inputs
 {
-0 	switch_if_points 0 1
+0 	switchif1 0 1
 }
 stat
 {
@@ -2096,7 +2094,7 @@ sopflags sopflags =
 comment ""
 position 0.890861 -0.604675
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -2173,32 +2171,34 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.init"
+Content-Disposition: attachment; filename="hdaroot/switch2.init"
 Content-Type: text/plain
 
-type = opencl
+type = switch
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.def"
+Content-Disposition: attachment; filename="hdaroot/switch2.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.5381 4.13121
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+position -0.0179871 2.67306
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	activate_hack 1 1 "input1"
+0 	mandelbulb 1 1 "input1"
+2 	copnet1 0 1 "input2"
 }
 inputs
 {
-0 	activate_hack 0 1
+0 	mandelbulb 0 1
+1 	copnet1 0 1
 }
 stat
 {
@@ -2207,72 +2207,340 @@ stat
   author thomasg@minsk
   access 0777
 }
-color UT_Color RGB 0.996 0.682 0.682 
+color UT_Color RGB 0.8 1 0.7 
 delscript ""
 exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.spareparmdef"
+Content-Disposition: attachment; filename="hdaroot/switch2.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../useocl\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1.init"
+Content-Type: text/plain
+
+type = copnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 3.0267 4.88807
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author thomasg@reading
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+usecoppath	[ 0	locks=0 ]	(	"off"	)
+coppath	[ 0	locks=0 ]	(	""	)
+singleoutput	[ 0	locks=0 ]	(	"on"	)
+useinput	[ 0	locks=0 ]	(	"off"	)
+output	[ 0	locks=0 ]	(	0	)
+plane	[ 0	locks=0 ]	(	"xy"	)
+docompile	[ 0	locks=0 ]	(	"off"	)
+outputapexgraph	[ 0	locks=0 ]	(	"off"	)
+setres	[ 0	locks=0 ]	(	"off"	)
+res	[ 0	locks=0 ]	(	1024	1024	)
+resmenu	[ 0	locks=0 ]	(	"none"	)
+setpixelscale	[ 0	locks=0 ]	(	"off"	)
+pixelscale	[ 0	locks=0 ]	(	2	)
+setborder	[ 0	locks=0 ]	(	"off"	)
+border	[ 0	locks=0 ]	(	"wrap"	)
+setprecision	[ 0	locks=0 ]	(	"off"	)
+precision	[ 0	locks=0 ]	(	"b32"	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
+setvistile	[ 0	locks=0 ]	(	"off"	)
+vistile	[ 0	locks=0 ]	(	3	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/sopimport1.init"
+Content-Type: text/plain
+
+type = sopimport
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/sopimport1.def"
+Content-Type: text/plain
+
+comment ""
+position 4.65986 7.39697
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+outputsNamed3
+{
+0 "geometry"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author thomasg@reading
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/sopimport1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+usesoppath	[ 0	locks=0 ]	(	"on"	)
+soppath	[ 0	locks=0 ]	(	../../vdbactivate1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/sopimport1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/sopimport1.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/geotovdb1.init"
+Content-Type: text/plain
+
+type = geotolayer::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/geotovdb1.def"
+Content-Type: text/plain
+
+comment ""
+position 7.35088 7.32197
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+outputsNamed3
+{
+1 "layer"
+}
+inputsNamed3
+{
+0 	sopimport1 0 1 "geometry"
+}
+inputs
+{
+0 	sopimport1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author thomasg@reading
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/geotovdb1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+setprecision	[ 0	locks=0 ]	(	"off"	)
+precision	[ 0	locks=0 ]	(	"b16"	)
+border	[ 0	locks=0 ]	(	"auto"	)
+slice	[ 0	locks=0 ]	(	"xy"	)
+densifyvdb	[ 0	locks=0 ]	(	"on"	)
+addprims	[ 0	locks=0 ]	(	0	)
+numprims	[ 0	locks=0 ]	(	1	)
+primitive1	[ 0	locks=0 ]	(	density	)
+outtype1	[ 0	locks=0 ]	(	"floatvdb"	)
+optional1	[ 0	locks=0 ]	(	"off"	)
+f1_def1	[ 0	locks=0 ]	(	1	)
+f2_def1	[ 0	locks=0 ]	(	1	1	)
+f3_def1	[ 0	locks=0 ]	(	1	1	1	)
+f4_def1	[ 0	locks=0 ]	(	1	1	1	1	)
+i_def1	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/geotovdb1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.init"
+Content-Type: text/plain
+
+type = opencl
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.def"
+Content-Type: text/plain
+
+comment ""
+position 9.64203 7.32197
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	geotovdb1 1 1 "input1"
+}
+inputs
+{
+0 	geotovdb1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author thomasg@reading
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.spareparmdef"
 Content-Type: text/plain
 
     group {
-        name    "stdswitcher5"
+        name    "stdswitcher6"
         label   "Kernel"
 
-        parm {
-            name    "kernelname"
-            baseparm
-            label   "Kernel Name"
-            export  none
-        }
-        parm {
-            name    "usecode"
-            baseparm
-            label   "Use Code Snippet"
-            export  none
-        }
-        parm {
-            name    "kernelfile"
-            baseparm
-            label   "Kernel File"
-            export  none
-        }
         groupsimple {
             name    "folder_generatedparms_kernelcode"
             label   "Generated Channel Parameters"
             grouptag { "sidefx::look" "blank" }
 
             parm {
-                name    "nvalue_val"
+                name    "nvalue"
                 label   "Nvalue"
                 type    float
                 default { "0" }
                 range   { 0 1 }
             }
             parm {
-                name    "iterations_val"
+                name    "iterations"
                 label   "Iterations"
                 type    integer
                 default { "0" }
                 range   { 0 10 }
             }
             parm {
-                name    "maxiterations_val"
+                name    "maxiterations"
                 label   "Maxiterations"
                 type    integer
                 default { "0" }
                 range   { 0 10 }
             }
             parm {
-                name    "phase_val"
+                name    "phase"
                 label   "Phase"
                 type    float
                 default { "0" }
                 range   { 0 1 }
             }
             parm {
-                name    "power_val"
+                name    "power"
                 label   "Power"
                 type    float
                 default { "0" }
@@ -2286,28 +2554,22 @@ Content-Type: text/plain
             label   "Kernel Code"
             export  none
         }
+    }
+
+    group {
+        name    "stdswitcher6_1"
+        label   "Options"
+
         parm {
-            name    "atbinding"
+            name    "options_runover"
             baseparm
-            label   "Enable @-Binding"
+            label   "Run Over"
             export  none
         }
         parm {
-            name    "kerneloptions"
+            name    "kernelname"
             baseparm
-            label   "Kernel Options"
-            export  none
-        }
-        parm {
-            name    "kerneloptionattrib"
-            baseparm
-            label   "Options Attribute"
-            export  none
-        }
-        parm {
-            name    "usewritebackkernel"
-            baseparm
-            label   "Use Write Back Kernel"
+            label   "Kernel Name"
             export  none
         }
         parm {
@@ -2317,87 +2579,101 @@ Content-Type: text/plain
             export  none
         }
         parm {
-            name    "recompile"
+            name    "kerneloptions"
             baseparm
-            label   "Recompile Kernel"
-            export  none
-        }
-    }
-
-    group {
-        name    "stdswitcher5_1"
-        label   "Options"
-
-        parm {
-            name    "runover"
-            baseparm
-            label   "Run Over"
+            label   "Compiler Options"
             export  none
         }
         parm {
-            name    "iterations"
+            name    "options_tile"
+            baseparm
+            label   "Layer Tile Size"
+            export  none
+        }
+        parm {
+            name    "options_usevdbtile"
+            baseparm
+            label   "Use VDB Tile Size"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "options_vdbtile"
+            baseparm
+            label   "VDB Tile Size"
+            export  none
+        }
+        parm {
+            name    "options_iterations"
             baseparm
             label   "Iterations"
             export  none
         }
         parm {
-            name    "worksets_begin"
+            name    "options_iteration"
             baseparm
-            label   "Worksets Begin Attr."
+            label   "Include Iteration"
             export  none
         }
         parm {
-            name    "worksets_length"
+            name    "usewritebackkernel"
             baseparm
-            label   "Worksets Length Attr."
+            label   "Use Write Back Kernel"
             export  none
         }
         parm {
-            name    "singleworkgroup"
-            baseparm
-            label   "Use Single Workgroup If Possible"
-            export  none
-        }
-        parm {
-            name    "finish"
-            baseparm
-            label   "Finish Kernels"
-            export  none
-        }
-        parm {
-            name    "time"
+            name    "options_time"
             baseparm
             label   "Include Time"
             export  none
         }
         parm {
-            name    "timeinc"
+            name    "options_timeinccontext"
+            baseparm
+            label   "Use Context's Timestep"
+            export  none
+        }
+        parm {
+            name    "options_timeinc"
             baseparm
             label   "Include Timestep"
             export  none
         }
         parm {
-            name    "timescale"
+            name    "options_timescale"
             baseparm
             label   "Time Scale"
             joinnext
             export  none
         }
         parm {
-            name    "timemethod"
+            name    "options_timemethod"
             baseparm
             label   "Time Method"
             nolabel
             export  none
         }
         parm {
-            name    "xnoise"
+            name    "options_importprequel"
             baseparm
-            label   "Include Simplex Noise Data"
+            label   "Use #import for Prequel Code"
             export  none
         }
         parm {
-            name    "precision"
+            name    "options_timing"
+            baseparm
+            label   "Timing Messages"
+            export  none
+        }
+        parm {
+            name    "filter"
+            baseparm
+            label   "Area Sampling Filter"
+            export  none
+        }
+        parm {
+            name    "options_precision"
             baseparm
             label   "Precision"
             export  none
@@ -2405,37 +2681,122 @@ Content-Type: text/plain
     }
 
     group {
-        name    "stdswitcher5_2"
+        name    "stdswitcher6_2"
+        label   "Signature"
+
+        multiparm {
+            name    "inputs"
+            label    "Inputs"
+            baseparm
+            default 0
+
+            parm {
+                name    "input#_name"
+                baseparm
+                label   "Input #"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "input#_type"
+                baseparm
+                label   "Type"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "input#_optional"
+                baseparm
+                label   "Optional"
+                export  none
+            }
+        }
+
+        parm {
+            name    "parm_spacerparm"
+            baseparm
+            label   "Spacer"
+            export  none
+        }
+        multiparm {
+            name    "outputs"
+            label    "Outputs"
+            baseparm
+            default 0
+
+            parm {
+                name    "output#_name"
+                baseparm
+                label   "Output #"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "output#_type"
+                baseparm
+                label   "Type"
+                nolabel
+                export  none
+            }
+            parm {
+                name    "output#_metadata"
+                baseparm
+                label   "Metadata"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "output#_precision"
+                baseparm
+                label   "Precision"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "output#_typeinfo"
+                baseparm
+                label   "Type Info"
+                nolabel
+                export  none
+            }
+            parm {
+                name    "output#_metaname"
+                baseparm
+                label   "Input for Metadata"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "stdswitcher6_3"
         label   "Bindings"
 
         multiparm {
             name    "bindings"
-            label    "OpenCL Parameters"
+            label    "Bindings"
             baseparm
-            default 1
+            default 0
 
             groupcollapsible {
-                name    "stdswitcher_child_#"
-                label   "Parameter #"
+                name    "stdswitcher0_#"
+                label   "Bind#"
                 baseparm
                 parmtag { "sidefx::header_parm" "bindings#_name" }
 
                 parm {
                     name    "bindings#_name"
                     baseparm
-                    label   "Parameter Name"
+                    label   "Name"
                     export  none
                 }
                 parm {
                     name    "bindings#_type"
                     baseparm
-                    label   "Parameter Type"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_ramp"
-                    baseparm
-                    label   "Ramp"
+                    label   "Type"
                     export  none
                 }
                 parm {
@@ -2445,21 +2806,45 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_input"
+                    name    "bindings#_ramptype"
                     baseparm
-                    label   "Input"
+                    label   "Data Type"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_ramp"
+                    baseparm
+                    label   "Ramp"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_ramp_rgb"
+                    baseparm
+                    label   "Ramp"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_layertype"
+                    baseparm
+                    label   "Data Type"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_layerborder"
+                    baseparm
+                    label   "Border"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_portname"
+                    baseparm
+                    label   "Port"
                     export  none
                 }
                 parm {
                     name    "bindings#_volume"
                     baseparm
                     label   "Volume"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_vdbtype"
-                    baseparm
-                    label   "Type"
                     export  none
                 }
                 parm {
@@ -2483,13 +2868,19 @@ Content-Type: text/plain
                 parm {
                     name    "bindings#_xformtoworld"
                     baseparm
-                    label   "Volume Transform to World"
+                    label   "Transform to World"
                     export  none
                 }
                 parm {
                     name    "bindings#_xformtovoxel"
                     baseparm
-                    label   "Volume Transform to Voxel"
+                    label   "Transform to Voxel"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_vdbtype"
+                    baseparm
+                    label   "Data Type"
                     export  none
                 }
                 parm {
@@ -2507,13 +2898,13 @@ Content-Type: text/plain
                 parm {
                     name    "bindings#_attribtype"
                     baseparm
-                    label   "Type"
+                    label   "Data Type"
                     export  none
                 }
                 parm {
                     name    "bindings#_attribsize"
                     baseparm
-                    label   "Size"
+                    label   "Tuple Size"
                     export  none
                 }
                 parm {
@@ -2525,13 +2916,13 @@ Content-Type: text/plain
                 parm {
                     name    "bindings#_readable"
                     baseparm
-                    label   "Readable"
+                    label   "Read"
                     export  none
                 }
                 parm {
                     name    "bindings#_writeable"
                     baseparm
-                    label   "Writeable"
+                    label   "Write"
                     export  none
                 }
                 parm {
@@ -2549,31 +2940,31 @@ Content-Type: text/plain
                 parm {
                     name    "bindings#_intval"
                     baseparm
-                    label   "Integer"
+                    label   "Value"
                     export  none
                 }
                 parm {
                     name    "bindings#_fval"
                     baseparm
-                    label   "Float"
+                    label   "Value"
                     export  none
                 }
                 parm {
                     name    "bindings#_v2val"
                     baseparm
-                    label   "Float 2"
+                    label   "Value"
                     export  none
                 }
                 parm {
                     name    "bindings#_v3val"
                     baseparm
-                    label   "Float 3"
+                    label   "Value"
                     export  none
                 }
                 parm {
                     name    "bindings#_v4val"
                     baseparm
-                    label   "Float 4"
+                    label   "Value"
                     export  none
                 }
                 parm {
@@ -2589,13 +2980,13 @@ Content-Type: text/plain
     }
 
     group {
-        name    "stdswitcher5_3"
+        name    "stdswitcher6_4"
         label   "Generated Code"
 
         parm {
-            name    "generatekernel"
+            name    "displaycode"
             baseparm
-            label   "Generate Kernel"
+            label   "Display Code"
             export  none
         }
         parm {
@@ -2606,21 +2997,9 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "iteration"
-        baseparm
-        label   "Include Iteration"
-        export  none
-    }
-    parm {
-        name    "importprequel"
-        baseparm
-        label   "Use #import for Prequel Code"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.chn"
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.chn"
 Content-Type: text/plain
 
 {
@@ -2630,7 +3009,7 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"./nvalue_val\") }
+	 length = 0 expr = ch(\"./nvalue\") }
     }
     channel bindings2_intval {
       lefttype = extend
@@ -2638,7 +3017,7 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"./iterations_val\") }
+	 length = 0 expr = ch(\"./iterations\") }
     }
     channel bindings3_intval {
       lefttype = extend
@@ -2646,7 +3025,7 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"./maxiterations_val\") }
+	 length = 0 expr = ch(\"./maxiterations\") }
     }
     channel bindings4_fval {
       lefttype = extend
@@ -2654,7 +3033,7 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"./phase_val\") }
+	 length = 0 expr = ch(\"./phase\") }
     }
     channel bindings5_fval {
       lefttype = extend
@@ -2662,86 +3041,85 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"./power_val\") }
+	 length = 0 expr = ch(\"./power\") }
     }
-    channel nvalue_val {
+    channel nvalue {
       lefttype = extend
       righttype = extend
-      default = 6
       flags = 0
-      segment { length = 0 value = 6 6 expr = ch(\"../nvalue\") }
+      segment { length = 0 expr = ch(\"../../nvalue\") }
     }
-    channel iterations_val {
+    channel iterations {
       lefttype = extend
       righttype = extend
-      default = 10
       flags = 0
-      segment { length = 0 value = 10 10 expr = ch(\"../iteration\") }
+      segment { length = 0 expr = ch(\"../../iteration\") }
     }
-    channel maxiterations_val {
+    channel maxiterations {
       lefttype = extend
       righttype = extend
-      default = 35
       flags = 0
-      segment { length = 0 value = 35 35 expr = ch(\"../maxiter\") }
+      segment { length = 0 expr = ch(\"../../maxiter\") }
     }
-    channel phase_val {
+    channel power {
       lefttype = extend
       righttype = extend
-      default = 0.5
       flags = 0
-      segment { length = 0 value = 0.5 0.5 expr = ch(\"../phase\") }
+      segment { length = 0 expr = ch(\"../../power\") }
     }
-    channel power_val {
+    channel phase {
       lefttype = extend
       righttype = extend
-      default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../power\") }
+      segment { length = 0 expr = ch(\"../../phase\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.parm"
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.parm"
 Content-Type: text/plain
 
 {
 version 0.8
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
-kernelname	[ 0	locks=0 ]	(	kernelName	)
-usecode	[ 0	locks=0 ]	(	"on"	)
-kernelfile	[ 0	locks=0 ]	(	""	)
-kernelcode	[ 0	locks=0 ]	(	"#bind vdb &density float
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+kernelcode	[ 0	locks=0 ]	(	"#runover vdb
+#bind vdb &density float
 #bind parm nvalue float 
 #bind parm iterations int
 #bind parm maxiterations int
 #bind parm phase float 
 #bind parm power float 
 
-int mandelbrot(float3 orig, int imax, float n, float phase, float power, int iterations) 
+int mandelbrot(float3 orig, int imax, double n, double phase, double power, int iterations) 
 {
 
-    float x, y, z;
-    float xnew, ynew, znew;
+    float x,y,z;
+    float xnew,ynew,znew;
     float3 pos = orig;
-    float r, theta, phi;
+    double r,theta,phi;
     
     x = pos.x;
     y = pos.y;
     z = pos.z;
     
-    for(int i = 0 ; i < imax; ++i) 
-    {
+    for(int i = 0 ; i < imax; ++i) {
     
-        r = length((float3)(x, y, z));
-        theta = power * acos(z / r) + phase;
-        phi = atan(y / x);
+        r = length((double3)(x,y,z));
+        // dividing by 0 is not safe in OpenCL :woe_is_me:
+        if (fabs(r) < 1e-6)
+            theta = 0.0;
+        else
+            theta = power * acos(z/r) + phase;
+        if (fabs(x) < 1e-6)
+            phi = 0.0;
+        else
+            phi = atan(y/x);
          
-        xnew = pow(r, n) * sin(theta * n) * cos(phi * n) + pos.x ;
-        ynew = pow(r, n) * sin(theta * n) * sin(phi * n) + pos.y ;
-        znew = pow(r, n) * cos(theta * n) + pos.z ;        
+        xnew = pow(r,n) * sin(theta*n) * cos(phi*n) + pos.x ;
+        ynew = pow(r,n) * sin(theta*n) * sin(phi*n) + pos.y ;
+        znew = pow(r,n) * cos(theta*n) + pos.z ;        
         
-        if((pow(xnew, 2) + pow(ynew, 2) + pow(znew, 2)) > iterations)
+        if( ( pow(xnew,2) + pow(ynew,2) + pow(znew,2) ) >= (float)(iterations))
             
             return i;
 
@@ -2761,175 +3139,80 @@ int mandelbrot(float3 orig, int imax, float n, float phase, float power, int ite
 {
       
     float3 orig = @density.pos;
-        
-    int val = (mandelbrot(orig, @maxiterations, @nvalue, @phase, @power, @iterations)) < @maxiterations;
+         
     
-    float newdensity = 1.0 - (float)val;
+    int val = (mandelbrot(
+               orig, 
+               @maxiterations,
+               @nvalue,
+               @phase,
+               @power,
+               @iterations)
+               ) < @maxiterations;
     
-    float xcheck = fabs(orig.x);
-    float ycheck = fabs(orig.y);
-    float tol = 1e-6;        
-    if((xcheck < tol) && (ycheck < tol))
-        newdensity = 0.0f;
+    float newdensity = 1.0 - (float)(val);
     
     @density.set(newdensity);
 
-}
-"	)
-atbinding	[ 0	locks=0 ]	(	"on"	)
+}"	)
+options_runover	[ 0	locks=0 ]	(	"layer"	)
+kernelname	[ 0	locks=0 ]	(	generickernel	)
+writebackkernelname	[ 0	locks=0 ]	(	writebackkernel	)
 kerneloptions	[ 0	locks=0 ]	(	""	)
-kerneloptionattrib	[ 0	locks=0 ]	(	""	)
+options_tile	[ 0	locks=0 ]	(	1	1	)
+options_usevdbtile	[ 0	locks=0 ]	(	"off"	)
+options_vdbtile	[ 0	locks=0 ]	(	1	1	1	)
+options_iterations	[ 0	locks=0 ]	(	1	)
+options_iteration	[ 0	locks=0 ]	(	"off"	)
 usewritebackkernel	[ 0	locks=0 ]	(	"off"	)
-writebackkernelname	[ 0	locks=0 ]	(	WRITEBACK	)
-recompile	[ 0	locks=0 ]	(	"off"	)
-runover	[ 0	locks=0 ]	(	"vdb"	)
-iterations	[ 0	locks=0 ]	(	1	)
-iteration	[ 0	locks=0 ]	(	"off"	)
-worksets_begin	[ 0	locks=0 ]	(	""	)
-worksets_length	[ 0	locks=0 ]	(	""	)
-singleworkgroup	[ 0	locks=0 ]	(	"off"	)
-finish	[ 0	locks=0 ]	(	"on"	)
-time	[ 0	locks=0 ]	(	"off"	)
-timeinc	[ 0	locks=0 ]	(	"off"	)
-timescale	[ 0	locks=0 ]	(	1	)
-timemethod	[ 0	locks=0 ]	(	"invert"	)
-xnoise	[ 0	locks=0 ]	(	"off"	)
-precision	[ 0	locks=0 ]	(	"32"	)
-importprequel	[ 0	locks=0 ]	(	"on"	)
+options_time	[ 0	locks=0 ]	(	"off"	)
+options_timeinccontext	[ 0	locks=0 ]	(	"on"	)
+options_timeinc	[ 0	locks=0 ]	(	"off"	)
+options_timescale	[ 0	locks=0 ]	(	1	)
+options_timemethod	[ 0	locks=0 ]	(	"invert"	)
+options_importprequel	[ 0	locks=0 ]	(	"on"	)
+options_timing	[ 0	locks=0 ]	(	"off"	)
+filter	[ 0	locks=0 ]	(	"box"	)
+options_precision	[ 0	locks=0 ]	(	"32"	)
+inputs	[ 0	locks=0 ]	(	1	)
+parm_spacerparm	[ 0	locks=0 ]	(	)
+outputs	[ 0	locks=0 ]	(	1	)
 bindings	[ 0	locks=0 ]	(	5	)
-generatekernel	[ 0	locks=0 ]	(	0	)
-generatedcode	[ 0	locks=1 ]	(	"#include <interpolate.h>
-#include <matrix.h>
-#include <CVDBUtil.h>
-#define AT_ix	_bound_gidx
-#define AT_iy	_bound_gidy
-#define AT_iz	_bound_gidz
-#define AT_elemnum	_bound_idx
-#define AT_nvalue	_bound_nvalue
-#define AT_iterations	_bound_iterations
-#define AT_maxiterations	_bound_maxiterations
-#define AT_phase	_bound_phase
-#define AT_power	_bound_power
-#define AT_density_data	((global cnanovdb_griddata * restrict)_bound_density)
-#define AT_density_bound	1
-#define AT_density_voxelsize_x	_bound_density_voxelsize_x
-#define AT_density_voxelsize_y	_bound_density_voxelsize_y
-#define AT_density_voxelsize_z	_bound_density_voxelsize_z
-#define AT_density_xformtovoxel	_bound_density_xformtovoxel
-#define AT_density	cnanovdb_readaccessor_getValueF(&_bound_density_acc, &_bound_gcoord)
-#define AT_density_active	cnanovdb_readaccessor_isActiveF(&_bound_density_acc, &_bound_gcoord)
-#define AT_density_get	AT_density
-#define AT_density_pos	cnanovdb_indexToWorld(AT_density_data, (float3)(_bound_gidx, _bound_gidy, _bound_gidz))
-#define AT_density_getAt(_idx_x_, _idx_y_, _idx_z_)	cnanovdb_readaccessor_getIJKValueF(&_bound_density_acc, _idx_x_, _idx_y_, _idx_z_)
-#define AT_density_valid(_idx_x_, _idx_y_, _idx_z_)	cnanovdb_readaccessor_isIJKActiveF(&_bound_density_acc, _idx_x_, _idx_y_, _idx_z_)
-#define AT_density_activeAt(_idx_x_, _idx_y_, _idx_z_)	cnanovdb_readaccessor_isIJKActiveF(&_bound_density_acc, _idx_x_, _idx_y_, _idx_z_)
-#define AT_density_sample(_pos_)	cnanovdb_sampleF_trilinear(&_bound_density_acc, CAST_VEC3(_pos_))
-#define AT_density_worldSample(_pos_)	cnanovdb_sampleF(AT_density_data, &_bound_density_acc, _pos_)
-#define AT_density_worldGradient(_pos_)	cnanovdb_gradient(AT_density_data, &_bound_density_acc, _pos_)
-#define AT_density_set(_val_)	cnanovdb_readaccessor_setValueF(&_bound_density_acc, &_bound_gcoord, _val_)
-#define AT_density_setAt(_idx_x_, _idx_y_, _idx_z_, _val_)	cnanovdb_readaccessor_setIJKValueF(&_bound_density_acc, _idx_x_, _idx_y_, _idx_z_, _val_)
-#line 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-int mandelbrot(float3 orig, int imax, double n, double phase, double power, int iterations) 
-{
-
-    double x,y,z;
-    double xnew,ynew,znew;
-    float3 pos = orig;
-    double r,theta,phi;
-    x = pos.x;
-    y = pos.y;
-    z = pos.z;
-    
-    for(int i=0 ; i<imax; ++i) {
-    
-        r = length((float3)(x,y,z));
-        theta = power * acos(z*r) + phase;
-        phi = atan(y/x);
-         
-        xnew = pow(r,n) * sin(theta*n) * cos(phi*n) + pos.x ;
-        ynew = pow(r,n) * sin(theta*n) * sin(phi*n) + pos.y ;
-        znew = pow(r,n) * cos(theta*n) + pos.z ;        
-        
-        if( pow(xnew,2) + pow(ynew,2) + pow(znew,2) > iterations){
-        
-            return i;
-        
-        }
-                
-        return imax;
-
-    }
-
-}
-
-
-kernel void kernelName( 
-    global const int * restrict _bound_tilestartsxyz,
-    float  _bound_nvalue,
-    int    _bound_iterations,
-    int    _bound_maxiterations,
-    float  _bound_phase,
-    float  _bound_power,
-float _bound_density_voxelsize_x,
-    float _bound_density_voxelsize_y,
-    float _bound_density_voxelsize_z,
-    float16 _bound_density_xformtovoxel,
-    global void * restrict _bound_density
-)
-{
-    cnanovdb_readaccessor _bound_density_acc;
-    cnanovdb_getreadaccessor(_bound_density, &_bound_density_acc);
-    int _bound_tileidx = get_global_id(0);
-    int _bound_tileoffset = _bound_tileidx & 511;
-    _bound_tileidx = _bound_tileidx >> 9;
-    int3 _bound_tilebasexyz = vload3(_bound_tileidx, _bound_tilestartsxyz);
-    int _bound_gidx = _bound_tilebasexyz.x + (_bound_tileoffset & 7);
-    int _bound_gidy = _bound_tilebasexyz.y + ((_bound_tileoffset >> 3) & 7);
-    int _bound_gidz = _bound_tilebasexyz.z + ((_bound_tileoffset >> 6) & 7);
-    int _bound_idx = (_bound_tileidx << 9) + _bound_tileoffset;
-    cnanovdb_coord _bound_gcoord = { .mVec = { _bound_gidx, _bound_gidy, _bound_gidz } };
-    if (!cnanovdb_readaccessor_isActiveF(&_bound_density_acc, &_bound_gcoord))
-        return;
-
-#line 49
-
-      
-    float3 orig = AT_density_pos;
-        
-    int val = (mandelbrot(orig,AT_maxiterations,AT_nvalue,AT_phase,AT_power,AT_iterations)) < AT_maxiterations;
-    
-    float newdensity = 1.0 - (float)val;
-    
-    AT_density_set(newdensity);
-
-}
-"	)
-stdswitcher_child_1	[ 0	locks=0 ]	(	0	)
+displaycode	[ 0	locks=0 ]	(	0	)
+generatedcode	[ 0	locks=0 ]	(	""	)
+stdswitcher6	[ 0	locks=0 ]	(	0	0	0	0	0	)
+folder_generatedparms_kernelcode	[ 0	locks=0 ]	(	0	)
+nvalue	[ 8	locks=0 ]	(	[ nvalue	0 ] 	)
+iterations	[ 8	locks=0 ]	(	[ iterations	0 ] 	)
+maxiterations	[ 8	locks=0 ]	(	[ maxiterations	0 ] 	)
+phase	[ 8	locks=0 ]	(	[ phase	0 ] 	)
+power	[ 8	locks=0 ]	(	[ power	0 ] 	)
+input1_name	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	density	)
+input1_type	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"fvdb"	)
+input1_optional	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
+output1_name	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	density	)
+output1_type	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"fvdb"	)
+output1_metadata	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"match"	)
+output1_precision	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"node"	)
+output1_typeinfo	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"node"	)
+output1_metaname	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	""	)
+stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	nvalue	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
-bindings1_input	[ 0	locks=0 ]	(	0	)
+bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
+bindings1_ramp	[ 0	locks=0 ]	(	2	)
+bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
+bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
+bindings1_portname	[ 0	locks=0 ]	(	nvalue	)
 bindings1_volume	[ 0	locks=0 ]	(	nvalue	)
-bindings1_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings1_forcealign	[ 0	locks=0 ]	(	"on"	)
 bindings1_resolution	[ 0	locks=0 ]	(	"off"	)
 bindings1_voxelsize	[ 0	locks=0 ]	(	"off"	)
 bindings1_xformtoworld	[ 0	locks=0 ]	(	"off"	)
 bindings1_xformtovoxel	[ 0	locks=0 ]	(	"off"	)
+bindings1_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings1_attribute	[ 0	locks=0 ]	(	nvalue	)
 bindings1_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings1_attribtype	[ 0	locks=0 ]	(	"float"	)
@@ -2951,26 +3234,29 @@ bindings1_ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 bindings1_ramp2pos	[ 0	locks=0 ]	(	1	)
 bindings1_ramp2value	[ 0	locks=0 ]	(	1	)
 bindings1_ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
-folder_generatedparms_kernelcode	[ 0	locks=0 ]	(	0	)
-nvalue_val	[ 8	locks=0 ]	(	[ nvalue_val	0 ] 	)
-iterations_val	[ 8	locks=0 ]	(	[ iterations_val	0 ] 	)
-maxiterations_val	[ 8	locks=0 ]	(	[ maxiterations_val	0 ] 	)
-phase_val	[ 8	locks=0 ]	(	[ phase_val	0 ] 	)
-power_val	[ 8	locks=0 ]	(	[ power_val	0 ] 	)
-stdswitcher_child_2	[ 0	locks=0 ]	(	0	)
+bindings1_ramp_rgb1pos	[ 0	locks=0 ]	(	0	)
+bindings1_ramp_rgb1c	[ 0	locks=0 ]	(	0	0	0	)
+bindings1_ramp_rgb1interp	[ 0	locks=0 ]	(	"linear"	)
+bindings1_ramp_rgb2pos	[ 0	locks=0 ]	(	1	)
+bindings1_ramp_rgb2c	[ 0	locks=0 ]	(	1	1	1	)
+bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
+stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	iterations	)
 bindings2_type	[ 0	locks=0 ]	(	"int"	)
-bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
-bindings2_input	[ 0	locks=0 ]	(	0	)
+bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
+bindings2_ramp	[ 0	locks=0 ]	(	2	)
+bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
+bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
+bindings2_portname	[ 0	locks=0 ]	(	iterations	)
 bindings2_volume	[ 0	locks=0 ]	(	iterations	)
-bindings2_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings2_forcealign	[ 0	locks=0 ]	(	"on"	)
 bindings2_resolution	[ 0	locks=0 ]	(	"off"	)
 bindings2_voxelsize	[ 0	locks=0 ]	(	"off"	)
 bindings2_xformtoworld	[ 0	locks=0 ]	(	"off"	)
 bindings2_xformtovoxel	[ 0	locks=0 ]	(	"off"	)
+bindings2_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings2_attribute	[ 0	locks=0 ]	(	iterations	)
 bindings2_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings2_attribtype	[ 0	locks=0 ]	(	"int"	)
@@ -2992,19 +3278,29 @@ bindings2_ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 bindings2_ramp2pos	[ 0	locks=0 ]	(	1	)
 bindings2_ramp2value	[ 0	locks=0 ]	(	1	)
 bindings2_ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-stdswitcher_child_3	[ 0	locks=0 ]	(	0	)
+bindings2_ramp_rgb1pos	[ 0	locks=0 ]	(	0	)
+bindings2_ramp_rgb1c	[ 0	locks=0 ]	(	0	0	0	)
+bindings2_ramp_rgb1interp	[ 0	locks=0 ]	(	"linear"	)
+bindings2_ramp_rgb2pos	[ 0	locks=0 ]	(	1	)
+bindings2_ramp_rgb2c	[ 0	locks=0 ]	(	1	1	1	)
+bindings2_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
+stdswitcher0_3	[ 0	locks=0 ]	(	0	)
 bindings3_name	[ 0	locks=0 ]	(	maxiterations	)
 bindings3_type	[ 0	locks=0 ]	(	"int"	)
-bindings3_ramp	[ 0	locks=0 ]	(	2	)
 bindings3_rampsize	[ 0	locks=0 ]	(	1024	)
-bindings3_input	[ 0	locks=0 ]	(	0	)
+bindings3_ramptype	[ 0	locks=0 ]	(	"float"	)
+bindings3_ramp	[ 0	locks=0 ]	(	2	)
+bindings3_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings3_layertype	[ 0	locks=0 ]	(	"floatn"	)
+bindings3_layerborder	[ 0	locks=0 ]	(	"input"	)
+bindings3_portname	[ 0	locks=0 ]	(	maxiterations	)
 bindings3_volume	[ 0	locks=0 ]	(	maxiterations	)
-bindings3_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings3_forcealign	[ 0	locks=0 ]	(	"on"	)
 bindings3_resolution	[ 0	locks=0 ]	(	"off"	)
 bindings3_voxelsize	[ 0	locks=0 ]	(	"off"	)
 bindings3_xformtoworld	[ 0	locks=0 ]	(	"off"	)
 bindings3_xformtovoxel	[ 0	locks=0 ]	(	"off"	)
+bindings3_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings3_attribute	[ 0	locks=0 ]	(	maxiterations	)
 bindings3_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings3_attribtype	[ 0	locks=0 ]	(	"int"	)
@@ -3026,19 +3322,29 @@ bindings3_ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 bindings3_ramp2pos	[ 0	locks=0 ]	(	1	)
 bindings3_ramp2value	[ 0	locks=0 ]	(	1	)
 bindings3_ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-stdswitcher_child_4	[ 0	locks=0 ]	(	0	)
+bindings3_ramp_rgb1pos	[ 0	locks=0 ]	(	0	)
+bindings3_ramp_rgb1c	[ 0	locks=0 ]	(	0	0	0	)
+bindings3_ramp_rgb1interp	[ 0	locks=0 ]	(	"linear"	)
+bindings3_ramp_rgb2pos	[ 0	locks=0 ]	(	1	)
+bindings3_ramp_rgb2c	[ 0	locks=0 ]	(	1	1	1	)
+bindings3_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
+stdswitcher0_4	[ 0	locks=0 ]	(	0	)
 bindings4_name	[ 0	locks=0 ]	(	phase	)
 bindings4_type	[ 0	locks=0 ]	(	"float"	)
-bindings4_ramp	[ 0	locks=0 ]	(	2	)
 bindings4_rampsize	[ 0	locks=0 ]	(	1024	)
-bindings4_input	[ 0	locks=0 ]	(	0	)
+bindings4_ramptype	[ 0	locks=0 ]	(	"float"	)
+bindings4_ramp	[ 0	locks=0 ]	(	2	)
+bindings4_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings4_layertype	[ 0	locks=0 ]	(	"floatn"	)
+bindings4_layerborder	[ 0	locks=0 ]	(	"input"	)
+bindings4_portname	[ 0	locks=0 ]	(	phase	)
 bindings4_volume	[ 0	locks=0 ]	(	phase	)
-bindings4_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings4_forcealign	[ 0	locks=0 ]	(	"on"	)
 bindings4_resolution	[ 0	locks=0 ]	(	"off"	)
 bindings4_voxelsize	[ 0	locks=0 ]	(	"off"	)
 bindings4_xformtoworld	[ 0	locks=0 ]	(	"off"	)
 bindings4_xformtovoxel	[ 0	locks=0 ]	(	"off"	)
+bindings4_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings4_attribute	[ 0	locks=0 ]	(	phase	)
 bindings4_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings4_attribtype	[ 0	locks=0 ]	(	"float"	)
@@ -3060,19 +3366,29 @@ bindings4_ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 bindings4_ramp2pos	[ 0	locks=0 ]	(	1	)
 bindings4_ramp2value	[ 0	locks=0 ]	(	1	)
 bindings4_ramp2interp	[ 0	locks=0 ]	(	"linear"	)
-stdswitcher_child_5	[ 0	locks=0 ]	(	0	)
+bindings4_ramp_rgb1pos	[ 0	locks=0 ]	(	0	)
+bindings4_ramp_rgb1c	[ 0	locks=0 ]	(	0	0	0	)
+bindings4_ramp_rgb1interp	[ 0	locks=0 ]	(	"linear"	)
+bindings4_ramp_rgb2pos	[ 0	locks=0 ]	(	1	)
+bindings4_ramp_rgb2c	[ 0	locks=0 ]	(	1	1	1	)
+bindings4_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
+stdswitcher0_5	[ 0	locks=0 ]	(	0	)
 bindings5_name	[ 0	locks=0 ]	(	power	)
 bindings5_type	[ 0	locks=0 ]	(	"float"	)
-bindings5_ramp	[ 0	locks=0 ]	(	2	)
 bindings5_rampsize	[ 0	locks=0 ]	(	1024	)
-bindings5_input	[ 0	locks=0 ]	(	0	)
+bindings5_ramptype	[ 0	locks=0 ]	(	"float"	)
+bindings5_ramp	[ 0	locks=0 ]	(	2	)
+bindings5_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings5_layertype	[ 0	locks=0 ]	(	"floatn"	)
+bindings5_layerborder	[ 0	locks=0 ]	(	"input"	)
+bindings5_portname	[ 0	locks=0 ]	(	power	)
 bindings5_volume	[ 0	locks=0 ]	(	power	)
-bindings5_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings5_forcealign	[ 0	locks=0 ]	(	"on"	)
 bindings5_resolution	[ 0	locks=0 ]	(	"off"	)
 bindings5_voxelsize	[ 0	locks=0 ]	(	"off"	)
 bindings5_xformtoworld	[ 0	locks=0 ]	(	"off"	)
 bindings5_xformtovoxel	[ 0	locks=0 ]	(	"off"	)
+bindings5_vdbtype	[ 0	locks=0 ]	(	"any"	)
 bindings5_attribute	[ 0	locks=0 ]	(	power	)
 bindings5_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings5_attribtype	[ 0	locks=0 ]	(	"float"	)
@@ -3094,10 +3410,16 @@ bindings5_ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 bindings5_ramp2pos	[ 0	locks=0 ]	(	1	)
 bindings5_ramp2value	[ 0	locks=0 ]	(	1	)
 bindings5_ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+bindings5_ramp_rgb1pos	[ 0	locks=0 ]	(	0	)
+bindings5_ramp_rgb1c	[ 0	locks=0 ]	(	0	0	0	)
+bindings5_ramp_rgb1interp	[ 0	locks=0 ]	(	"linear"	)
+bindings5_ramp_rgb2pos	[ 0	locks=0 ]	(	1	)
+bindings5_ramp_rgb2c	[ 0	locks=0 ]	(	1	1	1	)
+bindings5_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/opencl1.userdata"
+Content-Disposition: attachment; filename="hdaroot/copnet1/opencl1.userdata"
 Content-Type: text/plain
 
 {
@@ -3108,169 +3430,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/activate_hack.init"
+Content-Disposition: attachment; filename="hdaroot/copnet1.order"
 Content-Type: text/plain
 
-type = volumewrangle
-matchesdef = 1
+3
+sopimport1
+geotovdb1
+opencl1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/activate_hack.def"
+Content-Disposition: attachment; filename="hdaroot/copnet1.net"
 Content-Type: text/plain
 
-sopflags sopflags = 
-comment ""
-position 3.54765 5.22536
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	vdbactivate1 1 1 "input1"
-}
-inputs
-{
-0 	vdbactivate1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author thomasg@minsk
-  access 0777
-}
-color UT_Color RGB 0 0 0 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/activate_hack.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-bindeach	[ 0	locks=0 ]	(	"off"	)
-snippet	[ 0	locks=0 ]	(	"//opencl sop needs every voxel to be active
-//in order to compute properly
-//this is a hack to activate all voxels
-
-f@density = rand(v@P) * 0.001;
-
-float tol = 1e-6;
-
-if(abs(v@P.x) < tol && abs(v@P.y) < tol)
-
-    f@density = 0.0;
-
-
-"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
-vdb_signedflood	[ 0	locks=0 ]	(	"on"	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_precision	[ 0	locks=0 ]	(	auto	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/activate_hack.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"nodeshape":{
-		"type":"string",
-		"value":"cloud"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_opencl.init"
-Content-Type: text/plain
-
-type = switch
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_opencl.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -0.0179871 2.67306
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	mandelbulb 1 1 "input1"
-2 	opencl1 1 1 "input2"
-}
-inputs
-{
-0 	mandelbulb 0 1
-1 	opencl1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author thomasg@minsk
-  access 0777
-}
-color UT_Color RGB 0.8 1 0.7 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_opencl.chn"
-Content-Type: text/plain
-
-{
-    channel input {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../useocl\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_opencl.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-input	[ 0	locks=0 ]	(	[ input	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_opencl.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
+1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
@@ -3295,22 +3467,22 @@ Content-Type: text/plain
 	"posy":-4.2989693504126123,
 	"pinned":false,
 	"color":"FROMOUTPUT",
-	"input":"switch_between_output_types 0 1"
+	"input":"switch1 0 1"
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-19
+18
 initialize_vdb
 vdbactivate1
 mandelbulb
 vdbactivate2
 to_polys
-switch_between_output_types
+switch1
 to_points
-switch_if_points
+switchif1
 colour_by_length
 add_color
 set_length_attribute
@@ -3319,9 +3491,8 @@ attribpromote1
 attribpromote2
 output0
 to_sdf
-opencl1
-activate_hack
-switch_opencl
+switch2
+copnet1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
