@@ -1,0 +1,20 @@
+
+import os
+import random
+
+node = kwargs['node']
+seed = 6173*node.sessionId()+4139;
+
+colorr = node.parm("plantcolor"+"r")
+colorg = node.parm("plantcolor"+"g")
+colorb = node.parm("plantcolor"+"b")
+colorr.set(hou.hmath.rand(seed*51))
+colorg.set(hou.hmath.rand(seed*152))
+colorb.set(hou.hmath.rand(seed*60))
+
+node.parm("vizgraph").set(1)
+node.parm("vizplants").set(1)
+
+kwargs["node"].setOutputForViewFlag(-1 if kwargs["node"].parm('vizgraph').eval() != 0 or kwargs["node"].parm('vizplants').eval() != 0 else 0)
+#set -1 output to show tree visualization
+#node.setOutputForViewFlag(-1)

@@ -1,0 +1,587 @@
+# Dialog script for labs::biome_plant_define::1.2 automatically generated
+
+{
+    name	labs::biome_plant_define::1.2
+    script	labs::plant_setup::1.0
+    label	"Labs Biome Plant Define (Beta)"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Previous Plant Definitions Output"
+    inputlabel	2	"Previous Plant Geometry Output"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Merged Plant Definitions Output"
+    outputlabel	2	"Merged Plant Geometry Output"
+
+    groupsimple {
+        name    "fd_speciessetup"
+        label   "Species Setup"
+        grouptag { "sidefx::look" "blank" }
+
+        group {
+            name    "fd_speciessettings"
+            label   "Species Settings"
+
+            groupsimple {
+                name    "fd_speciesid"
+                label   "Species ID"
+
+                parm {
+                    name    "plantname"
+                    label   "Name"
+                    type    string
+                    default { "$OS" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "plantcolor"
+                    label   "Color"
+                    type    color
+                    size    3
+                    default { "1" "1" "1" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_temperature"
+                label   "Temperature"
+
+                parm {
+                    name    "templower"
+                    label   "Lower Limit"
+                    type    float
+                    default { "10" }
+                    range   { -10 33 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "temppref"
+                    label   "Preferred"
+                    type    float
+                    default { "14" }
+                    range   { -10 33 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "tempupper"
+                    label   "Upper Limit"
+                    type    float
+                    default { "20" }
+                    range   { -10 33 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_precipitation"
+                label   "Precipitation"
+
+                parm {
+                    name    "preclower"
+                    label   "Lower Limit"
+                    type    float
+                    default { "500" }
+                    range   { 10 4300 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "precpref"
+                    label   "Preferred"
+                    type    float
+                    default { "700" }
+                    range   { 10 4300 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "precupper"
+                    label   "Upper Limit"
+                    type    float
+                    default { "900" }
+                    range   { 10 4300 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_spacing"
+                label   "Spacing"
+
+                parm {
+                    name    "densitymax"
+                    label   "Maximum Density"
+                    type    float
+                    default { "0.3" }
+                    range   { 0.0001! 0.3 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "type"
+                    label   "Type"
+                    type    integer
+                    default { "1" }
+                    menu {
+                        "0" "Tree"
+                        "1" "Shrub"
+                    }
+                    range   { 0 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_scale"
+                label   "Scale"
+
+                parm {
+                    name    "scalemult"
+                    label   "Scale Multiplier"
+                    type    float
+                    default { "1" }
+                    range   { 0.0001! 5 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_biomes"
+                label   "Biomes"
+
+                parm {
+                    name    "containinbiomes"
+                    label   "Contain in Selected Biomes"
+                    type    toggle
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "pathtobiomes"
+                    label   "Path to Biomes"
+                    type    oppath
+                    default { "" }
+                    hidewhen "{ containinbiomes == 0 }"
+                    parmtag { "opfilter" "!!SOP!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "biomelist"
+                    label   "Selected Biomes"
+                    type    string
+                    default { "" }
+                    hidewhen "{ containinbiomes == 0 }"
+                    menutoggle {
+                        [ "node = kwargs[\"node\"]" ]
+                        [ "biomenode = node.parm(\"pathtobiomes\").evalAsNode()" ]
+                        [ "#biomenode = node.node(node.parm(\"pathtobiomes\").evalAsString())" ]
+                        [ "#print(biomenode)" ]
+                        [ "names = []" ]
+                        [ "biomemenu = []" ]
+                        [ "" ]
+                        [ "if biomenode:" ]
+                        [ "    geo = biomenode.geometry()" ]
+                        [ "    if geo:" ]
+                        [ "        #print(geo)" ]
+                        [ "        for point in geo.points():   " ]
+                        [ "            biomedict = point.attribValue(\"biome_definition\")    " ]
+                        [ "            biomename = biomedict.get(\"biomename\")" ]
+                        [ "            if(biomename not in biomemenu):" ]
+                        [ "                biomemenu.append(biomename)" ]
+                        [ "                if biomename in hou.evalParm(\"biomelist\").split(\" \"):" ]
+                        [ "                    biomemenu.append(biomename + \" ✓\")" ]
+                        [ "                else: " ]
+                        [ "                    biomemenu.append(biomename)" ]
+                        [ "" ]
+                        [ "        return biomemenu" ]
+                        [ "    else:" ]
+                        [ "        return[\"\", \"No Geometry Connected\"]" ]
+                        [ "else:" ]
+                        [ "    return[\"\", \"No Input Connected\"]" ]
+                        language python
+                    }
+                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_advanced"
+                label   "Advanced"
+
+                parm {
+                    name    "randscale"
+                    label   "Randomize Scale"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "hardiness"
+                    label   "Hardiness"
+                    type    float
+                    default { "0" }
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "normterrain"
+                    label   "Normal from Terrain"
+                    type    float
+                    default { "0" }
+                    range   { 0! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "randomizeyaw"
+                    label   "Randomize Yaw"
+                    type    float
+                    default { "180" }
+                    range   { 0! 180! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "shop_materialpath"
+                    label   "Material"
+                    type    oppath
+                    default { "" }
+                    parmtag { "opfilter" "!!CUSTOM/MATERIAL!!" }
+                    parmtag { "oprelative" "." }
+                }
+            }
+
+        }
+
+        group {
+            name    "fd_speciessettings_1"
+            label   "Species Variants"
+
+            parm {
+                name    "autofillmode"
+                label   "Autofill Mode"
+                type    ordinal
+                default { "0" }
+                menu {
+                    "0" "From Directory"
+                    "1" "From Merge Path"
+                }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "variantsmergepath"
+                label   "Variants Merge Path"
+                type    oppath
+                default { "" }
+                disablewhen "{ autofillmode == 0 }"
+                hidewhen "{ autofillmode == 0 }"
+                parmtag { "oprelative" "." }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "variantsdir"
+                label   "Variants Directory"
+                type    directory
+                default { "$HIP/" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "pattern"
+                label   "Pattern"
+                type    file
+                default { "*.fbx" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "recursive"
+                label   "Search Child Directories"
+                type    toggle
+                default { "1" }
+                disablewhen "{ autofillmode == 1 }"
+                hidewhen "{ autofillmode == 1 }"
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "autofillradii"
+                label   "Autofill Radii on Load"
+                type    toggle
+                default { "1" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "autofillvariants"
+                label   "Autofill Variants"
+                type    button
+                default { "0" }
+                parmtag { "script_callback" "hou.phm().initVariants(kwargs, 'autofillmode')" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sepparm_autofillvariants"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "maxshrubheight"
+                label   "Max Shrub Height"
+                type    float
+                default { "ch(\"scalemult\")" }
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "groundcoverheight"
+                label   "Ground Cover Height"
+                type    float
+                default { "0" }
+                range   { 0 10 }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "calculatebounds"
+                label   "Autofill Radii from Mesh Bounds"
+                type    button
+                default { "0" }
+                parmtag { "script_callback" "hou.phm().calculateBounds(kwargs)" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "sepparm"
+                label   "Separator"
+                type    separator
+                default { "" }
+            }
+            parm {
+                name    "enginepaths"
+                label   "Include Engine Asset Paths"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            multiparm {
+                name    "variants"
+                label    "Number Of Variants"
+                default 0
+                parmtag { "autoscope" "0000000000000000" }
+
+                parm {
+                    name    "reftype#"
+                    label   "Mesh Variant from"
+                    type    ordinal
+                    default { "0" }
+                    menu {
+                        "0" "File"
+                        "1" "Operator Path"
+                    }
+                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "meshvariant#"
+                    label   "Mesh Variant # "
+                    type    oppath
+                    default { "" }
+                    disablewhen "{ reftype# == 0 }"
+                    hidewhen "{ reftype# == 0 }"
+                    parmtag { "opfilter" "!!SOP!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "meshdeadvariant#"
+                    label   "Mesh (Dead) Variant #"
+                    type    oppath
+                    default { "" }
+                    disablewhen "{ deadratio# == 0 } { reftype# == 0 }"
+                    hidewhen "{ reftype# == 0 }"
+                    parmtag { "opfilter" "!!SOP!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "filemeshvariant#"
+                    label   "Mesh Variant # "
+                    type    geometry
+                    default { "" }
+                    disablewhen "{ reftype# == 1 }"
+                    hidewhen "{ reftype# == 1 }"
+                    parmtag { "opfilter" "!!OBJ!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "filemeshdeadvariant#"
+                    label   "Mesh (Dead) Variant #"
+                    type    geometry
+                    default { "" }
+                    disablewhen "{ deadratio# == 0 } { reftype# == 1 }"
+                    hidewhen "{ reftype# == 1 }"
+                    parmtag { "opfilter" "!!OBJ!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "weight#"
+                    label   "Weight"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ variants == 1 }"
+                    range   { 0! 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "radius#"
+                    label   "Bounds Radius"
+                    type    float
+                    default { "1" }
+                    range   { 1e-09! 20 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "trunkradius#"
+                    label   "Trunk Radius"
+                    type    float
+                    default { "1" }
+                    range   { 1e-09! 20 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "agemin#"
+                    label   "Normalized Age Range"
+                    type    float
+                    joinnext
+                    default { "0" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                    parmtag { "sidefx::slider" "none" }
+                }
+                parm {
+                    name    "agemax#"
+                    label   "Normalized Age Range"
+                    type    float
+                    nolabel
+                    default { "1" }
+                    range   { 0! 1! }
+                    parmtag { "script_callback_language" "python" }
+                    parmtag { "sidefx::slider" "none" }
+                }
+                parm {
+                    name    "scalemin#"
+                    label   "Scale Range"
+                    type    float
+                    joinnext
+                    default { "1" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                    parmtag { "sidefx::slider" "none" }
+                }
+                parm {
+                    name    "scalemax#"
+                    label   "Scale Range"
+                    type    float
+                    nolabel
+                    default { "1.5" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                    parmtag { "sidefx::slider" "none" }
+                }
+                parm {
+                    name    "deadratio#"
+                    label   "Dead Ratio"
+                    type    float
+                    default { "0" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                groupsimple {
+                    name    "fd_unrealengine#"
+                    label   "Unreal Engine"
+                    hidewhentab "{ enginepaths == 0 }"
+
+                    parm {
+                        name    "unrealassetpath#"
+                        label   "Asset Path #"
+                        type    string
+                        default { "" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "unrealassetdeadpath#"
+                        label   "Asset (Dead) Path #"
+                        type    string
+                        default { "" }
+                        disablewhen "{ deadratio# == 0 }"
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
+
+            }
+
+        }
+
+        group {
+            name    "fd_speciessettings_2"
+            label   "Visualize"
+
+            groupsimple {
+                name    "fd_Graph"
+                label   "Graph"
+
+                parm {
+                    name    "vizgraph"
+                    label   "Visualize Graph"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback" "kwargs[\"node\"].setOutputForViewFlag(-1 if kwargs[\"node\"].parm('vizplants').eval() != 0 or kwargs[\"node\"].parm('vizgraph').eval() != 0 else 0)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupsimple {
+                name    "fd_Plants"
+                label   "Plants"
+
+                parm {
+                    name    "vizplants"
+                    label   "Visualize Plants"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback" "kwargs[\"node\"].setOutputForViewFlag(-1 if kwargs[\"node\"].parm('vizplants').eval() != 0 or kwargs[\"node\"].parm('vizgraph').eval() != 0 else 0)" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "variantspacing"
+                    label   "Variant Spacing"
+                    type    float
+                    default { "1" }
+                    disablewhen "{ vizplants == 0 }"
+                    hidewhen "{ vizplants == 0 }"
+                    range   { 1e-06 20 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,4 @@
+kwargs["node"].parm("vizgraph").set(1)
+kwargs["node"].parm("vizplants").set(1)
+
+kwargs["node"].setOutputForViewFlag(-1 if kwargs["node"].parm('vizgraph').eval() != 0 or kwargs["node"].parm('vizplants').eval() != 0 else 0)
