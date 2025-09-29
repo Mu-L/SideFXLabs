@@ -57,7 +57,8 @@ def initVariants(kwargs , mode):
     autofillradii = node.parm('autofillradii').eval()
     if autofillradii == 1:
         calculateBounds(kwargs)
-            
+    changeAllNames(kwargs)
+    
 def calculateBounds(kwargs):
     node = kwargs['node']
     nvariants = node.parm('variants').eval()
@@ -91,4 +92,67 @@ def calculateBounds(kwargs):
         maxsize = max(size[0], size[2]);
         node.parm(trunkradiusparmname).set(maxsize / 2.0)
         
+
+def changeName(kwargs, parm):
+    node = kwargs['node']
+
+    meshvariantnode = parm.evalAsNode()
+    meshpath = ""
+    if meshvariantnode:
+        meshpath = meshvariantnode.path()
+    parmname = parm.name()
+    
+    if 'filemeshdead' in parmname:
+        i = parmname.replace('filemeshdeadvariant', "")
+    elif 'filemesh' in parmname:
+        i = parmname.replace('filemeshvariant', "")
+    elif 'meshdead' in parmname:
+        i = parmname.replace('meshdeadvariant', "")
+    else:
+        i = parmname.replace('meshvariant', "")
+    
+    if 'dead' in parmname:
+        nameparm = node.parm('deadname' + i)
+    else:
+        nameparm = node.parm('name' + i)
+
         
+    setname = node.parm('setname' + i).evalAsInt()
+    
+    if setname:
+        meshpathnode = node.node("editable_meshpath")
+        namenode = node.node("Get_Name")
+        
+        meshpathnode.parm("meshpath").set(meshpath)
+        if namenode:
+            geo = namenode.geometry()
+            usdname = ""
+            if len(geo.prims()):
+                usdname = geo.prims()[0].attribValue("name")
+            nameparm.set(usdname)
+                
+                 
+def changeNames(kwargs, parm):
+    node = kwargs['node']
+    parmname = parm.name()
+    removedwords = parmname.replace('setname', "")
+    removedwords = removedwords.replace('reftype', "")
+    i = removedwords
+    if node.parm('reftype' + i).evalAsInt() == 0:
+        meshvariantparm = node.parm('filemeshvariant' + i)
+        deadmeshvariantparm = node.parm('filemeshdeadvariant' + i)
+    else:
+        meshvariantparm = node.parm('meshvariant' + i)
+        deadmeshvariantparm = node.parm('meshdeadvariant' + i)
+    
+    changeName(kwargs, meshvariantparm)
+    changeName(kwargs, deadmeshvariantparm)
+    
+def changeAllNames(kwargs):
+    node = kwargs['node']
+    nvariants = node.parm('variants').eval()
+    for i in range(nvariants):
+        reftypeparmname = 'reftype' + '%d' % (i+1)
+        reftypeparm = node.parm(reftypeparmname)
+        changeNames(kwargs, reftypeparm)
+    

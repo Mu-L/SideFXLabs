@@ -31,7 +31,7 @@
 
                 parm {
                     name    "plantname"
-                    label   "Name"
+                    label   "Species Name"
                     type    string
                     default { "$OS" }
                     parmtag { "script_callback_language" "python" }
@@ -390,7 +390,7 @@
                         "0" "File"
                         "1" "Operator Path"
                     }
-                    parmtag { "script_callback" "" }
+                    parmtag { "script_callback" "hou.phm().changeNames(kwargs, kwargs['parm'])" }
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
@@ -402,18 +402,7 @@
                     hidewhen "{ reftype# == 0 }"
                     parmtag { "opfilter" "!!SOP!!" }
                     parmtag { "oprelative" "." }
-                    parmtag { "script_callback" "" }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "meshdeadvariant#"
-                    label   "Mesh (Dead) Variant #"
-                    type    oppath
-                    default { "" }
-                    disablewhen "{ deadratio# == 0 } { reftype# == 0 }"
-                    hidewhen "{ reftype# == 0 }"
-                    parmtag { "opfilter" "!!SOP!!" }
-                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback" "hou.phm().changeName(kwargs, kwargs['parm'])" }
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
@@ -425,6 +414,19 @@
                     hidewhen "{ reftype# == 1 }"
                     parmtag { "opfilter" "!!OBJ!!" }
                     parmtag { "oprelative" "." }
+                    parmtag { "script_callback" "hou.phm().changeName(kwargs, kwargs['parm'])" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "meshdeadvariant#"
+                    label   "Mesh (Dead) Variant #"
+                    type    oppath
+                    default { "" }
+                    disablewhen "{ deadratio# == 0 } { reftype# == 0 }"
+                    hidewhen "{ reftype# == 0 }"
+                    parmtag { "opfilter" "!!SOP!!" }
+                    parmtag { "oprelative" "." }
+                    parmtag { "script_callback" "hou.phm().changeName(kwargs, kwargs['parm'])" }
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {
@@ -436,6 +438,31 @@
                     hidewhen "{ reftype# == 1 }"
                     parmtag { "opfilter" "!!OBJ!!" }
                     parmtag { "oprelative" "." }
+                    parmtag { "script_callback" "hou.phm().changeName(kwargs, kwargs['parm'])" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "setname#"
+                    label   "Set Name from Primitive"
+                    type    toggle
+                    default { "1" }
+                    parmtag { "script_callback" "hou.phm().changeNames(kwargs, kwargs['parm'])" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "name#"
+                    label   "Name"
+                    type    string
+                    default { "" }
+                    disablewhen "{ setname# == 1 }"
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "deadname#"
+                    label   "Name (Dead)"
+                    type    string
+                    default { "" }
+                    disablewhen "{ deadratio# == 0 } { setname# == 1 }"
                     parmtag { "script_callback_language" "python" }
                 }
                 parm {

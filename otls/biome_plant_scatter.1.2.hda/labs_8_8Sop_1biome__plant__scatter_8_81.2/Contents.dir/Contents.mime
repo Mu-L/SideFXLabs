@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.471358 -0.12545
+position 0.148299 -8.04211
 connectornextid 6
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
 0 "output1"
@@ -42,16 +42,16 @@ outputsNamed3
 }
 inputsNamed3
 {
-2 	OUT_DEFINE_PLANTS 0 1 "input1"
+2 	TOY 0 1 "input1"
 3 	biome_attributes_evolve 0 1 "input2"
-4 	biome_region_assign1 3 1 "input3"
+4 	OUT_RIVER 0 1 "input3"
 5 	OUT_RIVER 0 1 "input4"
 }
 inputs
 {
-0 	OUT_DEFINE_PLANTS 0 1
+0 	TOY 0 1
 1 	biome_attributes_evolve 0 1
-2 	biome_region_assign1 0 1
+2 	OUT_RIVER 0 1
 3 	OUT_RIVER 0 1
 }
 stat
@@ -2862,11 +2862,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	valid_name_for_prototypes 0 1 "input1"
+0 	output_meshID 1 1 "input1"
 }
 inputs
 {
-0 	valid_name_for_prototypes 0 1
+0 	output_meshID 0 1
 }
 stat
 {
@@ -7211,94 +7211,6 @@ vex_precision	[ 0	locks=0 ]	(	auto	)
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/replace_spaces_in_plant_name.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/valid_name_for_prototypes.init"
-Content-Type: text/plain
-
-type = attribwrangle
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/valid_name_for_prototypes.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 3.54605 -88.7311
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	output_meshID 1 1 "input1"
-}
-inputs
-{
-0 	output_meshID 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.475 0.812 0.204 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/valid_name_for_prototypes.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"s@_bps_name = replace(s@_bps_mesh_path, \":\", \"_\");
-s@_bps_name = replace(s@_bps_name, \"/\", \"_\");
-s@_bps_name = replace(s@_bps_name, \".\", \"_\");
-s@_bps_name = replace(s@_bps_name, \"?\", \"_\");
-"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-vex_precision	[ 0	locks=0 ]	(	auto	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/valid_name_for_prototypes.userdata"
 Content-Type: text/plain
 
 {
@@ -22242,6 +22154,10 @@ if(isvalidindex(d@plant_definition, \"deadratio\" + itoa(variation)))
         {
             s@_bps_mesh_path = d@plant_definition[\"meshdeadvariant\" + itoa(variation)];    
         }
+        if(isvalidindex(d@plant_definition, \"deadname\" + itoa(variation)))
+        {
+            s@_bps_name = d@plant_definition[\"deadname\" + itoa(variation)];    
+        }
         if(enginepaths)
         {
             if(isvalidindex(d@plant_definition, \"unrealassetdeadpath\" + itoa(variation)))
@@ -22256,6 +22172,10 @@ if(isvalidindex(d@plant_definition, \"deadratio\" + itoa(variation)))
         if(isvalidindex(d@plant_definition, \"meshvariant\" + itoa(variation)))
         {
             s@_bps_mesh_path = d@plant_definition[\"meshvariant\" + itoa(variation)];    
+        }
+        if(isvalidindex(d@plant_definition, \"name\" + itoa(variation)))
+        {
+            s@_bps_name = d@plant_definition[\"name\" + itoa(variation)];    
         }
         if(enginepaths)
         {
@@ -23710,7 +23630,7 @@ ridefault	[ 0	locks=0 ]	(	"off"	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 overwrite	[ 0	locks=0 ]	(	"off"	)
 encodenames	[ 0	locks=0 ]	(	"off"	)
-frompt0	[ 8	locks=0	autoscope=0	autosel=4294967295 ]	(	_bps_name	)
+frompt0	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	_bps_name	)
 topt0	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	`chs(\"../namename\")`	)
 fromvtx0	[ 0	locks=0 ]	(	""	)
 tovtx0	[ 0	locks=0 ]	(	""	)
@@ -23909,7 +23829,7 @@ sopflags sopflags =
 comment ""
 position 3.56153 -81.4589
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 1 "output1"
@@ -27639,7 +27559,7 @@ sopflags sopflags =
 comment ""
 position 3.77701 -14.4137
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -27843,7 +27763,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-214
+213
 noise_float
 visualize_viability
 output0
@@ -27915,7 +27835,6 @@ add_point_color1
 uniqueid1
 replace_spaces_from_species
 replace_spaces_in_plant_name
-valid_name_for_prototypes
 plantid
 fuse_trees_including_overlap_tolerance2
 fuse_shrubs_including_overlap_tolerance4
