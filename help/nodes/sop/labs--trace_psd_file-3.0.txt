@@ -1,0 +1,39 @@
+#type:     node
+#context:  sop
+#internal: labs::trace_psd_file::2.1
+#icon:     SOP/labs::trace_psd_file::2.1
+
+= Labs Trace PSD File =
+
+""" Generates Curves from Photoshop file layers. """
+
+This tool is a wrapper around the [Trace SOP|Node:sop/trace] that works with PSD files with multiple layers. 
+
+Generates curves from images that come from layers of a Photoshop file. The curves extracted depend on the Alpha value of the individual layers and not the color.
+
+
+@parameters
+
+    File:
+        #id: file
+        Path to the Photoshop (PSD) file.
+    Reload PSD:
+        #id: reload
+        Refreshes the Photoshop file.
+    Extract all Layers:
+        #id: extractlayers
+        Automatically load in all Photoshop file layers.
+    == Layers To Extract ==
+
+    Layer Name:
+        #id: layer_name#
+        Name of the extracted layer (case sensitive).
+    === Advanced ===
+        
+    Resample Edge:
+        #id: resampleamt#
+        The maximum segment length of resulting edges.
+    Dilate/Erode:
+        #id: size#
+        Amount to dilate or erode the specified layer.
+

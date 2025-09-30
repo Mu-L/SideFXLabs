@@ -1,0 +1,125 @@
+# Dialog script for labs::trace_psd_file::3.0 automatically generated
+
+{
+    name	labs::trace_psd_file::3.0
+    script	gamedev::sop_trace_psd
+    label	"Labs Trace PSD File"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"PSD Curves"
+
+    parm {
+        name    "file"
+        label   "File"
+        type    image
+        joinnext
+        default { "" }
+        parmtag { "filechooser_pattern" "*.psd" }
+        parmtag { "script_callback" "hou.phm().loadFile(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "reload"
+        label   "Reload PSD"
+        type    button
+        default { "0" }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback" "hou.phm().loadFile(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "sepparm"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    parm {
+        name    "extractlayers"
+        label   "Extract all Layers"
+        type    button
+        default { "0" }
+        parmtag { "script_callback" "hou.phm().extractLayers(kwargs)" }
+        parmtag { "script_callback_language" "python" }
+    }
+    multiparm {
+        name    "fd_layers"
+        label    "Layers To Extract"
+        default 0
+
+        parm {
+            name    "layer_name#"
+            label   "Layer Name"
+            type    string
+            default { "" }
+            menureplace {
+                [ "import hou" ]
+                [ "" ]
+                [ "try:" ]
+                [ "    cables = kwargs['node'].node('copnet1/looped_cables').inputCableStructure(0)" ]
+                [ "    planePairs = [[cables.wireName(x), cables.wireName(x)] for x in range(cables.wireCount())]" ]
+                [ "    return sum(planePairs, [])" ]
+                [ "except:" ]
+                [ "    return ['', '']" ]
+                language python
+            }
+        }
+        groupcollapsible {
+            name    "fd_advanced_#"
+            label   "Advanced"
+            grouptag { "group_type" "collapsible" }
+
+            parm {
+                name    "resample#"
+                label   "Label"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+            }
+            parm {
+                name    "resampleamt#"
+                label   "Resample Edge"
+                type    float
+                default { "0.01" }
+                disablewhen "{ resample# == 0 }"
+                range   { 0.0001 0.1 }
+            }
+            parm {
+                name    "dilateerode#"
+                label   "Label"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+            }
+            parm {
+                name    "size#"
+                label   "Dilate/Erode"
+                type    float
+                default { "0" }
+                disablewhen "{ dilateerode# == 0 }"
+                range   { -100! 100 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        parm {
+            name    "sepparm#"
+            label   "Spacer"
+            type    separator
+            default { "" }
+            parmtag { "sidefx::layout_height" "small" }
+            parmtag { "sidefx::look" "blank" }
+        }
+    }
+
+}

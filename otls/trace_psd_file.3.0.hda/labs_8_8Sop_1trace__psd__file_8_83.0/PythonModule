@@ -1,0 +1,19 @@
+# Load in file to COP network. Reloads the files and resets the AOV channels.
+def loadFile(kwargs):
+    node = kwargs["node"]
+    copnetFile = node.node("copnet1/file1")
+    copnetFile.parm('reload').pressButton()
+    copnetFile.parm('aovs').set(0)
+    copnetFile.parm('addaovs').pressButton()
+
+# Looks through all the layers/cables we want to evaluate and loads them all into the UI automatically  
+def extractLayers(kwargs):
+    loadFile(kwargs)
+    node = kwargs["node"]
+    cables = node.node('copnet1/looped_cables').inputCableStructure(0)
+    cableCount = cables.wireCount()
+    
+    node.parm('fd_layers').set(cableCount)
+    
+    for i in range(cableCount):
+        node.parm('layer_name' + str(i + 1)).set(cables.wireName(i))
