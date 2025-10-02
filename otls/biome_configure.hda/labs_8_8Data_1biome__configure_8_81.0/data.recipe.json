@@ -5,7 +5,7 @@
     },
     "children": {
       "biome_plant_scatter": {
-        "type": "labs::biome_plant_scatter::1.1",
+        "type": "labs::biome_plant_scatter::1.2",
         "inputs": [
           {
             "from": "OUT_DEFINE_PLANTS",
@@ -20,7 +20,7 @@
           {
             "from": "OUT_RIVER",
             "from_index": 0,
-            "to_index": 2
+            "to_index": 3
           }
         ],
         "position": [
@@ -65,17 +65,22 @@
         }
       },
       "ASPEN": {
-        "type": "labs::biome_plant_define::1.1",
+        "type": "labs::biome_plant_define::1.2",
         "inputs": [
           {
             "from": "PINE",
             "from_index": 0,
             "to_index": 0
+          },
+          {
+            "from": "PINE",
+            "from_index": 1,
+            "to_index": 1
           }
         ],
         "position": [
-          -4,
-          2
+          -6.63,
+          1.99
         ],
         "color": [
           0.47,
@@ -136,24 +141,72 @@
         "editables": {
           "editable_file": {
             "type": "file",
+            "flags": {
+              "unload": true
+            },
             "parms": {
-              "file": "op:/obj/geo1/sphere1"
+              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
             }
+          },
+          "editable_meshpath": {
+            "type": "attribwrangle",
+            "color": [
+              0.47,
+              0.81,
+              0.2
+            ],
+            "flags": {
+              "colordefault": false,
+              "unload": true
+            },
+            "parms": {
+              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
+              "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
+            },
+            "parmtemplates": [
+              {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                  "folder_generatedparms_snippet": {
+                    "type": "folder_simple",
+                    "label": "Generated Channel Parameters",
+                    "tags": {
+                      "group_type": "simple",
+                      "sidefx::look": "blank"
+                    },
+                    "script_callback_language": "hscript",
+                    "parmtemplates": {
+                      "meshpath": {
+                        "type": "string",
+                        "label": "Meshpath",
+                        "script_callback_language": "hscript",
+                        "menu_type": "normal"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       },
       "PINE": {
-        "type": "labs::biome_plant_define::1.1",
+        "type": "labs::biome_plant_define::1.2",
         "inputs": [
           {
             "from": "TEMPERATE_SHRUB",
             "from_index": 0,
             "to_index": 0
+          },
+          {
+            "from": "TEMPERATE_SHRUB",
+            "from_index": 1,
+            "to_index": 1
           }
         ],
         "position": [
-          -4,
-          3
+          -6.63,
+          2.99
         ],
         "color": [
           0.47,
@@ -214,17 +267,60 @@
         "editables": {
           "editable_file": {
             "type": "file",
+            "flags": {
+              "unload": true
+            },
             "parms": {
-              "file": "op:/obj/geo1/sphere1"
+              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
             }
+          },
+          "editable_meshpath": {
+            "type": "attribwrangle",
+            "color": [
+              0.47,
+              0.81,
+              0.2
+            ],
+            "flags": {
+              "colordefault": false,
+              "unload": true
+            },
+            "parms": {
+              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
+              "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
+            },
+            "parmtemplates": [
+              {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                  "folder_generatedparms_snippet": {
+                    "type": "folder_simple",
+                    "label": "Generated Channel Parameters",
+                    "tags": {
+                      "group_type": "simple",
+                      "sidefx::look": "blank"
+                    },
+                    "script_callback_language": "hscript",
+                    "parmtemplates": {
+                      "meshpath": {
+                        "type": "string",
+                        "label": "Meshpath",
+                        "script_callback_language": "hscript",
+                        "menu_type": "normal"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       },
       "TEMPERATE_SHRUB": {
-        "type": "labs::biome_plant_define::1.1",
+        "type": "labs::biome_plant_define::1.2",
         "position": [
-          -4,
-          4
+          -6.63,
+          3.99
         ],
         "color": [
           0.47,
@@ -265,9 +361,52 @@
         "editables": {
           "editable_file": {
             "type": "file",
+            "flags": {
+              "unload": true
+            },
             "parms": {
-              "file": "op:/obj/geo1/sphere1"
+              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
             }
+          },
+          "editable_meshpath": {
+            "type": "attribwrangle",
+            "color": [
+              0.47,
+              0.81,
+              0.2
+            ],
+            "flags": {
+              "colordefault": false,
+              "unload": true
+            },
+            "parms": {
+              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
+              "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
+            },
+            "parmtemplates": [
+              {
+                "insert_after": "vex_threadjobsize",
+                "parmtemplates": {
+                  "folder_generatedparms_snippet": {
+                    "type": "folder_simple",
+                    "label": "Generated Channel Parameters",
+                    "tags": {
+                      "group_type": "simple",
+                      "sidefx::look": "blank"
+                    },
+                    "script_callback_language": "hscript",
+                    "parmtemplates": {
+                      "meshpath": {
+                        "type": "string",
+                        "label": "Meshpath",
+                        "script_callback_language": "hscript",
+                        "menu_type": "normal"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       },
@@ -1084,8 +1223,8 @@
           }
         ],
         "position": [
-          -4,
-          1
+          -6.63,
+          0.99
         ],
         "color": [
           0.31,
@@ -1590,13 +1729,35 @@
           1.62,
           -4
         ]
+      },
+      "OUT_PROTOTYPES": {
+        "type": "null",
+        "inputs": [
+          {
+            "from": "ASPEN",
+            "from_index": 1,
+            "to_index": 0
+          }
+        ],
+        "position": [
+          -2.96,
+          1
+        ],
+        "color": [
+          0.31,
+          0.31,
+          0.31
+        ],
+        "flags": {
+          "colordefault": false
+        }
       }
     }
   },
   "info": {
-    "author": "baile",
-    "created": "August 20, 2025 - 13:10:16",
-    "houdini_version": "21.0.434",
+    "author": "Bailey",
+    "created": "October 02, 2025 - 15:08:25",
+    "houdini_version": "21.0.462",
     "data_version": "1.0",
     "comment": ""
   },
@@ -1605,7 +1766,7 @@
     "visible": true,
     "nodetype_category": "Sop",
     "nodetype_patterns": [
-      "labs::Sop/biome_plant_scatter::1.1"
+      "labs::Sop/biome_plant_scatter::1.2"
     ]
   },
   "tool": {
