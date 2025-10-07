@@ -1,0 +1,5 @@
+node = kwargs["node"]
+if node.parm("outputmode").eval() == 0:
+    node.setOutputForViewFlag(-1)
+elif node.parm("outputmode").eval() == 1:
+    node.setOutputForViewFlag(1)
