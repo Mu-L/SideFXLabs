@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.34791 1.33188
+position 3.02066 4.87147
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -249,10 +249,10 @@ Content-Disposition: attachment; filename="hdaroot/output1.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
+comment "HDA Code: psd"
 position -5.1202 -10.2749
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 1 "output1"
@@ -635,7 +635,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 encodenames	[ 0	locks=0 ]	(	"off"	)
 numattr	[ 0	locks=0 ]	(	1	)
 enable1	[ 0	locks=0 ]	(	"on"	)
-name1	[ 0	locks=0 ]	(	name	)
+name1	[ 0	locks=0 ]	(	_psd_layer_name	)
 existing1	[ 0	locks=0 ]	(	"better"	)
 createvarmap1	[ 0	locks=0 ]	(	"off"	)
 varname1	[ 0	locks=0 ]	(	""	)
@@ -649,7 +649,7 @@ default1v	[ 0	locks=0 ]	(	0	0	0	0	)
 writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	0	)
-string1	[ 0	locks=0 ]	(	"`chs(strcat(\"../layer_name\", detail(\"../foreach_count1\", \"iteration\", 0)))"	)
+string1	[ 0	locks=0 ]	(	"`chs(strcat(\"../layer_name\", detail(\"../foreach_count1\", \"ivalue\", 0)))"	)
 numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
@@ -718,7 +718,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"primitive"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"i@PSDLayerNumber = detail(1, \"iteration\", 0);"	)
+snippet	[ 0	locks=0 ]	(	"i@_psd_layer_number = detail(1, \"ivalue\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
@@ -902,7 +902,7 @@ Content-Type: text/plain
 comment ""
 position -17.0048 13.3355
 connectornextid 7
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
 {
 1 "output1"
@@ -1005,7 +1005,7 @@ Content-Type: text/plain
 comment ""
 position 2.7802 13.2605
 connectornextid 1
-flags =  lock off model off template on footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+flags =  lock off model off template on footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
 {
 }
