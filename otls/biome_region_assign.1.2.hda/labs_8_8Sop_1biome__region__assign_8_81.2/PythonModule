@@ -59,6 +59,12 @@ def recreateRegions(kwargs):
     node = kwargs["node"]
     source = node.parm("source").evalAsInt()
     
+    if source == 3:
+        matchDefinitionsEnabled = node.parm('definitionmatch').evalAsInt()
+        if matchDefinitionsEnabled:
+            node.node('psd_input_match_definitions').parm('extractlayers').pressButton()
+        
+    
     if source == 2:         # If Heightfield is selected
         buildRegionMultiparmFromhHeightfields(kwargs)
     else:
@@ -83,7 +89,10 @@ def buildRegionMultiparmFromImage(kwargs):
         region_count = geo.intrinsicValue('primitivecount')
         input_type = node.parm("source").evalAsInt()
         
-        if(input_type == 3):
+        
+        
+        matchDefinitionsEnabled = node.parm('definitionmatch').evalAsInt()
+        if(input_type == 3 and matchDefinitionsEnabled != 1):
             cables = kwargs['node'].node('psd_input/copnet1/looped_cables').inputCableStructure(0)
             region_count = cables.wireCount()
             
@@ -100,7 +109,7 @@ def buildRegionMultiparmFromImage(kwargs):
         for i in range(region_count):
             index_str = str(i + 1)
             
-            if(input_type == 3):
+            if(input_type == 3 and matchDefinitionsEnabled != 1):
                 node.parm('layer_name' + index_str).set(cables.wireName(i))
             
             if(input_type == 1):

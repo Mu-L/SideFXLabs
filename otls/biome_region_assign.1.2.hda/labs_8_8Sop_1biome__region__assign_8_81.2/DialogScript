@@ -436,7 +436,7 @@
                     label   "Match Biome Definitions to Layer Names"
                     type    toggle
                     default { "0" }
-                    hidewhen "{ source != 2 }"
+                    hidewhen "{ source != 2 source != 3 }"
                     parmtag { "script_callback" "hou.phm().recreateRegions(kwargs)" }
                     parmtag { "script_callback_language" "python" }
                 }
@@ -498,7 +498,7 @@
                         label   "Biome"
                         type    string
                         default { "" }
-                        hidewhen "{ definitionmatch == 1 source == 2 }"
+                        hidewhen "{ definitionmatch == 1 source == 2 } { definitionmatch == 1 source == 3 }"
                         menu {
                             [ "hou.phm().biomeMenuSafe(kwargs)" ]
                             language python
@@ -511,7 +511,7 @@
                         label   "Layer Name"
                         type    string
                         default { "" }
-                        hidewhen "{ source != 3 }"
+                        hidewhen "{ source != 3 } { definitionmatch == 1 }"
                         menureplace {
                             [ "import hou" ]
                             [ "" ]
@@ -576,11 +576,19 @@
                         parmtag { "script_callback_language" "python" }
                     }
                     parm {
-                        name    "labelparm#"
-                        label   "Message"
+                        name    "hfmessage#"
+                        label   "HF Definition Match Message"
                         type    label
                         default { "`detailvals(\"OUT_HF_REGIONS\",\"name\",#-1)`" }
                         hidewhen "{ definitionmatch != 1 } { source != 2 }"
+                        parmtag { "sidefx::look" "block" }
+                    }
+                    parm {
+                        name    "psdmessage#"
+                        label   "PSD Definition Match Message"
+                        type    label
+                        default { "`detailvals(\"OUT_REGION_CENTERS\",\"_psd_layer_name\",#-1)`" }
+                        hidewhen "{ definitionmatch != 1 } { source != 3 }"
                         parmtag { "sidefx::look" "block" }
                     }
                     parm {
@@ -590,7 +598,7 @@
                         default { "0" }
                         hidewhen "{ source == 0 } { source == 1 }"
                         range   { 0! 20 }
-                        parmtag { "script_callback" "hou.phm().forceUpdate(kwargs)" }
+                        parmtag { "script_callback" "" }
                         parmtag { "script_callback_language" "python" }
                     }
                     parm {
