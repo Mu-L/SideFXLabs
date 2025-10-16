@@ -58,7 +58,7 @@
             name    "minmaxmessage"
             label   "Message"
             type    label
-            default { "Min: `detail(\"s_auto\",\"_bae_in_min\",0)`\nMax: `detail(\"s_auto\",\"_bae_in_max\",0)`" }
+            default { "Min: `ftrim(detail(\"s_auto\",\"_bae_in_min\",0))`\nMax: `ftrim(detail(\"s_auto\",\"_bae_in_max\",0))`" }
             hidewhen "{ autoremap == 2 } { display == 0 } { display == 4 }"
             parmtag { "sidefx::look" "block" }
         }
