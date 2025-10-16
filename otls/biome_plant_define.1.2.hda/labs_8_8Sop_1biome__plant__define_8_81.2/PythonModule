@@ -127,7 +127,8 @@ def changeName(kwargs, parm):
         if namenode:
             geo = namenode.geometry()
             usdname = ""
-            if len(geo.prims()):
+            if geo.prims() and geo.findPrimAttrib("name"):
+                prim = geo.prims()[0]
                 usdname = geo.prims()[0].attribValue("name")
             nameparm.set(usdname)
                 
