@@ -239,14 +239,15 @@ def recreateNodes(node):
         for el in iter(parent.children()):
             if el.type().name() == type_to_create:
                 el.destroy()
+        
     else:
         parent = hou.pwd().parent()
         input_node = node
+        #disconnect the type nodes that are connected
+        for output in node.outputs():
+            if output:
+                output.setInput(0, None,0)
     
-    #disconnect the type nodes that are connected
-    for output in node.outputs():
-        if output:
-            output.setInput(0, None,0)
 
     # get the titles input
     json_title = node.parmsInFolder(('JSON Dictionary Key Mappings',))
