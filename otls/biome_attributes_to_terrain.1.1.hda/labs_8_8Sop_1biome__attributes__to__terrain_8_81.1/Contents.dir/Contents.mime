@@ -32,22 +32,22 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -8.39551 -1.77408
+position -14.0791 -6.06349
 connectornextid 4
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
 0 "output1"
 }
 inputsNamed3
 {
-1 	heightfield_maskclear1 1 1 "input1"
+1 	biome_bottom 1 1 "input1"
 2 	DeciduousForest 1 1 "input2"
 3 	biome_region_assign1 2 1 "input3"
 }
 inputs
 {
-0 	heightfield_maskclear1 0 1
+0 	biome_bottom 0 1
 1 	DeciduousForest 0 1
 2 	biome_region_assign1 0 1
 }
@@ -74,11 +74,15 @@ Content-Type: text/plain
 	},
 	"new_toggle":{
 		"type":"string",
-		"value":"0"
+		"value":"1"
 	},
 	"old_toggle":{
 		"type":"string",
-		"value":"0"
+		"value":"1"
+	},
+	"sidefx::parm_filter_text_pattern":{
+		"type":"string",
+		"value":"re"
 	},
 	"wirestyle":{
 		"type":"string",
@@ -142,11 +146,11 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.996 0.682 0.682 ";
 	comment := "add new attributes here";
-	height := 1.9473999877929664;
+	height := 2.178103801924042;
 	minimized := 0;
 	width := 4.10509999339059;
 	x_position := 12.26564298427653;
-	y_position := 12.310064523354674;
+	y_position := 12.079360709223598;
 }
 {
   create -1
@@ -8170,6 +8174,7 @@ float soil_accum = 0;
 float height_accum = 0.0;
 vector color_accum = {0};
 float mask = 0.0;
+int biome_hit = 0;
 
 for (int prim = 0; prim < chi(\"num_regions\"); prim++)
 {
@@ -8177,7 +8182,7 @@ for (int prim = 0; prim < chi(\"num_regions\"); prim++)
     // adjusted for. The next two lines adjusts the y-value of the sampling points by the offset value from match size
     vector regions_p = point(2, \"P\", 0);
     vector adjusted_p = set(@P.x, regions_p.y, @P.z);
-    float volume_sample = volumecubicsample(2, prim, adjusted_p);
+    float volume_sample = volumesample(2, prim, adjusted_p);
 
     // If this voxel is inside this region:
     
@@ -8193,7 +8198,7 @@ for (int prim = 0; prim < chi(\"num_regions\"); prim++)
      
     // Set Biome id and color
     @_bat_biomeid = prim;
-    color_accum += biome_cd * volume_sample;
+    
     
     //mask the affected area
     
@@ -8202,7 +8207,8 @@ for (int prim = 0; prim < chi(\"num_regions\"); prim++)
         prec_accum += biome_dict[\"precaverage\"] * volume_sample;
         temp_accum += biome_dict[\"tempaverage\"] * volume_sample;
         soil_accum += biome_dict[\"soil\"] * volume_sample;
-        volume_accum += volume_sample;            
+        color_accum += biome_cd * volume_sample;
+        volume_accum += volume_sample;      
     }
     else
     {
@@ -8212,13 +8218,31 @@ for (int prim = 0; prim < chi(\"num_regions\"); prim++)
     
 }
 
-if (volume_accum > 0)
+// If volume accumulation is more than one, then there are multiple layers of volumes stacked on top of each other and need to have
+// their contributions weighted
+if (volume_accum >= 1)
+{
+    f@mask = volume_accum;
+    f@_bat_precipitation = prec_accum / volume_accum;
+    f@_bat_temperature = temp_accum / volume_accum;
+    f@_bat_soil = soil_accum / volume_accum;
+    v@_bat_color = color_accum / volume_accum;
+}
+
+// If volume accumulation is less than one, then it's likely only one volume or multiple weak volumes were sampled. These are not weighted
+// to ensure the edges blend with the background default values in the next wrangle
+else if (volume_accum < 1)
 {
     f@mask = volume_accum;
     f@_bat_precipitation = prec_accum;
     f@_bat_temperature = temp_accum;
     f@_bat_soil = soil_accum;
     v@_bat_color = color_accum;
+}
+
+else
+{
+    f@mask = 0;
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
@@ -8524,21 +8548,25 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"vector biome_cd;
 float soil = 0;
 float height_accum = 0.0;
-int mask_prim = findattribval(0, \"prim\", \"name\", \"mask\");
-float mask_min = primintrinsic(0, \"volumeminvalue\", mask_prim);
-float mask_max = primintrinsic(0, \"volumemaxvalue\", mask_prim);
 
-@mask = fit(@mask, mask_min, mask_max, 1, 0);
+if(f@mask < 1.0)
+{
 
-v@_bat_color += set(dict(point(1, \"biome_definition\", 0))[\"biomecolorr\"],
-                   dict(point(1, \"biome_definition\", 0))[\"biomecolorg\"],
-                   dict(point(1, \"biome_definition\", 0))[\"biomecolorb\"]) * @mask;
-@_bat_precipitation += dict(point(1, \"biome_definition\", 0))[\"precaverage\"] * @mask;
-@_bat_temperature += dict(point(1, \"biome_definition\", 0))[\"tempaverage\"] * @mask;
-@_bat_soil += dict(point(1, \"biome_definition\", 0))[\"soil\"] * @mask;
-@_bat_biomeid = -1;
+    f@mask = 1 - f@mask;
+    v@_bat_color += set(dict(point(1, \"biome_definition\", 0))[\"biomecolorr\"],
+                       dict(point(1, \"biome_definition\", 0))[\"biomecolorg\"],
+                       dict(point(1, \"biome_definition\", 0))[\"biomecolorb\"]) * f@mask;
+    @_bat_precipitation += dict(point(1, \"biome_definition\", 0))[\"precaverage\"] * f@mask;
+    @_bat_temperature += dict(point(1, \"biome_definition\", 0))[\"tempaverage\"] * f@mask;
+    @_bat_soil += dict(point(1, \"biome_definition\", 0))[\"soil\"] * f@mask;
+    @_bat_biomeid = -1;
+}
 
-"	)
+
+else
+{
+    f@mask = 0;
+}"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
@@ -12049,8 +12077,8 @@ snippet	[ 0	locks=0 ]	(	"// If min and max are the same, set all values to 1 to 
 
 int viz_prim = findattribval(0, \"prim\", \"name\", \"_bat_viz\", 0);
 
-float max = primintrinsic(0, \"volumemaxvalue\", 3);
-float min = primintrinsic(0, \"volumeminvalue\", 3);
+float max = primintrinsic(0, \"volumemaxvalue\", viz_prim);
+float min = primintrinsic(0, \"volumeminvalue\", viz_prim);
 
 if(max == min)
 {
