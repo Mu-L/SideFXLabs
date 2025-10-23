@@ -2,7 +2,13 @@
 
 2. Copy the SideFX_Labs folder next to this text file and paste it inside the Plugins folder mentioned in the previous step. (The SideFX_Labs folder is where the SideFX_Labs.uplugin file is located.)
 
-3. Your plugin is now ready. Launch your Unreal project and you should immediately have access to the Material Functions, Scripted Actions, etc. provided by the plugin. (With the project open, you can verify the plugin is successfully enabled by searching for "SideFX Labs" in Edit > Plugins.)
+--- IMPORTANT ---
+The latest SideFX Labs for Unreal plugin requires binaries to run. Pre-compiled binaries can be downloaded from https://github.com/sideeffects/SideFXLabs/releases or you can build the plugin yourself (see the Building From Source section below). If you are using the Legacy SideFX Labs Unreal plugin, skip to step 4.
+
+3. To install pre-compiled binaries go to https://github.com/sideeffects/SideFXLabs/releases and download the SideFX Labs version zip file that matches your Unreal version and OS. Once the download has finished, unzip the file and move the Binaries folder inside the SideFXLabs folder that was copied in step 2. 
+
+4. Your plugin is now ready. Launch your Unreal project and you should immediately have access to the Material Functions, Scripted Actions, etc. provided by the plugin. (With the project open, you can verify the plugin is successfully enabled by looking for the "SideFX Labs" men at the top of Unreal or by searching for "SideFX Labs" in Edit > Plugins.)
+
 
 
 Alternative Installation Location:
@@ -10,3 +16,19 @@ Alternative Installation Location:
 Installing the plugin to your project directory is recommended if you are working within a team where the project files are shared/source-controlled but the engine files are not.
 
 Alternatively, you can install the plugin to the engine directory, e.g.: C:\Program Files\Epic Games\UE_5.0\Engine\Plugins\FX\<Paste the SideFX_Labs folder here>. This may be more convenient if you are working alone on multiple different projects.
+
+
+
+Building From Source:
+
+1. Open the Houdini Launcher and open Command Line Tools. This can be found by clicking the drop down arrow left of the Launch button and right of the gear icon for any Houdini version under the Houdini Versions section.
+
+2. Once the terminal has opened type the command   hython path/to/builder.py 
+   The builder.py script is in the same folder as this Plugin Installation Guide.txt file. 
+
+3. After the Unreal Build Tool window appears, fill out the parameters and click the Start Build button. 
+
+   Build Platform:     The platform the plugin will be built for.
+   Build Script:       The path to the Unreal build script. On Windows this will be a .bat file and on Linux/Mac it will be a .sh file. These files are found in the Unreal Engine installation directory in Engine/Build/BatchFiles/
+   Plugin File:        The path to the .uplugin file found in the SideFXLabs folder.
+   Build Path:         The path to the directory the plugin will be built to.

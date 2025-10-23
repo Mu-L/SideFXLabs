@@ -1,3 +1,46 @@
+-------------------------
+PLUGIN SETTINGS
+-------------------------
+
+I. FBX Import Settings
+
+For simplicity, first click the Reset to Default button at the top right of the FBX Import Options window then change the following:
+
+Generate Missing Collision:     Off 
+Vertex Color Import Option:     Replace
+Remove Degenerates:             Off
+Build Reversed Index Buffer:    Off
+Generate Lightmap UVs:          Off
+One Convex Hull Per UCX:        Depends on if FBX hax been exported with custom UCX collisions
+Import Mesh LODs:               Depends on if Export LODs is turned on in Houdini on the VAT node
+Normal Import Method:           Import Normals and Tangents
+Material Import Method:         Do Not Create Materials
+
+
+
+II. Texture Settings
+
+When using the Create New VAT window, textures are automatically handled and no longer need to be set.
+
+
+
+III. Static Mesh Settings
+
+When using the Create New VAT window, Static Meshes are automatically handled and no longer need to be set.
+
+
+
+IV. Real-Time Data (JSON) File
+
+When using the Create New VAT window, toggle on Support Legacy Parameters and Instancing and navigate to the JSON file on disk. When the VAT gets created, the JSON data will automatically populate the VAT Material Instance parameters.
+
+
+
+
+
+-------------------------
+LEGACY PLUGIN SETTINGS
+-------------------------
 I. FBX Import Settings
 
 For simplicity, first turn every toggle off, and then set the following...
@@ -11,7 +54,6 @@ Convert Scene:                  On
 Override Full Name:             On
 Material Import Method:         Do Not Create Material
 Reorder Material to Fbx Order:  On
-
 
 
 
@@ -32,12 +74,10 @@ SDR (non-HDR) formats in Houdini.
 
 
 
-
 III. Static Mesh Settings
 
 If there are tiny holes, tearing and flickering in your animation, particularly with the Dynamic Remeshing mode, 
 consider open the mesh with the Mesh Editor, and then turn on LOD0 > Build Settings > UE4 Compatible UVs.
-
 
 
 
