@@ -7,6 +7,9 @@ def outputViewFlag(kwargs):
         node.setOutputForViewFlag(-1)
     elif node.parm("outputmode").eval() == 1:
         node.setOutputForViewFlag(1)
+        
+def setViewFlag(node):
+    node.setOutputForViewFlag(-1)
 
 def forceUpdate(kwargs):
 
