@@ -1,0 +1,1187 @@
+# Dialog script for labs::ml_cv_rop_synthetic_data::1.1 automatically generated
+
+{
+    name	labs::ml_cv_rop_synthetic_data::1.1
+    script	rop_synthetic_data::1.0
+    label	"Labs ML CV ROP Synthetic Data"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input 1"
+    inputlabel	2	"Input 2"
+    inputlabel	3	"Input 3"
+    inputlabel	4	"Input 4"
+
+    groupsimple {
+        name    "fd_cookcontrols"
+        label   "Cook Controls"
+
+        parm {
+            name    "targettopnetwork"
+            label   "Top Network"
+            type    oppath
+            invisible
+            default { "output0" }
+            help    "None"
+            parmtag { "opfilter" "!!TOP!!" }
+            parmtag { "oprelative" "." }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+        parm {
+            name    "generatestatic"
+            label   "Generate Static Work Items"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Generates static work items in all nodes in the TOP network. None of the work items will be cooked, and dynamic nodes will do nothing."
+            parmtag { "script_callback" "import nodegraphtopui; nodegraphtopui.generateStatic(kwargs['node'].parm('targettopnetwork').evalAsNode())" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+        parm {
+            name    "cookbutton"
+            label   "Cook Output Node"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Cook the output node in the TOP network and any out-of-date nodes connected to it. If you want to recook all the nodes in the TOP network, click Dirty All first and then click this button."
+            parmtag { "script_callback" "import nodegraphtopui; nodegraphtopui.cookOutputNode(kwargs['node'].parm('targettopnetwork').evalAsNode())" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+        parm {
+            name    "dirtyall"
+            label   "Dirty All"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Dirties all the work items in all of the TOP nodes inside the network and marks every node inside the network as needing to recook."
+            parmtag { "script_callback" "import nodegraphtopui; nodegraphtopui.dirtyAll(kwargs['node'].parm('targettopnetwork').evalAsNode(), False)" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+        parm {
+            name    "cancelbutton"
+            label   "Cancel Cook"
+            type    button
+            default { "0" }
+            help    "If any nodes in the TOP network are currently cooking, cancels their cook."
+            parmtag { "script_callback" "import nodegraphtopui; nodegraphtopui.cancelCook(kwargs['node'].parm('targettopnetwork').evalAsNode())" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+        parm {
+            name    "deletefileoutputs"
+            label   "Delete All File Outputs From Disk"
+            type    button
+            default { "0" }
+            help    "Deletes all previous cooked files from disk and then dirties all the work items in all of the TOP nodes inside the network."
+            parmtag { "script_callback" "import nodegraphtopui; nodegraphtopui.dirtyAll(kwargs['node'].parm('targettopnetwork').evalAsNode(), True)" }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "spare_category" "TOPCookControls" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_datasetcontrols"
+        label   "Dataset Controls"
+
+        parm {
+            name    "renderdir"
+            label   "Render Directory"
+            type    directory
+            default { "$HIP/datasets/render/" }
+            help    "Specifies the location where the dataset will be rendered."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback" "import hou  network_editor = hou.ui.paneTabOfType(hou.paneTabType.NetworkEditor) print(network_editor)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "deliverydir"
+            label   "Delivery Directory"
+            type    directory
+            default { "$HIP/datasets/delivery/" }
+            help    "Specifies the processed dataset will be saved, this version will only contain the files essential for training."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "debugds"
+            label   "Debug Dataset and Skip Delivery"
+            type    toggle
+            default { "0" }
+            help    "Bypasses the move delivery dataset node, skipping copying the coco + png to a second location."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm3"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "annotationroppath"
+            label   "Annotations ROP"
+            type    oppath
+            default { "" }
+            help    "Path to the ML CV ROP Annotation Output node in SOP context."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "renderroppath"
+            label   "Synth Render ROP"
+            type    oppath
+            default { "" }
+            help    "Path to the ML CV Synthetics Karma ROP LOP configured for the RGBA pass."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "oprelative" "." }
+        }
+    }
+
+    groupcollapsible {
+        name    "fd_fiftyone"
+        label   "FiftyOne"
+        parmtag { "group_default" "1" }
+
+        parm {
+            name    "viewds"
+            label   "View Data Set on Complete"
+            type    toggle
+            default { "0" }
+            help    "Opens the current dataset in an instance of Fifty One once it has completed rendering."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "viewdscurrent"
+            label   "View Current Dataset"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Opens the dataset version defined in the \"Dataset Version Major\" and \"Dataset Verrsion Minor\" parameters in an instance of Fifty One."
+            parmtag { "script_callback" "hou.pwd().hdaModule().cur_ds(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "viewdsother"
+            label   "View Other Dataset"
+            type    button
+            default { "0" }
+            help    "Opens a file browser to select the root directory of another COCO dataset for viewing. Once selected, the dataset will open in a Fifty One instance."
+            parmtag { "script_callback" "hou.pwd().hdaModule().select_ds(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupcollapsible {
+        name    "fd_customization"
+        label   "Customization"
+
+        parm {
+            name    "customvariant"
+            label   "Custom Per Variant"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Dives into the \"custom_per_variant\" subnet allowing additional TOP nodes to be placed to adjust each rendered variant."
+            parmtag { "script_callback" "hou.pwd().hdaModule().custom_per_variant(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customframe"
+            label   "Custom Per Frame"
+            type    button
+            joinnext
+            default { "0" }
+            help    "Dives into the \"custom_per_frame\" subnet inside this node allowing additional TOP nodes to be placed to adjust each rendered frame."
+            parmtag { "script_callback" "hou.pwd().hdaModule().custom_per_frame(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "imagecomp"
+            label   "Image Compositor"
+            type    button
+            default { "0" }
+            help    "Dives into a copnet inside this node allowing additional COP nodes to be placed to further composite the look of the rendered dataset images."
+            parmtag { "script_callback" "hou.pwd().hdaModule().image_compositor(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "sepparm2"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    group {
+        name    "fd_datasetsettings"
+        label   "Dataset Settings"
+
+        parm {
+            name    "skipjson"
+            label   "Skip JSON"
+            type    toggle
+            default { "0" }
+            help    "Skip JSON output, useful for testing and debugging renders."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dsversionmajor"
+            label   "Dataset Version Major"
+            type    integer
+            default { "1" }
+            help    "Specifies the major version of the dataset."
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dsversionminor"
+            label   "Dataset Version Minor"
+            type    integer
+            default { "0" }
+            help    "Specifies the minor version of the dataset."
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_variant"
+            label   "Variant"
+
+            parm {
+                name    "varcount"
+                label   "Variant Count"
+                type    integer
+                default { "10" }
+                help    "Total number of scene variants to be generated for the dataset. Each variant will be associated with a @variant and @v_seed PDG attribute, which can be utilized to control parameters."
+                range   { 1 100 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "rendervarrange"
+                label   "Render Variant Range"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                help    "enables the use of variant range."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "varrange"
+                label   "Variant Range"
+                type    integer
+                size    2
+                default { "1" "100" }
+                help    "Specifies the range of variants to render, useful when distributing renders across multiple computers."
+                disablewhen "{ rendervarrange == 0 }"
+                range   { -1 1 }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_info"
+            label   "Info"
+
+            parm {
+                name    "description"
+                label   "Description"
+                type    string
+                default { "" }
+                help    "Optional input to provide a brief overview of the dataset, including its purpose, content, and any key features or highlights. Written out to the “info” array of the coco.json file."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "contributor"
+                label   "Contributor"
+                type    string
+                default { "" }
+                help    "Optional input for including the names, roles, affiliations, and contact information of individuals or organizations involved in creating the dataset. Written out to the “info” array of the coco.json file."
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "notes"
+                label   "Notes"
+                type    string
+                default { "" }
+                help    "Optional input for dataset changelog information. Written out to the “info” array of the coco.json file."
+                parmtag { "editor" "1" }
+                parmtag { "editorlines" "5-40" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_datasetsettings_1"
+        label   "Render Settings"
+
+        parm {
+            name    "skiprender"
+            label   "Skip Render"
+            type    toggle
+            default { "0" }
+            help    "Toggle to skip Karma rendering, allowing re-cooking of the ML CV ROP Annotation Output SOP without re-rendering the dataset."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "f"
+            label   "Start/End/Inc"
+            type    integer
+            size    3
+            default { "1" "1" "1" }
+            help    "Start and end frames of the sequence to be rendered for each variant. For non-temporal datasets, maintain the values at 1 for both the start and end frames."
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "renderseqperc"
+            label   "Render Partial Sequence"
+            type    toggle
+            default { "0" }
+            help    "Enables rendering of a specified percentage of a larger dataset. Useful for previewing a sample spread of variants to ensure desired distributions are achieved."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "renderperc"
+            label   "Percentage to Render"
+            type    float
+            default { "100" }
+            help    "renders a specified percentage of a larger dataset. Useful for previewing a sample spread of variants to ensure desired distributions are achieved."
+            hidewhen "{ renderseqperc == 0 }"
+            range   { 0! 100! }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "res"
+            label   "Resolution"
+            type    intvector2
+            size    2
+            default { "1280" "720" }
+            help    "Resolution of the datasets images. Should have the same aspect ratio as the Camera used for rendering."
+            range   { -1 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "enablez"
+            label   "Enable Depth Processing"
+            type    toggle
+            invisible
+            default { "0" }
+            help    "Enables processing steps essential for creating Depth GT."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "enabletm"
+            label   "Enable Texture Mask"
+            type    toggle
+            invisible
+            default { "0" }
+            help    "Enables processing steps essential for GT from Texture Masks"
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    group {
+        name    "fd_datasetsettings_2"
+        label   "Visualize"
+
+        parm {
+            name    "visdistro"
+            label   "Visualize Distributions"
+            type    button
+            default { "0" }
+            help    "Plots the specified Synth Attributes on a graph for visualizing the dataset distrubution."
+            parmtag { "script_callback" "hou.pwd().hdaModule().sel_distro_ds(kwargs)" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "filtercat"
+            label   "Filter by Category"
+            type    toggle
+            default { "0" }
+            help    "Enable category filtering."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "catname"
+            label   "Category Name"
+            type    string
+            default { "" }
+            help    "Category Name to filter the visualization distribution by."
+            disablewhen "{ filtercat == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "synthattrs"
+            label    "Synth Attributes"
+
+            parm {
+                name    "synthattr#"
+                label   "Synth Attribute"
+                type    string
+                default { "" }
+                help    "Name of the Synth Attribute to plot and visualize on a graph. These should match the Synth Attributes in the ML CV ROP Annotation Output SOP."
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_datasetsettings_3"
+        label   "Validation Settings"
+        grouptag { "sidefx::switcher" "folder0" }
+        grouptag { "sidefx::switcher:0" "folder0" }
+        grouptag { "sidefx::switcher:0:0" "folder0" }
+        grouptag { "visibletabs:0" "1111" }
+
+        parm {
+            name    "validation"
+            label   "Skip Validation"
+            type    toggle
+            default { "0" }
+            help    "Skips dataset validation."
+            disablewhen "{ debugds == 1 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "checkkp"
+            label   "Validate Keypoints"
+            type    toggle
+            default { "off" }
+            help    "Enables keypoint validation ensuring all keypoints are correctly in the dataset."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        multiparm {
+            name    "categories"
+            label    "Categories"
+            parmtag { "autoscope" "0000000000000000" }
+
+            parm {
+                name    "cat_name#"
+                label   "Category Name"
+                type    string
+                default { "" }
+                help    "Category Name to validate."
+                parmtag { "script_callback_language" "python" }
+            }
+            multiparm {
+                name    "annotation#"
+                label    "Annotation Property"
+
+                parm {
+                    name    "anotation_name#_#"
+                    label   "Annotation"
+                    type    string
+                    default { "" }
+                    help    "COCO Annotation name to validate."
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "fd_datasetsettings_4"
+        label   "Image Compositing"
+
+        parm {
+            name    "useshadows"
+            label   "Use Shadow Matte"
+            type    toggle
+            default { "off" }
+            help    "Enables the use of a Shadow Matte set up in the `Synthetics Karma ROP` resulting in a shadow being composited to ground the object to its backplate."
+            range   { 0! 8 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "usebg"
+            label   "Composite Background"
+            type    toggle
+            default { "off" }
+            help    "Enables compositing each foreground image onto a random background image from a specified directory of backgrounds."
+            range   { 0! 8 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bgimages"
+            label   "Background Images"
+            type    file
+            default { "" }
+            help    "If enabled takes a filepattern with filters for the backgrounds to randomly be composited. "
+            hidewhen "{ usebg == 0 }"
+            menureplace {
+                [ "opmenu -l -a image_compositor bgimages" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        group {
+            name    "fd_options_fg"
+            label   "Foreground Options"
+            hidewhentab "{ usebg == 0 }"
+
+            groupcollapsible {
+                name    "fd_grade_fg"
+                label   "Grade"
+
+                parm {
+                    name    "brightminmax_fg_"
+                    label   "Brightness Min/Max"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Defines the allowable range for the brightness factor to be randomly applied per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "brightamount_fg"
+                    label   "Brightness"
+                    type    float
+                    default { [ "@fg_bright" hscript-expr ] }
+                    help    "The scale factor to control how bright or dim the layer is. Higher values increase the brightness. Lower values decrease the brightness. Defaults to an expression controlled by the brightness min/max."
+                    range   { 0 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_levels_fg"
+                label   "Levels"
+
+                parm {
+                    name    "levels_fg"
+                    label   "Input Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Adjusts black and white points to increase contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "gamma_fg"
+                    label   "Gamma"
+                    type    float
+                    default { "1" }
+                    help    "Adjusts midrange balance."
+                    range   { 0.1 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "outputlevels_fg"
+                    label   "Output Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Remaps the result of Input Levels and Gamma to reduce contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_blur_fg"
+                label   "Blur"
+
+                parm {
+                    name    "filter_fg"
+                    label   "Filter"
+                    type    ordinal
+                    default { "gaussian" }
+                    help    "Selects between box blur and Gaussian blur."
+                    menu {
+                        "box"       "Box"
+                        "gaussian"  "Gaussian"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "readoutsidepixels_fg"
+                    label   "Read Pixels outside Image"
+                    type    toggle
+                    default { "on" }
+                    help    "Defines edge of frame behavior"
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "units_fg"
+                    label   "Units"
+                    type    ordinal
+                    default { "image" }
+                    help    "Defines the units that the diameter of the blur is expressed in."
+                    menu {
+                        "image"     "Image"
+                        "pixels"    "Pixels"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "blurminmax_fg_"
+                    label   "Blur Min/Max"
+                    type    vector2
+                    size    2
+                    default { "0" "0" }
+                    help    "Defines the allowable range for the amount of blur to be randomized per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "size_fg"
+                    label   "Size"
+                    type    float
+                    default { [ "@fg_blur" hscript-expr ] }
+                    help    "Defines the diameter of the blur. Defaults to an expression controlled by the blur min/max."
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "scale_fg"
+                    label   "Scale Size"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Disproportionately scales the blur on either axis."
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        group {
+            name    "fd_options_fg_1"
+            label   "Background Options"
+            tabbreak
+            hidewhentab "{ usebg == 0 }"
+
+            groupcollapsible {
+                name    "fd_grade_bg"
+                label   "Grade"
+
+                parm {
+                    name    "brightminmax_bg"
+                    label   "Brightness Min/Max"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Defines the allowable range for the brightness factor to be randomly applied per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "brightamount_bg"
+                    label   "Brightness"
+                    type    float
+                    default { [ "@bg_bright" hscript-expr ] }
+                    help    "The scale factor to control how bright or dim the layer is. Higher values increase the brightness. Lower values decrease the brightness. Defaults to an expression controlled by the brightness min/max."
+                    range   { 0 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_levels_bg"
+                label   "Levels"
+
+                parm {
+                    name    "levels_bg"
+                    label   "Input Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Adjusts black and white points to increase contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "gamma_bg"
+                    label   "Gamma"
+                    type    float
+                    default { "1" }
+                    help    "Adjusts midrange balance."
+                    range   { 0.1 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "outputlevels_bg"
+                    label   "Output Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Remaps the result of Input Levels and Gamma to reduce contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_blur_bg"
+                label   "Blur"
+
+                parm {
+                    name    "filter_bg"
+                    label   "Filter"
+                    type    ordinal
+                    default { "gaussian" }
+                    help    "Selects between box blur and Gaussian blur."
+                    menu {
+                        "box"       "Box"
+                        "gaussian"  "Gaussian"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "readoutsidepixels_bg"
+                    label   "Read Pixels outside Image"
+                    type    toggle
+                    default { "on" }
+                    help    "Defines edge of frame behavior."
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "units_bg"
+                    label   "Units"
+                    type    ordinal
+                    default { "image" }
+                    help    "Defines the units that the diameter of the blur is expressed in."
+                    menu {
+                        "image"     "Image"
+                        "pixels"    "Pixels"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "blurminmax_bg_"
+                    label   "Blur Min/Max"
+                    type    vector2
+                    size    2
+                    default { "0" "0" }
+                    help    "Defines the allowable range for the amount of blur to be randomized per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "size_bg"
+                    label   "Size"
+                    type    float
+                    default { [ "@bg_blur" hscript-expr ] }
+                    help    "Defines the diameter of the blur. Defaults to an expression controlled by the blur min/max."
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "scale_bg"
+                    label   "Scale Size"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Disproportionately scales the blur on either axis."
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+        groupsimple {
+            name    "fd_postcomp"
+            label   "Post Comp"
+
+            parm {
+                name    "useclipping"
+                label   "Enable Clipping"
+                type    toggle
+                default { "off" }
+                help    "Enables clipping controls."
+                range   { 0! 8 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "usegrain"
+                label   "Enable Grain"
+                type    toggle
+                default { "off" }
+                help    "Enables grain controls."
+                range   { 0! 8 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "fillalpha"
+                label   "Fill Alpha"
+                type    toggle
+                default { "on" }
+                help    "Enables a process that ensures the output frames have no transparent pixels."
+                range   { 0! 8 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            groupcollapsible {
+                name    "fd_grade"
+                label   "Grade"
+
+                parm {
+                    name    "brightminmax_"
+                    label   "Brightness Min/Max"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Defines the allowable range for the brightness factor to be randomly applied per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "export_disable" "1" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "brightamount"
+                    label   "Brightness"
+                    type    float
+                    default { [ "@comped_bright" hscript-expr ] }
+                    help    "The scale factor to control how bright or dim the layer is. Higher values increase the brightness. Lower values decrease the brightness. Defaults to an expression controlled by the brightness min/max."
+                    range   { 0 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_levels"
+                label   "Levels"
+
+                parm {
+                    name    "inputlevels_"
+                    label   "Input Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Adjusts black and white points to increase contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "gamma"
+                    label   "Gamma"
+                    type    float
+                    default { "1" }
+                    help    "Adjusts midrange balance."
+                    range   { 0.1 10 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "output_levels_"
+                    label   "Output Levels"
+                    type    float
+                    size    2
+                    default { "0" "1" }
+                    help    "Remaps the result of Input Levels and Gamma to reduce contrast."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_grade_2"
+                label   "Blur"
+
+                parm {
+                    name    "filter"
+                    label   "Filter"
+                    type    ordinal
+                    default { "gaussian" }
+                    help    "Selects between box blur and Gaussian blur."
+                    menu {
+                        "box"       "Box"
+                        "gaussian"  "Gaussian"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "readoutsidepixels"
+                    label   "Read Pixels outside Image"
+                    type    toggle
+                    default { "on" }
+                    help    "Defines edge of frame behavior."
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "units"
+                    label   "Units"
+                    type    ordinal
+                    default { "image" }
+                    help    "Defines the units that the diameter of the blur is expressed in."
+                    menu {
+                        "image"     "Image"
+                        "pixels"    "Pixels"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "blurminmax_"
+                    label   "Blur Min/Max"
+                    type    vector2
+                    size    2
+                    default { "0" "0" }
+                    help    "Defines the allowable range for the amount of blur to be randomized per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "size"
+                    label   "Size"
+                    type    float
+                    default { [ "@comped_blur" hscript-expr ] }
+                    help    "Defines the diameter of the blur. Defaults to an expression controlled by the blur min/max."
+                    range   { 0! 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "scalesize_"
+                    label   "Scale Size"
+                    type    vector2
+                    size    2
+                    default { "1" "1" }
+                    help    "Disproportionately scales the blur on either axis."
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_clipping"
+                label   "Clipping"
+                hidewhentab "{ useclipping == 0 }"
+
+                parm {
+                    name    "mask"
+                    label   "Mask"
+                    type    float
+                    default { "1" }
+                    help    "Blends the modified image with the unclipped image."
+                    range   { 0! 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "clipping_lowerlimit"
+                    label   "Lower Limit"
+                    type    float
+                    default { "0" }
+                    help    "Clips the black point in the render."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "clipping_upperlimit"
+                    label   "Upper Limit"
+                    type    float
+                    default { "1" }
+                    help    "Clips the white point in the render."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "clippingmethod"
+                    label   "Clamped Values"
+                    type    ordinal
+                    default { "clamp" }
+                    help    "Specifies how clamped values should be handled."
+                    menu {
+                        "clamp" "Replace with Limit Value"
+                        "black" "Replace with Black"
+                    }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+            groupcollapsible {
+                name    "fd_grain"
+                label   "Grain"
+                hidewhentab "{ usegrain == 0 }"
+
+                parm {
+                    name    "grainminmax_"
+                    label   "Grain Min/Max"
+                    type    vector2
+                    size    2
+                    default { "0" "0.01" }
+                    help    "Specifies the allowable range of grain amplitude to be randomized per image."
+                    range   { -1 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "grainamp"
+                    label   "Grain Amplitude"
+                    type    float
+                    default { [ "@grain_amt" hscript-expr ] }
+                    help    "Specifies the intensity of the grain. Defaults to an expression controlled by the Grain Min/Max values."
+                    range   { 0 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "elementsize"
+                    label   "Element Size"
+                    type    log
+                    default { "0.002" }
+                    help    "The size, in image coordinates, of the basic element of the grain."
+                    range   { 0.001 1 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "contrast"
+                    label   "Contrast"
+                    type    float
+                    default { "0" }
+                    help    "Used to make the noise appear more extreme without exceeding the 0 to 1 range."
+                    range   { -1! 1! }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "grainseed"
+                    label   "Seed"
+                    type    integer
+                    default { "0" }
+                    help    "Randomizes the grain pattern."
+                    range   { 0 100 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "fd_datasetsettings_5"
+        label   "Advanced"
+
+        parm {
+            name    "basename"
+            label   "Base Frame Format"
+            type    string
+            default { "v_`padzero(4, @variant)`_f_`padzero(4, @frame_index)`" }
+            help    "The base filename used to generate data, by default it is derived from the frame number and variant number. Changing this is likely to cause issues with the automated portions of the PDG graph."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "dsseed"
+            label   "Dataset Seed"
+            type    integer
+            default { "fit01(rand(ch(\"dsversionmajor\")),0,10000)" }
+            help    "Seed that controls variation in a dataset, this is driven by the dataset major version."
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "incompds"
+            label   "Fail Incomplete Dataset"
+            type    toggle
+            invisible
+            default { "0" }
+            help    "By default, a dataset will complete with failed work items. E.g. if 3 work items fail out of 1000 frames, it will complete with 997 frames. Enabling this will cause the dataset to fail at the compute segmentation step."
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "forcepolyseg"
+            label   "Force Poly Segmentation"
+            type    toggle
+            default { "0" }
+            help    "By default, RLE segmentation is used. Enabling this toggle forces the node to switch to a less efficient method that calculates the polygon outline for segmentation."
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "os"
+            label   "Operating System"
+            type    ordinal
+            default { "0" }
+            menu {
+                "Windows"   "Windows"
+                "Darwin"    "Mac"
+                "Linux"     "Linux"
+            }
+            parmtag { "script_callback" "" }
+            parmtag { "script_callback_language" "python" }
+        }
+        groupsimple {
+            name    "fd_venv"
+            label   "Virtaul Environment"
+
+            parm {
+                name    "venvpath"
+                label   "Environment Path"
+                type    file
+                default { "$HIP/ml/labs/venv.`@pdg_schedulername`" }
+                help    "The path to the python virtual environment in which the internal training script of this node is run."
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}

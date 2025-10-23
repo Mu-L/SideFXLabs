@@ -1,0 +1,10 @@
+import platform
+
+node = kwargs['node']
+
+if platform.system() == 'Windows':
+    node.parm('os').set('Windows')
+elif platform.system() == 'Darwin':
+    node.parm('os').set('Darwin')
+else:
+    node.parm('os').set('Linux')
