@@ -47,70 +47,77 @@
                 }
             }
 
-            groupsimple {
-                name    "fd_temperature"
-                label   "Temperature"
+            group {
+                name    "fd_climate"
+                label   "Climate"
+                tabbreak
 
-                parm {
-                    name    "templower"
-                    label   "Lower Limit"
-                    type    float
-                    default { "10" }
-                    range   { -10 33 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "temppref"
-                    label   "Preferred"
-                    type    float
-                    default { "14" }
-                    range   { -10 33 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "tempupper"
-                    label   "Upper Limit"
-                    type    float
-                    default { "20" }
-                    range   { -10 33 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
-            }
+                groupsimple {
+                    name    "fd_temperature"
+                    label   "Temperature"
 
-            groupsimple {
-                name    "fd_precipitation"
-                label   "Precipitation"
+                    parm {
+                        name    "templower"
+                        label   "Lower Limit"
+                        type    float
+                        default { "10" }
+                        range   { -10 33 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "temppref"
+                        label   "Preferred"
+                        type    float
+                        default { "14" }
+                        range   { -10 33 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "tempupper"
+                        label   "Upper Limit"
+                        type    float
+                        default { "20" }
+                        range   { -10 33 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                }
 
-                parm {
-                    name    "preclower"
-                    label   "Lower Limit"
-                    type    float
-                    default { "500" }
-                    range   { 10 4300 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
+                groupsimple {
+                    name    "fd_precipitation"
+                    label   "Precipitation"
+
+                    parm {
+                        name    "preclower"
+                        label   "Lower Limit"
+                        type    float
+                        default { "500" }
+                        range   { 10 4300 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "precpref"
+                        label   "Preferred"
+                        type    float
+                        default { "700" }
+                        range   { 10 4300 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
+                    parm {
+                        name    "precupper"
+                        label   "Upper Limit"
+                        type    float
+                        default { "900" }
+                        range   { 10 4300 }
+                        parmtag { "autoscope" "0000000000000000" }
+                        parmtag { "script_callback_language" "python" }
+                    }
                 }
-                parm {
-                    name    "precpref"
-                    label   "Preferred"
-                    type    float
-                    default { "700" }
-                    range   { 10 4300 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
-                parm {
-                    name    "precupper"
-                    label   "Upper Limit"
-                    type    float
-                    default { "900" }
-                    range   { 10 4300 }
-                    parmtag { "autoscope" "0000000000000000" }
-                    parmtag { "script_callback_language" "python" }
-                }
+
             }
 
             groupsimple {
@@ -143,6 +150,7 @@
             groupsimple {
                 name    "fd_scale"
                 label   "Scale"
+                tabbreak
 
                 parm {
                     name    "scalemult"
