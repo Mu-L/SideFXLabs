@@ -1,0 +1,58 @@
+= Labs UV Visualize =
+
+#type:      node
+#context:   sop
+#internal:  labs::visualize_uvs::1.2
+#icon:      visualize_uv
+
+"""Visualizes UV attributes and properties."""
+
+This node visualizes the UV coordinates by applying a grid texture to the input mesh. There are also options to visualize the UV islands, the seams, as well as flatten the mesh in the viewport to reflect the UV layout.
+        
+WARNING:
+    This will change the mesh UVs, be aware if you link any nodes as your output.
+    
+@parameters
+    Group:
+        #id: group
+        The selection of primitives to visualize their UVs.
+
+    UV Attribute:
+        #id: uvattribute
+        The UV attribute to operate on.
+
+    == Texture ==
+    
+    Texture Map:
+        #id: texturemap
+        The texture to visualize the UV grid.
+    
+    Texture Tiling:
+        #id: texturetiling
+        The number of times the texture will be repeated.
+    
+    == Visualization ==
+
+    Visualize UV Islands:
+        #id: visualizeislands
+        Randomly colorizes the UV islands.
+    
+    Visualize Seams:
+        #id: visualizeseams
+        Enables the visualization of the seams as mesh.
+
+    Thickness:
+        #id: 
+        The thickness of the seams that are being visualized.
+
+    Color:
+        #id: color
+        The color of the seams that are being visualized.
+
+    View in Worldspace:
+        #id: worldspace
+        Moves the points based on their UVs in World Space. Useful for tracking which island matches which piece of geometry. 
+    
+    Blend:
+        #id: blend
+        The amount of blend between the original mesh, and the UV space version of the mesh.

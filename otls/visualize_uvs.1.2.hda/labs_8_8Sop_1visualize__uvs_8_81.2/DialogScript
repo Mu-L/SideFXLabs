@@ -1,0 +1,107 @@
+# Dialog script for labs::visualize_uvs::1.2 automatically generated
+
+{
+    name	labs::visualize_uvs::1.2
+    script	gamedev::sop_visualize_uvs
+    label	"Labs UV Visualize"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Mesh with UVs"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "opmenu -l group2 basegroup" ]
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nkwargs['ordered'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "uvattribute"
+        label   "UV Attribute"
+        type    string
+        default { "uv" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_texture"
+        label   "Texture"
+
+        parm {
+            name    "texturemap"
+            label   "Texture Map"
+            type    image
+            default { "uvgrid_grey.pic" }
+        }
+        parm {
+            name    "texturetiling"
+            label   "Texture Tiling"
+            type    vector2
+            size    2
+            default { "1" "1" }
+            range   { 0 10 }
+        }
+    }
+
+    groupsimple {
+        name    "fd_visualization"
+        label   "Visualization"
+
+        parm {
+            name    "visualizeislands"
+            label   "Visualize UV Islands"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "visualizeseams"
+            label   "Visualize Seams"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "thickness"
+            label   "Thickness"
+            type    float
+            default { "0.01" }
+            hidewhen "{ visualizeseams == 0 }"
+            range   { 0! 0.1 }
+        }
+        parm {
+            name    "color"
+            label   "Color"
+            type    color
+            size    3
+            default { "1" "0" "0" }
+            hidewhen "{ visualizeseams == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "worldspace"
+            label   "View in Worldspace"
+            type    toggle
+            default { "0" }
+        }
+        parm {
+            name    "blend"
+            label   "Blend"
+            type    float
+            default { "1" }
+            hidewhen "{ worldspace == 0 }"
+            range   { 0! 1! }
+        }
+    }
+
+}
