@@ -1,0 +1,27 @@
+= Labs UV Unitize =
+
+#type:      node
+#context:   sop
+#internal:  labs::uv_unitize::1.0
+#icon:      uvunitize
+
+"""Unwraps primitives or UV islands to fit in the 0-1 UV space."""
+
+This tool unwraps primitives or UV islands to fit into the 0-1 UV space. It can do so in two ways: for each primitive or UV island.
+
+@parameters
+    Group:
+        #id: group
+        The selection of primitives to visualize their UVs.
+
+    UV Attribute:
+        #id: uvattribute
+        The UV attribute to operate on. The attribute name will be used to generate an attribute in Primitives mode, and will use incoming attributes with this name in UV Islands mode.
+
+    Mode:
+        #id: mode
+        When set to __Primitives__, each primitive will unwrap to entirely fit the 0-1 UV space. When set to __UV Island__, it measures the dimensions of each connected UV Island and scales it to fit the 0-1 UV space as a whole.
+
+    Uniform Scale:
+        #id: uniformscale
+        When enabled, the entire island bounds scale uniformly to fit the 0-1 UV space. When disabled, the UV Islands scale uniformly so that the largest axis fits the 0-1 UV space.
