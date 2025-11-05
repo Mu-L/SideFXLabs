@@ -15,7 +15,7 @@
     inputlabel	4	"Sub-Network Input #4"
 
     parm {
-        name    "destgroup"
+        name    "group"
         label   "Group"
         type    string
         default { "" }
@@ -29,7 +29,7 @@
         parmtag { "sop_input" "0" }
     }
     parm {
-        name    "uvattr"
+        name    "uvattribute"
         label   "UV Attributes"
         type    string
         default { "uv" }
@@ -40,7 +40,7 @@
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "distortionattr"
+        name    "distortionattribute"
         label   "Output Attribute"
         type    string
         default { "uv_distortion" }
@@ -49,7 +49,7 @@
     }
     parm {
         name    "visualize"
-        label   "Visualize"
+        label   "Visualize UV Distortion"
         type    toggle
         default { "1" }
         parmtag { "script_callback_language" "python" }

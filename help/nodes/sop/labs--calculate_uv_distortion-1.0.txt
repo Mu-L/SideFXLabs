@@ -1,27 +1,30 @@
 = Labs Calculate UV Distortion =
 
-#type: node
-#context: sop
-#internal: labs::calculate_uv_distortion
-#icon: calculate_uv_distortion
-#tags: sidefxlabs,  model, uv
+#type:      node
+#context:   sop
+#internal:  labs::calculate_uv_distortion::1.0
+#icon:      calculate_uv_distortion
 
-""" Calculate UV distortion of a piece of geometry """
+"""Calculates the UV distortion of a mesh."""
 
-This node will allow you to calculate UV distortion for the specified UV attribute and export it as a primitive attribute.
-The node will visualize the distortion by default using a visualizer, but this can be disabled.
+This node calculates the UV distortion for a specified UV attribute and exports it as a primitive attribute.  Additionally, there's an option to visualize the distortion using a heat map.
 
 NOTE:
-    The attribute values the tool generates are generally centered around 0, meaning no distortion. Values higher than 0 indicate a primitive is being compressed, while negative values indicate that significant stretching is happening.
-
+    The tool generates attribute values that are generally centred around 0, indicating no distortion. Values higher than 0 suggest that a primitive is being compressed, while negative values indicate significant stretching.
 
 @parameters
     Group:
-        The group to calculate the UV distortion for. 
+        #id: group
+        The selection of primitives to calculate the UV distortion.
+
     UV Attribute:
-        The attribute to be used for calculating UV distortion. 
-    Output Attribute:
-        The primitive attribute to be created storing the distortion amount.
-    Visualize:
-        Toggle for enabling or disabling the creation of a visualizer for the distortion. 
+        #id: uvattribute
+        The attribute to be used for calculating UV distortion.
     
+    Output Attribute:
+        #id: distortionattribute
+        The primitive attribute that is created storing the distortion amount.
+    
+    Visualize UV Distortion:
+        #id: visualize
+        Enables a color map that visualizes the UV distortion.

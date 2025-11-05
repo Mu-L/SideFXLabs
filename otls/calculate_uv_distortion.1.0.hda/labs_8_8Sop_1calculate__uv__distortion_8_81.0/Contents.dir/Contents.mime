@@ -32,25 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.5 -0.15
-connectornextid 1
+position -2.5 -8.15
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
-0 	uvflatten1 1 1 "input1"
+0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	uvflatten1 0 1
+0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -66,6 +67,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -74,7 +79,7 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 1
-0 1.1175870805180121e-08 11.121883699586274 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -0.49999998882412905 10.883299995213747 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle3.init"
@@ -89,7 +94,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.3329 2.36164
+position 3.497 1.849
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -99,12 +104,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	divide1 1 1 "input1"
-2 	measure4 1 1 "input2"
+2 	measure_uv_area 1 1 "input2"
 }
 inputs
 {
 0 	divide1 0 1
-1 	measure4 0 1
+1 	measure_uv_area 0 1
 }
 stat
 {
@@ -131,8 +136,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -289,6 +294,12 @@ Content-Type: text/plain
         type    string
         default { "" }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle3.parm"
@@ -364,6 +375,7 @@ if (len(vertices) <= 3){
 f@_cud_distortion = (log(dist) * log_scale) + log(sqrt(float(prim(1, \"_cud_uv_area\", 0)) / float(prim(1, \"_cud_position_area\", 0)))) * log_scale;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -376,7 +388,7 @@ vex_inplace	[ 0	locks=0 ]	(	"off"	)
 vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
-uv	[ 0	locks=0 ]	(	`chs(\"../uvattr\")`	)
+uv	[ 0	locks=0 ]	(	`chs(\"../uvattribute\")`	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -403,7 +415,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.3359 5.00265
+position 3.5 4.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -412,11 +424,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switchif1 1 1 "input1"
+0 	error_switch 1 1 "input1"
 }
 inputs
 {
-0 	switchif1 0 1
+0 	error_switch 0 1
 }
 stat
 {
@@ -469,19 +481,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure1.init"
+Content-Disposition: attachment; filename="hdaroot/measure_position_area.init"
 Content-Type: text/plain
 
 type = measure::2.0
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure1.def"
+Content-Disposition: attachment; filename="hdaroot/measure_position_area.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.0098 4.18494
+position 5.5 3.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -509,7 +521,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure1.parm"
+Content-Disposition: attachment; filename="hdaroot/measure_position_area.parm"
 Content-Type: text/plain
 
 {
@@ -526,6 +538,7 @@ umbiliccutoff	[ 0	locks=0 ]	(	0	)
 integrationmode	[ 0	locks=0 ]	(	"componentwise"	)
 srcattrib	[ 0	locks=0 ]	(	P	)
 srccomp	[ 0	locks=0 ]	(	"x"	)
+divideelementarea	[ 0	locks=0 ]	(	"off"	)
 scalenormalize	[ 0	locks=0 ]	(	"on"	)
 sepparm	[ 0	locks=0 ]	(	)
 integrationdomain	[ 0	locks=0 ]	(	"throughout"	)
@@ -566,7 +579,7 @@ colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure1.userdata"
+Content-Disposition: attachment; filename="hdaroot/measure_position_area.userdata"
 Content-Type: text/plain
 
 {
@@ -577,19 +590,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure4.init"
+Content-Disposition: attachment; filename="hdaroot/measure_uv_area.init"
 Content-Type: text/plain
 
 type = measure::2.0
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure4.def"
+Content-Disposition: attachment; filename="hdaroot/measure_uv_area.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.0098 3.16084
+position 5.5 2.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -598,11 +611,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	measure1 1 1 "input1"
+0 	measure_position_area 1 1 "input1"
 }
 inputs
 {
-0 	measure1 0 1
+0 	measure_position_area 0 1
 }
 stat
 {
@@ -617,7 +630,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure4.parm"
+Content-Disposition: attachment; filename="hdaroot/measure_uv_area.parm"
 Content-Type: text/plain
 
 {
@@ -634,13 +647,14 @@ umbiliccutoff	[ 0	locks=0 ]	(	0	)
 integrationmode	[ 0	locks=0 ]	(	"componentwise"	)
 srcattrib	[ 0	locks=0 ]	(	P	)
 srccomp	[ 0	locks=0 ]	(	"x"	)
+divideelementarea	[ 0	locks=0 ]	(	"off"	)
 scalenormalize	[ 0	locks=0 ]	(	"on"	)
 sepparm	[ 0	locks=0 ]	(	)
 integrationdomain	[ 0	locks=0 ]	(	"throughout"	)
 refinetomanifold	[ 0	locks=0 ]	(	"on"	)
 pieceattrib	[ 0	locks=0 ]	(	class	)
 usecustompos	[ 0	locks=0 ]	(	"on"	)
-posattrib	[ 0	locks=0 ]	(	`chs(\"../uvattr\")`	)
+posattrib	[ 0	locks=0 ]	(	`chs(\"../uvattribute\")`	)
 visrange	[ 0	locks=0 ]	(	0	)
 userangemin	[ 0	locks=0 ]	(	"off"	)
 rangemin	[ 0	locks=0 ]	(	-1	)
@@ -674,7 +688,7 @@ colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/measure4.userdata"
+Content-Disposition: attachment; filename="hdaroot/measure_uv_area.userdata"
 Content-Type: text/plain
 
 {
@@ -697,7 +711,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.30227e-16 8.67888
+position -0.5 8.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -764,7 +778,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.3325 1.26334
+position 3.49655 0.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -820,19 +834,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribcopy2.init"
+Content-Disposition: attachment; filename="hdaroot/copy_uv_distortion_attribute.init"
 Content-Type: text/plain
 
 type = attribcopy
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribcopy2.def"
+Content-Disposition: attachment; filename="hdaroot/copy_uv_distortion_attribute.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.0035 0.300744
+position -0.50345 -0.15
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -862,7 +876,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribcopy2.chn"
+Content-Disposition: attachment; filename="hdaroot/copy_uv_distortion_attribute.chn"
 Content-Type: text/plain
 
 {
@@ -871,19 +885,19 @@ Content-Type: text/plain
       righttype = extend
       defaultString = \"uv_distortion\"
       flags = 0
-      segment { length = 0 expr = chs(\"../distortionattr\") }
+      segment { length = 0 expr = chs(\"../distortionattribute\") }
     }
     channel destgroup {
       lefttype = extend
       righttype = extend
       defaultString = \"\"
       flags = 0
-      segment { length = 0 expr = chs(\"../destgroup\") }
+      segment { length = 0 expr = chs(\"../group\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribcopy2.parm"
+Content-Disposition: attachment; filename="hdaroot/copy_uv_distortion_attribute.parm"
 Content-Type: text/plain
 
 {
@@ -893,6 +907,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 8	locks=0 ]	(	[ destgroup	"" ] 	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	_cud_index	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	_cud_distortion	)
@@ -901,10 +916,11 @@ usenewname	[ 0	locks=0 ]	(	"on"	)
 newname	[ 8	locks=0 ]	(	[ newname	"" ] 	)
 class	[ 0	locks=0 ]	(	"prims"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribcopy2.userdata"
+Content-Disposition: attachment; filename="hdaroot/copy_uv_distortion_attribute.userdata"
 Content-Type: text/plain
 
 {
@@ -927,7 +943,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment "HDA code: cud"
-position -5.00049e-05 -4.20226
+position -0.5 -4.15
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
@@ -935,11 +951,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	attribdelete1 1 1 "input1"
+0 	delete_internal_attributes 1 1 "input1"
 }
 inputs
 {
-0 	attribdelete1 0 1
+0 	delete_internal_attributes 0 1
 }
 stat
 {
@@ -974,19 +990,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribdelete1.init"
+Content-Disposition: attachment; filename="hdaroot/delete_internal_attributes.init"
 Content-Type: text/plain
 
 type = attribdelete
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribdelete1.def"
+Content-Disposition: attachment; filename="hdaroot/delete_internal_attributes.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.0035 -3.20226
+position -0.50345 -3.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -995,11 +1011,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch1 1 1 "input1"
+0 	visualize_uv_distortion 1 1 "input1"
 }
 inputs
 {
-0 	switch1 0 1
+0 	visualize_uv_distortion 0 1
 }
 stat
 {
@@ -1014,7 +1030,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribdelete1.parm"
+Content-Disposition: attachment; filename="hdaroot/delete_internal_attributes.parm"
 Content-Type: text/plain
 
 {
@@ -1033,7 +1049,7 @@ updatevar	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribdelete1.userdata"
+Content-Disposition: attachment; filename="hdaroot/delete_internal_attributes.userdata"
 Content-Type: text/plain
 
 {
@@ -1044,19 +1060,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.init"
+Content-Disposition: attachment; filename="hdaroot/visualize_uv_distortion.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.def"
+Content-Disposition: attachment; filename="hdaroot/visualize_uv_distortion.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -5.00142e-05 -2.14266
+position -0.5 -2.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1065,13 +1081,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-2 	attribcopy2 2 1 "input1"
-0 	color1 1 1 "input2"
+2 	copy_uv_distortion_attribute 2 1 "input1"
+0 	color_uv_distortion 1 1 "input2"
 }
 inputs
 {
-0 	attribcopy2 0 1
-1 	color1 0 1
+0 	copy_uv_distortion_attribute 0 1
+1 	color_uv_distortion 0 1
 }
 stat
 {
@@ -1086,7 +1102,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.chn"
+Content-Disposition: attachment; filename="hdaroot/visualize_uv_distortion.chn"
 Content-Type: text/plain
 
 {
@@ -1099,7 +1115,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.parm"
+Content-Disposition: attachment; filename="hdaroot/visualize_uv_distortion.parm"
 Content-Type: text/plain
 
 {
@@ -1108,7 +1124,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
+Content-Disposition: attachment; filename="hdaroot/visualize_uv_distortion.userdata"
 Content-Type: text/plain
 
 {
@@ -1131,7 +1147,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.54767 7.32641
+position 5.5 6.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1207,7 +1223,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.249e-16 9.5817
+position -0.5 9.845
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1256,19 +1272,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switchif1.init"
+Content-Disposition: attachment; filename="hdaroot/error_switch.init"
 Content-Type: text/plain
 
 type = switchif
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switchif1.def"
+Content-Disposition: attachment; filename="hdaroot/error_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.3359 5.95985
+position 3.5 5.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1277,12 +1293,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	attribpromote1 1 1 "input1"
+0 	promote_uv_attribute 1 1 "input1"
 2 	error1 1 1 "input2"
 }
 inputs
 {
-0 	attribpromote1 0 1
+0 	promote_uv_attribute 0 1
 1 	error1 0 1
 }
 stat
@@ -1298,7 +1314,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switchif1.parm"
+Content-Disposition: attachment; filename="hdaroot/error_switch.parm"
 Content-Type: text/plain
 
 {
@@ -1311,7 +1327,7 @@ type1	[ 0	locks=0 ]	(	"attrib"	)
 expr1	[ 0	locks=0 ]	(	1	)
 attribtype1	[ 0	locks=0 ]	(	"all"	)
 attribowner1	[ 0	locks=0 ]	(	"vertex"	)
-attributes1	[ 0	locks=0 ]	(	`chs(\"../uvattr\")`	)
+attributes1	[ 0	locks=0 ]	(	`chs(\"../uvattribute\")`	)
 attribvaltype1	[ 0	locks=0 ]	(	"flt"	)
 attribfloatcomp1	[ 0	locks=0 ]	(	"equal"	)
 attribstringcomp1	[ 0	locks=0 ]	(	"equal"	)
@@ -1325,7 +1341,7 @@ hasinputtype1	[ 0	locks=0 ]	(	"wired"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switchif1.userdata"
+Content-Disposition: attachment; filename="hdaroot/error_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -1336,19 +1352,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote1.init"
+Content-Disposition: attachment; filename="hdaroot/promote_uv_attribute.init"
 Content-Type: text/plain
 
 type = attribpromote
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote1.def"
+Content-Disposition: attachment; filename="hdaroot/promote_uv_attribute.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.647191 7.32641
+position 1.49655 6.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1376,12 +1392,12 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote1.parm"
+Content-Disposition: attachment; filename="hdaroot/promote_uv_attribute.parm"
 Content-Type: text/plain
 
 {
 version 0.8
-inname	[ 0	locks=0 ]	(	`chs(\"../uvattr\")`	)
+inname	[ 0	locks=0 ]	(	`chs(\"../uvattribute\")`	)
 inclass	[ 0	locks=0 ]	(	"point"	)
 outclass	[ 0	locks=0 ]	(	"vertex"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
@@ -1393,7 +1409,7 @@ deletein	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote1.userdata"
+Content-Disposition: attachment; filename="hdaroot/promote_uv_attribute.userdata"
 Content-Type: text/plain
 
 {
@@ -1404,14 +1420,14 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.init"
+Content-Disposition: attachment; filename="hdaroot/color_uv_distortion.init"
 Content-Type: text/plain
 
 type = color
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.def"
+Content-Disposition: attachment; filename="hdaroot/color_uv_distortion.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
@@ -1425,11 +1441,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	attribcopy2 2 1 "input1"
+0 	copy_uv_distortion_attribute 2 1 "input1"
 }
 inputs
 {
-0 	attribcopy2 0 1
+0 	copy_uv_distortion_attribute 0 1
 }
 stat
 {
@@ -1444,7 +1460,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.parm"
+Content-Disposition: attachment; filename="hdaroot/color_uv_distortion.parm"
 Content-Type: text/plain
 
 {
@@ -1452,11 +1468,12 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	1	)
 colortype	[ 0	locks=0 ]	(	3	)
 color	[ 0	locks=0 ]	(	1	1	1	)
 seed	[ 0	locks=0 ]	(	0	)
-rampattribute	[ 0	locks=0 ]	(	`chs(\"../distortionattr\")`	)
+rampattribute	[ 0	locks=0 ]	(	`chs(\"../distortionattribute\")`	)
 ramprange	[ 0	locks=0 ]	(	-1	2	)
 ramp	[ 0	locks=0 ]	(	3	)
 ramp1pos	[ 0	locks=0 ]	(	0	)
@@ -1471,7 +1488,7 @@ ramp3interp	[ 0	locks=0 ]	(	"linear"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color1.userdata"
+Content-Disposition: attachment; filename="hdaroot/color_uv_distortion.userdata"
 Content-Type: text/plain
 
 {
@@ -1496,19 +1513,19 @@ Content-Type: text/plain
 15
 attribwrangle3
 divide1
-measure1
-measure4
+measure_position_area
+measure_uv_area
 enumerate1
 attribpromote2
-attribcopy2
+copy_uv_distortion_attribute
 output1
-attribdelete1
-switch1
+delete_internal_attributes
+visualize_uv_distortion
 error1
 IN
-switchif1
-attribpromote1
-color1
+error_switch
+promote_uv_attribute
+color_uv_distortion
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
