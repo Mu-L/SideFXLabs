@@ -32,23 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 3.85
-connectornextid 0
+position -0.5 -2.15
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	sort1 1 1 "input1"
 }
 inputs
 {
+0 	sort1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -177,7 +179,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 8	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	angle	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	[ pointreverse	0 ] 	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 8	locks=0 ]	(	[ primgroup	"" ] 	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -189,7 +196,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	[ primreverse	0 ] 	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	[ vertexprimorder	1 ] 	)
 }
 
@@ -538,7 +550,12 @@ pointdir	[ 0	locks=0 ]	(	[ pointdirx	0 ] 	[ pointdiry	1 ] 	[ pointdirz	0 ] 	)
 pointexpr	[ 8	locks=0 ]	(	[ pointexpr	0 ] 	)
 pointattrib	[ 0	locks=0 ]	(	[ pointattrib	"" ] 	)
 pointattribcomp	[ 0	locks=0 ]	(	[ pointattribcomp	0 ] 	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	[ pointreverse	0 ] 	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 8	locks=0 ]	(	[ primgroup	"" ] 	)
 primsort	[ 0	locks=0 ]	(	[ primsort	0 ] 	)
@@ -550,7 +567,12 @@ primdir	[ 0	locks=0 ]	(	[ primdirx	0 ] 	[ primdiry	1 ] 	[ primdirz	0 ] 	)
 primexpr	[ 8	locks=0 ]	(	[ primexpr	0 ] 	)
 primattrib	[ 0	locks=0 ]	(	[ primattrib	"" ] 	)
 primattribcomp	[ 0	locks=0 ]	(	[ primattribcomp	0 ] 	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	[ primreverse	0 ] 	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	[ vertexprimorder	1 ] 	)
 }
 
@@ -880,7 +902,12 @@ pointdir	[ 0	locks=0 ]	(	[ pointdirx	0 ] 	[ pointdiry	1 ] 	[ pointdirz	0 ] 	)
 pointexpr	[ 8	locks=0 ]	(	[ pointexpr	0 ] 	)
 pointattrib	[ 0	locks=0 ]	(	[ pointattrib	"" ] 	)
 pointattribcomp	[ 0	locks=0 ]	(	[ pointattribcomp	0 ] 	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 8	locks=0 ]	(	[ primgroup	"" ] 	)
 primsort	[ 0	locks=0 ]	(	[ primsort	0 ] 	)
@@ -892,7 +919,12 @@ primdir	[ 0	locks=0 ]	(	[ primdirx	0 ] 	[ primdiry	1 ] 	[ primdirz	0 ] 	)
 primexpr	[ 8	locks=0 ]	(	[ primexpr	0 ] 	)
 primattrib	[ 0	locks=0 ]	(	[ primattrib	"" ] 	)
 primattribcomp	[ 0	locks=0 ]	(	[ primattribcomp	0 ] 	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	[ primreverse	0 ] 	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	[ vertexprimorder	1 ] 	)
 }
 
@@ -1088,7 +1120,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 8	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	angle	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	[ pointreverse	0 ] 	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 8	locks=0 ]	(	[ primgroup	"" ] 	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -1100,7 +1137,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	angle	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	[ primreverse	0 ] 	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	[ vertexprimorder	1 ] 	)
 }
 
@@ -1243,8 +1285,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1403,6 +1445,12 @@ Content-Type: text/plain
         default { "0" "0" "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/compute_xform_from_point_direction2.chn"
@@ -1450,6 +1498,7 @@ vector to = set(0, 1, 0);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1546,6 +1595,7 @@ v@P *= invert(3@xform);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1752,6 +1802,7 @@ unload	[ 0	locks=0 ]	(	"always"	)
 primarypath	[ 0	locks=0 ]	(	""	)
 forcerecompile	[ 0	locks=0 ]	(	0	)
 delayillegal	[ 0	locks=0 ]	(	"off"	)
+fallback	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1888,8 +1939,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2048,6 +2099,12 @@ Content-Type: text/plain
         default { "0" "0" "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/compute_xform_from_prim_direction3.chn"
@@ -2095,6 +2152,7 @@ vector to = set(0, 1, 0);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2191,6 +2249,7 @@ v@P *= invert(3@xform);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2586,7 +2645,12 @@ pointdir	[ 0	locks=0 ]	(	[ pointdirx	0 ] 	[ pointdiry	1 ] 	[ pointdirz	0 ] 	)
 pointexpr	[ 8	locks=0 ]	(	[ pointexpr	0 ] 	)
 pointattrib	[ 0	locks=0 ]	(	[ pointattrib	"" ] 	)
 pointattribcomp	[ 0	locks=0 ]	(	[ pointattribcomp	0 ] 	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	[ pointreverse	0 ] 	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -2598,7 +2662,12 @@ primdir	[ 0	locks=0 ]	(	[ primdirx	0 ] 	[ primdiry	1 ] 	[ primdirz	0 ] 	)
 primexpr	[ 8	locks=0 ]	(	[ primexpr	0 ] 	)
 primattrib	[ 0	locks=0 ]	(	[ primattrib	"" ] 	)
 primattribcomp	[ 0	locks=0 ]	(	[ primattribcomp	0 ] 	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -2699,7 +2768,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 8	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 8	locks=0 ]	(	[ primgroup	"" ] 	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -2711,7 +2785,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	angle	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	[ primreverse	0 ] 	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	[ vertexprimorder	1 ] 	)
 }
 
@@ -2839,8 +2918,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2999,6 +3078,12 @@ Content-Type: text/plain
         default { "0" "0" "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/compute_xform_from_prim_direction4.chn"
@@ -3046,6 +3131,7 @@ vector to = set(0, 1, 0);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3278,6 +3364,7 @@ v@P *= invert(3@xformpt);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3372,6 +3459,7 @@ v@P *= invert(3@xformprim);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3449,8 +3537,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -3609,6 +3697,12 @@ Content-Type: text/plain
         default { "0" "0" "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/compute_xform_from_point_direction3.chn"
@@ -3656,6 +3750,7 @@ vector to = set(0, 1, 0);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
