@@ -1,0 +1,147 @@
+# Dialog script for labs::radial_sort::1.0 automatically generated
+
+{
+    name	labs::radial_sort::1.0
+    script	ebeSort
+    label	"Labs Radial Sort"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Source data"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    groupsimple {
+        name    "fd_points"
+        label   "Points"
+
+        parm {
+            name    "ptgroup"
+            label   "Point Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a sort ptgroup" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Points,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "ptsort"
+            label   "Radial Sort Points"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "pointobjpath"
+            label   "Vector Object"
+            type    oppath
+            invisible
+            default { "" }
+            hidewhen "{ ptsort != vector ptsort != circular }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!OBJ!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "pointdir"
+            label   "Vector"
+            type    direction
+            size    3
+            default { "0" "1" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pointangleoffset"
+            label   "Angle Offset"
+            type    angle
+            default { "0" }
+            range   { -360 360 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pointreverse"
+            label   "Reverse Point Sort"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_primitives"
+        label   "Primitives"
+
+        parm {
+            name    "primgroup"
+            label   "Primitive Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a sort primgroup" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Primitives,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "primsort"
+            label   "Radial Sort Primitives"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "primobjpath"
+            label   "Vector Object"
+            type    oppath
+            invisible
+            default { "" }
+            hidewhen "{ primsort != vector primsort != circular }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!OBJ!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "primdir"
+            label   "Vector"
+            type    direction
+            size    3
+            default { "0" "1" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "primangleoffset"
+            label   "Angle Offset"
+            type    angle
+            default { "0" }
+            range   { -360 360 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "primreverse"
+            label   "Reverse Primitive Sort"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "vertexprimorder"
+            label   "Optimize Internal Vertex Order"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+    }
+
+}
