@@ -31,10 +31,10 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -4.5 5.85
+comment "Replaced by Dem Bones Skinning Converter SOP. To be removed in Houdini 23.0."
+position -0.845953 -0.596292
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -63,7 +63,11 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -190,8 +194,9 @@ Content-Type: text/plain
             export  none
         }
         group {
-            name    "stdswitcher5"
+            name    "stdswitcher6"
             label   "Hierarchy"
+            grouptag { "sidefx::switcher" "stdswitcher5" }
 
             parm {
                 name    "use_sop_path"
@@ -274,7 +279,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_1"
+            name    "stdswitcher6_1"
             label   "Geometry"
 
             parm {
@@ -358,7 +363,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_2"
+            name    "stdswitcher6_2"
             label   "Layering"
 
             parm {
@@ -382,6 +387,7 @@ Content-Type: text/plain
                     name    "nodepath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -389,6 +395,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -409,6 +416,7 @@ Content-Type: text/plain
                     name    "vizpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -416,6 +424,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -436,6 +445,7 @@ Content-Type: text/plain
                     name    "attrpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -443,6 +453,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -450,6 +461,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -470,6 +482,7 @@ Content-Type: text/plain
                     name    "facesetpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -477,6 +490,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -484,6 +498,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -504,6 +519,7 @@ Content-Type: text/plain
                     name    "userproppath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -511,6 +527,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -518,6 +535,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -532,7 +550,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_3"
+            name    "stdswitcher6_3"
             label   "Motion Blur"
 
             parm {
@@ -563,122 +581,106 @@ Content-Type: text/plain
 
         parm {
             name    "tprerender"
-            label   "tprerender"
-            type    toggle
+            baseparm
+            label   "Pre-Render Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "prerender"
+            baseparm
             label   "Pre-Render Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tprerender == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lprerender"
-            label   "lprerender"
-            type    string
+            baseparm
+            label   "Pre-Render Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tprerender == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpreframe"
-            label   "tpreframe"
-            type    toggle
+            baseparm
+            label   "Pre-Frame Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "preframe"
+            baseparm
             label   "Pre-Frame Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpreframe == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpreframe"
-            label   "lpreframe"
-            type    string
+            baseparm
+            label   "Pre-Frame Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpreframe == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpostframe"
-            label   "tpostframe"
-            type    toggle
+            baseparm
+            label   "Post-Frame Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "postframe"
+            baseparm
             label   "Post-Frame Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpostframe == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpostframe"
-            label   "lpostframe"
-            type    string
+            baseparm
+            label   "Post-Frame Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpostframe == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpostrender"
-            label   "tpostrender"
-            type    toggle
+            baseparm
+            label   "Post-Render Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "postrender"
+            baseparm
             label   "Post-Render Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpostrender == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpostrender"
-            label   "lpostrender"
-            type    string
+            baseparm
+            label   "Post-Render Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpostrender == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
     }
 
+    parm {
+        name    "camera_suffix"
+        baseparm
+        label   "Camera Suffix"
+        export  none
+    }
+    parm {
+        name    "outputindexedarrays"
+        baseparm
+        label   "Output Indexed Arrays"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/rop_alembic1.chn"
@@ -725,7 +727,7 @@ format	[ 0	locks=0 ]	(	"default"	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
 render_full_range	[ 0	locks=0 ]	(	"on"	)
 initsim	[ 0	locks=0 ]	(	"off"	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
 use_sop_path	[ 0	locks=0 ]	(	"off"	)
 sop_path	[ 0	locks=0 ]	(	""	)
 subdgroup	[ 0	locks=0 ]	(	""	)
@@ -738,11 +740,13 @@ save_hidden	[ 0	locks=0 ]	(	"off"	)
 displaysop	[ 0	locks=0 ]	(	"off"	)
 partition_mode	[ 0	locks=0 ]	(	"no"	)
 partition_attribute	[ 0	locks=0 ]	(	""	)
+camera_suffix	[ 0	locks=0 ]	(	Camera	)
 full_bounds	[ 0	locks=0 ]	(	"off"	)
 packed_transform	[ 0	locks=0 ]	(	"transformparent"	)
 use_instancing	[ 0	locks=0 ]	(	"on"	)
 shape_nodes	[ 0	locks=0 ]	(	"on"	)
 save_attributes	[ 0	locks=0 ]	(	"off"	)
+outputindexedarrays	[ 0	locks=0 ]	(	"on"	)
 pointAttributes	[ 0	locks=0 ]	(	*	)
 vertexAttributes	[ 0	locks=0 ]	(	*	)
 primitiveAttributes	[ 0	locks=0 ]	(	*	)
@@ -762,8 +766,6 @@ numuserprops	[ 0	locks=0 ]	(	0	)
 motionBlur	[ 0	locks=0 ]	(	"off"	)
 samples	[ 0	locks=0 ]	(	2	)
 shutter	[ 0	locks=0 ]	(	0	1	)
-folder0	[ 0	locks=0 ]	(	0	0	)
-stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
 prerender	[ 0	locks=0 ]	(	""	)
 lprerender	[ 0	locks=0 ]	(	hscript	)
@@ -776,6 +778,8 @@ lpostframe	[ 0	locks=0 ]	(	hscript	)
 tpostrender	[ 0	locks=0 ]	(	"on"	)
 postrender	[ 0	locks=0 ]	(	""	)
 lpostrender	[ 0	locks=0 ]	(	hscript	)
+folder0	[ 0	locks=0 ]	(	0	0	)
+stdswitcher6	[ 0	locks=0 ]	(	0	0	0	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -968,6 +972,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"on"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -1071,12 +1078,14 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"off"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"off"	)
 embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
 exportclips	[ 0	locks=0 ]	(	"off"	)
 numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
