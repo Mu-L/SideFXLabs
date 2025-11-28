@@ -1,0 +1,137 @@
+# Dialog script for labs::straighten::1.0 automatically generated
+
+{
+    name	labs::straighten::1.0
+    script	gamedev::sop_straighten
+    label	"Labs Straighten"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input Geo"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        default { "primitive" }
+        menu {
+            "primitive" "Primitives"
+            "point"     "Points"
+            "edge"      "Edges"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "upgroup"
+        label   "Up Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "node = hou.pwd()" ]
+            [ "geo = node.geometry()" ]
+            [ "" ]
+            [ "group_type = node.parm(\"grouptype\").eval()" ]
+            [ "" ]
+            [ "# primitives" ]
+            [ "if group_type == 0:" ]
+            [ "    poly_groups = geo.primGroups()" ]
+            [ "" ]
+            [ "# points " ]
+            [ "if group_type == 1:" ]
+            [ "    poly_groups = geo.pointGroups()" ]
+            [ "" ]
+            [ "# edges " ]
+            [ "if group_type == 2:" ]
+            [ "    poly_groups = geo.edgeGroups()" ]
+            [ "" ]
+            [ "groups = []" ]
+            [ "for group in poly_groups:" ]
+            [ "    groups.append(group.name()) " ]
+            [ "    groups.append(group.name())" ]
+            [ "    " ]
+            [ "return groups" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nkwargs['ordered'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "invertup"
+        label   "Invert Up Axis"
+        type    toggle
+        default { "0" }
+    }
+    parm {
+        name    "alignforward"
+        label   "Align Forward"
+        type    toggle
+        default { "1" }
+    }
+    parm {
+        name    "forwardgroup"
+        label   "Forward Group"
+        type    string
+        default { "" }
+        disablewhen "{ alignforward == 0 }"
+        menutoggle {
+            [ "node = hou.pwd()" ]
+            [ "geo = node.geometry()" ]
+            [ "" ]
+            [ "group_type = node.parm(\"grouptype\").eval()" ]
+            [ "" ]
+            [ "# primitives" ]
+            [ "if group_type == 0:" ]
+            [ "    poly_groups = geo.primGroups()" ]
+            [ "" ]
+            [ "# points " ]
+            [ "if group_type == 1:" ]
+            [ "    poly_groups = geo.pointGroups()" ]
+            [ "" ]
+            [ "# edges " ]
+            [ "if group_type == 2:" ]
+            [ "    poly_groups = geo.edgeGroups()" ]
+            [ "" ]
+            [ "groups = []" ]
+            [ "for group in poly_groups:" ]
+            [ "    groups.append(group.name()) " ]
+            [ "    groups.append(group.name())" ]
+            [ "    " ]
+            [ "return groups" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nkwargs['ordered'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "sepparm"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "outputxform"
+        label   "Output Transform"
+        type    toggle
+        nolabel
+        joinnext
+        default { "off" }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "xformattribute"
+        label   "Output Attribute"
+        type    string
+        default { "xform" }
+        disablewhen "{ outputxform == 0 }"
+        parmtag { "autoscope" "0000000000000000" }
+    }
+}

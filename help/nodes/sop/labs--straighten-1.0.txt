@@ -1,0 +1,50 @@
+= Labs Straighten =
+
+#type:      node
+#context:   sop
+#internal:  labs::straighten::1.0
+#icon:      SOP/OBJ_null
+
+"""Orients a mesh based on up and front groups."""
+
+In photogrammetry workflows, it's common to encounter a mesh with an arbitrary orientation. Traditionally, the best approach is to use a transform node to manually orient the mesh and visually verify its proper orientation.
+
+This node assists in this workflow by allowing users to define a group of polygons facing up and an optional group facing forward.  It then calculates the necessary rotations to ensure the average normal of the up group faces upwards, and the same for the front group. 
+
+TIP: 
+	Selecting different disconnected areas that have similar normals helps with the orientation
+
+:col:
+	[Image:/images/straighten_before.png]
+	
+	Mesh before straightening 
+
+:col:
+	[Image:/images/straighten_after.png]
+	
+	Mesh after straightening
+
+@parameters
+    Group Type:
+        #id: grouptype
+        The type of the up and front groups or selections.
+     
+    Up Group:
+        #id: upgroup
+        The group or geometry selection that will be used as the up direction.
+    
+    Invert Up Axis:
+        #id: invertup
+        Inverts the up axis, so it uses the -Y direction instead of the +Y.
+    
+    Align Forward:
+        #id: alignforward
+        Orients the mesh using both the forward and up directions.
+    
+    Forward Group:
+        #id: forwardgroup
+        The group or geometry selection that will be used as the forward direction.
+
+    Output Transform:
+        #id: xformattribute
+        Creates a detail attribute with this name, containing a 4x4 matrix representing the applied transform.
