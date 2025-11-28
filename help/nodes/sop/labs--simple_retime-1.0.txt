@@ -1,0 +1,43 @@
+= Labs Simple Retime =
+
+#type:      node
+#context:   sop
+#internal:  labs::simple_retime::1.0
+#icon:      SOP/timeblend
+#since:     21.0
+
+"""Retimes animated geometry using a ramp."""
+
+This node remaps the timing of an incoming animation using a normalized retiming curve.
+It provides a simple, visual method for adjusting playback speed, creating slow-motion or fast-motion sequences, and shaping custom ease-in/ease-out transitions.
+
+:col:
+    [Image:/images/retime_before.gif]
+    
+    Original Animation 
+
+:col:
+    [Image:/images/retime_after.gif]
+
+    Retimed Animation 
+
+@parameters
+    Speed Multiplier:
+        #id: speedmultiplier
+        This controls the speed of the animation sequence.  A value of 0.5 slows it to half speed, while 2 doubles it.
+
+    Retime Ramp:
+        #id: retimeramp
+        Defines the mapping between normalized source time (horizontal axis) and normalized retimed time (vertical axis).
+
+        The default linear ramp (0-1) preserves the original timing.
+
+        Ramp behavior:
+        * When the curve lies below the diagonal, playback slows.
+        * When the curve lies above the diagonal, playback speeds up.
+        * Flat regions hold the animation on a pose.
+        * Steep regions accelerate time.
+
+@related
+- [Time Shift |Node:sop/timeshift]
+- [Retime |Node:sop/retime]

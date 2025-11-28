@@ -1,0 +1,34 @@
+# Dialog script for labs::simple_retime::1.0 automatically generated
+
+{
+    name	labs::simple_retime::1.0
+    script	gamedev::sop_retime
+    label	"Labs Simple Retime"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Animated Geometry"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "speedmultiplier"
+        label   "Speed Multiplier"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "retimeramp"
+        label   "Retime Ramp"
+        type    ramp_flt
+        default { "2" }
+        hidewhen "{ useramp == 0 }"
+        range   { 1! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 1 ) 2interp ( linear )" }
+    }
+}
