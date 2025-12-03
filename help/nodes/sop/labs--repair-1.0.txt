@@ -1,0 +1,50 @@
+= Labs Repair =
+
+#type:      node
+#context:   sop
+#internal:  labs::repair::1.0
+#icon:      repair_invert
+
+"""Quickly repairs an area of a mesh"""
+
+This node deletes selected primitives, patches the generated hole, and optionally remeshes and reprojects the patch onto the original mesh.
+
+It's designed to clean up scanned assets with problematic topology, like knots, by performing localized remeshing to smooth out a specific area.
+
+
+@parameters
+    Base Group:
+        #id: basegroup
+        The group of primitives to repair.
+    
+    Fill Mode:
+        #id: fillmode
+        The algorithm used to fill the holes.
+    
+    == Remesh ==
+    
+    Post Remesh:
+        #id: postremesh
+        Remesh the patch that was generated.
+    
+    Target Edge Length:
+        #id: targetedge
+        The optimal length for remeshing the edges.
+    
+    Reproject onto Original:
+        #id: projectontooriginal
+        Raycasts the patch onto the original geometry in order to get some of the original detail back.
+    
+    == Smoothing ==
+    
+    Smooth Borders:
+        #id: smoothborders
+        Softens the edges to smooth the transition onto the original mesh.
+    
+    Influence:
+        #id: influence
+        The amount of blurring for the edge to transition into the original mesh.
+    
+    Blurring Iterations:
+        #id: iterations
+        The number of iterations the blurring algorithm will run.
