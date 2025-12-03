@@ -498,20 +498,6 @@ compile_end.setPosition(for_each_end.position() + hou.Vector2(0, -1))
     </script>
   </tool>
 
-  <tool name="labs::axis_align" label="Labs Axis Align" icon="SOP_matchsize">
-    <toolMenuContext name="viewer">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolMenuContext name="network">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolSubmenu>Labs/Geometry/Transform</toolSubmenu>
-    <script scriptType="python"><![CDATA[
-import soptoolutils
-node = soptoolutils.genericTool(kwargs, 'matchsize', exact_node_type=False)
-]]></script>
-  </tool>
-
   <tool name="labs::correct_polygon_winding" label="Correct Polygon Winding" icon="SOP_polydoctor">
     <toolMenuContext name="viewer">
       <contextNetType>SOP</contextNetType>
