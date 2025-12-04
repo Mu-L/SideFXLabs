@@ -1,0 +1,86 @@
+= Labs Dirt Skirt =
+
+#type:      node
+#context:   sop
+#internal:  labs::dirtskirt::1.0
+#icon:      dirtskirt
+
+"""Creates a geometry “skirt” where an object intersects a ground surface. The skirt is intended to serve as a soft blend region when imported into a game engine."""
+
+This node generates a blended transition layer between an object and the ground.
+
+It offsets geometry outward along both the object and ground surfaces, applies optional noise for breakup, and relaxes the result to form a smooth, usable blend region.
+
+The output can include vertex colors to drive material blending, alpha fading, or procedural masks in a game engine.
+
+:video:
+    #src:/movies/dirtskirt.mp4
+
+@parameters
+    == Object Skirt ==
+    Distance:
+        #id: objdistance
+        Distance the skirt extends along the object surface.
+
+    Noise Frequency:
+        #id: objfrequency
+        Frequency of the noise applied to the object portion of the skirt. Higher values produce higher-frequency detail.
+    
+    Noise Intensity:
+        #id: objintensity
+        Strength of the noise applied to the object portion of the skirt.
+    
+    == Ground Skirt ==
+    Distance:
+        #id: gnddistance
+        Distance the skirt extends across the ground surface.
+    
+    Noise Frequency:
+        #id: gndfrequency
+        Frequency of the noise applied to the ground portion of the skirt. Higher values produce tighter noise variation.
+    
+    Noise Intensity:
+        #id: gndintensity
+        Strength of the noise applied to the ground portion of the skirt.
+    
+    == Tweak Parameters ==
+    Relaxation Iterations:
+        #id: iterations
+        Number of relaxation iterations applied to the inner surface of the skirt. Higher values produce more even topology and a softer blend.
+    
+    Ground Offset:
+        #id: groundoffset
+        Vertical offset applied to the starting position of the ground skirt.
+    
+    Rotate X:
+        #id: rotatex
+        Rotation around X that shifts the skirt higher in the +Z or −Z direction.
+    
+    Rotate Z:
+        #id: rotatez
+        Rotation around Z that shifts the skirt higher in the +X or −X direction.
+    
+    Add Vertex Color:
+        #id: addvtxcolor
+        Adds vertex attribute Cd as a gradient along the edges of the dirt skirt. This gradient can be used as an alpha fade or as a blending mask between object and ground materials in a game engine.
+
+    == Clean Up ==
+    Target Polycount:
+        #id: finalcount
+        Target number of polygons for the generated skirt.
+    
+    Delete Small Area Threshold:
+        #id: threshold
+        Area threshold used to identify and delete small triangles.
+    
+    Z Offset:
+        #id: zoffset
+        Offset distance applied along point normals to prevent intersection with the object or ground geometry.
+    
+    Keep Ground Mesh:
+        #id: keepgroundmesh
+        Includes the ground mesh in the output geometry.
+    
+    Keep Object Mesh:
+        #id: keepobjectmesh
+        Includes the object mesh in the output geometry.

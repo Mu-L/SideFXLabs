@@ -32,23 +32,27 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 3.85
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position 77.5 0.85
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	matchsize1 1 1 "input1"
+1 	grid1 0 1 "input2"
 }
 inputs
 {
+0 	matchsize1 0 1
+1 	grid1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +68,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -125,14 +133,14 @@ Content-Type: text/plain
       righttype = extend
       default = 81.370000000000005
       flags = 0
-      segment { length = 0 value = 81.370000000000005 81.370000000000005 expr = ch(\"../elementsize2\") }
+      segment { length = 0 value = 81.370000000000005 81.370000000000005 expr = ch(\"../gndfrequency\") }
     }
     channel height {
       lefttype = extend
       righttype = extend
       default = 30
       flags = 0
-      segment { length = 0 value = 30 30 expr = ch(\"../height2\") }
+      segment { length = 0 value = 30 30 expr = ch(\"../gndintensity\") }
     }
   }
 
@@ -172,11 +180,11 @@ folder4	[ 0	locks=0 ]	(	0	)
 dolwarp	[ 0	locks=0 ]	(	"off"	)
 accuml	[ 0	locks=0 ]	(	"on"	)
 dispfreq	[ 0	locks=0 ]	(	1	)
-disp	[ 0	locks=0 ]	(	0.10000000000000001	)
+disp	[ 0	locks=0 ]	(	0.1	)
 folder5	[ 0	locks=0 ]	(	0	)
 dogwarp	[ 0	locks=0 ]	(	"off"	)
 accumg	[ 0	locks=0 ]	(	"off"	)
-gflow	[ 0	locks=0 ]	(	0.10000000000000001	)
+gflow	[ 0	locks=0 ]	(	0.1	)
 updatenmls	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -249,14 +257,14 @@ Content-Type: text/plain
       righttype = extend
       default = 10
       flags = 0
-      segment { length = 0 value = 10 10 expr = ch(\"../elementsize\") }
+      segment { length = 0 value = 10 10 expr = ch(\"../objfrequency\") }
     }
     channel height {
       lefttype = extend
       righttype = extend
       default = 20
       flags = 0
-      segment { length = 0 value = 20 20 expr = ch(\"../height\") }
+      segment { length = 0 value = 20 20 expr = ch(\"../objintensity\") }
     }
   }
 
@@ -296,11 +304,11 @@ folder4	[ 0	locks=0 ]	(	0	)
 dolwarp	[ 0	locks=0 ]	(	"off"	)
 accuml	[ 0	locks=0 ]	(	"on"	)
 dispfreq	[ 0	locks=0 ]	(	1	)
-disp	[ 0	locks=0 ]	(	0.10000000000000001	)
+disp	[ 0	locks=0 ]	(	0.1	)
 folder5	[ 0	locks=0 ]	(	0	)
 dogwarp	[ 0	locks=0 ]	(	"off"	)
 accumg	[ 0	locks=0 ]	(	"off"	)
-gflow	[ 0	locks=0 ]	(	0.10000000000000001	)
+gflow	[ 0	locks=0 ]	(	0.1	)
 updatenmls	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -320,80 +328,6 @@ Content-Type: text/plain
 	"___toolid___":{
 		"type":"string",
 		"value":"sop_mountain::2.0"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.init"
-Content-Type: text/plain
-
-type = clean
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -0.5 -13.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	transform4 1 1 "input1"
-}
-inputs
-{
-0 	transform4 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author MAINGEAR@DESKTOP-P98C1VA
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-fusepts	[ 0	locks=0 ]	(	"off"	)
-deldegengeo	[ 0	locks=0 ]	(	"on"	)
-orientpoly	[ 0	locks=0 ]	(	"off"	)
-reversewinding	[ 0	locks=0 ]	(	"off"	)
-fixoverlap	[ 0	locks=0 ]	(	"off"	)
-deleteoverlap	[ 0	locks=0 ]	(	"on"	)
-delunusedpts	[ 0	locks=0 ]	(	"on"	)
-dodelattribs	[ 0	locks=0 ]	(	"off"	)
-delattribs	[ 0	locks=0 ]	(	*	)
-dodelgroups	[ 0	locks=0 ]	(	"off"	)
-delgroups	[ 0	locks=0 ]	(	*	)
-delnans	[ 0	locks=0 ]	(	"on"	)
-make_manifold	[ 0	locks=0 ]	(	"on"	)
-delete_small	[ 0	locks=0 ]	(	"on"	)
-prim_count	[ 0	locks=0 ]	(	3	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/clean1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
 	}
 }
 
@@ -444,7 +378,7 @@ Content-Type: text/plain
 {
 version 0.8
 res_preset	[ 0	locks=0 ]	(	"0"	)
-resolution	[ 0	locks=0 ]	(	0.10000000000000001	)
+resolution	[ 0	locks=0 ]	(	0.1	)
 bounding_box_relative	[ 0	locks=0 ]	(	"on"	)
 adaptivity	[ 0	locks=0 ]	(	0	)
 dilate_erode	[ 0	locks=0 ]	(	0	)
@@ -542,15 +476,20 @@ attributes	[ 0	locks=0 ]	(	P	)
 method	[ 0	locks=0 ]	(	"uniform"	)
 iterations	[ 0	locks=0 ]	(	[ iterations	1 ] 	)
 mode	[ 0	locks=0 ]	(	"laplacian"	)
-frequency	[ 0	locks=0 ]	(	0.10000000000000001	)
-stepsize	[ 0	locks=0 ]	(	0.95599999999999996	)
+frequency	[ 0	locks=0 ]	(	0.1	)
+stepsize	[ 0	locks=0 ]	(	0.956	)
 oddstepsize	[ 0	locks=0 ]	(	1	)
 evenstepsize	[ 0	locks=0 ]	(	1	)
 weightattrib	[ 0	locks=0 ]	(	""	)
+enablealpha	[ 0	locks=0 ]	(	"off"	)
+alphaattrib	[ 0	locks=0 ]	(	""	)
 pinborder	[ 0	locks=0 ]	(	"on"	)
 influencetype	[ 0	locks=0 ]	(	"connectivity"	)
 proxrad	[ 0	locks=0 ]	(	0.5	)
 maxneigh	[ 0	locks=0 ]	(	20	)
+enableblending	[ 0	locks=0 ]	(	"off"	)
+originalblend	[ 0	locks=0 ]	(	0	)
+blurblend	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -611,7 +550,7 @@ Content-Type: text/plain
 {
 version 0.8
 res_preset	[ 0	locks=0 ]	(	"0"	)
-resolution	[ 0	locks=0 ]	(	0.10000000000000001	)
+resolution	[ 0	locks=0 ]	(	0.1	)
 bounding_box_relative	[ 0	locks=0 ]	(	"on"	)
 adaptivity	[ 0	locks=0 ]	(	0	)
 dilate_erode	[ 0	locks=0 ]	(	0	)
@@ -725,7 +664,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"off"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -818,7 +757,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 value = 15 15 expr = ch(\"../scale\") }
+      segment { length = 0 value = 15 15 expr = ch(\"../objdistance\") }
     }
   }
 
@@ -937,7 +876,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"on"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -1062,7 +1001,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"off"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -1252,7 +1191,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"off"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -1418,7 +1357,7 @@ snappointpos	[ 0	locks=0 ]	(	"on"	)
 snappointattribs	[ 0	locks=0 ]	(	"off"	)
 pointattribnames	[ 0	locks=0 ]	(	""	)
 gridtype	[ 0	locks=0 ]	(	"spacing"	)
-gridspacing	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+gridspacing	[ 0	locks=0 ]	(	0.1	0.1	0.1	)
 gridlines	[ 0	locks=0 ]	(	10	10	10	)
 gridpow2	[ 0	locks=0 ]	(	3	3	3	)
 gridoffset	[ 0	locks=0 ]	(	0	0	0	)
@@ -1491,12 +1430,12 @@ iterations	[ 0	locks=0 ]	(	1	)
 recompute_normals	[ 0	locks=0 ]	(	"off"	)
 smoothing_level	[ 0	locks=0 ]	(	0	)
 element_sizing	[ 0	locks=0 ]	(	0	0	)
-target_edge	[ 0	locks=0 ]	(	0.050000000000000003	)
+target_edge	[ 0	locks=0 ]	(	0.05	)
 input_pts_only	[ 0	locks=0 ]	(	"off"	)
 gradation	[ 0	locks=0 ]	(	0.75	)
 density	[ 0	locks=0 ]	(	1	)
 limit_below	[ 0	locks=0 ]	(	"off"	)
-min_edge_length	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+min_edge_length	[ 0	locks=0 ]	(	1e-5	)
 limit_above	[ 0	locks=0 ]	(	"off"	)
 max_edge_length	[ 0	locks=0 ]	(	10000	)
 lfs_only	[ 0	locks=0 ]	(	"off"	)
@@ -1571,7 +1510,7 @@ Content-Type: text/plain
       righttype = extend
       default = 0.10000000000000001
       flags = 0
-      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../dist\") }
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../zoffset\") }
     }
   }
 
@@ -1583,6 +1522,12 @@ Content-Type: text/plain
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
+mask	[ 0	locks=0 ]	(	1	)
+enablemaskattrib	[ 0	locks=0 ]	(	"noscaling"	)
+maskattrib	[ 0	locks=0 ]	(	mask	)
+usecustomattrib	[ 0	locks=0 ]	(	"off"	)
+customattrib	[ 0	locks=0 ]	(	N	)
+normalizeattrib	[ 0	locks=0 ]	(	"on"	)
 dist	[ 0	locks=0 ]	(	[ dist	0 ] 	)
 updatenmls	[ 0	locks=0 ]	(	"on"	)
 }
@@ -1647,7 +1592,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 value = 20 20 expr = ch(\"../scale2\") }
+      segment { length = 0 value = 20 20 expr = ch(\"../gnddistance\") }
     }
   }
 
@@ -1766,7 +1711,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"on"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -2005,12 +1950,12 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
+fd_general	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	"perimeter"	)
 bKeeplargest	[ 0	locks=0 ]	(	"off"	)
-threshold	[ 0	locks=0 ]	(	[ threshold	0.10000000000000001 ] 	)
+threshold	[ 0	locks=0 ]	(	[ threshold	0.1 ] 	)
 negate	[ 0	locks=0 ]	(	"off"	)
-folder1	[ 0	locks=0 ]	(	0	)
+fd_advanced	[ 0	locks=0 ]	(	0	)
 bCalculatePieceAttr	[ 0	locks=0 ]	(	"on"	)
 sPieceAttr	[ 0	locks=0 ]	(	class	)
 groupnodelete	[ 0	locks=0 ]	(	"off"	)
@@ -2024,7 +1969,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
 	}
 }
 
@@ -2166,7 +2111,9 @@ target	[ 0	locks=0 ]	(	"poly_count"	)
 percentage	[ 0	locks=0 ]	(	100	)
 finalcount	[ 0	locks=0 ]	(	[ finalcount	1000 ] 	)
 reducepassedtarget	[ 0	locks=0 ]	(	"off"	)
-qualitytolerance	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+qualitytolerance	[ 0	locks=0 ]	(	1e-5	)
+usenormaldevthreshold	[ 0	locks=0 ]	(	"off"	)
+normaldevthreshold	[ 0	locks=0 ]	(	90	)
 outputgeo	[ 0	locks=0 ]	(	0	)
 originalpoints	[ 0	locks=0 ]	(	"off"	)
 preservequads	[ 0	locks=0 ]	(	"off"	)
@@ -2196,7 +2143,6 @@ sepparm	[ 0	locks=0 ]	(	)
 frontfacingweight	[ 0	locks=0 ]	(	1	)
 usefrontfacingfalloff	[ 0	locks=0 ]	(	"off"	)
 frontfacingfalloffdist	[ 0	locks=0 ]	(	1	)
-experimental	[ 0	locks=0 ]	(	0	)
 decimationcontrol	[ 0	locks=0 ]	(	0	)
 controlattribs	[ 0	locks=0 ]	(	0	)
 }
@@ -2524,11 +2470,12 @@ packingadvanced	[ 0	locks=0 ]	(	0	)
 iterations	[ 0	locks=0 ]	(	1	)
 resolution	[ 0	locks=0 ]	(	"res3"	)
 customresolution	[ 0	locks=0 ]	(	1024	)
-uvtolerance	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
-scaletolerance	[ 0	locks=0 ]	(	0.0050000000000000001	)
+uvtolerance	[ 0	locks=0 ]	(	1e-5	)
+scaletolerance	[ 0	locks=0 ]	(	0.005	)
 randseed	[ 0	locks=0 ]	(	5489	)
 targets	[ 0	locks=0 ]	(	0	)
 targettype	[ 0	locks=0 ]	(	"boxes"	)
+udimtilemethod	[ 0	locks=0 ]	(	"grid"	)
 usedefaulttarget	[ 0	locks=0 ]	(	"off"	)
 defaulttarget	[ 0	locks=0 ]	(	0	)
 usedefaultudimtarget	[ 0	locks=0 ]	(	"off"	)
@@ -2539,6 +2486,10 @@ udimtilegroup	[ 0	locks=0 ]	(	0	)
 tilesize	[ 0	locks=0 ]	(	1	1	)
 numcolumns	[ 0	locks=0 ]	(	10	)
 startingudim	[ 0	locks=0 ]	(	1001	)
+folder0	[ 0	locks=0 ]	(	1	)
+udimtilestart	[ 0	locks=0 ]	(	1001	)
+udimtilecount	[ 0	locks=0 ]	(	1	)
+udimextendfixedislands	[ 0	locks=0 ]	(	"off"	)
 targetuvattrib	[ 0	locks=0 ]	(	uv	)
 targetprojplane	[ 0	locks=0 ]	(	"xy"	)
 targetgroup	[ 0	locks=0 ]	(	""	)
@@ -2624,13 +2575,13 @@ Content-Type: text/plain
       righttype = extend
       default = 13.539999999999999
       flags = 0
-      segment { length = 0 value = 13.539999999999999 13.539999999999999 expr = ch(\"../rotate_x\") }
+      segment { length = 0 value = 13.539999999999999 13.539999999999999 expr = ch(\"../rotatex\") }
     }
     channel rz {
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../rotate_z\") }
+      segment { length = 0 expr = ch(\"../rotatez\") }
     }
   }
 
@@ -2660,6 +2611,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -2678,6 +2630,83 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.init"
+Content-Type: text/plain
+
+type = clean
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.5 -13.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	transform4 1 1 "input1"
+}
+inputs
+{
+0 	transform4 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+fusepts	[ 0	locks=0 ]	(	"off"	)
+fusedist	[ 0	locks=0 ]	(	0.001	)
+deldegengeo	[ 0	locks=0 ]	(	"on"	)
+degentol	[ 0	locks=0 ]	(	0.001	)
+removeunusedgrp	[ 0	locks=0 ]	(	"on"	)
+orientpoly	[ 0	locks=0 ]	(	"off"	)
+reversewinding	[ 0	locks=0 ]	(	"off"	)
+fixoverlap	[ 0	locks=0 ]	(	"off"	)
+deleteoverlap	[ 0	locks=0 ]	(	"on"	)
+delunusedpts	[ 0	locks=0 ]	(	"on"	)
+dodelattribs	[ 0	locks=0 ]	(	"off"	)
+delattribs	[ 0	locks=0 ]	(	*	)
+dodelgroups	[ 0	locks=0 ]	(	"off"	)
+delgroups	[ 0	locks=0 ]	(	*	)
+delnans	[ 0	locks=0 ]	(	"on"	)
+make_manifold	[ 0	locks=0 ]	(	"on"	)
+delete_small	[ 0	locks=0 ]	(	"on"	)
+prim_count	[ 0	locks=0 ]	(	3	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/clean1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
 	}
 }
 
@@ -2730,7 +2759,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../ground_offset\") }
+      segment { length = 0 expr = ch(\"../groundoffset\") }
     }
   }
 
@@ -2760,6 +2789,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -2830,6 +2860,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -2913,6 +2944,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	group1	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	0	0	0	)
@@ -3006,6 +3038,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -3016,6 +3049,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"on"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -3032,6 +3066,12 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"on"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
+switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3125,33 +3165,43 @@ method	[ 0	locks=0 ]	(	"project"	)
 dirmethod	[ 0	locks=0 ]	(	"normal"	)
 dir	[ 0	locks=0 ]	(	[ dirx	0 ] 	[ diry	0 ] 	[ dirz	0 ] 	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"on"	)
-dotrans	[ 0	locks=0 ]	(	"on"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"off"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"on"	)
+showguide	[ 0	locks=0 ]	(	"on"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	0	)
 maxraydistcheck	[ 0	locks=0 ]	(	"on"	)
-maxraydist	[ 0	locks=0 ]	(	0.10000000000000001	)
+maxraydist	[ 0	locks=0 ]	(	0.1	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"off"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"off"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"off"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	*	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3277,7 +3327,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../fade_edges\") }
+      segment { length = 0 expr = ch(\"../addvtxcolor\") }
     }
   }
 
@@ -3483,7 +3533,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../keep_object_mesh\") }
+      segment { length = 0 expr = ch(\"../keepobjectmesh\") }
     }
   }
 
@@ -3558,7 +3608,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../keep_ground_mesh\") }
+      segment { length = 0 expr = ch(\"../keepgroundmesh\") }
     }
   }
 
@@ -3973,7 +4023,7 @@ Content-Type: text/plain
       righttype = extend
       default = 0.20000000000000001
       flags = 0
-      segment { length = 0 value = 0.20000000000000001 0.20000000000000001 expr = -ch(\"../ground_offset\") }
+      segment { length = 0 value = 0.20000000000000001 0.20000000000000001 expr = -ch(\"../groundoffset\") }
     }
   }
 
@@ -4003,6 +4053,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -4365,7 +4416,7 @@ Content-Type: text/plain
 {
 version 0.8
 res_preset	[ 0	locks=0 ]	(	"0"	)
-resolution	[ 0	locks=0 ]	(	0.10000000000000001	)
+resolution	[ 0	locks=0 ]	(	0.1	)
 bounding_box_relative	[ 0	locks=0 ]	(	"on"	)
 adaptivity	[ 0	locks=0 ]	(	0	)
 dilate_erode	[ 0	locks=0 ]	(	0	)
@@ -4445,7 +4496,7 @@ Content-Type: text/plain
 {
 version 0.8
 res_preset	[ 0	locks=0 ]	(	"0"	)
-resolution	[ 0	locks=0 ]	(	0.10000000000000001	)
+resolution	[ 0	locks=0 ]	(	0.1	)
 bounding_box_relative	[ 0	locks=0 ]	(	"on"	)
 adaptivity	[ 0	locks=0 ]	(	0	)
 dilate_erode	[ 0	locks=0 ]	(	0	)

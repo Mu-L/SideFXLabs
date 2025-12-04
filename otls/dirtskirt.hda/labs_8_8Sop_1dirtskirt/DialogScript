@@ -20,7 +20,7 @@
         grouptag { "group_type" "simple" }
 
         parm {
-            name    "scale"
+            name    "objdistance"
             label   "Distance"
             type    float
             default { "0.15" }
@@ -29,7 +29,7 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "elementsize"
+            name    "objfrequency"
             label   "Noise Frequency"
             type    float
             default { "0.1" }
@@ -40,7 +40,7 @@
             parmtag { "shaderparmcontexts" "cvex" }
         }
         parm {
-            name    "height"
+            name    "objintensity"
             label   "Noise Intensity"
             type    float
             default { "0.2" }
@@ -58,7 +58,7 @@
         grouptag { "group_type" "simple" }
 
         parm {
-            name    "scale2"
+            name    "gnddistance"
             label   "Distance"
             type    float
             default { "0.2" }
@@ -67,7 +67,7 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "elementsize2"
+            name    "gndfrequency"
             label   "Noise Frequency"
             type    float
             default { "0.81" }
@@ -78,7 +78,7 @@
             parmtag { "shaderparmcontexts" "cvex" }
         }
         parm {
-            name    "height2"
+            name    "gndintensity"
             label   "Noise Intensity"
             type    float
             default { "0.3" }
@@ -105,7 +105,7 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "ground_offset"
+            name    "groundoffset"
             label   "Ground Offset"
             type    float
             default { "0.1" }
@@ -113,7 +113,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "rotate_x"
+            name    "rotatex"
             label   "Rotate X"
             type    float
             default { "0" }
@@ -121,7 +121,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "rotate_z"
+            name    "rotatez"
             label   "Rotate Z"
             type    float
             default { "0" }
@@ -129,7 +129,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "fade_edges"
+            name    "addvtxcolor"
             label   "Add Vertex Color"
             type    toggle
             default { "1" }
@@ -161,7 +161,7 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "dist"
+            name    "zoffset"
             label   "Z Offset"
             type    float
             default { "0.01" }
@@ -170,15 +170,14 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "keep_ground_mesh"
+            name    "keepgroundmesh"
             label   "Keep Ground Mesh"
             type    toggle
-            joinnext
             default { "0" }
             help    "When enabled will include the ground mesh in the output geometry."
         }
         parm {
-            name    "keep_object_mesh"
+            name    "keepobjectmesh"
             label   "Keep Object Mesh"
             type    toggle
             default { "0" }
