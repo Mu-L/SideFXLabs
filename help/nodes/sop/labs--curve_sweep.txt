@@ -1,10 +1,9 @@
 = Labs Curve Sweep =
 
-#type: node
-#context: sop
-#internal: labs::curve_sweep
-#icon: curvesweep
-#tags: sidefxlabs,  model
+#type:      node
+#context:   sop
+#internal:  labs::curve_sweep
+#icon:  curvesweep
 
 """ Sweep a profile along input curves, with simple controls for profile type, width, and twist behavior. """
 
@@ -17,6 +16,9 @@ The curve sweep sop takes most of the messy details and wraps it in a clean inte
 The second input can be used to define a custom profile if a circle or line isn't sufficient. The cross section should be centered at the origin, and sit on the XY plane.
 
 The third input can be used to defined an up vector, often a copy of the input curve that has been translated or deformed away from the original curve.
+
+NOTE: 
+    Replaced by [Sweep SOP|Node:sop/sweep::2.0]. To be removed in Houdini 22.0.
 
 @parameters
     == Cross Section ==

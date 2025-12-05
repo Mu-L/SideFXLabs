@@ -5,20 +5,6 @@
  Note, that two definitions of the same element are not allowed in
  a single file. -->
 
-  <tool name="labs::voxelmesh" label="Labs Voxel Mesh" icon="$SIDEFXLABS/help/icons/voxel_mesh_alt.svg">
-    <toolMenuContext name="viewer">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolMenuContext name="network">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolSubmenu>Labs/Geometry/Mesh: Convert</toolSubmenu>
-    <script scriptType="python"><![CDATA[
-import soptoolutils
-soptoolutils.genericTool(kwargs, 'remeshgrid', exact_node_type=False)
-]]></script>
-  </tool>
-
   <tool name="flowmap_brush" label="Labs Flowmap Brush" icon="flowmap_brush.svg">
     <toolMenuContext name="viewer">
       <contextNetType>SOP</contextNetType>
@@ -229,36 +215,6 @@ node.setParms({"device": "neuron"})
 ]]></script>
   </tool>
 
-  <tool name="labs::multi_file" label="Labs Multi File" icon="SOP_file">
-    <toolMenuContext name="viewer">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolMenuContext name="network">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolSubmenu>Labs/Pipeline/Import</toolSubmenu>
-    <script scriptType="python"><![CDATA[
-import soptoolutils
-node = soptoolutils.genericTool(kwargs, 'filemerge::2.0', exact_node_type=False)
-node.setParms({"enablerange": 0})
-]]></script>
-  </tool>
-
-  <tool name="labs::curve_sweep" label="Labs Curve Sweep" icon="SOP_sweep-2.0">
-    <toolMenuContext name="viewer">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolMenuContext name="network">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolSubmenu>Labs/Geometry/Curve</toolSubmenu>
-    <script scriptType="python"><![CDATA[
-import soptoolutils
-node = soptoolutils.genericTool(kwargs, 'sweep', exact_node_type=False)
-node.setParms({"surfaceshape": "tube", "cols":32, "computeuvs":1, "applyscale":1, "endcaptype":"grid", "capscale":0.0, "capdivs":1})
-]]></script>
-  </tool>
-
   <tool name="labs::calculate_occlusion" label="Labs Calculate Occlusion" icon="SOP_maskbyfeature">
     <toolMenuContext name="viewer">
       <contextNetType>SOP</contextNetType>
@@ -363,21 +319,6 @@ import soptoolutils
 node = soptoolutils.genericTool(kwargs, 'divide', exact_node_type=False)
 node.setParms({'convex':0, 'removesh': 1})
 node.setName('remove_shared_edges1', True)
-]]></script>
-  </tool>
-
-  <tool name="labs::triangulate" label="Triangulate" icon="SOP_divide">
-    <toolMenuContext name="viewer">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolMenuContext name="network">
-      <contextNetType>SOP</contextNetType>
-    </toolMenuContext>
-    <toolSubmenu>Labs/Geometry/Mesh: Convert</toolSubmenu>
-    <script scriptType="python"><![CDATA[
-import soptoolutils
-node = soptoolutils.genericTool(kwargs, 'divide', exact_node_type=False)
-node.setName('triangulate1', True)
 ]]></script>
   </tool>
 

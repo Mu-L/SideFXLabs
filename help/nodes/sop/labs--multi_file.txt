@@ -1,10 +1,9 @@
 = Labs Multi File =
 
-#type: node
-#context: sop
-#internal: labs::multi_file
-#icon: sidefxlabs
-#tags: sidefxlabs,  model, gamedev
+#type:      node
+#context:   sop
+#internal:  labs::multi_file
+#icon:      sidefxlabs
 
 """ Load several Geometry files at once """
 
@@ -14,9 +13,8 @@ There are several workflows where your models might be split up into parts, or y
 
 This node is a helper node that wraps the [File SOP|Node:sop/file] in a [For Loop|/model/looping] and will merge the contents of several File SOPs into a single piece of geometry. 
 
-TIP: 
-
-    You can separate and visualize the imported geometry easily with the [Align and Distribute GameDev Tool|Node:sop/gamedev--sop_align_and_distribute]
+NOTE: 
+    Replaced by [File Merge SOP|Node:sop/filemerge::2.0]. To be removed in Houdini 22.0.
 
 @parameters
     Reload All:
@@ -30,5 +28,4 @@ TIP:
     Files:
         Multiparm that will be auto populated from the Load Multiple Button
     File:
-        Individual File Paths will be listed here and the ability to manually add more or remove some is available. 
-    
+        Individual File Paths will be listed here and the ability to manually add more or remove some is available.

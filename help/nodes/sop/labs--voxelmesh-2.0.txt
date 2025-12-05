@@ -1,10 +1,9 @@
 = Labs Voxel Mesh =
 
-#type: node
-#context: sop
-#internal: labs::voxelmesh
-#icon: voxel_mesh_alt
-#tags: sidefxlabs,  model, gamedev, voxel, photogrammetry
+#type:      node
+#context:   sop
+#internal:  labs::voxelmesh::2.0
+#icon:      voxel_mesh_alt
 
 """ Convert a Polygon Mesh into a Volume and back into Polygons """
 
@@ -14,10 +13,8 @@ This converts your mesh into a Volume and then back to a Mesh. Doing so has the 
 
 VoxelMesh is often used to sanitize photogrammetry data, as it will often fix small imperfections on the mesh. 
 
-
 NOTE: 
-    UVs are generally destroyed while going through the VDB roundtrip. If you would like to transfer UVs from the original mesh back onto the Voxelized, take a look at the [UV Transfer Node|Node:sop/labs--uv_transfer]
-
+    Replaced by [Remesh to Grid SOP|Node:sop/remeshgrid]. To be removed in Houdini 22.0.
 
 @parameters
     Resolution:
@@ -42,7 +39,3 @@ NOTE:
         Optionally Ray the resulting mesh back onto the original 
     Post Smooth Iterations:
         The Projection step can generate some undesirably overlapping polygons, this step can relax some of those polygons
-    
-     
-
-    

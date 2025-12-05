@@ -1,10 +1,9 @@
 = Labs Voxel Mesh =
 
-#type: node
-#context: sop
-#internal: labs::voxelmesh
-#icon: voxel_mesh_alt
-#tags: sidefxlabs,  model, gamedev, voxel, photogrammetry
+#type:      node
+#context:   sop
+#internal:  labs::voxelmesh
+#icon:      voxel_mesh_alt
 
 """ Convert a Polygon Mesh into a Volume and back into Polygons """
 
@@ -14,10 +13,8 @@ This converts your mesh into a Volume and then back to a Mesh. It has a positive
 
 VoxelMesh is often used to sanitize photogrammetry data, as it will often fix small imperfections on the mesh. 
 
-
 NOTE: 
-    UVs are generally destroyed while going through the VDB roundtrip. If you would like to transfer UVs from the original mesh back onto the Voxelized, take a look at the [UV Transfer Node|Node:gamedev--sop_uv_transfer.txt]
-
+    Replaced by [Remesh to Grid SOP|Node:sop/remeshgrid]. To be removed in Houdini 22.0.
 
 @parameters
     Resolution Preset:
@@ -42,6 +39,4 @@ NOTE:
 		Geometry tends to soften when being voxelized, because some features might sit in between voxels. This strengthens the features and is helpful on hard surfaces.
         [Image:/images/voxelmesh_sharpenfeatures.png]
     Edge Tolerance:
-        Tolerance for what edges to consider for the Sharpen Features toggle. 
-
-    
+        Tolerance for what edges to consider for the Sharpen Features toggle.
