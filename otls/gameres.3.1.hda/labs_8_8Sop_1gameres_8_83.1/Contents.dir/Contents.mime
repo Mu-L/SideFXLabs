@@ -1,0 +1,4208 @@
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="node_type"
+Content-Type: text/plain
+
+Sop
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.init"
+Content-Type: text/plain
+
+type = labs::gameres::3.1
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 5.5 0.85
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	box1 0 1 "input1"
+}
+inputs
+{
+0 	box1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "preview"
+        baseparm
+        label   "Preview"
+        export  none
+    }
+    group {
+        name    "fd_reduce5"
+        label   "Reduce"
+        grouptag { "sidefx::switcher" "fd_reduce" }
+
+        parm {
+            name    "finalcount"
+            baseparm
+            label   "Number To Keep"
+            export  none
+        }
+        parm {
+            name    "use_instantmeshes"
+            baseparm
+            label   "Use Instant Meshes"
+            export  none
+        }
+        parm {
+            name    "reducepassedtarget"
+            baseparm
+            label   "Continue Reducing Within Quality Tolerance"
+            export  none
+        }
+        parm {
+            name    "qualitytolerance"
+            baseparm
+            label   "Tolerance"
+            export  none
+        }
+        parm {
+            name    "originalpoints"
+            baseparm
+            label   "Use Only Original Point Positions"
+            export  none
+        }
+        parm {
+            name    "preservequads"
+            baseparm
+            label   "Preserve Quads"
+            export  none
+        }
+        parm {
+            name    "equalizelengths"
+            baseparm
+            label   "Equalize Lengths"
+            export  none
+        }
+        groupsimple {
+            name    "fd_voxelize2"
+            label   "Voxelize"
+            grouptag { "group_type" "simple" }
+            grouptag { "sidefx::switcher" "fd_voxelize" }
+
+            parm {
+                name    "enable_voxelization"
+                baseparm
+                label   "Enable Voxelization"
+                export  none
+            }
+            parm {
+                name    "divisionsize"
+                label   "Division Size"
+                type    float
+                default { "0.1" }
+                disablewhen "{ enable_voxelization == 0 }"
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "resolution"
+                baseparm
+                label   "Resolution"
+                export  none
+            }
+            parm {
+                name    "bounding_box_relative"
+                baseparm
+                label   "Bounding Box Relative"
+                export  none
+            }
+            parm {
+                name    "adaptivity"
+                baseparm
+                label   "Adaptivity"
+                export  none
+            }
+            parm {
+                name    "dilate_erode"
+                baseparm
+                label   "Dilate/Erode"
+                export  none
+            }
+            parm {
+                name    "project"
+                baseparm
+                label   "Project to Original"
+                export  none
+            }
+            parm {
+                name    "post_smooth"
+                baseparm
+                label   "Post Smooth Iterations"
+                export  none
+            }
+            parm {
+                name    "sharpen_features"
+                baseparm
+                label   "Sharpen Features"
+                export  none
+            }
+            parm {
+                name    "edge_tolerance"
+                baseparm
+                label   "Edge Tolerance"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_reduce5_1"
+        label   "Auto UV"
+
+        groupsimple {
+            name    "fd_method2"
+            label   "Method"
+            grouptag { "group_type" "simple" }
+            grouptag { "sidefx::switcher" "fd_method" }
+
+            parm {
+                name    "method"
+                baseparm
+                label   "Method"
+                export  none
+            }
+            parm {
+                name    "fuse_distance"
+                baseparm
+                label   "Collapse Distance"
+                export  none
+            }
+            parm {
+                name    "num_points"
+                baseparm
+                label   "Number of Paths"
+                export  none
+            }
+            parm {
+                name    "convex_multiplier"
+                baseparm
+                label   "Convex Multiplier"
+                export  none
+            }
+            parm {
+                name    "occlusion_multiplier"
+                baseparm
+                label   "Occlusion Multiplier"
+                export  none
+            }
+            parm {
+                name    "num_clusters"
+                baseparm
+                label   "Number of Clusters"
+                export  none
+            }
+            parm {
+                name    "normal_blur_cluster"
+                baseparm
+                label   "Normal Blur"
+                export  none
+            }
+            parm {
+                name    "random_seed"
+                baseparm
+                label   "Random Seed"
+                export  none
+            }
+            parm {
+                name    "blur_amount"
+                baseparm
+                label   "Normal Blur Ammount"
+                export  none
+            }
+            parm {
+                name    "nplanes"
+                baseparm
+                label   "Planes"
+                export  none
+            }
+            parm {
+                name    "graintol"
+                baseparm
+                label   "Grain Tolerance"
+                export  none
+            }
+            parm {
+                name    "mergethreshold"
+                baseparm
+                label   "Merge Threshold"
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "fd_packingoptions2"
+            label   "Packing Options"
+            grouptag { "group_type" "simple" }
+            grouptag { "sidefx::switcher" "fd_packingoptions" }
+
+            parm {
+                name    "merge_small_islands"
+                baseparm
+                label   "Merge Small Islands"
+                export  none
+            }
+            parm {
+                name    "small_island_cutoff"
+                baseparm
+                label   "Small Island CutOff"
+                export  none
+            }
+            parm {
+                name    "method2"
+                baseparm
+                label   "Flattening Method"
+                export  none
+            }
+            parm {
+                name    "orientation_mode"
+                baseparm
+                label   "Orientation Mode"
+                export  none
+            }
+            parm {
+                name    "packing_iterations"
+                baseparm
+                label   "Packing Iterations"
+                export  none
+            }
+            parm {
+                name    "layout_padding"
+                baseparm
+                label   "Island Padding"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "resolution2"
+                baseparm
+                label   "Padding Resolution"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_reduce5_2"
+        label   "Bake"
+
+        parm {
+            name    "execute"
+            baseparm
+            label   "Render"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "bManualMode"
+            baseparm
+            label   "Manual Mode"
+            export  none
+        }
+        groupsimple {
+            name    "fd_bakesettings2"
+            label   "Bake Settings"
+            grouptag { "sidefx::switcher" "fd_bakesettings" }
+
+            parm {
+                name    "sOutputFile"
+                baseparm
+                label   "Output Directory"
+                export  none
+            }
+            parm {
+                name    "i2Resolution"
+                baseparm
+                label   "Resolution"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "parm"
+                baseparm
+                label   "Label"
+                export  none
+            }
+            parm {
+                name    "mBakeMode"
+                baseparm
+                label   "Tracing Mode"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "fMaxTraceDist"
+                baseparm
+                label   "Max Trace Distance"
+                joinnext
+                export  none
+            }
+            parm {
+                name    "visualize"
+                baseparm
+                label   "Visualize"
+                export  none
+            }
+            parm {
+                name    "preview_channel"
+                baseparm
+                label   "Preview Channel"
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "fd_bakeoptions2"
+            label   "Bake Options"
+            grouptag { "sidefx::switcher" "fd_bakeoptions" }
+
+            groupsimple {
+                name    "fd_transfer2"
+                label   "Transfer"
+                grouptag { "sidefx::switcher" "fd_transfer" }
+
+                parm {
+                    name    "bDiffuse"
+                    baseparm
+                    label   "Diffuse Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sDiffuse"
+                    baseparm
+                    label   "Diffuse Map"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fDiffuseGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bNormal"
+                    baseparm
+                    label   "Normal Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sNormal"
+                    baseparm
+                    label   "Normal Map"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fNormalGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bOpacity"
+                    baseparm
+                    label   "Opacity Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sOpacity"
+                    baseparm
+                    label   "Opacity Map"
+                    export  none
+                }
+                parm {
+                    name    "bRoughness"
+                    baseparm
+                    label   "Roughness Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sRoughness"
+                    baseparm
+                    label   "Roughness Map"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fRoughnessGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bMetallic"
+                    baseparm
+                    label   "Metallic Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sMetallic"
+                    baseparm
+                    label   "Metallic Map"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fMetallicGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+            }
+
+            groupsimple {
+                name    "fd_generate2"
+                label   "Generate"
+                grouptag { "sidefx::switcher" "fd_generate" }
+
+                parm {
+                    name    "bVertexCd"
+                    baseparm
+                    label   "Vertex Color Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sVertexColor"
+                    baseparm
+                    label   "Vertex Color"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fVertexColorGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bAO"
+                    baseparm
+                    label   "AO Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sAO"
+                    baseparm
+                    label   "AO"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fAOGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bThickness"
+                    baseparm
+                    label   "Thickness Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sThickness"
+                    baseparm
+                    label   "Thickness"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "fThicknessGamma"
+                    baseparm
+                    label   "Gamma"
+                    export  none
+                }
+                parm {
+                    name    "bCurvature"
+                    baseparm
+                    label   "Curvature Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sCurvature"
+                    baseparm
+                    label   "Curvature"
+                    export  none
+                }
+                parm {
+                    name    "bWorldNormal"
+                    baseparm
+                    label   "World Normal Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sWorldNormal"
+                    baseparm
+                    label   "World Normal"
+                    export  none
+                }
+                parm {
+                    name    "bHeight"
+                    baseparm
+                    label   "Height Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sHeight"
+                    baseparm
+                    label   "Height"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sHeightFormat"
+                    baseparm
+                    label   "Format"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "maxheightdistance"
+                    baseparm
+                    label   "Range"
+                    export  none
+                }
+                parm {
+                    name    "bAlpha"
+                    baseparm
+                    label   "Alpha Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sAlpha"
+                    baseparm
+                    label   "Alpha"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "uvfill"
+                    baseparm
+                    label   "UV Fill"
+                    export  none
+                }
+                parm {
+                    name    "bPos"
+                    baseparm
+                    label   "Position Map"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "sPos"
+                    baseparm
+                    label   "Position"
+                    export  none
+                }
+            }
+
+            parm {
+                name    "exportlow"
+                baseparm
+                label   "Export Low"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sopoutputlow"
+                baseparm
+                label   "Low Export"
+                export  none
+            }
+            parm {
+                name    "exporthigh"
+                baseparm
+                label   "Export High"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "sopoutputhigh"
+                baseparm
+                label   "High Export"
+                export  none
+            }
+        }
+
+        groupsimple {
+            name    "fd_attributes2"
+            label   "Attributes"
+            grouptag { "sidefx::switcher" "fd_attributes" }
+
+            multiparm {
+                name    "folder8"
+                label    "Custom Attributes"
+                baseparm
+                default 0
+                parmtag { "autoscope" "0000000000000000" }
+
+                parm {
+                    name    "sCustomAttribute#"
+                    baseparm
+                    label   "Attribute"
+                    export  none
+                }
+            }
+
+        }
+
+        groupcollapsible {
+            name    "fd_advanced2"
+            label   "Advanced"
+            grouptag { "sidefx::switcher" "fd_advanced" }
+
+            groupsimple {
+                name    "fd_sampling2"
+                label   "Sampling"
+                grouptag { "sidefx::switcher" "fd_sampling" }
+
+                parm {
+                    name    "opacitytracing"
+                    baseparm
+                    label   "Opacity Maps Affect Tracing"
+                    export  none
+                }
+                parm {
+                    name    "samplesscalar"
+                    baseparm
+                    label   "Samples"
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "downfilter"
+                    baseparm
+                    label   "Filter"
+                    export  none
+                }
+                parm {
+                    name    "labelparm"
+                    baseparm
+                    label   "This will render a"
+                    export  none
+                }
+            }
+
+            groupsimple {
+                name    "fd_normalmap2"
+                label   "Normal Map"
+                grouptag { "sidefx::switcher" "fd_normalmap" }
+
+                parm {
+                    name    "bFlipTangentX"
+                    baseparm
+                    label   "Tangent Normal Flip X"
+                    export  none
+                }
+                parm {
+                    name    "bFlipTangentY"
+                    baseparm
+                    label   "Tangent Normal Flip Y"
+                    export  none
+                }
+            }
+
+            groupsimple {
+                name    "fd_aomap2"
+                label   "AO Map"
+                grouptag { "sidefx::switcher" "fd_aomap" }
+
+                parm {
+                    name    "numrays"
+                    baseparm
+                    label   "Number of Rays"
+                    export  none
+                }
+                parm {
+                    name    "maxdist"
+                    baseparm
+                    label   "Maximum Ray Distance"
+                    export  none
+                }
+                parm {
+                    name    "bias"
+                    baseparm
+                    label   "Bias"
+                    export  none
+                }
+                parm {
+                    name    "conewidth"
+                    baseparm
+                    label   "Cone Width"
+                    export  none
+                }
+            }
+
+            groupsimple {
+                name    "fd_thicknessmap2"
+                label   "Thickness Map"
+                grouptag { "sidefx::switcher" "fd_thicknessmap" }
+
+                parm {
+                    name    "normalizedthickness"
+                    baseparm
+                    label   "Normalized Output Map"
+                    export  none
+                }
+                parm {
+                    name    "numrays2"
+                    baseparm
+                    label   "Number of Rays"
+                    export  none
+                }
+                parm {
+                    name    "minthicknessdist"
+                    baseparm
+                    label   "Minimum Ray Distance"
+                    export  none
+                }
+                parm {
+                    name    "maxthicknessdist"
+                    baseparm
+                    label   "Maximum Ray Distance"
+                    export  none
+                }
+                parm {
+                    name    "conewidth2"
+                    baseparm
+                    label   "Cone Width"
+                    export  none
+                }
+            }
+
+            groupsimple {
+                name    "fd_curvaturemap2"
+                label   "Curvature Map"
+                grouptag { "sidefx::switcher" "fd_curvaturemap" }
+
+                parm {
+                    name    "iNumRaysCurvature"
+                    baseparm
+                    label   "Number of Rays"
+                    export  none
+                }
+                parm {
+                    name    "fMaxRayDistCurvature"
+                    baseparm
+                    label   "Maximum Ray Distance"
+                    export  none
+                }
+                parm {
+                    name    "fCurvatureBias"
+                    baseparm
+                    label   "Bias"
+                    export  none
+                }
+                parm {
+                    name    "fConeWidthCurvature"
+                    baseparm
+                    label   "Cone Width"
+                    export  none
+                }
+                parm {
+                    name    "fCurvaturescale"
+                    baseparm
+                    label   "Scale"
+                    export  none
+                }
+                parm {
+                    name    "fFlatbias"
+                    baseparm
+                    label   "Flatness Filter"
+                    export  none
+                }
+            }
+
+        }
+
+    }
+
+    group {
+        name    "fd_reduce5_3"
+        label   "Private Parms Folder"
+        invisibletab
+
+        parm {
+            name    "overridenode"
+            baseparm
+            label   "Override Node"
+            invisible
+            export  none
+        }
+        parm {
+            name    "initswitch"
+            baseparm
+            label   "Init Switch"
+            invisible
+            export  none
+        }
+        parm {
+            name    "uuid"
+            baseparm
+            label   "Unique ID"
+            invisible
+            export  none
+        }
+        parm {
+            name    "current_low_mesh"
+            baseparm
+            label   "Current Low Mesh"
+            invisible
+            export  none
+        }
+        parm {
+            name    "current_high_mesh"
+            baseparm
+            label   "Current High Mesh"
+            invisible
+            export  none
+        }
+        parm {
+            name    "tempexrpath"
+            baseparm
+            label   "Temp exr path"
+            invisible
+            export  none
+        }
+        parm {
+            name    "tempcoppath"
+            baseparm
+            label   "Temp cop path"
+            invisible
+            export  none
+        }
+        parm {
+            name    "udimpostprocess"
+            baseparm
+            label   "UDIM post Process"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentcoppath"
+            baseparm
+            label   "Current COP Path"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentcopoutput"
+            baseparm
+            label   "Current COP Output Picture"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentplane"
+            baseparm
+            label   "Current Color Plane"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentgamma"
+            baseparm
+            label   "Current Gamma"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentcustomattr"
+            baseparm
+            label   "Current Custom Attribute"
+            invisible
+            export  none
+        }
+        parm {
+            name    "currentcustomsuffix"
+            baseparm
+            label   "Current Custom Suffix"
+            invisible
+            export  none
+        }
+    }
+
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"7"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"gamedev::sop_gameres"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.inp"
+Content-Type: text/plain
+
+1
+0 1.8426098997901357 9.2323412347781737 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_visualize_uvs1.init"
+Content-Type: text/plain
+
+type = labs::visualize_uvs
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_visualize_uvs1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.72203 -0.995445
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	color1 1 1 "input1"
+}
+inputs
+{
+0 	color1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_visualize_uvs1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grid_texture	[ 0	locks=0 ]	(	uvgrid_grey.pic	)
+grid_tiling	[ 0	locks=0 ]	(	10	)
+visualize_islands	[ 0	locks=0 ]	(	"off"	)
+worldspace	[ 0	locks=0 ]	(	"off"	)
+blend	[ 0	locks=0 ]	(	1	)
+vis_seams	[ 0	locks=0 ]	(	"off"	)
+thickness	[ 0	locks=0 ]	(	0.01	)
+spacer	[ 0	locks=0 ]	(	""	)
+like_tool	[ 0	locks=0 ]	(	0	)
+dont_like	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_visualize_uvs1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.init"
+Content-Type: text/plain
+
+type = labs::maps_baker::4.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Replaced by Bake Geometry Textures COP and Karma Texture Baker LOP. To be removed in Houdini 23.0."
+position 0.395121 -2.55718
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	normal2 1 1 "input1"
+2 	(0) "" 1 "input2"
+}
+inputs
+{
+0 	normal2 0 1
+1 	(0) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author prisms@threadripper1
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.multiparm"
+Content-Type: text/plain
+
+1
+sCustomAttribute# ../sCustomAttribute#
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.chn"
+Content-Type: text/plain
+
+{
+    channel framerangex {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $RFSTART }
+    }
+    channel framerangey {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $RFEND }
+    }
+    channel execute {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../execute\") }
+    }
+    channel bManualMode {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../bManualMode\") }
+    }
+    channel sOutputFile {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"C:/Github/SideFXLabs/hip/render/gameres_demoscene_$(CHANNEL).png\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sOutputFile\") }
+    }
+    channel i2Resolution1 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { length = 0 value = 1024 1024 expr = ch(\"../i2Resolution1\") }
+    }
+    channel i2Resolution2 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { length = 0 value = 1024 1024 expr = ch(\"../i2Resolution2\") }
+    }
+    channel parm {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../parm\") }
+    }
+    channel mBakeMode {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mBakeMode\") }
+    }
+    channel fMaxTraceDist {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      segment { length = 0 value = 3 3 expr = ch(\"../fMaxTraceDist\") }
+    }
+    channel visualize {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../visualize\") }
+    }
+    channel preview_channel {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"ao\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../preview_channel\") }
+    }
+    channel bDiffuse {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bDiffuse\") }
+    }
+    channel sDiffuse {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"diffuse\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sDiffuse\") }
+    }
+    channel fDiffuseGamma {
+      lefttype = extend
+      righttype = extend
+      default = 2.2000000000000002
+      flags = 0
+      segment { length = 0 value = 2.2000000000000002 2.2000000000000002 expr = ch(\"../fDiffuseGamma\") }
+    }
+    channel bNormal {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bNormal\") }
+    }
+    channel sNormal {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"normal\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sNormal\") }
+    }
+    channel fNormalGamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fNormalGamma\") }
+    }
+    channel bOpacity {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bOpacity\") }
+    }
+    channel sOpacity {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"opacity\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sOpacity\") }
+    }
+    channel bRoughness {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bRoughness\") }
+    }
+    channel sRoughness {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"roughness\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sRoughness\") }
+    }
+    channel fRoughnessGamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fRoughnessGamma\") }
+    }
+    channel bMetallic {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bMetallic\") }
+    }
+    channel sMetallic {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"metallic\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sMetallic\") }
+    }
+    channel fMetallicGamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fMetallicGamma\") }
+    }
+    channel bVertexCd {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../bVertexCd\") }
+    }
+    channel sVertexColor {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"color\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sVertexColor\") }
+    }
+    channel fVertexColorGamma {
+      lefttype = extend
+      righttype = extend
+      default = 2.2000000000000002
+      flags = 0
+      segment { length = 0 value = 2.2000000000000002 2.2000000000000002 expr = ch(\"../fVertexColorGamma\") }
+    }
+    channel bAO {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../bAO\") }
+    }
+    channel sAO {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"ao\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sAO\") }
+    }
+    channel fAOGamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fAOGamma\") }
+    }
+    channel bThickness {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bThickness\") }
+    }
+    channel sThickness {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"thickness\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sThickness\") }
+    }
+    channel fThicknessGamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fThicknessGamma\") }
+    }
+    channel bCurvature {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bCurvature\") }
+    }
+    channel sCurvature {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"curvature\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sCurvature\") }
+    }
+    channel bWorldNormal {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bWorldNormal\") }
+    }
+    channel sWorldNormal {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"worldnormal\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sWorldNormal\") }
+    }
+    channel bHeight {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bHeight\") }
+    }
+    channel sHeight {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"height\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sHeight\") }
+    }
+    channel sHeightFormat {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../sHeightFormat\") }
+    }
+    channel maxheightdistancex {
+      lefttype = extend
+      righttype = extend
+      default = -1
+      flags = 0
+      segment { length = 0 value = -1 -1 expr = ch(\"../maxheightdistancex\") }
+    }
+    channel maxheightdistancey {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../maxheightdistancey\") }
+    }
+    channel bAlpha {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bAlpha\") }
+    }
+    channel sAlpha {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"alpha\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sAlpha\") }
+    }
+    channel uvfill {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../uvfill\") }
+    }
+    channel bPos {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bPos\") }
+    }
+    channel sPos {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"position\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sPos\") }
+    }
+    channel exportlow {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../exportlow\") }
+    }
+    channel sopoutputlow {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$HIP/render/${HIPNAME}_low.fbx\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sopoutputlow\") }
+    }
+    channel exporthigh {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../exporthigh\") }
+    }
+    channel sopoutputhigh {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$HIP/render/${HIPNAME}_high.fbx\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../sopoutputhigh\") }
+    }
+    channel folder3 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../folder8\") }
+    }
+    channel opacitytracing {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../opacitytracing\") }
+    }
+    channel samplesscalar {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../samplesscalar\") }
+    }
+    channel downfilter {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"sinc\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../downfilter\") }
+    }
+    channel labelparm {
+      lefttype = extend
+      righttype = extend
+      defaultString = "\"This will try to render a \"+(ch('i2Resolution1')*ch(\"samplesscalar\"))+\"x\"+(ch('i2Resolution2')*ch(\"samplesscalar\"))+\" texture before downsampling\""
+      flags = 0
+      segment { length = 0 expr = chs(\"../labelparm\") }
+    }
+    channel bFlipTangentX {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bFlipTangentX\") }
+    }
+    channel bFlipTangentY {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../bFlipTangentY\") }
+    }
+    channel numrays {
+      lefttype = extend
+      righttype = extend
+      default = 50
+      flags = 0
+      segment { length = 0 value = 50 50 expr = ch(\"../numrays\") }
+    }
+    channel maxdist {
+      lefttype = extend
+      righttype = extend
+      default = 10
+      flags = 0
+      segment { length = 0 value = 10 10 expr = ch(\"../maxdist\") }
+    }
+    channel bias {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../bias\") }
+    }
+    channel conewidth {
+      lefttype = extend
+      righttype = extend
+      default = 90
+      flags = 0
+      segment { length = 0 value = 90 90 expr = ch(\"../conewidth\") }
+    }
+    channel normalizedthickness {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../normalizedthickness\") }
+    }
+    channel numrays2 {
+      lefttype = extend
+      righttype = extend
+      default = 50
+      flags = 0
+      segment { length = 0 value = 50 50 expr = ch(\"../numrays2\") }
+    }
+    channel minthicknessdist {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../minthicknessdist\") }
+    }
+    channel maxthicknessdist {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../maxthicknessdist\") }
+    }
+    channel conewidth2 {
+      lefttype = extend
+      righttype = extend
+      default = 90
+      flags = 0
+      segment { length = 0 value = 90 90 expr = ch(\"../conewidth2\") }
+    }
+    channel iNumRaysCurvature {
+      lefttype = extend
+      righttype = extend
+      default = 50
+      flags = 0
+      segment { length = 0 value = 50 50 expr = ch(\"../iNumRaysCurvature\") }
+    }
+    channel fMaxRayDistCurvature {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../fMaxRayDistCurvature\") }
+    }
+    channel fCurvatureBias {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../fCurvatureBias\") }
+    }
+    channel fConeWidthCurvature {
+      lefttype = extend
+      righttype = extend
+      default = 90
+      flags = 0
+      segment { length = 0 value = 90 90 expr = ch(\"../fConeWidthCurvature\") }
+    }
+    channel fCurvaturescale {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../fCurvaturescale\") }
+    }
+    channel fFlatbias {
+      lefttype = extend
+      righttype = extend
+      default = 0.02
+      flags = 0
+      segment { length = 0 value = 0.02 0.02 expr = ch(\"../fFlatbias\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+intensity	[ 0	locks=0	autoscope=0 ]	(	0	)
+gamma	[ 0	locks=0	autoscope=0 ]	(	0	)
+pdg_logoutput	[ 0	locks=0	autoscope=0 ]	(	"off"	)
+execute	[ 0	locks=0 ]	(	[ execute	0 ] 	)
+bManualMode	[ 0	locks=0	autoscope=0 ]	(	[ bManualMode	1 ] 	)
+folder0	[ 0	locks=0	autoscope=0 ]	(	0	)
+sCurAttr	[ 0	locks=0	autoscope=0 ]	(	""	)
+sCurAttrName	[ 0	locks=0	autoscope=0 ]	(	""	)
+vop_forcecompile	[ 0	locks=0 ]	(	0	)
+sOutputFile	[ 0	locks=0	autoscope=0 ]	(	[ sOutputFile	$HIP/render/${HIPNAME}_$(CHANNEL).png ] 	)
+i2Resolution	[ 0	locks=0	autoscope=0 ]	(	[ i2Resolution1	1024 ] 	[ i2Resolution2	1024 ] 	)
+parm	[ 0	locks=0 ]	(	[ parm	0 ] 	)
+mBakeMode	[ 0	locks=0	autoscope=0 ]	(	[ mBakeMode	1 ] 	)
+fMaxTraceDist	[ 0	locks=0	autoscope=0 ]	(	[ fMaxTraceDist	1 ] 	)
+visualize	[ 0	locks=0	autoscope=0 ]	(	[ visualize	0 ] 	)
+preview_channel	[ 0	locks=0	autoscope=0 ]	(	[ preview_channel	ao ] 	)
+fRayDistance	[ 0	locks=0	autoscope=0 ]	(	-1	)
+folder13	[ 0	locks=0 ]	(	0	)
+framemode	[ 0	locks=0 ]	(	"0"	)
+framerange	[ 0	locks=0 ]	(	[ framerangex	0 ] 	[ framerangey	0 ] 	)
+folder2	[ 0	locks=0	autoscope=0 ]	(	0	)
+folder6	[ 0	locks=0	autoscope=0 ]	(	0	)
+bDiffuse	[ 0	locks=0	autoscope=0 ]	(	[ bDiffuse	0 ] 	)
+sDiffuse	[ 0	locks=0	autoscope=0 ]	(	[ sDiffuse	diffuse ] 	)
+fDiffuseGamma	[ 0	locks=0	autoscope=0 ]	(	[ fDiffuseGamma	2.2 ] 	)
+sDiffuseFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bNormal	[ 0	locks=0	autoscope=0 ]	(	[ bNormal	0 ] 	)
+sNormal	[ 0	locks=0	autoscope=0 ]	(	[ sNormal	normal ] 	)
+fNormalGamma	[ 0	locks=0	autoscope=0 ]	(	[ fNormalGamma	1 ] 	)
+sNormalFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bOpacity	[ 0	locks=0	autoscope=0 ]	(	[ bOpacity	0 ] 	)
+sOpacity	[ 0	locks=0	autoscope=0 ]	(	[ sOpacity	opacity ] 	)
+sOpacityFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bRoughness	[ 0	locks=0	autoscope=0 ]	(	[ bRoughness	0 ] 	)
+sRoughness	[ 0	locks=0	autoscope=0 ]	(	[ sRoughness	roughness ] 	)
+fRoughnessGamma	[ 0	locks=0	autoscope=0 ]	(	[ fRoughnessGamma	1 ] 	)
+sRoughnessFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bMetallic	[ 0	locks=0	autoscope=0 ]	(	[ bMetallic	0 ] 	)
+sMetallic	[ 0	locks=0	autoscope=0 ]	(	[ sMetallic	metallic ] 	)
+fMetallicGamma	[ 0	locks=0	autoscope=0 ]	(	[ fMetallicGamma	1 ] 	)
+sMetallicFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+folder5	[ 0	locks=0	autoscope=0 ]	(	0	)
+bVertexCd	[ 0	locks=0	autoscope=0 ]	(	[ bVertexCd	1 ] 	)
+sVertexColor	[ 0	locks=0	autoscope=0 ]	(	[ sVertexColor	color ] 	)
+fVertexColorGamma	[ 0	locks=0	autoscope=0 ]	(	[ fVertexColorGamma	2.2 ] 	)
+sVertexColorFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bAO	[ 0	locks=0	autoscope=0 ]	(	[ bAO	1 ] 	)
+sAO	[ 0	locks=0	autoscope=0 ]	(	[ sAO	ao ] 	)
+fAOGamma	[ 0	locks=0	autoscope=0 ]	(	[ fAOGamma	2.2 ] 	)
+bThickness	[ 0	locks=0	autoscope=0 ]	(	[ bThickness	0 ] 	)
+sThickness	[ 0	locks=0	autoscope=0 ]	(	[ sThickness	thickness ] 	)
+fThicknessGamma	[ 0	locks=0	autoscope=0 ]	(	[ fThicknessGamma	1 ] 	)
+sAOFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bCurvature	[ 0	locks=0	autoscope=0 ]	(	[ bCurvature	0 ] 	)
+sCurvature	[ 0	locks=0	autoscope=0 ]	(	[ sCurvature	curvature ] 	)
+sCurvatureFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bWorldNormal	[ 0	locks=0	autoscope=0 ]	(	[ bWorldNormal	0 ] 	)
+sWorldNormal	[ 0	locks=0	autoscope=0 ]	(	[ sWorldNormal	worldnormal ] 	)
+sWorldNormalFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bHeight	[ 0	locks=0	autoscope=0 ]	(	[ bHeight	0 ] 	)
+sHeight	[ 0	locks=0	autoscope=0 ]	(	[ sHeight	height ] 	)
+sHeightFormat	[ 0	locks=0	autoscope=0 ]	(	[ sHeightFormat	0 ] 	)
+maxheightdistance	[ 0	locks=0	autoscope=0 ]	(	[ maxheightdistancex	-1 ] 	[ maxheightdistancey	1 ] 	)
+bAlpha	[ 0	locks=0	autoscope=0 ]	(	[ bAlpha	0 ] 	)
+sAlpha	[ 0	locks=0	autoscope=0 ]	(	[ sAlpha	alpha ] 	)
+uvfill	[ 0	locks=0	autoscope=0 ]	(	[ uvfill	0 ] 	)
+sAlphaFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+bPos	[ 0	locks=0	autoscope=0 ]	(	[ bPos	0 ] 	)
+sPos	[ 0	locks=0	autoscope=0 ]	(	[ sPos	position ] 	)
+usematerialid	[ 0	locks=0 ]	(	"off"	)
+materialid	[ 0	locks=0 ]	(	materialid	)
+sPositionFormat	[ 0	locks=0	autoscope=0 ]	(	"0"	)
+exportlow	[ 0	locks=0	autoscope=0 ]	(	[ exportlow	0 ] 	)
+sopoutputlow	[ 0	locks=0	autoscope=0 ]	(	[ sopoutputlow	$HIP/render/${HIPNAME}_low.fbx ] 	)
+exporthigh	[ 0	locks=0	autoscope=0 ]	(	[ exporthigh	0 ] 	)
+sopoutputhigh	[ 0	locks=0	autoscope=0 ]	(	[ sopoutputhigh	$HIP/render/${HIPNAME}_high.fbx ] 	)
+folder4	[ 0	locks=0	autoscope=0 ]	(	0	)
+folder3	[ 0	locks=0	autoscope=0 ]	(	[ folder3	0 ] 	)
+folder1	[ 0	locks=0	autoscope=0 ]	(	1	)
+folder12	[ 0	locks=0 ]	(	0	)
+blendmethod	[ 0	locks=0 ]	(	"diffusefill"	)
+edgepadding	[ 0	locks=0 ]	(	4	)
+folder10	[ 0	locks=0	autoscope=0 ]	(	0	)
+bakename	[ 0	locks=0 ]	(	"off"	)
+opacitytracing	[ 0	locks=0	autoscope=0 ]	(	[ opacitytracing	0 ] 	)
+samplesscalar	[ 0	locks=0	autoscope=0 ]	(	[ samplesscalar	1 ] 	)
+downfilter	[ 0	locks=0	autoscope=0 ]	(	[ downfilter	sinc ] 	)
+labelparm	[ 0	locks=0	autoscope=0 ]	(	[ labelparm	"This will try to render a `ch('i2Resolution1')*ch(\"samplesscalar\")`x`ch('i2Resolution2')*ch(\"samplesscalar\")` texture before downsampling" ] 	)
+folder7	[ 0	locks=0	autoscope=0 ]	(	0	)
+bFlipTangentX	[ 0	locks=0	autoscope=0 ]	(	[ bFlipTangentX	0 ] 	)
+bFlipTangentY	[ 0	locks=0	autoscope=0 ]	(	[ bFlipTangentY	0 ] 	)
+folder14	[ 0	locks=0 ]	(	0	)
+roundededgesamples	[ 0	locks=0 ]	(	10	)
+roundededgecuspangle	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0	autoscope=0 ]	(	0	)
+numrays	[ 0	locks=0	autoscope=0 ]	(	[ numrays	50 ] 	)
+maxdist	[ 0	locks=0	autoscope=0 ]	(	[ maxdist	10 ] 	)
+bias	[ 0	locks=0	autoscope=0 ]	(	[ bias	0.5 ] 	)
+conewidth	[ 0	locks=0	autoscope=0 ]	(	[ conewidth	90 ] 	)
+raybias	[ 0	locks=0	autoscope=0 ]	(	0.001	)
+folder11	[ 0	locks=0	autoscope=0 ]	(	0	)
+raybias2	[ 0	locks=0	autoscope=0 ]	(	0.001	)
+normalizedthickness	[ 0	locks=0	autoscope=0 ]	(	[ normalizedthickness	0 ] 	)
+numrays2	[ 0	locks=0	autoscope=0 ]	(	[ numrays2	50 ] 	)
+minthicknessdist	[ 0	locks=0	autoscope=0 ]	(	[ minthicknessdist	0 ] 	)
+maxthicknessdist	[ 0	locks=0	autoscope=0 ]	(	[ maxthicknessdist	1 ] 	)
+conewidth2	[ 0	locks=0	autoscope=0 ]	(	[ conewidth2	90 ] 	)
+folder9	[ 0	locks=0	autoscope=0 ]	(	0	)
+iNumRaysCurvature	[ 0	locks=0	autoscope=0 ]	(	[ iNumRaysCurvature	50 ] 	)
+fMaxRayDistCurvature	[ 0	locks=0	autoscope=0 ]	(	[ fMaxRayDistCurvature	0.1 ] 	)
+fCurvatureBias	[ 0	locks=0	autoscope=0 ]	(	[ fCurvatureBias	0.5 ] 	)
+fConeWidthCurvature	[ 0	locks=0	autoscope=0 ]	(	[ fConeWidthCurvature	90 ] 	)
+fCurvaturescale	[ 0	locks=0	autoscope=0 ]	(	[ fCurvaturescale	1 ] 	)
+fFlatbias	[ 0	locks=0	autoscope=0 ]	(	[ fFlatbias	0.02 ] 	)
+folder15	[ 0	locks=0 ]	(	0	)
+materialidseed	[ 0	locks=0 ]	(	46	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maps_baker1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.init"
+Content-Type: text/plain
+
+type = labs::autouv
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.0397039 1.73538
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch4 1 1 "input1"
+}
+inputs
+{
+0 	switch4 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.spareparmdef"
+Content-Type: text/plain
+
+    groupsimple {
+        name    "folder2"
+        label   "Method"
+
+        parm {
+            name    "uvattrib"
+            baseparm
+            label   "UV Attribute"
+            export  none
+        }
+        parm {
+            name    "method"
+            baseparm
+            label   "Method"
+            export  none
+        }
+        parm {
+            name    "fuse_distance"
+            baseparm
+            label   "Collapse Distance"
+            export  none
+        }
+        parm {
+            name    "num_points"
+            baseparm
+            label   "Number of Paths"
+            export  none
+        }
+        parm {
+            name    "convex_multiplier"
+            baseparm
+            label   "Convex Multiplier"
+            export  none
+        }
+        parm {
+            name    "occlusion_multiplier"
+            baseparm
+            label   "Occlusion Multiplier"
+            export  none
+        }
+        parm {
+            name    "num_clusters"
+            baseparm
+            label   "Number of Clusters"
+            export  none
+        }
+        parm {
+            name    "normal_blur_cluster"
+            baseparm
+            label   "Normal Blur"
+            export  none
+        }
+        parm {
+            name    "random_seed"
+            baseparm
+            label   "Random Seed"
+            export  none
+        }
+        parm {
+            name    "blur_amount"
+            baseparm
+            label   "Normal Blur Ammount"
+            export  none
+        }
+        parm {
+            name    "nplanes"
+            baseparm
+            label   "Planes"
+            export  none
+        }
+        parm {
+            name    "graintol"
+            baseparm
+            label   "Grain Tolerance"
+            export  none
+        }
+        parm {
+            name    "mergethreshold"
+            baseparm
+            label   "Merge Threshold"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "folder3"
+        label   "Packing Options"
+
+        parm {
+            name    "merge_small_islands"
+            baseparm
+            label   "Merge Small Islands"
+            export  none
+        }
+        parm {
+            name    "small_island_cutoff"
+            baseparm
+            label   "Small Island CutOff"
+            export  none
+        }
+        parm {
+            name    "optimize_uv_border"
+            baseparm
+            label   "Optimize UV Border"
+            export  none
+        }
+        parm {
+            name    "method2"
+            baseparm
+            label   "Flattening Method"
+            export  none
+        }
+        parm {
+            name    "packing_iterations"
+            baseparm
+            label   "Packing Iterations"
+            export  none
+        }
+        parm {
+            name    "layout_padding"
+            baseparm
+            label   "Island Padding"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "resolution"
+            baseparm
+            label   "Padding Resolution"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spacer"
+        baseparm
+        label   "OLD"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "like_tool"
+        baseparm
+        label   "OLD"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "dont_like"
+        baseparm
+        label   "OLD"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "cusp_angle"
+        baseparm
+        label   "__UNUSED"
+        export  none
+    }
+    parm {
+        name    "rotstep"
+        baseparm
+        label   "Island Rotation Step"
+        export  none
+    }
+    parm {
+        name    "orientation_mode"
+        label   "orientation_mode"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "group"
+        baseparm
+        label   "Group"
+        export  none
+    }
+    parm {
+        name    "udimtarget"
+        baseparm
+        label   "UDIM Target Tile"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.chn"
+Content-Type: text/plain
+
+{
+    channel method {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      segment { length = 0 value = 3 3 expr = ch(\"../method\") }
+    }
+    channel fuse_distance {
+      lefttype = extend
+      righttype = extend
+      default = 0.01
+      flags = 0
+      segment { length = 0 value = 0.01 0.01 expr = ch(\"../fuse_distance\") }
+    }
+    channel num_points {
+      lefttype = extend
+      righttype = extend
+      default = 25
+      flags = 0
+      segment { length = 0 value = 25 25 expr = ch(\"../num_points\") }
+    }
+    channel convex_multiplier {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../convex_multiplier\") }
+    }
+    channel occlusion_multiplier {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../occlusion_multiplier\") }
+    }
+    channel num_clusters {
+      lefttype = extend
+      righttype = extend
+      default = 30
+      flags = 0
+      segment { length = 0 value = 30 30 expr = ch(\"../num_clusters\") }
+    }
+    channel normal_blur_cluster {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../normal_blur_cluster\") }
+    }
+    channel random_seed {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../random_seed\") }
+    }
+    channel blur_amount {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../blur_amount\") }
+    }
+    channel nplanes {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../nplanes\") }
+    }
+    channel small_island_cutoff {
+      lefttype = extend
+      righttype = extend
+      default = 0.01
+      flags = 0
+      segment { length = 0 value = 0.01 0.01 expr = ch(\"../small_island_cutoff\") }
+    }
+    channel method2 {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../method2\") }
+    }
+    channel orientation_mode {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../orientation_mode\") }
+    }
+    channel packing_iterations {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../packing_iterations\") }
+    }
+    channel layout_padding {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../layout_padding\") }
+    }
+    channel resolution {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../resolution2\") }
+    }
+    channel graintol {
+      lefttype = extend
+      righttype = extend
+      default = 0.12
+      flags = 0
+      segment { length = 0 value = 0.12 0.12 expr = ch(\"../graintol\") }
+    }
+    channel mergethreshold {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mergethreshold\") }
+    }
+    channel merge_small_islands {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../merge_small_islands\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+spacer	[ 0	locks=0 ]	(	""	)
+like_tool	[ 0	locks=0 ]	(	0	)
+dont_like	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+fd_method	[ 0	locks=0 ]	(	0	)
+uvattrib	[ 0	locks=0 ]	(	uv	)
+method	[ 0	locks=0 ]	(	[ method	3 ] 	)
+fuse_distance	[ 0	locks=0 ]	(	[ fuse_distance	0.01 ] 	)
+num_points	[ 0	locks=0 ]	(	[ num_points	25 ] 	)
+convex_multiplier	[ 0	locks=0 ]	(	[ convex_multiplier	0.1 ] 	)
+occlusion_multiplier	[ 0	locks=0 ]	(	[ occlusion_multiplier	1 ] 	)
+num_clusters	[ 0	locks=0 ]	(	[ num_clusters	30 ] 	)
+normal_blur_cluster	[ 0	locks=0 ]	(	[ normal_blur_cluster	1 ] 	)
+random_seed	[ 0	locks=0 ]	(	[ random_seed	0 ] 	)
+blur_amount	[ 0	locks=0 ]	(	[ blur_amount	0 ] 	)
+nplanes	[ 0	locks=0 ]	(	[ nplanes	2 ] 	)
+graintol	[ 0	locks=0 ]	(	[ graintol	0.12 ] 	)
+mergethreshold	[ 0	locks=0 ]	(	[ mergethreshold	0.5 ] 	)
+fd_packingoptions	[ 0	locks=0 ]	(	0	)
+merge_small_islands	[ 8	locks=0 ]	(	[ merge_small_islands	0 ] 	)
+small_island_cutoff	[ 0	locks=0 ]	(	[ small_island_cutoff	0.01 ] 	)
+optimize_uv_border	[ 0	locks=0 ]	(	"on"	)
+method2	[ 0	locks=0 ]	(	[ method2	1 ] 	)
+rotstep	[ 0	locks=0 ]	(	"none"	)
+packing_iterations	[ 0	locks=0 ]	(	[ packing_iterations	1 ] 	)
+layout_padding	[ 0	locks=0 ]	(	[ layout_padding	2 ] 	)
+resolution	[ 0	locks=0 ]	(	[ resolution	2 ] 	)
+udimtarget	[ 0	locks=0 ]	(	1001	)
+cusp_angle	[ 0	locks=0 ]	(	20	)
+folder2	[ 0	locks=0 ]	(	0	)
+folder3	[ 0	locks=0 ]	(	0	)
+orientation_mode	[ 0	locks=0 ]	(	[ orientation_mode	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sop_autouv1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/polyreduce1.init"
+Content-Type: text/plain
+
+type = polyreduce::2.0
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/polyreduce1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.471953 3.61946
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch1 1 1 "input1"
+}
+inputs
+{
+0 	switch1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/polyreduce1.chn"
+Content-Type: text/plain
+
+{
+    channel finalcount {
+      lefttype = extend
+      righttype = extend
+      default = 15000
+      flags = 0
+      segment { length = 0 value = 15000 15000 expr = ch(\"../finalcount\") }
+    }
+    channel reducepassedtarget {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../reducepassedtarget\") }
+    }
+    channel qualitytolerance {
+      lefttype = extend
+      righttype = extend
+      default = 1.0000000000000001e-05
+      flags = 0
+      segment { length = 0 value = 1.0000000000000001e-05 1.0000000000000001e-05 expr = ch(\"../qualitytolerance\") }
+    }
+    channel originalpoints {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../originalpoints\") }
+    }
+    channel preservequads {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../preservequads\") }
+    }
+    channel equalizelengths {
+      lefttype = extend
+      righttype = extend
+      default = 1e-10
+      flags = 0
+      segment { length = 0 value = 1e-10 1e-10 expr = ch(\"../equalizelengths\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/polyreduce1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+reductiontarget	[ 0	locks=0 ]	(	0	)
+target	[ 0	locks=0 ]	(	"poly_count"	)
+percentage	[ 0	locks=0 ]	(	100	)
+finalcount	[ 0	locks=0 ]	(	[ finalcount	1000 ] 	)
+reducepassedtarget	[ 0	locks=0 ]	(	[ reducepassedtarget	0 ] 	)
+qualitytolerance	[ 0	locks=0 ]	(	[ qualitytolerance	1e-5 ] 	)
+usenormaldevthreshold	[ 0	locks=0 ]	(	"off"	)
+normaldevthreshold	[ 0	locks=0 ]	(	90	)
+outputgeo	[ 0	locks=0 ]	(	0	)
+originalpoints	[ 0	locks=0 ]	(	[ originalpoints	0 ] 	)
+preservequads	[ 0	locks=0 ]	(	[ preservequads	0 ] 	)
+equalizelengths	[ 0	locks=0 ]	(	[ equalizelengths	1e-10 ] 	)
+stiffen	[ 0	locks=0 ]	(	0	)
+boundaryweight	[ 0	locks=0 ]	(	1	)
+sepparm3	[ 0	locks=0 ]	(	)
+vattribseamweight	[ 0	locks=0 ]	(	1	)
+seamattribs	[ 0	locks=0 ]	(	"* ^N"	)
+features	[ 0	locks=0 ]	(	0	)
+hardfeaturepoints	[ 0	locks=0 ]	(	""	)
+hardfeatureedges	[ 0	locks=0 ]	(	""	)
+sepparm2	[ 0	locks=0 ]	(	)
+softfeaturepoints	[ 0	locks=0 ]	(	""	)
+softfeaturepointweight	[ 0	locks=0 ]	(	1	)
+softfeatureedges	[ 0	locks=0 ]	(	""	)
+softfeatureedgeweight	[ 0	locks=0 ]	(	1	)
+retentioncontrol	[ 0	locks=0 ]	(	0	)
+useretainattrib	[ 0	locks=0 ]	(	"off"	)
+retainattrib	[ 0	locks=0 ]	(	retention	)
+retainattribweight	[ 0	locks=0 ]	(	1	)
+viewbasedretentioncontrol	[ 0	locks=0 ]	(	0	)
+silhouetteweight	[ 0	locks=0 ]	(	1	)
+usesilhouettefalloff	[ 0	locks=0 ]	(	"off"	)
+silhouettefalloffdist	[ 0	locks=0 ]	(	1	)
+sepparm	[ 0	locks=0 ]	(	)
+frontfacingweight	[ 0	locks=0 ]	(	1	)
+usefrontfacingfalloff	[ 0	locks=0 ]	(	"off"	)
+frontfacingfalloffdist	[ 0	locks=0 ]	(	1	)
+decimationcontrol	[ 0	locks=0 ]	(	0	)
+controlattribs	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/polyreduce1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal1.init"
+Content-Type: text/plain
+
+type = normal
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.0397039 0.819049
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	sop_autouv1 1 1 "input1"
+}
+inputs
+{
+0 	sop_autouv1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+overridenormal	[ 0	locks=0 ]	(	"off"	)
+normalattrib	[ 0	locks=0 ]	(	N	)
+construct	[ 0	locks=0 ]	(	0	)
+docompute	[ 0	locks=0 ]	(	"on"	)
+type	[ 0	locks=0 ]	(	"typevertex"	)
+cuspangle	[ 0	locks=0 ]	(	60	)
+method	[ 0	locks=0 ]	(	1	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
+modify	[ 0	locks=0 ]	(	0	)
+normalize	[ 0	locks=0 ]	(	"off"	)
+reverse	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.0298129 4.66416
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+2 	remeshgrid1 1 1 "input2"
+}
+inputs
+{
+0 	(0) 0 1
+1 	remeshgrid1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../enable_voxelization\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.95407 -4.44594
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	maps_baker1 0 1 "input1"
+1 	python1 1 1 "input2"
+}
+inputs
+{
+0 	maps_baker1 0 1
+1 	python1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch2.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/python1.init"
+Content-Type: text/plain
+
+type = python
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/python1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.92331 -3.29647
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	maps_baker1 0 1 "input1"
+}
+inputs
+{
+0 	maps_baker1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/python1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+python	[ 0	locks=0 ]	(	"node = hou.pwd()
+geo = node.geometry()
+
+# Add code to modify contents of geo.
+# Use drop down menu to select examples.
+
+#node.inputs()[0].parm(\"render\").pressButton()
+baker = node.inputs()[0]
+baker.hdaModule().Render(baker)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/python1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch3.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch3.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -6.38261 -8.01412
+connectornextid 6
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+5 "output1"
+}
+inputsNamed3
+{
+4 	(__dot5) "" 1 "input1"
+3 	(__dot1) "" 1 "input2"
+2 	(__dot2) "" 1 "input3"
+1 	(__dot3) "" 1 "input4"
+0 	(__dot4) "" 1 "input5"
+}
+inputs
+{
+0 	(__dot5) 0 1
+1 	(__dot1) 0 1
+2 	(__dot2) 0 1
+3 	(__dot3) 0 1
+4 	(__dot4) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch3.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../preview\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch3.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch3.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -6.38261 -9.92146
+connectornextid 1
+flags =  lock off model off template on footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	switch3 5 1 "input1"
+}
+inputs
+{
+0 	switch3 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+outputidx	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.init"
+Content-Type: text/plain
+
+type = color
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.954287 -0.0851259
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	normal1 1 1 "input1"
+}
+inputs
+{
+0 	normal1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
+class	[ 0	locks=0 ]	(	2	)
+colortype	[ 0	locks=0 ]	(	0	)
+color	[ 0	locks=0 ]	(	1	1	1	)
+seed	[ 0	locks=0 ]	(	0	)
+rampattribute	[ 0	locks=0 ]	(	""	)
+ramprange	[ 0	locks=0 ]	(	0	1	)
+ramp	[ 0	locks=0 ]	(	2	)
+ramp1pos	[ 0	locks=0 ]	(	0	)
+ramp1c	[ 0	locks=0 ]	(	0	0	0	)
+ramp1interp	[ 0	locks=0 ]	(	"linear"	)
+ramp2pos	[ 0	locks=0 ]	(	1	)
+ramp2c	[ 0	locks=0 ]	(	1	1	1	)
+ramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"2"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_color"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal2.init"
+Content-Type: text/plain
+
+type = normal
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal2.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.602491 -1.9096
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	normal1 1 1 "input1"
+}
+inputs
+{
+0 	normal1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal2.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+overridenormal	[ 0	locks=0 ]	(	"off"	)
+normalattrib	[ 0	locks=0 ]	(	N	)
+construct	[ 0	locks=0 ]	(	0	)
+docompute	[ 0	locks=0 ]	(	"on"	)
+type	[ 0	locks=0 ]	(	"typevertex"	)
+cuspangle	[ 0	locks=0 ]	(	180	)
+method	[ 0	locks=0 ]	(	1	)
+origifzero	[ 0	locks=0 ]	(	"off"	)
+modify	[ 0	locks=0 ]	(	0	)
+normalize	[ 0	locks=0 ]	(	"off"	)
+reverse	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/normal2.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch4.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch4.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 0.657873 2.79498
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	polyreduce1 1 1 "input1"
+2 	instant_meshes1 1 1 "input2"
+}
+inputs
+{
+0 	polyreduce1 0 1
+1 	instant_meshes1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch4.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../use_instantmeshes\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch4.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 8	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/switch4.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.init"
+Content-Type: text/plain
+
+type = labs::instant_meshes::2.0
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 2.74619 3.61946
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch1 1 1 "input1"
+}
+inputs
+{
+0 	switch1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Paul_Ambrosiussen@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.chn"
+Content-Type: text/plain
+
+{
+    channel v_count {
+      lefttype = extend
+      righttype = extend
+      default = 1000
+      flags = 0
+      segment { length = 0 value = 1000 1000 expr = ch(\"../finalcount\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+fd_meshgeneration	[ 0	locks=0 ]	(	0	)
+v_count	[ 8	locks=0 ]	(	[ v_count	1000 ] 	)
+cr_angle	[ 0	locks=0 ]	(	30	)
+num_smooth_iter	[ 0	locks=0 ]	(	5	)
+fd_advanced	[ 0	locks=0 ]	(	0	)
+traceLines	[ 0	locks=0 ]	(	"off"	)
+deterministic_parm	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.inp"
+Content-Type: text/plain
+
+2
+0 -2.6682946318063356 3.9889847009841457 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 1.5000000111758707 0.98898500931024547 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_geometry.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_geometry.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.66829 -0.180315
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	divide1 1 1 "input1"
+}
+inputs
+{
+0 	divide1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Luiz@Luiz-PC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_geometry.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_geometry.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/output1.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/output1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.66714 -7.64057
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	instant_meshes_core1 2 1 "input1"
+}
+inputs
+{
+0 	instant_meshes_core1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/output1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+outputidx	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/output1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polyframe1.init"
+Content-Type: text/plain
+
+type = polyframe
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polyframe1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -4.60284
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	polycut1 1 1 "input1"
+}
+inputs
+{
+0 	polycut1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Roahith@threadripper3
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polyframe1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+entity	[ 0	locks=0 ]	(	"primitive"	)
+style	[ 0	locks=0 ]	(	edge2	)
+attribname	[ 0	locks=0 ]	(	""	)
+Non	[ 0	locks=0 ]	(	"off"	)
+N	[ 0	locks=0 ]	(	N	)
+tangentuon	[ 0	locks=0 ]	(	"on"	)
+tangentu	[ 0	locks=0 ]	(	N	)
+tangentvon	[ 0	locks=0 ]	(	"off"	)
+tangentv	[ 0	locks=0 ]	(	tangentv	)
+signson	[ 0	locks=0 ]	(	"off"	)
+signs	[ 0	locks=0 ]	(	signs	)
+ortho	[ 0	locks=0 ]	(	"off"	)
+lefthanded	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polyframe1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_curves.init"
+Content-Type: text/plain
+
+type = null
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_curves.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -0.180315
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(1) "" 1 "input1"
+}
+inputs
+{
+0 	(1) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Luiz@Luiz-PC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_curves.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+copyinput	[ 0	locks=0 ]	(	"on"	)
+cacheinput	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/in_curves.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/divide1.init"
+Content-Type: text/plain
+
+type = divide
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/divide1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.66829 0.922385
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	groupdelete1 1 1 "input1"
+}
+inputs
+{
+0 	groupdelete1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Roahith@threadripper3
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/divide1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+convex	[ 0	locks=0 ]	(	"on"	)
+usemaxsides	[ 0	locks=0 ]	(	"on"	)
+numsides	[ 0	locks=0 ]	(	3	)
+planar	[ 0	locks=0 ]	(	"on"	)
+plantol	[ 0	locks=0 ]	(	0.0001	)
+noslivers	[ 0	locks=0 ]	(	"off"	)
+avoidsmallangles	[ 0	locks=0 ]	(	"off"	)
+smooth	[ 0	locks=0 ]	(	"off"	)
+weight	[ 0	locks=0 ]	(	1	0.5	)
+divs	[ 0	locks=0 ]	(	1	)
+brick	[ 0	locks=0 ]	(	"off"	)
+size	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	0	0	)
+angle	[ 0	locks=0 ]	(	0	0	0	)
+fixsharededges	[ 0	locks=0 ]	(	"on"	)
+removesh	[ 0	locks=0 ]	(	"off"	)
+dual	[ 0	locks=0 ]	(	"off"	)
+dualattribstoswap	[ 0	locks=0 ]	(	"* ^P"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/divide1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribwrangle1.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribwrangle1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.497 -2.56494
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	resample1 1 1 "input1"
+1 	in_geometry 1 1 "input2"
+}
+inputs
+{
+0 	resample1 0 1
+1 	in_geometry 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author paula@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribwrangle1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int hitprim;
+vector uv;
+float maxtracedistance = 0.1;
+float distance = xyzdist(1, @P, hitprim, uv, maxtracedistance);
+
+i@stroke_prim = hitprim;
+
+if (hitprim == -1)
+    i@group_split = 1;"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribwrangle1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/resample1.init"
+Content-Type: text/plain
+
+type = resample
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/resample1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -1.27302
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	in_curves 1 1 "input1"
+}
+inputs
+{
+0 	in_curves 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Roahith@threadripper3
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/resample1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+maintainprimorder	[ 0	locks=0 ]	(	"off"	)
+lod	[ 0	locks=0 ]	(	1	)
+edge	[ 0	locks=0 ]	(	"off"	)
+method	[ 0	locks=0 ]	(	"dist"	)
+measure	[ 0	locks=0 ]	(	"arc"	)
+dolength	[ 0	locks=0 ]	(	"on"	)
+length	[ 0	locks=0 ]	(	0.05	)
+dosegs	[ 0	locks=0 ]	(	"off"	)
+segs	[ 0	locks=0 ]	(	7	)
+useattribs	[ 0	locks=0 ]	(	"on"	)
+allequal	[ 0	locks=0 ]	(	"on"	)
+last	[ 0	locks=0 ]	(	"off"	)
+randomshift	[ 0	locks=0 ]	(	"off"	)
+onlypoints	[ 0	locks=0 ]	(	"off"	)
+treatpolysas	[ 0	locks=0 ]	(	"straight"	)
+outputsubdpoly	[ 0	locks=0 ]	(	"off"	)
+doptdistattr	[ 0	locks=0 ]	(	"off"	)
+ptdistattr	[ 0	locks=0 ]	(	ptdist	)
+dotangentattr	[ 0	locks=0 ]	(	"off"	)
+tangentattr	[ 0	locks=0 ]	(	tangentu	)
+docurveuattr	[ 0	locks=0 ]	(	"off"	)
+curveuattr	[ 0	locks=0 ]	(	curveu	)
+docurvenumattr	[ 0	locks=0 ]	(	"off"	)
+curvenumattr	[ 0	locks=0 ]	(	curvenum	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/resample1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polycut1.init"
+Content-Type: text/plain
+
+type = polycut
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polycut1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -3.60284
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	attribwrangle1 2 1 "input1"
+}
+inputs
+{
+0 	attribwrangle1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author paula@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polycut1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+polygons	[ 0	locks=0 ]	(	""	)
+type	[ 0	locks=0 ]	(	"points"	)
+cutpoints	[ 0	locks=0 ]	(	split	)
+cutedges	[ 0	locks=0 ]	(	""	)
+strategy	[ 0	locks=0 ]	(	"remove"	)
+detectedgechanges	[ 0	locks=0 ]	(	"attribcrossing"	)
+cutattrib	[ 0	locks=0 ]	(	""	)
+cutvalue	[ 0	locks=0 ]	(	0	)
+cutstringvalue	[ 0	locks=0 ]	(	""	)
+cutthreshold	[ 0	locks=0 ]	(	1	)
+keepclosed	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/polycut1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribdelete1.init"
+Content-Type: text/plain
+
+type = attribdelete
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribdelete1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.67174 2.92238
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author paula@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribdelete1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+usereference	[ 0	locks=0 ]	(	"off"	)
+negate	[ 0	locks=0 ]	(	"off"	)
+doptdel	[ 0	locks=0 ]	(	"on"	)
+ptdel	[ 0	locks=0 ]	(	*	)
+dovtxdel	[ 0	locks=0 ]	(	"on"	)
+vtxdel	[ 0	locks=0 ]	(	*	)
+doprimdel	[ 0	locks=0 ]	(	"on"	)
+primdel	[ 0	locks=0 ]	(	*	)
+dodtldel	[ 0	locks=0 ]	(	"on"	)
+dtldel	[ 0	locks=0 ]	(	""	)
+updatevar	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/attribdelete1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/groupdelete1.init"
+Content-Type: text/plain
+
+type = groupdelete
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/groupdelete1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.66829 1.92238
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	attribdelete1 1 1 "input1"
+}
+inputs
+{
+0 	attribdelete1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author paula@DESKTOP-5213MPP
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/groupdelete1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+deletions	[ 0	locks=0 ]	(	1	)
+removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+grouptype1	[ 0	locks=0 ]	(	"any"	)
+group1	[ 0	locks=0 ]	(	*	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/groupdelete1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.init"
+Content-Type: text/plain
+
+type = merge
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -2.66714 -5.26637
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	in_geometry 1 1 "input1"
+1 	polyframe1 1 1 "input2"
+}
+inputs
+{
+0 	in_geometry 0 1
+1 	polyframe1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "v_count"
+        label   "v_count"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "cr_angle"
+        label   "cr_angle"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "num_smooth_iter"
+        label   "num_smooth_iter"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "traceLines"
+        label   "traceLines"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "deterministic_parm"
+        label   "deterministic_parm"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.chn"
+Content-Type: text/plain
+
+{
+    channel v_count {
+      lefttype = extend
+      righttype = extend
+      default = 1000
+      flags = 0
+      segment { length = 0 value = 1000 1000 expr = ch(\"../v_count\") }
+    }
+    channel cr_angle {
+      lefttype = extend
+      righttype = extend
+      default = 30
+      flags = 0
+      segment { length = 0 value = 30 30 expr = ch(\"../cr_angle\") }
+    }
+    channel num_smooth_iter {
+      lefttype = extend
+      righttype = extend
+      default = 5
+      flags = 0
+      segment { length = 0 value = 5 5 expr = ch(\"../num_smooth_iter\") }
+    }
+    channel traceLines {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../traceLines\") }
+    }
+    channel deterministic_parm {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../deterministic_parm\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+v_count	[ 8	locks=0 ]	(	[ v_count	0 ] 	)
+cr_angle	[ 8	locks=0 ]	(	[ cr_angle	0 ] 	)
+num_smooth_iter	[ 8	locks=0 ]	(	[ num_smooth_iter	0 ] 	)
+traceLines	[ 8	locks=0 ]	(	[ traceLines	0 ] 	)
+deterministic_parm	[ 8	locks=0 ]	(	[ deterministic_parm	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1/instant_meshes_core1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.order"
+Content-Type: text/plain
+
+11
+in_geometry
+output1
+polyframe1
+in_curves
+divide1
+attribwrangle1
+resample1
+polycut1
+attribdelete1
+groupdelete1
+instant_meshes_core1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes1.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remeshgrid1.init"
+Content-Type: text/plain
+
+type = remeshgrid
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remeshgrid1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.56264 6.47256
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remeshgrid1.chn"
+Content-Type: text/plain
+
+{
+    channel adaptivity {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../adaptivity\") }
+    }
+    channel dilateerode {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../dilate_erode\") }
+    }
+    channel project {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../project\") }
+    }
+    channel sharpenfeatures {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../sharpen_features\") }
+    }
+    channel postsmooth {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../post_smooth\") }
+    }
+    channel edgetolerance {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../edge_tolerance\") }
+    }
+    channel divisionsize {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../divisionsize\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remeshgrid1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+sourcefolder	[ 0	locks=0 ]	(	0	)
+surfacetype	[ 0	locks=0 ]	(	"closedvolume"	)
+surfoffset	[ 0	locks=0 ]	(	0.1	)
+meshingfolder	[ 0	locks=0 ]	(	0	)
+divisionsize	[ 0	locks=0 ]	(	[ divisionsize	0.1 ] 	)
+divisionsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+scale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	0	0	)
+adaptivity	[ 8	locks=0 ]	(	[ adaptivity	0 ] 	)
+transferattributes	[ 0	locks=0 ]	(	"off"	)
+sharpenfeatures	[ 8	locks=0 ]	(	[ sharpenfeatures	0 ] 	)
+edgetolerance	[ 8	locks=0 ]	(	[ edgetolerance	0.5 ] 	)
+project	[ 8	locks=0 ]	(	[ project	0 ] 	)
+postsmooth	[ 8	locks=0 ]	(	[ postsmooth	0 ] 	)
+vdbsmoothingfolder	[ 0	locks=0 ]	(	0	)
+dilateerode	[ 8	locks=0 ]	(	[ dilateerode	0 ] 	)
+smoothingiterations	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remeshgrid1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"4"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_remeshgrid"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-8.89670777099075494,
+	"posy":-4.58767338673862124,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"remeshgrid1 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-6.49670777099075636,
+	"posy":-4.58767338673862124,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"polyreduce1 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot3.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-4.1065987511836699,
+	"posy":-4.95415427047106149,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"sop_visualize_uvs1 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot4.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-1.70659875118367022,
+	"posy":-5.84496319736519432,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"switch2 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot5.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-11.2967077709907535,
+	"posy":-4.58767338673862124,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"(0) 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.order"
+Content-Type: text/plain
+
+15
+sop_visualize_uvs1
+maps_baker1
+sop_autouv1
+polyreduce1
+normal1
+switch1
+switch2
+python1
+switch3
+output1
+color1
+normal2
+switch4
+instant_meshes1
+remeshgrid1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY--
