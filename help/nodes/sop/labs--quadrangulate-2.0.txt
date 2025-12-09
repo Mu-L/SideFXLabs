@@ -1,56 +1,64 @@
 = Labs Quadrangulate =
 
-#type: node
-#context: sop
-#internal: labs::sop_quadrangulate::2.0
-#icon: quadrangulate
-#tags: sidefxlabs,  model, gamedev, cleanup
+#type:		node
+#context:	sop
+#internal:	labs::sop_quadrangulate::2.0
+#icon:		quadrangulate
 
-""" Simple Node to take a triangulated mesh and attempt to collapse the diagonal edges to return the mesh to a quad dominant state """
+"""Converts triangulated meshes back into a quad-dominant topology by collapsing diagonal edges and repairing resulting N-gons."""
 
-The Quadrangulate Node is designed to remove obvious edges from a triangulated mesh in order to return to what the original quad mesh would've looked like. 
+The _Labs Quadrangulate SOP_ identifies and collapses diagonal edges created during triangulation to approximate the original quad layout of a mesh.
 
-It works as a 2 step process, the first step is identifying the diagonal edges in the quads, this can be done iteratively or by assuming a good vertex order. 
+The process consists of two stages:
+# *Reduction Stage* — Identifies diagonal edges in triangulated quads and collapses them. This can be performed iteratively or by assuming a consistent vertex order.
+	
+# *Refinement Stage* — Repairs polygons with more than four vertices that result from edge removal. These regions can be resolved through quadrilateral PolyFill operations or through iterative subdivision until only quads or triangles remain.
 
-Those edges are then deleted, but in some cases this also deletes polygons that were tris on the original mesh. 
-
-The second step works by fixing those edges that have more than 4 points, you can either use a polyFill approach to fix those areas, or another iterative approach where it divides the mesh up until quads are left. 
+This workflow restores quad structure while avoiding silhouette loss when desired.
 
 [Image:/images/quadrangulate_2_squab.jpg]
 
 [Image:/images/quadrangulate_2_sphere.jpg]
 
 @parameters
-
 	== Reduction Method == 
-	Method: 
-		Vertex Order: 
-			Delete every Nth edge of a model 
+	Method:
+		#id: method
+		The method used to identify edges for collapse.
 		
-		Longest Edge: 
-			Iteratively remove the longest edge in the mesh until there are only quads left
+		Vertex Order:
+			Collapses every Nth diagonal edge based on vertex ordering.
+		
+		Longest Edge:
+			Iteratively collapses the longest edges until only quads remain.
 	
 	Edge to Collapse:
-		While in Vertex Order Mode this selects which edge of the triangle to collapse, 1st, 2nd or 3rd
+		#id: edgetocollapse
+		Specifies which edge of each triangle is collapsed when *Method* is set to `Vertex Order`. Options correspond to the 1st, 2nd, or 3rd edge in vertex order.
 
-	Protect Silhouette: 
-		Avoid deletion of edges that break the silhouette
+	Protect Silhouette:
+		#id: protectsilhouette
+		Prevents collapsing edges that would alter the mesh silhouette.
 	
-	Normal Angle: 
-		When Protect Silhouette is on, this determines the angle between 2 faces to break in. 
+	Normal Angle:
+		#id: normalangle
+		The angle between adjacent polygons used to detect silhouette-breaking edges when *Protect Silhouette* is turned on.
 
 	== Refine Method == 
-	Refine Method: 
+	Refine Method:
+		#id: refinemethod
+		The method used to resolve N-gons created by edge removal.
+
 		PolyFill: 
-			Resolve NGons by using the PolyFill Quadrilaterals option. 
+			Fills N-gons using the PolyFill quadrilateral generation method.
 					
 		Iterative Divide: 
-			Iterative slice the NGons until they are all quads or tris. 
+			Iteratively divides N-gons until only quads or triangles remain.
 			
 	Fallback Fill Mode: 
-		When in PolyFill mode, how to resolve cases where the Quadrilaterals option fails 
+		#id: fillmode
+		Fallback strategy used when PolyFill quadrilateral generation fails.
 	
 	Edge to Dissolve:
-		When in Iterative Divide mode, how to determine which edge to be divided
-	
-		
+		#id: edgemethod
+		Determines which edges are dissolved when *Refine Method* is set to `Iterative Divide`.

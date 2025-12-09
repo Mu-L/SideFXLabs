@@ -29,7 +29,7 @@
             }
         }
         parm {
-            name    "edge_to_collapse"
+            name    "edgetocollapse"
             label   "Edge to Collapse"
             type    integer
             default { "0" }
@@ -37,17 +37,17 @@
             range   { 0 2 }
         }
         parm {
-            name    "protect_silhouette"
+            name    "protectsilhouette"
             label   "Protect Silhouette"
             type    toggle
             default { "0" }
         }
         parm {
-            name    "normal_angle"
+            name    "normalangle"
             label   "Normal Angle"
             type    float
             default { "35" }
-            hidewhen "{ protect_silhouette != 1 }"
+            hidewhen "{ protectsilhouette != 1 }"
             range   { 0 10 }
         }
     }
@@ -57,7 +57,7 @@
         label   "Refine Method"
 
         parm {
-            name    "refine_method"
+            name    "refinemethod"
             label   "Refine Method"
             type    ordinal
             default { "0" }
@@ -72,7 +72,7 @@
             label   "Fallback Fill Mode"
             type    ordinal
             default { "tris" }
-            hidewhen "{ refine_method != 0 }"
+            hidewhen "{ refinemethod != 0 }"
             menu {
                 "none"      "Single Polygon"
                 "tris"      "Triangles"
@@ -84,11 +84,11 @@
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "edge_method"
+            name    "edgemethod"
             label   "Edge to Dissolve"
             type    ordinal
             default { "0" }
-            hidewhen "{ refine_method != 1 }"
+            hidewhen "{ refinemethod != 1 }"
             menu {
                 "0" "Smallest Edge"
                 "1" "Longest Edge"
