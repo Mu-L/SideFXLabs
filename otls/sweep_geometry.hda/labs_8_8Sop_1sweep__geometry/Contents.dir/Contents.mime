@@ -31,10 +31,10 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position 3.5 1.85
+comment "Replaced by Sweep SOP. To be removed in Houdini 23.0."
+position -4.07256 -1.25739
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -77,7 +81,7 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0 0 0 ";
 	comment := "INPUT CLEANUP";
-	height := 2.6999999880790719;
+	height := 2.699999988079072;
 	minimized := 0;
 	width := 6;
 	x_position := 19;
@@ -127,7 +131,7 @@ Content-Type: text/plain
 	minimized := 0;
 	width := 6.6500000059604645;
 	x_position := 17.349999994039536;
-	y_position := -7.0000000000000009;
+	y_position := -7.000000000000001;
 }
 {
   create -1
@@ -169,7 +173,7 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.306 0.306 0.306 ";
 	comment := "PREPARE CURVE";
-	height := 34.700000000000003;
+	height := 34.7;
 	minimized := 0;
 	width := 15;
 	x_position := 15;
@@ -192,7 +196,7 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.71 0.518 0.004 ";
 	comment := "";
-	height := 1.6999999880790719;
+	height := 1.699999988079072;
 	minimized := 0;
 	owner := __netbox6;
 	width := 10;
@@ -216,12 +220,12 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0 0 0 ";
 	comment := "REVERSE NORMALS IF FACING DOWN";
-	height := 5.0388999998569481;
+	height := 5.038899999856948;
 	minimized := 0;
 	owner := __netbox6;
 	width := 6;
 	x_position := 19;
-	y_position := 6.6610999882221229;
+	y_position := 6.661099988222123;
 }
 {
   create -1
@@ -730,6 +734,12 @@ Content-Type: text/plain
         label   "Attributes to Create"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/bump_the_mesh_back_out.parm"
@@ -750,6 +760,7 @@ clear	[ 0	locks=0 ]	(	0	)
 vexsnippet	[ 0	locks=0 ]	(	""	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_exportlist	[ 0	locks=0 ]	(	*	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 vop_compiler	[ 0	locks=0 ]	(	"vcc -q $VOP_INCLUDEPATH -o $VOP_OBJECTFILE -e $VOP_ERRORFILE $VOP_SOURCEFILE"	)
 vop_forcecompile	[ 0	locks=0 ]	(	0	)
 vex_cwdpath	[ 0	locks=0 ]	(	""	)
@@ -1017,6 +1028,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1333,6 +1346,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1435,6 +1450,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1463,80 +1480,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/remove_overlaps.init"
-Content-Type: text/plain
-
-type = clean
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/remove_overlaps.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -8.5 -21.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	merge1 3 1 "input1"
-}
-inputs
-{
-0 	merge1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author MAINGEAR@DESKTOP-P98C1VA
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/remove_overlaps.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-fusepts	[ 0	locks=0 ]	(	"off"	)
-deldegengeo	[ 0	locks=0 ]	(	"on"	)
-orientpoly	[ 0	locks=0 ]	(	"off"	)
-reversewinding	[ 0	locks=0 ]	(	"off"	)
-fixoverlap	[ 0	locks=0 ]	(	"on"	)
-deleteoverlap	[ 0	locks=0 ]	(	"on"	)
-delunusedpts	[ 0	locks=0 ]	(	"on"	)
-dodelattribs	[ 0	locks=0 ]	(	"off"	)
-delattribs	[ 0	locks=0 ]	(	*	)
-dodelgroups	[ 0	locks=0 ]	(	"off"	)
-delgroups	[ 0	locks=0 ]	(	*	)
-delnans	[ 0	locks=0 ]	(	"on"	)
-make_manifold	[ 0	locks=0 ]	(	"off"	)
-delete_small	[ 0	locks=0 ]	(	"on"	)
-prim_count	[ 0	locks=0 ]	(	3	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/remove_overlaps.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
 	}
 }
 
@@ -2007,6 +1950,12 @@ Content-Type: text/plain
         label   "Attributes to Create"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/bump_the_mesh_back_out3.parm"
@@ -2027,6 +1976,7 @@ clear	[ 0	locks=0 ]	(	0	)
 vexsnippet	[ 0	locks=0 ]	(	""	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_exportlist	[ 0	locks=0 ]	(	*	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 vop_compiler	[ 0	locks=0 ]	(	"vcc -q $VOP_INCLUDEPATH -o $VOP_OBJECTFILE -e $VOP_ERRORFILE $VOP_SOURCEFILE"	)
 vop_forcecompile	[ 0	locks=0 ]	(	0	)
 vex_cwdpath	[ 0	locks=0 ]	(	""	)
@@ -2294,6 +2244,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2610,6 +2562,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2712,6 +2666,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3210,6 +3166,12 @@ Content-Type: text/plain
         label   "Attributes to Create"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/bump_the_mesh_back_out4.parm"
@@ -3230,6 +3192,7 @@ clear	[ 0	locks=0 ]	(	0	)
 vexsnippet	[ 0	locks=0 ]	(	""	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_exportlist	[ 0	locks=0 ]	(	*	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 vop_compiler	[ 0	locks=0 ]	(	"vcc -q $VOP_INCLUDEPATH -o $VOP_OBJECTFILE -e $VOP_ERRORFILE $VOP_SOURCEFILE"	)
 vop_forcecompile	[ 0	locks=0 ]	(	0	)
 vex_cwdpath	[ 0	locks=0 ]	(	""	)
@@ -3497,6 +3460,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3813,6 +3778,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -3915,6 +3882,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4077,6 +4046,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@point = @ptnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4236,6 +4206,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4317,6 +4288,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4432,6 +4404,7 @@ append(f[]@blendweights, uvw.z);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4539,6 +4512,7 @@ if(perfectfound >= 0)
     //@P = avgpos/found;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4618,33 +4592,43 @@ method	[ 0	locks=0 ]	(	"minimum"	)
 dirmethod	[ 0	locks=0 ]	(	"vector"	)
 dir	[ 0	locks=0 ]	(	0	0	-1	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"on"	)
-dotrans	[ 0	locks=0 ]	(	"off"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"on"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"off"	)
+showguide	[ 0	locks=0 ]	(	"on"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	-1	)
 maxraydistcheck	[ 0	locks=0 ]	(	"off"	)
 maxraydist	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"on"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"on"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"on"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	""	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5247,6 +5231,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	point	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"blendverts blendweights"	)
@@ -5255,6 +5240,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5434,6 +5420,7 @@ pointattribs	[ 0	locks=0 ]	(	[ pointattribs	* ] 	)
 vertattribs	[ 0	locks=0 ]	(	[ vertattribs	"" ] 	)
 primattribs	[ 0	locks=0 ]	(	[ primattribs	"" ] 	)
 detailattribs	[ 0	locks=0 ]	(	[ detailattribs	"" ] 	)
+matchgroups	[ 0	locks=0 ]	(	"on"	)
 computeweights	[ 0	locks=0 ]	(	"off"	)
 computenumberstype	[ 0	locks=0 ]	(	"numbertypevertex"	)
 computednumbersattrib	[ 0	locks=0 ]	(	sourcevtxnums	)
@@ -5665,6 +5652,7 @@ if (attrib_class == 'vertex' and not geo.findVertexAttrib(attrib_name)) or \\
    (attrib_class == 'point' and not geo.findPointAttrib(attrib_name)):
     raise hou.NodeError('Specified UV attribute not found on Input %s.' % digit)
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5725,6 +5713,7 @@ Content-Type: text/plain
 {
 version 0.8
 python	[ 0	locks=0 ]	(	`chs(\"../error1/python\")`	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6484,7 +6473,7 @@ label0	[ 0	locks=0 ]	(	"Warning: Group Is NOT Filtered by Geometry Type"	)
 negate	[ 0	locks=0 ]	(	"dele"	)
 entity	[ 0	locks=0 ]	(	"point"	)
 geotype	[ 0	locks=0 ]	(	"all"	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
 affectnumber	[ 0	locks=0 ]	(	"on"	)
 groupop	[ 0	locks=0 ]	(	"filter"	)
 filter	[ 8	locks=0 ]	(	[ filter	1 ] 	)
@@ -6504,6 +6493,11 @@ degenerate	[ 0	locks=0 ]	(	"off"	)
 zaf	[ 0	locks=0 ]	(	"off"	)
 doopen	[ 0	locks=0 ]	(	"off"	)
 tol	[ 0	locks=0 ]	(	0.001	)
+userandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 removegrp	[ 0	locks=0 ]	(	"on"	)
 keeppoints	[ 0	locks=0 ]	(	"off"	)
 }
@@ -6790,6 +6784,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	uv	)
@@ -6798,6 +6793,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6891,6 +6887,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -7077,7 +7074,7 @@ snappointpos	[ 0	locks=0 ]	(	"on"	)
 snappointattribs	[ 0	locks=0 ]	(	"off"	)
 pointattribnames	[ 0	locks=0 ]	(	""	)
 gridtype	[ 0	locks=0 ]	(	"spacing"	)
-gridspacing	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+gridspacing	[ 0	locks=0 ]	(	0.1	0.1	0.1	)
 gridlines	[ 0	locks=0 ]	(	10	10	10	)
 gridpow2	[ 0	locks=0 ]	(	3	3	3	)
 gridoffset	[ 0	locks=0 ]	(	0	0	0	)
@@ -7324,6 +7321,83 @@ Content-Type: text/plain
 	"nodeshape":{
 		"type":"string",
 		"value":"circle"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_overlaps.init"
+Content-Type: text/plain
+
+type = clean
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_overlaps.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -8.5 -21.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	merge1 3 1 "input1"
+}
+inputs
+{
+0 	merge1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author MAINGEAR@DESKTOP-P98C1VA
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_overlaps.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+fusepts	[ 0	locks=0 ]	(	"off"	)
+fusedist	[ 0	locks=0 ]	(	0.001	)
+deldegengeo	[ 0	locks=0 ]	(	"on"	)
+degentol	[ 0	locks=0 ]	(	0.001	)
+removeunusedgrp	[ 0	locks=0 ]	(	"on"	)
+orientpoly	[ 0	locks=0 ]	(	"off"	)
+reversewinding	[ 0	locks=0 ]	(	"off"	)
+fixoverlap	[ 0	locks=0 ]	(	"on"	)
+deleteoverlap	[ 0	locks=0 ]	(	"on"	)
+delunusedpts	[ 0	locks=0 ]	(	"on"	)
+dodelattribs	[ 0	locks=0 ]	(	"off"	)
+delattribs	[ 0	locks=0 ]	(	*	)
+dodelgroups	[ 0	locks=0 ]	(	"off"	)
+delgroups	[ 0	locks=0 ]	(	*	)
+delnans	[ 0	locks=0 ]	(	"on"	)
+make_manifold	[ 0	locks=0 ]	(	"off"	)
+delete_small	[ 0	locks=0 ]	(	"on"	)
+prim_count	[ 0	locks=0 ]	(	3	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/remove_overlaps.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
 	}
 }
 
@@ -7805,14 +7879,23 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+arclen	[ 0	locks=0 ]	(	"off"	)
 firstu	[ 0	locks=0 ]	(	"on"	)
 domainu1	[ 0	locks=0 ]	(	0	)
+usedomainu1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu1attrib	[ 0	locks=0 ]	(	""	)
 secondu	[ 0	locks=0 ]	(	"on"	)
 domainu2	[ 8	locks=0 ]	(	[ domainu2	0.75 ] 	)
+usedomainu2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu2attrib	[ 0	locks=0 ]	(	""	)
 firstv	[ 0	locks=0 ]	(	"off"	)
 domainv1	[ 0	locks=0 ]	(	0.25	)
+usedomainv1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv1attrib	[ 0	locks=0 ]	(	""	)
 secondv	[ 0	locks=0 ]	(	"off"	)
 domainv2	[ 8	locks=0 ]	(	0.75	)
+usedomainv2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv2attrib	[ 0	locks=0 ]	(	""	)
 onlybreakpoints	[ 0	locks=0 ]	(	"off"	"off"	)
 divsu	[ 0	locks=0 ]	(	2	)
 divsv	[ 0	locks=0 ]	(	2	)
@@ -8186,6 +8269,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@point = @ptnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8345,6 +8429,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8426,6 +8511,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8541,6 +8627,7 @@ append(f[]@blendweights, uvw.z);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8648,6 +8735,7 @@ if(perfectfound >= 0)
     //@P = avgpos/found;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8727,33 +8815,43 @@ method	[ 0	locks=0 ]	(	"minimum"	)
 dirmethod	[ 0	locks=0 ]	(	"vector"	)
 dir	[ 0	locks=0 ]	(	0	0	-1	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"on"	)
-dotrans	[ 0	locks=0 ]	(	"off"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"on"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"off"	)
+showguide	[ 0	locks=0 ]	(	"on"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	-1	)
 maxraydistcheck	[ 0	locks=0 ]	(	"off"	)
 maxraydist	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"on"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"on"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"on"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	""	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9356,6 +9454,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	point	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"blendverts blendweights"	)
@@ -9364,6 +9463,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9543,6 +9643,7 @@ pointattribs	[ 0	locks=0 ]	(	[ pointattribs	* ] 	)
 vertattribs	[ 0	locks=0 ]	(	[ vertattribs	"" ] 	)
 primattribs	[ 0	locks=0 ]	(	[ primattribs	"" ] 	)
 detailattribs	[ 0	locks=0 ]	(	[ detailattribs	"" ] 	)
+matchgroups	[ 0	locks=0 ]	(	"on"	)
 computeweights	[ 0	locks=0 ]	(	"off"	)
 computenumberstype	[ 0	locks=0 ]	(	"numbertypevertex"	)
 computednumbersattrib	[ 0	locks=0 ]	(	sourcevtxnums	)
@@ -9774,6 +9875,7 @@ if (attrib_class == 'vertex' and not geo.findVertexAttrib(attrib_name)) or \\
    (attrib_class == 'point' and not geo.findPointAttrib(attrib_name)):
     raise hou.NodeError('Specified UV attribute not found on Input %s.' % digit)
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -9834,6 +9936,7 @@ Content-Type: text/plain
 {
 version 0.8
 python	[ 0	locks=0 ]	(	`chs(\"../error1/python\")`	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -10385,14 +10488,23 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+arclen	[ 0	locks=0 ]	(	"off"	)
 firstu	[ 0	locks=0 ]	(	"on"	)
 domainu1	[ 8	locks=0 ]	(	[ domainu1	0.25 ] 	)
+usedomainu1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu1attrib	[ 0	locks=0 ]	(	""	)
 secondu	[ 0	locks=0 ]	(	"on"	)
 domainu2	[ 8	locks=0 ]	(	[ domainu2	0.75 ] 	)
+usedomainu2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu2attrib	[ 0	locks=0 ]	(	""	)
 firstv	[ 0	locks=0 ]	(	"off"	)
 domainv1	[ 8	locks=0 ]	(	0.25	)
+usedomainv1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv1attrib	[ 0	locks=0 ]	(	""	)
 secondv	[ 0	locks=0 ]	(	"off"	)
 domainv2	[ 0	locks=0 ]	(	0.75	)
+usedomainv2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv2attrib	[ 0	locks=0 ]	(	""	)
 onlybreakpoints	[ 0	locks=0 ]	(	"off"	"off"	)
 divsu	[ 0	locks=0 ]	(	2	)
 divsv	[ 0	locks=0 ]	(	2	)
@@ -10483,14 +10595,23 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+arclen	[ 0	locks=0 ]	(	"off"	)
 firstu	[ 0	locks=0 ]	(	"on"	)
 domainu1	[ 8	locks=0 ]	(	[ domainu1	0.25 ] 	)
+usedomainu1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu1attrib	[ 0	locks=0 ]	(	""	)
 secondu	[ 0	locks=0 ]	(	"on"	)
 domainu2	[ 8	locks=0 ]	(	1	)
+usedomainu2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu2attrib	[ 0	locks=0 ]	(	""	)
 firstv	[ 0	locks=0 ]	(	"off"	)
 domainv1	[ 8	locks=0 ]	(	0.25	)
+usedomainv1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv1attrib	[ 0	locks=0 ]	(	""	)
 secondv	[ 0	locks=0 ]	(	"off"	)
 domainv2	[ 0	locks=0 ]	(	1	)
+usedomainv2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv2attrib	[ 0	locks=0 ]	(	""	)
 onlybreakpoints	[ 0	locks=0 ]	(	"off"	"off"	)
 divsu	[ 0	locks=0 ]	(	2	)
 divsv	[ 0	locks=0 ]	(	2	)
@@ -11256,6 +11377,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	uv	)
@@ -11264,6 +11386,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11330,6 +11453,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	uv	)
@@ -11338,6 +11462,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11418,7 +11543,7 @@ edge	[ 0	locks=0 ]	(	"off"	)
 method	[ 0	locks=0 ]	(	"dist"	)
 measure	[ 0	locks=0 ]	(	"arc"	)
 dolength	[ 0	locks=0 ]	(	"on"	)
-length	[ 8	locks=0 ]	(	[ length	0.10000000000000001 ] 	)
+length	[ 8	locks=0 ]	(	[ length	0.1 ] 	)
 dosegs	[ 0	locks=0 ]	(	"off"	)
 segs	[ 0	locks=0 ]	(	10	)
 useattribs	[ 0	locks=0 ]	(	"off"	)
@@ -12178,6 +12303,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	2	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -12501,6 +12627,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 8	locks=0 ]	(	[ value1v1	0 ] 	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -13691,8 +13818,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -13850,6 +13977,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/pointwrangle1.chn"
@@ -13886,6 +14019,7 @@ rotate(m, twist, v@up);
 @N *= m;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14089,6 +14223,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@point = @ptnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14248,6 +14383,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14329,6 +14465,7 @@ vector uv = point(0, attribname, @ptnum);
 @P = uv * {1,1,0};"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14444,6 +14581,7 @@ append(f[]@blendweights, uvw.z);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14551,6 +14689,7 @@ if(perfectfound >= 0)
     //@P = avgpos/found;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14630,33 +14769,43 @@ method	[ 0	locks=0 ]	(	"minimum"	)
 dirmethod	[ 0	locks=0 ]	(	"vector"	)
 dir	[ 0	locks=0 ]	(	0	0	-1	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"on"	)
-dotrans	[ 0	locks=0 ]	(	"off"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"on"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"off"	)
+showguide	[ 0	locks=0 ]	(	"on"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	-1	)
 maxraydistcheck	[ 0	locks=0 ]	(	"off"	)
 maxraydist	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"on"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"on"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"on"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	""	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15259,6 +15408,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	point	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"blendverts blendweights"	)
@@ -15267,6 +15417,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15446,6 +15597,7 @@ pointattribs	[ 0	locks=0 ]	(	[ pointattribs	* ] 	)
 vertattribs	[ 0	locks=0 ]	(	[ vertattribs	"" ] 	)
 primattribs	[ 0	locks=0 ]	(	[ primattribs	"" ] 	)
 detailattribs	[ 0	locks=0 ]	(	[ detailattribs	"" ] 	)
+matchgroups	[ 0	locks=0 ]	(	"on"	)
 computeweights	[ 0	locks=0 ]	(	"off"	)
 computenumberstype	[ 0	locks=0 ]	(	"numbertypevertex"	)
 computednumbersattrib	[ 0	locks=0 ]	(	sourcevtxnums	)
@@ -15677,6 +15829,7 @@ if (attrib_class == 'vertex' and not geo.findVertexAttrib(attrib_name)) or \\
    (attrib_class == 'point' and not geo.findPointAttrib(attrib_name)):
     raise hou.NodeError('Specified UV attribute not found on Input %s.' % digit)
 "	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15737,6 +15890,7 @@ Content-Type: text/plain
 {
 version 0.8
 python	[ 0	locks=0 ]	(	`chs(\"../error1/python\")`	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16061,14 +16215,23 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+arclen	[ 0	locks=0 ]	(	"off"	)
 firstu	[ 0	locks=0 ]	(	"on"	)
 domainu1	[ 8	locks=0 ]	(	[ domainu1	0.25 ] 	)
+usedomainu1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu1attrib	[ 0	locks=0 ]	(	""	)
 secondu	[ 0	locks=0 ]	(	"on"	)
 domainu2	[ 8	locks=0 ]	(	[ domainu2	0.75 ] 	)
+usedomainu2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainu2attrib	[ 0	locks=0 ]	(	""	)
 firstv	[ 0	locks=0 ]	(	"off"	)
 domainv1	[ 0	locks=0 ]	(	0.25	)
+usedomainv1attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv1attrib	[ 0	locks=0 ]	(	""	)
 secondv	[ 0	locks=0 ]	(	"off"	)
 domainv2	[ 0	locks=0 ]	(	0.75	)
+usedomainv2attrib	[ 0	locks=0 ]	(	"constant"	)
+domainv2attrib	[ 0	locks=0 ]	(	""	)
 onlybreakpoints	[ 0	locks=0 ]	(	"off"	"off"	)
 divsu	[ 0	locks=0 ]	(	2	)
 divsv	[ 0	locks=0 ]	(	2	)
@@ -16165,7 +16328,7 @@ edge	[ 0	locks=0 ]	(	"off"	)
 method	[ 0	locks=0 ]	(	"dist"	)
 measure	[ 0	locks=0 ]	(	"arc"	)
 dolength	[ 0	locks=0 ]	(	"on"	)
-length	[ 8	locks=0 ]	(	[ length	0.10000000000000001 ] 	)
+length	[ 8	locks=0 ]	(	[ length	0.1 ] 	)
 dosegs	[ 0	locks=0 ]	(	"off"	)
 segs	[ 0	locks=0 ]	(	10	)
 useattribs	[ 0	locks=0 ]	(	"off"	)
