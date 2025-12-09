@@ -41,7 +41,7 @@
             type    float
             default { "0.1" }
             disablewhen "{ extractlargest == 1 }"
-            range   { 0 100 }
+            range   { 0 10 }
         }
         parm {
             name    "negate"
@@ -58,37 +58,30 @@
         grouptag { "group_type" "simple" }
 
         parm {
-            name    "calculatepieceattr"
-            label   "Calculate Piece Attribute"
-            type    toggle
-            default { "1" }
-        }
-        parm {
             name    "pieceattr"
             label   "Piece Attribute"
             type    string
             default { "class" }
-            disablewhen "{ calculatepieceattr == 0 }"
+        }
+        parm {
+            name    "groupnodelete"
+            label   "Group instead of Delete"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "groupname"
+            label   "Group Name"
+            type    string
+            default { "selection" }
+            disablewhen "{ groupnodelete == 0 }"
+            menureplace {
+                [ "opmenu -l -a group1 groupname" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
         }
     }
 
-    parm {
-        name    "groupnodelete"
-        label   "Group instead of Delete"
-        type    toggle
-        default { "0" }
-        parmtag { "script_callback_language" "python" }
-    }
-    parm {
-        name    "groupname"
-        label   "Group Name"
-        type    string
-        default { "selection" }
-        disablewhen "{ groupnodelete == 0 }"
-        menureplace {
-            [ "opmenu -l -a group1 groupname" ]
-        }
-        parmtag { "autoscope" "0000000000000000" }
-        parmtag { "script_callback_language" "python" }
-    }
 }

@@ -32,17 +32,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 89.5 0.85
-connectornextid 0
+position -5.02297 -5.65254
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
+0 "output1"
 }
 inputsNamed3
 {
+1 	attribwrangle1 1 1 "input1"
 }
 inputs
 {
+0 	attribwrangle1 0 1
 }
 stat
 {
@@ -76,22 +79,22 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 1
-0 -0.4999999888241291 7.883299995213747 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -0.4999999753021635 8.8832999980777494 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/connectivity1.init"
+Content-Disposition: attachment; filename="hdaroot/connectivity.init"
 Content-Type: text/plain
 
 type = connectivity
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/connectivity1.def"
+Content-Disposition: attachment; filename="hdaroot/connectivity.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 6.85
+position 1.5 7.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -119,7 +122,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/connectivity1.parm"
+Content-Disposition: attachment; filename="hdaroot/connectivity.parm"
 Content-Type: text/plain
 
 {
@@ -138,7 +141,7 @@ uvattrib	[ 0	locks=0 ]	(	uv	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/connectivity1.userdata"
+Content-Disposition: attachment; filename="hdaroot/connectivity.userdata"
 Content-Type: text/plain
 
 {
@@ -161,7 +164,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.4984 -0.15355
+position -0.4984 0.84645
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -238,7 +241,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.4984 3.84715
+position -0.4984 4.84715
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -302,7 +305,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.50345 1.85
+position -0.50345 2.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -370,7 +373,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.50345 0.85
+position -0.50345 1.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -438,7 +441,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -7.15
+position -2.5 -6.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -503,7 +506,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -11.15
+position -0.5 -10.15
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -562,7 +565,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 2.85
+position -0.5 3.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -673,94 +676,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/calculate_piece_attribute.init"
-Content-Type: text/plain
-
-type = switch
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/calculate_piece_attribute.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -0.5 5.8498
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-2 	(0) "" 1 "input1"
-0 	connectivity1 1 1 "input2"
-}
-inputs
-{
-0 	(0) 0 1
-1 	connectivity1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author prisms@threadripper1
-  access 0777
-}
-color UT_Color RGB 0.8 1 0.7 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/calculate_piece_attribute.chn"
-Content-Type: text/plain
-
-{
-    channel input {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../calculatepieceattr\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/calculate_piece_attribute.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-input	[ 8	locks=0 ]	(	[ input	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/calculate_piece_attribute.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote3.init"
+Content-Disposition: attachment; filename="hdaroot/promote_attribute.init"
 Content-Type: text/plain
 
 type = attribpromote
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote3.def"
+Content-Disposition: attachment; filename="hdaroot/promote_attribute.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.49655 -2.15
+position 1.49655 -1.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -788,7 +716,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote3.parm"
+Content-Disposition: attachment; filename="hdaroot/promote_attribute.parm"
 Content-Type: text/plain
 
 {
@@ -805,7 +733,7 @@ deletein	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribpromote3.userdata"
+Content-Disposition: attachment; filename="hdaroot/promote_attribute.userdata"
 Content-Type: text/plain
 
 {
@@ -828,7 +756,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -4.1502
+position -0.5 -3.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -837,13 +765,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	group_selection 1 1 "input1"
-2 	group2 1 1 "input2"
+0 	(__dot1) "" 1 "input1"
+2 	group_selection_measured 1 1 "input2"
 }
 inputs
 {
-0 	group_selection 0 1
-1 	group2 0 1
+0 	(__dot1) 0 1
+1 	group_selection_measured 0 1
 }
 stat
 {
@@ -903,7 +831,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.50345 -10.15
+position -0.50345 -9.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -944,7 +872,7 @@ dovtxdel	[ 0	locks=0 ]	(	"off"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
 doprimdel	[ 0	locks=0 ]	(	"on"	)
 primdel	[ 0	locks=0 ]	(	_dsp_*	)
-dodtldel	[ 0	locks=0 ]	(	"on"	)
+dodtldel	[ 0	locks=0 ]	(	"off"	)
 dtldel	[ 0	locks=0 ]	(	_dsp_*	)
 updatevar	[ 0	locks=0 ]	(	"on"	)
 }
@@ -973,7 +901,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.4984 -1.15355
+position -0.4984 -0.15355
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1038,7 +966,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.4984 4.84715
+position -0.4984 5.84715
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1047,11 +975,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	calculate_piece_attribute 1 1 "input1"
+1 	use_custom_piece_attribute 2 1 "input1"
 }
 inputs
 {
-0 	calculate_piece_attribute 0 1
+0 	use_custom_piece_attribute 0 1
 }
 stat
 {
@@ -1101,7 +1029,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -2.15
+position -2.5 -1.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1209,19 +1137,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group2.init"
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.init"
 Content-Type: text/plain
 
 type = groupcreate
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group2.def"
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 -3.15
+position 1.5 -2.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1230,11 +1158,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	attribpromote3 1 1 "input1"
+0 	promote_attribute 1 1 "input1"
 }
 inputs
 {
-0 	attribpromote3 0 1
+0 	promote_attribute 0 1
 }
 stat
 {
@@ -1249,7 +1177,326 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group2.chn"
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "groupname"
+        baseparm
+        label   "Group Name"
+        export  all
+    }
+    parm {
+        name    "grouptype"
+        baseparm
+        label   "Group Type"
+        export  all
+    }
+    parm {
+        name    "mergeop"
+        baseparm
+        label   "Initial Merge"
+        export  none
+    }
+    groupsimple {
+        name    "folder1"
+        label   "Base Group"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "groupbase"
+            baseparm
+            label   "Enable"
+            export  none
+        }
+        parm {
+            name    "basegroup"
+            baseparm
+            label   "Base Group"
+            export  none
+            bindselector ordered_prims_points_edges_verts "Group Geometry"
+                "Select the points/primitives/edges/vertices to group and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "ordered"
+            baseparm
+            label   "Create Ordered"
+            export  none
+        }
+        parm {
+            name    "geotype"
+            baseparm
+            label   "Geometry Filter"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "switcher7"
+        label   "Keep in Bounding Regions"
+        grouptag { "sidefx::switcher" "switcher3" }
+
+        parm {
+            name    "groupbounding"
+            baseparm
+            label   "Enable"
+            export  none
+        }
+        parm {
+            name    "boundtype"
+            baseparm
+            label   "Bounding Type"
+            export  none
+        }
+        parm {
+            name    "size"
+            baseparm
+            label   "Size"
+            export  none
+        }
+        parm {
+            name    "t"
+            baseparm
+            label   "Center"
+            export  none
+        }
+        parm {
+            name    "initbounds"
+            baseparm
+            label   "Initialize to Input Bounds"
+            export  none
+        }
+        parm {
+            name    "includenotwhollycontained"
+            baseparm
+            label   "Include Partially Contained Entities"
+            export  none
+        }
+        parm {
+            name    "iso"
+            baseparm
+            label   "Iso Surface"
+            export  none
+        }
+        parm {
+            name    "invertvolume"
+            baseparm
+            label   "Invert"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "switcher8"
+        label   "Keep by Normals"
+        grouptag { "sidefx::switcher" "switcher4" }
+
+        parm {
+            name    "groupnormal"
+            baseparm
+            label   "Enable"
+            export  none
+        }
+        parm {
+            name    "camerapath"
+            baseparm
+            label   "Backface from"
+            export  none
+        }
+        parm {
+            name    "nonplanar"
+            baseparm
+            label   "Add Non-Planar Polygons"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "nonplanartol"
+            baseparm
+            label   "Non-Planar Polygons Tolerance"
+            export  none
+        }
+        parm {
+            name    "dir"
+            baseparm
+            label   "Direction"
+            export  none
+        }
+        parm {
+            name    "angle"
+            baseparm
+            label   "Spread Angle"
+            export  none
+        }
+        parm {
+            name    "oppositenormals"
+            baseparm
+            label   "Include Normals Matching Opposite Direction"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "switcher9"
+        label   "Include by Edges"
+        grouptag { "sidefx::switcher" "switcher5" }
+
+        parm {
+            name    "groupedges"
+            baseparm
+            label   "Enable"
+            export  none
+        }
+        parm {
+            name    "dominedgeangle"
+            baseparm
+            label   "Min Edge Angle"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "minedgeangle"
+            baseparm
+            label   "Min Edge Angle"
+            export  none
+        }
+        parm {
+            name    "domaxedgeangle"
+            baseparm
+            label   "Max Edge Angle"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "maxedgeangle"
+            baseparm
+            label   "Max Edge Angle"
+            export  none
+        }
+        parm {
+            name    "edgeanglebetweenedges"
+            baseparm
+            label   "Edge Angle Uses Angle Between Edges"
+            export  none
+        }
+        parm {
+            name    "dominedgelen"
+            baseparm
+            label   "Min Edge Length"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "minedgelen"
+            baseparm
+            label   "Min Edge Length"
+            export  none
+        }
+        parm {
+            name    "domaxedgelen"
+            baseparm
+            label   "Max Edge Length"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "maxedgelen"
+            baseparm
+            label   "Max Edge Length"
+            export  none
+        }
+        parm {
+            name    "dodepth"
+            baseparm
+            label   "Edge Depth"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "edgestep"
+            baseparm
+            label   "Edge Depth"
+            export  none
+        }
+        parm {
+            name    "edgeptgrp"
+            baseparm
+            label   "Point Group"
+            export  none
+        }
+        parm {
+            name    "unshared"
+            baseparm
+            label   "Unshared Edges"
+            export  none
+        }
+        parm {
+            name    "boundarygroups"
+            baseparm
+            label   "Create Boundary Groups"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "switcher10"
+        label   "Keep by Random Chance"
+        grouptag { "sidefx::switcher" "switcher6" }
+
+        parm {
+            name    "grouprandom"
+            baseparm
+            label   "Enable"
+            export  none
+        }
+        parm {
+            name    "globalseed"
+            baseparm
+            label   "Global Seed"
+            export  none
+        }
+        parm {
+            name    "useseedattrib"
+            baseparm
+            label   "Use Seed Attribute"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "seedattrib"
+            baseparm
+            label   "Seed Attribute"
+            export  none
+        }
+        parm {
+            name    "percent"
+            baseparm
+            label   "Percent"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.chn"
 Content-Type: text/plain
 
 {
@@ -1263,7 +1510,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group2.parm"
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.parm"
 Content-Type: text/plain
 
 {
@@ -1273,7 +1520,7 @@ grouptype	[ 0	locks=0 ]	(	"primitive"	)
 mergeop	[ 0	locks=0 ]	(	"replace"	)
 folder0	[ 0	locks=0 ]	(	0	)
 groupbase	[ 0	locks=0 ]	(	"on"	)
-basegroup	[ 0	locks=0 ]	(	"@_dsp_measured_attr<`detail(\"../attribpromote3/\", \"__measuredAttr\", 0)`"	)
+basegroup	[ 0	locks=0 ]	(	"@_dsp_measured_attr<`detail(-1, \"_dsp_measured_attr\", 0)`"	)
 ordered	[ 0	locks=0 ]	(	"off"	)
 geotype	[ 0	locks=0 ]	(	"all"	)
 switcher3	[ 0	locks=0 ]	(	0	)
@@ -1315,10 +1562,16 @@ globalseed	[ 0	locks=0 ]	(	1	)
 useseedattrib	[ 0	locks=0 ]	(	"off"	)
 seedattrib	[ 0	locks=0 ]	(	id	)
 percent	[ 0	locks=0 ]	(	50	)
+folder1	[ 0	locks=0 ]	(	0	)
+switcher7	[ 0	locks=0 ]	(	0	)
+switcher8	[ 0	locks=0 ]	(	0	)
+switcher9	[ 0	locks=0 ]	(	0	)
+switcher10	[ 0	locks=0 ]	(	0	)
+spare_input0	[ 0	locks=0 ]	(	../promote_attribute	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group2.userdata"
+Content-Disposition: attachment; filename="hdaroot/group_selection_measured.userdata"
 Content-Type: text/plain
 
 {
@@ -1341,7 +1594,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -9.1502
+position -0.5 -8.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1416,7 +1669,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -8.15
+position -2.5 -7.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1483,7 +1736,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -6.1502
+position -0.5 -5.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1558,7 +1811,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 -5.15
+position 1.5 -4.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight on unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1608,11 +1861,104 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/use_custom_piece_attribute.init"
+Content-Type: text/plain
+
+type = switchif
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/use_custom_piece_attribute.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.5 6.8498
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+1 	connectivity 1 1 "input2"
+}
+inputs
+{
+0 	(0) 0 1
+1 	connectivity 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/use_custom_piece_attribute.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+mergecondition	[ 0	locks=0 ]	(	"all"	)
+testinput	[ 0	locks=0 ]	(	"first"	)
+tests	[ 0	locks=0 ]	(	1	)
+enable1	[ 0	locks=0 ]	(	"on"	)
+type1	[ 0	locks=0 ]	(	"attrib"	)
+expr1	[ 0	locks=0 ]	(	1	)
+attribtype1	[ 0	locks=0 ]	(	"none"	)
+attribowner1	[ 0	locks=0 ]	(	"prim"	)
+attributes1	[ 0	locks=0 ]	(	`chs(\"../pieceattr\")`	)
+attribvaltype1	[ 0	locks=0 ]	(	"flt"	)
+attribfloatcomp1	[ 0	locks=0 ]	(	"equal"	)
+attribstringcomp1	[ 0	locks=0 ]	(	"equal"	)
+attribval1	[ 0	locks=0 ]	(	0	)
+attribsval1	[ 0	locks=0 ]	(	""	)
+counttype1	[ 0	locks=0 ]	(	"points"	)
+countgroup1	[ 0	locks=0 ]	(	""	)
+countcomp1	[ 0	locks=0 ]	(	"equal"	)
+countval1	[ 0	locks=0 ]	(	0	)
+hasinputtype1	[ 0	locks=0 ]	(	"wired"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/use_custom_piece_attribute.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
+Content-Type: text/plain
+
+{
+	"version":1,
+	"posx":-2,
+	"posy":-2,
+	"pinned":false,
+	"color":"FROMOUTPUT",
+	"input":"group_selection 0 1"
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
 20
-connectivity1
+connectivity
 foreach_end1
 foreach_begin1
 promote_to_detail
@@ -1620,18 +1966,18 @@ promote_to_primitive
 blast1
 output1
 measured_attribute
-calculate_piece_attribute
-attribpromote3
+promote_attribute
 extract_largest
 delete_internal_attributes
 compile_end1
 compile_begin1
 group_selection
-group2
+group_selection_measured
 group_instead_of_delete
 delete_group
 invert_result
 invert_group
+use_custom_piece_attribute
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
