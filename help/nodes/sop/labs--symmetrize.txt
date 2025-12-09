@@ -1,21 +1,26 @@
 = Labs Symmetrize = 
 
-#type: node
-#context: sop
-#internal: labs::symmetrize
-#icon: symmetrize
-#tags: model, gamedev, sidefxlabs
+#type:      node
+#context:   sop
+#internal:  labs::symmetrize
+#icon:      symmetrize
 
 """ Clips and mirrors geometry along an axis. """
 
 The Symmetrize sop allows you to cut and mirror geometry along an axis. This is useful for making pieces symmetrical, or for creating corner pieces from straight geometry like seen in the image below.
 
-[Image: /images/symmetrize.jpg]
+NOTE: 
+    Replaced by Mirror SOP. To be removed in Houdini 23.0.
 
 @parameters
     Mirror Direction:
+        #id: direction
         The direction / axis along which the input geometry will be cut and mirrored.
+
     Mirror Origin:
-	The origin at which the geometry gets cut.
-    Dissolve flat edges:
-	Enabling this will dissolve flat edges in the geometry. This is useful for hard surface models where the cutting plane from this tool has inserted a new edge.
+        #id: origin
+        The origin at which the geometry gets cut.
+
+    Dissolve Flat Edges:
+        #id: dissolve
+        Enabling this will dissolve flat edges in the geometry. This is useful for hard surface models where the cutting plane from this tool has inserted a new edge.

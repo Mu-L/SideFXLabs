@@ -9,12 +9,12 @@
 	""
     }
     bindhandle group vector "Clipping_Direction" input "ownerop('clip1') owneropgroup('group')"
-    bindhandle origin2x vector "Clipping_Direction" tx "ownerop('clip1') owneropgroup('group')"
-    bindhandle origin2y vector "Clipping_Direction" ty "ownerop('clip1') owneropgroup('group')"
-    bindhandle origin2z vector "Clipping_Direction" tz "ownerop('clip1') owneropgroup('group')"
-    bindhandle dir2x vector "Clipping_Direction" vx "ownerop('clip1') owneropgroup('group')"
-    bindhandle dir2y vector "Clipping_Direction" vy "ownerop('clip1') owneropgroup('group')"
-    bindhandle dir2z vector "Clipping_Direction" vz "ownerop('clip1') owneropgroup('group')"
+    bindhandle originx vector "Clipping_Direction" tx "ownerop('clip1') owneropgroup('group')"
+    bindhandle originy vector "Clipping_Direction" ty "ownerop('clip1') owneropgroup('group')"
+    bindhandle originz vector "Clipping_Direction" tz "ownerop('clip1') owneropgroup('group')"
+    bindhandle directionx vector "Clipping_Direction" vx "ownerop('clip1') owneropgroup('group')"
+    bindhandle directiony vector "Clipping_Direction" vy "ownerop('clip1') owneropgroup('group')"
+    bindhandle directionz vector "Clipping_Direction" vz "ownerop('clip1') owneropgroup('group')"
 
     inputlabel	1	Geometry
     inputlabel	2	"Sub-Network Input #2"
@@ -36,7 +36,7 @@
         parmtag { "script_action_icon" "BUTTONS_reselect" }
     }
     parm {
-        name    "dir2"
+        name    "direction"
         label   "Mirror Direction"
         type    direction
         size    3
@@ -45,7 +45,7 @@
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "origin2"
+        name    "origin"
         label   "Mirror Origin"
         type    vector
         size    3
@@ -54,8 +54,8 @@
         parmtag { "autoscope" "0000000000000000" }
     }
     parm {
-        name    "T_Dissolve"
-        label   "Dissolve flat edges"
+        name    "dissolve"
+        label   "Dissolve Flat Edges"
         type    toggle
         default { "0" }
         parmtag { "script_callback_language" "python" }

@@ -322,6 +322,22 @@ node.setName('remove_shared_edges1', True)
 ]]></script>
   </tool>
 
+  <tool name="labs::symmetrize" label="Symmetrize" icon="SOP_mirror">
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Labs/Geometry/Mesh: Convert</toolSubmenu>
+    <script scriptType="python"><![CDATA[
+import soptoolutils
+node = soptoolutils.genericTool(kwargs, 'mirror', exact_node_type=False)
+node.setParms({'operation':1})
+node.setName('symmetrize1', True)
+]]></script>
+  </tool>
+
   <tool name="labs::triangulate" label="Triangulate" icon="SOP_divide">
     <toolMenuContext name="viewer">
       <contextNetType>SOP</contextNetType>
