@@ -1,0 +1,29 @@
+= Labs Split Primitives by Normal = 
+
+#type:      node
+#context:   sop
+#internal:  labs::split_prim_by_normal::1.0
+#icon:      split_prim_by_normal
+
+"""Splits primitives into separate outputs based on their primitive normals."""
+
+The Labs Split Primitives by Normal SOP evaluates the primitive attribute N and isolates primitives whose normals fall within a specified angular range around a given axis and direction.
+
+This is useful for hard-surface modeling, scattering workflows, selective processing, or isolating regions of geometry based on surface orientation.
+
+@parameters
+    Axis:
+        #id: axis
+        The axis used to evaluate the orientation of primitive normals.
+
+    Direction:
+        #id: direction
+        The direction along the specified axis that primitive normals must face to be included in the selection.
+    
+    Spread Angle:
+        #id: spreadangle
+        Primitives whose normals fall within this angle range are selected.
+
+    Invert Selection:
+        #id: negate
+        Inverts the selection produced by the normal test.

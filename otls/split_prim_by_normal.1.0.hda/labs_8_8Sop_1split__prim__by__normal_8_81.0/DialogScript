@@ -1,0 +1,59 @@
+# Dialog script for labs::split_prim_by_normal::1.0 automatically generated
+
+{
+    name	labs::split_prim_by_normal::1.0
+    script	labs::split_prim_by_normal
+    label	"Labs Split Primitives by Normal"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "axis"
+        label   "Axis"
+        type    integer
+        default { "0" }
+        menu {
+            "0" "X"
+            "1" "Y"
+            "2" "Z"
+        }
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "direction"
+        label   "Direction"
+        type    integer
+        default { "0" }
+        menu {
+            "0" "Positive"
+            "1" "Negative"
+            "2" "Both"
+        }
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "spreadangle"
+        label   "Spread Angle"
+        type    angle
+        default { "53" }
+        range   { 0! 180! }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "negate"
+        label   "Invert Selection"
+        type    toggle
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+}
