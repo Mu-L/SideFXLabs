@@ -32,26 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.01222 4.0404
-connectornextid 2
+position 9.5 3.85
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	curve2 0 1 "input1"
 }
 inputs
 {
-0 	curve2 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Mo@SideFX_Mo
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -67,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -2341,6 +2342,7 @@ if(!haspointattrib(0, \"scale\")) @scale = @pscale; //fit(@ptnum, 0, @numpt-1, 0
 @scale = @pscale *@scale;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2517,6 +2519,7 @@ for (int i = 0; i < extra_points; i++){
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2604,7 +2607,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -2616,7 +2624,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -2708,6 +2721,7 @@ for (int i = 2; i < npoints(0); i += 3)
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2800,6 +2814,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -3202,6 +3217,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/tag_primitives.chn"
@@ -3231,6 +3252,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"if(chi(\"prim_tags\") == 1) insert(s[]@tags, 0, itoa(@primnum));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3321,7 +3343,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"attribute"	)
@@ -3333,7 +3360,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	prim_tag_from_json	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -3409,6 +3441,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@prim_tag_from_json = atoi(s[]@tags[0]);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4026,6 +4059,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/orient_and_scale.parm"
@@ -4048,6 +4087,7 @@ vector4 orient_up = quaternion(maketransform(normalize(v@N), {0,1,0}));
 @scale = @scale* chramp(\"ramp_scale\", grd)*chf('global_scale');"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4065,17 +4105,17 @@ orient_up	[ 0	locks=0 ]	(	2	)
 orient_up1pos	[ 0	locks=0 ]	(	0	)
 orient_up1value	[ 0	locks=0 ]	(	1	)
 orient_up1interp	[ 0	locks=0 ]	(	"linear"	)
-orient_up2pos	[ 0	locks=0 ]	(	1	)
-orient_up2value	[ 0	locks=0 ]	(	1	)
-orient_up2interp	[ 0	locks=0 ]	(	"linear"	)
 ramp_scale	[ 0	locks=0 ]	(	2	)
 ramp_scale1pos	[ 0	locks=0 ]	(	0	)
 ramp_scale1value	[ 0	locks=0 ]	(	1	)
 ramp_scale1interp	[ 0	locks=0 ]	(	"linear"	)
+global_scale	[ 0	locks=0 ]	(	1	)
+orient_up2pos	[ 0	locks=0 ]	(	1	)
+orient_up2value	[ 0	locks=0 ]	(	1	)
+orient_up2interp	[ 0	locks=0 ]	(	"linear"	)
 ramp_scale2pos	[ 0	locks=0 ]	(	1	)
 ramp_scale2value	[ 0	locks=0 ]	(	1	)
 ramp_scale2interp	[ 0	locks=0 ]	(	"linear"	)
-global_scale	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4489,6 +4529,7 @@ roll_angle = degrees(roll_angle);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5027,6 +5068,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/extra_roll.parm"
@@ -5043,6 +5090,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@roll += chf(\"addangle\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5217,6 +5265,7 @@ vector rolled_up = qrotate(roll_quat, {0,1,0});
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

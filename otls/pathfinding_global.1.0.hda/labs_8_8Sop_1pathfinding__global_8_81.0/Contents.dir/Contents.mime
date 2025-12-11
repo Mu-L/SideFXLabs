@@ -32,28 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 -8.15
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -3.85337 -3.88801
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-2 "output1"
 }
 inputsNamed3
 {
-0 	settlement_connections 1 1 "input1"
-1 	terrain_analysis 2 1 "input2"
 }
 inputs
 {
-0 	settlement_connections 0 1
-1 	terrain_analysis 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -168,6 +163,9 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+mask	[ 0	locks=0 ]	(	1	)
+enablemaskattrib	[ 0	locks=0 ]	(	"noscaling"	)
+maskattrib	[ 0	locks=0 ]	(	mask	)
 useidattrib	[ 0	locks=0 ]	(	"off"	)
 idattrib	[ 0	locks=0 ]	(	id	)
 scale	[ 8	locks=0 ]	(	[ scale	1 ] 	)
@@ -599,6 +597,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "stopattrib"
+        baseparm
+        label   "Stop Attribute"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/foreach_end4.chn"
@@ -636,6 +640,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	1	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 spare_input0	[ 0	locks=0 ]	(	../blast_points	)
 }
@@ -1465,6 +1470,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@_pfg_ptnumorig = itoa(@ptnum);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1544,33 +1550,43 @@ method	[ 0	locks=0 ]	(	"project"	)
 dirmethod	[ 0	locks=0 ]	(	"vector"	)
 dir	[ 0	locks=0 ]	(	0	-1	0	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"off"	)
-dotrans	[ 0	locks=0 ]	(	"on"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"off"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"on"	)
+showguide	[ 0	locks=0 ]	(	"off"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	0	)
 maxraydistcheck	[ 0	locks=0 ]	(	"off"	)
 maxraydist	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"off"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"off"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"off"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	*	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2292,6 +2308,7 @@ vector nearpos = point(0, \"P\", nearpts[0]);
 f@_pfg_distance = distance(@P, nearpos);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2437,8 +2454,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2596,6 +2613,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/noise_amplitude.chn"
@@ -2628,6 +2651,7 @@ snippet	[ 0	locks=0 ]	(	"float noise_amplitude = chf(\"noise_amplitude\");
 f@_pfg_noise_amplitude = fit(noise_amplitude, 0.0, 1.0, 0.0, @_pfg_distance_min);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2707,8 +2731,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2867,6 +2891,12 @@ Content-Type: text/plain
         range   { 0 10 }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/calculate_cost.chn"
@@ -2910,6 +2940,7 @@ for (int i = 1; i < attributes_num + 1; i++)
 f@_pfg_cost = cost;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2994,6 +3025,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -3355,6 +3387,7 @@ normalattrib	[ 0	locks=0 ]	(	N	)
 connectivityfolder	[ 0	locks=0 ]	(	0	)
 useconnectivityattrib	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib	[ 0	locks=0 ]	(	uv	)
+tol	[ 0	locks=0 ]	(	0	)
 usecolgroup	[ 0	locks=0 ]	(	"off"	)
 colgroup	[ 0	locks=0 ]	(	""	)
 colgrouptype	[ 0	locks=0 ]	(	"auto"	)
@@ -4912,8 +4945,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -5072,6 +5105,12 @@ Content-Type: text/plain
         default { "0" "0" "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/color_settlements2.chn"
@@ -5113,6 +5152,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@Cd = chv(\"color\") * 1000;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
