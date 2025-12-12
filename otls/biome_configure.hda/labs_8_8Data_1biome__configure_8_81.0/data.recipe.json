@@ -32,10 +32,6 @@
           0.73,
           0
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "wirestyle": "rounded"
         }
@@ -57,12 +53,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false,
-          "display": true,
-          "render": true
-        }
+        ]
       },
       "ASPEN": {
         "type": "labs::biome_plant_define::1.2",
@@ -87,10 +78,6 @@
           0.81,
           0.2
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -213,10 +200,6 @@
           0.81,
           0.2
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -327,10 +310,6 @@
           0.81,
           0.2
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -428,10 +407,6 @@
           0.93,
           0
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
           "sidefx::parm_filter_text_pattern": "re",
           "wirestyle": "rounded"
@@ -482,13 +457,9 @@
           0.93,
           0
         ],
-        "flags": {
-          "colordefault": false,
-          "outputfordisplay": true
-        },
         "user_data": {
-          "new_toggle": "1",
-          "old_toggle": "1",
+          "new_toggle": "0",
+          "old_toggle": "0",
           "sidefx::parm_filter_text_pattern": "re",
           "wirestyle": "rounded"
         },
@@ -511,9 +482,6 @@
           0.35,
           0
         ],
-        "flags": {
-          "colordefault": false
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -1230,10 +1198,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "OUT_PLANT_POINTS": {
         "type": "null",
@@ -1252,10 +1217,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "instance": {
         "type": "instance",
@@ -1291,10 +1253,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "OUT_TERRAIN": {
         "type": "null",
@@ -1313,10 +1272,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "OUT_RIVER": {
         "type": "null",
@@ -1335,10 +1291,7 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       },
       "GENERATE_RIVER": {
         "type": "subnet",
@@ -1358,9 +1311,6 @@
           0.53,
           0.46
         ],
-        "flags": {
-          "colordefault": false
-        },
         "user_data": {
           "wirestyle": "rounded"
         },
@@ -1576,7 +1526,8 @@
               0.03
             ],
             "user_data": {
-              "sidefx::parm_filter_text_pattern": "re"
+              "sidefx::parm_filter_text_pattern": "re",
+              "wirestyle": "rounded"
             }
           },
           "reverse1": {
@@ -1747,17 +1698,14 @@
           0.31,
           0.31,
           0.31
-        ],
-        "flags": {
-          "colordefault": false
-        }
+        ]
       }
     }
   },
   "info": {
-    "author": "Bailey",
-    "created": "October 02, 2025 - 15:08:25",
-    "houdini_version": "21.0.462",
+    "author": "christoss",
+    "created": "December 12, 2025 - 11:19:02",
+    "houdini_version": "21.0.530",
     "data_version": "1.0",
     "comment": ""
   },
@@ -1770,7 +1718,7 @@
     ]
   },
   "tool": {
-    "icon": "sidefx_labs_beta.svg",
+    "icon": "sidefx_labs_default.svg",
     "tool_types": [
       "tab"
     ],
@@ -1782,20 +1730,20 @@
       "Labs/World Building/Biome"
     ],
     "shelf_tab": "Recipes",
-    "shelf_ordering_index": -1,
+    "shelf_ordering_index": -1.0,
     "help_url": "",
-    "example": 0,
+    "example": false,
     "network_categories": [
       "Sop"
     ]
   },
   "options": {
     "nodes_only": false,
-    "anchor_children": false,
+    "anchor_children": true,
     "children": true,
-    "anchor_editables": false,
+    "anchor_editables": true,
     "editables": true,
-    "flags": true,
+    "flags": false,
     "parms": true,
     "parms_as_brief": true,
     "default_parmvalues": false,
