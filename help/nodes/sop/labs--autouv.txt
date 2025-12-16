@@ -1,81 +1,120 @@
 = Labs Auto UV  =
 
-#type: node
-#context: sop
-#internal: labs::autouv
-#icon: auto_uv_circle
-#tags: sidefxlabs,  model, gamedev
+#type:      node
+#context:   sop
+#internal:  labs::autouv
+#icon:      auto_uv_circle
 
-""" Automatically Generates UV Attributes """
 
-One of our top nodes in our toolset. 
+"""Automatically generates UV attributes using one of multiple algorithmic methods."""
 
-Several different methods for automatically generating UVs on input meshes. 
-
+The Labs Auto UV SOP provides several methods for generating UV layouts on polygonal geometry.
+It analyzes curvature, surface orientation, and spatial relationships to create UV seams, islands, and packed layouts suitable for real-time and offline workflows.
 
 @parameters
+    Group:
+        #id: group
+        The group of primitives to apply the UV unwrap.
+    
     == Method ==
     UV Attribute:
-        Name of the output attribute
+        #id: uvattrib
+        The name of the output UV attribute.
+
     Method:
-        Algorithm used to generate the UVs
-        
+        #id: method
+        The algorithm used to generate the UVs.
+
+        Shortest Path:
+            Identifies regions of high curvature and computes shortest paths between them to define UV seams.
+
+        Cluster:
+            Clusters primitives based on spatial position and normal orientation to generate UV islands.
+
+        UV Unwrap:
+            Uses the built-in [UV Unwrap SOP|Node:sop/uvunwrap] to generate UVs. While not always optimal on its own, this method is often effective when combined with Merge Small Islands.
+
+        UV AutoSeam:
+            Uses the [UV Autoseam SOP|Node:sop/uvautoseam] to generate seams automatically.
+
     === Shortest Path ===
-    The Shortest Path method, will identify areas of high curvature on a mesh and then draw shortest paths between those points. 
-    
     Collapse Distance:
-        Fuse Threshold in case paths are too close together
+        #id: collapsedist
+        Fuse threshold used when computed paths are too close together.
+
     Number of Paths:
-        Number of high curvature points to use as path points
+        #id: numpaths
+        Number of high-curvature points used as path endpoints.
+
     Convex Multiplier:
-        Attract the seams based on high convexity (helpful for hard surface models) 
+        #id: convexmultiplier
+        Biases seam placement toward highly convex regions. Useful for hard-surface geometry.
+
     Occlusion Multiplier:
-        Attract the seams based on Ambient Occlusion (helpful for organic models)
-        
-    === Cluster ===    
-    Clusters primitives based on position and normal attributes to generate islands  
-    
+        #id: occlusionmultiplier
+        Biases seam placement toward regions of high ambient occlusion. Useful for organic geometry.
+
+    === Cluster ===
     Number of Clusters:
-        Number of Islands to be generated
+        #id: numclusters
+        Number of UV islands to generate.
+
     Normal Blur:
-        Blur the Normals a bit when considering which normals are close together (will merge islands together)
+        #id: normalblur
+        Amount of normal blurring applied when evaluating similarity. Higher values merge nearby islands.
+
     Random Seed:
-        Randomly change the clustering
-        
-    === UV Unwrap ===   
-    Use the build in UV Unwrap node. While usually not the best solution, this combined with Merge Small Islands is generally one of the best solutions. 
-    
+        #id: randomseed
+        Seed used to vary the clustering result.
+
+    === UV Unwrap ===
     Planes:
-        Number of Projection Planes. 
-        
-    === UV AutoSeam ===   
-    Use the new [UV Autoseam|Node:sop/uvautoseam] node  
-    
+        #id: numplanes
+        Number of projection planes used for unwrapping.
+
+    === UV AutoSeam ===
     Grain Tolerance:
-        When Splitting is "Curvature based", controls how sensitive grains are to changes in normal direction across surfaces. A value of zero is very sensitive and produces tiny grains. Larger values up to 1 are less sensitive and produce larger grains.
+        #id: graintol
+        Sensitivity to changes in normal direction when splitting by curvature. Lower values produce smaller grains. Higher values produce larger grains.
+
     Merge Threshold:
-        Controls how often smaller grains merge to become larger islands. 0 never merges (giving the initial grains as output), 1 merges all connected grains together (giving no seams in the output). You can tweak this control, centering around 0.5, to get more or fewer seams.
-        
-        
+        #id: mergethreshold
+        Controls how aggressively adjacent grains merge. A value of 0 preserves all grains. A value of 1 merges all connected grains into a single island.
+
     == Packing Options ==
+
     Merge Small Islands:
-        Consolidates Small UV Islands into Larger Neighbors
-    Small Island CutOff:
-        Size threshold of the islands that will be merged back into larger pieces
+        #id: mergesmallislands
+        Merges small UV islands into neighboring larger islands.
+
+    Small Island Cutoff:
+        #id: smallislandcutoff
+        Size threshold below which islands are considered small and eligible for merging.
+
     Optimize UV Border:
-        Attempts to cleanup triangles that are sticking to the side of the UV island. May cause small islands to reappear
+        #id: optimizeuvborder
+        Attempts to clean up triangles along island borders. May cause small islands to reappear.
+
     Flattening Method:
-        Defines how to flatten the Islands. 
-    Orientation Mode:
-        How to rotate the islands when packing 
+        #id: flatteningmethod
+        The method used to flatten UV islands.
+
+    Island Rotation Step:
+        #id: rotstep
+        How UV islands are rotated during packing.
+
     Packing Iterations:
-        How many times to attempt fitting the islands together 
+        #id: packingterations
+        Number of packing attempts used to fit islands together.
+
     Island Padding:
-        How many pixels to pad the islands by 
+        #id: islandpadding
+        Padding applied between UV islands, in pixels.
+
     Padding Resolution:
-        Reference Resolution for Island Padding
+        #id: resolution
+        Reference resolution used to compute *Island Padding*.
 
-
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/autouv_demoscene.hip]
+    UDIM Target Tile:
+        #id: udimtarget
+        The UDIM tile used as the starting location for the generated UVs. The generated UV layout is offset so that the first island begins in the specified UDIM tile (for example, 1001).

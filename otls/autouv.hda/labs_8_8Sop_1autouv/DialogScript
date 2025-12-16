@@ -81,7 +81,7 @@
             }
         }
         parm {
-            name    "fuse_distance"
+            name    "collapsedist"
             label   "Collapse Distance"
             type    float
             default { "0.01" }
@@ -89,7 +89,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "num_points"
+            name    "numpaths"
             label   "Number of Paths"
             type    integer
             default { "25" }
@@ -97,7 +97,7 @@
             range   { 1 100 }
         }
         parm {
-            name    "convex_multiplier"
+            name    "convexmultiplier"
             label   "Convex Multiplier"
             type    float
             default { "0.1" }
@@ -105,7 +105,7 @@
             range   { -10 10 }
         }
         parm {
-            name    "occlusion_multiplier"
+            name    "occlusionmultiplier"
             label   "Occlusion Multiplier"
             type    float
             default { "1" }
@@ -113,7 +113,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "num_clusters"
+            name    "numclusters"
             label   "Number of Clusters"
             type    integer
             default { "30" }
@@ -121,7 +121,7 @@
             range   { 1 100 }
         }
         parm {
-            name    "normal_blur_cluster"
+            name    "normalblur"
             label   "Normal Blur"
             type    integer
             default { "1" }
@@ -129,7 +129,7 @@
             range   { 0 10 }
         }
         parm {
-            name    "random_seed"
+            name    "randomseed"
             label   "Random Seed"
             type    integer
             default { "0" }
@@ -137,15 +137,15 @@
             range   { 0 10 }
         }
         parm {
-            name    "blur_amount"
-            label   "Normal Blur Ammount"
+            name    "bluramount"
+            label   "Normal Blur Amount"
             type    integer
             default { "0" }
             hidewhen "{ method != 2 }"
             range   { 0 10 }
         }
         parm {
-            name    "nplanes"
+            name    "numplanes"
             label   "Planes"
             type    ordinal
             default { "planes6" }
@@ -184,30 +184,30 @@
         grouptag { "group_type" "simple" }
 
         parm {
-            name    "merge_small_islands"
+            name    "mergesmallislands"
             label   "Merge Small Islands"
             type    toggle
             default { "0" }
         }
         parm {
-            name    "small_island_cutoff"
+            name    "smallislandcutoff"
             label   "Small Island CutOff"
             type    float
             default { "0.01" }
-            disablewhen "{ merge_small_islands == 0 }"
+            disablewhen "{ mergesmallislands == 0 }"
             range   { 0 0.5 }
         }
         parm {
-            name    "optimize_uv_border"
+            name    "optimizeuvborder"
             label   "Optimize UV Border"
             type    toggle
             default { [ "on" hscript-expr ] }
             help    "Attempts to remove triangles that are sticking to the side of the UV island. May cause small islands to reappear"
-            disablewhen "{ merge_small_islands == 0 }"
+            disablewhen "{ mergesmallislands == 0 }"
             parmtag { "autoscope" "0000000000000000" }
         }
         parm {
-            name    "method2"
+            name    "flatteningmethod"
             label   "Flattening Method"
             type    ordinal
             default { "abf" }
@@ -236,14 +236,14 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "packing_iterations"
+            name    "packingiterations"
             label   "Packing Iterations"
             type    integer
             default { "1" }
             range   { 0 10 }
         }
         parm {
-            name    "layout_padding"
+            name    "islandpadding"
             label   "Island Padding"
             type    integer
             default { "2" }
