@@ -7,7 +7,7 @@
 
 """Replaces attribute values with user-defined values."""
 
-This node remaps incoming attribute values to new values based on explicit replacement rules.
+This node remaps incoming point attribute string values to new values based on explicit replacement rules.
 It is commonly used in Houdini Engine workflows to prepare attributes for instancing, such as replacing name values with engine-specific prefab or asset paths.
 
 The node scans incoming attribute values, initializes a replacement table, and applies the specified value mappings.
@@ -15,11 +15,11 @@ The node scans incoming attribute values, initializes a replacement table, and a
 @parameters
     Attribute:
         #id: pointattriblist
-        The attribute whose values are replaced.
+        The point attribute whose values are replaced.
 
     Rename Attribute:
         #id: bRenameAttr
-        Renames the attribute before applying value replacement.
+        Renames the point attribute before applying value replacement.
 
     New Name:
         #id: sNewAttributeName
