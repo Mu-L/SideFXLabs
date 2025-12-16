@@ -32,23 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.58005 1.127
-connectornextid 0
+position -2.5 -0.15
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	attribrandomize1 1 1 "input1"
 }
 inputs
 {
+0 	attribrandomize1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +66,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -72,35 +78,35 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 1
-0 -2.8250799937534334 7.5439404984195093 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -2.4999999888241291 7.8832999952137461 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/rename.init"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute.init"
 Content-Type: text/plain
 
 type = attribute
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/rename.def"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.55159 1.40183
+position -0.50345 2.85
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	switch2 1 1 "input1"
+0 	set_value_for_empty_switch 1 1 "input1"
 }
 inputs
 {
-0 	switch2 0 1
+0 	set_value_for_empty_switch 0 1
 }
 stat
 {
@@ -115,7 +121,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/rename.parm"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute.parm"
 Content-Type: text/plain
 
 {
@@ -198,7 +204,7 @@ rioff4	[ 0	locks=0 ]	(	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/rename.userdata"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute.userdata"
 Content-Type: text/plain
 
 {
@@ -221,19 +227,19 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.70071 -0.730353
+position -2.5 0.85
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	switch1 0 1 "input1"
+0 	rename_attribute_switch 0 1 "input1"
 }
 inputs
 {
-0 	switch1 0 1
+0 	rename_attribute_switch 0 1
 }
 stat
 {
@@ -268,21 +274,21 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.init"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.init"
 Content-Type: text/plain
 
 type = attribstringedit
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.def"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.4955 4.72525
+position -2.50345 5.85
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -308,7 +314,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.multiparm"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.multiparm"
 Content-Type: text/plain
 
 4
@@ -318,7 +324,7 @@ from# ../from_#
 to# ../to_#
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.chn"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.chn"
 Content-Type: text/plain
 
 {
@@ -338,7 +344,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.parm"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.parm"
 Content-Type: text/plain
 
 {
@@ -356,7 +362,7 @@ filters	[ 0	locks=0 ]	(	[ filters	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribstringedit1.userdata"
+Content-Disposition: attachment; filename="hdaroot/attribute_filters.userdata"
 Content-Type: text/plain
 
 {
@@ -367,34 +373,34 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.init"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.def"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.68315 0.329247
+position -2.5 1.8498
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 0 "output1"
 }
 inputsNamed3
 {
-1 	switch2 1 1 "input1"
-2 	rename 1 1 "input2"
+1 	set_value_for_empty_switch 1 1 "input1"
+2 	rename_attribute 1 1 "input2"
 }
 inputs
 {
-0 	switch2 0 1
-1 	rename 0 1
+0 	set_value_for_empty_switch 0 1
+1 	rename_attribute 0 1
 }
 stat
 {
@@ -409,7 +415,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.chn"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute_switch.chn"
 Content-Type: text/plain
 
 {
@@ -422,7 +428,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.parm"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute_switch.parm"
 Content-Type: text/plain
 
 {
@@ -431,7 +437,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
+Content-Disposition: attachment; filename="hdaroot/rename_attribute_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -454,7 +460,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.82508 6.20311
+position -2.5 6.845
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -503,33 +509,33 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.init"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty.init"
 Content-Type: text/plain
 
 type = attribwrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.def"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.39592 3.58031
+position -0.503 4.849
 connectornextid 3
-flags =  lock off model off template on footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 2 "output1"
 }
 inputsNamed3
 {
-0 	attribstringedit1 1 1 "input1"
+0 	attribute_filters 1 1 "input1"
 1 	ALL_NAME_VALS 1 1 "input2"
 }
 inputs
 {
-0 	attribstringedit1 0 1
+0 	attribute_filters 0 1
 1 	ALL_NAME_VALS 0 1
 }
 stat
@@ -545,7 +551,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty.parm"
 Content-Type: text/plain
 
 {
@@ -567,6 +573,7 @@ if (val == \"\")
     "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -581,7 +588,7 @@ vex_precision	[ 0	locks=0 ]	(	auto	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribwrangle1.userdata"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty.userdata"
 Content-Type: text/plain
 
 {
@@ -592,34 +599,34 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.init"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.def"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.82508 2.53169
+position -2.5 3.8498
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	attribstringedit1 1 1 "input1"
-2 	attribwrangle1 2 1 "input2"
+0 	attribute_filters 1 1 "input1"
+2 	set_value_for_empty 2 1 "input2"
 }
 inputs
 {
-0 	attribstringedit1 0 1
-1 	attribwrangle1 0 1
+0 	attribute_filters 0 1
+1 	set_value_for_empty 0 1
 }
 stat
 {
@@ -634,7 +641,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.chn"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty_switch.chn"
 Content-Type: text/plain
 
 {
@@ -647,7 +654,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.parm"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty_switch.parm"
 Content-Type: text/plain
 
 {
@@ -656,7 +663,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.userdata"
+Content-Disposition: attachment; filename="hdaroot/set_value_for_empty_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -671,13 +678,13 @@ Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
 7
-rename
+rename_attribute
 output0
-attribstringedit1
-switch1
+attribute_filters
+rename_attribute_switch
 ALL_NAME_VALS
-attribwrangle1
-switch2
+set_value_for_empty
+set_value_for_empty_switch
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"

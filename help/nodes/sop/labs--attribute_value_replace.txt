@@ -1,34 +1,46 @@
 = Labs Attribute Value Replace =
 
-#type: node
-#context: sop
-#internal: labs::attribute_value_replace
-#icon: attribute_value_replace
-#tags: sidefxlabs, gamedev
+#type:      node
+#context:   sop
+#internal:  labs::attribute_value_replace
+#icon:      attribute_value_replace
 
-""" Allows you to replace attribute values with others. """
+"""Replaces attribute values with user-defined values."""
 
-Attribute Value Replace allows you to replace attribute values with different values. This is very useful for Houdini Engine workflows when preparing attribute instances. You could for example replace name attributes with paths to a prefab to instance in the engine.
+This node remaps incoming attribute values to new values based on explicit replacement rules.
+It is commonly used in Houdini Engine workflows to prepare attributes for instancing, such as replacing name values with engine-specific prefab or asset paths.
+
+The node scans incoming attribute values, initializes a replacement table, and applies the specified value mappings.
 
 @parameters
     Attribute:
-        The attribute to replace values for.
+        #id: pointattriblist
+        The attribute whose values are replaced.
+
     Rename Attribute:
-        Enabling this allows you to set a new name for the attribute that will get values replaced.
+        #id: bRenameAttr
+        Renames the attribute before applying value replacement.
+
     New Name:
-        The new name for the attribute in case of renaming the attribute specified.
+        #id: sNewAttributeName
+        The new name assigned to the attribute when *Rename Attribute* is turned on.
+
     Custom Initialize Value:
-        Set a custom value to be used when initializing the multiparm through the "Initialize Values" button.
+        #id: bDefaultInitValue
+        The value used when initializing the replacement table via *Initialize Values*.
+    
     Default Value:
-        Allows you to set a default value for any incoming values that are empty or for values that have no rename target in the multiparm.
+        #id: bDefaultValue
+        The fallback value assigned when an incoming attribute value is empty or has no matching replacement entry.
+
     Initialize Values:
-        Clicking this button will initialize the multiparm with all found incoming attribute values.
+        #id: btnInitializeValues
+        Initializes the replacement table using all unique incoming attribute values.
+
     From:
-	The attribute value to replace.
+        #id: from_
+        The original attribute value to be replaced.
+
     To:
-        The attribute value to replace with.
-
-
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/attribute_value_replace_demoscene.hip]
+        #id:
+        The value that replaces the corresponding *From* entry.
