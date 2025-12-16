@@ -1,0 +1,4 @@
+node = kwargs["node"]
+
+userinput = node.input(1) is not None
+node.parm("disable").set(userinput)

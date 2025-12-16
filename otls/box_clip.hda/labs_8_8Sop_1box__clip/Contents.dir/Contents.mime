@@ -20,23 +20,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -1.15
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -8.5 -2.15
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	testgeometry_pighead1 0 1 "input1"
 }
 inputs
 {
+0 	testgeometry_pighead1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -51,7 +53,11 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -60,8 +66,8 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 2
-0 -3.1417099888241289 7.7261676031665454 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
-1 3.2678448775903246 7.9399686042566984 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -4.4999999888241291 8.883299995213747 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+1 7.5000000111758709 8.883299995213747 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Y_MAX.init"
@@ -76,7 +82,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.1525 3.96952
+position -2.5 6.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -112,7 +118,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = "bbox(\"../null1\", D_YMAX)" }
+      segment { length = 0 expr = "bbox(\"../CUSTOM_BOX\", D_YMAX)" }
     }
   }
 
@@ -157,7 +163,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.18272 -0.269683
+position -2.5 2.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -166,11 +172,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch1 1 1 "input1"
+0 	positive_y 1 1 "input1"
 }
 inputs
 {
-0 	switch1 0 1
+0 	positive_y 0 1
 }
 stat
 {
@@ -194,7 +200,7 @@ Content-Type: text/plain
       righttype = extend
       default = -0.59999999999999998
       flags = 0
-      segment { length = 0 value = -0.59999999999999998 -0.59999999999999998 expr = "bbox(\"../null1\", D_YMIN)" }
+      segment { length = 0 value = -0.59999999999999998 -0.59999999999999998 expr = "bbox(\"../CUSTOM_BOX\", D_YMIN)" }
     }
   }
 
@@ -239,7 +245,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.09087 -4.79309
+position -2.5 -1.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -248,11 +254,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch2 1 1 "input1"
+0 	negative_y 1 1 "input1"
 }
 inputs
 {
-0 	switch2 0 1
+0 	negative_y 0 1
 }
 stat
 {
@@ -276,7 +282,7 @@ Content-Type: text/plain
       righttype = extend
       default = -0.29999999999999999
       flags = 0
-      segment { length = 0 value = -0.29999999999999999 -0.29999999999999999 expr = "bbox(\"../null1\", D_XMIN)" }
+      segment { length = 0 value = -0.29999999999999999 -0.29999999999999999 expr = "bbox(\"../CUSTOM_BOX\", D_XMIN)" }
     }
   }
 
@@ -321,7 +327,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.91537 -9.17373
+position -2.5 -5.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -330,11 +336,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch3 1 1 "input1"
+0 	negative_x 1 1 "input1"
 }
 inputs
 {
-0 	switch3 0 1
+0 	negative_x 0 1
 }
 stat
 {
@@ -358,7 +364,7 @@ Content-Type: text/plain
       righttype = extend
       default = 0.17999999999999999
       flags = 0
-      segment { length = 0 value = 0.17999999999999999 0.17999999999999999 expr = "bbox(\"../null1\", D_XMAX)" }
+      segment { length = 0 value = 0.17999999999999999 0.17999999999999999 expr = "bbox(\"../CUSTOM_BOX\", D_XMAX)" }
     }
   }
 
@@ -391,19 +397,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/box1.init"
+Content-Disposition: attachment; filename="hdaroot/custom_box.init"
 Content-Type: text/plain
 
 type = box
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/box1.def"
+Content-Disposition: attachment; filename="hdaroot/custom_box.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.618492 4.69862
+position 3.5 7.85
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -429,7 +435,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/box1.chn"
+Content-Disposition: attachment; filename="hdaroot/custom_box.chn"
 Content-Type: text/plain
 
 {
@@ -459,21 +465,21 @@ Content-Type: text/plain
       righttype = extend
       default = -0.066440746188163757
       flags = 0
-      segment { length = 0 value = -0.066440746188163757 -0.066440746188163757 expr = ch(\"../tx\") }
+      segment { length = 0 value = -0.066440746188163757 -0.066440746188163757 expr = ch(\"../centerx\") }
     }
     channel ty {
       lefttype = extend
       righttype = extend
       default = -0.34957699477672577
       flags = 0
-      segment { length = 0 value = -0.34957699477672577 -0.34957699477672577 expr = ch(\"../ty\") }
+      segment { length = 0 value = -0.34957699477672577 -0.34957699477672577 expr = ch(\"../centery\") }
     }
     channel tz {
       lefttype = extend
       righttype = extend
       default = 0.14349603652954102
       flags = 0
-      segment { length = 0 value = 0.14349603652954102 0.14349603652954102 expr = ch(\"../tz\") }
+      segment { length = 0 value = 0.14349603652954102 0.14349603652954102 expr = ch(\"../centerz\") }
     }
     channel scale {
       lefttype = extend
@@ -485,7 +491,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/box1.parm"
+Content-Disposition: attachment; filename="hdaroot/custom_box.parm"
 Content-Type: text/plain
 
 {
@@ -507,7 +513,7 @@ vertexnormals	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/box1.userdata"
+Content-Disposition: attachment; filename="hdaroot/custom_box.userdata"
 Content-Type: text/plain
 
 {
@@ -530,7 +536,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.7642 -13.4857
+position -2.5 -9.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -539,11 +545,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch4 1 1 "input1"
+0 	positive_x 1 1 "input1"
 }
 inputs
 {
-0 	switch4 0 1
+0 	positive_x 0 1
 }
 stat
 {
@@ -566,7 +572,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = "bbox(\"../null1\", D_ZMIN)" }
+      segment { length = 0 expr = "bbox(\"../CUSTOM_BOX\", D_ZMIN)" }
     }
   }
 
@@ -611,7 +617,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.98537 -17.475
+position -2.5 -13.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -620,11 +626,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch5 1 1 "input1"
+0 	negative_z 1 1 "input1"
 }
 inputs
 {
-0 	switch5 0 1
+0 	negative_z 0 1
 }
 stat
 {
@@ -647,7 +653,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = "bbox(\"../null1\", D_ZMAX)" }
+      segment { length = 0 expr = "bbox(\"../CUSTOM_BOX\", D_ZMAX)" }
     }
   }
 
@@ -680,19 +686,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill1.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill1.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.33167 2.96952
+position -0.5 5.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -720,7 +726,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill1.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy.parm"
 Content-Type: text/plain
 
 {
@@ -741,7 +747,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -751,7 +757,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill1.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy.userdata"
 Content-Type: text/plain
 
 {
@@ -762,19 +768,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill2.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill2.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.62147 -1.26968
+position -0.5 1.85
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -802,7 +808,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill2.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy.chn"
 Content-Type: text/plain
 
 {
@@ -811,12 +817,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../polyfill1/fillmode\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../fill_holes_posy/fillmode\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill2.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy.parm"
 Content-Type: text/plain
 
 {
@@ -837,7 +843,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -847,7 +853,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill2.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy.userdata"
 Content-Type: text/plain
 
 {
@@ -858,19 +864,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill3.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill3.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.52962 -5.75802
+position -0.5 -2.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -898,7 +904,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill3.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx.chn"
 Content-Type: text/plain
 
 {
@@ -907,12 +913,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../polyfill1/fillmode\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../fill_holes_posy/fillmode\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill3.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx.parm"
 Content-Type: text/plain
 
 {
@@ -933,7 +939,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -943,7 +949,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill3.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx.userdata"
 Content-Type: text/plain
 
 {
@@ -954,19 +960,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill4.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill4.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.23134 -10.1387
+position -0.5 -6.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -994,7 +1000,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill4.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx.chn"
 Content-Type: text/plain
 
 {
@@ -1003,12 +1009,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../polyfill1/fillmode\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../fill_holes_posy/fillmode\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill4.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx.parm"
 Content-Type: text/plain
 
 {
@@ -1029,7 +1035,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -1039,7 +1045,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill4.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx.userdata"
 Content-Type: text/plain
 
 {
@@ -1050,19 +1056,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill5.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill5.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.13279 -14.4398
+position -0.5 -10.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1090,7 +1096,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill5.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz.chn"
 Content-Type: text/plain
 
 {
@@ -1099,12 +1105,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../polyfill1/fillmode\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../fill_holes_posy/fillmode\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill5.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz.parm"
 Content-Type: text/plain
 
 {
@@ -1125,7 +1131,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -1135,7 +1141,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill5.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz.userdata"
 Content-Type: text/plain
 
 {
@@ -1146,19 +1152,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill6.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz.init"
 Content-Type: text/plain
 
 type = polyfill
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill6.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.985639 -18.4238
+position -0.5 -14.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1186,7 +1192,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill6.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz.chn"
 Content-Type: text/plain
 
 {
@@ -1195,12 +1201,12 @@ Content-Type: text/plain
       righttype = extend
       default = 1
       flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../polyfill1/fillmode\") }
+      segment { length = 0 value = 1 1 expr = ch(\"../fill_holes_posy/fillmode\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill6.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz.parm"
 Content-Type: text/plain
 
 {
@@ -1221,7 +1227,7 @@ customcornerstoggle	[ 0	locks=0 ]	(	"off"	)
 customcorners	[ 0	locks=0 ]	(	""	)
 subdivtoggle	[ 0	locks=0 ]	(	"on"	)
 translate	[ 0	locks=0 ]	(	0.25	)
-tangentstrength	[ 0	locks=0 ]	(	0.40000000000000002	)
+tangentstrength	[ 0	locks=0 ]	(	0.4	)
 groups	[ 0	locks=0 ]	(	0	)
 patchgrouptoggle	[ 0	locks=0 ]	(	"off"	)
 patchgroup	[ 0	locks=0 ]	(	patch	)
@@ -1231,7 +1237,7 @@ groupappend	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/polyfill6.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz.userdata"
 Content-Type: text/plain
 
 {
@@ -1242,19 +1248,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.init"
+Content-Disposition: attachment; filename="hdaroot/positive_y.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.def"
+Content-Disposition: attachment; filename="hdaroot/positive_y.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.17193 0.789917
+position -4.5 3.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1264,12 +1270,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	IN 1 1 "input1"
-2 	switch7 1 1 "input2"
+2 	fill_holes_posy_switch 1 1 "input2"
 }
 inputs
 {
 0 	IN 0 1
-1 	switch7 0 1
+1 	fill_holes_posy_switch 0 1
 }
 stat
 {
@@ -1284,7 +1290,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.chn"
+Content-Disposition: attachment; filename="hdaroot/positive_y.chn"
 Content-Type: text/plain
 
 {
@@ -1292,12 +1298,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../pos_y\") }
+      segment { length = 0 expr = ch(\"../posy\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.parm"
+Content-Disposition: attachment; filename="hdaroot/positive_y.parm"
 Content-Type: text/plain
 
 {
@@ -1306,7 +1312,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch1.userdata"
+Content-Disposition: attachment; filename="hdaroot/positive_y.userdata"
 Content-Type: text/plain
 
 {
@@ -1329,7 +1335,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.14171 5.08326
+position -4.5 7.845
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1378,19 +1384,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.init"
+Content-Disposition: attachment; filename="hdaroot/negative_y.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.def"
+Content-Disposition: attachment; filename="hdaroot/negative_y.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.20431 -3.44928
+position -4.5 -0.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1399,13 +1405,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch1 1 1 "input1"
-2 	switch8 1 1 "input2"
+0 	positive_y 1 1 "input1"
+2 	fill_holes_negy_switch 1 1 "input2"
 }
 inputs
 {
-0 	switch1 0 1
-1 	switch8 0 1
+0 	positive_y 0 1
+1 	fill_holes_negy_switch 0 1
 }
 stat
 {
@@ -1420,7 +1426,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.chn"
+Content-Disposition: attachment; filename="hdaroot/negative_y.chn"
 Content-Type: text/plain
 
 {
@@ -1428,12 +1434,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../neg_y\") }
+      segment { length = 0 expr = ch(\"../negy\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.parm"
+Content-Disposition: attachment; filename="hdaroot/negative_y.parm"
 Content-Type: text/plain
 
 {
@@ -1442,7 +1448,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch2.userdata"
+Content-Disposition: attachment; filename="hdaroot/negative_y.userdata"
 Content-Type: text/plain
 
 {
@@ -1453,19 +1459,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch3.init"
+Content-Disposition: attachment; filename="hdaroot/negative_x.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch3.def"
+Content-Disposition: attachment; filename="hdaroot/negative_x.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.23589 -7.97269
+position -4.5 -4.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1474,13 +1480,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch2 1 1 "input1"
-2 	switch9 1 1 "input2"
+0 	negative_y 1 1 "input1"
+2 	fill_holes_negx_switch 1 1 "input2"
 }
 inputs
 {
-0 	switch2 0 1
-1 	switch9 0 1
+0 	negative_y 0 1
+1 	fill_holes_negx_switch 0 1
 }
 stat
 {
@@ -1495,7 +1501,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch3.chn"
+Content-Disposition: attachment; filename="hdaroot/negative_x.chn"
 Content-Type: text/plain
 
 {
@@ -1503,12 +1509,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../neg_x\") }
+      segment { length = 0 expr = ch(\"../negx\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch3.parm"
+Content-Disposition: attachment; filename="hdaroot/negative_x.parm"
 Content-Type: text/plain
 
 {
@@ -1517,7 +1523,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch3.userdata"
+Content-Disposition: attachment; filename="hdaroot/negative_x.userdata"
 Content-Type: text/plain
 
 {
@@ -1528,19 +1534,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch4.init"
+Content-Disposition: attachment; filename="hdaroot/positive_x.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch4.def"
+Content-Disposition: attachment; filename="hdaroot/positive_x.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.11584 -12.3533
+position -4.5 -8.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1549,13 +1555,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch3 1 1 "input1"
-2 	switch10 1 1 "input2"
+0 	negative_x 1 1 "input1"
+2 	fill_holes_posx_switch 1 1 "input2"
 }
 inputs
 {
-0 	switch3 0 1
-1 	switch10 0 1
+0 	negative_x 0 1
+1 	fill_holes_posx_switch 0 1
 }
 stat
 {
@@ -1570,7 +1576,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch4.chn"
+Content-Disposition: attachment; filename="hdaroot/positive_x.chn"
 Content-Type: text/plain
 
 {
@@ -1578,12 +1584,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../pos_x\") }
+      segment { length = 0 expr = ch(\"../posx\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch4.parm"
+Content-Disposition: attachment; filename="hdaroot/positive_x.parm"
 Content-Type: text/plain
 
 {
@@ -1592,7 +1598,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch4.userdata"
+Content-Disposition: attachment; filename="hdaroot/positive_x.userdata"
 Content-Type: text/plain
 
 {
@@ -1603,19 +1609,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch5.init"
+Content-Disposition: attachment; filename="hdaroot/negative_z.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch5.def"
+Content-Disposition: attachment; filename="hdaroot/negative_z.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.15219 -16.5492
+position -4.5 -12.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1624,13 +1630,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch4 1 1 "input1"
-2 	switch11 1 1 "input2"
+0 	positive_x 1 1 "input1"
+2 	fill_holes_negz_switch 1 1 "input2"
 }
 inputs
 {
-0 	switch4 0 1
-1 	switch11 0 1
+0 	positive_x 0 1
+1 	fill_holes_negz_switch 0 1
 }
 stat
 {
@@ -1645,7 +1651,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch5.chn"
+Content-Disposition: attachment; filename="hdaroot/negative_z.chn"
 Content-Type: text/plain
 
 {
@@ -1653,12 +1659,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../neg_z\") }
+      segment { length = 0 expr = ch(\"../negz\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch5.parm"
+Content-Disposition: attachment; filename="hdaroot/negative_z.parm"
 Content-Type: text/plain
 
 {
@@ -1667,7 +1673,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch5.userdata"
+Content-Disposition: attachment; filename="hdaroot/negative_z.userdata"
 Content-Type: text/plain
 
 {
@@ -1678,19 +1684,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch6.init"
+Content-Disposition: attachment; filename="hdaroot/positive_z.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch6.def"
+Content-Disposition: attachment; filename="hdaroot/positive_z.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.18817 -20.5859
+position -4.5 -16.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1699,13 +1705,13 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	switch5 1 1 "input1"
-2 	switch12 1 1 "input2"
+0 	negative_z 1 1 "input1"
+2 	fill_holes_posz_switch 1 1 "input2"
 }
 inputs
 {
-0 	switch5 0 1
-1 	switch12 0 1
+0 	negative_z 0 1
+1 	fill_holes_posz_switch 0 1
 }
 stat
 {
@@ -1720,7 +1726,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch6.chn"
+Content-Disposition: attachment; filename="hdaroot/positive_z.chn"
 Content-Type: text/plain
 
 {
@@ -1728,12 +1734,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../pos_z\") }
+      segment { length = 0 expr = ch(\"../posz\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch6.parm"
+Content-Disposition: attachment; filename="hdaroot/positive_z.parm"
 Content-Type: text/plain
 
 {
@@ -1742,7 +1748,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch6.userdata"
+Content-Disposition: attachment; filename="hdaroot/positive_z.userdata"
 Content-Type: text/plain
 
 {
@@ -1765,19 +1771,19 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -3.18817 -22.3866
+position -4.5 -17.15
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	switch6 1 1 "input1"
+0 	positive_z 1 1 "input1"
 }
 inputs
 {
-0 	switch6 0 1
+0 	positive_z 0 1
 }
 stat
 {
@@ -1812,19 +1818,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch7.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch7.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.1525 1.90952
+position -2.5 4.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1834,12 +1840,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	Y_MAX 1 1 "input1"
-2 	polyfill1 1 1 "input2"
+2 	fill_holes_posy 1 1 "input2"
 }
 inputs
 {
 0 	Y_MAX 0 1
-1 	polyfill1 0 1
+1 	fill_holes_posy 0 1
 }
 stat
 {
@@ -1854,7 +1860,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch7.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy_switch.chn"
 Content-Type: text/plain
 
 {
@@ -1862,12 +1868,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch7.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy_switch.parm"
 Content-Type: text/plain
 
 {
@@ -1876,7 +1882,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch7.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posy_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -1887,19 +1893,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch8.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch8.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.18272 -2.22445
+position -2.5 0.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1909,12 +1915,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	YMIN 1 1 "input1"
-2 	polyfill2 1 1 "input2"
+2 	fill_holes_negy 1 1 "input2"
 }
 inputs
 {
 0 	YMIN 0 1
-1 	polyfill2 0 1
+1 	fill_holes_negy 0 1
 }
 stat
 {
@@ -1929,7 +1935,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch8.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy_switch.chn"
 Content-Type: text/plain
 
 {
@@ -1937,12 +1943,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch8.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy_switch.parm"
 Content-Type: text/plain
 
 {
@@ -1951,7 +1957,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch8.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negy_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -1962,19 +1968,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch9.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch9.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.09087 -6.85309
+position -2.5 -3.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1984,12 +1990,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	XMIN 1 1 "input1"
-2 	polyfill3 1 1 "input2"
+2 	fill_holes_negx 1 1 "input2"
 }
 inputs
 {
 0 	XMIN 0 1
-1 	polyfill3 0 1
+1 	fill_holes_negx 0 1
 }
 stat
 {
@@ -2004,7 +2010,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch9.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx_switch.chn"
 Content-Type: text/plain
 
 {
@@ -2012,12 +2018,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch9.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx_switch.parm"
 Content-Type: text/plain
 
 {
@@ -2026,7 +2032,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch9.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negx_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -2037,19 +2043,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch10.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch10.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.12245 -11.2337
+position -2.5 -7.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2059,12 +2065,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	XMAX 1 1 "input1"
-2 	polyfill4 1 1 "input2"
+2 	fill_holes_posx 1 1 "input2"
 }
 inputs
 {
 0 	XMAX 0 1
-1 	polyfill4 0 1
+1 	fill_holes_posx 0 1
 }
 stat
 {
@@ -2079,7 +2085,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch10.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx_switch.chn"
 Content-Type: text/plain
 
 {
@@ -2087,12 +2093,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch10.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx_switch.parm"
 Content-Type: text/plain
 
 {
@@ -2101,7 +2107,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch10.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posx_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -2112,19 +2118,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch11.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch11.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.94902 -15.4296
+position -2.5 -11.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2134,12 +2140,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	ZMIN 1 1 "input1"
-2 	polyfill5 1 1 "input2"
+2 	fill_holes_negz 1 1 "input2"
 }
 inputs
 {
 0 	ZMIN 0 1
-1 	polyfill5 0 1
+1 	fill_holes_negz 0 1
 }
 stat
 {
@@ -2154,7 +2160,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch11.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz_switch.chn"
 Content-Type: text/plain
 
 {
@@ -2162,12 +2168,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch11.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz_switch.parm"
 Content-Type: text/plain
 
 {
@@ -2176,7 +2182,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch11.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_negz_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -2187,19 +2193,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch12.init"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch12.def"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.98537 -19.4663
+position -2.5 -15.1502
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2209,12 +2215,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	ZMAX 1 1 "input1"
-2 	polyfill6 1 1 "input2"
+2 	fill_holes_posz 1 1 "input2"
 }
 inputs
 {
 0 	ZMAX 0 1
-1 	polyfill6 0 1
+1 	fill_holes_posz 0 1
 }
 stat
 {
@@ -2229,7 +2235,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch12.chn"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz_switch.chn"
 Content-Type: text/plain
 
 {
@@ -2237,12 +2243,12 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../cap\") }
+      segment { length = 0 expr = ch(\"../fillholes\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch12.parm"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz_switch.parm"
 Content-Type: text/plain
 
 {
@@ -2251,7 +2257,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch12.userdata"
+Content-Disposition: attachment; filename="hdaroot/fill_holes_posz_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -2262,31 +2268,31 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/null1.init"
+Content-Disposition: attachment; filename="hdaroot/CUSTOM_BOX.init"
 Content-Type: text/plain
 
 type = null
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/null1.def"
+Content-Disposition: attachment; filename="hdaroot/CUSTOM_BOX.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.97904 1.37497
+position 5.5 5.845
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	switch13 1 1 "input1"
+0 	use_custom_bounds 1 1 "input1"
 }
 inputs
 {
-0 	switch13 0 1
+0 	use_custom_bounds 0 1
 }
 stat
 {
@@ -2301,7 +2307,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/null1.parm"
+Content-Disposition: attachment; filename="hdaroot/CUSTOM_BOX.parm"
 Content-Type: text/plain
 
 {
@@ -2311,7 +2317,7 @@ cacheinput	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/null1.userdata"
+Content-Disposition: attachment; filename="hdaroot/CUSTOM_BOX.userdata"
 Content-Type: text/plain
 
 {
@@ -2322,19 +2328,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch13.init"
+Content-Disposition: attachment; filename="hdaroot/use_custom_bounds.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch13.def"
+Content-Disposition: attachment; filename="hdaroot/use_custom_bounds.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 2.42938 2.96932
+position 5.5 6.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2343,12 +2349,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	box1 1 1 "input1"
+0 	custom_box 1 1 "input1"
 2 	CUSTOM_BOUNDS 1 1 "input2"
 }
 inputs
 {
-0 	box1 0 1
+0 	custom_box 0 1
 1 	CUSTOM_BOUNDS 0 1
 }
 stat
@@ -2364,7 +2370,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch13.chn"
+Content-Disposition: attachment; filename="hdaroot/use_custom_bounds.chn"
 Content-Type: text/plain
 
 {
@@ -2378,7 +2384,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch13.parm"
+Content-Disposition: attachment; filename="hdaroot/use_custom_bounds.parm"
 Content-Type: text/plain
 
 {
@@ -2387,7 +2393,7 @@ input	[ 8	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch13.userdata"
+Content-Disposition: attachment; filename="hdaroot/use_custom_bounds.userdata"
 Content-Type: text/plain
 
 {
@@ -2410,7 +2416,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.26784 6.46855
+position 7.5 7.845
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -2467,31 +2473,31 @@ Y_MAX
 YMIN
 XMIN
 XMAX
-box1
+custom_box
 ZMIN
 ZMAX
-polyfill1
-polyfill2
-polyfill3
-polyfill4
-polyfill5
-polyfill6
-switch1
+fill_holes_posy
+fill_holes_negy
+fill_holes_negx
+fill_holes_posx
+fill_holes_negz
+fill_holes_posz
+positive_y
 IN
-switch2
-switch3
-switch4
-switch5
-switch6
+negative_y
+negative_x
+positive_x
+negative_z
+positive_z
 output1
-switch7
-switch8
-switch9
-switch10
-switch11
-switch12
-null1
-switch13
+fill_holes_posy_switch
+fill_holes_negy_switch
+fill_holes_negx_switch
+fill_holes_posx_switch
+fill_holes_negz_switch
+fill_holes_posz_switch
+CUSTOM_BOX
+use_custom_bounds
 CUSTOM_BOUNDS
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

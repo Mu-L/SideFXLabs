@@ -1,31 +1,35 @@
 = Labs Box Clip =
 
-#type: node
-#context: sop
-#internal: labs::box_clip
-#icon: DOP/emptyobject
-#tags: sidefxlabs, gamedev, model
+#type:      node
+#context:   sop
+#internal:  labs::box_clip
+#icon:      DOP/emptyobject
 
-""" Clip geometry to a resizable box region. """
+"""Clips geometry using a resizable box-shaped region."""
 
 :video:
     #src:/movies/boxclip.mp4
 
-This tool simplifies the process of cutting a box region from geometry, and optionally allows the clipped sides to be capped, or to selectively enable or disable the sides that will be clipped. 
+The Labs Box Clip SOP clips geometry against an axis-aligned box.
+It provides controls for positioning and scaling the clipping region, selectively enabling clipping on individual sides, and optionally capping the resulting open faces.
 
 @parameters
     Size:
-        Scale in X, Y, Z of clipping box.
+        #id: size
+        Per-axis scale of the clipping box.
+
     Center:
-        Center of clipping box.
+        #id: center
+        Center position of the clipping box.
+
     Uniform Scale:
-        Overall scale of clipping box, which is a multiplier on the per-axis scale.
+        #id: scale
+        Uniform scale multiplier applied to *Size*.
+
     Bounding Axis:
-        Toggles to enable clipping on 6 sides of clipping box.
+        #id: boundingaxis
+        Enables or disables clipping on each of the six sides of the box.
+
     Fill Holes:
-        Toggle to enable capping the clipped faces.
-
-
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/boxclip_demoscene.hip]
+        #id: fillholes
+        Caps faces created by the clipping operation.

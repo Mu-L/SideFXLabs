@@ -8,101 +8,121 @@
     help {
 	""
     }
-    bindhandle tx boundingbox "Bounding_Box" centerx ""
-    bindhandle ty boundingbox "Bounding_Box" centery ""
-    bindhandle tz boundingbox "Bounding_Box" centerz ""
+    bindhandle centerx boundingbox "Bounding_Box" centerx ""
+    bindhandle centery boundingbox "Bounding_Box" centery ""
+    bindhandle centerz boundingbox "Bounding_Box" centerz ""
     bindhandle sizex boundingbox "Bounding_Box" sizex ""
     bindhandle sizey boundingbox "Bounding_Box" sizey ""
     bindhandle sizez boundingbox "Bounding_Box" sizez ""
     bindhandle scale boundingbox "Bounding_Box" uniform_scale ""
 
     inputlabel	1	"Input Geo"
-    inputlabel	2	"Optional Bounding Box"
+    inputlabel	2	"Bounding Box (Optional)"
     inputlabel	3	"Sub-Network Input #3"
     inputlabel	4	"Sub-Network Input #4"
 
     parm {
-        name    "size"
-        label   "Size"
-        type    vector
-        size    3
-        default { "1" "1" "1" }
-        help    "Scale in X, Y, Z of clipping box."
-        range   { -1 1 }
-        parmtag { "autoscope" "0000000000000000" }
+        name    "disable"
+        label   ""
+        type    toggle
+        invisible
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
     }
-    parm {
-        name    "t"
-        label   "Center"
-        type    vector
-        size    3
-        default { "0" "0" "0" }
-        help    "Center of clipping box."
-        range   { -1 1 }
-        parmtag { "autoscope" "0000000000000000" }
+    groupsimple {
+        name    "fd_disable"
+        label   "Disable"
+        disablewhen "{ disable == 1 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "size"
+            label   "Size"
+            type    vector
+            size    3
+            default { "1" "1" "1" }
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "center"
+            label   "Center"
+            type    vector
+            size    3
+            default { "0" "0" "0" }
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "scale"
+            label   "Uniform Scale"
+            type    float
+            default { "1" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
     }
+
     parm {
-        name    "scale"
-        label   "Uniform Scale"
-        type    float
-        default { "1" }
-        help    "Overall scale of clipping box, which is a multiplier on the per-axis scale."
-        range   { 0 10 }
-        parmtag { "autoscope" "0000000000000000" }
-    }
-    parm {
-        name    "labelparm"
+        name    "boundingaxis"
         label   "Bounding Axis"
         type    label
         joinnext
         default { "" }
     }
     parm {
-        name    "neg_x"
+        name    "negx"
         label   "-X"
         type    toggle
         joinnext
         default { "1" }
     }
     parm {
-        name    "pos_x"
+        name    "posx"
         label   "+X"
         type    toggle
         joinnext
         default { "1" }
     }
     parm {
-        name    "neg_y"
+        name    "negy"
         label   "-Y"
         type    toggle
         joinnext
         default { "1" }
     }
     parm {
-        name    "pos_y"
+        name    "posy"
         label   "+Y"
         type    toggle
         joinnext
         default { "1" }
     }
     parm {
-        name    "neg_z"
+        name    "negz"
         label   "-Z"
         type    toggle
         joinnext
         default { "1" }
     }
     parm {
-        name    "pos_z"
+        name    "posz"
         label   "+Z"
         type    toggle
         default { "1" }
     }
     parm {
-        name    "cap"
+        name    "sepparm"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    parm {
+        name    "fillholes"
         label   "Fill Holes"
         type    toggle
         default { "0" }
-        help    "Toggle to enable capping the clipped faces."
     }
 }
