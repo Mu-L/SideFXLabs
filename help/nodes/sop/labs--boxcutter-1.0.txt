@@ -1,0 +1,71 @@
+= Labs Boxcutter =
+
+#type:      node
+#context:   sop
+#internal:  labs::boxcutter::1.0
+#icon:      boxcutter
+
+"""Performs interactive boolean cuts in the viewport for hard-surface modeling."""
+
+This is an interactive viewport tool designed to streamline boolean workflows for hard-surface geometry.
+It allows you to draw cutting shapes directly in the viewport and apply boolean operations in an intuitive, iterative manner.
+
+Cuts are created interactively and stored as editable operations, enabling fast experimentation and non-destructive refinement.
+ 
+TIP:
+    Connect the geometry to be cut to the first input. Select the node and press Enter in the viewport to activate the tool.
+
+TIP:
+    ((LMB)) + drag draws a planar cutting shape. ((Ctrl)) + drag while holding ((LMB)), adds depth to the cutting shape. Optionally make any adjustments using the handles. Press ((A)) to confirm and apply the cut.
+
+@parameters
+    == Cutout Settings ==
+    Settings applied to the current or next interactive cut.
+
+    Drawing Mode:
+        #id: bMoxCutterMode
+        The projection method used to generate the cutting shape.
+
+        World Aligned:
+            Aligns the cutting shape to the world XYZ axes.
+        Freehand:
+            Aligns the cutting shape to the surface normal at the draw location.
+
+    Boolean Operation:
+        #id: sBooleanOperation
+        The boolean operation applied to the cut.
+
+    Shape:
+        #id: opShape
+        Optional custom geometry used as the cutting shape. If not specified, a box is used.
+
+    Bevel Divisions:
+        #id: iBevelDivisions
+        Number of bevel divisions applied along the intersection seam. This value can be adjusted using ((Shift)) + ((mouse_wheel)).
+
+    Bevel Distance:
+        #id: fBevelDistance
+        Width of the bevel applied to the cut. This value can be adjusted using the mouse wheel.
+
+    Copies:
+        #id: iNumCopies
+        Number of copies generated from the cutting shape.
+
+    Translate:
+        #id: vCopyTranslate
+        Translation offset applied to each successive copy.
+
+    Pivot Translate:
+        #id: vPivotCopy
+        Pivot position used when transforming copies.
+
+    Rotate:
+        #id: vRotCopy
+        Rotation offset applied to each successive copy.
+
+    == Cutout Setting ==
+    Stores all previously created cuts.
+
+    Make Live:
+        #id: btnMakeLive_
+        Reactivates the selected cut for interactive editing. The cut is moved to the end of the stack when made live.
