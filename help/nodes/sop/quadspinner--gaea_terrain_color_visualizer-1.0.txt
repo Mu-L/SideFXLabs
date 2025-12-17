@@ -1,10 +1,9 @@
 = Gaea Terrain Color Visualizer =
 
-#type: node
-#context: sop
-#internal: quadspinner::gaea_terrain_color_visualizer::1.0
-#icon: gaea.svg
-#tags: sidefxlabs,  model, gamedev, terrain
+#type:      node
+#context:   sop
+#internal:  quadspinner::gaea_terrain_color_visualizer::1.0
+#icon:      gaea.svg
 
 """ This utility tool allows you to switch between RGB and Mask visualization on Terrains. """
 
@@ -12,12 +11,16 @@ This sop takes a landscape as input, and allows you to change the visualization 
 Houdini uses the same visualizer to visualize mask as well as color, meaning you cannot have both at the same time. 
 This node allows you to conveniently switch between them.
 
+NOTE:
+    This tool is maintained by QuadSpinner. For support, please reach out to [QuadSpinner|https://quadspinner.com/Support].
+
 @parameters
     Visualize:
         #id: mode
         Specifies which type of data should be visualized in the viewport.
 	<p><b>Terrain Color</b>: This allows for specifying which channels should be used for the RGB channels of the visualizer.</p>
 	<p><b>Regular Mask</b>: Switches the visualized channels in the viewport to use the default mask channel.</p>
+    
     Channels:
         #id: channels
-        When the <i>Visualize</i> parameter is set to <i>Terrain Color</i>, this parameter allows for specifying three channels to be used for RGB respectively. When using the outputs from Gaea, this would typically be <i>color.r color.g color.b</i>
+        When the <b>Visualize</b> parameter is set to <i>Terrain Color</i>, this parameter allows for specifying three channels to be used for RGB respectively. When using the outputs from Gaea, this would typically be <i>color.r color.g color.b</i>
