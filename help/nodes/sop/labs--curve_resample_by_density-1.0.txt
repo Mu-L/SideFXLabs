@@ -1,13 +1,16 @@
+= Labs Curve Resample by Density =
+
 #type:     node
 #context:  sop
 #internal: labs::curve_resample_by_density::1.0
 #icon:     curve_resample_by_density
 
-= Labs Curve Resample by Density =
+"""Redistributes points along curves based on density criteria."""
 
-"""Redistributes curve points based on density."""
+This node resamples curves by redistributing their points according to a specified density model.
+Density can be driven by a ramp, a weight attribute, or the curvature of each curve.
 
-This node resamples and adjusts the positions of points on curves based on a density ramp, a weight attribute, or curvature. It can operate on multiple curves at once using the same settings.
+The node supports processing multiple curves simultaneously using the same settings.
 
 NOTE:
     This node replaces [Labs Progressive Resample SOP|Node:sop/labs--progressive_resample], which will be removed in Houdini 23.0.
@@ -16,34 +19,37 @@ NOTE:
 
     Maximum Segments:
         #id: maxsegments
-        Specify the maximum number of edges for each curve.
+        Maximum number of segments generated per curve.
         
     Segments:
         #id: segments
-        The maximum number of edges for each curve.
+        Maximum number of segments generated per curve.
 
     == Resample ==
         
     Resample by:
         #id: resampleby
-	There are three different ways to resample the curves. Resample by Ramp, by an Attribute, or by Curvature.
+        The method used to determine point density along each curve.
+
+        Ramp:
+            Uses a density ramp defined over the curve length.
+        Weight Attribute:
+            Uses a per-point or per-vertex attribute to control density.
+        Curvature:
+            Uses curve curvature to bias point distribution. Regions of higher curvature receive a denser point distribution.
 
     === Ramp ===
 
     Density along Curve:
     	#id: densityramp
-    	Controls the density of the redistributed points along each curve. The X axis of the ramp represents the full length of each curve. (The direction is the increasing direction of the curve's parametric u coordinate.) The Y axis represents the concentration of points. Higher values mean denser distribution of points.
+    	Controls point density along each curve using a ramp. The horizontal axis represents normalized curve length in the direction of increasing parametric u. The vertical axis represents point density. Higher values produce a denser distribution of points.
 
     Density Ramp Samples:
         #id: rampsamples
-        You generally do not need to change this. The area under the density ramp is integrated over this many discrete slices. The more slices there are, the more accurately the ramp is interpreted. Only consider increasing this value if your ramp has many ups and downs.
+        Number of samples used to integrate the density ramp. Higher values increase accuracy when interpreting complex ramps with rapid variation. In most cases, the default value is sufficient.
 
     === Weight Attribute ===
 
     Weight Attribute:
     	#id: weightAttribute
-    	Controls the density of the redistributed points along each curve based on a weight attribute.
-
-    === Curvature ===
-
-    	Controls the density of the redistributed points along each curve based on the curvature of each curve.
+    	The attribute used to control point density along each curve. Higher attribute values produce a higher concentration of points.

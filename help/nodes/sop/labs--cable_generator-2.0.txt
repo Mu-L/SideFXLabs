@@ -1,16 +1,14 @@
-#type:     node
-#context:  sop
-#internal: labs::cable_generator::2.0
-#icon: cablegenerator
-#tags: sidefxlabs, model, gamedev
-
 = Labs Cable Generator =
+
+#type:      node
+#context:   sop
+#internal:  labs::cable_generator::2.0
+#icon:      cablegenerator
 
 """Creates and simulates cables based on curve or geometry input."""
 
 This SOP generates connecting cables and subcables from an input curve or input geometry. The tool includes options for simulating
 gravity, interacting with colliders, cable detangling, and auto UV generation.
-
 
 @parameters
 
@@ -270,10 +268,5 @@ gravity, interacting with colliders, cable detangling, and auto UV generation.
         #id: tx
 	The offset modifier applied to the generated UVs.
         
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/cable_generator_demoscene.hip]
-
 @related
 - [Resample|Node:sop/resample]
-

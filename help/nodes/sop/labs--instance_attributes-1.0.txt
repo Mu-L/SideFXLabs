@@ -1,40 +1,52 @@
+= Labs Instance Attributes =
+
 #type:     node
 #context:  sop
 #internal: labs::instance_attributes::1.0
 #icon:     SOP/labs::instance_attributes::1.0
 
-= Labs Instance Attributes =
+"""Builds and manages instance-related attributes for geometry instancing workflows."""
 
-"""Summary."""
+This node prepares geometry for instancing by creating, modifying, and randomizing common instance attributes such as variant selection, scale, and rotation.
 
-[Image:/images/sidefxlabs_banner.jpg]
+It supports asset variant weighting, per-point transform controls, and optional output formats tailored for Houdini Engine workflows in Unreal Engine and Unity. The node is designed to centralize instance setup logic, reducing the need for custom attribute wrangles and improving consistency across pipelines.
 
-:video:
-    #src:/movies/cablegenerator.mp4
+Optional visualization tools are included to preview instance transforms and variant distribution directly in Houdini.
 
-<Description goes here>
+=== Houdini Engine ===
 
+Create Instance Attribute for Unreal Engine
+Creates instance attributes compatible with Unreal Engine workflows.
 
-@parameters
+Create Instance Attribute for Unity
+Creates instance attributes compatible with Unity workflows.
+
+Delete Original Instance Attribute
+Deletes the original instance attribute after conversion.
 
     == Asset Variants ==
 
     Instance Attribute:
         #id: instanceattrib
+        The attribute containing the instance path or identifier.
         
     Variant Random Seed:
         #id: assetrandseed
+        Seed used to randomize variant selection.
         
     === Instance Variants ===
 
     Variant Path #:
         #id: variantpath#
+        Instance path assigned to this variant entry.
         
     Weight #:
         #id: variantweight#
+        The weighted probability that this variant is selected.
         
     Scale #:
         #id: variantscale#
+        Scale multiplier applied when this variant is selected.
         
     === Houdini Engine ===
 
@@ -53,63 +65,85 @@
 
     Uniform Scale:
         #id: uniformscale
+        Applies a uniform scale to instances.
         
     Apply To:
         #id: scaletarget
-        
+        Specifies which scale attributes are affected.
+
         Scaling Pscale:
-            
+        Applies scaling to point attribute pscale.
+
         Scaling Scale:
-            
+        Applies scaling to point attribute scale.
+
         Scaling Both:
+        Applies scaling to both pscale and scale.
             
     Randomize Pscale:
         #id: randpscale
+        Randomizes the pscale attribute.
         
     Min:
         #id: pscalemin
+        Minimum value for randomized pscale.
         
     Max:
         #id: pscalemax
+        Maximum value for randomized pscale.
         
     Noise Element Size:
         #id: noisesize
+        Spatial size of the noise used for randomization.
         
     Noise Offset:
         #id: noiseoffset
+        Offset applied to the noise sampling.
         
     Randomize Scale:
         #id: randscale
+        Randomizes the scale attribute.
         
     Min:
         #id: scalemin
+        Minimum value for randomized scale.
         
     Max:
         #id: scalemax
+        Maximum value for randomized scale.
         
     Random Seed:
         #id: scalerandseed
+        Seed used for scale randomization.
         
     === Rotation ===
 
     Initial Rotation:
         #id: initrot
+        Defines how the initial instance orientation is derived.
         
         Attempt to Use Input N (and Up):
-            
+            Uses input normals and up vectors when available.
+        
         Attempt to Use Input Orient:
+            Uses the input orient attribute when available.
             
     Reorientation:
         #id: reorient
-        
+        Adjusts the relationship between forward and up axes.
+
         None:
-            
+        No reorientation.
+
         Swap Up and Forward:
-            
+        Swaps the up and forward axes.
+
         Rotate Up to Forward:
-            
+        Rotates the up axis to align with the forward axis.
+
     Spin Axis/Amount:
         #id: spinaxis
+        Specifies the axis around which instances are rotated.
         
         X in Houdini (Side/Pitch):
             
@@ -119,65 +153,78 @@
             
     Spin Amount Mode:
         #id: spinamountmode
-        
+        Spin Amount Mode
+
+        Determines how spin values are computed.
         Uniform:
-            
+            Uses a constant spin value.
+        
         Random:
-            
+            Randomizes the spin amount.
+        
         From Attribute:
-            
+            Reads the spin amount from an attribute.
+
     Spin Amount:
         #id: spin_uniform
+        Spin amount used in Uniform mode.
         
     Spin Amount Min:
         #id: spin_min
+        Minimum spin value used in Random mode.
         
     Spin Amount Max:
         #id: spin_max
-        
+        Maximum spin value used in Random mode.
+
     Random Seed:
         #id: spinrandseed
+        Seed used for spin randomization.
         
     Spin Amount Attribute:
         #id: spin_attrib
+        Attribute used to define spin amount when From Attribute is selected.
         
     Randomize Rotation in 3D:
         #id: rand3drot
+        Applies random rotation across all three axes.
         
     Min:
         #id: rotmin
-        
+        Minimum rotation values.
+
     Max:
         #id: rotmax
+        Maximum rotation values.
         
     Random Seed:
         #id: rotrandseed
+        Seed used for 3D rotation randomization.
         
     == Guide ==
 
     Guide:
         #id: enableguide
+        Enables visualization guides.
         
     Guide Scale:
         #id: guidescale
+        Scale of the visualization guides.
         
     Gnomon:
         #id: gnomon
+        Displays orientation gnomons for instances.
         
     Unit Cubes:
         #id: unitcubes
+        Displays unit cubes to visualize instance scale.
         
     Visualize Variants:
         #id: visualizevariants
+        Colors instances based on selected variants.
         
     == Cleanup ==
 
     Point Attributes to Keep:
         #id: attribstokeep
-        
-@locals
-    
-    
-@related
-- [item | /link ]
-
+        List of point attributes preserved in the output. All other generated attributes are removed.

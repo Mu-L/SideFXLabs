@@ -1,38 +1,63 @@
 = Labs Calculate Thickness =
 
-#type: node
-#context: sop
-#internal: labs::calculate_thickness:1.0
-#icon: calculate_thickness
-#tags: sidefxlabs,  model
+#type:      node
+#context:   sop
+#internal:  labs::calculate_thickness:1.0
+#icon:      calculate_thickness
 
-""" Vertex Based Thickness Calculation """
+"""Computes an approximate thickness value for geometry using inward ray casting."""
 
-Calculating thickness is very similar to Ambient Occlusion, with the difference that rays are being cast inwards instead of outwards. Calculating thickness is an approximation that can be used for example cheap Sub Surface Scattering (SSS).
+This node estimates geometric thickness by casting rays inward from the surface, similar in principle to ambient occlusion but inverted in direction.
+The resulting thickness values represent an approximation of how much geometry exists behind a surface point and can be used for effects such as inexpensive subsurface scattering masks, wear masks, or material modulation.
+
+This method is an approximation and trades physical accuracy for performance.
 
 [Image:/images/calculate_thickness.png]
 
 @parameters
+
     == Thickness Settings ==
+
     Number of Rays:
-        How many samples to generate. Higher number means higher quality at the cost of speed. 
+        #id:
+        Number of rays cast per sample. Higher values increase quality at the cost of performance.
+    
     Maximum Ray Distance:
-        Stop the Thickness Ray from going beyond this distance. Set this to a higher value when your object is larger in scale. Distance is in worldspace units.
+        #id:
+        Maximum distance a ray is allowed to travel, in world units. Increase this value for larger-scale geometry.
+    
     == Advanced ==
+    
     Ray Direction:
-        The direction that the rays used for calculating thickness should be cast. By default it will try to correctly calculate a direction for you, but in special cases you might want to customize this. Note that the provided normals should be pointing outwards, and not inwards.
+        #id:
+        Direction used for casting thickness rays. By default, the node computes an appropriate inward direction automatically. Use this parameter to override the direction in special cases. Input normals are expected to point outward.
+    
     Minimum Ray Distance:
-        The minimum distance the rays have to travel when calculating thickness. Setting this to a higher value will function as contrast.
+        #id:
+        Minimum distance a ray must travel before contributing to thickness. Increasing this value increases contrast in the result.
+    
     Cone Angle:
-        Maximum angle in degrees away from the center that any sample will be. 
+        #id:
+        Maximum angular deviation, in degrees, from the central ray direction.
+    
     Seed:
-        The seed used for sampling with. Change this to get different sampling results.
+        #id:
+        Seed used for ray sampling variation.
+    
     == Output ==
+    
     Output Thickness as Color ( Cd ):
-        Toggle for the Thickness to be written to the Cd (color) channel on Points.
+        #id:
+        Writes the thickness result to the point attribute Cd.
+    
     Normalized:
-        When enabled the generated thickness values will be in 0-1 range instead of worldspace units.
+        #id:
+        Outputs thickness values normalized to the 0–1 range instead of world units.
+    
     Thickness Attribute:
-        If the above value is off, this is the override name for the output attribute. 
+        #id:
+        Name of the output attribute when Output Thickness as Color (Cd) is turned off.
+    
     Output curve:
-        This curve lets you do basic levels operations on the Thickness to fine tune the results without needing to rerun the expensive Thickness calculations. 
+        #id:
+        Remaps the computed thickness values. This curve allows basic level adjustments without recomputing the thickness rays.

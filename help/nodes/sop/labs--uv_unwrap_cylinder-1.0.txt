@@ -1,63 +1,53 @@
+= Labs UV Unwrap Cylinder =
+
 #type:     node
 #context:  sop
 #internal: labs::uv_unwrap_cylinder::1.0
 #icon:     uv_unwrap_cylinder
 
-= Labs UV Unwrap Cylinder =
-
 """Unwraps cylindrical shaped meshes."""
-
-[Image:/images/sidefxlabs_banner.jpg]
 
 The Labs UV Unwrap Cylinder SOP automatically unwraps cylindrical-shaped meshes in strips.
 This can also be done manually by selecting the edges that will act as seams and the cylinder’s end caps.
 
 The end result is ideal to use in a trim texture workflow.
 
-
 @parameters
 
     Group:
         #id: group
-    The selection of primitives to unwrap UVs.
+        The selection of primitives to unwrap UVs.
 
     UV Attribute:
         #id: uvattrib
-	The UV attribute to operate on.
+        The UV attribute to operate on.
         
     == Automatic Unwrap ==
 
     Auto Cut Offset:
         #id: autocutoffset
-	Offsets the edge loop that acts as the main cutting line.
+        Offsets the edge loop that acts as the main cutting line.
         
     Section Cut Angle:
         #id: sectioncutangle
-	The angle threshold for the cutting of individual sections.
+        The angle threshold for the cutting of individual sections.
         
     == Manual Unwrap ==
 
     Enable Manual Unwrap:
         #id: manualunwrap
-	Manually unwrap by selecting the edges that will act as seams.
+        Manually unwrap by selecting the edges that will act as seams.
         
     UV Seams:
         #id: uvseams
-	The edge group for the seams.
+        The edge group for the seams.
         
     End Caps:
         #id: endcaps
-	The primitive group for the cylinder’s end caps.
+        The primitive group for the cylinder’s end caps.
         
     == Visualization ==
 
     Visualize UV Islands:
         #id: visuvislands
-	Randomly colorizes the UV islands to be easily distinguished.
-        
-@locals
-    
-    
-@related
-- [item | /link ]
-
+        Randomly colorizes the UV islands to be easily distinguished.
