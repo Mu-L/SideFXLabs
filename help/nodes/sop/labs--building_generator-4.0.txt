@@ -1,67 +1,105 @@
 = Labs Building Generator =
 
-#type: node
-#context: sop
-#internal: labs::building_generator::4.0
-#icon: buildinggenerator
-#tags: sidefxlabs, model, gamedev
+#type:      node
+#context:   sop
+#internal:  labs::building_generator::4.0
+#icon:      buildinggenerator
 
-"""Converts low-resolution blockout geometry into detailed buildings using a library of user defined modules."""
+"""Generates detailed building geometry from low-resolution blockout meshes using modular components."""
 
-In game development it's a common workflow to 'block out' an environment with simple low resolution geometry, then later go an upres that geometry.
+This tool converts simple blockout geometry into detailed, modular buildings.
+It is designed to support common game-development workflows where environments are first laid out using low-resolution proxy geometry and later refined into final assets.
 
-The building generator can accelerate that workflow by importing the low res buildings, slice buildings into floors, identify regions for corners and ledges, and replace those identified sections with high resolution 'modules'.
+The node analyzes incoming building volumes, slices them into floors, identifies structural regions such as walls, corners, and ledges, and replaces those regions with high-resolution modules sourced from a user-defined module library.
 
+This approach enables fast iteration, consistent architectural detail, and non-destructive refinement.
 
 @parameters
+
     == Visualize ==
+
     Color Floors:
-        Color each floor as visualization aid.
+        #id: bColorFloors
+        Colors each floor to aid visualization and debugging.
+
     == Initialize ==
+
     Full Floor Height:
-        Height of floor in Houdini units.
+        #id: fFloorHeight
+        Height of a single floor, in Houdini units.
+
     Seed:
-        Seed used to control randomization functions.
+        #id: iSeed
+        Seed used to control randomization.
+
     Simple Ledges:
-        Enable simple extruded ledges, in place of user created ledges.
+        #id: bExperimentalLedges
+        Uses simple extruded ledges instead of user-defined ledge modules.
+
     == Primary ==
-    == Wall Face ==
+
+    === Wall Face ===
+
     Facade Module Pattern:
-        Name of module to use as main 'wall' unit. 
+        #id: sFacadePattern
+        Module name used as the primary wall unit.
+
     Corners:
-        Enable bottom ledge corners.
+        #id: bFacadeCorner
+        Enables corner modules on bottom ledges.
+
     Concave Corner Module:
-        Bottom ledge corner module to use for 'outward' facing corners, the more common use case.
+        #id: sConvexCornerID
+        Corner module used for outward-facing corners.
+
     Convex Corner Module:
-        Bottom ledge corner module to use for 'inward' facing corners.
+        #id: sConcaveCornerID
+        Corner module used for inward-facing corners.
+
     == Secondary ==
-    == Top Ledge ==
+
+    === Top Ledge ===
+
     Top:
-        Enable ledges across top of floor.
+        #id: bTopLedge
+        Enables ledges along the top of each floor.
+
     Height:
-        Height in Houdini units for the bottom ledge.
+        #id: fTopLedgeHeight
+        Height of the top ledge, in Houdini units.
+
     Module Pattern:
-        Module name to use for bottom ledge.
-    == Bottom Ledge ==
+        #id: sTopLedgePattern
+        Module name used for the top ledge.
+
+    === Bottom Ledge ===
+
     Bottom:
-        Enable bottom ledges per floor.
-    == Sideslop ==
+        #id: bBottomLedge
+        Enables bottom ledges on each floor.
+
+    === Sideslop ===
+
     Sideslop Module:
-        Module to use in the gap between primary module and corner module.
+        #id: sSideSlopID
+        Module used to fill the gap between primary wall modules and corner modules.
+
     == Customization ==
+
     Floor Overrides:
-        Number of floor overrides that are defined.
+        #id: mpFloorOverrides
+        Number of floor overrides defined.
+
     === Settings ===
+
     Floor Index:
-        Floor index to override, 0 being the ground floor.
+        #id: iFloorIndex#
+        Index of the floor to override. A value of 0 corresponds to the ground floor.
+
     Floor Height:
-        Height for this floor override.
-
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/building_gen_demoscene.hip]
+        #id: fFloorHeightOverride#
+        Override height for the specified floor, in Houdini units.
 
 @related
-
-    * [Node:sop/gamedev--sop_building_generator_utility]
-    
+- [Labs Building Generator Utility|Node:sop/labs--building_generator_utility-2.0]
+- [Labs Building from Patterns|Node:sop/labs--building_from_patterns-1.1]

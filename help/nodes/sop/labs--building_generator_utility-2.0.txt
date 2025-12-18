@@ -1,65 +1,137 @@
 = Labs Building Generator Utility =
 
-#type: node
-#context: sop
-#internal: labs::building_generator_utility
-#icon: buildinggeneratorutility
-#tags: sidefxlabs, model, gamedev
+#type:      node
+#context:   sop
+#internal:  labs::building_generator_utility::2.0
+#icon:      buildinggeneratorutility
 
-""" Create base modules to use with the building generator, as well as override base module behavior. """
+"""Creates and configures building modules for use with the Labs Building Generator."""
 
-The gamedev building generator requires collections of named geometry. These collections are named 'wall', 'corner', 'top_ledge', and are referred to as modules. This node assists in the creation of these modules.
+This node assists in the creation and configuration of modular building components used by the [Labs Building Generator|Node:sop/labs--building_generator-4.0]. These components, referred to as modules, define architectural elements such as walls, corners, and ledges.
 
-As well as setting module names and dimensions, this sop can also do localized overrides.
-
-The handplaced override tab allows a module to ignore the building generator rules, and have its own transform defined.
-
-The volumetric override tab will use the second input as a spatial override; if a part of a building intersects with this geometry, the specified module will be used instead.
+The node allows you to define module names, dimensions, and layout patterns, as well as specify localized overrides that replace default generator behavior. Overrides can be applied either manually through explicit transforms or spatially through volumetric intersections.
 
 @parameters
+
     == Building Module ==
+
     Module Name:
-        Module to apply within the bounding box(es) connected to the second input.
+        #id: name1
+        The module applied within the bounding boxes connected to the second input.
+
+    Weight:
+        #id: weight
+        The weighted probability that this module is chosen when multiple modules are available. Higher values increase the likelihood that this module is selected relative to other modules.
+
+    Auto fill Dimensions:
+        #id: FillDimensions
+        Automatically derives the module dimensions from its geometry. When turned on, the node computes the module width and height from the geometry bounds instead of using Module Dimensions.
+
     Module Dimensions:
-        Target width and height of module in Houdini units. This is manually defined as the automatic bounds may not correspond to intent; eg flagpoles that extend away from the module surface.
+        #id: f2ModuleDimensions
+        Target width and height of the module, in Houdini units. This value is defined manually to avoid relying on automatic bounds, which may not reflect intended module dimensions (for example, modules containing protruding elements).
+
+    Priority:
+        #id: priority
+        The evaluation priority of this module when multiple modules overlap. Higher values take precedence over lower values when resolving conflicts.
+
+    Variations:
+        #id: variations
+        The number of module variations available. Each variation defines an alternative module that can be selected probabilistically.
+
+    Variation:
+        #id: variation#
+        The name of the module used as a variation. This value references the *Module Name* parameter of another [Labs Building Generator Utility|Node:sop/labs--building_generator_utility-2.0].
+
+    Weight:
+        #id: variationweight#
+        The weighted probability that this module variation is chosen. Higher values increase the likelihood that this variation is selected relative to other variations.
+
     == Floor Description ==
+
     Floor Name:
-        Name to assign this floor configuration.
+        #id: name2
+        The name assigned to this floor configuration.
+
+    Weight:
+        #id: weight2
+        The weighted probability that this floor configuration is chosen. Higher values increase the likelihood that this floor is selected relative to other floor definitions.
+
     Expanded Form:
-        Pattern arrangement of modules that will fill one side of the floor. Module names in `<>` brackets will repeat along the object, and module names in `[]` brackets will occur a single time unless succeeded by a number, then it will repeat that many times.
+        #id: expanded2
+        Defines the module pattern used to fill one side of a floor.
+
+        Module names in `<>` repeat to fill available space.
+        Module names in `[]` are placed once unless followed by a number, in which case they repeat that number of times.
+
         <p>__Rigid__:  `[A], [A-B], [A][B], [A-B-A].`</p>
         <p>__Rigid (repeated)__:  `[A]3, [A-B]2.`</p>
         <p>__Fill (repeated)__:  `<A>, <A-B>, <A-B-A>.`</p>
         <p>__Variations__:  `<A*>, [B*], <A-B*>, [A*-B].`</p>
         <p>__Incorrect__:  `<*>, [*], <A*>, [A-B*], <A>2, <A><B>, missing Fill modules.`</p>
-        A and B represent Building Modules
+
+        In these examples, A and B represent building modules.
+
     Corners:
-        Populates the right and left corner modules, respectively. If only the first parameter is populated with a corner module, both corners will apply this module.
+        #id: corners
+        Specifies the modules used for the left and right corners of the floor. If only the first corner is specified, the same module is used for both sides.
+
+    Module Dimensions:
+        #id: f2ModuleDimensions3
+        Target width and height of modules used by this floor definition, in Houdini units. This value overrides the default module dimensions for this floor.
+
+    Priority:
+        #id: priority2
+        The evaluation priority of this floor configuration. Higher values take precedence when multiple floor definitions apply.
+
     Variations:
-        The number of floor variations to use for this floor.
+        #id: variations2
+        Number of floor variations available for this floor definition.
+
     Variation:
-        The name of the Floor to use as a variation. This name comes from the *Floor Name* parameter of a different _Labs Building Generator Utility SOP_.
+        #id: variation2_#
+        The name of a floor configuration used as a variation. This value references the *Floor Name* parameter from another [Labs Building Generator Utility|Node:sop/labs--building_generator_utility-2.0].
+
     Weight:
-        The weighted probability that this floor variation will be chosen in a random selection of floors.
+        #id: variationweight2_#
+        The weighted probability that this floor variation is chosen during random selection.        
 
     == Handplaced Overrides ==
+
+    Overrides that ignore the procedural building rules and use explicit transforms instead.
+
     Action:
-        Display or hide the bounding box reference.
-    Use Embedded Boundingbox:
-        Enable the bounding box utility to visually set the dimensions of this handplaced module.
+        #id: action
+        Shows or hides the bounding box reference.
+
+    Use Embedded Bounding Box:
+        #id: bUseInternalBBox
+        Uses an embedded bounding box to visually define the module dimensions.
+
     === Bounds Properties ===
+
     Center:
-        Center of module.
+        #id: t
+        Center position of the module.
+
     Size:
-        Size of module.
+        #id: size
+        Size of the module.
+
     Uniform Scale:
-        Uniform scale of module, the 3-value scale is multiplied by this value.
+        #id: scale
+        Uniform scale multiplier applied to *Size*.
+
     Rotate:
-        Rotation of this module.
+        #id: r
+        Rotation applied to the module.
+
     == Building Module ==
+
     Module Name:
-        Module to apply within the bounding box(es) connected to the second input.
+        #id: string1
+        The module applied to regions of the building that intersect with the geometry connected to the second input.
 
 @related
-
-    * [Node:sop/gamedev--sop_building_generator-4.0]
+- [Labs Building Generator|Node:sop/labs--building_generator-4.0]
+- [Labs Building from Patterns|Node:sop/labs--building_from_patterns-1.1]
