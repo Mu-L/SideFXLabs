@@ -2,18 +2,6 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename=".OPfallbacks"
-Content-Type: application/external-reference
-
-.OPfallbacks
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename=".OPdummydefs"
-Content-Type: application/external-reference
-
-.OPdummydefs
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="node_type"
 Content-Type: text/plain
 
@@ -32,9 +20,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.5 1.85
+position 1.5 0.85
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -64,79 +52,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_stack.init"
-Content-Type: text/plain
-
-type = labs::uv_stack
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_stack.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -0.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	unwrap_uvs 1 1 "input1"
-}
-inputs
-{
-0 	unwrap_uvs 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_stack.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-mAreaMethod	[ 0	locks=0 ]	(	"0"	)
-bUseThreshold	[ 0	locks=0 ]	(	"off"	)
-fSimThreshold	[ 0	locks=0 ]	(	10	)
-sepparm	[ 0	locks=0 ]	(	)
-bSplitShells	[ 0	locks=0 ]	(	"off"	)
-iSplitThreshold	[ 0	locks=0 ]	(	2	)
-iNumSplits	[ 0	locks=0 ]	(	2	)
-bVisualizeSplits	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
-padding	[ 0	locks=0 ]	(	10	)
-paddingboundary	[ 0	locks=0 ]	(	"off"	)
-correctareas	[ 0	locks=0 ]	(	"off"	)
-axisalignislands	[ 0	locks=0 ]	(	"on"	)
-optimizewastedspace	[ 0	locks=0 ]	(	"on"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_stack.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
+	},
+	"wirestyle":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":"rounded"
 	}
 }
 
@@ -153,7 +72,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 1.85
+position -0.5 -4.15
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -386,33 +305,43 @@ method	[ 0	locks=0 ]	(	"project"	)
 dirmethod	[ 0	locks=0 ]	(	"normal"	)
 dir	[ 0	locks=0 ]	(	[ dirx	0 ] 	[ diry	0 ] 	[ dirz	0 ] 	)
 dirattrib	[ 0	locks=0 ]	(	N	)
-showguide	[ 0	locks=0 ]	(	"on"	)
-dotrans	[ 0	locks=0 ]	(	"on"	)
-lookfar	[ 0	locks=0 ]	(	"off"	)
-putnml	[ 0	locks=0 ]	(	"off"	)
-putdist	[ 0	locks=0 ]	(	"off"	)
 reverserays	[ 0	locks=0 ]	(	"off"	)
+bidirectionalresult	[ 0	locks=0 ]	(	"closest"	)
+dotrans	[ 0	locks=0 ]	(	"on"	)
+showguide	[ 0	locks=0 ]	(	"on"	)
+folder0	[ 0	locks=0 ]	(	1	)
+lookfar	[ 0	locks=0 ]	(	"off"	)
 rtolerance	[ 0	locks=0 ]	(	0.01	)
 scale	[ 0	locks=0 ]	(	1	)
 lift	[ 0	locks=0 ]	(	0	)
 bias	[ 0	locks=0 ]	(	0	)
 maxraydistcheck	[ 0	locks=0 ]	(	"off"	)
 maxraydist	[ 0	locks=0 ]	(	0	)
+folder8	[ 0	locks=0 ]	(	0	)
 sample	[ 0	locks=0 ]	(	1	)
 jitter	[ 0	locks=0 ]	(	0	)
-combinetype	[ 0	locks=0 ]	(	"average"	)
 seed	[ 0	locks=0 ]	(	1	)
+combinetype	[ 0	locks=0 ]	(	"average"	)
+folder1	[ 0	locks=0 ]	(	1	)
+putnml	[ 0	locks=0 ]	(	"off"	)
+putdist	[ 0	locks=0 ]	(	"off"	)
 newgrp	[ 0	locks=0 ]	(	"off"	)
 hitgrp	[ 0	locks=0 ]	(	rayHitGroup	)
 useprimnumattrib	[ 0	locks=0 ]	(	"off"	)
 primnumattrib	[ 0	locks=0 ]	(	hitprim	)
 useprimuvwattrib	[ 0	locks=0 ]	(	"off"	)
 primuvwattrib	[ 0	locks=0 ]	(	hitprimuv	)
+folder2	[ 0	locks=0 ]	(	0	)
 getptattribs	[ 0	locks=0 ]	(	"off"	)
 ptattribnames	[ 0	locks=0 ]	(	*	)
 vertexattribnames	[ 0	locks=0 ]	(	""	)
 primitiveattribnames	[ 0	locks=0 ]	(	""	)
 detailattribnames	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	0	)
+gethitgroups	[ 0	locks=0 ]	(	"off"	)
+ptgroupnames	[ 0	locks=0 ]	(	*	)
+vertexgroupnames	[ 0	locks=0 ]	(	""	)
+primitivegroupnames	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -439,7 +368,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 0.85
+position 1.5 -5.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -485,396 +414,6 @@ r	[ 0	locks=0 ]	(	0	0	0	)
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/unwrap_uvs.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_1.init"
-Content-Type: text/plain
-
-type = uvtransform::2.0
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -1.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	uv_stack 1 1 "input1"
-}
-inputs
-{
-0 	uv_stack 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	5	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	0	1	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	1	1	1	)
-shear	[ 0	locks=0 ]	(	0	0	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-softparmsgrouper	[ 0	locks=0 ]	(	0	)
-rad	[ 0	locks=0 ]	(	0	)
-type	[ 0	locks=0 ]	(	"cubic"	)
-tandeg	[ 0	locks=0 ]	(	0	0	)
-kernel	[ 0	locks=0 ]	(	wyvill	)
-metric	[ 0	locks=0 ]	(	"uv"	)
-global	[ 0	locks=0 ]	(	"off"	)
-uvglobal	[ 0	locks=0 ]	(	"off"	)
-visualizefalloff	[ 0	locks=0 ]	(	"state"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_2.init"
-Content-Type: text/plain
-
-type = uvtransform::2.0
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_2.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -2.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	uv_transform_1 1 1 "input1"
-}
-inputs
-{
-0 	uv_transform_1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_2.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	4	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	0	-1	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	1	1	1	)
-shear	[ 0	locks=0 ]	(	0	0	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-softparmsgrouper	[ 0	locks=0 ]	(	0	)
-rad	[ 0	locks=0 ]	(	0	)
-type	[ 0	locks=0 ]	(	"cubic"	)
-tandeg	[ 0	locks=0 ]	(	0	0	)
-kernel	[ 0	locks=0 ]	(	wyvill	)
-metric	[ 0	locks=0 ]	(	"uv"	)
-global	[ 0	locks=0 ]	(	"off"	)
-uvglobal	[ 0	locks=0 ]	(	"off"	)
-visualizefalloff	[ 0	locks=0 ]	(	"state"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_2.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_3.init"
-Content-Type: text/plain
-
-type = uvtransform::2.0
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_3.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -3.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	uv_transform_2 1 1 "input1"
-}
-inputs
-{
-0 	uv_transform_2 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_3.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	1	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	-1	0	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	1	1	1	)
-shear	[ 0	locks=0 ]	(	0	0	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-softparmsgrouper	[ 0	locks=0 ]	(	0	)
-rad	[ 0	locks=0 ]	(	0	)
-type	[ 0	locks=0 ]	(	"cubic"	)
-tandeg	[ 0	locks=0 ]	(	0	0	)
-kernel	[ 0	locks=0 ]	(	wyvill	)
-metric	[ 0	locks=0 ]	(	"uv"	)
-global	[ 0	locks=0 ]	(	"off"	)
-uvglobal	[ 0	locks=0 ]	(	"off"	)
-visualizefalloff	[ 0	locks=0 ]	(	"state"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_3.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_4.init"
-Content-Type: text/plain
-
-type = uvtransform::2.0
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_4.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -4.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	uv_transform_3 1 1 "input1"
-}
-inputs
-{
-0 	uv_transform_3 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_4.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	3	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	1	0	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	1	1	1	)
-shear	[ 0	locks=0 ]	(	0	0	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-softparmsgrouper	[ 0	locks=0 ]	(	0	)
-rad	[ 0	locks=0 ]	(	0	)
-type	[ 0	locks=0 ]	(	"cubic"	)
-tandeg	[ 0	locks=0 ]	(	0	0	)
-kernel	[ 0	locks=0 ]	(	wyvill	)
-metric	[ 0	locks=0 ]	(	"uv"	)
-global	[ 0	locks=0 ]	(	"off"	)
-uvglobal	[ 0	locks=0 ]	(	"off"	)
-visualizefalloff	[ 0	locks=0 ]	(	"state"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_4.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_5.init"
-Content-Type: text/plain
-
-type = uvtransform::2.0
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_5.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -5.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	uv_transform_4 1 1 "input1"
-}
-inputs
-{
-0 	uv_transform_4 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author mikel@jorges-ipad-2.localdomain
-  access 0777
-}
-color UT_Color RGB 0.576 0.208 0.475 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_5.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	2	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	1	-1	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-s	[ 0	locks=0 ]	(	-1	-1	1	)
-shear	[ 0	locks=0 ]	(	0	0	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-softparmsgrouper	[ 0	locks=0 ]	(	0	)
-rad	[ 0	locks=0 ]	(	0	)
-type	[ 0	locks=0 ]	(	"cubic"	)
-tandeg	[ 0	locks=0 ]	(	0	0	)
-kernel	[ 0	locks=0 ]	(	wyvill	)
-metric	[ 0	locks=0 ]	(	"uv"	)
-global	[ 0	locks=0 ]	(	"off"	)
-uvglobal	[ 0	locks=0 ]	(	"off"	)
-visualizefalloff	[ 0	locks=0 ]	(	"state"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/uv_transform_5.userdata"
 Content-Type: text/plain
 
 {
@@ -1141,12 +680,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	box 0 1 "input1"
-1 	uv_transform_5 1 1 "input2"
+1 	unwrap_uvs 1 1 "input2"
 }
 inputs
 {
 0 	box 0 1
-1 	uv_transform_5 0 1
+1 	unwrap_uvs 0 1
 }
 stat
 {
@@ -1243,6 +782,8 @@ group	[ 0	locks=0 ]	(	""	)
 contrainedboundary	[ 0	locks=0 ]	(	"none"	)
 constrainedpoints	[ 0	locks=0 ]	(	""	)
 attributes	[ 0	locks=0 ]	(	uv	)
+useweightattribute	[ 0	locks=0 ]	(	"off"	)
+weightattribute	[ 0	locks=0 ]	(	weight	)
 method	[ 0	locks=0 ]	(	"curvaturedominant"	)
 strength	[ 0	locks=0 ]	(	50	)
 filterquality	[ 0	locks=0 ]	(	5	)
@@ -1264,17 +805,11 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-15
-uv_stack
+9
 box
 subdivide_surface
 raycast_to_surface
 unwrap_uvs
-uv_transform_1
-uv_transform_2
-uv_transform_3
-uv_transform_4
-uv_transform_5
 sphere
 output1
 transform_shape
