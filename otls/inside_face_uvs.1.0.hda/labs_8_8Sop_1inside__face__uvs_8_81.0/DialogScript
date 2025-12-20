@@ -20,7 +20,17 @@
         type    string
         default { "" }
         menutoggle {
-            [ "opmenu -l -a attribcopy3 destgroup" ]
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []           " ]
+            [ "        for g in geo.primGroups():" ]
+            [ "            r.extend([g.name(), g.name()])                   " ]
+            [ "return r" ]
+            language python
         }
         parmtag { "autoscope" "0000000000000000" }
         parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Primitives\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
@@ -38,7 +48,17 @@
             type    string
             default { "inside" }
             menutoggle {
-                [ "opmenu -l -a split2 group" ]
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = []           " ]
+                [ "        for g in geo.primGroups():" ]
+                [ "            r.extend([g.name(), g.name()])                   " ]
+                [ "return r" ]
+                language python
             }
             range   { 0 1 }
             parmtag { "autoscope" "0000000000000000" }
@@ -52,7 +72,17 @@
             type    string
             default { "uv" }
             menureplace {
-                [ "opmenu -l -a attribdelete2 vtxdel" ]
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = []          " ]
+                [ "        for a in geo.vertexAttribs():" ]
+                [ "            r.extend([a.name(), a.name()])              " ]
+                [ "return r" ]
+                language python
             }
             range   { 0 1 }
             parmtag { "autoscope" "0000000000000000" }

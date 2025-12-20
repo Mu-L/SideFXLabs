@@ -20,7 +20,17 @@
         type    string
         default { "uv" }
         menureplace {
-            [ "opmenu -l uvflatten7 uvattrib" ]
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []          " ]
+            [ "        for a in geo.vertexAttribs():" ]
+            [ "            r.extend([a.name(), a.name()])              " ]
+            [ "return r" ]
+            language python
         }
         parmtag { "autoscope" "0000000000000000" }
         parmtag { "sidefx::attrib_access" "write" }

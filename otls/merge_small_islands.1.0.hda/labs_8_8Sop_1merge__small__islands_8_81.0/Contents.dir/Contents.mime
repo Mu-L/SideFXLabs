@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -8.5 -3.15
+position 13.231 -17.8038
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -40,17 +40,17 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	uvflatten1 1 1 "input1"
+0 	testgeometry_pighead1 0 1 "input1"
 }
 inputs
 {
-0 	uvflatten1 0 1
+0 	testgeometry_pighead1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -66,6 +66,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -131,6 +135,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@__isle = i@__side;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -202,6 +207,8 @@ Content-Type: text/plain
 {
 version 0.8
 connecttype	[ 0	locks=0 ]	(	"prim"	)
+primincgroup	[ 0	locks=0 ]	(	""	)
+pointincgroup	[ 0	locks=0 ]	(	""	)
 attribname	[ 0	locks=0 ]	(	__side	)
 attribtype	[ 0	locks=0 ]	(	"int"	)
 prefix	[ 0	locks=0 ]	(	piece	)
@@ -297,6 +304,7 @@ targetptattrib	[ 0	locks=0 ]	(	snap_to	)
 targetclass	[ 0	locks=0 ]	(	"point"	)
 usepositionsnapmethod	[ 0	locks=0 ]	(	"on"	)
 positionsnapmethod	[ 0	locks=0 ]	(	"average"	)
+positionsnapweightname	[ 0	locks=0 ]	(	weight	)
 useradiusattrib	[ 0	locks=0 ]	(	"off"	)
 radiusattrib	[ 0	locks=0 ]	(	pscale	)
 usematchattrib	[ 0	locks=0 ]	(	"off"	)
@@ -304,7 +312,7 @@ matchattrib	[ 0	locks=0 ]	(	name	)
 matchtype	[ 0	locks=0 ]	(	"match"	)
 matchtol	[ 0	locks=0 ]	(	0	)
 gridtype	[ 0	locks=0 ]	(	"spacing"	)
-gridspacing	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+gridspacing	[ 0	locks=0 ]	(	0.1	0.1	0.1	)
 gridlines	[ 0	locks=0 ]	(	10	10	10	)
 gridpow2	[ 0	locks=0 ]	(	3	3	3	)
 gridoffset	[ 0	locks=0 ]	(	0	0	0	)
@@ -490,6 +498,7 @@ umbiliccutoff	[ 0	locks=0 ]	(	0	)
 integrationmode	[ 0	locks=0 ]	(	"componentwise"	)
 srcattrib	[ 0	locks=0 ]	(	P	)
 srccomp	[ 0	locks=0 ]	(	"x"	)
+divideelementarea	[ 0	locks=0 ]	(	"off"	)
 scalenormalize	[ 0	locks=0 ]	(	"on"	)
 sepparm	[ 0	locks=0 ]	(	)
 integrationdomain	[ 0	locks=0 ]	(	"piece"	)
@@ -593,8 +602,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -752,6 +761,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/reset_small_sides2.chn"
@@ -783,6 +798,7 @@ snippet	[ 0	locks=0 ]	(	"if (f@__area < ch('cutoff'))
     i@__side = -1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -862,8 +878,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1021,6 +1037,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle9.chn"
@@ -1067,6 +1089,7 @@ do
 } while (h != sh && h != -1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1233,6 +1256,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -1300,8 +1324,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1459,6 +1483,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle3.parm"
@@ -1520,6 +1550,7 @@ for(int i = 0; i <= npr; i++)
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1686,6 +1717,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -1827,8 +1859,10 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"primitive"	)
 useattribute	[ 0	locks=0 ]	(	"on"	)
 attrib	[ 0	locks=0 ]	(	__isle	)
+tol	[ 0	locks=0 ]	(	0	)
 removedegen	[ 0	locks=0 ]	(	"on"	)
 includeunshared	[ 0	locks=0 ]	(	"on"	)
+includecurveunshared	[ 0	locks=0 ]	(	"on"	)
 primsbyattribbndpts	[ 0	locks=0 ]	(	"off"	)
 }
 

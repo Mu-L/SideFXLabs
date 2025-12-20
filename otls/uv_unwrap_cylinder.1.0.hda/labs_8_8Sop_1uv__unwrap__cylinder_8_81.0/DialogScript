@@ -18,9 +18,18 @@
         name    "group"
         label   "Group"
         type    string
-        default { "*" }
+        default { "" }
         menutoggle {
-            [ "hou.pwd().generateInputGroupMenu(0, group_types=hou.geometryType.Primitives)" ]
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []           " ]
+            [ "        for g in geo.primGroups():" ]
+            [ "            r.extend([g.name(), g.name()])                   " ]
+            [ "return r" ]
             language python
         }
         parmtag { "Select geometry from an available viewport.\nShift-click to turn on Select Groups.script_action" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
@@ -34,7 +43,16 @@
         type    string
         default { "uv" }
         menutoggle {
-            [ "hou.pwd().generateInputGroupMenu(0)" ]
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []          " ]
+            [ "        for a in geo.vertexAttribs():" ]
+            [ "            r.extend([a.name(), a.name()])              " ]
+            [ "return r" ]
             language python
         }
         parmtag { "script_callback_language" "python" }
@@ -84,7 +102,16 @@
             default { "" }
             disablewhen "{ manualunwrap == 0 }"
             menutoggle {
-                [ "hou.pwd().generateInputGroupMenu(0, group_types=hou.geometryType.Edges)" ]
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = []           " ]
+                [ "        for g in geo.edgeGroups():" ]
+                [ "            r.extend([g.name(), g.name()])                   " ]
+                [ "return r" ]
                 language python
             }
             parmtag { "Select geometry from an available viewport.\nShift-click to turn on Select Groups.script_action" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
@@ -99,7 +126,16 @@
             default { "" }
             disablewhen "{ manualunwrap == 0 }"
             menutoggle {
-                [ "hou.pwd().generateInputGroupMenu(0, group_types=hou.geometryType.Primitives)" ]
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = []           " ]
+                [ "        for g in geo.primGroups():" ]
+                [ "            r.extend([g.name(), g.name()])                   " ]
+                [ "return r" ]
                 language python
             }
             parmtag { "Select geometry from an available viewport.\nShift-click to turn on Select Groups.script_action" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }

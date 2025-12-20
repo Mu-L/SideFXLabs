@@ -32,23 +32,25 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 66.5518 -20.6575
-connectornextid 0
+position 7.5 -20.15
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	group1 1 1 "input1"
 }
 inputs
 {
+0 	group1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -1070,6 +1072,7 @@ scaletolerance	[ 0	locks=0 ]	(	0.005	)
 randseed	[ 0	locks=0 ]	(	5489	)
 targets	[ 0	locks=0 ]	(	0	)
 targettype	[ 0	locks=0 ]	(	"boxes"	)
+udimtilemethod	[ 0	locks=0 ]	(	"grid"	)
 usedefaulttarget	[ 0	locks=0 ]	(	"off"	)
 defaulttarget	[ 0	locks=0 ]	(	0	)
 usedefaultudimtarget	[ 0	locks=0 ]	(	"off"	)
@@ -1080,6 +1083,10 @@ udimtilegroup	[ 0	locks=0 ]	(	0	)
 tilesize	[ 0	locks=0 ]	(	1	1	)
 numcolumns	[ 0	locks=0 ]	(	10	)
 startingudim	[ 0	locks=0 ]	(	1001	)
+folder0	[ 0	locks=0 ]	(	1	)
+udimtilestart	[ 0	locks=0 ]	(	1001	)
+udimtilecount	[ 0	locks=0 ]	(	1	)
+udimextendfixedislands	[ 0	locks=0 ]	(	"off"	)
 targetuvattrib	[ 0	locks=0 ]	(	uv	)
 targetprojplane	[ 0	locks=0 ]	(	"xy"	)
 targetgroup	[ 0	locks=0 ]	(	""	)
@@ -1612,6 +1619,7 @@ scaletolerance	[ 0	locks=0 ]	(	0.005	)
 randseed	[ 0	locks=0 ]	(	5489	)
 targets	[ 0	locks=0 ]	(	0	)
 targettype	[ 0	locks=0 ]	(	"boxes"	)
+udimtilemethod	[ 0	locks=0 ]	(	"grid"	)
 usedefaulttarget	[ 0	locks=0 ]	(	"off"	)
 defaulttarget	[ 0	locks=0 ]	(	0	)
 usedefaultudimtarget	[ 0	locks=0 ]	(	"off"	)
@@ -1622,6 +1630,10 @@ udimtilegroup	[ 0	locks=0 ]	(	0	)
 tilesize	[ 0	locks=0 ]	(	1	1	)
 numcolumns	[ 0	locks=0 ]	(	10	)
 startingudim	[ 0	locks=0 ]	(	1001	)
+folder0	[ 0	locks=0 ]	(	1	)
+udimtilestart	[ 0	locks=0 ]	(	1001	)
+udimtilecount	[ 0	locks=0 ]	(	1	)
+udimextendfixedislands	[ 0	locks=0 ]	(	"off"	)
 targetuvattrib	[ 0	locks=0 ]	(	uv	)
 targetprojplane	[ 0	locks=0 ]	(	"xy"	)
 targetgroup	[ 0	locks=0 ]	(	""	)
@@ -1718,6 +1730,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@group__uuc_inputpoints = neighbourcount(0, @ptnum) > 4;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1806,6 +1819,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -1888,6 +1902,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -2091,6 +2106,7 @@ folder1_1	[ 0	locks=0 ]	(	0	)
 connectedgeo1	[ 0	locks=0 ]	(	"off"	)
 useattrib1	[ 0	locks=0 ]	(	"off"	)
 attrib1	[ 0	locks=0 ]	(	""	)
+tol1	[ 0	locks=0 ]	(	0	)
 usecolgroup1	[ 0	locks=0 ]	(	"off"	)
 colgroup1	[ 0	locks=0 ]	(	""	)
 colgrouptype1	[ 0	locks=0 ]	(	"edges"	)
@@ -2175,6 +2191,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"on"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -2439,6 +2456,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@group__uuc_inputpoints = neighbourcount(0, @ptnum) == 3;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2591,172 +2609,6 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group_caps_points1.spareparmdef"
-Content-Type: text/plain
-
-    multiparm {
-        name    "numrange"
-        label    "Number of Ranges"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "Enable"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "groupname#"
-            baseparm
-            label   "Group Name"
-            export  all
-        }
-        parm {
-            name    "group#"
-            baseparm
-            label   "Base Group"
-            export  all
-        }
-        parm {
-            name    "grouptype#"
-            baseparm
-            label   "Group Type"
-            export  all
-        }
-        parm {
-            name    "mergeop#"
-            baseparm
-            label   "Merge Method"
-            export  none
-        }
-        parm {
-            name    "method#"
-            baseparm
-            label   "Range Type"
-            export  none
-        }
-        parm {
-            name    "start#"
-            baseparm
-            label   "Start"
-            export  none
-        }
-        parm {
-            name    "end#"
-            baseparm
-            label   "End"
-            export  none
-        }
-        parm {
-            name    "length#"
-            baseparm
-            label   "Length"
-            export  none
-        }
-        parm {
-            name    "partition#"
-            baseparm
-            label   "Partition"
-            export  none
-        }
-        parm {
-            name    "numpartition#"
-            baseparm
-            label   "Number of Partitions"
-            export  none
-        }
-        parm {
-            name    "invert#"
-            baseparm
-            label   "Invert Range"
-            export  none
-        }
-        parm {
-            name    "selectamount#"
-            baseparm
-            label   "Select"
-            export  none
-        }
-        parm {
-            name    "selecttotal#"
-            baseparm
-            label   "of"
-            export  none
-        }
-        parm {
-            name    "selectoffset#"
-            baseparm
-            label   "Offset"
-            export  none
-        }
-        parm {
-            name    "connectedgeo#"
-            baseparm
-            label   "Affect Disconnected Geometry Separately"
-            export  none
-        }
-        parm {
-            name    "useattrib#"
-            baseparm
-            label   "useattrib#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "attrib#"
-            baseparm
-            label   "Connectivity Attribute"
-            export  none
-        }
-        parm {
-            name    "usecolgroup#"
-            baseparm
-            label   "usecolgroup#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "colgroup#"
-            baseparm
-            label   "Collision Group"
-            export  none
-        }
-        parm {
-            name    "colgrouptype#"
-            baseparm
-            label   "Collision Group Type"
-            export  none
-        }
-        parm {
-            name    "colallowonbnd#"
-            baseparm
-            label   "Keep Elements Along Collision Group Boundary"
-            export  none
-        }
-        parm {
-            name    "usepartnum#"
-            baseparm
-            label   "Only Affect One Connected Region"
-            export  none
-        }
-        parm {
-            name    "keeponlypartnum#"
-            baseparm
-            label   "Remove Other Regions"
-            export  none
-        }
-        parm {
-            name    "partnum#"
-            baseparm
-            label   "Connected Region"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group_caps_points1.parm"
 Content-Type: text/plain
 
@@ -2783,6 +2635,7 @@ folder1_1	[ 0	locks=0 ]	(	0	)
 connectedgeo1	[ 0	locks=0 ]	(	"off"	)
 useattrib1	[ 0	locks=0 ]	(	"off"	)
 attrib1	[ 0	locks=0 ]	(	""	)
+tol1	[ 0	locks=0 ]	(	0	)
 usecolgroup1	[ 0	locks=0 ]	(	"off"	)
 colgroup1	[ 0	locks=0 ]	(	""	)
 colgrouptype1	[ 0	locks=0 ]	(	"edges"	)
@@ -2850,172 +2703,6 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group_caps_points2.spareparmdef"
-Content-Type: text/plain
-
-    multiparm {
-        name    "numrange"
-        label    "Number of Ranges"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "Enable"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "groupname#"
-            baseparm
-            label   "Group Name"
-            export  all
-        }
-        parm {
-            name    "group#"
-            baseparm
-            label   "Base Group"
-            export  all
-        }
-        parm {
-            name    "grouptype#"
-            baseparm
-            label   "Group Type"
-            export  all
-        }
-        parm {
-            name    "mergeop#"
-            baseparm
-            label   "Merge Method"
-            export  none
-        }
-        parm {
-            name    "method#"
-            baseparm
-            label   "Range Type"
-            export  none
-        }
-        parm {
-            name    "start#"
-            baseparm
-            label   "Start"
-            export  none
-        }
-        parm {
-            name    "end#"
-            baseparm
-            label   "End"
-            export  none
-        }
-        parm {
-            name    "length#"
-            baseparm
-            label   "Length"
-            export  none
-        }
-        parm {
-            name    "partition#"
-            baseparm
-            label   "Partition"
-            export  none
-        }
-        parm {
-            name    "numpartition#"
-            baseparm
-            label   "Number of Partitions"
-            export  none
-        }
-        parm {
-            name    "invert#"
-            baseparm
-            label   "Invert Range"
-            export  none
-        }
-        parm {
-            name    "selectamount#"
-            baseparm
-            label   "Select"
-            export  none
-        }
-        parm {
-            name    "selecttotal#"
-            baseparm
-            label   "of"
-            export  none
-        }
-        parm {
-            name    "selectoffset#"
-            baseparm
-            label   "Offset"
-            export  none
-        }
-        parm {
-            name    "connectedgeo#"
-            baseparm
-            label   "Affect Disconnected Geometry Separately"
-            export  none
-        }
-        parm {
-            name    "useattrib#"
-            baseparm
-            label   "useattrib#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "attrib#"
-            baseparm
-            label   "Connectivity Attribute"
-            export  none
-        }
-        parm {
-            name    "usecolgroup#"
-            baseparm
-            label   "usecolgroup#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "colgroup#"
-            baseparm
-            label   "Collision Group"
-            export  none
-        }
-        parm {
-            name    "colgrouptype#"
-            baseparm
-            label   "Collision Group Type"
-            export  none
-        }
-        parm {
-            name    "colallowonbnd#"
-            baseparm
-            label   "Keep Elements Along Collision Group Boundary"
-            export  none
-        }
-        parm {
-            name    "usepartnum#"
-            baseparm
-            label   "Only Affect One Connected Region"
-            export  none
-        }
-        parm {
-            name    "keeponlypartnum#"
-            baseparm
-            label   "Remove Other Regions"
-            export  none
-        }
-        parm {
-            name    "partnum#"
-            baseparm
-            label   "Connected Region"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group_caps_points2.parm"
 Content-Type: text/plain
 
@@ -3042,6 +2729,7 @@ folder1_1	[ 0	locks=0 ]	(	0	)
 connectedgeo1	[ 0	locks=0 ]	(	"off"	)
 useattrib1	[ 0	locks=0 ]	(	"off"	)
 attrib1	[ 0	locks=0 ]	(	""	)
+tol1	[ 0	locks=0 ]	(	0	)
 usecolgroup1	[ 0	locks=0 ]	(	"off"	)
 colgroup1	[ 0	locks=0 ]	(	""	)
 colgrouptype1	[ 0	locks=0 ]	(	"edges"	)
@@ -3109,117 +2797,6 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group_caps_edges1.spareparmdef"
-Content-Type: text/plain
-
-    multiparm {
-        name    "promotions"
-        label    "Number of Promotions"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "Enable"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "fromtype#"
-            baseparm
-            label   "Convert From"
-            export  none
-        }
-        parm {
-            name    "totype#"
-            baseparm
-            label   "To"
-            export  none
-        }
-        parm {
-            name    "group#"
-            baseparm
-            label   "Group Name"
-            export  none
-        }
-        parm {
-            name    "newname#"
-            baseparm
-            label   "New Name"
-            export  none
-        }
-        parm {
-            name    "preserve#"
-            baseparm
-            label   "Keep Original Group"
-            export  none
-        }
-        parm {
-            name    "onlyboundary#"
-            baseparm
-            label   "Include Only Elements on the Boundary"
-            export  none
-        }
-        parm {
-            name    "includeunshared#"
-            baseparm
-            label   "Include Unshared Edges"
-            export  none
-        }
-        parm {
-            name    "includecurveunshared#"
-            baseparm
-            label   "Include All Unshared Curve Edges"
-            export  none
-        }
-        parm {
-            name    "useconnectivityattrib#"
-            baseparm
-            label   "useconnectivityattrib#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "connectivityattrib#"
-            baseparm
-            label   "Connectivity Attribute"
-            export  none
-        }
-        parm {
-            name    "primsbyattribbndpts#"
-            baseparm
-            label   "Include All Primitives Sharing Attribute Boundary Points"
-            export  none
-        }
-        parm {
-            name    "onlyfull#"
-            baseparm
-            label   "Include Only Elements Entirely Contained in Original Group"
-            export  none
-        }
-        parm {
-            name    "onlyprimsedge#"
-            baseparm
-            label   "Include Only Primitives Sharing an Edge with Original Group"
-            export  none
-        }
-        parm {
-            name    "removedegen#"
-            baseparm
-            label   "Remove Degenerate Bridges"
-            export  none
-        }
-        parm {
-            name    "toattrib#"
-            baseparm
-            label   "Output as Integer Attribute"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group_caps_edges1.parm"
 Content-Type: text/plain
 
@@ -3237,6 +2814,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -3302,117 +2880,6 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/group_caps_edges2.spareparmdef"
-Content-Type: text/plain
-
-    multiparm {
-        name    "promotions"
-        label    "Number of Promotions"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "Enable"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "fromtype#"
-            baseparm
-            label   "Convert From"
-            export  none
-        }
-        parm {
-            name    "totype#"
-            baseparm
-            label   "To"
-            export  none
-        }
-        parm {
-            name    "group#"
-            baseparm
-            label   "Group Name"
-            export  none
-        }
-        parm {
-            name    "newname#"
-            baseparm
-            label   "New Name"
-            export  none
-        }
-        parm {
-            name    "preserve#"
-            baseparm
-            label   "Keep Original Group"
-            export  none
-        }
-        parm {
-            name    "onlyboundary#"
-            baseparm
-            label   "Include Only Elements on the Boundary"
-            export  none
-        }
-        parm {
-            name    "includeunshared#"
-            baseparm
-            label   "Include Unshared Edges"
-            export  none
-        }
-        parm {
-            name    "includecurveunshared#"
-            baseparm
-            label   "Include All Unshared Curve Edges"
-            export  none
-        }
-        parm {
-            name    "useconnectivityattrib#"
-            baseparm
-            label   "useconnectivityattrib#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "connectivityattrib#"
-            baseparm
-            label   "Connectivity Attribute"
-            export  none
-        }
-        parm {
-            name    "primsbyattribbndpts#"
-            baseparm
-            label   "Include All Primitives Sharing Attribute Boundary Points"
-            export  none
-        }
-        parm {
-            name    "onlyfull#"
-            baseparm
-            label   "Include Only Elements Entirely Contained in Original Group"
-            export  none
-        }
-        parm {
-            name    "onlyprimsedge#"
-            baseparm
-            label   "Include Only Primitives Sharing an Edge with Original Group"
-            export  none
-        }
-        parm {
-            name    "removedegen#"
-            baseparm
-            label   "Remove Degenerate Bridges"
-            export  none
-        }
-        parm {
-            name    "toattrib#"
-            baseparm
-            label   "Output as Integer Attribute"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group_caps_edges2.parm"
 Content-Type: text/plain
 
@@ -3430,6 +2897,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -3590,7 +3058,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -3602,7 +3075,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -3681,6 +3159,7 @@ includeunshared1	[ 0	locks=0 ]	(	"on"	)
 includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
 onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
@@ -3968,8 +3447,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -4127,6 +3606,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 1 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/auto_cut.chn"
@@ -4163,6 +3648,7 @@ ptid = point(1, \"_uuc_index\", ptid);
 setpointgroup(0, \"_uuc_cutpoint\", ptid, 1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4253,6 +3739,7 @@ umbiliccutoff	[ 0	locks=0 ]	(	0	)
 integrationmode	[ 0	locks=0 ]	(	"normal"	)
 srcattrib	[ 0	locks=0 ]	(	P	)
 srccomp	[ 0	locks=0 ]	(	"xyz"	)
+divideelementarea	[ 0	locks=0 ]	(	"off"	)
 scalenormalize	[ 0	locks=0 ]	(	"off"	)
 sepparm	[ 0	locks=0 ]	(	)
 integrationdomain	[ 0	locks=0 ]	(	"piece"	)
@@ -4372,6 +3859,7 @@ else {
     }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4720,6 +4208,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"v@_uuc_orientation = point(0, \"P\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5106,7 +4595,12 @@ pointdir	[ 0	locks=0 ]	(	0	1	0	)
 pointexpr	[ 0	locks=0 ]	(	0	)
 pointattrib	[ 0	locks=0 ]	(	""	)
 pointattribcomp	[ 0	locks=0 ]	(	0	)
+pointorder	[ 0	locks=0 ]	(	indices	)
 pointreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
+usepointindices	[ 0	locks=0 ]	(	"off"	)
+pointindices	[ 0	locks=0 ]	(	indices	)
+combinepointindices	[ 0	locks=0 ]	(	"off"	)
 primitivesfolder	[ 0	locks=0 ]	(	0	)
 primgroup	[ 0	locks=0 ]	(	""	)
 primsort	[ 0	locks=0 ]	(	"none"	)
@@ -5118,7 +4612,12 @@ primdir	[ 0	locks=0 ]	(	0	1	0	)
 primexpr	[ 0	locks=0 ]	(	0	)
 primattrib	[ 0	locks=0 ]	(	""	)
 primattribcomp	[ 0	locks=0 ]	(	0	)
+primorder	[ 0	locks=0 ]	(	indices	)
 primreverse	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+useprimindices	[ 0	locks=0 ]	(	"off"	)
+primindices	[ 0	locks=0 ]	(	indices	)
+combineprimindices	[ 0	locks=0 ]	(	"off"	)
 vertexprimorder	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -5753,6 +5252,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -5896,8 +5396,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -6055,6 +5555,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 360 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/check_orientation.parm"
@@ -6082,6 +5588,7 @@ if (angle < ch('threshold')) {
    }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6425,6 +5932,7 @@ normalattrib	[ 0	locks=0 ]	(	N	)
 connectivityfolder	[ 0	locks=0 ]	(	0	)
 useconnectivityattrib	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib	[ 0	locks=0 ]	(	uv	)
+tol	[ 0	locks=0 ]	(	0	)
 usecolgroup	[ 0	locks=0 ]	(	"off"	)
 colgroup	[ 0	locks=0 ]	(	""	)
 colgrouptype	[ 0	locks=0 ]	(	"auto"	)
@@ -6972,6 +6480,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -7326,6 +6835,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	_uuc_index	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	"uv Cd"	)
@@ -7609,8 +7119,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -7775,6 +7285,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/delete_color_attribute.chn"
@@ -7808,6 +7324,7 @@ if (visualize_uv_islands)
     removeattrib(0, \"primitive\", \"Cd\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

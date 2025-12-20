@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -6.5 -16.15
+position 8.43687 -16.15
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -40,17 +40,17 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	uvflatten1 1 1 "input1"
+0 	testgeometry_pighead1 0 1 "input1"
 }
 inputs
 {
-0 	uvflatten1 0 1
+0 	testgeometry_pighead1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -66,6 +66,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -126,8 +130,8 @@ uvattrib	[ 0	locks=0	autoscope=0 ]	(	`chs(\"../attrib\")`	)
 method	[ 0	locks=0	autoscope=0 ]	(	"abf"	)
 optimize_uv_border	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 iterations	[ 0	locks=0	autoscope=0 ]	(	1	)
-cutoff	[ 0	locks=0	autoscope=0 ]	(	0.10000000000000001	)
-fFuseDist	[ 0	locks=0	autoscope=0 ]	(	1.0000000000000001e-05	)
+cutoff	[ 0	locks=0	autoscope=0 ]	(	0.1	)
+fFuseDist	[ 0	locks=0	autoscope=0 ]	(	1e-5	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -423,6 +427,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	43	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -900,6 +905,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 0	locks=0 ]	(	`chs(\"../insidegroup\")`	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	__index	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	`chs(\"../attrib\")`	)
@@ -908,6 +914,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1264,6 +1271,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"prims"	)
 destgroup	[ 8	locks=0 ]	(	[ destgroup	"" ] 	)
 destgrouptype	[ 0	locks=0 ]	(	"prims"	)
 matchbyattribute	[ 0	locks=0 ]	(	"on"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	__index	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	`chs(\"../attrib\")`	)
@@ -1272,6 +1280,7 @@ usenewname	[ 0	locks=0 ]	(	"off"	)
 newname	[ 0	locks=0 ]	(	""	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1519,6 +1528,7 @@ unload	[ 0	locks=0 ]	(	"always"	)
 primarypath	[ 0	locks=0 ]	(	""	)
 forcerecompile	[ 0	locks=0 ]	(	0	)
 delayillegal	[ 0	locks=0 ]	(	"off"	)
+fallback	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

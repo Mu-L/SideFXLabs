@@ -44,7 +44,17 @@
         type    string
         default { "" }
         menutoggle {
-            [ "opmenu -l -a split1 group" ]
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []           " ]
+            [ "        for g in geo.primGroups():" ]
+            [ "            r.extend([g.name(), g.name()])                   " ]
+            [ "return r" ]
+            language python
         }
         range   { 0 1 }
         parmtag { "autoscope" "0000000000000000" }
@@ -63,7 +73,17 @@
             type    string
             default { "uv" }
             menureplace {
-                [ "opmenu -l uvflatten4 uvattrib" ]
+                [ "r = []" ]
+                [ "node = hou.pwd()" ]
+                [ "inputs = node.inputs()" ]
+                [ "if inputs and inputs[0]:" ]
+                [ "    geo = inputs[0].geometry()" ]
+                [ "    if geo:" ]
+                [ "        attrs = []          " ]
+                [ "        for a in geo.vertexAttribs():" ]
+                [ "            r.extend([a.name(), a.name()])              " ]
+                [ "return r" ]
+                language python
             }
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "sidefx::attrib_access" "write" }
