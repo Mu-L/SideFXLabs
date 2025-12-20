@@ -1,0 +1,42 @@
+= Labs UV Unitize =
+
+#type:      node
+#context:   sop
+#internal:  labs::uv_unitize::1.1
+#icon:      uvunitize
+
+"""Scales primitives or UV islands to fit within a unit UV space."""
+
+This tool rescales UVs so that primitives or connected UV islands fit within a normalized 0–1 UV region.
+
+The node supports operating on individual primitives or on whole UV islands, allowing precise control over how UV layouts are normalized.
+
+@parameters
+    Group:
+        #id: group
+        Primitive group specifying which geometry is affected.
+
+    UV Attribute:
+        #id: uvattribute
+        The UV attribute to operate on. In _Primitives_ mode, the attribute name is used to create per-primitive UVs. In _UV Islands_ mode, the node uses the incoming attribute with this name.
+
+    Mode:
+        #id: mode
+        Determines how UVs are unitized.
+        
+        Primitives:
+            Scales each primitive independently to fit the 0–1 UV space.
+        UV Islands:
+            Measures each connected UV island and scales it to fit the 0–1 UV space as a whole.
+
+    Preserve Aspect:
+        #id: preserveaspect
+        Scales UV islands uniformly so their shape is preserved when fitting into the 0–1 UV space. When disabled, UVs are stretched independently in U and V to fully fill the unit square.
+
+    Center In Unit:
+        #id: centerinunit
+        Centers UV islands within the 0–1 UV space after unitizing. When disabled, islands are aligned to the lower-left corner of the unit square.
+
+    Preserve UDIM:
+        #id: preserveudim
+        Unitizes UV islands within their existing UDIM tiles instead of moving them into the 0–1 space. This preserves UDIM numbering and tile placement in multi-tile UV layouts.

@@ -1,0 +1,117 @@
+# Dialog script for labs::uv_unitize::1.1 automatically generated
+
+{
+    name	labs::uv_unitize::1.1
+    script	gamedev::sop_uv_unitize
+    label	"Labs UV Unitize"
+
+    help {
+	""
+    }
+
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []           " ]
+            [ "        for g in geo.primGroups():" ]
+            [ "            r.extend([g.name(), g.name()])                   " ]
+            [ "return r" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('grouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        invisible
+        default { "prims" }
+        menu {
+            "guess"     "Guess from Group"
+            "vertices"  "Vertices"
+            "edges"     "Edges"
+            "points"    "Points"
+            "prims"     "Primitives"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "uvattribute"
+        label   "UV Attribute"
+        type    string
+        default { "uv" }
+        menureplace {
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []          " ]
+            [ "        for a in geo.vertexAttribs():" ]
+            [ "            r.extend([a.name(), a.name()])              " ]
+            [ "return r" ]
+            language python
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "mode"
+        label   "Mode"
+        type    ordinal
+        default { "0" }
+        menu {
+            "0" "Primitives"
+            "1" "UV Islands"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_prims"
+        label   "fd_prims"
+        hidewhen "{ mode != 1 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "preserveaspect"
+            label   "Preserve Aspect"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "centerinunit"
+            label   "Center In Unit"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "preserveudim"
+            label   "Preserve UDIM"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
