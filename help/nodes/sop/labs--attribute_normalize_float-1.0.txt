@@ -1,0 +1,73 @@
+#type:     node
+#context:  sop
+#internal: labs::attribute_normalize_float::1.0
+#icon:     SOP/labs::attribute_normalize_float::1.0
+
+= Labs Attribute Normalize Float =
+
+"""Normalizes floating-point attribute values to a specified range."""
+
+This node evaluates the minimum and maximum values of the specified attribute across the chosen element class and remaps the values accordingly.
+Normalization can be followed by an optional user-defined remapping stage, allowing further shaping of the output distribution without recomputing the original range.
+
+Original range information can be preserved as detail attributes for debugging or downstream reference.
+
+
+@parameters
+
+    Class:
+        #id: class
+        The geometry element class the attribute belongs to.
+            
+    Attribute:
+        #id: attrib
+        The floating-point attribute to normalize.
+        
+    Rename Attribute:
+        #id: rename
+        Renames the output attribute.
+        
+    New Name:
+        #id: newname
+        The name assigned to the output attribute when __Rename Attribute__ is turned on.
+        
+    Keep Original Attribute:
+        #id: keeporig
+        Preserves the original attribute when renaming.
+        
+    Visualize Output:
+        #id: vis
+        Visualizes the normalized result using color.
+        
+    == Remap Output ==
+
+    Output Range:
+        #id: outrange
+        The target range used for normalization.
+        
+    Remap Output Values:
+        #id: useramp
+        Enables remapping of the normalized output using a ramp.
+
+    Output Values over Input Range:
+        #id: remapramp
+        Ramp used to remap normalized values.
+        
+    == Metadata ==
+
+    Output Original Min/Max Values:
+        #id: reportlimitvals
+        Outputs the original minimum and maximum values as detail attributes.
+        
+    Detail Attribute Prefix:
+        #id: minmaxprefix
+        Prefix used for naming the generated detail attributes.
+        
+    Visualization Ramp:
+        #id: visramp
+        Ramp used to visualize the normalized attribute.
+        
+@related
+- [Labs Attribute Normalize Vector SOP|Node:sop/labs--attribute_normalize_vector-1.0]
+- [Attribute Remap SOP|Node:sop/attribremap]
+- [Labs Attribute Value Replace SOP|Node:sop/labs--attribute_value_replace]

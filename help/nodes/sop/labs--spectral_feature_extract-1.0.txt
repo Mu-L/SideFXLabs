@@ -1,0 +1,171 @@
+#type:     node
+#context:  sop
+#internal: labs::spectral_feature_extract::1.0
+#icon:     SOP/labs::spectral_feature_extract::1.0
+
+= Labs Spectral Feature Extract =
+
+"""Extracts frequency-based features from scalar or vector attributes."""
+
+Spectral feature extraction separates an input signal into components based on spatial frequency.
+Low-frequency components represent broad, smooth variations, while high-frequency components capture fine detail and noise.
+
+This node computes these components using either a diffusion partial differential equation (PDE) approach or a smoothing-based approximation. The extracted results can be written as float or vector attributes and optionally visualized for debugging and look development.
+
+
+@parameters
+
+    Input Attribute:
+        #id: inattrib
+        The attribute to analyze.
+
+    Input Type:
+        #id: intype
+        The data type of the input attribute.
+            
+    == Vector Input ==
+
+    Extract:
+        #id: vecmode
+        Defines how vector frequency content is extracted.
+        
+        <p>__1D Frequencies in Projection Directions__: Projects vectors onto a direction before extracting frequencies.</p>
+        <p>__3D Frequencies__: Extracts frequency content independently in all three vector components.</p>
+            
+    Projection Direction:
+        #id: projattrib
+        Attribute defining the projection direction when using 1D extraction.
+        
+    Output Float Attribute:
+        #id: outattrib_f
+        Name of the output attribute when extracting scalar results.
+        
+    Output Vector Attribute:
+        #id: outattrib_v
+        Name of the output attribute when extracting vector results.
+        
+    == Frequency Spectrum Extraction ==
+
+    Method:
+        #id: method
+        The algorithm used to extract frequency components.
+        
+        <p>__Diffusion (PDE)__: Uses a diffusion process to separate frequency bands.</p>
+        <p>__Smooth__: Uses smoothing operations as an approximation</p>
+            
+    === Diffusion PDE ===
+
+    === Diffusion Times ===
+
+    Higher-End Time:
+        #id: time_high
+        Diffusion time used to extract high-frequency components.
+        
+    Lower-End Time:
+        #id: time_low
+        Diffusion time used to extract low-frequency components.
+        
+    === Diffusion Speed Attributes ===
+
+    Higher-End Attribute:
+        #id: speedattrib_high
+        Attribute controlling diffusion speed for high-frequency extraction.
+        
+    Lower-End Attribute:
+        #id: speedattrib_low
+        Attribute controlling diffusion speed for low-frequency extraction.
+        
+    === Smooth ===
+
+    === Smooth Strengths ===
+
+    Higher-End Strength:
+        #id: strength_high
+        Smoothing strength used to extract high-frequency components.
+        
+    Lower-End Strength:
+        #id: strength_low
+        Smoothing strength used to extract low-frequency components.
+        
+    === Smooth Filter Qualities ===
+
+    Higher-End Filter:
+        #id: filter_high
+        Filter quality used for high-frequency smoothing.
+        
+    Lower-End Filter:
+        #id: filter_low
+        Filter quality used for low-frequency smoothing.
+        
+    === Smooth Models ===
+
+    Higher-End Model:
+        #id: model_high
+        Model used to guide high-frequency smoothing.
+        
+        <p>__Uniform__: Applies uniform smoothing.</p>
+        <p>__Scale-Dominant__: Biases smoothing based on scale.</p>
+        <p>__Curvature-Dominant__: Biases smoothing based on curvature.</p>
+            
+    Lower-End Model:
+        #id: model_low
+        Model used to guide low-frequency smoothing.
+        
+        <p>__Uniform__: Applies uniform smoothing.</p>
+        <p>__Scale-Dominant__: Biases smoothing based on scale.</p>
+        <p>__Curvature-Dominant__: Biases smoothing based on curvature.</p>
+            
+    === Advanced ===
+
+    Time Scale:
+        #id: time_scale
+        Global scale applied to diffusion times.
+        
+    Strength Scale:
+        #id: strength_scale
+        Global scale applied to smoothing strengths.
+        
+    Invert Extraction Direction:
+        #id: invert
+        Swaps the interpretation of high- and low-frequency extraction.
+        
+    === Constrained Points ===
+
+    Constrain Boundary Points:
+        #id: constrboundary
+        Constrains boundary points during spectral extraction.
+        
+    Higher-End Points:
+        #id: boundary_high
+        Point group defining constraints for high-frequency extraction. 
+        
+    Lower-End Points:
+        #id: boundary_low
+        Point group defining constraints for low-frequency extraction.
+        
+    === Visualization ===
+
+    Recompute Output Normals:
+        #id: recomputenorm
+        Recomputes normals after extraction for visualization purposes.
+        
+    Visualize Extracted Spectrum:
+        #id: vis
+        Enables visualization of the extracted frequency components.
+        
+    === Visualization Controls ===
+
+    Float Color Gradient:
+        #id: visramp_float
+        Ramp used to visualize scalar output values.
+        
+    Vector Color Gradient:
+        #id: vecvismode
+        Controls how vector values are visualized.
+        
+        <p>__Scaled Original Vector Components__: Colors based on scaled original vectors.</p>
+        <p>__Remapped Vector Components__: Colors based on remapped extracted vectors.</p>
+            
+    Visualized Vector Scale:
+        #id: veccdscale
+        Scale applied to vectors during visualization.

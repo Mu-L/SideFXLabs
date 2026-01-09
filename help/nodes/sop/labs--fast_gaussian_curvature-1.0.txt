@@ -1,0 +1,78 @@
+#type:     node
+#context:  sop
+#internal: labs::fast_gaussian_curvature::1.0
+#icon:     SOP/labs::fast_gaussian_curvature::1.0
+
+= Labs Fast Gaussian Curvature =
+
+"""Computes Gaussian curvature using a fast angle-deficit method."""
+
+This node computes an approximation of Gaussian curvature on polygonal geometry using an angle deficit formulation.
+This method evaluates how much the sum of angles around a point deviates from a flat surface, making it well suited for identifying peaks, pits, and saddle regions.
+
+The implementation prioritizes performance and is intended for fast analysis, masking, visualization, and procedural effects rather than physically exact curvature measurement.
+
+@parameters
+
+    Group:
+        #id: group
+        Geometry group on which curvature is computed.
+        
+    Group Type:
+        #id: grouptype
+        The element type of the specified __Group__.
+            
+    Assign Default Value to Boundary Points:
+        #id: ignoreunshared
+        Assigns a default curvature value to boundary or unshared points. When turned off, boundary points may produce undefined or incomplete curvature values.
+        
+    Output Value:
+        #id: outputval
+        The type of curvature value computed.
+
+        <p>__Signed (Capture Peaks and Saddles)__: Outputs signed curvature values.</p>
+        <p>__Absolute (Capture Non-flatness)__: Outputs absolute curvature magnitude.</p>
+            
+    Output Attribute:
+        #id: outputattrib
+        The curvature representation to compute.
+
+        <p>__Angle Deficit__: Outputs raw angle deficit values.</p>
+        <p>__Normalized Gaussian Curvature__: Outputs normalized curvature values.</p>
+            
+    Angle Unit:
+        #id: angleunit
+        The unit used for angle deficit computation.
+            
+    Normalize From:
+        #id: nmlmode
+        Defines how normalization is applied.
+        
+        <p>__Current Angle Deficit Range__: Normalizes based on the computed range.</p>
+        <p>__Specified Angle Deficit Range__: Normalizes using a user-defined range.</p>
+            
+    Angle Deficit Range:
+        #id: specifiedrange
+        Angle deficit range used when __Normalize From__ is set to _Specified Angle Deficit Range_.
+        
+    Attribute Name:
+        #id: attribname_angle
+        Name of the output attribute when __Output Attribute__ is set to _Angle Deficit_.
+        
+    Attribute Name:
+        #id: attribname_curv
+        Name of the output attribute when __Output Attribute__ is set to _Normalized Gaussian Curvature_.
+        
+    Visualize Output:
+        #id: vis
+        Visualizes the curvature result using color.
+        
+    Visualization Ramp:
+        #id: visramp
+        Ramp used to remap curvature values for visualization.
+
+@related
+- [Labs Measure Curvature SOP|Node:sop/labs--measure_curvature-3.1]
+- [Labs Calculate Thickness SOP|Node:sop/labs--calculate_thickness-1.0]
+- [Measure SOP|Node:sop/measure]
+- [Measure Thickness SOP|Node:sop/measurethickness]

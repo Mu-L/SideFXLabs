@@ -1,11 +1,21 @@
+#type:		node
+#context:	sop
+#internal:	labs::houdini_icon
+#icon:		houdini_icon
+
 = Labs Houdini Icon =
 
-#type: node
-#context: sop
-#internal: labs::houdini_icon
-#icon: houdini_icon
-#tags: testgeo, sidefxlabs
+"""Generates a geometric representation of the Houdini icon."""
 
-""" Geometric representation for Houdini icon """
+This node outputs a clean, procedural mesh of the Houdini icon.
 
-This is a geometric representation of the icon for SideFX Houdini.
+
+@parameters
+
+    Enable Extrusion:
+        #id: extrude
+        Enables extrusion of the icon geometry. When turned off, the icon is generated as flat geometry.
+        
+    Extrude Distance:
+        #id: extrudedist
+        Distance of the extrusion when __Enable Extrusion__ is turned on. Higher values produce a thicker, more pronounced three-dimensional icon.

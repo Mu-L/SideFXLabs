@@ -1,26 +1,38 @@
+#type:      node
+#context:   sop
+#internal:  labs::instant_meshes::2.0
+#icon:      instantmeshes.png
+
 = Labs Instant Meshes =
 
-#type: node
-#context: sop
-#internal: labs::instant_meshes::2.0
-#icon: instantmeshes.png
-#tags: sidefxlabs,  model, gamedev
+"""Allows to run geometry through InstantMeshes and generate a quad mesh."""
 
-""" This tool allows you to run geometry through InstantMeshes and generate a quad mesh. """
+This node takes in geometry through its primary input, and an optional set of guide curves to control polygon flow. It will then run it through the InstantMeshes algorithm to generate a new quad mesh.
 
-The InstantMeshes sop takes in geometry through its primary input, and an optional set of guide curves to control polygon flow. It will then run it through the InstantMeshes algorithm to generate a new quad mesh.
 
 @parameters
+
     == Mesh Generation ==
+
     Target Polygon Count:
+        #id: v_count
         Allows you to specify the number of desired quads.
+
     Crease Angle:
+        #id: cr_angle
         Specifies the maximum generated Crease Angle used when deciding where to place edge loops.
+
     Number of Smooth Iterations:
+        #id: num_smooth_iter
         Controls the number of smoothing iterations of the geometry while meshing.
+
     == Advanced ==
+
     Output Flowlines:
+        #id: traceLines
         This toggle controls if the internally generated flowlines should be output.
+
     Deterministic:
+        #id: deterministic_parm
         Controls if the meshing should be deterministic.
     

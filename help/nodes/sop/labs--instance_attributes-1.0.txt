@@ -1,9 +1,9 @@
-= Labs Instance Attributes =
-
 #type:     node
 #context:  sop
 #internal: labs::instance_attributes::1.0
 #icon:     SOP/labs::instance_attributes::1.0
+
+= Labs Instance Attributes =
 
 """Builds and manages instance-related attributes for geometry instancing workflows."""
 
@@ -13,16 +13,7 @@ It supports asset variant weighting, per-point transform controls, and optional 
 
 Optional visualization tools are included to preview instance transforms and variant distribution directly in Houdini.
 
-=== Houdini Engine ===
-
-Create Instance Attribute for Unreal Engine
-Creates instance attributes compatible with Unreal Engine workflows.
-
-Create Instance Attribute for Unity
-Creates instance attributes compatible with Unity workflows.
-
-Delete Original Instance Attribute
-Deletes the original instance attribute after conversion.
+@parameters
 
     == Asset Variants ==
 
@@ -52,12 +43,15 @@ Deletes the original instance attribute after conversion.
 
     Create Instance Attribute for Unreal Engine:
         #id: createunrealpaths
+        Creates instance attributes compatible with Unreal Engine workflows.
         
     Create Instance Attribute for Unity:
         #id: createunitypaths
+        Creates instance attributes compatible with Unity workflows.
         
     Delete Original Instance Attribute:
         #id: delinstanceattrib
+        Deletes the original instance attribute after conversion.
         
     == Point Transforms ==
 
@@ -71,14 +65,9 @@ Deletes the original instance attribute after conversion.
         #id: scaletarget
         Specifies which scale attributes are affected.
 
-        Scaling Pscale:
-        Applies scaling to point attribute pscale.
-
-        Scaling Scale:
-        Applies scaling to point attribute scale.
-
-        Scaling Both:
-        Applies scaling to both pscale and scale.
+        <p>__Scaling Pscale__: Applies scaling to point attribute pscale.</p>
+        <p>__Scaling Scale__: Applies scaling to point attribute scale.</p>
+        <p>__Scaling Both__: Applies scaling to both pscale and scale.</p>
             
     Randomize Pscale:
         #id: randpscale
@@ -122,48 +111,32 @@ Deletes the original instance attribute after conversion.
         #id: initrot
         Defines how the initial instance orientation is derived.
         
-        Attempt to Use Input N (and Up):
-            Uses input normals and up vectors when available.
-        
-        Attempt to Use Input Orient:
-            Uses the input orient attribute when available.
+        <p>__Attempt to Use Input N (and Up)__: Uses input normals and up vectors when available.</p>
+        <p>__Attempt to Use Input Orient__: Uses the input orient attribute when available.</p>
             
     Reorientation:
         #id: reorient
         Adjusts the relationship between forward and up axes.
 
-        None:
-        No reorientation.
-
-        Swap Up and Forward:
-        Swaps the up and forward axes.
-
-        Rotate Up to Forward:
-        Rotates the up axis to align with the forward axis.
+        <p>__None__: No reorientation.</p>
+        <p>__Swap Up and Forward__: Swaps the up and forward axes.</p>
+        <p>__Rotate Up to Forward__: Rotates the up axis to align with the forward axis.</p>
 
     Spin Axis/Amount:
         #id: spinaxis
         Specifies the axis around which instances are rotated.
         
-        X in Houdini (Side/Pitch):
-            
-        Y in Houdini (Up/Yaw):
-            
-        Z in Houdini (Forward/Roll):
+        * X in Houdini (Side/Pitch)
+        * Y in Houdini (Up/Yaw)
+        * Z in Houdini (Forward/Roll)
             
     Spin Amount Mode:
         #id: spinamountmode
-        Spin Amount Mode
-
         Determines how spin values are computed.
-        Uniform:
-            Uses a constant spin value.
         
-        Random:
-            Randomizes the spin amount.
-        
-        From Attribute:
-            Reads the spin amount from an attribute.
+        <p>__Uniform__: Uses a constant spin value.</p>
+        <p>__Random__: Randomizes the spin amount.</p>
+        <p>__From Attribute__: Reads the spin amount from an attribute.</p>
 
     Spin Amount:
         #id: spin_uniform

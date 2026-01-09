@@ -1,0 +1,45 @@
+#type:      node
+#context:   sop
+#internal:  labs::cluster_refine::1.0
+#icon:      SOP/labs::cluster_refine::1.0
+
+= Labs Cluster Refine =
+
+"""Refines cluster boundaries by propagating cluster influence across neighboring elements."""
+
+This node evaluates neighboring elements around each cluster assignment and adjusts membership based on weighted influence from nearby clusters.
+By iterating this process, small isolated regions can be absorbed into larger clusters and hard transitions can be softened, resulting in more stable and visually coherent clustering.
+
+The refinement process can be restricted to immediate neighbors or extended neighborhoods, with optional weighting based on edge length.
+
+
+@parameters
+
+    Group:
+        #id: group
+        Geometry group defining which elements are affected.
+        
+    Cluster Attribute:
+        #id: clusterattrib
+        The attribute storing cluster IDs to be refined.
+        
+    Search Depth:
+        #id: depth
+        Defines how far cluster influence propagates.
+        
+        <p>__Immediate Neighbours__: Considers directly adjacent elements only.</p>
+        <p>__Extended Neighbours__: Considers neighbors beyond direct adjacency.</p>
+            
+    Extended Influence:
+        #id: extweight
+        Weight applied to extended neighbors when __Search Depth__ is set to _Extended Neighbours_. Higher values increase the influence of distant clusters.
+        
+    == Advanced ==
+
+    Iterations:
+        #id: iterations
+        Number of refinement iterations applied. Higher values produce smoother and more unified clusters at the cost of performance.
+        
+    Scale Influence by Edge Length:
+        #id: edgelen
+        Scales cluster influence based on edge length. When turned on, longer edges contribute more strongly during refinement.

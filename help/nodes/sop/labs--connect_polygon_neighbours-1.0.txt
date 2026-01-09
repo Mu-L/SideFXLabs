@@ -1,0 +1,44 @@
+#type:     node
+#context:  sop
+#internal: labs::connect_polygon_neighbours::1.0
+#icon:     SOP/labs::connect_polygon_neighbours::1.0
+
+= Labs Connect Polygon Neighbours =
+
+"""Creates points at polygon centroids and optionally connects neighboring polygons."""
+
+This node analyzes polygon adjacency and generates point representations of polygons at their centroids.
+Optionally, it creates connecting geometry between centroids of neighboring polygons, forming a graph that represents polygon connectivity.
+
+Primitive attributes and groups can be transferred to the generated points to preserve metadata from the source geometry.
+
+This node is useful for topology analysis, procedural graph generation, visualization of mesh neighborhoods, and driving downstream effects such as clustering, pathfinding, or attribute propagation.
+
+@parameters
+    Output:
+        #id: outputmode
+        Specifies the type of geometry to generate.
+        
+        <p>__Polygon Centroids Only__: Outputs one point per polygon at its centroid.</p>
+        <p>__Polygon Centroids and Neighbour Connections__: Outputs polygon centroids and lines connecting centroids of neighboring polygons.</p>
+            
+    Copy Primitive Attributes to Points:
+        #id: copyattrib
+        Copies primitive attributes from the source polygons to the generated centroid points.
+        
+    Attributes to Copy:
+        #id: attribstocopy
+        List of primitive attributes to copy when *Copy Primitive Attributes to Points* is turned on.
+        
+    Copy Primitive Groups to Points:
+        #id: copygroup
+        Copies primitive groups from the source polygons to the generated centroid points.
+        
+    Groups to Copy:
+        #id: groupstocopy
+        List of primitive groups to copy when *Copy Primitive Groups to Points* is turned on.
+            
+@related
+- [Connectivity SOP|Node:sop/connectivity]
+- [Measure SOP|Node:sop/measure]
+- [Labs Fast Group Unshared SOP|Node:sop/labs--fast_group_unshared-1.0]

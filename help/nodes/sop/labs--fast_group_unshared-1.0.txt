@@ -1,0 +1,28 @@
+#type:     node
+#context:  sop
+#internal: labs::fast_group_unshared::1.0
+#icon:     SOP/labs::fast_group_unshared::1.0
+
+= Labs Fast Group Unshared =
+
+"""Identifies and groups unshared geometry elements."""
+
+This node detects geometry elements that are not shared with neighboring elements and outputs them as a group or attribute.
+Typical use cases include detecting open edges, boundary points, isolated primitives, or preparing geometry for cleanup, capping, or further processing.
+
+@parameters
+
+    Group Type:
+        #id: grouptype
+        The type of geometry element to evaluate.
+            
+    Output Group Name:
+        #id: outgroup
+        Name of the group containing the unshared elements. The group type corresponds to the selected __Group Type__.
+        
+    Output as Integer Attribute:
+        #id: toattrib
+        Outputs the result as an integer attribute instead of a group. When turned on, unshared elements receive a value of 1 and all others receive 0.
+    
+@related
+- [Group Create SOP|Node:sop/groupcreate]

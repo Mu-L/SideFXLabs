@@ -1,0 +1,77 @@
+#type:     node
+#context:  sop
+#internal: labs::attribute_normalize_vector::1.0
+#icon:     SOP/labs::attribute_normalize_vector::1.0
+
+= Labs Attribute Normalize Vector =
+
+"""Normalizes vector attribute lengths to a specified range."""
+
+This node evaluates the minimum and maximum vector lengths across the selected element class and remaps the vector magnitudes accordingly.
+Optionally, vectors can be normalized to unit length, or further remapped using a user-defined ramp to shape the output distribution.
+
+Original length range metadata can be preserved as detail attributes for debugging or downstream reference.
+
+
+@parameters
+
+    Class:
+        #id: class
+        The geometry element class the attribute belongs to.
+            
+    Attribute:
+        #id: attrib
+        The vector attribute to normalize.
+        
+    Rename Attribute:
+        #id: rename
+        Renames the output attribute.
+        
+    New Name:
+        #id: newname
+        The name assigned to the output attribute when __Rename Attribute__ is turned on.
+        
+    Keep Original Attribute:
+        #id: keeporig
+        Preserves the original attribute when renaming.
+        
+    Visualize Output:
+        #id: vis
+        Visualizes the normalized vector lengths using color.
+        
+    == Remap Output ==
+
+    Output Unit Vectors:
+        #id: outputunit
+        Normalizes vectors to unit length. When turned on, vector magnitude is discarded and only direction is preserved.
+        
+    Output Length Range:
+        #id: outrange
+        The target range used to remap vector lengths.
+        
+    Remap Output Lengths:
+        #id: useramp
+        Enables remapping of normalized vector lengths using a ramp.
+        
+    Output Lengths over Input Range:
+        #id: remapramp
+        Ramp used to remap vector lengths after normalization.
+        
+    == Metadata ==
+
+    Output Original Min/Max Lengths:
+        #id: reportlimitvals
+        Outputs the original minimum and maximum vector lengths as detail attributes.
+        
+    Detail Attribute Prefix:
+        #id: minmaxprefix
+        Prefix used for naming the generated detail attributes.
+        
+    Visualization Ramp:
+        #id: visramp
+        Ramp used to visualize vector length values.
+        
+@related
+- [Labs Attribute Normalize Float SOP|Node:sop/labs--attribute_normalize_float-1.0]
+- [Attribute Remap SOP|Node:sop/attribremap]
+- [Labs Attribute Value Replace SOP|Node:sop/labs--attribute_value_replace]

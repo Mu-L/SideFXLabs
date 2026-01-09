@@ -1,12 +1,62 @@
+#type:		node
+#context:	sop
+#internal:	labs::substance_material
+#icon:		substance
+
 = Labs Substance Material =
 
-#type: node
-#context: sop
-#internal: labs::substance_material
-#icon: substance
-#tags: sidefxlabs,  materials
+"""Loads a Substance archive and assigns it as a PBR material."""
 
-"""  Loads a Substance Archive and assigns it as a material """
+This node loads a Substance Archive (.sbsar) and assigns the resulting textures to a Principled Shader–based material.
+It automatically extracts common texture outputs (such as base color, normal, roughness, and metallic) and connects them to the appropriate shader inputs.
 
-The Substance Material sop is a wrapper around the substance archive cop, which loads all the common image planes and assigns them as maps in the PBR shader called Principledshader.
-The tool also promotes all parameters present in the loaded archive, so you can tweak them while looking at your material assigned in the viewport.
+All exposed parameters from the Substance Archive are promoted, allowing interactive tweaking of the material while previewing the result directly in the viewport.
+
+
+@parameters
+
+    File Pant:
+        #id: file
+        Path to the Substance Archive (.sbsar) file.
+        
+    Reload:
+        #id: reload
+        Reloads the Substance Archive from disk. Use this after modifying the source file or updating outputs.
+        
+    Size:
+        #id: size
+        Resolution used when generating textures from the Substance Archive. Higher values produce higher-resolution textures at the cost of performance.
+        
+    COP INPUT (optional):
+        #id: cop_input
+        Optional COP input used to override or supplement the generated textures.
+
+    Group:
+        #id: group1
+        Primitive group specifying which geometry the material is assigned to.
+        
+    == Material Settings ==
+
+    Flip Normal Y:
+        #id: baseNormal_flipY
+        Flips the Y (green) channel of the normal map. Enable this to match normal map conventions used by certain renderers or game engines.
+        
+    Enable Texture Displacement:
+        #id: dispTex_enable
+        Enables displacement using the texture output from the Substance material.
+
+    Displacement Effect Scale:
+        #id: dispTex_scale
+        Scales the strength of the displacement effect.
+
+    Displacement Offset:
+        #id: dispTex_offset
+        Offsets the displacement along the surface normal.
+        
+    Gamma Correct Diffuse:
+        #id: gamma_diffuse
+        Applies gamma correction to the diffuse/base color texture.
+
+    Gamma Correct Roughness:
+        #id: gamma_roughness
+        Applies gamma correction to the roughness texture.

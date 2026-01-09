@@ -1,11 +1,96 @@
+#type:     node
+#context:  sop
+#internal: labs::quick_basic_tree
+#icon:     SOP/labs::quick_basic_tree
+
 = Labs Quick Basic Tree =
 
-#type: node
-#context: sop
-#internal: labs::quick_basic_tree
-#icon: quick_basic_tree
-#tags: sidefxlabs,  model
+"""Generates a simple procedural tree for rapid prototyping."""
 
-"""Creates a quick basic tree"""
+This node procedurally builds a branching structure over multiple growth generations, with optional leaves and shape distortion.
+Branch count, resolution, bending, pruning, and overall silhouette can be controlled using high-level parameters.
 
-This node creates a quick basic tree.
+The resulting geometry is intended as a starting point and can be further refined using downstream modeling, scattering, or instancing tools.
+
+
+@parameters
+
+    == Quick Settings ==
+
+    Growth Generations:
+        #id: growgen
+        Number of branching generations. Higher values produce more complex trees with additional branching levels.
+        
+    Resample Resolution:
+        #id: treeres
+        Resolution used when resampling the main trunk and branches. Higher values produce smoother curves at the cost of performance.
+        
+    Branch Resolution:
+        #id: cols
+        Number of sides used to generate branch geometry. Higher values increase branch smoothness.
+        
+    Radius Scale:
+        #id: radius
+        Global scale applied to branch radii.
+        
+    Leaves:
+        #id: bLeaves
+        Enables generation of leaf geometry.
+        
+    == Shape Distort ==
+
+    Amplitude:
+        #id: distortamnt
+        Strength of shape distortion applied to the tree. Higher values introduce stronger irregularities.
+        
+    Element Size:
+        #id: elementsize
+        Spatial size of the distortion pattern.
+        
+    Height Mask:
+        #id: heightmask
+        Controls how distortion strength varies along the height of the tree.
+        
+    == Branches ==
+
+    Overall Lift:
+        #id: branchlift
+        Vertical lift applied to branches. Higher values cause branches to grow upward more strongly.
+        
+    Prune Rate Per Generation:
+        #id: branchprune
+        Amount of branch removal applied per growth generation. Higher values result in fewer branches.
+
+        
+    === Growable Area Per Branch ===
+
+    Start:
+        #id: branchstart
+        Normalized start position along the branch where growth is allowed.
+        
+    End:
+        #id: branchend
+        Normalized end position along the branch where growth is allowed.
+        
+    === Branch Bend ===
+
+    Min Bend Angle:
+        #id: minx
+        Minimum bend angle applied to branches.
+        
+    Max Bend Angle:
+        #id: maxx
+        Maximum bend angle applied to branches.
+        
+    == Leaves ==
+
+    Prune Ratio:
+        #id: leafprune
+        Ratio of leaves removed during generation. Higher values result in fewer leaves.
+        
+    
+@related
+- [Labs Tree Controller SOP|Node:sop/labs--tree_controller]
+- [Labs Tree Trunk Generator SOP|Node:sop/labs--tree_trunk_generator]
+- [Labs Tree Branch Generator SOP|Node:sop/labs--tree_branch_generator]
+- [Labs Tree Leaf SOP|Node:sop/labs--tree_leaf_generator]
