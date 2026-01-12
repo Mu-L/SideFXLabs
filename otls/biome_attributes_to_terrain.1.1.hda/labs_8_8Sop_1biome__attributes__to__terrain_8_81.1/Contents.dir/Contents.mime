@@ -32,23 +32,26 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 9.5 -2.15
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
+position 1.78915 0.846359
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on outputforview 4294967295
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	heightfield1 0 1 "input1"
 }
 inputs
 {
+0 	heightfield1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@cayuga.local
+  author Bailey@BaileysPC
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -184,121 +187,6 @@ Content-Type: text/plain
 0 -6.6607235084574974 41.546269363772808 2 0 __NO_OWNER_NETWORK_BOX__ "NAME:GraphSopHeightfield"
 1 -0.32039524137730585 38.938518494555652 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 0.28700000047683716 0.56199997663497925 0.88300001621246338"
 2 12.865361590469995 23.180050026318618 2 0 __NO_OWNER_NETWORK_BOX__ "RGB 1 0.72500002384185791 0"
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_define.init"
-Content-Type: text/plain
-
-type = labs::biome_define::1.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_define.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -11.0773 23.82
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on outputforview 4294967295
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author youmnas@pubnico
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_define.chn"
-Content-Type: text/plain
-
-{
-    channel biomecolorr {
-      lefttype = extend
-      righttype = extend
-      default = 0.30054020881652832
-      flags = 0
-      segment { length = 0 value = 0.30054020881652832 0.30054020881652832 expr = ch(\"../biomecolorr\") }
-    }
-    channel biomecolorg {
-      lefttype = extend
-      righttype = extend
-      default = 0.47001707553863525
-      flags = 0
-      segment { length = 0 value = 0.47001707553863525 0.47001707553863525 expr = ch(\"../biomecolorg\") }
-    }
-    channel biomecolorb {
-      lefttype = extend
-      righttype = extend
-      default = 0.66255056858062744
-      flags = 0
-      segment { length = 0 value = 0.66255056858062744 0.66255056858062744 expr = ch(\"../biomecolorb\") }
-    }
-    channel precaverage {
-      lefttype = extend
-      righttype = extend
-      default = 700
-      flags = 0
-      segment { length = 0 value = 700 700 expr = ch(\"../precipitation\") }
-    }
-    channel tempaverage {
-      lefttype = extend
-      righttype = extend
-      default = 14
-      flags = 0
-      segment { length = 0 value = 14 14 expr = ch(\"../temperature\") }
-    }
-    channel soil {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../soil\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_define.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-fd_biomesettings	[ 0	locks=0 ]	(	0	)
-biomename	[ 0	locks=0 ]	(	$OS	)
-biomecolor	[ 8	locks=0 ]	(	[ biomecolorr	1 ] 	[ biomecolorg	1 ] 	[ biomecolorb	1 ] 	)
-fd_temperature	[ 0	locks=0 ]	(	0	)
-tempaverage	[ 8	locks=0 ]	(	[ tempaverage	14 ] 	)
-fd_precipitation	[ 0	locks=0 ]	(	0	)
-precaverage	[ 8	locks=0 ]	(	[ precaverage	700 ] 	)
-fd_tags	[ 0	locks=0 ]	(	0	)
-soil	[ 8	locks=0 ]	(	[ soil	1 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_define.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/vis_layer.init"
@@ -1202,7 +1090,7 @@ filter4	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"on"	)
 regex4	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
 global4	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
 from4	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	_bat_color.x	)
-to4	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	`chs(\"../biomecolorrname\")`	)
+to4	[ 8	locks=0	autoscope=0	autosel=4294967295 ]	(	`chs(\"../biomecolorrname\")`	)
 filter5	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"on"	)
 regex5	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
 global5	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
@@ -2425,18 +2313,18 @@ sopflags sopflags =
 comment ""
 position -6.2807 15.9338
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	reseting_masks 1 1 "input1"
+0 	resetting_masks 1 1 "input1"
 }
 inputs
 {
-0 	reseting_masks 0 1
+0 	resetting_masks 0 1
 }
 stat
 {
@@ -7061,225 +6949,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_info.init"
-Content-Type: text/plain
-
-type = null
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_info.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -11.0773 22.7645
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	default_biome_define 0 1 "input1"
-}
-inputs
-{
-0 	default_biome_define 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author youmnas@pubnico
-  access 0777
-}
-color UT_Color RGB 0.6 0.7 0.77 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_info.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-copyinput	[ 0	locks=0 ]	(	"on"	)
-cacheinput	[ 0	locks=0 ]	(	"off"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_biome_info.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info.init"
-Content-Type: text/plain
-
-type = object_merge
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -8.45859 21.8132
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author youmnas@pubnico
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-numobj	[ 0	locks=0 ]	(	1	)
-_separator	[ 0	locks=0 ]	(	)
-xformtype	[ 0	locks=0 ]	(	"object"	)
-xformpath	[ 0	locks=0 ]	(	""	)
-invertxform	[ 0	locks=0 ]	(	"off"	)
-createptgroups	[ 0	locks=0 ]	(	"off"	)
-ptgroupprefix	[ 0	locks=0 ]	(	_ptgrp_	)
-createprimgroups	[ 0	locks=0 ]	(	"off"	)
-primgroupprefix	[ 0	locks=0 ]	(	_primgrp_	)
-verbosegroups	[ 0	locks=0 ]	(	"off"	)
-suffixfirstgroup	[ 0	locks=0 ]	(	"on"	)
-createptstring	[ 0	locks=0 ]	(	"off"	)
-createprimstring	[ 0	locks=0 ]	(	"off"	)
-pathattrib	[ 0	locks=0 ]	(	objname	)
-pack	[ 0	locks=0 ]	(	"off"	)
-pivot	[ 0	locks=0 ]	(	"centroid"	)
-viewportlod	[ 0	locks=0 ]	(	"full"	)
-addpath	[ 0	locks=0 ]	(	"on"	)
-enable1	[ 0	locks=0 ]	(	"on"	)
-objpath1	[ 0	locks=0 ]	(	../default_biome_info	)
-group1	[ 0	locks=0 ]	(	""	)
-expand1	[ 0	locks=0 ]	(	"off"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info1.init"
-Content-Type: text/plain
-
-type = object_merge
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 16.0115 14.8956
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author youmnas@pubnico
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-numobj	[ 0	locks=0 ]	(	1	)
-_separator	[ 0	locks=0 ]	(	)
-xformtype	[ 0	locks=0 ]	(	"object"	)
-xformpath	[ 0	locks=0 ]	(	""	)
-invertxform	[ 0	locks=0 ]	(	"off"	)
-createptgroups	[ 0	locks=0 ]	(	"off"	)
-ptgroupprefix	[ 0	locks=0 ]	(	_ptgrp_	)
-createprimgroups	[ 0	locks=0 ]	(	"off"	)
-primgroupprefix	[ 0	locks=0 ]	(	_primgrp_	)
-verbosegroups	[ 0	locks=0 ]	(	"off"	)
-suffixfirstgroup	[ 0	locks=0 ]	(	"on"	)
-createptstring	[ 0	locks=0 ]	(	"off"	)
-createprimstring	[ 0	locks=0 ]	(	"off"	)
-pathattrib	[ 0	locks=0 ]	(	objname	)
-pack	[ 0	locks=0 ]	(	"off"	)
-pivot	[ 0	locks=0 ]	(	"centroid"	)
-viewportlod	[ 0	locks=0 ]	(	"full"	)
-addpath	[ 0	locks=0 ]	(	"on"	)
-enable1	[ 0	locks=0 ]	(	"on"	)
-objpath1	[ 0	locks=0 ]	(	../default_biome_info	)
-group1	[ 0	locks=0 ]	(	""	)
-expand1	[ 0	locks=0 ]	(	"off"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/default_info1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/MIN_MAX_HEIGHT.init"
 Content-Type: text/plain
 
@@ -8284,8 +7953,8 @@ Content-Type: text/plain
 sopflags sopflags = 
 comment ""
 position 13.8684 12.4076
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 3 "output1"
@@ -8293,12 +7962,10 @@ outputsNamed3
 inputsNamed3
 {
 0 	avg_attributes_from_regions1 3 1 "input1"
-1 	default_info1 0 1 "input2"
 }
 inputs
 {
 0 	avg_attributes_from_regions1 0 1
-1 	default_info1 0 1
 }
 stat
 {
@@ -8546,12 +8213,10 @@ if(f@mask < 1.0)
 {
 
     f@mask = 1 - f@mask;
-    v@_bat_color += set(dict(point(1, \"biome_definition\", 0))[\"biomecolorr\"],
-                       dict(point(1, \"biome_definition\", 0))[\"biomecolorg\"],
-                       dict(point(1, \"biome_definition\", 0))[\"biomecolorb\"]) * f@mask;
-    @_bat_precipitation += dict(point(1, \"biome_definition\", 0))[\"precaverage\"] * f@mask;
-    @_bat_temperature += dict(point(1, \"biome_definition\", 0))[\"tempaverage\"] * f@mask;
-    @_bat_soil += dict(point(1, \"biome_definition\", 0))[\"soil\"] * f@mask;
+    v@_bat_color += chv(\"color\") * f@mask;
+    @_bat_precipitation += ch(\"precipitation\") * f@mask;
+    @_bat_temperature += ch(\"temperature\") * f@mask;
+    @_bat_soil += ch(\"soil\") * f@mask;
     @_bat_biomeid = -1;
 }
 
@@ -8572,7 +8237,7 @@ vex_outputmask	[ 0	locks=0 ]	(	*	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	0	)
 folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-num_regions	[ 0	locks=0 ]	(	[ num_regions	0 ] 	)
+num_regions	[ 8	locks=0 ]	(	[ num_regions	0 ] 	)
 color	[ 8	locks=0 ]	(	[ colorx	0 ] 	[ colory	0 ] 	[ colorz	0 ] 	)
 precipitation	[ 8	locks=0 ]	(	[ precipitation	0 ] 	)
 temperature	[ 8	locks=0 ]	(	[ temperature	0 ] 	)
@@ -8609,8 +8274,8 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -6.25439 20.6959
-connectornextid 3
+position -6.30496 20.7031
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
@@ -8619,12 +8284,10 @@ outputsNamed3
 inputsNamed3
 {
 0 	TERRAIN_W_MASK 1 1 "input1"
-2 	default_info 0 1 "input2"
 }
 inputs
 {
 0 	TERRAIN_W_MASK 0 1
-1 	default_info 0 1
 }
 stat
 {
@@ -8853,12 +8516,10 @@ version 0.8
 folder0	[ 0	locks=0 ]	(	0	0	)
 group	[ 0	locks=0 ]	(	""	)
 bindeach	[ 0	locks=0 ]	(	"off"	)
-snippet	[ 0	locks=0 ]	(	"@_bat_precipitation = dict(point(1, \"biome_definition\", 0))[\"precaverage\"];
-@_bat_temperature = dict(point(1, \"biome_definition\", 0))[\"tempaverage\"];
-v@_bat_color = set(dict(point(1, \"biome_definition\", 0))[\"biomecolorr\"],
-                   dict(point(1, \"biome_definition\", 0))[\"biomecolorg\"],
-                   dict(point(1, \"biome_definition\", 0))[\"biomecolorb\"]);
-@_bat_soil = dict(point(1, \"biome_definition\", 0))[\"soil\"];
+snippet	[ 0	locks=0 ]	(	"@_bat_precipitation =ch(\"precipitation\");
+@_bat_temperature = ch(\"temperature\");
+v@_bat_color = chv(\"color\");
+@_bat_soil = ch(\"soil\");
 @mask=1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
@@ -8872,10 +8533,10 @@ vex_outputmask	[ 0	locks=0 ]	(	*	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	0	)
 folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-precipitation	[ 8	locks=0 ]	(	[ precipitation	0 ] 	)
-temperature	[ 8	locks=0 ]	(	[ temperature	0 ] 	)
-color	[ 8	locks=0 ]	(	[ colorx	0 ] 	[ colory	0 ] 	[ colorz	0 ] 	)
-soil	[ 8	locks=0 ]	(	[ soil	0 ] 	)
+precipitation	[ 0	locks=0 ]	(	[ precipitation	0 ] 	)
+temperature	[ 0	locks=0 ]	(	[ temperature	0 ] 	)
+color	[ 0	locks=0 ]	(	[ colorx	0 ] 	[ colory	0 ] 	[ colorz	0 ] 	)
+soil	[ 0	locks=0 ]	(	[ soil	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11826,14 +11487,14 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/reseting_masks.init"
+Content-Disposition: attachment; filename="hdaroot/resetting_masks.init"
 Content-Type: text/plain
 
 type = volumewrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/reseting_masks.def"
+Content-Disposition: attachment; filename="hdaroot/resetting_masks.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
@@ -11866,7 +11527,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/reseting_masks.parm"
+Content-Disposition: attachment; filename="hdaroot/resetting_masks.parm"
 Content-Type: text/plain
 
 {
@@ -11890,13 +11551,13 @@ vex_precision	[ 0	locks=0 ]	(	auto	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/reseting_masks.netbox"
+Content-Disposition: attachment; filename="hdaroot/resetting_masks.netbox"
 Content-Type: text/plain
 
 __netbox1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/reseting_masks.userdata"
+Content-Disposition: attachment; filename="hdaroot/resetting_masks.userdata"
 Content-Type: text/plain
 
 {
@@ -12123,8 +11784,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-120
-default_biome_define
+116
 output0
 IN_BIOME_REGIONS
 TERRAIN_W_MASK
@@ -12205,9 +11865,6 @@ heightfield_xform1
 heightfield_xform2
 s_if_bigterrain
 s_if_bigterrain1
-default_biome_info
-default_info
-default_info1
 MIN_MAX_HEIGHT
 maxheight
 get_height
@@ -12241,7 +11898,7 @@ replace_mask1
 keep_biome_cd
 vis_biome_cd
 if_biome_display
-reseting_masks
+resetting_masks
 vis_palette
 if_min_and_max_are_same
 
