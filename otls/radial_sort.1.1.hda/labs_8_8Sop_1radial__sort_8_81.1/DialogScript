@@ -1,0 +1,253 @@
+# Dialog script for labs::radial_sort::1.1 automatically generated
+
+{
+    name	labs::radial_sort::1.1
+    script	ebeSort
+    label	"Labs Radial Sort"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Source data"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    groupsimple {
+        name    "fd_points"
+        label   "Points"
+
+        parm {
+            name    "ptgroup"
+            label   "Point Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a sort ptgroup" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Points,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "ptsort"
+            label   "Radial Sort Points"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "pointobjpath"
+            label   "Vector Object"
+            type    oppath
+            invisible
+            default { "" }
+            hidewhen "{ ptsort != vector ptsort != circular }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!OBJ!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "pointpos"
+            label   "Center"
+            type    direction
+            invisible
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pointdir"
+            label   "Direction"
+            type    direction
+            size    3
+            default { "0" "1" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pointangleoffset"
+            label   "Angle Offset"
+            type    angle
+            default { "0" }
+            range   { -360 360 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "pointreverse"
+            label   "Reverse Point Sort"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "usepointindices"
+            label   "Use Sort Indices"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ ptsort == reorder }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "pointindices"
+            label   "Sort Indices"
+            type    string
+            default { "indices" }
+            disablewhen "{ usepointindices == 0 } { ptsort == reorder }"
+            hidewhen "{ ptsort == reorder }"
+            menureplace {
+                [ "opmenu -l -a radial_sort pointindices" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "showguidepts"
+            label   "Show Guide"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "guidecolorpts"
+            label   "Show Guide"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ showguidepts == 0 }"
+            range   { 0 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_primitives"
+        label   "Primitives"
+
+        parm {
+            name    "primgroup"
+            label   "Primitive Group"
+            type    string
+            default { "" }
+            menutoggle {
+                [ "opmenu -l -a sort primgroup" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = (hou.geometryType.Primitives,)\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+            parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+            parmtag { "script_action_icon" "BUTTONS_reselect" }
+        }
+        parm {
+            name    "primsort"
+            label   "Radial Sort Primitives"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "primobjpath"
+            label   "Vector Object"
+            type    oppath
+            invisible
+            default { "" }
+            hidewhen "{ primsort != vector primsort != circular }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "opfilter" "!!OBJ!!" }
+            parmtag { "oprelative" "." }
+        }
+        parm {
+            name    "primpos"
+            label   "Center"
+            type    direction
+            invisible
+            size    3
+            default { "0" "0" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "primdir"
+            label   "Direction"
+            type    direction
+            size    3
+            default { "0" "1" "0" }
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "primangleoffset"
+            label   "Angle Offset"
+            type    angle
+            default { "0" }
+            range   { -360 360 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "primreverse"
+            label   "Reverse Primitive Sort"
+            type    toggle
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "useprimindices"
+            label   "Use Sort Indices"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            hidewhen "{ primsort == reorder }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "primindices"
+            label   "Sort Indices"
+            type    string
+            default { "indices" }
+            disablewhen "{ useprimindices == 0 } { primsort == reorder }"
+            hidewhen "{ primsort == reorder }"
+            menureplace {
+                [ "opmenu -l -a radial_sort primindices" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "vertexprimorder"
+            label   "Optimize Internal Vertex Order"
+            type    toggle
+            default { "on" }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "showguideprims"
+            label   "Show Guide"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "guidecolorprims"
+            label   "Show Guide"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            disablewhen "{ showguideprims == 0 }"
+            range   { 0 1 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
