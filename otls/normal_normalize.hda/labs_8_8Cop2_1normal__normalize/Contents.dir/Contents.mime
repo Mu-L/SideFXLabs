@@ -30,10 +30,10 @@ matchesdef = 0
 Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
-comment ""
-position -0.5 -21.2603
+comment "Replaced by Normalize Vector COP recipe in Copernicus."
+position -2.5 -1.92357
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
 {
 }
@@ -47,7 +47,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -62,7 +62,11 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -71,7 +75,7 @@ Content-Disposition: attachment; filename="hdaroot.cop2"
 Content-Type: text/plain
 
 2
-0
+2
 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -183,14 +187,14 @@ Content-Type: text/plain
             baseparm
             label   "Plane Scope"
             joinnext
-            export  dialog
+            export  all
         }
         parm {
             name    "pscope"
             baseparm
             label   ""
             nolabel
-            export  dialog
+            export  all
         }
     }
 
@@ -284,6 +288,7 @@ flist	[ 0	locks=0 ]	(	*	)
 fmenu	[ 0	locks=0 ]	(	"scopeall"	)
 fautoadjust	[ 0	locks=0 ]	(	"on"	)
 currange	[ 0	locks=0 ]	(	240	)
+stdswitcher4	[ 0	locks=0 ]	(	0	0	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

@@ -1,39 +1,40 @@
 = Labs Normal Rotate =
 
-#type: node
-#context: cop2
-#internal: labs::normal_rotate
-#icon: cop_normal_rotate
-#tags: sidefxlabs,  cop, normal, gamedev
+#type:		node
+#context:	cop2
+#internal:	labs::normal_rotate
+#icon:		cop_normal_rotate
 
-""" Rotates a Normal Map while correcting recalculating it's internal vectors """
+""" Rotates a normal map while correcting recalculating it's internal vectors """
 
 A traditional Xform is not the correct way of rotating a normal map. Because a normal map represents directions and not colors, the red/green/blue channels always need to be the correct representation of the Tangent, Binormal and Normal Axis.
+
+NOTE: 
+    Replaced by [Vector Transform COP|Node:cop/vectorxform] in Copernicus.
 
 :col:
 	[Image:/movies/rotate_xform.gif]
 	
-	XForm rotating a Normal Map
+	XForm rotating a normal map
 
 :col:
 	[Image:/movies/rotate_normal.gif]
 	
-	Normal Rotate rotating a Normal Map
+	Normal Rotate rotating a normal map
 
 Isolating only the green channel will be a better way to see what is happening. Ignore the background issues on the Xform node. 
 
 :col:
 	[Image:/movies/rotate_xform_green.gif]
 	
-	XForm rotating a Normal Map
+	XForm rotating a normal map
 
 :col:
 	[Image:/movies/rotate_normal_green.gif]
 	
-	Normal Rotate rotating a Normal Map
+	Normal Rotate rotating a normal map
 
 
 @parameters
     Angle:
-        Degrees of rotation (in angles) for the image. From -180 to 180. 
-    
+        Degrees of rotation (in angles) for the image. From -180 to 180.

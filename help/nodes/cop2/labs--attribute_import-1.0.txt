@@ -1,31 +1,36 @@
 = Labs Attribute Import =
 
-#type: node
-#context: cop2
-#internal: labs::attribute_import::1.0
-#icon: attribute_import
-#tags: sidefxlabs, geometry
+#type:      node
+#context:   cop2
+#internal:  labs::attribute_import::1.0
+#icon:      attribute_import
 
 """ Imports geometry attributes as image planes using a UV attribute  """
 
 This node will import geometry attributes into cops as image planes using a UV lookup. You can specify which geometry to import from, and what attribute should be used as UVs.
 Note that you can import vector attributes into RGB (`C`) channel, and float into A (`A`). Importing a float attribute into RGB will give you the first component in all RGB channels.
 
+NOTE: 
+    Replaced by [Rasterize Geometry COP|Node:cop/rasterizegeo] in Copernicus.
+
+
 @parameters
+    
     Resolution:
         Controls the resolution of the image planes to be generated.
+    
     Geometry:
         This should point to the SOP node containing geometry, UVs and the attributes you want to import.
+    
     UV attribute:
         The attribute that should be used to do a lookup with to import attributes with.
+    
     == RGB ==
+    
     Attribute:
         The attribute which should be imported into this image plane.
+    
     == A ==
+    
     Attribute:
         The attribute which should be imported into this image plane.
-
-
-@examples
-
-    - [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/attribute_import_demoscene.hip]
