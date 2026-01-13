@@ -9,6 +9,8 @@
 
 This node takes in geometry through its primary input, and an optional set of guide curves to control polygon flow. It will then run it through the InstantMeshes algorithm to generate a new quad mesh.
 
+NOTE: 
+    This tool's functionality is replaced by the [Quad Remesh SOP|Node:sop/quadremesh]. To be removed in Houdini 23.0.
 
 @parameters
 
@@ -36,3 +38,6 @@ This node takes in geometry through its primary input, and an optional set of gu
         #id: deterministic_parm
         Controls if the meshing should be deterministic.
     
+    
+@related
+- [Quad Remesh SOP|Node:sop/quadremesh]

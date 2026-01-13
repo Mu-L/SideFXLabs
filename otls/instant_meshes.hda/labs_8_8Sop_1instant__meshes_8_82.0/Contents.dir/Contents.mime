@@ -2,6 +2,18 @@ MIME-Version: 1.0
 Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="node_type"
 Content-Type: text/plain
 
@@ -19,8 +31,8 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -0.5 1.85
+comment "This tool's functionality is replaced by the Quad Remesher SOP. To be removed in Houdini 23."
+position 4.152 -4.15
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -36,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -51,7 +63,11 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -461,6 +477,7 @@ if (hitprim == -1)
     i@group_split = 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -538,7 +555,7 @@ edge	[ 0	locks=0 ]	(	"off"	)
 method	[ 0	locks=0 ]	(	"dist"	)
 measure	[ 0	locks=0 ]	(	"arc"	)
 dolength	[ 0	locks=0 ]	(	"on"	)
-length	[ 0	locks=0 ]	(	0.050000000000000003	)
+length	[ 0	locks=0 ]	(	0.05	)
 dosegs	[ 0	locks=0 ]	(	"off"	)
 segs	[ 0	locks=0 ]	(	7	)
 useattribs	[ 0	locks=0 ]	(	"on"	)
@@ -757,6 +774,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	*	)
@@ -777,8 +797,8 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/instant_meshes_core1.init"
 Content-Type: text/plain
 
-type = labs::instant_meshes_core
-matchesdef = 0
+type = merge
+matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/instant_meshes_core1.def"
@@ -814,6 +834,46 @@ color UT_Color RGB 0.8 0.8 0.8
 delscript ""
 exprlanguage hscript
 end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/instant_meshes_core1.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "v_count"
+        label   "v_count"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "cr_angle"
+        label   "cr_angle"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "num_smooth_iter"
+        label   "num_smooth_iter"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "traceLines"
+        label   "traceLines"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "deterministic_parm"
+        label   "deterministic_parm"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/instant_meshes_core1.chn"
@@ -862,11 +922,11 @@ Content-Type: text/plain
 
 {
 version 0.8
-v_count	[ 8	locks=0 ]	(	[ v_count	1000 ] 	)
-cr_angle	[ 8	locks=0 ]	(	[ cr_angle	30 ] 	)
-num_smooth_iter	[ 8	locks=0 ]	(	[ num_smooth_iter	5 ] 	)
+v_count	[ 8	locks=0 ]	(	[ v_count	0 ] 	)
+cr_angle	[ 8	locks=0 ]	(	[ cr_angle	0 ] 	)
+num_smooth_iter	[ 8	locks=0 ]	(	[ num_smooth_iter	0 ] 	)
 traceLines	[ 8	locks=0 ]	(	[ traceLines	0 ] 	)
-deterministic_parm	[ 8	locks=0 ]	(	[ deterministic_parm	1 ] 	)
+deterministic_parm	[ 8	locks=0 ]	(	[ deterministic_parm	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

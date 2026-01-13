@@ -19,26 +19,24 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position -3.31937 3.08841
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+comment "This tool's functionality is replaced by the Quad Remesher SOP. To be removed in Houdini 23."
+position 1.5 -3.15
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -54,6 +52,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
