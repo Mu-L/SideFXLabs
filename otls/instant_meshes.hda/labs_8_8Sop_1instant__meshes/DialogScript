@@ -88,15 +88,15 @@
         label   "Advanced"
 
         parm {
-            name    "remeshed_tmp_file"
-            label   "Instant Meshes Cache"
+            name    "unremeshed_tmp_file"
+            label   "Houdini Cache"
             type    geometry
             default { "$HOUDINI_TEMP_DIR/input_geo.obj" }
             range   { 0 1 }
         }
         parm {
-            name    "unremeshed_tmp_file"
-            label   "Houdini Cache"
+            name    "remeshed_tmp_file"
+            label   "Instant Meshes Cache"
             type    geometry
             default { "$HOUDINI_TEMP_DIR/output_geo.obj" }
             range   { 0 1 }
