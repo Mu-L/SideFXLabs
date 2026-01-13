@@ -1,0 +1,84 @@
+= Labs Radial Sort =
+
+#type:     node
+#context:  sop
+#internal: labs::radial_sort::1.1
+#icon:     MISC/generic
+#since:    21.0
+
+"""Reorders points and primitives in a radial way."""
+
+This node lets you change the order of points/primitives in a radial way based on a direction vector.
+
+NOTE:
+    This node replaces [Labs Sort SOP|Node:sop/labs--sort-1.0], which will be removed in Houdini 23.0.
+
+@parameters
+
+    == Points ==
+
+    Point Group:
+        #id: ptgroup
+        The points to sort. Only these points will be re-arranged by the point sorting operation.
+
+    Radial Sort Points:
+        #id: ptsort
+        Orders the elements counterclockwise by their position around a certain direction in 3D space.
+
+    Direction:
+        #id: pointdir
+        The vector to use as a direction for sorting. This vector is signed, so a value of 0, 1, 0 is the equivalent of sorting By Y, while 0, -1, 0 is the reverse.
+
+    Angle Offset:
+        #id: pointangleoffset
+        Shifts the current element numbers forward or backward based on that angle (in degrees). Point numbers at the end of the point list wrap around to the start.
+
+    Reverse Point Sort:
+        #id: pointreverse
+        Reverses the sorted ordering computed by the controls above.
+
+    Sort Indices:
+        #id: pointindices
+        Output an attribute containing the sorted element indices, where each element’s value is its index in the sorted sequence. The elements themselves are not reordered.
+
+    Show Guide:
+        #id: guidecolorpts
+        Shows an arrow that represents the vector that is used for the sorting.
+
+    == Primitives ==
+
+    Primitive Group:
+        #id: primgroup
+        The primitives to restrict the sort to. Only these primitives will be re-arranged by the primitive sorting operation.
+
+    Radial Sort Primitives:
+        #id: primsort
+        Orders the elements counterclockwise by their position around a certain direction in 3D space.
+
+    Direction:
+        #id: primdir
+        The vector to use as a direction for sorting. This vector is signed, so a value of 0, 1, 0 is the equivalent of sorting By Y, while 0, -1, 0 is the reverse.
+
+    Angle Offset:
+        #id: primangleoffset
+        Shifts the current element numbers forward or backward based on that angle (in degrees). Point numbers at the end of the point list wrap around to the start.
+
+    Reverse Primitive Sort:
+        #id: primreverse
+        Reverses the sorted ordering computed by the controls above.
+
+    Sort Indices:
+        #id: primindices
+        Output an attribute containing the sorted element indices, where each element’s value is its index in the sorted sequence. The elements themselves are not reordered.
+
+    Optimize Internal Vertex Order:
+        #id: vertexprimorder
+        Sort vertices according to the primitive number and vertex order in each primitive. This will affect the linear vertex index used by VEX functions like vertexindex, vertexprim, and vertexprimindex.
+
+    Show Guide:
+        #id: guidecolorprims
+        Shows an arrow that represents the vector that is used for the sorting.
+
+
+@related
+- [Sort SOP | Node:sop/sort]
