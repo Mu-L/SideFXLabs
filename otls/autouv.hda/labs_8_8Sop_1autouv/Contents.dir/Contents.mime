@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 15.6039 -10.4317
+position -2.5 1.85
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -40,11 +40,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	testgeometry_pighead1 0 1 "input1"
+0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	testgeometry_pighead1 0 1
+0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
@@ -374,11 +374,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	sop_calculate_occlusion1 0 1 "input1"
+0 	maskbyfeature1 1 1 "input1"
 }
 inputs
 {
-0 	sop_calculate_occlusion1 0 1
+0 	maskbyfeature1 0 1
 }
 stat
 {
@@ -638,7 +638,7 @@ class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@_auv_path_cost = abs(max(0, f@convexity)) * ch(\"convex_multiplier\") ;
-f@_auv_path_cost +=  pow(f@occlusion, 10) *ch(\"occ_multiplier\") ;"	)
+f@_auv_path_cost +=  pow(f@_auv_occlusion, 10) *ch(\"occ_multiplier\") ;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
@@ -3545,286 +3545,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.init"
-Content-Type: text/plain
-
-type = labs::calculate_occlusion::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -8.5 -3.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-1 	measure_curvature1 1 1 "input1"
-}
-inputs
-{
-0 	measure_curvature1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Paul_Ambrosiussen@LAPTOP-P8R7FBPF
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.spareparmdef"
-Content-Type: text/plain
-
-    groupsimple {
-        name    "occ_settings2"
-        label   "Occlusion Settings"
-        grouptag { "group_type" "simple" }
-
-        parm {
-            name    "raycount"
-            baseparm
-            label   "Number of Rays"
-            export  none
-        }
-        groupcollapsible {
-            name    "folder2"
-            label   "Advanced"
-            grouptag { "group_type" "collapsible" }
-
-            parm {
-                name    "maxdist"
-                baseparm
-                label   "Maximum Ray Distance"
-                export  none
-            }
-            parm {
-                name    "conewidth"
-                baseparm
-                label   "Cone Width"
-                export  none
-            }
-        }
-
-    }
-
-    groupsimple {
-        name    "occ_output2"
-        label   "Output"
-        grouptag { "group_type" "simple" }
-
-        parm {
-            name    "colorout"
-            baseparm
-            label   "Output Occlusion as Color ( Cd )"
-            export  none
-        }
-        parm {
-            name    "occattr"
-            baseparm
-            label   "Occlusion Attribute"
-            export  none
-        }
-        parm {
-            name    "outputramp"
-            baseparm
-            label   "Output curve"
-            export  none
-        }
-    }
-
-    groupsimple {
-        name    "folder3"
-        label   "Smoothing"
-        grouptag { "group_type" "simple" }
-
-        parm {
-            name    "method"
-            baseparm
-            label   "Method"
-            export  none
-        }
-        parm {
-            name    "influencetype"
-            baseparm
-            label   "Influence Type"
-            export  none
-        }
-        parm {
-            name    "iterations"
-            baseparm
-            label   "Blurring Iterations"
-            export  none
-        }
-        parm {
-            name    "blur"
-            baseparm
-            label   "Blur Size"
-            export  none
-        }
-    }
-
-    parm {
-        name    "spacer"
-        baseparm
-        label   "Label"
-        nolabel
-        export  none
-    }
-    parm {
-        name    "spacer2"
-        baseparm
-        label   "Label"
-        nolabel
-        joinnext
-        export  none
-    }
-    parm {
-        name    "like_btn"
-        baseparm
-        label   "Like This Tool"
-        export  none
-    }
-    parm {
-        name    "sepparm"
-        baseparm
-        label   "sepparm"
-        invisible
-        export  none
-    }
-    parm {
-        name    "sepparm2"
-        baseparm
-        label   "sepparm2"
-        invisible
-        export  none
-    }
-    parm {
-        name    "sepparm3"
-        baseparm
-        label   "sepparm3"
-        invisible
-        export  none
-    }
-    parm {
-        name    "raybbias"
-        baseparm
-        label   "__UNUSED"
-        invisible
-        export  none
-    }
-    parm {
-        name    "iterations2"
-        baseparm
-        label   "__UNUSED"
-        invisible
-        export  none
-    }
-    parm {
-        name    "bias"
-        baseparm
-        label   "Bias"
-        export  none
-    }
-    parm {
-        name    "intensity"
-        label   "intensity"
-        type    float
-        default { "0" }
-        range   { 0 10 }
-    }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.chn"
-Content-Type: text/plain
-
-{
-    channel intensity {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../occlusionmultiplier\") }
-    }
-    channel bias {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 value = 0.081000000000000003 0.081000000000000003 expr = 1.3-ch(\"../occlusionmultiplier\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-occ_settings	[ 0	locks=0	autoscope=0 ]	(	0	)
-raycount	[ 0	locks=0	autoscope=0 ]	(	20	)
-bias	[ 0	locks=0	autoscope=0 ]	(	[ bias	0.5 ] 	)
-folder0	[ 0	locks=0	autoscope=0 ]	(	0	)
-maxdist	[ 0	locks=0	autoscope=0 ]	(	1	)
-conewidth	[ 0	locks=0	autoscope=0 ]	(	70	)
-occ_output	[ 0	locks=0	autoscope=0 ]	(	0	)
-colorout	[ 0	locks=0	autoscope=0 ]	(	"off"	)
-occattr	[ 0	locks=0	autoscope=0 ]	(	_auv_occlusion	)
-outputramp	[ 0	locks=0	autoscope=0 ]	(	2	)
-folder1	[ 0	locks=0	autoscope=0 ]	(	0	)
-method	[ 0	locks=0	autoscope=0 ]	(	"edgelength"	)
-influencetype	[ 0	locks=0	autoscope=0 ]	(	"connectivity"	)
-iterations	[ 0	locks=0	autoscope=0 ]	(	2	)
-blur	[ 0	locks=0	autoscope=0 ]	(	0.5	)
-spacer	[ 0	locks=0	autoscope=0 ]	(	""	)
-spacer2	[ 0	locks=0	autoscope=0 ]	(	""	)
-like_btn	[ 0	locks=0 ]	(	0	)
-sepparm	[ 0	locks=0 ]	(	)
-sepparm2	[ 0	locks=0 ]	(	)
-sepparm3	[ 0	locks=0 ]	(	)
-raybbias	[ 0	locks=0	autoscope=0 ]	(	0.01	)
-iterations2	[ 0	locks=0	autoscope=0 ]	(	6	)
-outputramp1pos	[ 0	locks=0	autoscope=0 ]	(	0	)
-outputramp1value	[ 0	locks=0	autoscope=0 ]	(	0	)
-outputramp1interp	[ 0	locks=0	autoscope=0 ]	(	"linear"	)
-outputramp2pos	[ 0	locks=0	autoscope=0 ]	(	1	)
-outputramp2value	[ 0	locks=0	autoscope=0 ]	(	1	)
-outputramp2interp	[ 0	locks=0	autoscope=0 ]	(	"linear"	)
-occ_settings2	[ 0	locks=0	autoscope=0 ]	(	0	)
-folder2	[ 0	locks=0	autoscope=0 ]	(	0	)
-occ_output2	[ 0	locks=0	autoscope=0 ]	(	0	)
-folder3	[ 0	locks=0	autoscope=0 ]	(	0	)
-intensity	[ 0	locks=0	autoscope=0 ]	(	[ intensity	0 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.netbox"
-Content-Type: text/plain
-
-__netbox3
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/sop_calculate_occlusion1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/uvflatten4.init"
 Content-Type: text/plain
 
@@ -6047,6 +5767,191 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.init"
+Content-Type: text/plain
+
+type = maskbyfeature
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -8.5 -3.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	measure_curvature1 1 1 "input1"
+}
+inputs
+{
+0 	measure_curvature1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.chn"
+Content-Type: text/plain
+
+{
+    channel aobias {
+      lefttype = extend
+      righttype = extend
+      default = 1.3
+      flags = 0
+      segment { length = 0 value = 1.3 1.3 expr = "1.3 - ch(\"../occlusionmultiplier\")" }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+outputfolder	[ 0	locks=0 ]	(	0	)
+usecombinedmask	[ 0	locks=0 ]	(	"off"	)
+combinedmaskattrib	[ 0	locks=0 ]	(	Cd	)
+usedirectionmask	[ 0	locks=0 ]	(	"off"	)
+directionmaskattrib	[ 0	locks=0 ]	(	dirmask	)
+useshadowmask	[ 0	locks=0 ]	(	"off"	)
+shadowmaskattrib	[ 0	locks=0 ]	(	shadowmask	)
+useaomask	[ 0	locks=0 ]	(	"on"	)
+aomaskattrib	[ 0	locks=0 ]	(	_auv_occlusion	)
+directionfolder	[ 0	locks=0 ]	(	0	)
+directionfrom	[ 0	locks=0 ]	(	"vector"	)
+sourcepoints	[ 0	locks=0 ]	(	""	)
+maxsourcepoints	[ 0	locks=0 ]	(	10	)
+direction	[ 0	locks=0 ]	(	0	1	0	)
+enabledirection	[ 0	locks=0 ]	(	"off"	)
+maxangle	[ 0	locks=0 ]	(	90	)
+folder0	[ 0	locks=0 ]	(	0	)
+clampdirectionmask	[ 0	locks=0 ]	(	"on"	)
+falloffbydist	[ 0	locks=0 ]	(	"off"	)
+maxrad	[ 0	locks=0 ]	(	1	)
+distfallofframp	[ 0	locks=0 ]	(	3	)
+shadows	[ 0	locks=0 ]	(	0	)
+castshadows	[ 0	locks=0 ]	(	"off"	)
+selfshadows	[ 0	locks=0 ]	(	"on"	)
+samples	[ 0	locks=0 ]	(	5	)
+bluriterations	[ 0	locks=0 ]	(	2	)
+pinborder	[ 0	locks=0 ]	(	"off"	)
+influencetype	[ 0	locks=0 ]	(	"connectivity"	)
+proxrad	[ 0	locks=0 ]	(	0.5	)
+maxneigh	[ 0	locks=0 ]	(	20	)
+shadowsamplefolder	[ 0	locks=0 ]	(	0	)
+maxraydist	[ 0	locks=0 ]	(	1000	)
+coneangle	[ 0	locks=0 ]	(	3	)
+rayoffset	[ 0	locks=0 ]	(	0.001	)
+seed	[ 0	locks=0 ]	(	0	)
+ambientocclusion	[ 0	locks=0 ]	(	0	)
+enableao	[ 0	locks=0 ]	(	"on"	)
+aoselfshadows	[ 0	locks=0 ]	(	"on"	)
+aosamples	[ 0	locks=0 ]	(	20	)
+aobias	[ 8	locks=0 ]	(	[ aobias	0.5 ] 	)
+aobluriterations	[ 0	locks=0 ]	(	2	)
+aopinborder	[ 0	locks=0 ]	(	"off"	)
+aoinfluencetype	[ 0	locks=0 ]	(	"connectivity"	)
+aoproxrad	[ 0	locks=0 ]	(	0.5	)
+aomaxneigh	[ 0	locks=0 ]	(	20	)
+aoadvancedfolder	[ 0	locks=0 ]	(	1	)
+aomaxraydist	[ 0	locks=0 ]	(	1	)
+aoconeangle	[ 0	locks=0 ]	(	70	)
+aorayoffset	[ 0	locks=0 ]	(	0.001	)
+aoseed	[ 0	locks=0 ]	(	0	)
+remapfolder	[ 0	locks=0 ]	(	0	)
+remapcombinedmask	[ 0	locks=0 ]	(	"off"	)
+combinedramp	[ 0	locks=0 ]	(	2	)
+remapdirectionmask	[ 0	locks=0 ]	(	"off"	)
+directionramp	[ 0	locks=0 ]	(	2	)
+remapshadowmask	[ 0	locks=0 ]	(	"off"	)
+shadowramp	[ 0	locks=0 ]	(	2	)
+remapaomask	[ 0	locks=0 ]	(	"off"	)
+aoramp	[ 0	locks=0 ]	(	2	)
+distfallofframp1pos	[ 0	locks=0 ]	(	0	)
+distfallofframp1value	[ 0	locks=0 ]	(	1	)
+distfallofframp1interp	[ 0	locks=0 ]	(	"bezier"	)
+distfallofframp2pos	[ 0	locks=0 ]	(	0.5	)
+distfallofframp2value	[ 0	locks=0 ]	(	0	)
+distfallofframp2interp	[ 0	locks=0 ]	(	"bezier"	)
+distfallofframp3pos	[ 0	locks=0 ]	(	1	)
+distfallofframp3value	[ 0	locks=0 ]	(	0	)
+distfallofframp3interp	[ 0	locks=0 ]	(	"bezier"	)
+combinedramp1pos	[ 0	locks=0 ]	(	0	)
+combinedramp1value	[ 0	locks=0 ]	(	0	)
+combinedramp1interp	[ 0	locks=0 ]	(	"linear"	)
+combinedramp2pos	[ 0	locks=0 ]	(	1	)
+combinedramp2value	[ 0	locks=0 ]	(	1	)
+combinedramp2interp	[ 0	locks=0 ]	(	"linear"	)
+directionramp1pos	[ 0	locks=0 ]	(	0	)
+directionramp1value	[ 0	locks=0 ]	(	0	)
+directionramp1interp	[ 0	locks=0 ]	(	"linear"	)
+directionramp2pos	[ 0	locks=0 ]	(	1	)
+directionramp2value	[ 0	locks=0 ]	(	1	)
+directionramp2interp	[ 0	locks=0 ]	(	"linear"	)
+shadowramp1pos	[ 0	locks=0 ]	(	0	)
+shadowramp1value	[ 0	locks=0 ]	(	0	)
+shadowramp1interp	[ 0	locks=0 ]	(	"linear"	)
+shadowramp2pos	[ 0	locks=0 ]	(	1	)
+shadowramp2value	[ 0	locks=0 ]	(	1	)
+shadowramp2interp	[ 0	locks=0 ]	(	"linear"	)
+aoramp1pos	[ 0	locks=0 ]	(	0	)
+aoramp1value	[ 0	locks=0 ]	(	0	)
+aoramp1interp	[ 0	locks=0 ]	(	"linear"	)
+aoramp2pos	[ 0	locks=0 ]	(	1	)
+aoramp2value	[ 0	locks=0 ]	(	1	)
+aoramp2interp	[ 0	locks=0 ]	(	"linear"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.netbox"
+Content-Type: text/plain
+
+__netbox3
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/maskbyfeature1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"1"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"object_switcher"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -6294,7 +6199,6 @@ polyreduce2
 group5
 dissolve1
 normal3
-sop_calculate_occlusion1
 uvflatten4
 uv_uv_seams
 connectivity5
@@ -6318,6 +6222,7 @@ groupdelete1
 groupdelete3
 measure_curvature1
 merge_small_islands1
+maskbyfeature1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
