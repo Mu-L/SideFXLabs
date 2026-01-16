@@ -1,0 +1,1368 @@
+#type:     node
+#context:  lop
+#internal: labs::karma::2.0
+#icon:     LOP/labs::karma::2.0
+
+= Labs Karma =
+
+"""Renders USD stages using Karma with integrated caching, wedging, and TOPs workflows."""
+
+This node renders a USD stage using Karma while managing output paths, versioning, frame ranges, wedges, and scheduling.
+
+It supports both interactive preview rendering and disk-based rendering, with optional TOPs integration for scalable execution.
+
+The node exposes commonly used Karma controls directly, while allowing advanced Karma, AOV, denoising, and color-management options to be configured in one place.
+
+
+@parameters
+
+    Primitive Path:
+        #id: primpath
+        USD primitive path defining the scope of the render.
+
+    File Method:
+        #id: filemethod
+        Defines how output image paths are constructed.
+        
+        <p>__Constructed__: Builds paths automatically using base name, version, frame, and wedge tokens.</p>
+            
+        <p>__Explicit__: Uses the explicitly specified output file path.</p>
+            
+    Time Dependent Render:
+        #id: timedependent
+        Marks the render as time-dependent. Enable this when rendering animated sequences.
+        
+    Create TOP File Cache:
+        #id: createtopfilecache
+        Creates a TOP File Cache setup for rendering.
+        
+    Base Name:
+        #id: basename
+        Base name used when constructing output paths.
+        
+    File Type:
+        #id: filetype
+        Image format used for output files.
+            
+    Image File:
+        #id: file
+        Explicit output image path when using Explicit file method.
+        
+    Open Directory:
+        #id: openfiledir
+        Opens the directory containing the resolved output image file.
+        
+    Base Folder:
+        #id: basedir
+        Base directory used for constructed output paths.
+        
+    Open Directory:
+        #id: openbasedir
+        Opens the base output directory used for constructed paths.
+        
+    Open Sequence:
+        #id: opensequence
+        Opens the rendered image sequence in the system file browser.
+        
+    Enable Version:
+        #id: enableversion
+        Enables versioning and specifies the version number.
+        
+    Version:
+        #id: version
+        Version number used when versioning is enabled.
+        
+    Down Version:
+        #id: versiondown
+        Decrements the current version number.
+        
+    Up Version:
+        #id: versionup
+        Increments the current version number.
+        
+    Clean Version:
+        #id: cleanversion
+        Removes unused or invalid version tokens from the output path.
+        
+    == Rendering ==
+
+    Overwrite Existing Cache:
+        #id: overwriteexisting
+        Allows existing rendered images to be overwritten.
+        
+    === Overwrite Existing Render ===
+
+    Render to Disk:
+        #id: execute
+        Executes a render and writes images to disk.
+        
+    Render to MPlay:
+        #id: renderpreview
+        Renders interactively to MPlay.
+        
+    Generate Static:
+        #id: generatestaticworkitems
+        Generates static work items for TOPs-based execution.
+        
+    Render in Background:
+        #id: cookoutputnode
+        Renders in the background without blocking the UI.
+        
+    Cancel:
+        #id: dirtyall
+        Cancels the current render.
+        
+    === Sequence ===
+
+    Evaluate As:
+        #id: trange
+        Defines how frames are evaluated.
+            
+    Start/End/Inc:
+        #id: f
+        Frame range used for rendering.
+        
+    F Menu:
+        #id: fmenu
+        Quick presets for common frame ranges and substep patterns.
+            
+    Override Frame:
+        #id: useframeoverride
+        Overrides the evaluation frame.
+        
+    Override Frame:
+        #id: frameoverride
+        Overrides the evaluation frame.
+        
+    List of Frames:
+        #id: specificrange
+        Explicit list of frames to render.
+        
+    ===  Wedging ===
+
+    Enable Wedging:
+        #id: enablewedging
+        Enables wedge-based rendering.
+        
+    Evaluate As:
+        #id: wrange
+        Defines which wedges are rendered.
+
+    Single Wedge:
+        #id: wedgeoverride
+        Index of the single wedge to render when evaluating a single wedge.
+        
+    List of Wedges:
+        #id: specificwedges
+        Explicit list of wedge indices to render.
+        
+    Wedge Range:
+        #id: wedgerange
+        Start and end indices defining a range of wedges to render.
+        
+    Wedge Count:
+        #id: wedgecount
+        Total number of wedges.
+        
+    Clean Wedges:
+        #id: cleanwedges
+        Removes stale or invalid wedge data from previous renders.
+        
+    === Number of Attributes ===
+
+    === Attribute # ===
+
+    Attribute Name:
+        #id: attrib#
+        Name of the parameter or attribute to be wedged.
+        
+    Wedge Type:
+        #id: wedgetype#
+        Method used to generate values for this wedge.
+            
+    Min Value:
+        #id: minvalue#
+        Minimum value used for ranged wedge generation.
+        
+    Max Value:
+        #id: maxvalue#
+        Maximum value used for ranged wedge generation.
+        
+    Seed:
+        #id: randomseed#
+        Random seed used for stochastic wedge generation.
+        
+    Batch Size:
+        #id: batchsize#
+        Number of values grouped together per wedge batch.
+        
+    Period Size:
+        #id: periodsize#
+        Number of steps before repeating values in periodic sequences.
+        
+    List of Values:
+        #id: values#
+        Explicit list of values used for this wedge.
+        
+    Geometry Path:
+        #id: geopath#
+        USD or SOP path used when sampling values from geometry.
+        
+    Create Geometry:
+        #id: createwedgegeo#
+        Creates geometry representing wedge values for debugging or inspection.
+        
+    Default Value:
+        #id: valuesdefault#
+        Fallback value used if the attribute cannot be evaluated.
+        
+    == Scheduling ==
+
+    === Scheduling ===
+
+    Use Custom TOP Scheduler:
+        #id: usecustomtopscheduler
+        Enables use of a custom TOP scheduler instead of the default.
+        
+    Scheduler Override:
+        #id: topscheduler
+        Path to the TOP scheduler used for execution.
+        
+    === Local ===
+
+    Frames per Batch:
+        #id: framesperbatch
+        Number of frames processed per work item.
+        
+    One Batch at a Time:
+        #id: local_single
+        Limits execution to one batch at a time.
+        
+    local_is_CPU_number_set:
+        #id: local_is_CPU_number_set
+        Internal flag indicating whether CPU limits are explicitly set.
+        
+    CPUs per Batch:
+        #id: local_CPUs_to_use
+        Number of CPUs allocated to each work item.
+        
+    CPU Count to Use:
+        #id: maxprocsmenu
+        Preset CPU usage limits relative to available cores.
+            
+    CPU Count:
+        #id: maxprocs
+        Explicit number of CPUs to use.
+        
+    Memory:
+        #id: local_useminfreemem
+        Sets a minimum free-memory requirement for execution.
+            
+    MB:
+        #id: local_minfreemem
+        Minimum free memory in megabytes.
+        
+    Percent:
+        #id: local_minfreemempct
+        Minimum free memory as a percentage of system memory.
+        
+    == Karma ==
+
+    === Karma ===
+
+    Rendering Engine:
+        #id: engine
+        Selects the Karma rendering engine (CPU or XPU).
+        
+    Simplified Shading:
+        #id: force_headlight
+        Forces simplified shading using a headlight for preview renders.
+        
+    Pixel Samples:
+        #id: samplesperpixel
+        Number of primary samples per pixel.
+        
+    === Render Mode ===
+
+    Image Mode:
+        #id: imagemode
+        Controls how the image is rendered (final or progressive).
+        
+    Progressive Passes:
+        #id: progressivepasses
+        Number of passes used in progressive rendering mode.
+        
+    === Sampling ===
+
+    Convergence Mode:
+        #id: convergence_mode
+        Determines how sampling convergence is evaluated.
+
+    Min Ray Samples:
+        #id: varianceaa_minsamples
+        The minimum number of secondary ray samples per pixel when using adaptive sampling.
+        
+    Max Ray Samples:
+        #id: varianceaa_maxsamples
+        The maximum number of secondary ray samples per pixel when using adaptive sampling.
+        
+    Diffuse Samples:
+        #id: diffusesamples
+        The number of diffuse ray samples per shading evaluation.
+        
+    Reflection Samples:
+        #id: reflectionsamples
+        The number of reflection ray samples per shading evaluation.
+        
+    Refraction Samples:
+        #id: refractionsamples
+        The number of refraction ray samples per shading evaluation.
+        
+    Volume Samples:
+        #id: volumesamples
+        The number of volume scattering samples per shading evaluation.
+        
+    SSS Samples:
+        #id: ssssamples
+        The number of subsurface scattering samples per shading evaluation.
+        
+    === Light Quality ===
+
+    Light Sampling Mode:
+        #id: light_sampling_mode
+        Controls how lights are sampled during rendering.
+        
+    Light Sampling Quality:
+        #id: light_sampling_quality
+        Quality multiplier for light sampling. Higher values reduce noise at the cost of render time.
+        
+    === Noise Level ===
+
+    Noise Level:
+        #id: varianceaa_thresh
+        Target noise threshold for adaptive sampling.
+        
+    Enable Indirect Guiding:
+        #id: guiding_enable
+        Enables indirect guiding for sampling difficult lighting paths.
+        
+    Indirect Samples:
+        #id: guiding_samples
+        The number of guiding samples used when indirect guiding is enabled.
+        
+    === Pixel Oracle ===
+
+    Pixel Oracle:
+        #id: oracle
+        Enables adaptive per-pixel sampling using the oracle system.
+        
+    Minimum Samples:
+        #id: oracle_minsamples
+        Minimum samples per pixel when oracle is enabled.
+        
+    Plane:
+        #id: oracle_plane
+        AOV used to evaluate convergence.
+        
+    Variance Threshold:
+        #id: oracle_variance
+        Variance threshold used to stop sampling.
+        
+    Random Seed:
+        #id: randomseed
+        Random seed used for sampling. Change this to vary the noise pattern.
+        
+    OCIO Transform:
+        #id: oracle_ociomode
+        Applies an OCIO transform when displaying oracle output.
+        
+    Display:
+        #id: oracle_ociodisplay
+        OCIO display used for the oracle transform.
+        
+    View:
+        #id: oracle_ocioview
+        OCIO view used for the oracle transform.
+        
+    Color Space:
+        #id: oracle_ociocolorspace
+        OCIO color space used for the oracle transform.
+        
+    === Volume and Opacity ===
+
+    Screendoor Samples:
+        #id: screendoorlimit
+        The number of samples used for stochastic transparency (screendoor opacity). Higher values reduce noise in semi-transparent surfaces.
+        
+    Volume Step Rate:
+        #id: volumesteprate
+        Step-size multiplier used for volume integration. Lower values increase quality at the cost of render time.
+        
+    === Limits ===
+
+    Diffuse Limit:
+        #id: diffuselimit
+        Maximum diffuse bounces per ray.
+        
+    Reflection Limit:
+        #id: reflectionlimit
+        Maximum reflection bounces per ray.
+        
+    Refraction Limit:
+        #id: refractionlimit
+        Maximum refraction bounces per ray.
+        
+    Volume Limit:
+        #id: volumelimit
+        Maximum volume scattering bounces per ray.
+        
+    SSS Limit:
+        #id: ssslimit
+        Maximum subsurface scattering bounces per ray.
+        
+    Color Limit:
+        #id: colorlimit
+        Clamps total ray contribution to this maximum value.
+        
+    Shared Color Limit:
+        #id: colorlimitindlinked
+        Uses the same clamp value for multiple color limit controls.
+        
+    Indirect Color Limit:
+        #id: colorlimitindirect
+        Clamps indirect ray contribution to this maximum value.
+        
+    Russian Roulette Cutoff Depth:
+        #id: russianroulette_cutoff
+        Ray depth after which Russian roulette may terminate low-contribution paths to reduce render time.
+        
+    == Image ==
+
+    === Camera ===
+
+    Camera:
+        #id: camera
+        Camera used for rendering.
+        
+    Resolution:
+        #id: resolution
+        Output image resolution in pixels.
+        
+    Choose Resolution:
+        #id: resolutionMenu
+        Preset resolution options.
+        
+    === Pixel Filter ===
+
+    Pixel Filter:
+        #id: pixelfilter
+        Filter used for pixel reconstruction.
+        
+    Pixel Filter Size:
+        #id: pixelfiltersize
+        Size of the pixel filter kernel.
+        
+    === Aspect Ratio ===
+
+    Conform Policy:
+        #id: aspectRatioConformPolicy
+        Controls how mismatched aspect ratios are handled.
+        
+    Data Window NDC:
+        #id: dataWindowNDC
+        Normalized device coordinate window used to crop or window the rendered image.
+        
+    Pixel Aspect Ratio:
+        #id: pixelAspectRatio
+        Pixel aspect ratio used when writing the output image.
+        
+    === Depth of Field ===
+
+    Enable Depth of Field:
+        #id: enabledof
+        Enables camera depth of field.
+        
+    === Per-Object Motion Blur ===
+
+    Per-Object Motion Blur:
+        #id: mblur
+        Enables per-object transform motion blur.
+        
+    Xform Time Samples:
+        #id: xformsamples
+        The number of transform time samples used for motion blur.
+        
+    Geo Time Samples:
+        #id: geosamples
+        The number of geometry time samples used for motion blur.
+
+    === Velocity Blur ===
+
+    Velocity Blur:
+        #id: dovblur
+        Enables velocity-based motion blur.
+        
+    Blur Type:
+        #id: vblur
+        Specifies how motion blur is computed.
+        
+    Volume Velocity Scale:
+        #id: volumevblurscale
+        Scale applied to volume velocities when computing motion blur.
+        
+    === Instance Velocity Blur ===
+
+    Blur Type:
+        #id: doinstance_vblur
+        Enables velocity blur for instanced primitives.
+        
+    Instance Velocity Blur:
+        #id: instance_vblur
+        Controls how velocity blur is applied to instances.
+        
+    === Denoiser ===
+
+    Denoiser:
+        #id: enable_denoiser
+        Enables image denoising.
+        
+    Denoiser:
+        #id: denoiser
+        Selects the denoising algorithm.
+        
+    Use Albedo:
+        #id: denoise_usealbedo
+        Controls which auxiliary buffers are used during denoising.
+        
+    Use N Input:
+        #id: denoise_useN
+        Controls which auxiliary buffers are used during denoising.
+        
+    Use Gl Output:
+        #id: denoise_useGl
+        Controls which auxiliary buffers are used during denoising.
+        
+    AOVs:
+        #id: denoise_aovs
+        Specifies which AOVs are denoised.
+        
+    === Deep Camera Map ===
+
+    Ouput Deep Camera Map:
+        #id: dcm
+        Outputs a deep camera map (DCM).
+        
+    DCM File:
+        #id: dcmfile
+        Output file path for the deep camera map.
+        
+    DCM Render Vars:
+        #id: dcmvars
+        Render variables written into the deep camera map.
+        
+    == Shading ==
+
+    === Shading ===
+
+    Ray Bias:
+        #id: raybias
+        Ray origin bias used to reduce self-intersections.
+        
+    Constrain by Maximum Roughness:
+        #id: constrainmaxrough
+        Limits shading effects based on surface roughness to reduce noise.
+        
+    Automatic Headlight Creation:
+        #id: autoheadlight
+        Creates a headlight automatically when no lights are present.
+        
+    === Geometry ===
+
+    Render Points as:
+        #id: point_style
+        Specifies how point primitives are rendered.
+        
+    Render Curves As:
+        #id: curve_style
+        Specifies how curve primitives are rendered.
+        
+    Override Curves Basis:
+        #id: curve_basis
+        Overrides the curve basis used for rendering.
+        
+    Cull Backface:
+        #id: cull_backface
+        Enables backface culling.
+        
+    === Dicing ===
+
+    usedicingcamera:
+        #id: usedicingcamera
+        Uses a dedicated camera for dicing calculations.
+        
+    Dicing Camera:
+        #id: dicingcamera
+        Camera used for dicing when dicing camera is enabled.
+        
+    Offscreen Quality:
+        #id: offscreenquality
+        Quality used for offscreen dicing.
+        
+    Dicing Quality Scale:
+        #id: dicingqualityscale
+        Multiplier applied to dicing quality.
+        
+    === Caustics ===
+
+    Enable Caustics:
+        #id: causticsenable
+        Enables caustic effects.
+
+    Roughness Clamp:
+        #id: causticsroughnessclamp
+        Clamps roughness for caustic calculations to control noise.
+        
+    === Ambient Occlusion ===
+
+    Samples:
+        #id: head_ao_samples
+        Number of ambient occlusion samples.
+        
+    Ray Distance:
+        #id: head_ao_distance
+        Maximum distance used for ambient occlusion rays.
+        
+    Add Distance Fog:
+        #id: head_addfog
+        Adds depth-based fog for preview shading.
+        
+    Fog Distance:
+        #id: head_depthcue_z
+        Distance at which fog reaches full intensity.
+        
+    Fog Color:
+        #id: head_depthcue_color
+        Fog color used for preview shading.
+        
+    Fog Alpha:
+        #id: head_depthcue_alpha
+        Fog opacity used for preview shading.
+        
+    == AOVs ==
+
+    === Beauty ===
+
+    Beauty:
+        #id: beauty
+        Enables the beauty AOV.
+        
+    Split per LPE Tag:
+        #id: beautyperlpe
+        Splits the beauty AOV into separate outputs per LPE tag.
+        
+    Beauty Unshadowed:
+        #id: beautyunshadowed
+        Enables an unshadowed beauty AOV.
+        
+    Split per LPE Tag:
+        #id: beautyunshadowedperlpe
+        Splits the unshadowed beauty AOV into separate outputs per LPE tag.
+        
+    === Diffuse ===
+
+    Combined Diffuse:
+        #id: combineddiffuse
+        Enables the combined diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: combineddiffuseperlpe
+        Splits the combined diffuse AOV into separate outputs per LPE tag.
+        
+    Direct Diffuse:
+        #id: directdiffuse
+        Enables the direct diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: directdiffuseperlpe
+        Splits the direct diffuse AOV into separate outputs per LPE tag.
+        
+    Indirect Diffuse:
+        #id: indirectdiffuse
+        Enables the indirect diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: indirectdiffuseperlpe
+        Splits the indirect diffuse AOV into separate outputs per LPE tag.
+        
+    Combined Diffuse Unshadowed:
+        #id: combineddiffuseunshadowed
+        Enables an unshadowed combined diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: combineddiffuseunshadowedperlpe
+        Splits the unshadowed combined diffuse AOV into separate outputs per LPE tag.
+        
+    Direct Diffuse Unshadowed:
+        #id: directdiffuseunshadowed
+        Enables an unshadowed direct diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: directdiffuseunshadowedperlpe
+        Splits the unshadowed direct diffuse AOV into separate outputs per LPE tag.
+        
+    Indirect Diffuse Unshadowed:
+        #id: indirectdiffuseunshadowed
+        Enables an unshadowed indirect diffuse AOV.
+        
+    Split per LPE Tag:
+        #id: indirectdiffuseunshadowedperlpe
+        Splits the unshadowed indirect diffuse AOV into separate outputs per LPE tag.
+
+    === Reflections and Refractions ===
+
+    Combined Glossy Reflection:
+        #id: combinedglossyreflection
+        Enables the combined glossy reflection AOV.        
+        
+    Split per LPE Tag:
+        #id: combinedglossyreflectionperlpe
+        Splits the combined glossy reflection AOV into separate outputs per LPE tag.
+        
+    Direct Glossy Reflection:
+        #id: directglossyreflection
+        Enables the direct glossy reflection AOV.
+        
+    Split per LPE Tag:
+        #id: directglossyreflectionperlpe
+        Splits the direct glossy reflection AOV into separate outputs per LPE tag.
+        
+    Indirect Glossy Reflection:
+        #id: indirectglossyreflection
+        Enables the indirect glossy reflection AOV.
+        
+    Split per LPE Tag:
+        #id: indirectglossyreflectionperlpe
+        Splits the indirect glossy reflection AOV into separate outputs per LPE tag.
+        
+    Glossy Transmission:
+        #id: glossytransmission
+        Enables the glossy transmission AOV.
+        
+    Split per LPE Tag:
+        #id: glossytransmissionperlpe
+        Splits the glossy transmission AOV into separate outputs per LPE tag.
+        
+    BSDF Labelled 'coat':
+        #id: coat
+        Enables the coat component AOV.
+        
+    Split per LPE Tag:
+        #id: coatperlpe
+        Splits the coat component AOV into separate outputs per LPE tag.
+        
+    === Lights and Emission ===
+
+    Combined Emission:
+        #id: combinedemission
+        Enables the combined emission AOV.
+        
+    Direct Emission:
+        #id: directemission
+        Enables the direct emission AOV.
+      
+    Indirect Emission:
+        #id: indirectemission
+        Enables the indirect emission AOV.
+        
+    Visible Lights:
+        #id: visiblelights
+        Enables an AOV for visible light contributions.
+        
+    Split per LPE Tag:
+        #id: visiblelightsperlpe
+        Splits visible light contributions into separate outputs per LPE tag.
+        
+    === Volume ===
+
+    Combined Volume:
+        #id: combinedvolume
+        Enables the combined volume AOV.
+        
+    Split per LPE Tag:
+        #id: combinedvolumeperlpe
+        Splits the combined volume AOV into separate outputs per LPE tag.
+        
+    Direct Volume:
+        #id: directvolume
+        Enables the direct volume AOV.
+        
+    Split per LPE Tag:
+        #id: directvolumeperlpe
+        Splits the direct volume AOV into separate outputs per LPE tag.
+        
+    Indirect Volume:
+        #id: indirectvolume
+        Enables the indirect volume AOV.
+        
+    Split per LPE Tag:
+        #id: indirectvolumeperlpe
+        Splits the indirect volume AOV into separate outputs per LPE tag.
+        
+    === SSS ===
+
+    BSDF Labelled 'sss':
+        #id: sss
+        Enables the subsurface scattering component AOV.
+        
+    Split per LPE Tag:
+        #id: sssperlpe
+        Splits the subsurface scattering component AOV into separate outputs per LPE tag.
+        
+    === Albedo ===
+
+    Albedo:
+        #id: albedo
+        Enables the albedo AOV.
+        
+    === Ray Level ===
+
+    Ray Origin (P):
+        #id: P
+        Outputs the ray origin position.
+        
+    Ray Direction (D):
+        #id: D
+        Outputs the ray direction vector.
+        
+    Time (Shutter Time):
+        #id: time
+        Outputs the ray time within the shutter interval.
+        
+    Near (Near Bias):
+        #id: near
+        Outputs the ray near bias value.
+        
+    Far (Max Distance):
+        #id: far
+        Outputs the ray maximum distance.
+        
+    Mask (Intersection Mask):
+        #id: mask
+        Outputs the intersection mask for the ray hit.
+        
+    Contribution:
+        #id: contrib
+        Outputs the contribution weight for the ray hit.
+        
+    P (World Space):
+        #id: hitP
+        Outputs the hit position in world space.
+        
+    Depth (Camera Space):
+        #id: hitPz
+        Outputs the hit depth in camera space.
+        
+    Hit Stack:
+        #id: hitstack
+        Outputs hit stack information for layered intersections.
+    
+    Element (Raw Id):
+        #id: element
+        Outputs the raw element identifier.
+        
+    Prim Id:
+        #id: primid
+        Outputs the primitive identifier.
+        
+    UV:
+        #id: hituv
+        Outputs the hit UV coordinates.
+        
+    Hit Dist:
+        #id: hitdist
+        Outputs the hit distance along the ray.
+        
+    dPdz:
+        #id: dPdz
+        Outputs the depth derivative used for filtering.
+        
+    N (Smooth Normal):
+        #id: hitN
+        Outputs the smooth shading normal at the hit.
+        
+    Ng (Geometric Normal):
+        #id: hitNg
+        Outputs the geometric normal at the hit.
+        
+    Flags:
+        #id: flags
+        Outputs hit flags describing the intersection state.
+
+    === Extra AOVs ===
+
+    === Number of AOVs ===
+
+    === Render Variable # ===
+
+    Enable:
+        #id: enable#
+        Enables this render variable.
+        
+    Name:
+        #id: name#
+        Name of the render variable.
+        
+    Format:
+        #id: format#
+        Pixel format used for the AOV.
+        
+    Multi Sampled:
+        #id: multisampled#
+        Enables multi-sampling for this render variable.
+        
+    Clear Value:
+        #id: clearvalue#
+        Clear value written for pixels with no contribution.
+        
+    Data Type:
+        #id: dataType#
+        Data type used when writing this render variable.
+        
+    Source Name:
+        #id: sourceName#
+        Name of the source variable in Karma.
+        
+    Source Type:
+        #id: sourceType#
+        Type of data used as the AOV source.
+        
+    === Karma ===
+
+    Pixel Filter:
+        #id: filter#
+        Pixel filter used for this render variable.
+
+    Cryptomatte:
+        #id: cryptomatte#
+        Outputs cryptomatte data for this render variable.
+        
+    Overlap Limit:
+        #id: cryptomatterank#
+        Maximum number of overlapping IDs stored per pixel.
+        
+    Manifest File:
+        #id: cryptomattesidecar#
+        Writes a sidecar manifest file for cryptomatte metadata.
+        
+    === LPE tags ===
+
+    LPE Tag AOV Limit:
+        #id: lpeaovlimit
+        Maximum number of AOVs created when splitting outputs by LPE tag.
+        
+    Omit LPE Tags:
+        #id: doomitlpes
+        Enables omission of selected LPE tags from the output.
+        
+    Omit LPE Tags:
+        #id: omitlpes
+        List of LPE tags to omit.
+        
+    === Imports ===
+
+    Import Render Vars From Second Input:
+        #id: importsecondaryinputvars
+        Imports render variables from the second input.
+        
+    Import Render Products From Second Input:
+        #id: importsecondaryproducts
+        Imports render products from the second input.
+        
+    == Advanced ==
+
+    === Save ===
+
+    Harden Base Name on Save:
+        #id: hardenbasename
+        Writes the current Base Name into the node so it no longer updates automatically.
+        
+    Create Intermediate Directories:
+        #id: mkpath
+        Creates missing directories when writing output files.
+        
+    Initialize Simulation OPs:
+        #id: initsim
+        Initializes simulation operators before rendering.
+        
+    Alfred Style Progress:
+        #id: alfprogress
+        Outputs progress in Alfred-style format for external monitoring.
+        
+    === Scripts ===
+
+    Pre-Render Script:
+        #id: tprerender
+        Enables a script that runs before rendering starts.
+        
+    Pre-Render Script:
+        #id: prerender
+        Script that runs before rendering starts.
+        
+    Pre-Render Script Language:
+        #id: lprerender
+        Language used for the pre-render script.
+        
+    Pre-Frame Script:
+        #id: tpreframe
+        Enables a script that runs before each frame is rendered.
+        
+    Pre-Frame Script:
+        #id: preframe
+        Script that runs before each frame is rendered.
+        
+    Pre-Frame Script Language:
+        #id: lpreframe
+        Language used for the pre-frame script.
+        
+    Post-Frame Script:
+        #id: tpostframe
+        Enables a script that runs after each frame is rendered.
+        
+    Post-Frame Script:
+        #id: postframe
+        Script that runs after each frame is rendered.
+        
+    Post-Frame Script Language:
+        #id: lpostframe
+        Language used for the post-frame script.
+        
+    Post-Render Script:
+        #id: tpostrender
+        Enables a script that runs after rendering completes.
+        
+    Post-Render Script:
+        #id: postrender
+        Script that runs after rendering completes.
+        
+    Post-Render Script Language:
+        #id: lpostrender
+        Language used for the post-render script.
+        
+    === Node Generation ===
+
+    Top Karma In:
+        #id: topkarmapath
+        Path to a TOP network input used for node generation or automation.
+        
+    === Path Construction ===
+
+    Frame:
+        #id: frame
+        Frame token used when constructing output paths.
+        
+    Frame String:
+        #id: framestr
+        Formatted frame string used when constructing output paths.
+        
+    Version String:
+        #id: versionstr
+        Formatted version string used when constructing output paths.
+        
+    Wedge String:
+        #id: wedgestr
+        Formatted wedge string used when constructing output paths.
+        
+    Image Folder:
+        #id: cachedir
+        Resolved output directory for rendered images.
+        
+    Image Name:
+        #id: cachename
+        Resolved base file name for rendered images.
+        
+    Descriptive Label:
+        #id: descriptivelabel
+        Human-readable label used for generated outputs.
+        
+    Output Image:
+        #id: picture
+        Resolved output image path.
+        
+    Checkpoint Name:
+        #id: checkpointname
+        Base name used for checkpoint files.
+        
+    Output Checkpoint:
+        #id: productName
+        Resolved output checkpoint product name.
+        
+    DCM Name:
+        #id: dcmname
+        Base name used for deep camera map output.
+
+    Output DCM:
+        #id: dcmfilename
+        Resolved deep camera map output path.
+        
+    === Checkpointing ===
+
+    Checkpoint File:
+        #id: checkpoint
+        Checkpoint file used for saving or resuming renders.
+        
+    Output Checkpoint Files:
+        #id: outputcheckpoint
+        Writes checkpoint files during rendering.
+        
+    Save Frequency:
+        #id: savefrequency
+        How often checkpoint files are written.
+        
+    Resume From Checkpoint:
+        #id: resume
+        Resumes rendering from an existing checkpoint file.
+        
+    === Tiles and Caching ===
+
+    Bucket Size:
+        #id: bucketsize
+        Render bucket size in pixels.
+        
+    Bucket Order:
+        #id: bucketorder
+        Order in which buckets are rendered.
+        
+    Cache Limit:
+        #id: usecacheratio
+        Enables limiting render cache usage.
+        
+    Cache Memory Ratio:
+        #id: cacheratio
+        Fraction of available memory used for caching.
+        
+    Cache Size (MB):
+        #id: cachesize
+        Maximum cache size in megabytes.
+        
+    Threads:
+        #id: threads
+        Number of threads used for rendering.
+
+    Add Time Limit:
+        #id: addtimelimit
+        Enables a maximum render time limit.
+        
+    Time Limit:
+        #id: timelimit
+        Maximum render time before the render is stopped.
+        
+    === USD ===
+
+    Complexity:
+        #id: complexity
+        Controls USD scene complexity during rendering.
+        
+    Purpose:
+        #id: purpose
+        Specifies which USD purpose (render, proxy, guide) is rendered.
+        
+    Resolver Context Asset Path:
+        #id: resolvercontext
+        Asset resolution context for USD file paths.
+        
+    USD Output Directory:
+        #id: savetodirectory
+        Directory used when exporting USD output.
+        
+    === Context ===
+
+    === Number of Options ===
+
+    Option Type:
+        #id: optiontype#
+        Type of USD context option to set.
+
+    Option Name:
+        #id: optionname#
+        Name of the USD context option.
+        
+    Option Value:
+        #id: optionstrvalue#
+        String value assigned to the option.
+        
+    Option Value:
+        #id: optionfloatvalue#
+        Numeric value assigned to the option.
+        
+    === Color Management ===
+
+    === Number of Planes ===
+
+    === Plane # ===
+
+    Enable:
+        #id: ocio_enable#
+        Enables this OCIO output transform.
+        
+    Planes:
+        #id: ocio_planes#
+        Planes the OCIO transform applies to.
+        
+    Input Space:
+        #id: ocio_inputspace#
+        OCIO input color space.
+        
+    Output Space:
+        #id: ocio_outputspace#
+        OCIO output color space.
+        
+    Looks:
+        #id: ocio_looks#
+        OCIO looks applied during output transform.
+        
+    === Color Limits ===
+
+    === Number of Limits ===
+
+    === Plane # ===
+
+    Enable:
+        #id: colorlimit_enable#
+        Enables clamping for the specified image planes.
+
+    Planes:
+        #id: colorlimit_planes#
+        Planes to clamp.
+        
+    Limit:
+        #id: colorlimit_limit#
+        Clamp value for the selected planes.
+        
+    === Driver ===
+
+    Cancel Render if Missing Texture is Discovered:
+        #id: abortmissingtexture
+        Cancels the render if a missing texture is encountered.
+  
+    Run Command:
+        #id: runcommand
+        Command executed to launch the render.
+        
+    Strip Layers Above Layer Breaks:
+        #id: striplayerbreaks
+        Removes layers above layer breaks when writing multilayer images.
+        
+    Report Network Use:
+        #id: reportnetwork
+        Reports network usage during rendering.
+        
+    Wait for Render to Complete:
+        #id: soho_foreground
+        Blocks execution until rendering finishes.
+        
+    === MPlay ===
+
+    Enable MPlay Monitor:
+        #id: enablemplaymonitor
+        Enables monitoring in MPlay.
+        
+    Session Name:
+        #id: mplayname
+        MPlay session name used for monitoring.
+        
+    Preview Channels:
+        #id: previewchannels
+        Image planes shown in MPlay.
+        
+    Preview Scale:
+        #id: previewscale
+        Scale applied to the MPlay preview.
+        
+    === Profiling ===
+
+    Verbose Level:
+        #id: verbose
+        Controls logging verbosity.
+        
+    VEX Profiling:
+        #id: vexprofiling
+        Enables VEX profiling during rendering.
+        
+    Add Message Time Stamps:
+        #id: timestamps
+        Adds timestamps to log messages.
+        
+    Windows Console:
+        #id: windowsconsole
+        
+        None:
+            
+        Wait:
+            
+        No Wait:
+            
+    USD Trace:
+        #id: usdtrace
+        Enables USD tracing for debugging.
+        
+    Log Output:
+        #id: log
+        Path for the standard output log.
+        
+    Append to Log Instead of Overwriting:
+        #id: logappend
+        Appends to the log file instead of overwriting it.
+        
+    Output Log:
+        #id: stdout
+        Path for the standard output log.
+        
+    Error Log:
+        #id: stderr
+        Path for the error log.
+        
+    === Component Labels ===
+
+    Export Components:
+        #id: exportcomponents
+        Exports component labels as separate outputs.
+        
+    Diffuse Components:
+        #id: diffusecomponents
+        Enables diffuse component labeling.
+        
+    Refract Components:
+        #id: refractcomponents
+        Enables refraction component labeling.
+        
+    Volume Components:
+        #id: volumecomponents
+        Enables volume component labeling.
+        
+    SSS Components:
+        #id: ssscomponents
+        Enables subsurface scattering component labeling.
+        
+    === EXR Image ===
+
+    EXR Compression:
+        #id: image_exr_compression
+        Compression method used for EXR output.
+        
+    DWA Compression Level:
+        #id: image_dwa_compression
+        Compression level used for DWA compression.
+        
+    === Meta Data ===
+
+    Artist:
+        #id: image_artist
+        Artist name embedded in the output image metadata.
+        
+    Comment:
+        #id: image_comment
+        Custom comment stored in image metadata.
+        
+    Hostname:
+        #id: image_hostname
+        Stores the render machine hostname in metadata.

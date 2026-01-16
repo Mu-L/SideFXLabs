@@ -5,99 +5,97 @@
 
 = Labs Cook with Timeout =
 
-"""Documentation coming soon..."""
+"""Cooks geometry with optional time limits and controlled execution."""
 
-[Image:/images/sidefxlabs_banner.jpg]
+This node provides a controlled way to cook geometry networks while enforcing optional execution time limits.
 
-:video:
-    #src:/movies/cablegenerator.mp4
-
-<Description goes here>
+It is designed to protect interactive workflows from long-running or stalled cooks by allowing users to cancel execution automatically after a specified duration.
 
 
 @parameters
 
-    Cook with PDG:
+    Cook Output:
         #id: cookbutton
+        Manually triggers a cook of the selected geometry.
         
     Dirty All:
         #id: dirtybutton
+        Marks the target geometry as dirty, forcing a full recook on the next execution.
         
     Delete Existing Output Files:
         #id: deletefiles
+        Deletes existing output files before cooking.
         
     Cancel Cook:
         #id: cancelbutton
+        Cancels the currently running cook operation.
         
     Enable Maximum Run Time:
         #id: local_enabletimeout
+        Enables automatic cancellation after a specified time limit.
         
     Time Out After:
         #id: local_maxtime
+        Maximum allowed execution time before the cook is canceled.
         
     Time Unit:
         #id: local_timeunit
-        
-        Seconds:
-            
-        Minutes:
+        Unit used for the timeout duration.
             
     Geometry to Cook:
         #id: cookpath
-        
-        Internal Editable Network:
+        Specifies the geometry source to cook.
+
+        <p>__Internal Editable Network__: Cooks the node’s internal SOP network.</p>
             
-        External SOP:
+        <p>__External SOP__: Cooks a SOP specified by path.</p>
             
-        Input 1:
+        <p>__Input 1-4__: Cooks geometry from the corresponding input.</p>
             
-        Input 2:
-            
-        Input 3:
-            
-        Input 4:
-            
-    Disconnect Network Inputs:
-        #id: disconnect
+    Block Inputs While Editing:
+        #id: blockinputs
+        Prevents upstream inputs from recooking while editing the internal network.
         
     SOP Path:
         #id: soppath
+        Path to the external SOP when Geometry to Cook is set to External SOP.
         
     == Output Files ==
 
     Delete Existing Output Files on Cook:
         #id: deleteoncook
+        Deletes existing output files when cooking starts.
         
     Output File:
         #id: sopoutput
+        File path used to write cooked geometry.
         
     Reload Geometry:
         #id: reload
+        Reloads geometry from disk after writing output files.
         
     == Frame Range ==
 
     Evaluate Using:
         #id: framegeneration
+        Defines how frame evaluation is performed.
         
-        Single Frame:
+        <p>__Single Frame__: Cooks geometry at a single frame.</p>
             
-        Frame Range:
+        <p>__Frame Range__: Cooks geometry across a frame range.</p>
             
     Override Frame:
         #id: useframeoverride
+        Enables manual specification of the evaluation frame.
         
     Override Frame:
         #id: frameoverride
+        Frame number used when Override Frame is enabled.
         
     Frame Range:
         #id: f
+        Frame range evaluated when Evaluate Using is set to Frame Range.
         
     Cook Frames as Single Work Item:
         #id: singletask
-        
-@locals
-    
-    
-@related
-- [item | /link ]
-
+        Cooks all frames as a single task instead of per-frame execution.

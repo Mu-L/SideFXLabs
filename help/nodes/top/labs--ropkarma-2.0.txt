@@ -1,0 +1,312 @@
+#type:     node
+#context:  top
+#internal: labs::ropkarma::2.0
+#icon:     TOP/labs::ropkarma::2.0
+
+= Labs Karma Render =
+
+"""Renders images using Karma through TOPs with file versioning, wedging, and scheduling support."""
+
+This node provides a TOPs-based interface for rendering images with Karma.  
+It wraps a Karma LOP render setup and integrates it into a procedural, scalable PDG workflow.
+
+The Labs Karma Render TOP focuses on:
+- Consistent file and directory construction
+- Versioned image output
+- Frame range and wedge evaluation
+- PDG scheduling and batching
+- Loading and merging rendered results
+
+It is intended for batch rendering, automation, and large-scale iteration workflows where renders must be managed, repeated, or parameterized efficiently.
+
+This node does **not** replace Karma’s native render controls. Instead, it orchestrates when and how Karma renders are executed within PDG.
+
+
+@parameters
+
+    File Method:
+        #id: filemethod
+        Controls how the output image path is generated.
+    
+        <p>__Constructed__: Builds the path automatically from the base folder, name, frame, version, and wedge.</p>
+            
+        <p>__Explicit__: Uses the path specified directly in __Image File__.</p>
+            
+    Time Dependent Render:
+        #id: timedependent
+        Marks the render as time-dependent, ensuring PDG evaluates frames correctly for animated renders.
+        
+    Base Name:
+        #id: basename
+        Base name used when constructing output image filenames.
+        
+    File Type:
+        #id: filetype
+        Image file format written by Karma (for example: exr, png, jpeg).
+            
+    Image File:
+        #id: file
+        Explicit output image path when __File Method__ is set to *Explicit*.
+        
+    Open Directory:
+        #id: openfiledir
+        Opens the directory containing the rendered images.
+        
+    Base Folder:
+        #id: basedir
+        Root folder used when constructing output paths.
+        
+    Open Directory:
+        #id: openbasedir
+        Opens the resolved Base Folder in the system file browser.
+        
+    Open Sequence:
+        #id: opensequence
+        Opens the rendered image sequence in the file browser.
+        
+    Enable Version:
+        #id: enableversion
+        Enables automatic versioning of rendered images.
+        
+    Version:
+        #id: version
+        Version number appended to the output path when versioning is enabled.
+        
+    Down Version:
+        #id: versiondown
+        Decreases the version number.
+
+    Up Version:
+        #id: versionup
+        Increases the version number.
+        
+    == Caching ==
+
+    === Karma ===
+
+    LOP Path:
+        #id: loppath
+        Path to the Karma LOP node that performs the actual rendering.
+        
+    Cache Mode:
+        #id: pdg_cachemode
+        Controls how PDG interacts with existing render outputs. 
+        
+        <p>__Automatic__: Lets PDG decide whether to read or write.</p>
+            
+        <p>__Read Files__: Loads existing renders without re-rendering.</p>
+            
+        <p>__Write Files__: Forces rendering and writes new outputs.</p>
+            
+    === Sequence ===
+    
+    Evaluate As:
+        #id: trange
+        Controls how frames are evaluated.
+
+        <p>__Single Frame__: Renders a single frame.</p>
+            
+        <p>__Frame Range__: Renders a continuous range.</p>
+            
+        <p>__Specific Frames__: Renders only selected frames.</p>
+            
+    Frame Range:
+        #id: f
+        Start, end, and increment values for frame evaluation.
+        
+    F Menu:
+        #id: fmenu
+        Quick presets for common frame ranges and increment patterns (including substeps).
+            
+    Override Frame:
+        #id: useframeoverride
+        Enables overriding the evaluated frame number.
+        
+    Override Frame:
+        #id: frameoverride
+        The frame number to use when override is enabled.
+        
+    List of Frames:
+        #id: specificrange
+        Explicit list of frames to render when using *Specific Frames*.
+        
+    === Wedging ===
+
+    Enable Wedging:
+        #id: enablewedging
+        Enables parameter wedging for render variation.
+        
+    Evaluate As:
+        #id: wrange
+        <p>__All Wedges__: Evaluates every wedge from 0 to *Wedge Count - 1*.</p>  
+        <p>__Single Wedge__: Evaluates only the wedge specified in **Single Wedge**.</p>  
+        <p>__Custom Range__: Evaluates wedges in the **Wedge Range**.</p>  
+        <p>__Specific Wedges__: Evaluates only the wedge indices listed in **List of Wedges**.</p>
+            
+    Single Wedge:
+        #id: wedgeoverride
+        Index of the wedge to evaluate when rendering a single wedge.
+        
+    Wedge Range:
+        #id: wedgerange
+        Start and end wedge indices.
+        
+    List of Wedges:
+        #id: specificwedges
+        Explicit list of wedge indices to render.
+        
+    Wedge Count:
+        #id: wedgecount
+        Total number of wedges generated.
+        
+    === Number of Attributes ===
+
+    === Attribute # ===
+
+    Attribute Name:
+        #id: attrib#
+        Name of the attribute being wedged.
+        
+    Wedge Type:
+        #id: wedgetype#
+        Method used to generate wedge values.
+            
+    Min Value:
+        #id: minvalue#
+        Value range used for numeric wedge types.
+        
+    Max Value:
+        #id: maxvalue#
+        Value range used for numeric wedge types.
+        
+    Seed:
+        #id: randomseed#
+        Random seed for stochastic wedge generation.
+        
+    Batch Size:
+        #id: batchsize#
+        Number of values grouped per batch for batched wedges.
+        
+    Period Size:
+        #id: periodsize#
+        Period length for periodic wedge sequences.
+        
+    List of Values:
+        #id: values#
+        Explicit values used for list-based wedging.
+        
+    Geometry Path:
+        #id: geopath#
+        Optional geometry path used for attribute-based wedges.
+        
+    Default Value:
+        #id: valuesdefault#
+        Fallback value when an attribute cannot be evaluated.
+        
+    === Load ===
+
+    Merge Frames:
+        #id: domergeframes
+        Enables merging multiple rendered frames into a single PDG result.
+        
+    Merge Frames:
+        #id: mergeframes
+        Selects which frames are merged.
+            
+    Frame Range:
+        #id: mergeframerange
+        Start and end frame range to merge when __Frames to Merge__ is set to *Custom Range*.
+        
+    Substeps:
+        #id: mergesubsteps
+        Number of substeps per frame to include when merging frame ranges.
+        
+    List of Frames:
+        #id: mergespecificrange
+        Explicit list of frames to merge when __Frames to Merge__ is set to *Specific Frames*.
+        
+    Merge Wedges:
+        #id: domergewedges
+        Enables merging wedge outputs.
+        
+    Merge Wedges:
+        #id: mergewedges
+        Selects which wedges are merged.
+            
+    Wedge Range:
+        #id: mergewedgeidxrange
+        Start and end wedge range to merge when __Wedges to Merge__ is set to *Custom Range*.
+        
+    List of Wedges:
+        #id: mergespecificwedges
+        Explicit list of wedge indices to merge when __Wedges to Merge__ is set to *Specific Wedges*.
+        
+    == Scheduling ==
+
+    === Scheduler ===
+
+    Scheduler Override:
+        #id: topscheduler
+        Overrides the TOP scheduler used to cook this node.
+        
+    Override Priority:
+        #id: priorityoverride
+        Enables overriding the work item priority.
+        
+    Node Priority:
+        #id: pdg_workitempriorityexpr
+        Priority expression assigned to generated work items.
+        
+    === Local ===
+
+    Cook Batch When:
+        #id: cookwhen
+        Controls when a batch of work items is cooked.
+        <p>__All Inputs are Ready__: Waits until all upstream work items are complete.</p>  
+        <p>__All Frames are Ready__: Waits until all frames for the current batch are available before cooking.</p>  
+        <p>__First Frame is Ready__: Starts cooking as soon as the first frame becomes available.</p>
+            
+    Frames per Batch:
+        #id: framesperbatch
+        Number of frames processed per work item batch.
+        
+    == Advanced ==
+
+    === Path Construction ===
+
+    Frame:
+        #id: frame
+        Evaluated frame number used for path construction.
+        
+    Frame String:
+        #id: framestr
+        String representation of the frame number.
+        
+    Version String:
+        #id: versionstr
+        String representation of the version number.
+        
+    Wedge String:
+        #id: wedgestr
+        String representation of the wedge index.
+        
+    Cache Folder:
+        #id: cachedir
+        Directory where rendered images are written.
+        
+    Cache Name:
+        #id: cachename
+        Base filename used for output images.
+        
+    Output File:
+        #id: picture
+        Final resolved output image path.
+        
+    Descriptive Label:
+        #id: descriptivelabel
+        Custom label shown on PDG work items, useful for identifying renders in large graphs.
+
+
+@related
+- [Labs Karma LOP|Node:lop/labs--karma-2.0]
+- [TOPs Overview|https://www.sidefx.com/docs/houdini/tops/index.html]

@@ -1,0 +1,302 @@
+#type:     node
+#context:  obj
+#internal: labs::rendergeo::1.0
+#icon:     OBJ/labs::rendergeo::1.0
+
+= Labs Render Geometry =
+
+"""Renders cached or merged geometry with controlled loading, display, and render settings."""
+
+This node acts as a bridge between SOP-level geometry generation and OBJ-level rendering.
+It can either reference geometry directly from SOP networks or load geometry from disk using a structured cache layout.
+
+It is designed to simplify the process of loading, previewing, and rendering geometry—especially cached assets—while exposing common render, shading, and instancing controls at the OBJ level.
+
+The node also centralizes render-related settings such as visibility, motion blur, shading masks, and instancing behavior, making it suitable for look-development, layout, and final rendering workflows.
+
+@parameters
+
+    == Cache ==
+
+    === Source ===
+
+    Source Type:
+        #id: sourcetype
+        Defines how geometry is sourced.
+
+        <p>__File Cache__: Loads geometry from disk.</p>
+            
+        <p>__Sop Merge__: Pulls geometry directly from a SOP network.</p>
+            
+    Reload Geometry:
+        #id: reload
+        Reloads geometry from the source.
+        
+    SOP Path:
+        #id: fcsoppath
+        Path to the SOP used when sourcing geometry.
+        
+    SOP Path:
+        #id: omsoppath
+        Path to the SOP used when sourcing geometry.
+
+    Display As:
+        #id: viewportlod
+        Viewport display mode used for the geometry.
+            
+    === Load from File ===
+
+    Read As:
+    Specifies how geometry files are loaded.
+ 
+    Frame Offset:
+        #id: foffset
+        Offset applied to frame evaluation when loading geometry.
+        
+    Inherit Frame Range:
+        #id: inherit_frange
+        Uses the frame range defined by the source cache.
+        
+    Frame Range:
+        #id: custom_frange
+        Custom frame range used when inheritance is disabled.
+        
+    Clamp First Frame:
+        #id: custom_doclampfirst
+        Clamps evaluation to the first or last available frame.
+        
+    Clamp First Frame:
+        #id: custom_clampfirst
+        Clamps evaluation to the first or last available frame.
+        
+    Clamp Last Frame:
+        #id: custom_doclamplast
+        Clamps evaluation to the first or last available frame.
+        
+    Clamp Last Frame:
+        #id: custom_clamplast
+        Clamps evaluation to the first or last available frame.
+
+    Merge Frames:
+        #id: domergeframes
+        Merges multiple frames into a single geometry.
+        
+    Frames to Merge:
+        #id: mergeframes
+        Specifies which frames are merged.
+        
+    Merge Wedges:
+        #id: domergewedges
+        Merges geometry across wedges.
+        
+    Wedges to Merge:
+        #id: mergewedges
+        Defines which wedges are merged.
+        
+    == Render ==
+
+    === Material ===
+
+    Material:
+        #id: shop_materialpath
+        Material assigned to the geometry.
+        
+    === Geometry ===
+
+    Render Visibility:
+        #id: vm_rendervisibility
+        Controls visibility during rendering.
+        
+    Geo Time Samples:
+        #id: geo_motionsamples
+        Number of time samples used for motion blur.
+        
+    Geometry Velocity Blur:
+        #id: geo_velocityblur
+        Controls velocity-based motion blur.
+            
+    Acceleration Attribute:
+        #id: geo_accelattribute
+        Attribute used for acceleration-based blur.
+        
+    Render As Points:
+        #id: vm_renderpoints
+        Renders geometry as points.
+        
+    Render Points As:
+        #id: vm_renderpointsas
+        Point rendering mode.
+        
+    Point Scale:
+        #id: vm_pointscale
+        Scale applied to rendered points.
+        
+    Backface Removal:
+        #id: vm_rmbackface
+        Removes back-facing primitives at render time.
+        
+    Use N For Point Rendering:
+        #id: vm_usenforpoints
+        Uses normals when rendering points.
+        
+    === Volume ===
+
+    Volume Filter:
+        #id: vm_volumefilter
+        Filter used for volume rendering.
+        
+    Volume Filter Width:
+        #id: vm_volumefilterwidth
+        Width of the volume filter.
+        
+    Volume Velocity Names:
+        #id: vm_volumevelocitynames
+        Velocity attributes used for volume motion blur.
+        
+    === Shading ===
+
+    Categories:
+        #id: categories
+        Render category tags.
+        
+    Reflection Mask:
+        #id: reflectmask
+        Controls ray visibility for reflections.
+        
+    Refraction Mask:
+        #id: refractmask
+        Controls ray visibility for refractions.
+        
+    Light Mask:
+        #id: lightmask
+        Light inclusion mask.
+        
+    Light Selection:
+        #id: lightcategories
+        Light category selection.
+        
+    LPE Tag:
+        #id: vm_lpetag
+        Light Path Expression tag.
+        
+    Matte shading:
+        #id: vm_matte
+        Enables matte shading.
+        
+    Raytrace Shading:
+        #id: vm_rayshade
+        Enables raytraced shading.
+        
+    == Instance ==
+
+    === Instance ===
+
+    Instance Mode:
+        #id: instancemode
+        Defines instancing behavior.
+            
+    Match Attribute:
+        #id: attrib
+        Attribute used to match instances.
+        
+    Rest Geometry File:
+        #id: restrbdfile
+        File used as rest geometry for instancing.
+        
+    == Advanced ==
+
+    === Node Generation ===
+
+    Top Mantra In:
+        #id: topmantrapath
+        Path to the TOP Mantra In node used for generation.
+        
+    === Linked Parameters ===
+
+    === General ===
+
+    Source Node:
+        #id: sourcenode
+        Source node used to construct file paths.
+        
+    File Method:
+        #id: filemethod
+        Method used to construct file paths.
+            
+    Time Dependent Cache:
+        #id: timedependent
+        Marks the cache as time-dependent.
+        
+    Base Name:
+        #id: basename
+        Base name used for cache files.
+        
+    File Type:
+        #id: filetype
+        Geometry file format.
+
+    Base Directory:
+        #id: basedir
+        Root directory for cache files.
+        
+    Geometry File:
+        #id: file
+        Explicit geometry file path.
+        
+    Enable Version:
+        #id: enableversion
+        Enables and specifies versioning.
+        
+    === Wedging ===
+
+    Enable Wedging:
+        #id: enablewedging
+        Enables wedge-based variations.
+        
+    Wedge Count:
+        #id: wedgecount
+        Number of wedges.
+        
+    === Frame Range ===
+
+    Start/End/Inc:
+        #id: f
+        Frame range used for caching or loading.
+        
+    Substeps:
+        #id: substeps
+        Substeps used for evaluation.
+        
+    === Path Construction ===
+
+    Frame:
+        #id: frame
+        Frame token configuration.
+        
+    Frame String:
+        #id: framestr
+        Frame token configuration.
+        
+    Version String:
+        #id: versionstr
+        Version tokens.
+        
+    Wedge String:
+        #id: wedgestr
+        Wedge tokens.
+        
+    Cache Folder:
+        #id: cachedir
+        Cache directory.
+        
+    Cache Name:
+        #id: cachename
+        Cache base name.
+        
+    Descriptive Label:
+        #id: descriptivelabel
+        User-facing descriptive label.
+        
+    Output File:
+        #id: sopoutput
+        Final geometry output path.

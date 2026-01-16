@@ -1,18 +1,17 @@
-= File Cache =
+= Labs File Cache =
 
-#type: node
-#context: sop
-#internal: labs::filecache::2.0
-#icon: SOP/filecache
-#tags: io, optimize
-#since: 19.0
+#type:      node
+#context:   sop
+#internal:  labs::filecache::2.0
+#icon:      SOP/filecache
+#since:     19.0
 
 """Caches (writes out once and then reads from) geometry (possibly animated) to disk."""
 
 
 == Overview ==
 
-This node is an extension over the functionalities of the [File Cache node|Node:sop/filecache] to help you build up complex caching setups with ease:
+This node is an extension over the functionalities of the [File Cache SOP|Node:sop/filecache] to help you build up complex caching setups with ease:
 
 
 * This node has a more extended TOP support. The main aim of this node is to provide tools for creating synchronized SOP and a TOP graphs with each other, that can cache your entire Houdini scene with multiple file caches and wedging options at a click of a button.
@@ -41,27 +40,27 @@ When the __File Path__ is set to __Constructed__ the node provides a simple way 
 
 == SOP to TOP ==
 
-Using this node, it is very easy to create a [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] referencing this node. 
+Using this node, it is very easy to create a [Labs File Cache TOP|Node:top/labs--filecache-2.0] referencing this node. 
 
 :task: To create a top network graph of your sop scene:
-    # Select the node and click on the [Icon:NETWORKS/top] icon in the top right corner of it's parameter interface. This will generate a [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] referencing this node. The default location for this is `/obj/topnet1`, but you can change this path using the __Top File Cache In__ parameter on the this node. Now both nodes are synchronized, ensuring that caching will generate the same output for both nodes.
-    # Repeat this step to create a [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] for each of your SOP [File Cache|Node:sop/filecache] nodes in your scene. 
-    # Connect together the generated [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] in the same order as they are created in the sop network. 
-    # After all [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] are connected, cook the last node to cache your entire scene file as one large process.
+    # Select the node and click on the [Icon:NETWORKS/top] icon in the top right corner of it's parameter interface. This will generate a [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] referencing this node. The default location for this is `/obj/topnet1`, but you can change this path using the __Top File Cache In__ parameter on the this node. Now both nodes are synchronized, ensuring that caching will generate the same output for both nodes.
+    # Repeat this step to create a [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] for each of your SOP [File Cache|Node:sop/filecache] nodes in your scene. 
+    # Connect together the generated [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] in the same order as they are created in the sop network. 
+    # After all [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] are connected, cook the last node to cache your entire scene file as one large process.
 
 WARNING:
-        Do not connect any other top nodes in between the [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] nodes, such as [Wedge |Node:top/wedge] or [ROP Geometry Output|Node:top/ropgeometry] to change the work items. [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] has a built in wedging mechanism on it's own. 
+        Do not connect any other top nodes in between the [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] nodes, such as [Wedge |Node:top/wedge] or [ROP Geometry Output|Node:top/ropgeometry] to change the work items. [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] has a built in wedging mechanism on it's own. 
 
-Every node internally contains a [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] in a similar referenced fashion, to cook it's work items when you click the __Save in Background__ button. In an ideal workflow, upon clicking the [Icon:NETWORKS/top] icon, a [TOP Fetch|Node:top/topfetch] node should be generated at the given location, referencing the internal [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] of this node. However the  [TOP Fetch|Node:top/topfetch] node has limitations that currently not support this workflow:
+Every node internally contains a [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] in a similar referenced fashion, to cook it's work items when you click the __Save in Background__ button. In an ideal workflow, upon clicking the [Icon:NETWORKS/top] icon, a [TOP Fetch|Node:top/topfetch] node should be generated at the given location, referencing the internal [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] of this node. However the  [TOP Fetch|Node:top/topfetch] node has limitations that currently not support this workflow:
 
 * [TOP Fetch|Node:top/topfetch] does not behave like you would expect after using similar nodes, such as [Object Merge|Node:sop/object_merge], where you can keep continue working with the merge geometry, like merging never took place. [TOP Fetch|Node:top/topfetch] can not bring in all your work items from a top node as they are, it only generates one work items per fetch, which is not ideal.
 * [TOP Fetch|Node:top/topfetch] only has one input, while multiple inputs are preferred for ease of use, such as on the [ROP Fetch|Node:rop/fetch].
 
 NOTE:
-    For the reasons above, the [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] was never designed to be used a standalone tool which would replace the [ROP Geometry Output|Node:top/ropgeometry]. Therefore you should always generate this node using the [Icon:NETWORKS/top] icon of this node.
+    For the reasons above, the [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] was never designed to be used a standalone tool which would replace the [ROP Geometry Output|Node:top/ropgeometry]. Therefore you should always generate this node using the [Icon:NETWORKS/top] icon of this node.
 
 TIP:
-    It is recommended to create your top graph under `/obj`, rather then under `/tasks` [TOP Labs File Cache|Node:top/labs::topfilecache::2.0]. The reason being is, if you need to copy paste your work into other scene files you can do that simply by selecting all the nodes inside your `/obj` context at once, without forgetting anything. Any nodes live under `/tasks`, `/mat`, `/img`, etc... can easily be forgotten and might break the pasted elements in the new scene you are trying to create.
+    It is recommended to create your top graph under `/obj`, rather then under `/tasks` [Labs File Cache TOP|Node:top/labs::topfilecache::2.0]. The reason being is, if you need to copy paste your work into other scene files you can do that simply by selecting all the nodes inside your `/obj` context at once, without forgetting anything. Any nodes live under `/tasks`, `/mat`, `/img`, etc... can easily be forgotten and might break the pasted elements in the new scene you are trying to create.
 
 == SOP to OBJ ==
 
@@ -702,7 +701,7 @@ Render Geometry In:
 
 Top File Cache In:
     #id: topfilecachepath
-    Creates a [TOP Labs File Cache|Node:top/labs::topfilecache::2.0] inside this path, when the [Icon:NETWORKS/top] icon is clicking on the top right corner of this node.
+    Creates a [Labs File Cache TOP|Node:top/labs::topfilecache::2.0] inside this path, when the [Icon:NETWORKS/top] icon is clicking on the top right corner of this node.
 
 Top Mantra In:
     #id: topmantrapath
@@ -760,10 +759,5 @@ Output File:
 
 @related
 
-- [Labs File Cache |Node:sop/labs::filecache::2.0]
-- [Labs Karma |Node:lop/labs::karam::2.0]
-- [Labs Wedge node|Node:top/labs::wedge::1.0]
-- [Labs Render Geometry|Node:obj/labs::rendergeo::1.0]
-- [TOP Labs File Cache|Node:top/labs::topfilecache::2.0]
-
-
+- [Labs Wedge TOP|Node:top/labs--wedge-1.0]
+- [Labs File Cache TOP|Node:top/labs--filecache-2.0]

@@ -1,0 +1,237 @@
+#type:     node
+#context:  sop
+#internal: labs::polywire_uv::1.1
+#icon:     SOP/labs::polywire_uv::1.1
+
+= Labs PolyWire UV =
+
+"""Generates polywire geometry from curve networks with consistent UVs and orientation."""
+
+This node converts curve or edge networks into polygonal tube geometry while generating stable UVs along the length and around the circumference.
+It is designed to handle complex curve networks, including branching and cyclic structures, and provides extensive controls for orientation, width, topology, and UV layout.
+
+This node is commonly used for cables, pipes, tendrils, and KineFX skeleton-driven geometry, where predictable orientation and clean UVs are required.
+
+@parameters
+
+    == Edge Network ==
+
+    Root Point Group:
+        #id: rootgroup
+        Point group defining root points for orientation and traversal.
+        
+    Fix Cyclic Edge Networks (For KineFX):
+        #id: fixcyclic
+        Corrects orientation for cyclic or looped edge networks. Useful for KineFX skeletons and closed chains.
+        
+    Up Mode:
+        #id: upmode
+        Method used to determine the up direction along the curve network.
+        
+    Up Point Attr:
+        #id: upattrib
+        Point attribute used as the up vector when __Up Mode__ is attribute-based.
+        
+    Up Vector:
+        #id: constant_up_vector
+        Constant up vector used when __Up Mode__ is set to a fixed direction.
+        
+    Relax Roll Iterations:
+        #id: relaxrolliters
+        Number of iterations used to smooth roll along the curve network. Higher values reduce twisting.
+        
+    Constrain Point Group:
+        #id: constraingroup
+        Point group used to constrain orientation during roll relaxation.
+        
+    == Mesh ==
+
+    Width:
+        #id: width
+        Base width of the generated polywire.
+        
+    Enable Width Attribute:
+        #id: enablewidthattribute
+        Uses a width attribute to vary wire thickness.
+        
+    Width Attribute:
+        #id: widthattrib
+        Point attribute used to control width when __Enable Width Attribute__ is turned on.
+        
+    Max Buckling Scale:
+        #id: maxscale
+        Maximum allowed scale before buckling is applied to resolve overlaps.
+        
+    Max Valence:
+        #id: maxvalence
+        Maximum allowed point valence before topology is adjusted.
+        
+    Division Mode:
+        #id: divmode
+        Method used to determine mesh resolution along the curve.
+        
+    Divisions:
+        #id: div
+        Number of divisions along the length of the wire.
+        
+    Division Point Attribute:
+        #id: divpointattrib
+        Point attribute used to control divisions when __Division Mode__ is attribute-based.
+        
+    Normal Cusp Angle:
+        #id: cuspangle
+        Cusp angle used when computing output normals.
+        
+    Output Cap Group:
+        #id: outputcapgroup
+        Enables output of a primitive group for wire caps.
+        
+    Cap Group (prim):
+        #id: capgroupname
+        Name of the primitive group containing cap polygons.
+        
+    Output Border Group:
+        #id: outputbordergroup
+        Enables output of a point group for border points.
+        
+    Border Group (point):
+        #id: bordergroupname
+        Name of the point group containing border points.
+        
+    Bind And Capture Mesh To Curve:
+        #id: exportcaptureattr
+        Generates capture attributes binding the mesh to the input curve.
+        
+    Weight Bias:
+        #id: captureweightbias
+        Bias applied to capture weights along the curve.
+        
+    Output Curve Lookup Attributes:
+        #id: outputcurvelookupattrib
+        Outputs attributes used to reference the source curve.
+
+    Primitive ID (prim):
+        #id: idprim
+        Primitive attribute storing the source curve primitive index.
+        
+    Primitive U (vert):
+        #id: primu
+        Vertex attribute storing the parametric position along the curve.
+
+    == UVs ==
+
+    Max Snap U Iterations:
+        #id: snapmaxiterations
+        Maximum number of iterations used to align U coordinates.
+        
+    Max Snap Dist:
+        #id: maxsnapdist
+        Maximum distance allowed when snapping U coordinates.
+        
+    Smooth U Strength:
+        #id: smoothu_strength
+        Strength of U smoothing.
+        
+    Quality:
+        #id: smoothu_quality
+        Quality of the U smoothing operation.
+        
+    UV Mode:
+        #id: uvmode
+        Method used to compute UVs along the wire.
+        
+        <p>__Normalized__: Normalizes UVs along curve length.</p>
+            
+        <p>__Width Relative__: Scales UVs based on wire width.</p>
+            
+        <p>__Texel Area__: Preserves texel density.</p>
+            
+    Round V Coord:
+        #id: roundv
+        Rounds the V coordinate to reduce distortion.
+        
+    V Spacing:
+        #id: rowspacing
+        Method used to space UV rows.
+
+        <p>__Uniform__: Even spacing.</p>
+            
+        <p>__Proportional__: Spacing proportional to width.</p>
+            
+    Min Relative Width:
+        #id: minrelwidth
+        Minimum relative width used for UV scaling.
+        
+    Texel Scale:
+        #id: texelscale
+        Global scale applied to UVs for texel density control.
+        
+    Offset Segments in U:
+        #id: offsetsegments
+        Offsets U coordinates per segment to reduce alignment artifacts.
+        
+    Offset Edge Networks In W:
+        #id: offsetnetworks
+        Offsets UVs per edge network.
+        
+    UV Caps:
+        #id: uvCaps
+        Generates UVs for cap geometry.
+        
+    Weld Cap Amount:
+        #id: weld
+        Amount of welding applied to cap UVs.
+        
+    Max U Solve Iterations:
+        #id: maxusolveiteratons
+        Maximum iterations used to solve U layout.
+        
+    == Control Curve ==
+
+    Resample Control Curve:
+        #id: resamplecurve
+        Resamples the control curve before mesh generation.
+        
+    Length:
+        #id: length
+        Target length used when resampling the control curve.
+        
+    Mode:
+        #id: dividemode
+        Interpolation mode used for the control curve.
+            
+    Add Parent Point:
+        #id: addparent
+        Adds a parent point to the control curve.
+        
+    Placement:
+        #id: parentplacement
+        Placement method for the parent point.
+        
+    Output Root Group:
+        #id: outputrootgroup
+        Outputs a point group identifying root points.
+        
+    Root Group (point):
+        #id: rootgroupname
+        Name of the output root point group.
+        
+    Output Info Attributes:
+        #id: outputcurveattribs
+        Outputs informational attributes on the curve.
+
+    Curve Length (vert):
+        #id: curvelength
+        Vertex attribute storing curve length.
+        
+    Curve Tangent (point):
+        #id: curvetan
+        Point attribute storing curve tangent direction.
+        
+    Curve Up (point):
+        #id: curveup
+        Point attribute storing curve up vector.
+    
+@related
+- [Labs Curve Resample by Density SOP|Node:sop/labs--curve_resample_by_density-1.0]
+- [PolyWire SOP|Node:sop/polywire]
