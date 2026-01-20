@@ -1,0 +1,79 @@
+= Labs Thicken =
+
+#type: node
+#context: sop
+#internal: labs::thicken::1.1
+#icon: thicken
+#tags: sidefxlabs,  model, gamedev
+
+""" Extrudes a mesh along it's averaged normals """
+
+Simple helper node that will extrude a mesh along it's averaged normals. 
+
+Giving a mesh thickness is an easy way for ensuring something is water tight and will play well with collision and physics. 
+
+You usually need several nodes if you need to extrude something both ways in order to give it thickness, and this node wraps up that network for you. 
+
+This node is a simple collection of other common used nodes to ensure you can take something like a curve, and generate something with thickness in a single node. 
+
+@parameters
+    == Thicken ==
+    Depth:
+        Distance to Extrude.
+    Extrusion Mode:
+        Which mode to use to extrude faces/edges.
+    Both Directions:
+        Toggle for extruding outwards as well as inwards. 
+    Dissolve Middle Edge:
+        When extruding in both directions, remove the edge that joins both halves. 
+    Reduce Back Side:
+        Toggle for PolyReducing the "Inside" Faces. Useful if you have a dense mesh and just need thickness but don't care about the detail inside. 
+    Percent To Keep:
+        #id: reduction_percentage
+        How much to reduce the inside faces. 0 means reduce as much as possible, 100 means no reduction.
+
+    == Output Groups == 
+    Output Back Group:
+	#id: outputbackgrp
+	Output back primitive group.
+    Back Group:
+	#id: backgrp
+	Name of back primitive group.
+    Output Front Group:
+	#id: outputfrontgrp
+	Output front primitive group.
+    Front Group:
+	#id: frontgrp
+	Name of front primitive group.
+    Output Side Group:
+	#id: outputsidegrp
+	Output side primitive group.
+    Side Group:
+	#id: sidegrp
+	Name of side primitive group.
+    Output Back Seam Group:
+	#id: outputbackseamgrp
+	Output back seam edge group.
+    Back Seam Group:
+	#id: backseamgrp
+	Name of back seam edge group.
+    Output Front Seam Group:
+	#id: outputfrontseamgrp
+	Output front seam edge group.
+    Front Seam Group:
+	#id: frontseamgrp
+	Name of front seam edge group.
+    Output Middle Seam Group:
+	#id: outputmiddleseamgrp
+	Output middle seam edge group.
+    Middle Seam Group:
+	#id: middleseamgrp
+	Name of middle seam edge group.
+    
+
+    == Normals ==
+    Add Normals to:
+        Determines the attribute class normals should be added to.
+    Cusp Angle:
+        Controls the cusping angle that should be respected when generating normals. Low values mean a more faceted look, while higher values will smooth out your geometry. 
+    
