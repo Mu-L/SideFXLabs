@@ -91,21 +91,6 @@
             hidewhen "{ both_directions == 0 }"
             parmtag { "script_callback_language" "python" }
         }
-        parm {
-            name    "reduce_back"
-            label   "Reduce Back Side"
-            type    toggle
-            default { "0" }
-        }
-        parm {
-            name    "reduction_percentage"
-            label   "Percent To Keep"
-            type    float
-            default { "50" }
-            disablewhen "{ reduce_back == 0 }"
-            hidewhen "{ reduce_back == 0 }"
-            range   { 0! 100! }
-        }
     }
 
     groupcollapsible {
