@@ -57,15 +57,6 @@
         label   "Thicken"
 
         parm {
-            name    "depth"
-            label   "Depth"
-            type    float
-            joinnext
-            default { "0.1" }
-            range   { 0 1 }
-            export  all
-        }
-        parm {
             name    "extrusionmode"
             label   "Extrusion Mode"
             type    ordinal
@@ -78,10 +69,17 @@
             parmtag { "script_callback_language" "python" }
         }
         parm {
+            name    "depth"
+            label   "Depth"
+            type    float
+            default { "0.1" }
+            range   { 0 1 }
+            export  all
+        }
+        parm {
             name    "both_directions"
             label   "Both Directions"
             type    toggle
-            joinnext
             default { "0" }
         }
         parm {
@@ -90,13 +88,13 @@
             type    toggle
             default { "1" }
             disablewhen "{ both_directions == 0 }"
+            hidewhen "{ both_directions == 0 }"
             parmtag { "script_callback_language" "python" }
         }
         parm {
             name    "reduce_back"
             label   "Reduce Back Side"
             type    toggle
-            joinnext
             default { "0" }
         }
         parm {
@@ -105,146 +103,8 @@
             type    float
             default { "50" }
             disablewhen "{ reduce_back == 0 }"
-            range   { 0 100 }
-        }
-    }
-
-    groupsimple {
-        name    "fd_outputgroups"
-        label   "Output Groups"
-
-        parm {
-            name    "outputbackgrp"
-            label   "outputbackgrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "backgrp"
-            label   "Back Group"
-            type    string
-            default { "thickenBack" }
-            disablewhen "{ outputbackgrp == 0 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude4 frontgrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "outputfrontgrp"
-            label   "outputfrontgrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "frontgrp"
-            label   "Front Group"
-            type    string
-            default { "thickenFront" }
-            disablewhen "{ outputfrontgrp == 0 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude5 frontgrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "outputsidegrp"
-            label   "outputsidegrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "sidegrp"
-            label   "Side Group"
-            type    string
-            default { "thickenSide" }
-            disablewhen "{ outputsidegrp == 0 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude4 sidegrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "outputbackseamgrp"
-            label   "outputbackseamgrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "backseamgrp"
-            label   "Back Seam Group"
-            type    string
-            default { "thickenBackSeam" }
-            disablewhen "{ outputbackseamgrp == 0 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude4 frontseamgrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "outputfrontseamgrp"
-            label   "outputfrontseamgrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "frontseamgrp"
-            label   "Front Seam Group"
-            type    string
-            default { "thickenFrontSeam" }
-            disablewhen "{ outputfrontseamgrp == 0 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude5 frontseamgrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "outputmiddleseamgrp"
-            label   "outputmiddleseamgrp"
-            type    toggle
-            nolabel
-            joinnext
-            default { "on" }
-            disablewhen "{ both_directions == 0 } { dissolve_middle_edge == 1 }"
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "middleseamgrp"
-            label   "Middle Seam Group"
-            type    string
-            default { "thickenMiddleSeam" }
-            disablewhen "{ outputmiddleseamgrp == 0 } { both_directions == 0 } { dissolve_middle_edge == 1 }"
-            menureplace {
-                [ "opmenu -l -a polyextrude4 backseamgrp" ]
-            }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
+            hidewhen "{ reduce_back == 0 }"
+            range   { 0! 100! }
         }
     }
 
@@ -272,6 +132,145 @@
             type    float
             default { "60" }
             range   { 0! 180! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupcollapsible {
+        name    "fd_outputgroups"
+        label   "Output Groups"
+
+        parm {
+            name    "outputbackgrp"
+            label   "outputbackgrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "backgrp"
+            label   "Back Group"
+            type    string
+            default { "thickenBack" }
+            disablewhen "{ outputbackgrp == 0 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude4 frontgrp" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputfrontgrp"
+            label   "outputfrontgrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "frontgrp"
+            label   "Front Group"
+            type    string
+            default { "thickenFront" }
+            disablewhen "{ outputfrontgrp == 0 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude5 frontgrp" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputsidegrp"
+            label   "outputsidegrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sidegrp"
+            label   "Side Group"
+            type    string
+            default { "thickenSide" }
+            disablewhen "{ outputsidegrp == 0 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude4 sidegrp" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputbackseamgrp"
+            label   "outputbackseamgrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "backseamgrp"
+            label   "Back Seam Group"
+            type    string
+            default { "thickenBackSeam" }
+            disablewhen "{ outputbackseamgrp == 0 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude4 frontseamgrp" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputfrontseamgrp"
+            label   "outputfrontseamgrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "frontseamgrp"
+            label   "Front Seam Group"
+            type    string
+            default { "thickenFrontSeam" }
+            disablewhen "{ outputfrontseamgrp == 0 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude5 frontseamgrp" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputmiddleseamgrp"
+            label   "outputmiddleseamgrp"
+            type    toggle
+            nolabel
+            joinnext
+            default { "off" }
+            disablewhen "{ both_directions == 0 } { dissolve_middle_edge == 1 }"
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "middleseamgrp"
+            label   "Middle Seam Group"
+            type    string
+            default { "thickenMiddleSeam" }
+            disablewhen "{ outputmiddleseamgrp == 0 } { both_directions == 0 } { dissolve_middle_edge == 1 }"
+            menureplace {
+                [ "opmenu -l -a polyextrude4 backseamgrp" ]
+            }
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "script_callback_language" "python" }
         }
