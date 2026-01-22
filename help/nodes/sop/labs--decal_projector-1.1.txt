@@ -1,12 +1,11 @@
 = Labs Decal Projector =
 
-#type: node
-#context: sop
-#internal: labs::decal_projector::1.1
-#icon: PRIMITIVES/pastesurf
-#tags: sidefxlabs,  model
+#type:      node
+#context:   sop
+#internal:  labs::decal_projector::1.1
+#icon:      PRIMITIVES/pastesurf
 
-""" Project a decal (localized piece of geometry and a texture) onto geometry."""
+"""Project a decal (localized piece of geometry and a texture) onto geometry."""
 
 :video:
     #src:/movies/decalprojector.mp4
@@ -20,7 +19,6 @@ There are two radio buttons representing two different modes for this tool, 'Pro
 In 'Project' mode, the decal projector sop replicates the manhole cover workflow. Rather than composite the texture, a perfectly fitting polygon 'sticker' or 'decal' is made containing the required texture. This will adapt to any changes of the underlying geometry, and can be merged with the original geometry.
 
 In 'Place' mode, the decal projector sop requires the second and third input. The second input requires target points, typically points scattered on the projection mesh. These points must be assigned a 'decal_index' integer, point attribute. This will determine how decals are matched with the target points. The third input expects decal geometry in the form of grid planes with materials. Each plane needs a unique 'decal_index' integer, primitive attribute. The 'Place' mode does not shape the decals to the underlying geometry like the 'Project' mode. 
-
 
 
 @parameters
@@ -56,6 +54,7 @@ In 'Place' mode, the decal projector sop requires the second and third input. Th
         Clip or 'barn doors' for the left and right side of the projection.
     Clip Z:
         Clip or 'barn doors' for the top and bottom of the projection.
+
     
 @examples
-	- [Example File|https://github.com/sideeffects/SideFXLabs/blob/Development/hip/examples/decal_projector/decal_projector.1.1.hip]
+- [Example File|https://github.com/sideeffects/SideFXLabsExamples/tree/main/examples/decal_projector/decal_projector.1.1.hip]
