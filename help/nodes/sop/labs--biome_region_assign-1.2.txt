@@ -1,6 +1,6 @@
 #type:     node
 #context:  sop
-#internal: labs::biome_region_assign::1.1
+#internal: labs::biome_region_assign::1.2
 #icon:     /labs_icons/sidefx_labs_default.svg
 
 = Labs Biome Region Assign =
@@ -29,7 +29,7 @@ __Curves__: creates biome regions based on Houdini input curves. Options exist t
         
         __Guide Geometry__: Visualizes the biome regions and their placement with color-coded geometry.
             
-        __Final HeightField Layers__: Visualizes the actual output volumes fed into [Labs Biome Attributes to Terrain SOP|Node:sop/labs--biome_attributes_to_terrain-1.0].
+        __Final HeightField Layers__: Visualizes the actual output volumes fed into [Labs Biome Attributes to Terrain SOP|Node:sop/labs--biome_attributes_to_terrain-1.1].
             
     == Biome Regions ==
 
@@ -214,11 +214,12 @@ __Curves__: creates biome regions based on Houdini input curves. Options exist t
         #id: outputsize
         Sets the size of the output Heightfield if no terrain source is specified.
         
-
+@examples
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/projects/dryad/beta/biome_demo/biome_demo.hip]
     
 @related
 - [Labs Biome Curve Label SOP|Node:sop/labs--biome_curve_label-1.1]
 - [Labs Biome Define SOP|Node:sop/labs--biome_define-1.1]
-- [Labs Biome Attributes to Terrain SOP|Node:sop/labs--biome_attributes_to_terrain-1.0]
--  
+- [Labs Biome Attributes to Terrain SOP|Node:sop/labs--biome_attributes_to_terrain-1.1]
+ 
 
