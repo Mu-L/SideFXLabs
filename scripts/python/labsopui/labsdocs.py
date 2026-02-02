@@ -41,9 +41,6 @@ def writeHeader(node, nodename, context):
     sys.stdout.write("#icon:     " + dirname + "/" + nodename + "\n")
     sys.stdout.write("\n= " + node.description() + " =\n")
     sys.stdout.write("\n\"\"\"Summary.\"\"\"\n\n")
-    sys.stdout.write("[Image:/images/sidefxlabs_banner.jpg]\n\n")
-    sys.stdout.write(":video:\n")
-    sys.stdout.write(prefix + "#src:/movies/cablegenerator.mp4\n\n")
     sys.stdout.write("<Description goes here>\n\n\n")
     sys.stdout.write("@parameters\n\n")
 
