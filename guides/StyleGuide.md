@@ -1,1 +1,0 @@
-# SideFX Labs Style Guide

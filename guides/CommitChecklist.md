@@ -1,1 +1,0 @@
-# SideFX Labs Commit Checklist
