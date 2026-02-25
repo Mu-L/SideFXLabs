@@ -8,7 +8,7 @@
       -->
   <menu>
     <scriptItem id="samplescreencolor">
-      <label>Sample Screen Colors</label>
+      <label>Sample Screen Colors (Labs)</label>
       <context>
         <expression>
           <![CDATA[
@@ -34,7 +34,7 @@ screensampling.sample_ramp_color(kwargs["parms"])
       </scriptCode>
     </scriptItem>
     <scriptItem id="show_in_file_browser">
-      <label>Show in File Browser</label>
+      <label>Show in File Browser (Labs)</label>
       <insertAtIndex>20</insertAtIndex>
       <context>
         <expression>
@@ -63,7 +63,7 @@ elif os.path.isdir(os.path.dirname(path)):
     </scriptItem>
     <!-- External Editor -->
     <addScriptItem id="open_external_editor">
-      <label>Edit in External Editor</label>
+      <label>Edit in External Editor (Labs)</label>
       <parent>expression_menu</parent>
       <!--         <insertAfter>edit_expression</insertAfter>-->
       <context>
@@ -89,7 +89,7 @@ ParmWatcher.add_watcher(kwargs["parms"][0])]]>
     </addScriptItem>
     <!-- Remove watcher -->
     <addScriptItem id="remove_file_watcher">
-      <label>Remove File Watcher</label>
+      <label>Remove File Watcher (Labs)</label>
       <parent>expression_menu</parent>
       <!--         <insertAfter>open_external_editor</insertAfter>-->
       <context>
@@ -116,7 +116,7 @@ ParmWatcher.remove_file_watched(kwargs["parms"][0])]]>
     <subMenu id="expression_menu">
       <label>Expression</label>
       <scriptItem id="set_wedgeindex">
-        <label>Set to Wedge Index</label>
+        <label>Set to Wedge Index (Labs)</label>
         <insertAfter>use_old_language</insertAfter>
         <context>
           <expression>
@@ -164,7 +164,7 @@ wedge_tools.wedge(kwargs["parms"])
         </scriptCode>
       </scriptItem>
       <scriptItem id="ftrimify">
-        <label>Trim Excess Fractional Digits</label>
+        <label>Trim Excess Fractional Digits (Labs)</label>
         <insertAfter>wedge_value</insertAfter>
         <context>
           <expression>
