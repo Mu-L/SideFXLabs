@@ -31,20 +31,18 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
-position 5.5 0.85
-connectornextid 1
+comment "To be removed in Houdini 23.0."
+position 2.30678 -2.15
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	box1 0 1 "input1"
 }
 inputs
 {
-0 	box1 0 1
 }
 stat
 {
@@ -57,944 +55,6 @@ color UT_Color RGB 0.8 0.8 0.8
 delscript ""
 exprlanguage hscript
 end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot.spareparmdef"
-Content-Type: text/plain
-
-    parm {
-        name    "preview"
-        baseparm
-        label   "Preview"
-        export  none
-    }
-    group {
-        name    "fd_reduce5"
-        label   "Reduce"
-        grouptag { "sidefx::switcher" "fd_reduce" }
-
-        parm {
-            name    "finalcount"
-            baseparm
-            label   "Number To Keep"
-            export  none
-        }
-        parm {
-            name    "use_instantmeshes"
-            baseparm
-            label   "Use Instant Meshes"
-            export  none
-        }
-        parm {
-            name    "reducepassedtarget"
-            baseparm
-            label   "Continue Reducing Within Quality Tolerance"
-            export  none
-        }
-        parm {
-            name    "qualitytolerance"
-            baseparm
-            label   "Tolerance"
-            export  none
-        }
-        parm {
-            name    "originalpoints"
-            baseparm
-            label   "Use Only Original Point Positions"
-            export  none
-        }
-        parm {
-            name    "preservequads"
-            baseparm
-            label   "Preserve Quads"
-            export  none
-        }
-        parm {
-            name    "equalizelengths"
-            baseparm
-            label   "Equalize Lengths"
-            export  none
-        }
-        groupsimple {
-            name    "fd_voxelize2"
-            label   "Voxelize"
-            grouptag { "group_type" "simple" }
-            grouptag { "sidefx::switcher" "fd_voxelize" }
-
-            parm {
-                name    "enable_voxelization"
-                baseparm
-                label   "Enable Voxelization"
-                export  none
-            }
-            parm {
-                name    "divisionsize"
-                label   "Division Size"
-                type    float
-                default { "0.1" }
-                disablewhen "{ enable_voxelization == 0 }"
-                range   { 0 1 }
-                parmtag { "autoscope" "0000000000000000" }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "resolution"
-                baseparm
-                label   "Resolution"
-                export  none
-            }
-            parm {
-                name    "bounding_box_relative"
-                baseparm
-                label   "Bounding Box Relative"
-                export  none
-            }
-            parm {
-                name    "adaptivity"
-                baseparm
-                label   "Adaptivity"
-                export  none
-            }
-            parm {
-                name    "dilate_erode"
-                baseparm
-                label   "Dilate/Erode"
-                export  none
-            }
-            parm {
-                name    "project"
-                baseparm
-                label   "Project to Original"
-                export  none
-            }
-            parm {
-                name    "post_smooth"
-                baseparm
-                label   "Post Smooth Iterations"
-                export  none
-            }
-            parm {
-                name    "sharpen_features"
-                baseparm
-                label   "Sharpen Features"
-                export  none
-            }
-            parm {
-                name    "edge_tolerance"
-                baseparm
-                label   "Edge Tolerance"
-                export  none
-            }
-        }
-
-    }
-
-    group {
-        name    "fd_reduce5_1"
-        label   "Auto UV"
-
-        groupsimple {
-            name    "fd_method2"
-            label   "Method"
-            grouptag { "group_type" "simple" }
-            grouptag { "sidefx::switcher" "fd_method" }
-
-            parm {
-                name    "method"
-                baseparm
-                label   "Method"
-                export  none
-            }
-            parm {
-                name    "fuse_distance"
-                baseparm
-                label   "Collapse Distance"
-                export  none
-            }
-            parm {
-                name    "num_points"
-                baseparm
-                label   "Number of Paths"
-                export  none
-            }
-            parm {
-                name    "convex_multiplier"
-                baseparm
-                label   "Convex Multiplier"
-                export  none
-            }
-            parm {
-                name    "occlusion_multiplier"
-                baseparm
-                label   "Occlusion Multiplier"
-                export  none
-            }
-            parm {
-                name    "num_clusters"
-                baseparm
-                label   "Number of Clusters"
-                export  none
-            }
-            parm {
-                name    "normal_blur_cluster"
-                baseparm
-                label   "Normal Blur"
-                export  none
-            }
-            parm {
-                name    "random_seed"
-                baseparm
-                label   "Random Seed"
-                export  none
-            }
-            parm {
-                name    "blur_amount"
-                baseparm
-                label   "Normal Blur Ammount"
-                export  none
-            }
-            parm {
-                name    "nplanes"
-                baseparm
-                label   "Planes"
-                export  none
-            }
-            parm {
-                name    "graintol"
-                baseparm
-                label   "Grain Tolerance"
-                export  none
-            }
-            parm {
-                name    "mergethreshold"
-                baseparm
-                label   "Merge Threshold"
-                export  none
-            }
-        }
-
-        groupsimple {
-            name    "fd_packingoptions2"
-            label   "Packing Options"
-            grouptag { "group_type" "simple" }
-            grouptag { "sidefx::switcher" "fd_packingoptions" }
-
-            parm {
-                name    "merge_small_islands"
-                baseparm
-                label   "Merge Small Islands"
-                export  none
-            }
-            parm {
-                name    "small_island_cutoff"
-                baseparm
-                label   "Small Island CutOff"
-                export  none
-            }
-            parm {
-                name    "method2"
-                baseparm
-                label   "Flattening Method"
-                export  none
-            }
-            parm {
-                name    "orientation_mode"
-                baseparm
-                label   "Orientation Mode"
-                export  none
-            }
-            parm {
-                name    "packing_iterations"
-                baseparm
-                label   "Packing Iterations"
-                export  none
-            }
-            parm {
-                name    "layout_padding"
-                baseparm
-                label   "Island Padding"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "resolution2"
-                baseparm
-                label   "Padding Resolution"
-                export  none
-            }
-        }
-
-    }
-
-    group {
-        name    "fd_reduce5_2"
-        label   "Bake"
-
-        parm {
-            name    "execute"
-            baseparm
-            label   "Render"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "bManualMode"
-            baseparm
-            label   "Manual Mode"
-            export  none
-        }
-        groupsimple {
-            name    "fd_bakesettings2"
-            label   "Bake Settings"
-            grouptag { "sidefx::switcher" "fd_bakesettings" }
-
-            parm {
-                name    "sOutputFile"
-                baseparm
-                label   "Output Directory"
-                export  none
-            }
-            parm {
-                name    "i2Resolution"
-                baseparm
-                label   "Resolution"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "parm"
-                baseparm
-                label   "Label"
-                export  none
-            }
-            parm {
-                name    "mBakeMode"
-                baseparm
-                label   "Tracing Mode"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "fMaxTraceDist"
-                baseparm
-                label   "Max Trace Distance"
-                joinnext
-                export  none
-            }
-            parm {
-                name    "visualize"
-                baseparm
-                label   "Visualize"
-                export  none
-            }
-            parm {
-                name    "preview_channel"
-                baseparm
-                label   "Preview Channel"
-                export  none
-            }
-        }
-
-        groupsimple {
-            name    "fd_bakeoptions2"
-            label   "Bake Options"
-            grouptag { "sidefx::switcher" "fd_bakeoptions" }
-
-            groupsimple {
-                name    "fd_transfer2"
-                label   "Transfer"
-                grouptag { "sidefx::switcher" "fd_transfer" }
-
-                parm {
-                    name    "bDiffuse"
-                    baseparm
-                    label   "Diffuse Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sDiffuse"
-                    baseparm
-                    label   "Diffuse Map"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fDiffuseGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bNormal"
-                    baseparm
-                    label   "Normal Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sNormal"
-                    baseparm
-                    label   "Normal Map"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fNormalGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bOpacity"
-                    baseparm
-                    label   "Opacity Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sOpacity"
-                    baseparm
-                    label   "Opacity Map"
-                    export  none
-                }
-                parm {
-                    name    "bRoughness"
-                    baseparm
-                    label   "Roughness Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sRoughness"
-                    baseparm
-                    label   "Roughness Map"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fRoughnessGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bMetallic"
-                    baseparm
-                    label   "Metallic Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sMetallic"
-                    baseparm
-                    label   "Metallic Map"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fMetallicGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-            }
-
-            groupsimple {
-                name    "fd_generate2"
-                label   "Generate"
-                grouptag { "sidefx::switcher" "fd_generate" }
-
-                parm {
-                    name    "bVertexCd"
-                    baseparm
-                    label   "Vertex Color Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sVertexColor"
-                    baseparm
-                    label   "Vertex Color"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fVertexColorGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bAO"
-                    baseparm
-                    label   "AO Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sAO"
-                    baseparm
-                    label   "AO"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fAOGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bThickness"
-                    baseparm
-                    label   "Thickness Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sThickness"
-                    baseparm
-                    label   "Thickness"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "fThicknessGamma"
-                    baseparm
-                    label   "Gamma"
-                    export  none
-                }
-                parm {
-                    name    "bCurvature"
-                    baseparm
-                    label   "Curvature Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sCurvature"
-                    baseparm
-                    label   "Curvature"
-                    export  none
-                }
-                parm {
-                    name    "bWorldNormal"
-                    baseparm
-                    label   "World Normal Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sWorldNormal"
-                    baseparm
-                    label   "World Normal"
-                    export  none
-                }
-                parm {
-                    name    "bHeight"
-                    baseparm
-                    label   "Height Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sHeight"
-                    baseparm
-                    label   "Height"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sHeightFormat"
-                    baseparm
-                    label   "Format"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "maxheightdistance"
-                    baseparm
-                    label   "Range"
-                    export  none
-                }
-                parm {
-                    name    "bAlpha"
-                    baseparm
-                    label   "Alpha Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sAlpha"
-                    baseparm
-                    label   "Alpha"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "uvfill"
-                    baseparm
-                    label   "UV Fill"
-                    export  none
-                }
-                parm {
-                    name    "bPos"
-                    baseparm
-                    label   "Position Map"
-                    nolabel
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "sPos"
-                    baseparm
-                    label   "Position"
-                    export  none
-                }
-            }
-
-            parm {
-                name    "exportlow"
-                baseparm
-                label   "Export Low"
-                nolabel
-                joinnext
-                export  none
-            }
-            parm {
-                name    "sopoutputlow"
-                baseparm
-                label   "Low Export"
-                export  none
-            }
-            parm {
-                name    "exporthigh"
-                baseparm
-                label   "Export High"
-                nolabel
-                joinnext
-                export  none
-            }
-            parm {
-                name    "sopoutputhigh"
-                baseparm
-                label   "High Export"
-                export  none
-            }
-        }
-
-        groupsimple {
-            name    "fd_attributes2"
-            label   "Attributes"
-            grouptag { "sidefx::switcher" "fd_attributes" }
-
-            multiparm {
-                name    "folder8"
-                label    "Custom Attributes"
-                baseparm
-                default 0
-                parmtag { "autoscope" "0000000000000000" }
-
-                parm {
-                    name    "sCustomAttribute#"
-                    baseparm
-                    label   "Attribute"
-                    export  none
-                }
-            }
-
-        }
-
-        groupcollapsible {
-            name    "fd_advanced2"
-            label   "Advanced"
-            grouptag { "sidefx::switcher" "fd_advanced" }
-
-            groupsimple {
-                name    "fd_sampling2"
-                label   "Sampling"
-                grouptag { "sidefx::switcher" "fd_sampling" }
-
-                parm {
-                    name    "opacitytracing"
-                    baseparm
-                    label   "Opacity Maps Affect Tracing"
-                    export  none
-                }
-                parm {
-                    name    "samplesscalar"
-                    baseparm
-                    label   "Samples"
-                    joinnext
-                    export  none
-                }
-                parm {
-                    name    "downfilter"
-                    baseparm
-                    label   "Filter"
-                    export  none
-                }
-                parm {
-                    name    "labelparm"
-                    baseparm
-                    label   "This will render a"
-                    export  none
-                }
-            }
-
-            groupsimple {
-                name    "fd_normalmap2"
-                label   "Normal Map"
-                grouptag { "sidefx::switcher" "fd_normalmap" }
-
-                parm {
-                    name    "bFlipTangentX"
-                    baseparm
-                    label   "Tangent Normal Flip X"
-                    export  none
-                }
-                parm {
-                    name    "bFlipTangentY"
-                    baseparm
-                    label   "Tangent Normal Flip Y"
-                    export  none
-                }
-            }
-
-            groupsimple {
-                name    "fd_aomap2"
-                label   "AO Map"
-                grouptag { "sidefx::switcher" "fd_aomap" }
-
-                parm {
-                    name    "numrays"
-                    baseparm
-                    label   "Number of Rays"
-                    export  none
-                }
-                parm {
-                    name    "maxdist"
-                    baseparm
-                    label   "Maximum Ray Distance"
-                    export  none
-                }
-                parm {
-                    name    "bias"
-                    baseparm
-                    label   "Bias"
-                    export  none
-                }
-                parm {
-                    name    "conewidth"
-                    baseparm
-                    label   "Cone Width"
-                    export  none
-                }
-            }
-
-            groupsimple {
-                name    "fd_thicknessmap2"
-                label   "Thickness Map"
-                grouptag { "sidefx::switcher" "fd_thicknessmap" }
-
-                parm {
-                    name    "normalizedthickness"
-                    baseparm
-                    label   "Normalized Output Map"
-                    export  none
-                }
-                parm {
-                    name    "numrays2"
-                    baseparm
-                    label   "Number of Rays"
-                    export  none
-                }
-                parm {
-                    name    "minthicknessdist"
-                    baseparm
-                    label   "Minimum Ray Distance"
-                    export  none
-                }
-                parm {
-                    name    "maxthicknessdist"
-                    baseparm
-                    label   "Maximum Ray Distance"
-                    export  none
-                }
-                parm {
-                    name    "conewidth2"
-                    baseparm
-                    label   "Cone Width"
-                    export  none
-                }
-            }
-
-            groupsimple {
-                name    "fd_curvaturemap2"
-                label   "Curvature Map"
-                grouptag { "sidefx::switcher" "fd_curvaturemap" }
-
-                parm {
-                    name    "iNumRaysCurvature"
-                    baseparm
-                    label   "Number of Rays"
-                    export  none
-                }
-                parm {
-                    name    "fMaxRayDistCurvature"
-                    baseparm
-                    label   "Maximum Ray Distance"
-                    export  none
-                }
-                parm {
-                    name    "fCurvatureBias"
-                    baseparm
-                    label   "Bias"
-                    export  none
-                }
-                parm {
-                    name    "fConeWidthCurvature"
-                    baseparm
-                    label   "Cone Width"
-                    export  none
-                }
-                parm {
-                    name    "fCurvaturescale"
-                    baseparm
-                    label   "Scale"
-                    export  none
-                }
-                parm {
-                    name    "fFlatbias"
-                    baseparm
-                    label   "Flatness Filter"
-                    export  none
-                }
-            }
-
-        }
-
-    }
-
-    group {
-        name    "fd_reduce5_3"
-        label   "Private Parms Folder"
-        invisibletab
-
-        parm {
-            name    "overridenode"
-            baseparm
-            label   "Override Node"
-            invisible
-            export  none
-        }
-        parm {
-            name    "initswitch"
-            baseparm
-            label   "Init Switch"
-            invisible
-            export  none
-        }
-        parm {
-            name    "uuid"
-            baseparm
-            label   "Unique ID"
-            invisible
-            export  none
-        }
-        parm {
-            name    "current_low_mesh"
-            baseparm
-            label   "Current Low Mesh"
-            invisible
-            export  none
-        }
-        parm {
-            name    "current_high_mesh"
-            baseparm
-            label   "Current High Mesh"
-            invisible
-            export  none
-        }
-        parm {
-            name    "tempexrpath"
-            baseparm
-            label   "Temp exr path"
-            invisible
-            export  none
-        }
-        parm {
-            name    "tempcoppath"
-            baseparm
-            label   "Temp cop path"
-            invisible
-            export  none
-        }
-        parm {
-            name    "udimpostprocess"
-            baseparm
-            label   "UDIM post Process"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentcoppath"
-            baseparm
-            label   "Current COP Path"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentcopoutput"
-            baseparm
-            label   "Current COP Output Picture"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentplane"
-            baseparm
-            label   "Current Color Plane"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentgamma"
-            baseparm
-            label   "Current Gamma"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentcustomattr"
-            baseparm
-            label   "Current Custom Attribute"
-            invisible
-            export  none
-        }
-        parm {
-            name    "currentcustomsuffix"
-            baseparm
-            label   "Current Custom Suffix"
-            invisible
-            export  none
-        }
-    }
-
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -1847,60 +907,6 @@ Content-Type: text/plain
             export  none
         }
         parm {
-            name    "fuse_distance"
-            baseparm
-            label   "Collapse Distance"
-            export  none
-        }
-        parm {
-            name    "num_points"
-            baseparm
-            label   "Number of Paths"
-            export  none
-        }
-        parm {
-            name    "convex_multiplier"
-            baseparm
-            label   "Convex Multiplier"
-            export  none
-        }
-        parm {
-            name    "occlusion_multiplier"
-            baseparm
-            label   "Occlusion Multiplier"
-            export  none
-        }
-        parm {
-            name    "num_clusters"
-            baseparm
-            label   "Number of Clusters"
-            export  none
-        }
-        parm {
-            name    "normal_blur_cluster"
-            baseparm
-            label   "Normal Blur"
-            export  none
-        }
-        parm {
-            name    "random_seed"
-            baseparm
-            label   "Random Seed"
-            export  none
-        }
-        parm {
-            name    "blur_amount"
-            baseparm
-            label   "Normal Blur Ammount"
-            export  none
-        }
-        parm {
-            name    "nplanes"
-            baseparm
-            label   "Planes"
-            export  none
-        }
-        parm {
             name    "graintol"
             baseparm
             label   "Grain Tolerance"
@@ -1918,43 +924,6 @@ Content-Type: text/plain
         name    "folder3"
         label   "Packing Options"
 
-        parm {
-            name    "merge_small_islands"
-            baseparm
-            label   "Merge Small Islands"
-            export  none
-        }
-        parm {
-            name    "small_island_cutoff"
-            baseparm
-            label   "Small Island CutOff"
-            export  none
-        }
-        parm {
-            name    "optimize_uv_border"
-            baseparm
-            label   "Optimize UV Border"
-            export  none
-        }
-        parm {
-            name    "method2"
-            baseparm
-            label   "Flattening Method"
-            export  none
-        }
-        parm {
-            name    "packing_iterations"
-            baseparm
-            label   "Packing Iterations"
-            export  none
-        }
-        parm {
-            name    "layout_padding"
-            baseparm
-            label   "Island Padding"
-            joinnext
-            export  none
-        }
         parm {
             name    "resolution"
             baseparm
@@ -2016,6 +985,194 @@ Content-Type: text/plain
         baseparm
         label   "UDIM Target Tile"
         export  none
+    }
+    parm {
+        name    "collapsedist"
+        baseparm
+        label   "Collapse Distance"
+        export  none
+    }
+    parm {
+        name    "numpaths"
+        baseparm
+        label   "Number of Paths"
+        export  none
+    }
+    parm {
+        name    "convexmultiplier"
+        baseparm
+        label   "Convex Multiplier"
+        export  none
+    }
+    parm {
+        name    "occlusionmultiplier"
+        baseparm
+        label   "Occlusion Multiplier"
+        export  none
+    }
+    parm {
+        name    "numclusters"
+        baseparm
+        label   "Number of Clusters"
+        export  none
+    }
+    parm {
+        name    "normalblur"
+        baseparm
+        label   "Normal Blur"
+        export  none
+    }
+    parm {
+        name    "randomseed"
+        baseparm
+        label   "Random Seed"
+        export  none
+    }
+    parm {
+        name    "bluramount"
+        baseparm
+        label   "Normal Blur Amount"
+        export  none
+    }
+    parm {
+        name    "numplanes"
+        baseparm
+        label   "Planes"
+        export  none
+    }
+    parm {
+        name    "mergesmallislands"
+        baseparm
+        label   "Merge Small Islands"
+        export  none
+    }
+    parm {
+        name    "smallislandcutoff"
+        baseparm
+        label   "Small Island CutOff"
+        export  none
+    }
+    parm {
+        name    "optimizeuvborder"
+        baseparm
+        label   "Optimize UV Border"
+        export  none
+    }
+    parm {
+        name    "flatteningmethod"
+        baseparm
+        label   "Flattening Method"
+        export  none
+    }
+    parm {
+        name    "packingiterations"
+        baseparm
+        label   "Packing Iterations"
+        export  none
+    }
+    parm {
+        name    "islandpadding"
+        baseparm
+        label   "Island Padding"
+        export  none
+    }
+    parm {
+        name    "fuse_distance"
+        label   "fuse_distance"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "num_points"
+        label   "num_points"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "convex_multiplier"
+        label   "convex_multiplier"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "occlusion_multiplier"
+        label   "occlusion_multiplier"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "num_clusters"
+        label   "num_clusters"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "normal_blur_cluster"
+        label   "normal_blur_cluster"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "random_seed"
+        label   "random_seed"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "blur_amount"
+        label   "blur_amount"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "nplanes"
+        label   "nplanes"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "small_island_cutoff"
+        label   "small_island_cutoff"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "method2"
+        label   "method2"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "packing_iterations"
+        label   "packing_iterations"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "layout_padding"
+        label   "layout_padding"
+        type    float
+        default { "0" }
+        range   { 0 10 }
+    }
+    parm {
+        name    "merge_small_islands"
+        label   "merge_small_islands"
+        type    float
+        default { "0" }
+        range   { 0 10 }
     }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2169,31 +1326,45 @@ group	[ 0	locks=0 ]	(	""	)
 fd_method	[ 0	locks=0 ]	(	0	)
 uvattrib	[ 0	locks=0 ]	(	uv	)
 method	[ 0	locks=0 ]	(	[ method	3 ] 	)
-fuse_distance	[ 0	locks=0 ]	(	[ fuse_distance	0.01 ] 	)
-num_points	[ 0	locks=0 ]	(	[ num_points	25 ] 	)
-convex_multiplier	[ 0	locks=0 ]	(	[ convex_multiplier	0.1 ] 	)
-occlusion_multiplier	[ 0	locks=0 ]	(	[ occlusion_multiplier	1 ] 	)
-num_clusters	[ 0	locks=0 ]	(	[ num_clusters	30 ] 	)
-normal_blur_cluster	[ 0	locks=0 ]	(	[ normal_blur_cluster	1 ] 	)
-random_seed	[ 0	locks=0 ]	(	[ random_seed	0 ] 	)
-blur_amount	[ 0	locks=0 ]	(	[ blur_amount	0 ] 	)
-nplanes	[ 0	locks=0 ]	(	[ nplanes	2 ] 	)
+collapsedist	[ 0	locks=0 ]	(	0.01	)
+numpaths	[ 0	locks=0 ]	(	25	)
+convexmultiplier	[ 0	locks=0 ]	(	0.1	)
+occlusionmultiplier	[ 0	locks=0 ]	(	1	)
+numclusters	[ 0	locks=0 ]	(	30	)
+normalblur	[ 0	locks=0 ]	(	1	)
+randomseed	[ 0	locks=0 ]	(	0	)
+bluramount	[ 0	locks=0 ]	(	0	)
+numplanes	[ 0	locks=0 ]	(	"planes6"	)
 graintol	[ 0	locks=0 ]	(	[ graintol	0.12 ] 	)
 mergethreshold	[ 0	locks=0 ]	(	[ mergethreshold	0.5 ] 	)
 fd_packingoptions	[ 0	locks=0 ]	(	0	)
-merge_small_islands	[ 8	locks=0 ]	(	[ merge_small_islands	0 ] 	)
-small_island_cutoff	[ 0	locks=0 ]	(	[ small_island_cutoff	0.01 ] 	)
-optimize_uv_border	[ 0	locks=0 ]	(	"on"	)
-method2	[ 0	locks=0 ]	(	[ method2	1 ] 	)
+mergesmallislands	[ 0	locks=0 ]	(	"off"	)
+smallislandcutoff	[ 0	locks=0 ]	(	0.01	)
+optimizeuvborder	[ 0	locks=0 ]	(	"on"	)
+flatteningmethod	[ 0	locks=0 ]	(	"abf"	)
 rotstep	[ 0	locks=0 ]	(	"none"	)
-packing_iterations	[ 0	locks=0 ]	(	[ packing_iterations	1 ] 	)
-layout_padding	[ 0	locks=0 ]	(	[ layout_padding	2 ] 	)
+packingiterations	[ 0	locks=0 ]	(	1	)
+islandpadding	[ 0	locks=0 ]	(	2	)
 resolution	[ 0	locks=0 ]	(	[ resolution	2 ] 	)
 udimtarget	[ 0	locks=0 ]	(	1001	)
 cusp_angle	[ 0	locks=0 ]	(	20	)
 folder2	[ 0	locks=0 ]	(	0	)
 folder3	[ 0	locks=0 ]	(	0	)
 orientation_mode	[ 0	locks=0 ]	(	[ orientation_mode	0 ] 	)
+fuse_distance	[ 0	locks=0 ]	(	[ fuse_distance	0 ] 	)
+num_points	[ 0	locks=0 ]	(	[ num_points	0 ] 	)
+convex_multiplier	[ 0	locks=0 ]	(	[ convex_multiplier	0 ] 	)
+occlusion_multiplier	[ 0	locks=0 ]	(	[ occlusion_multiplier	0 ] 	)
+num_clusters	[ 0	locks=0 ]	(	[ num_clusters	0 ] 	)
+normal_blur_cluster	[ 0	locks=0 ]	(	[ normal_blur_cluster	0 ] 	)
+random_seed	[ 0	locks=0 ]	(	[ random_seed	0 ] 	)
+blur_amount	[ 0	locks=0 ]	(	[ blur_amount	0 ] 	)
+nplanes	[ 0	locks=0 ]	(	[ nplanes	0 ] 	)
+small_island_cutoff	[ 0	locks=0 ]	(	[ small_island_cutoff	0 ] 	)
+method2	[ 0	locks=0 ]	(	[ method2	0 ] 	)
+packing_iterations	[ 0	locks=0 ]	(	[ packing_iterations	0 ] 	)
+layout_padding	[ 0	locks=0 ]	(	[ layout_padding	0 ] 	)
+merge_small_islands	[ 8	locks=0 ]	(	[ merge_small_islands	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
