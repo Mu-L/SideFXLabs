@@ -8,7 +8,7 @@
     <menu>
         <!-- Set external editor -->
         <addScriptItem id="set_external_editor">
-            <label>Set External Text Editor (Labs)</label>
+            <label>Set External Text Editor [Labs]</label>
             <parent>preferences_submenu</parent>
             <insertAtIndex>26</insertAtIndex>
             <scriptCode>
@@ -20,7 +20,7 @@ ParmWatcher.set_external_editor()
         </addScriptItem>
         <!-- Open session module source watcher -->
         <addScriptItem id="external_python_source_editor">
-            <label>External Python Source Editor (Labs)</label>
+            <label>External Python Source Editor [Labs]</label>
             <parent>windows_menu</parent>
             <insertAtIndex>8</insertAtIndex>
             <context>
@@ -46,10 +46,10 @@ ParmWatcher.add_watcher("__temp__python_source_editor", type_="__temp__python_so
         <!-- File -->
         <subMenu id="file_menu">
             <subMenu id="crash_recovery">
-                <label>Crash Recovery (Labs)</label>
+                <label>Crash Recovery [Labs]</label>
                 <insertAtIndex>3</insertAtIndex>
                 <scriptItem id="open_crashfile">
-                    <label>Open Crashfile (Labs)</label>
+                    <label>Open Crashfile [Labs]</label>
                     <scriptCode>
                         <![CDATA[
 from labsopui import restore_backup
@@ -58,7 +58,7 @@ restore_backup.recoverFile()
                     </scriptCode>
                 </scriptItem>
                 <scriptItem id="open_crashdirectory">
-                    <label>Open Crash Directory (Labs)</label>
+                    <label>Open Crash Directory [Labs]</label>
                     <scriptCode>
                         <![CDATA[
 file = hou.ui.selectFile(start_directory="$TEMP/", title="Select a file to open", collapse_sequences=False, file_type=hou.fileType.Hip, pattern=None, default_value=None, multiple_select=False, image_chooser=False, chooser_mode=hou.fileChooserMode.Read, width=0, height=0)
@@ -69,7 +69,7 @@ if file != "":
                 </scriptItem>
             </subMenu>
             <scriptItem id="show_hip_in_file_browser">
-                <label>Show in File Browser (Labs)</label>
+                <label>Show in File Browser [Labs]</label>
                 <insertAtIndex>4</insertAtIndex>
                 <scriptCode>
                     <![CDATA[
