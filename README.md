@@ -9,3 +9,6 @@ SideFX Labs is a free, open-source, and artist-friendly toolset developed by Sid
 
 ## Documentation
 - [Installation](https://github.com/sideeffects/SideFXLabs/blob/Development/docs/installation.md)
+
+## Contribution
+- [List of Contributors](https://github.com/sideeffects/SideFXLabs/blob/Development/docs/contributors.md)

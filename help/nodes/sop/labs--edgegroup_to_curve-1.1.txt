@@ -1,0 +1,45 @@
+#type:      node
+#context:   sop
+#internal:  labs::edgegroup_to_curve::1.1
+#icon:      edgegroup_to_curve
+
+= Labs Edge Group To Curve =
+
+"""Converts edge groups to polycurves."""
+
+This node will take a edge groups and convert them into polycurves.
+
+
+@parameters
+
+    Group:
+        #id: group
+        The edge group(s) to convert to curves. 
+        <p>When this is blank, the node does nothing.</p>
+        <p>To convert the entire input geometry to polylines, use an asterisk (*).</p>
+    
+    Connect End Points:
+        #id: connectends
+        Connect curves that have overlapping ends into a single curve. 
+    
+    == Attributes ==
+    
+    Transfer Attributes:
+        #id: transferattr
+        Enables surface attributes of the input mesh to transfer to the points of the extracted curve.
+    
+    Point Attributes:
+        #id: pointattribs
+        These point attributes will be transferred from the source geometry to the destination elements.
+    
+    Vertex Attributes:
+        #id: vertattribs
+    	These vertex attributes will be transferred from the source geometry to the destination elements.
+    
+    Primitive Attributes:
+        #id: primattribs
+        These primitive attributes will be transferred from the source geometry to the destination elements.
+    
+    Detail Attributes:
+        #id: detailattribs
+        These detail attributes will be transferred from the source geometry to the destination elements.

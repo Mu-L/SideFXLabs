@@ -1,10 +1,9 @@
-= Labs Games Baker =
+#type:      node
+#context:   sop
+#internal:  labs::games_baker::2.0
+#icon:      COMMON/bake
 
-#type: node
-#context: sop
-#internal: labs::games_baker::2.0
-#icon: COMMON/bake
-#tags: sidefxlabs,  model
+= Labs Games Baker =
 
 """ Generate Textures based on a High Poly to Low Poly match """
 
@@ -16,8 +15,9 @@ This is the foundational ROP for the [Simple Baker SOP|Node:sop/gamedev--sop_sim
 
 One main feature that the ROP version has is that you can bake several mesh pairs in the same bake. You can do this by adding more High Low Pairs on the Meshes MultiParm
 
-WARNING: 
-    The preferred node to use for baking is the [Maps Baker SOP|Node:sop/gamedev--sop_maps_baker]
+NOTE: 
+    Replaced by Bake Geometry Textures COP. To be removed in Houdini 23.0.
+
 
 @parameters
     == Channels == 
