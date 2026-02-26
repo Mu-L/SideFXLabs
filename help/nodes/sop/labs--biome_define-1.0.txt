@@ -1,12 +1,12 @@
 #type:     node
 #context:  sop
 #internal: labs::biome_define::1.0
-#icon:     /labs_icons/sidefx_labs_beta.svg
+#icon:     /labs_icons/sidefx_labs_default.svg
 #since:    20.5
 
-= Labs Biome Define (Beta) =
+= Labs Biome Define =
 
-"""Define the biome attributes."""
+"""Define the biome attributes for the Biome Toolset."""
 
 This node creates the dictionary attribute `biome_definition` used in the rest of the Biome Toolset. It is used to define all of the characteristics of an individual biome and the user's preference for future visualization. Multiple of these nodes can be chained together to define a full library of biomes. The _Biome Definitions File SOP_ can take a chain of these nodes as input to help read and write the biome library from a .json or .bgeo file. The second input of the _Biome Attributes to Terrain SOP_ expects a chain of _Biome Plant Define SOP_ nodes or the output of the _Biome Definitions File SOP_ set to create geometry.
 
@@ -22,11 +22,11 @@ This node creates the dictionary attribute `biome_definition` used in the rest o
 
 Name:
     #id: biomename
-    Name of the biome.
+    Name of the biome. Do not include spaces.
 
 Color:
     #id: biomecolor
-    Color that is applied to the visualizer.
+    Color that is applied to the biome visualizer.
 
 == Temperature ==
 
@@ -49,6 +49,7 @@ Soil:
 
 @locals
 
-
+@examples
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/projects/dryad/beta/biome_demo/biome_demo.hip]
 @related
 - [Labs Biome Definitions File|Node:sop/labs--biome_definitions_file-1.0]
