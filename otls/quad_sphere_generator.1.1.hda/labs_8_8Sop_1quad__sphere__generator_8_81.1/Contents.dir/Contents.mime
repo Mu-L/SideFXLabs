@@ -20,9 +20,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 0.85
+position 3.5 -2.15
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -607,6 +607,42 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 1 1 expr = ch(\"../radius\") }
     }
+    channel tx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../tx\") }
+    }
+    channel ty {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../ty\") }
+    }
+    channel tz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../tz\") }
+    }
+    channel rx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../rx\") }
+    }
+    channel ry {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../ry\") }
+    }
+    channel rz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../rz\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -619,8 +655,8 @@ group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 xOrd	[ 0	locks=0 ]	(	"str"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 8	locks=0 ]	(	0	0	0	)
-r	[ 8	locks=0 ]	(	0	0	0	)
+t	[ 8	locks=0 ]	(	[ tx	0 ] 	[ ty	0 ] 	[ tz	0 ] 	)
+r	[ 8	locks=0 ]	(	[ rx	0 ] 	[ ry	0 ] 	[ rz	0 ] 	)
 s	[ 8	locks=0 ]	(	1	1	1	)
 shear	[ 0	locks=0 ]	(	0	0	0	)
 scale	[ 8	locks=0 ]	(	[ scale	1 ] 	)
@@ -747,7 +783,7 @@ sopflags sopflags =
 comment ""
 position 1.5 -9.15
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"

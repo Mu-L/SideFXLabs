@@ -1,15 +1,16 @@
-= Labs Quad Sphere =
-
 #type:     node
 #context:  sop
 #internal: labs::quad_sphere_generator::1.1
-#icon:     SOP/sphere
+#icon:     /labs_icons/sidefx_labs_default.svg
 #since:    20.5
+
+= Labs Quad Sphere =
 
 """Generates a quad spherical mesh."""
 
 This node creates a sphere composed entirely of quadrilateral polygons.
 The sphere is constructed from multiple sides, each of which can be subdivided independently to control surface smoothness while maintaining a quad-only topology.
+
 
 @parameters
 
@@ -20,7 +21,19 @@ The sphere is constructed from multiple sides, each of which can be subdivided i
     Subdivisions:
         #id: subdivisions
         Number of subdivisions applied to each side of the quad sphere. Higher values increase polygon density and smoothness.
+    
+    Center:
+        #id: t
+        Offset of cylinder center from object origin.
+
+    Rotate:
+        #id: r
+        Rotation about the center of the cylinder.
 
     Add UVs:
         #id: adduvs
         Generates UV coordinates for each side of the sphere.
+
+
+@related
+- [Sphere|Node:sop/sphere]

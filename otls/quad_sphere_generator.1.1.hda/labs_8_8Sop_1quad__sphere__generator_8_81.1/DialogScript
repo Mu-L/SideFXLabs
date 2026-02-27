@@ -35,6 +35,30 @@
         default { "" }
     }
     parm {
+        name    "t"
+        label   "Center"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { -1 1 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "r"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 360 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
         name    "adduvs"
         label   "Add UVs"
         type    toggle
