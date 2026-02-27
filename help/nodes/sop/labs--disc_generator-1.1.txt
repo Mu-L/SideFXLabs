@@ -1,19 +1,17 @@
-= Labs Disc =
-
 #type:     node
 #context:  sop
 #internal: labs::disc_generator::1.1
-#icon:     SOP/labs::disc_generator::1.1
+#icon:     /labs_icons/sidefx_labs_default.svg
 #since:    20.5
 
-""" Create a polygon disc with UVs"""
+= Labs Disc =
+
+"""Create a polygon disc with UVs."""
 
 The disc generator wraps up some common functionality for generating discs for realtime vfx. You can quickly set the inner and outer radius, and modify the profile to shape the disc for multiple use cases. UVs are automatically laid out and adjusted with override controls.
 
+
 @parameters
-    Orientation:
-        #id: orientation
-        Orientation of the shape.
 
     Inner Radius:
         #id: innerradius
@@ -38,7 +36,25 @@ The disc generator wraps up some common functionality for generating discs for r
     Arc End:
         #id: arcend
         Determines the ending point of the arc in degrees. That applies to the axis that is perpendicular to the plane the disc is oriented.
+        
+    Orientation:
+        #id: orientation
+        Orientation of the shape.
 
+    Center:
+        #id: t
+        Offset of cylinder center from object origin.
+
+    Rotate:
+        #id: r
+        Rotation about the center of the cylinder.
+    
+    Add UVs:
+        #id: adduvs
+        Generates UVs for the fill of the disc.
+
+    === Additional ===
+    
     Inner Height:
         #id: innerheight
         Determines the height of the inner circle. That applies to the axis that is perpendicular to the plane the disc is oriented.
@@ -59,6 +75,7 @@ The disc generator wraps up some common functionality for generating discs for r
         #id: curveramp
         Applies the ramp to modify the height profile of the disc.
 
-    Add UVs:
-        #id: adduvs
-        Generates UVs for the fill of the disc.
+
+@related
+- [Tube|Node:sop/tube]
+- [Labs Disc|Node:sop/labs--disc_generator-1.1]

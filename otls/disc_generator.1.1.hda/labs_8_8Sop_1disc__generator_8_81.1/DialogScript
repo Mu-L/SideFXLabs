@@ -15,18 +15,6 @@
     inputlabel	4	"Sub-Network Input #4"
 
     parm {
-        name    "orientation"
-        label   "Orientation"
-        type    ordinal
-        default { "2" }
-        menu {
-            "0" "XY Plane"
-            "1" "YZ Plane"
-            "2" "ZX Plane"
-        }
-        parmtag { "script_callback_language" "python" }
-    }
-    parm {
         name    "innerradius"
         label   "Inner Radius"
         type    float
@@ -81,46 +69,16 @@
         default { "" }
     }
     parm {
-        name    "innerheight"
-        label   "Inner Height"
-        type    float
-        default { "0" }
-        range   { 0 10 }
-        parmtag { "autoscope" "0000000000000000" }
-    }
-    parm {
-        name    "outerheight"
-        label   "Outer Height"
-        type    float
-        default { "0" }
-        range   { 0 10 }
-        parmtag { "autoscope" "0000000000000000" }
-    }
-    parm {
-        name    "enableramp"
-        label   "Enable Height Ramp"
-        type    toggle
-        default { "0" }
-        parmtag { "script_callback_language" "python" }
-    }
-    parm {
-        name    "rampmultiplier"
-        label   "Ramp Multiplier"
-        type    float
-        default { "1" }
-        hidewhen "{ enableramp == 0 }"
-        range   { -1 1 }
-        parmtag { "autoscope" "0000000000000000" }
-    }
-    parm {
-        name    "curveramp"
-        label   "Curve Ramp"
-        type    ramp_flt
+        name    "orientation"
+        label   "Orientation"
+        type    ordinal
         default { "2" }
-        hidewhen "{ enableramp == 0 }"
-        range   { 1! 10 }
-        parmtag { "autoscope" "0000000000000000" }
-        parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 0 ) 2interp ( linear )" }
+        menu {
+            "0" "XY Plane"
+            "1" "YZ Plane"
+            "2" "ZX Plane"
+        }
+        parmtag { "script_callback_language" "python" }
     }
     parm {
         name    "sepparm4"
@@ -129,10 +87,84 @@
         default { "" }
     }
     parm {
+        name    "t"
+        label   "Translate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { -1 1 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "r"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { [ "ch(\"../r\")" hscript-expr ] "0" "0" }
+        range   { 0 360 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
         name    "adduvs"
         label   "Add UVs"
         type    toggle
         default { "0" }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "sepparm2"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    groupcollapsible {
+        name    "fd_additional"
+        label   "Additional"
+
+        parm {
+            name    "innerheight"
+            label   "Inner Height"
+            type    float
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "outerheight"
+            label   "Outer Height"
+            type    float
+            default { "0" }
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "enableramp"
+            label   "Enable Height Ramp"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "rampmultiplier"
+            label   "Ramp Multiplier"
+            type    float
+            default { "1" }
+            hidewhen "{ enableramp == 0 }"
+            range   { -1 1 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "curveramp"
+            label   "Curve Ramp"
+            type    ramp_flt
+            default { "2" }
+            hidewhen "{ enableramp == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "rampfloatdefault" "1pos ( 0 ) 1value ( 0 ) 1interp ( linear ) 2pos ( 1 ) 2value ( 0 ) 2interp ( linear )" }
+        }
+    }
+
 }
