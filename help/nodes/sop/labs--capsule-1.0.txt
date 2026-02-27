@@ -1,19 +1,17 @@
-= Labs Capsule =
-
 #type:     node
 #context:  sop
 #internal: labs::capsule::1.0
-#icon:     /labs_icons/sidefxlabs_default.svg
+#icon:     /labs_icons/sidefx_labs_default.svg
 #since:    20.5
+
+= Labs Capsule =
 
 """Generates a capsule mesh."""
 
 This node generates a capsule mesh. The capsule is a cylinder with hemispherical caps at each end.
 
+
 @parameters
-    Direction:
-        #id: direction
-        The direction of the shape.
 
     Radius:
         #id: radius
@@ -34,3 +32,20 @@ This node generates a capsule mesh. The capsule is a cylinder with hemispherical
     Cap Segments:
         #id: capsegments
         Determines the number of polygon segments the hemispherical ends have along their height.
+    
+    Direction:
+        #id: direction
+        The direction of the shape.
+
+    Center:
+        #id: t
+        Offset of cylinder center from object origin.
+
+    Rotate:
+        #id: r
+        Rotation about the center of the cylinder.
+
+
+@related
+- [Labs Cylinder|Node:sop/labs--cylinder_generator-2.0]
+- [Tube|Node:sop/tube]
