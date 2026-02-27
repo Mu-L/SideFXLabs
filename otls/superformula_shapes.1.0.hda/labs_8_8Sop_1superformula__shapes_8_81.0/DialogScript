@@ -15,377 +15,407 @@
     inputlabel	4	"Sub-Network Input #4"
     outputlabel	1	"Shape Geo"
 
-    group {
-        name    "fd_shapesettings"
-        label   "Shape Settings"
-        tabbreak
+    parm {
+        name    "shapeselect"
+        label   "Shape Selection"
+        type    ordinal
+        default { "0" }
+        menu usetokenvalue {
+            "0"     "Square"
+            "1"     "Circle"
+            "2"     "Triangle"
+            "3"     "Polygon"
+            "4"     "Diamond"
+            "5"     "Star"
+            "6"     "Squircle"
+            "7"     "Rounded Polygon"
+            "8"     "Clover"
+            "9"     "Flower"
+            "10"    "Sunburst"
+            "11"    "Eye"
+            "12"    "Teardrop"
+            "13"    "Heart"
+            "14"    "Custom"
+        }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_circle"
+        label   "Circle"
+        hidewhentab "{ shapeselect != 1 }"
+        grouptag { "sidefx::look" "blank" }
 
         parm {
-            name    "shapeselect"
-            label   "Shape Selection"
-            type    ordinal
+            name    "circpointnum"
+            label   "Number of Points"
+            type    integer
+            default { "64" }
+            range   { 20 256 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_triangle"
+        label   "Triangle"
+        hidewhentab "{ shapeselect != 2 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "triangletype"
+            label   "Triangle Type"
+            type    integer
             default { "0" }
             menu usetokenvalue {
-                "0"     "Square"
-                "1"     "Circle"
-                "2"     "Triangle"
-                "3"     "Polygon"
-                "4"     "Diamond"
-                "5"     "Star"
-                "6"     "Squircle"
-                "7"     "Rounded Polygon"
-                "8"     "Clover"
-                "9"     "Flower"
-                "10"    "Sunburst"
-                "11"    "Eye"
-                "12"    "Teardrop"
-                "13"    "Heart"
-                "14"    "Custom"
+                "0" "Equilateral"
+                "1" "Isosceles"
+                "2" "Right"
             }
-            parmtag { "script_callback_language" "python" }
-        }
-        groupsimple {
-            name    "fd_circle"
-            label   "Circle"
-            hidewhentab "{ shapeselect != 1 }"
-
-            parm {
-                name    "circpointnum"
-                label   "Number of Points"
-                type    integer
-                default { "64" }
-                range   { 20 256 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_triangle"
-            label   "Triangle"
-            hidewhentab "{ shapeselect != 2 }"
-
-            parm {
-                name    "triangletype"
-                label   "Triangle Type"
-                type    integer
-                default { "0" }
-                menu usetokenvalue {
-                    "0" "Equilateral"
-                    "1" "Isosceles"
-                    "2" "Right"
-                }
-                range   { 0 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "isoscelesratio"
-                label   "Isosceles Base Ratio"
-                type    float
-                default { "0.5" }
-                hidewhen "{ triangletype != 1 }"
-                range   { 0 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        group {
-            name    "fd_polygon"
-            label   "Polygon"
-            tabbreak
-            hidewhentab "{ shapeselect != 3 }"
-
-            parm {
-                name    "polysides"
-                label   "Number of Sides"
-                type    integer
-                default { "5" }
-                range   { 5 16 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_star"
-            label   "Star"
-            hidewhentab "{ shapeselect != 5 }"
-
-            parm {
-                name    "starspokes"
-                label   "Number of Spokes"
-                type    integer
-                default { "5" }
-                range   { 5 20 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "starpinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "0.35" }
-                range   { 0.1 1.2 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_roundedpolygon"
-            label   "Rounded Polygon"
-            hidewhentab "{ shapeselect != 7 }"
-
-            parm {
-                name    "roundpolysides"
-                label   "Number of Sides"
-                type    integer
-                default { "5" }
-                range   { 5 16 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "roundpolypinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "8" }
-                range   { 0.4 40 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_clover"
-            label   "Clover"
-            hidewhentab "{ shapeselect != 8 }"
-
-            parm {
-                name    "cloverspokes"
-                label   "Number of Spokes"
-                type    integer
-                default { "4" }
-                range   { 1 20 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "cloverpinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "0.4" }
-                range   { 0.1 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "cloverspokelook"
-                label   "Spoke Look"
-                type    float
-                default { "8" }
-                range   { 0.5 256 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_flower"
-            label   "Flower"
-            hidewhentab "{ shapeselect != 9 }"
-
-            parm {
-                name    "flowerspokes"
-                label   "Number of Spokes"
-                type    integer
-                default { "8" }
-                range   { 2 20 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "flowerpinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "0.25" }
-                range   { 0.05 5 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "flowerspokelook"
-                label   "Spoke Look"
-                type    float
-                default { "2.3" }
-                range   { 2 2.8 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_sunburst"
-            label   "Sunburst"
-            hidewhentab "{ shapeselect != 10 }"
-
-            parm {
-                name    "sunspokes"
-                label   "Number of Spokes"
-                type    integer
-                default { "10" }
-                range   { 5 20 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "sunpinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "1" }
-                range   { 0.085 4.5 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_eye"
-            label   "Eye"
-            hidewhentab "{ shapeselect != 11 }"
-
-            parm {
-                name    "eyepinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "1" }
-                range   { 0.25 1.8 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_teardrop"
-            label   "Teardrop"
-            hidewhentab "{ shapeselect != 12 }"
-
-            parm {
-                name    "teardroppinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "0.6" }
-                range   { 0.1 1.4 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        groupsimple {
-            name    "fd_heart"
-            label   "Heart"
-            hidewhentab "{ shapeselect != 13 }"
-
-            parm {
-                name    "heartpinchbloat"
-                label   "Pinch/Bloat"
-                type    float
-                default { "4" }
-                range   { 0 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "heartroundpointed"
-                label   "Round/Pointed"
-                type    float
-                default { "1.5" }
-                range   { 0 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-        group {
-            name    "fd_customparameters"
-            label   "Custom Parameters"
-            tabbreak
-            hidewhentab "{ shapeselect != 14 }"
-
-            parm {
-                name    "custompointnum"
-                label   "Number of Points"
-                type    integer
-                default { "1024" }
-                range   { 128 4096 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customa"
-                label   "a"
-                type    float
-                default { "1" }
-                range   { 0.05 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customb"
-                label   "b"
-                type    float
-                default { "1" }
-                range   { 0.05 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customm"
-                label   "m"
-                type    float
-                default { "8" }
-                range   { 1 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customn1"
-                label   "n1"
-                type    float
-                default { "0.9" }
-                range   { 0.25 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customn2"
-                label   "n2"
-                type    float
-                default { "2" }
-                range   { 0.25 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "customn3"
-                label   "n3"
-                type    float
-                default { "0.5" }
-                range   { 0.25 10 }
-                parmtag { "script_callback_language" "python" }
-            }
-        }
-
-    }
-
-    groupsimple {
-        name    "fd_shapebasics"
-        label   "Shape Basics"
-
-        parm {
-            name    "width"
-            label   "Width"
-            type    float
-            default { "1" }
             range   { 0 10 }
             parmtag { "script_callback_language" "python" }
         }
         parm {
-            name    "height"
-            label   "Height"
+            name    "isoscelesratio"
+            label   "Isosceles Base Ratio"
             type    float
-            default { "1" }
+            default { "0.5" }
+            hidewhen "{ triangletype != 1 }"
             range   { 0 10 }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "fillshape"
-            label   "Fill Shape"
-            type    toggle
-            default { "0" }
             parmtag { "script_callback_language" "python" }
         }
     }
 
     groupsimple {
-        name    "fd_roundedcorners"
-        label   "Rounded Corners"
+        name    "fd_polygon"
+        label   "Polygon"
+        hidewhentab "{ shapeselect != 3 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "polysides"
+            label   "Number of Sides"
+            type    integer
+            default { "5" }
+            range   { 5 16 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_star"
+        label   "Star"
+        hidewhentab "{ shapeselect != 5 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "starspokes"
+            label   "Number of Spokes"
+            type    integer
+            default { "5" }
+            range   { 5 20 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "starpinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "0.35" }
+            range   { 0.1 1.2 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_roundedpolygon"
+        label   "Rounded Polygon"
+        hidewhentab "{ shapeselect != 7 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "roundpolysides"
+            label   "Number of Sides"
+            type    integer
+            default { "5" }
+            range   { 5 16 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "roundpolypinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "8" }
+            range   { 0.4 40 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_clover"
+        label   "Clover"
+        hidewhentab "{ shapeselect != 8 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "cloverspokes"
+            label   "Number of Spokes"
+            type    integer
+            default { "4" }
+            range   { 1 20 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "cloverpinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "0.4" }
+            range   { 0.1 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "cloverspokelook"
+            label   "Spoke Look"
+            type    float
+            default { "8" }
+            range   { 0.5 256 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_flower"
+        label   "Flower"
+        hidewhentab "{ shapeselect != 9 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "flowerspokes"
+            label   "Number of Spokes"
+            type    integer
+            default { "8" }
+            range   { 2 20 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "flowerpinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "0.25" }
+            range   { 0.05 5 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "flowerspokelook"
+            label   "Spoke Look"
+            type    float
+            default { "2.3" }
+            range   { 2 2.8 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_sunburst"
+        label   "Sunburst"
+        hidewhentab "{ shapeselect != 10 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "sunspokes"
+            label   "Number of Spokes"
+            type    integer
+            default { "10" }
+            range   { 5 20 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sunpinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "1" }
+            range   { 0.085 4.5 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_eye"
+        label   "Eye"
+        hidewhentab "{ shapeselect != 11 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "eyepinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "1" }
+            range   { 0.25 1.8 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_teardrop"
+        label   "Teardrop"
+        hidewhentab "{ shapeselect != 12 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "teardroppinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "0.6" }
+            range   { 0.1 1.4 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_heart"
+        label   "Heart"
+        hidewhentab "{ shapeselect != 13 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "heartpinchbloat"
+            label   "Pinch/Bloat"
+            type    float
+            default { "4" }
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "heartroundpointed"
+            label   "Round/Pointed"
+            type    float
+            default { "1.5" }
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_customparameters"
+        label   "Custom Parameters"
+        hidewhentab "{ shapeselect != 14 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "custompointnum"
+            label   "Number of Points"
+            type    integer
+            default { "1024" }
+            range   { 128 4096 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customa"
+            label   "a"
+            type    float
+            default { "1" }
+            range   { 0.05 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customb"
+            label   "b"
+            type    float
+            default { "1" }
+            range   { 0.05 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customm"
+            label   "m"
+            type    float
+            default { "8" }
+            range   { 1 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customn1"
+            label   "n1"
+            type    float
+            default { "0.9" }
+            range   { 0.25 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customn2"
+            label   "n2"
+            type    float
+            default { "2" }
+            range   { 0.25 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "customn3"
+            label   "n3"
+            type    float
+            default { "0.5" }
+            range   { 0.25 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "sepparm"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    parm {
+        name    "width"
+        label   "Width"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "height"
+        label   "Height"
+        type    float
+        default { "1" }
+        range   { 0 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "t"
+        label   "Center"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { -1 1 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "r"
+        label   "Rotate"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { 0 360 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "sepparm3"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    groupcollapsible {
+        name    "fd_additional"
+        label   "Additional"
 
         parm {
             name    "roundcorners"
@@ -412,12 +442,6 @@
             range   { 2 12 }
             parmtag { "script_callback_language" "python" }
         }
-    }
-
-    groupsimple {
-        name    "fd_resample"
-        label   "Resample"
-
         parm {
             name    "resample"
             label   "Resample"
@@ -448,63 +472,71 @@
             parmtag { "autoscope" "0000000000000000" }
             parmtag { "script_callback_language" "python" }
         }
-    }
-
-    groupsimple {
-        name    "fd_triangulate"
-        label   "Triangulate"
-        hidewhentab "{ fillshape != 1 }"
-
         parm {
-            name    "triangulate"
-            label   "Triangulate"
+            name    "fillshape"
+            label   "Fill Shape"
             type    toggle
             default { "0" }
             parmtag { "script_callback_language" "python" }
         }
-        parm {
-            name    "sizing"
-            label   "Edge Lengths"
-            type    ordinal
-            default { "adaptive" }
-            hidewhen "{ triangulate != 1 }"
-            menu {
-                "uniform"   "Uniform"
-                "adaptive"  "Adaptive"
+        groupsimple {
+            name    "fd_triangulate"
+            label   "Triangulate"
+            hidewhen "{ fillshape == 0 }"
+            grouptag { "sidefx::look" "blank" }
+
+            parm {
+                name    "triangulate"
+                label   "Triangulate"
+                type    toggle
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
             }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
+            parm {
+                name    "sizing"
+                label   "Edge Lengths"
+                type    ordinal
+                default { "adaptive" }
+                hidewhen "{ triangulate != 1 }"
+                menu {
+                    "uniform"   "Uniform"
+                    "adaptive"  "Adaptive"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "targetsize"
+                label   "Target Size"
+                type    float
+                default { "0.2" }
+                hidewhen "{ triangulate != 1 } { sizing != uniform }"
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "minsize"
+                label   "Min Size"
+                type    float
+                default { "0.1" }
+                hidewhen "{ triangulate != 1 } { sizing == uniform }"
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "maxsize"
+                label   "Max Size"
+                type    float
+                default { "0.1" }
+                hidewhen "{ triangulate != 1 } { sizing == uniform }"
+                range   { 0! 1 }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
         }
-        parm {
-            name    "targetsize"
-            label   "Target Size"
-            type    float
-            default { "0.2" }
-            hidewhen "{ triangulate != 1 } { sizing != uniform }"
-            range   { 0! 1 }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "minsize"
-            label   "Min Size"
-            type    float
-            default { "0.1" }
-            hidewhen "{ triangulate != 1 } { sizing == uniform }"
-            range   { 0! 1 }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
-        parm {
-            name    "maxsize"
-            label   "Max Size"
-            type    float
-            default { "0.1" }
-            hidewhen "{ triangulate != 1 } { sizing == uniform }"
-            range   { 0! 1 }
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "script_callback_language" "python" }
-        }
+
     }
 
 }
