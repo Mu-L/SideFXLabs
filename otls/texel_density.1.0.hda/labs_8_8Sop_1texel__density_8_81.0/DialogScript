@@ -1,0 +1,182 @@
+# Dialog script for labs::texel_density::1.0 automatically generated
+
+{
+    name	labs::texel_density::1.0
+    script	labs::texel_density
+    label	"Labs Texel Density"
+
+    help {
+	""
+    }
+
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []           " ]
+            [ "        for g in geo.primGroups():" ]
+            [ "            r.extend([g.name(), g.name()])                   " ]
+            [ "return r" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('group')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "uvattrib"
+        label   "UV Attribute"
+        type    string
+        default { "uv" }
+        menureplace {
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []          " ]
+            [ "        for a in geo.vertexAttribs():" ]
+            [ "            r.extend([a.name(), a.name()])              " ]
+            [ "return r" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    groupsimple {
+        name    "fd_td"
+        label   "Texel Density"
+
+        parm {
+            name    "sepparm"
+            label   "Spacer"
+            type    separator
+            default { "" }
+            parmtag { "sidefx::layout_height" "small" }
+            parmtag { "sidefx::look" "blank" }
+        }
+        parm {
+            name    "texturesize"
+            label   "Texture Size"
+            type    integer
+            default { "512" }
+            menu usetokenvalue {
+                "128"   "128x128"
+                "256"   "256x256"
+                "512"   "512x512"
+                "1024"  "1024x1024"
+                "2048"  "2048x2048"
+                "4096"  "4096x4096"
+            }
+            range   { 100 101 }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "length"
+            label   "Coverage Length"
+            type    integer
+            joinnext
+            default { "1" }
+            range   { 1! 100 }
+            parmtag { "script_callback_language" "python" }
+            parmtag { "units" "" }
+        }
+        parm {
+            name    "unit"
+            label   "Unit"
+            type    ordinal
+            nolabel
+            default { "1" }
+            menu usetokenvalue {
+                "0" "cm"
+                "1" "m"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "message"
+            label   "Message"
+            type    label
+            default { "Texel Density: `ftrim(detail(\"OUT_TD\",\"_ted_target_td\",0))` px/cm" }
+            parmtag { "sidefx::look" "block" }
+        }
+        parm {
+            name    "applytexeldensity"
+            label   "Apply Texel Density"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "layoutuvs"
+            label   "Layout UVs"
+            type    toggle
+            default { "0" }
+            disablewhen "{ applytexeldensity == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "labelparm3"
+        label   "Label"
+        type    label
+        invisible
+        nolabel
+        default { "`ftrim(detail(\"./attribwrangle9\", \"targettexeldensity\", 0))`" }
+        parmtag { "export_disable" "1" }
+    }
+    parm {
+        name    "labelparm2"
+        label   "Label"
+        type    label
+        invisible
+        nolabel
+        default { "`ftrim(detail(\"./attribwrangle9\", \"targettexeldensity\", 0))`" }
+    }
+    groupsimple {
+        name    "fd_viz"
+        label   "Visualization"
+
+        parm {
+            name    "vistexeldensity"
+            label   "Visualize Texel Density"
+            type    toggle
+            default { "1" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "addchecker"
+            label   "Show UV Grid"
+            type    toggle
+            default { "1" }
+            hidewhen "{ vistexeldensity == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "colorramp"
+            label   "Color Ramp"
+            type    ramp_rgb
+            default { "5" }
+            hidewhen "{ vistexeldensity == 0 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 1 0 0 ) 1interp ( linear ) 2pos ( 0.25 ) 2c ( 0.949999988079071 1 0 ) 2interp ( linear ) 3pos ( 0.5 ) 3c ( 0 1 0.10000000149011612 ) 3interp ( linear ) 4pos ( 0.75 ) 4c ( 0 0.8500000238418579 1 ) 4interp ( linear ) 5pos ( 1 ) 5c ( 0.20000000298023224 0 1 ) 5interp ( linear )" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
