@@ -111,7 +111,12 @@ __Curves__: creates biome regions based on Houdini input curves. Options exist t
         #id: attrname
         Name of the primitive geometry attribute to extract regions from. Uses unique attribute values to section out different region areas. Accepts string, integer, and float types, but float values will be clamped to integers to determine unique values.
     === Photoshop File ===
+	See [Labs Trace PSD File SOP|Node:sop/labs--trace_psd_file-3.0] for more information.
+	
+	:note: 
+		If the PSD file has an Alpha channel, ensure that there is one layer completely filled, such as the Background layer, or else there will be an error when importing the PSD file.
 
+	
     File:
         #id: file
         Path to Photoshop file.
@@ -176,18 +181,6 @@ __Curves__: creates biome regions based on Houdini input curves. Options exist t
     Visualization Color:
         #id: img_bcolor#
         Color applied to the __Guide Geometry__ for visualization purposes.
-    === Advanced Photoshop Region Settings ===
-    See [Labs Trace PSD File SOP|Node:sop/labs--trace_psd_file-2.0] for more information.
-
-    Resample Step:
-        #id: step#
-        Distance in resampling the curve.
-    Inline Point Threshold:
-        #id: inlinepointremoval#
-        Tolerance for removing inline points.
-    Shrink UVs:
-        #id: shrink_uvs#
-        Shrinks the UVs on the curves in order to better sample the interior colors of the image. Sometimes the curves can sit too close to the border and the UVs pick out the color of the background.
 
         
     Shape:
