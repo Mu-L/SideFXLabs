@@ -876,7 +876,7 @@ def ensure_gaea_service(gaea_executable: str) -> None:
     if platform.system() == "Windows":
         try:
             process = subprocess.run(
-                ["tasklist"],
+                ["tasklist", "/nh"],
                 stdout=subprocess.PIPE,
                 text=True,
                 startupinfo=get_startupinfo(),
