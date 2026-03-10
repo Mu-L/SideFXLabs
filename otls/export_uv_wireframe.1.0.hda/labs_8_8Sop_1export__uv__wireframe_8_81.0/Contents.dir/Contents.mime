@@ -32,20 +32,20 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 1.85
+position -1.03997 -0.660473
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
 }
 inputsNamed3
 {
-0 	color2 1 1 "input1"
+0 	transform1 1 1 "input1"
 }
 inputs
 {
-0 	color2 0 1
+0 	transform1 0 1
 }
 stat
 {
@@ -2938,7 +2938,7 @@ Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1.init"
 Content-Type: text/plain
 
 type = ropimage
-matchesdef = 1
+matchesdef = 0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1.def"
@@ -3163,6 +3163,2030 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1.inp"
+Content-Type: text/plain
+
+1
+0 0 1.1294999999999999 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.init"
+Content-Type: text/plain
+
+type = ropfetch
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.def"
+Content-Type: text/plain
+
+comment ""
+position 0 5.55112e-17
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author nobody@nowhere
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "rop4"
+        label   "ROP Fetch"
+
+        parm {
+            name    "pdg_workitemgeneration"
+            baseparm
+            label   "Generate When"
+            export  none
+        }
+        parm {
+            name    "pdg_cachemode"
+            baseparm
+            label   "Cache Mode"
+            export  none
+        }
+        parm {
+            name    "expandinputs"
+            baseparm
+            label   "Expand Input Files Across Frame Range"
+            invisible
+            export  none
+        }
+        parm {
+            name    "enablepdgservice"
+            baseparm
+            label   "Use ROP Fetch Service"
+            invisible
+            export  none
+        }
+        parm {
+            name    "pdg_cooktype"
+            baseparm
+            label   "Cook Type"
+            export  none
+        }
+        parm {
+            name    "pdgservicename"
+            baseparm
+            label   "Service Name"
+            invisible
+            export  none
+        }
+        parm {
+            name    "pdg_servicename"
+            baseparm
+            label   "Service Name"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "manageservices"
+            baseparm
+            label   "Manage Services..."
+            export  none
+        }
+        parm {
+            name    "sepparm2"
+            baseparm
+            label   "Separator"
+            export  none
+        }
+        group {
+            name    "folder1"
+            label   "ROP Configuration"
+
+            parm {
+                name    "roporder"
+                baseparm
+                label   "ROP Cook Order"
+                export  none
+            }
+            parm {
+                name    "roppath"
+                baseparm
+                label   "ROP Path"
+                export  none
+            }
+            parm {
+                name    "usecustombutton"
+                baseparm
+                label   "Use Custom Execute Button"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "custombutton"
+                baseparm
+                label   "Execute Parm Name"
+                export  none
+            }
+            parm {
+                name    "usereloadpath"
+                baseparm
+                label   "Use Reload Path"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "reloadpath"
+                baseparm
+                label   "Reload Parm Path"
+                export  none
+            }
+            parm {
+                name    "useoppath"
+                baseparm
+                label   "Use Source Node"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "oppath"
+                baseparm
+                label   "Source Node Path"
+                export  none
+            }
+            parm {
+                name    "useexternalhip"
+                baseparm
+                label   "Use External Hip"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "externalhip"
+                baseparm
+                label   "External HIP File"
+                export  none
+            }
+            parm {
+                name    "sethip"
+                baseparm
+                label   "Reset $HIP On Cook"
+                export  none
+            }
+            parm {
+                name    "ignoreerrors"
+                baseparm
+                label   "Ignore Scene Load Errors"
+                export  none
+            }
+            parm {
+                name    "cookinputrops"
+                baseparm
+                label   "Cook Input ROP Nodes"
+                export  none
+            }
+            parm {
+                name    "unlocktargetrop"
+                baseparm
+                label   "Unlock Target ROP Node"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder1_1"
+            label   "Output Files"
+
+            parm {
+                name    "outputsfrom"
+                baseparm
+                label   "Output Paths From"
+                export  none
+            }
+            parm {
+                name    "usefiletag"
+                baseparm
+                label   "Use File Tag"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "filetag"
+                baseparm
+                label   "Output File Tag"
+                export  none
+            }
+            parm {
+                name    "usecustomoutput"
+                baseparm
+                label   "Use Custom Output Parm"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "customoutput"
+                baseparm
+                label   "Output Parm Name"
+                export  none
+            }
+            multiparm {
+                name    "outputpaths"
+                label    "Output Paths"
+                baseparm
+                hidewhen "{ outputsfrom != 1 }"
+
+                parm {
+                    name    "outputfilepath#"
+                    baseparm
+                    label   "Output File"
+                    export  none
+                }
+                parm {
+                    name    "usecustomtag#"
+                    baseparm
+                    label   "Use Custom Tag"
+                    nolabel
+                    joinnext
+                    export  none
+                }
+                parm {
+                    name    "customtag#"
+                    baseparm
+                    label   "Output File Tag"
+                    export  none
+                }
+            }
+
+            parm {
+                name    "sepparm3"
+                baseparm
+                label   "Separator"
+                export  none
+            }
+            parm {
+                name    "logoutput"
+                baseparm
+                label   "Output Log Parsing"
+                export  none
+            }
+            parm {
+                name    "uselogformat"
+                baseparm
+                label   "Use Log Format"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "logformat"
+                baseparm
+                label   "Custom Log Format"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder1_2"
+            label   "Frames and Batching"
+
+            parm {
+                name    "framegeneration"
+                baseparm
+                label   "Evaluate Using"
+                export  none
+            }
+            parm {
+                name    "useframeoverride"
+                baseparm
+                label   "Override Frame"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "frameoverride"
+                baseparm
+                label   "Override Frame"
+                export  none
+            }
+            parm {
+                name    "range"
+                baseparm
+                label   "Frame Range"
+                export  none
+            }
+            parm {
+                name    "singletask"
+                baseparm
+                label   "Cook Frames as Single Work Item"
+                export  none
+            }
+            parm {
+                name    "sepparm"
+                baseparm
+                label   "Separator"
+                export  none
+            }
+            parm {
+                name    "batchall"
+                baseparm
+                label   "All Frames in One Batch"
+                export  none
+            }
+            parm {
+                name    "framesperbatch"
+                baseparm
+                label   "Frames per Batch"
+                export  none
+            }
+            parm {
+                name    "cookwhen"
+                baseparm
+                label   "Cook Batch When"
+                export  none
+            }
+            parm {
+                name    "fixedframecount"
+                baseparm
+                label   "Number of Frames"
+                export  none
+            }
+            parm {
+                name    "percentframes"
+                baseparm
+                label   "Percentage of Frames"
+                export  none
+            }
+            parm {
+                name    "setframes"
+                baseparm
+                label   "Automatically Set Missing Frames"
+                export  none
+            }
+            parm {
+                name    "resumebatch"
+                baseparm
+                label   "Resume Partially Cached Batches"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder1_3"
+            label   "Distribution"
+
+            parm {
+                name    "distribute"
+                baseparm
+                label   "Distributed Sim"
+                export  none
+            }
+            parm {
+                name    "control"
+                baseparm
+                label   "Control DOP"
+                export  none
+            }
+            parm {
+                name    "hostname"
+                baseparm
+                label   "Specify Host Using"
+                export  none
+            }
+            parm {
+                name    "usetrackerport"
+                baseparm
+                label   "Custom Tracker Port"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "trackerport"
+                baseparm
+                label   "Custom Tracker Port"
+                export  none
+            }
+            parm {
+                name    "usewebport"
+                baseparm
+                label   "Custom Web Port"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "webport"
+                baseparm
+                label   "Custom Web Port"
+                export  none
+            }
+            parm {
+                name    "verbosetracker"
+                baseparm
+                label   "Verbose Tracker Logging"
+                export  none
+            }
+            parm {
+                name    "sepparm6"
+                baseparm
+                label   "Separator"
+                export  none
+            }
+            parm {
+                name    "slicetype"
+                baseparm
+                label   "Slice Type"
+                export  none
+            }
+            parm {
+                name    "slicecount"
+                baseparm
+                label   "Slice Count"
+                export  none
+            }
+            parm {
+                name    "slicedivs"
+                baseparm
+                label   "Slice Divisions"
+                export  none
+            }
+        }
+
+        group {
+            name    "folder1_4"
+            label   "Debugging"
+
+            parm {
+                name    "enableperfmon"
+                baseparm
+                label   "Enable Performance Monitor Logging"
+                export  none
+            }
+            parm {
+                name    "saveperffile"
+                baseparm
+                label   "Performance File"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "perffile"
+                baseparm
+                label   "Performance File"
+                export  none
+            }
+            parm {
+                name    "savedebughip"
+                baseparm
+                label   "Save Debug .hip File"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "debughip"
+                baseparm
+                label   "Save Debug .hip File"
+                export  none
+            }
+            parm {
+                name    "debugoutputs"
+                baseparm
+                label   "Report Debug Files as Outputs"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "rop4_1"
+        label   "Schedulers"
+
+        parm {
+            name    "topscheduler"
+            baseparm
+            label   "TOP Scheduler Override"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "addjobparms"
+            baseparm
+            label   "Add Job Parms"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "pdg_useschedulewhen"
+            baseparm
+            label   "Use Schedule When"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "pdg_schedulewhen"
+            baseparm
+            label   "Schedule When"
+            export  none
+        }
+        parm {
+            name    "sepparm7"
+            baseparm
+            label   "Separator"
+            export  none
+        }
+        parm {
+            name    "pdg_workitemlabel"
+            baseparm
+            label   "Work Item Label"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "pdg_workitemlabelexpr"
+            baseparm
+            label   "Label Expression"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "pdg_workitempriority"
+            baseparm
+            label   "Work Item Priority"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "pdg_workitempriorityexpr"
+            baseparm
+            label   "Priority Expression"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "pdg_commandtype"
+            baseparm
+            label   "Work Item Command"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "pdg_command"
+            baseparm
+            label   "Custom Command"
+            nolabel
+            export  none
+        }
+    }
+
+    group {
+        name    "rop4_2"
+        label   "External Files"
+
+        multiparm {
+            name    "pdgnodedeps"
+            label    "File Dependencies"
+            baseparm
+            default 0
+
+            parm {
+                name    "pdgnodedep#"
+                baseparm
+                label   "Path"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "rop4_3"
+        label   "ROP Fetch"
+
+        parm {
+            name    "toppath"
+            label   "Parent TOP Path"
+            type    string
+            default { "" }
+        }
+    }
+
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.chn"
+Content-Type: text/plain
+
+{
+    channel range1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../f1\") }
+    }
+    channel range2 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../f2\") }
+    }
+    channel roppath {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = opfullpath(\"../ropnet1/image1\") }
+    }
+    channel toppath {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = opfullpath(\"..\") }
+    }
+    channel oppath {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = "ifs(ch(\"../usecoppath\"), chsop(\"../coppath\"), opfullpath(\"../c\"))" }
+    }
+    channel pdg_workitemgeneration {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_workitemgeneration\") }
+    }
+    channel pdg_cachemode {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_cachemode\") }
+    }
+    channel expandinputs {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../expandinputs\") }
+    }
+    channel enablepdgservice {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../enablepdgservice\") }
+    }
+    channel pdg_cooktype {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_cooktype\") }
+    }
+    channel pdgservicename {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"ropfetch\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../pdgservicename\") }
+    }
+    channel pdg_servicename {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"ropfetch\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../pdg_servicename\") }
+    }
+    channel usereloadpath {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../usereloadpath\") }
+    }
+    channel reloadpath {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../reloadpath\") }
+    }
+    channel sethip {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../sethip\") }
+    }
+    channel ignoreerrors {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../ignoreerrors\") }
+    }
+    channel cookinputrops {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../cookinputrops\") }
+    }
+    channel unlocktargetrop {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../unlocktargetrop\") }
+    }
+    channel usefiletag {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../usefiletag\") }
+    }
+    channel filetag {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../filetag\") }
+    }
+    channel logoutput {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../logoutput\") }
+    }
+    channel uselogformat {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../uselogformat\") }
+    }
+    channel logformat {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"OUTPUT_FILE:(.*);(.*)\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../logformat\") }
+    }
+    channel framegeneration {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../framegeneration\") }
+    }
+    channel useframeoverride {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../useframeoverride\") }
+    }
+    channel frameoverride {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../frameoverride\") }
+    }
+    channel range3 {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../f3\") }
+    }
+    channel singletask {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../singletask\") }
+    }
+    channel batchall {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../batchall\") }
+    }
+    channel framesperbatch {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../framesperbatch\") }
+    }
+    channel cookwhen {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../cookwhen\") }
+    }
+    channel fixedframecount {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../fixedframecount\") }
+    }
+    channel percentframes {
+      lefttype = extend
+      righttype = extend
+      default = 100
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../percentframes\") }
+    }
+    channel setframes {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../setframes\") }
+    }
+    channel resumebatch {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../resumebatch\") }
+    }
+    channel slicedivsx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../slicedivsx\") }
+    }
+    channel slicedivsy {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../slicedivsy\") }
+    }
+    channel slicedivsz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../slicedivsz\") }
+    }
+    channel enableperfmon {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../enableperfmon\") }
+    }
+    channel saveperffile {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../saveperffile\") }
+    }
+    channel perffile {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$HIP/$OS.performance.$F.hperf\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../perffile\") }
+    }
+    channel savedebughip {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../savedebughip\") }
+    }
+    channel debughip {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$HIP/$OS.debug.$F.hip\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../debughip\") }
+    }
+    channel debugoutputs {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../debugoutputs\") }
+    }
+    channel topscheduler {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chsop(\"../topscheduler\") }
+    }
+    channel pdg_useschedulewhen {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_useschedulewhen\") }
+    }
+    channel pdg_schedulewhen {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_schedulewhen\") }
+    }
+    channel pdg_workitemlabel {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_workitemlabel\") }
+    }
+    channel pdg_workitemlabelexpr {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../pdg_workitemlabelexpr\") }
+    }
+    channel pdg_workitempriority {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_workitempriority\") }
+    }
+    channel pdg_workitempriorityexpr {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_workitempriorityexpr\") }
+    }
+    channel pdg_commandtype {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../pdg_commandtype\") }
+    }
+    channel pdg_command {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../pdg_command\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+rop	[ 0	locks=0 ]	(	0	0	0	)
+pdg_workitemgeneration	[ 0	locks=0 ]	(	[ pdg_workitemgeneration	2 ] 	)
+pdg_cachemode	[ 0	locks=0 ]	(	[ pdg_cachemode	0 ] 	)
+expandinputs	[ 0	locks=0 ]	(	[ expandinputs	0 ] 	)
+enablepdgservice	[ 0	locks=0 ]	(	[ enablepdgservice	0 ] 	)
+pdg_cooktype	[ 0	locks=0 ]	(	[ pdg_cooktype	2 ] 	)
+pdgservicename	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ pdgservicename	ropfetch ] 	)
+pdg_servicename	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ pdg_servicename	ropfetch ] 	)
+manageservices	[ 0	locks=0 ]	(	0	)
+sepparm2	[ 0	locks=0 ]	(	)
+folder0	[ 0	locks=0 ]	(	0	0	0	0	0	)
+roporder	[ 0	locks=0 ]	(	"1"	)
+roppath	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ roppath	"" ] 	)
+usecustombutton	[ 0	locks=0 ]	(	"off"	)
+custombutton	[ 0	locks=0 ]	(	execute	)
+usereloadpath	[ 0	locks=0 ]	(	[ usereloadpath	0 ] 	)
+reloadpath	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ reloadpath	"" ] 	)
+useoppath	[ 0	locks=0 ]	(	"on"	)
+oppath	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ oppath	"" ] 	)
+useexternalhip	[ 0	locks=0 ]	(	"off"	)
+externalhip	[ 0	locks=0 ]	(	""	)
+sethip	[ 0	locks=0 ]	(	[ sethip	0 ] 	)
+ignoreerrors	[ 0	locks=0 ]	(	[ ignoreerrors	0 ] 	)
+cookinputrops	[ 0	locks=0 ]	(	[ cookinputrops	1 ] 	)
+unlocktargetrop	[ 0	locks=0 ]	(	[ unlocktargetrop	1 ] 	)
+outputsfrom	[ 0	locks=0 ]	(	"0"	)
+usefiletag	[ 0	locks=0 ]	(	[ usefiletag	0 ] 	)
+filetag	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ filetag	"" ] 	)
+usecustomoutput	[ 0	locks=0 ]	(	"off"	)
+customoutput	[ 0	locks=0 ]	(	""	)
+outputpaths	[ 0	locks=0 ]	(	0	)
+sepparm3	[ 0	locks=0 ]	(	)
+logoutput	[ 0	locks=0 ]	(	[ logoutput	1 ] 	)
+uselogformat	[ 0	locks=0 ]	(	[ uselogformat	0 ] 	)
+logformat	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ logformat	OUTPUT_FILE:(.*);(.*) ] 	)
+framegeneration	[ 0	locks=0 ]	(	[ framegeneration	0 ] 	)
+useframeoverride	[ 0	locks=0 ]	(	[ useframeoverride	0 ] 	)
+frameoverride	[ 0	locks=0 ]	(	[ frameoverride	1 ] 	)
+range	[ 0	locks=0 ]	(	[ range1	0 ] 	[ range2	0 ] 	[ range3	1 ] 	)
+singletask	[ 0	locks=0 ]	(	[ singletask	0 ] 	)
+sepparm	[ 0	locks=0 ]	(	)
+batchall	[ 0	locks=0 ]	(	[ batchall	0 ] 	)
+framesperbatch	[ 0	locks=0 ]	(	[ framesperbatch	1 ] 	)
+cookwhen	[ 0	locks=0 ]	(	[ cookwhen	0 ] 	)
+fixedframecount	[ 0	locks=0 ]	(	[ fixedframecount	0 ] 	)
+percentframes	[ 0	locks=0 ]	(	[ percentframes	100 ] 	)
+setframes	[ 0	locks=0 ]	(	[ setframes	0 ] 	)
+resumebatch	[ 0	locks=0 ]	(	[ resumebatch	0 ] 	)
+distribute	[ 0	locks=0 ]	(	"off"	)
+control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
+usetrackerport	[ 0	locks=0 ]	(	"off"	)
+trackerport	[ 0	locks=0 ]	(	0	)
+usewebport	[ 0	locks=0 ]	(	"off"	)
+webport	[ 0	locks=0 ]	(	0	)
+verbosetracker	[ 0	locks=0 ]	(	"off"	)
+sepparm6	[ 0	locks=0 ]	(	)
+slicetype	[ 0	locks=0 ]	(	"0"	)
+slicecount	[ 0	locks=0 ]	(	2	)
+slicedivs	[ 0	locks=0 ]	(	[ slicedivsx	0 ] 	[ slicedivsy	0 ] 	[ slicedivsz	0 ] 	)
+enableperfmon	[ 0	locks=0 ]	(	[ enableperfmon	0 ] 	)
+saveperffile	[ 0	locks=0 ]	(	[ saveperffile	1 ] 	)
+perffile	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ perffile	$HIP/$OS.performance.$F.hperf ] 	)
+savedebughip	[ 0	locks=0 ]	(	[ savedebughip	0 ] 	)
+debughip	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ debughip	$HIP/$OS.debug.$F.hip ] 	)
+debugoutputs	[ 0	locks=0 ]	(	[ debugoutputs	0 ] 	)
+topscheduler	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ topscheduler	"" ] 	)
+addjobparms	[ 0	locks=0 ]	(	0	)
+pdg_useschedulewhen	[ 0	locks=0 ]	(	[ pdg_useschedulewhen	0 ] 	)
+pdg_schedulewhen	[ 0	locks=0 ]	(	[ pdg_schedulewhen	1 ] 	)
+sepparm7	[ 0	locks=0 ]	(	)
+pdg_workitemlabel	[ 0	locks=0 ]	(	[ pdg_workitemlabel	0 ] 	)
+pdg_workitemlabelexpr	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ pdg_workitemlabelexpr	"" ] 	)
+pdg_workitempriority	[ 0	locks=0 ]	(	[ pdg_workitempriority	2 ] 	)
+pdg_workitempriorityexpr	[ 0	locks=0 ]	(	[ pdg_workitempriorityexpr	0 ] 	)
+pdg_commandtype	[ 0	locks=0 ]	(	[ pdg_commandtype	0 ] 	)
+pdg_command	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ pdg_command	"" ] 	)
+pdgnodedeps	[ 0	locks=0 ]	(	0	)
+rop4	[ 0	locks=0 ]	(	0	0	0	0	)
+folder1	[ 0	locks=0 ]	(	0	0	0	0	0	)
+toppath	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ toppath	"" ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropfetch1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"1"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"object_cop2plane"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1.init"
+Content-Type: text/plain
+
+type = ropnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1.def"
+Content-Type: text/plain
+
+comment ""
+position 6.2128 0.4518
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author nobody@nowhere
+  access 0777
+}
+color UT_Color RGB 0.55 0.3 0.4 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+execute	[ 0	locks=0 ]	(	0	)
+renderdialog	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.init"
+Content-Type: text/plain
+
+type = image
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.def"
+Content-Type: text/plain
+
+comment ""
+position 0 0
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author nobody@nowhere
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.multiparm"
+Content-Type: text/plain
+
+5
+aov# ../../aov#
+size# ../../size#
+raw# ../../raw#
+useport# ../../useport#
+port# ../../port#
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.chn"
+Content-Type: text/plain
+
+{
+    channel f1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../f1\") }
+    }
+    channel f2 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../f2\") }
+    }
+    channel execute {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../execute\") }
+    }
+    channel renderpreview {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../renderpreview\") }
+    }
+    channel executebackground {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../executebackground\") }
+    }
+    channel renderdialog {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../renderdialog\") }
+    }
+    channel trange {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../trange\") }
+    }
+    channel f3 {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../f3\") }
+    }
+    channel setudim {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../setudim\") }
+    }
+    channel udim1 {
+      lefttype = extend
+      righttype = extend
+      default = 1001
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../udim1\") }
+    }
+    channel udim2 {
+      lefttype = extend
+      righttype = extend
+      default = 1001
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../udim2\") }
+    }
+    channel take {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"_current_\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../take\") }
+    }
+    channel coppath {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = "ifs(ch(\"../../usecoppath\"), chsop(\"../../coppath\"), opfullpath(\"../../c\"))" }
+    }
+    channel copoutput {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$HIP/comp/$HIPNAME.$OS.$F4.exr\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../copoutput\") }
+    }
+    channel docompile {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../docompile\") }
+    }
+    channel setres {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../setres\") }
+    }
+    channel res1 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../res1\") }
+    }
+    channel res2 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../res2\") }
+    }
+    channel resmenu {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../resmenu\") }
+    }
+    channel setpixelscale {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../setpixelscale\") }
+    }
+    channel pixelscale {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../pixelscale\") }
+    }
+    channel setborder {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../setborder\") }
+    }
+    channel border {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../border\") }
+    }
+    channel setprecision {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../setprecision\") }
+    }
+    channel precision {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../precision\") }
+    }
+    channel colorconversion {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../colorconversion\") }
+    }
+    channel ociocolorspace {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"Automatic\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../ociocolorspace\") }
+    }
+    channel ociolook {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"None\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../ociolook\") }
+    }
+    channel ociodisplay {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"Default\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../ociodisplay\") }
+    }
+    channel ocioview {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"Default\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../ocioview\") }
+    }
+    channel saveretry {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../saveretry\") }
+    }
+    channel reloadfiles {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../reloadfiles\") }
+    }
+    channel outputaovs {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../outputaovs\") }
+    }
+    channel mkpath {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../mkpath\") }
+    }
+    channel alfprogress {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../alfprogress\") }
+    }
+    channel savebackground {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../savebackground\") }
+    }
+    channel exportattribs {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../exportattribs\") }
+    }
+    channel attribfilter {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../attribfilter\") }
+    }
+    channel vm_image_artist {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../vm_image_artist\") }
+    }
+    channel vm_image_comment {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../vm_image_comment\") }
+    }
+    channel vm_image_hostname {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../vm_image_hostname\") }
+    }
+    channel vm_image_mplay_label {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../vm_image_mplay_label\") }
+    }
+    channel vm_image_mplay_gamma {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../vm_image_mplay_gamma\") }
+    }
+    channel mktx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../mktx\") }
+    }
+    channel txtilesize1 {
+      lefttype = extend
+      righttype = extend
+      default = 64
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../txtilesize1\") }
+    }
+    channel txtilesize2 {
+      lefttype = extend
+      righttype = extend
+      default = 64
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../txtilesize2\") }
+    }
+    channel txmipmapfilter {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"box\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../txmipmapfilter\") }
+    }
+    channel vm_image_jpeg_quality {
+      lefttype = extend
+      righttype = extend
+      default = 100
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../vm_image_jpeg_quality\") }
+    }
+    channel vm_image_tiff_compression {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../vm_image_tiff_compression\") }
+    }
+    channel vm_image_exr_compression {
+      lefttype = extend
+      righttype = extend
+      default = 3
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../vm_image_exr_compression\") }
+    }
+    channel dwa_compression {
+      lefttype = extend
+      righttype = extend
+      default = 85
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../dwa_compression\") }
+    }
+    channel pngtga_alpha_multiplication {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../pngtga_alpha_multiplication\") }
+    }
+    channel tprerender {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../tprerender\") }
+    }
+    channel prerender {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../prerender\") }
+    }
+    channel lprerender {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hscript\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../lprerender\") }
+    }
+    channel tpreframe {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../tpreframe\") }
+    }
+    channel preframe {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../preframe\") }
+    }
+    channel lpreframe {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hscript\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../lpreframe\") }
+    }
+    channel tpostframe {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../tpostframe\") }
+    }
+    channel postframe {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../postframe\") }
+    }
+    channel lpostframe {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hscript\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../lpostframe\") }
+    }
+    channel tpostwrite {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../tpostwrite\") }
+    }
+    channel postwrite {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../postwrite\") }
+    }
+    channel lpostwrite {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hscript\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../lpostwrite\") }
+    }
+    channel tpostrender {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../../tpostrender\") }
+    }
+    channel postrender {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../postrender\") }
+    }
+    channel lpostrender {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hscript\"
+      flags = 0
+      segment { options = {	 autoslope  ai ao }
+
+	 length = 0 accel = 0.33333333333333331 0.33333333333333331 expr = chs(\"../../lpostrender\") }
+    }
+    channel aov1 {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../../aov1\") }
+    }
+    channel size1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../../size1\") }
+    }
+    channel raw1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../../raw1\") }
+    }
+    channel useport1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../../useport1\") }
+    }
+    channel port1 {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../../port1\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+execute	[ 0	locks=0 ]	(	[ execute	0 ] 	)
+renderpreview	[ 0	locks=0 ]	(	[ renderpreview	0 ] 	)
+executebackground	[ 0	locks=0 ]	(	[ executebackground	0 ] 	)
+renderdialog	[ 0	locks=0 ]	(	[ renderdialog	0 ] 	)
+trange	[ 0	locks=0 ]	(	[ trange	0 ] 	)
+f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	[ f3	1 ] 	)
+setudim	[ 0	locks=0 ]	(	[ setudim	0 ] 	)
+udim	[ 0	locks=0 ]	(	[ udim1	1001 ] 	[ udim2	1001 ] 	)
+take	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ take	_current_ ] 	)
+coppath	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ coppath	"" ] 	)
+copoutput	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ copoutput	$HIP/comp/$HIPNAME.$OS.$F4.exr ] 	)
+docompile	[ 0	locks=0 ]	(	[ docompile	0 ] 	)
+setres	[ 0	locks=0 ]	(	[ setres	0 ] 	)
+res	[ 0	locks=0 ]	(	[ res1	1024 ] 	[ res2	1024 ] 	)
+resmenu	[ 0	locks=0 ]	(	[ resmenu	0 ] 	)
+setpixelscale	[ 0	locks=0 ]	(	[ setpixelscale	0 ] 	)
+pixelscale	[ 0	locks=0 ]	(	[ pixelscale	1 ] 	)
+setborder	[ 0	locks=0 ]	(	[ setborder	0 ] 	)
+border	[ 0	locks=0 ]	(	[ border	3 ] 	)
+setprecision	[ 0	locks=0 ]	(	[ setprecision	0 ] 	)
+precision	[ 0	locks=0 ]	(	[ precision	1 ] 	)
+colorconversion	[ 0	locks=0 ]	(	[ colorconversion	0 ] 	)
+ociocolorspace	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ ociocolorspace	Automatic ] 	)
+ociolook	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ ociolook	None ] 	)
+ociodisplay	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ ociodisplay	Default ] 	)
+ocioview	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ ocioview	Default ] 	)
+saveretry	[ 0	locks=0 ]	(	[ saveretry	0 ] 	)
+reloadfiles	[ 0	locks=0 ]	(	[ reloadfiles	0 ] 	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
+addaovs	[ 0	locks=0 ]	(	0	)
+outputaovs	[ 0	locks=0 ]	(	[ outputaovs	1 ] 	)
+mkpath	[ 0	locks=0 ]	(	[ mkpath	1 ] 	)
+alfprogress	[ 0	locks=0 ]	(	[ alfprogress	0 ] 	)
+savebackground	[ 0	locks=0 ]	(	[ savebackground	1 ] 	)
+exportattribs	[ 0	locks=0 ]	(	[ exportattribs	1 ] 	)
+attribfilter	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ attribfilter	"" ] 	)
+vm_image_artist	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ vm_image_artist	"" ] 	)
+vm_image_comment	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ vm_image_comment	"" ] 	)
+vm_image_hostname	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ vm_image_hostname	"" ] 	)
+vm_image_mplay_label	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ vm_image_mplay_label	"" ] 	)
+vm_image_mplay_gamma	[ 0	locks=0 ]	(	[ vm_image_mplay_gamma	1 ] 	)
+mktx	[ 0	locks=0 ]	(	[ mktx	0 ] 	)
+txtilesize	[ 0	locks=0 ]	(	[ txtilesize1	64 ] 	[ txtilesize2	64 ] 	)
+txmipmapfilter	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ txmipmapfilter	box ] 	)
+vm_image_jpeg_quality	[ 0	locks=0 ]	(	[ vm_image_jpeg_quality	100 ] 	)
+vm_image_tiff_compression	[ 0	locks=0 ]	(	[ vm_image_tiff_compression	1 ] 	)
+vm_image_exr_compression	[ 0	locks=0 ]	(	[ vm_image_exr_compression	3 ] 	)
+dwa_compression	[ 0	locks=0 ]	(	[ dwa_compression	85 ] 	)
+pngtga_alpha_multiplication	[ 0	locks=0 ]	(	[ pngtga_alpha_multiplication	0 ] 	)
+tprerender	[ 0	locks=0 ]	(	[ tprerender	1 ] 	)
+prerender	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ prerender	"" ] 	)
+lprerender	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ lprerender	hscript ] 	)
+tpreframe	[ 0	locks=0 ]	(	[ tpreframe	1 ] 	)
+preframe	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ preframe	"" ] 	)
+lpreframe	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ lpreframe	hscript ] 	)
+tpostframe	[ 0	locks=0 ]	(	[ tpostframe	1 ] 	)
+postframe	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ postframe	"" ] 	)
+lpostframe	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ lpostframe	hscript ] 	)
+tpostwrite	[ 0	locks=0 ]	(	[ tpostwrite	1 ] 	)
+postwrite	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ postwrite	"" ] 	)
+lpostwrite	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ lpostwrite	hscript ] 	)
+tpostrender	[ 0	locks=0 ]	(	[ tpostrender	1 ] 	)
+postrender	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ postrender	"" ] 	)
+lpostrender	[ 0	locks=0	autoscope=1	autosel=4294967295 ]	(	[ lpostrender	hscript ] 	)
+aov1	[ 0	locks=0 ]	(	[ aov1	"" ] 	)
+size1	[ 0	locks=0 ]	(	[ size1	0 ] 	)
+raw1	[ 0	locks=0 ]	(	[ raw1	0 ] 	)
+useport1	[ 0	locks=0 ]	(	[ useport1	0 ] 	)
+port1	[ 0	locks=0 ]	(	[ port1	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1/image1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/ropnet1.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/c.init"
+Content-Type: text/plain
+
+type = copnet
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/c.def"
 Content-Type: text/plain
 
@@ -3325,6 +5349,21 @@ Content-Type: text/plain
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1/c.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1.order"
+Content-Type: text/plain
+
+3
+ropfetch1
+ropnet1
+c
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/ropimage1.net"
 Content-Type: text/plain
 
 1
