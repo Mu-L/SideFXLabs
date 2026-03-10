@@ -1,0 +1,85 @@
+#type:      node
+#context:   sop
+#internal:  labs::export_uv_wireframe::1.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     21.0
+
+= Labs Export UV Wireframe =
+
+"""Exports a UV wireframe image for use in external texturing workflows."""
+
+This node renders the UV layout of the input geometry to an image file.
+
+The node supports UDIM UV layouts and will automatically render a separate wireframe image for each UDIM tile when the geometry spans multiple tiles.
+
+TIP:
+    Include the `<UDIM>` token in the output file name when exporting UDIM layouts so that each tile is written to a separate image.
+
+
+@parameters
+
+    === Wireframe ===
+
+    Thickness:
+        #id: wirewidth
+        Thickness of the rendered UV wireframe lines.
+    
+    Units:
+        #id: units
+        The unit of measurement used to determine the size of the rasterized curve width.
+
+    Color:
+        #id: wirecolor
+        Color used for the UV wireframe lines.
+
+    Opacity:
+        #id: wireopacity
+        Opacity of the rendered wireframe lines. Lower values make the wireframe more transparent.
+
+    === UV Islands ===
+
+    Color from Attribute (Cd):
+        #id: usecd
+        Uses the `Cd` color attribute from the geometry to color the UV wireframe instead of the specified UV islands color.
+
+    Color:
+        #id: islandcolor
+        Color applied to UV islands.
+    
+    Opacity:
+        #id: islandopacity
+        Opacity of the UV island fill color. This can be used to lightly tint UV islands beneath the wireframe.
+
+    === Background ===
+
+    Color:
+        #id: bgcolor
+        Background color used when transparent background is disabled.
+
+    Use Transparent Background:
+        #id: transparentbg
+        Renders the UV wireframe with a transparent background instead of a solid color.
+
+    === Output ===
+
+    Output File:
+        #id: outputfile
+        File path where the UV wireframe image will be written.
+
+        When exporting UDIM layouts, the filename should include a UDIM token such as `<UDIM>`.
+
+    Resolution:
+        #id: resolution
+        Output image resolution in pixels.
+
+    Choose Resolution:
+        #id: resolutionmenu
+        Provides preset image resolutions for convenience.
+
+    Render:
+        #id: execute
+        Saves the UV wireframe image to the specified output file.
+
+
+@related
+- [Labs UV Visualize|Node:sop/labs--visualize_uvs-1.2]

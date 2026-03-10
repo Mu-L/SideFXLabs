@@ -1,0 +1,184 @@
+# Dialog script for labs::export_uv_wireframe::1.0 automatically generated
+
+{
+    name	labs::export_uv_wireframe::1.0
+    script	labs::export_uv_wireframe
+    label	"Labs Export UV Wireframe"
+
+    help {
+	""
+    }
+
+    inputlabel	1	Geometry
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "labelwireframe"
+        label   "Wireframe"
+        type    label
+        default { "Wireframe" }
+        parmtag { "sidefx::look" "heading" }
+    }
+    parm {
+        name    "wirewidth"
+        label   "Thickness"
+        type    float
+        joinnext
+        default { "1" }
+        range   { 0! 10 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "units"
+        label   "Units"
+        type    ordinal
+        nolabel
+        default { "pixels" }
+        menu {
+            "image"     "Image"
+            "pixels"    "Pixels"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "wirecolor"
+        label   "Color"
+        type    color
+        size    3
+        default { "1" "1" "1" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f3\")" }
+        parmtag { "script_action_help" "Click a layer to sample its value." }
+        parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "wireopacity"
+        label   "Opacity"
+        type    float
+        default { "1" }
+        range   { 0! 1! }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "labelislands"
+        label   "UV Islands"
+        type    label
+        default { "UV Islands" }
+        parmtag { "sidefx::look" "heading" }
+    }
+    parm {
+        name    "usecd"
+        label   "Color from Attribute (Cd)"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "islandscolor"
+        label   "Color"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ usecd == 1 }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f3\")" }
+        parmtag { "script_action_help" "Click a layer to sample its value." }
+        parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "islandsopacity"
+        label   "Opacity"
+        type    float
+        default { "1" }
+        range   { 0! 1! }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "labelbg"
+        label   "Background"
+        type    label
+        default { "Background" }
+        parmtag { "sidefx::look" "heading" }
+    }
+    parm {
+        name    "bgcolor"
+        label   "Color"
+        type    color
+        size    3
+        default { "0" "0" "0" }
+        disablewhen "{ transparentbg == 1 }"
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f3\")" }
+        parmtag { "script_action_help" "Click a layer to sample its value." }
+        parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "transparentbg"
+        label   "Use Transparent Background"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_render"
+        label   "Output"
+
+        parm {
+            name    "resolution"
+            label   "Resolution"
+            type    integer
+            joinnext
+            size    2
+            default { "1024" "1024" }
+            range   { 1! 1024 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "resolutionmenu"
+            label   "Choose Resolution"
+            type    button
+            nolabel
+            default { "0" }
+            menumini {
+                "256"   "256^2"
+                "512"   "512^2"
+                "1024"  "1024^2"
+                "2048"  "2048^2"
+                "4096"  "4096^2"
+                "8192"  "8192^2"
+            }
+            parmtag { "script_callback" "opparm . resolution ( `arg(\"$script_value\", 0)` `arg(\"$script_value\", 0)` )" }
+        }
+        parm {
+            name    "outputfile"
+            label   "Output File"
+            type    image
+            default { "$HIP/render/$OS.%(UDIM)d.png" }
+            menureplace {
+                [ "opmenu -l -a cop2net1/rop_comp1 copoutput" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "filechooser_mode" "write" }
+        }
+        parm {
+            name    "execute"
+            label   "Render"
+            type    button
+            default { "0" }
+            parmtag { "script_callback" "kwargs['node'].hm().Render(kwargs['node'])" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
