@@ -411,8 +411,8 @@ node.setName('compute_dual_polygon1', True)
     <toolSubmenu>Labs/Geometry/Mesh: Remove</toolSubmenu>
     <script scriptType="python"><![CDATA[
 import soptoolutils
-node = soptoolutils.genericTool(kwargs, 'labs::edge_group_to_polylines', exact_node_type=False)
-node.setParms({'edgegroup': '*'})
+node = soptoolutils.genericTool(kwargs, 'convertline', exact_node_type=False)
+node.setParms({"remove": 1, "computelength": 0})
 node.setName('remove_all_faces1', True)
 ]]></script>
   </tool>
