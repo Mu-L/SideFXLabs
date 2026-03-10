@@ -1,9 +1,9 @@
-= Labs UV Visualize =
-
 #type:      node
 #context:   sop
 #internal:  labs::visualize_uvs::1.2
-#icon:      visualize_uv
+#icon:      /labs_icons/sidefx_labs_default.svg
+
+= Labs UV Visualize =
 
 """Visualizes UV attributes and properties."""
 
@@ -11,8 +11,10 @@ This node visualizes the UV coordinates by applying a grid texture to the input 
         
 WARNING:
     This will change the mesh UVs, be aware if you link any nodes as your output.
+
     
 @parameters
+
     Group:
         #id: group
         The selection of primitives to visualize their UVs.
@@ -56,3 +58,7 @@ WARNING:
     Blend:
         #id: blend
         The amount of blend between the original mesh, and the UV space version of the mesh.
+
+
+@related
+- [Labs Export UV Wireframe|Node:sop/labs--export_uv_wireframe-1.0]
