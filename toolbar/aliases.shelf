@@ -353,6 +353,22 @@ node.setName('triangulate1', True)
 ]]></script>
   </tool>
 
+  <tool name="labs::edge_group_to_polylines::1.0" label="Labs Edge Group to Polylines" icon="SOP_convertline">
+    <toolMenuContext name="viewer">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolMenuContext name="network">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Labs/Geometry/Mesh: Convert</toolSubmenu>
+    <script scriptType="python"><![CDATA[
+import soptoolutils
+node = soptoolutils.genericTool(kwargs, 'convertline', exact_node_type=False)
+node.setParms({"remove": 1, "computelength": 0})
+node.setName('edge_group_to_polylines1', True)
+]]></script>
+  </tool>
+
   <tool name="labs::tangent" label="Tangent" icon="SOP_polyframe">
     <toolMenuContext name="viewer">
       <contextNetType>SOP</contextNetType>
