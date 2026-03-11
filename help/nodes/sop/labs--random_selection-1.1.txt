@@ -1,42 +1,146 @@
-= Labs Random Selection =
+#type:      node
+#context:   sop
+#internal:  labs::random_selection::1.1
+#icon:      /labs_icons/sidefx_labs_default.svg
 
-#type: node
-#context: sop
-#internal: labs::random_selection::1.1
-#icon: random_selection
-#tags: tech, model
+= Labs Random Selection =
 
 """ Randomly selects a subset of input points or primitives. """
 
 The Random Selection provides multiple intuitive ways to isolate, color, or group a random subset of input points or primitives.
 
+
 @parameters
+
     Group:
-	The names of the groups to select from. Leave this blank to affect all elements in the input. 
+        #id: basegroup
+        The names of the groups to select from. Leave this blank to affect all elements in the input.
+
     Elements:
+        #id: class
         What class of elements to operate on: points or primitives.
+
     Selection Mode:
-        Exact Number modes output precise numbers of selected elements. Exact Number - Randomize Element Order scrambles the input element order before selection, and it is the only mode that does this. Probability evaluates selection separately on a per-element basis, so the final selection ratio and number are not precise and are affected by Random Seed. Periodic modes periodically select and then skip a certain number of elements following to the input element order. The numbers of selected and skipped elements in different periods can be constant or random.
+        #id: selectionmode
+        __Exact Number__ modes output precise numbers of selected elements.
+
+        __Exact Number - Randomize Element Order__ scrambles the input element order before selection, and it is the only mode that does this.
+
+        __Probability__ evaluates selection separately on a per-element basis, so the final selection ratio and number are not precise and are affected by Random Seed. 
+
+        __Periodic__ modes periodically select and then skip a certain number of elements following to the input element order. The numbers of selected and skipped elements in different periods can be constant or random.
+
     Ratio:
+        #id: ratio
         The ratio of the number of elements to select to the total number of elements.
+
     Count:
+        #id: count
         The number of elements to select.
+
     Probability:
+        #id: probability
         An individual element's probability of selection.
+
     Random Seed:
+        #id: randseed
         Affects the selection pattern. In Probability mode, it also affects the final selection ratio and number.
+
     == Periodic ==
+
     Offset:
+        #id: offset
         Offsets the selection pattern.
+
     Select:
+        #id: selectlen
         The number of elements to select in the first part of every period.
+
     Skip:
+        #id: skiplen
         The number of elements to skip in the second part of every period.
+
     Select Min:
+        #id: selectlenmin
         The minimum number of elements to select in the first part of every period. The final number is randomly generated between the min and max on a per-period basis.
+
     Select Max:
+        #id: selectlenmax
         The maximum number of elements to select in the first part of every period. The final number is randomly generated between the min and max on a per-period basis.
+
     Skip Min:
+        #id: skiplenmin
         The minimum number of elements to skip in the second part of every period. The final number is randomly generated between the min and max on a per-period basis.
+
     Skip Max:
-        The maximum number of elements to skip in the second part of every period. The final number is randomly generated between the min and max on a per-period basis.   
+        #id: skiplenmax
+        The maximum number of elements to skip in the second part of every period. The final number is randomly generated between the min and max on a per-period basis.
+
+    Delete Non-selected:
+        #id: deletenonselected
+        Deletes the elements that were not selected.
+
+    Delete Selected:
+        #id: deleteselected
+        Deletes all elements that were selected.
+
+    Create Group from Selected:
+        #id: creategroup
+        Creates a group containing the randomly selected elements.
+
+    Group Name:
+        #id: groupname
+        Name of the group created from the selected elements.
+
+    Integer Attribute from Selected:
+        #id: intattribfromselected
+        Creates an integer attribute marking selected elements. Selected elements are assigned a value of 1, while non-selected elements receive 0.
+
+    Attribute Name:
+        #id: attribname
+        Name of the integer attribute created when __Integer Attribute from Selected__ is enabled.
+
+    == Color Selected ==
+
+    Color Selected:
+        #id: colorselected
+        Applies a color to the selected elements for visualization in the viewport.
+
+    Delete All Existing Color Attributes:
+        #id: deleteallcolorattribs
+        Removes Cd attributes of all types, point, primitive, vertex, or detail. This gives a clean slate so only the new color attributes will exist. Note some combinations, like primitive and point attributes, allow attributes of the same name.
+
+    Color Type:
+        #id: colortype
+        What sort of color to add. Can be one of:
+
+        __Constant__:
+            The same color is applied to all of the group.
+
+        __Bounding Box__:
+
+            A color gradient is applied depending on the position of the entity in the bounding box.
+
+        __Random__:
+
+            A random color is assigned to each group element.
+
+        __Ramp from Attribute__:
+
+            An incoming attribute is remapped to color according to the provided ramp.
+
+    Color:
+        #id: color
+        This is the color to apply when in Constant mode.
+
+    Color Seed:
+        #id: seed
+        This is the random number seed for the Random mode.
+
+    Attribute:
+        #id: rampattribute
+        The attribute to be remapped into color. If it is a single float, it is indexed directly into the ramp. If it is more than one float, each component is remapped independently.
+
+    Range:
+        #id: ramprange
+        The incoming range of valid attribute values. Attribute values within this range will be remapped to 0-1 for the ramp lookup, values outside will be clamped.
