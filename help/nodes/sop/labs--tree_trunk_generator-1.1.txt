@@ -1,0 +1,393 @@
+#type:      node
+#context:   sop
+#internal:  labs::tree_trunk_generator::1.1
+#icon:      /labs_icons/sidefx_labs_default.svg
+
+= Labs Tree Trunk Generator =
+
+"""Generates the trunk of a procedural tree."""
+
+This node creates the base trunk used by the Labs tree generation system.
+
+The trunk can be generated procedurally from a straight line or derived from an input curve.  
+The node defines the trunk's length, radius profile, curvature, and base shape, and produces the initial structure that branch generators build upon.
+
+This node works together with the [Labs Tree Controller|Node:sop/labs--tree_controller-1.1], which can override many parameters globally across the tree network.
+
+@parameters
+
+    Tag:
+        #id: tag
+        Name used to create a group and attribute identifying the trunk geometry or curve.  
+        By default this matches the node name.
+
+    Randomize:
+        #id: seed
+        Random seed used to generate procedural variation.
+
+    == General ==
+
+    Snap To Center:
+        #id: toggle_center
+        When using an input curve, snaps the base of the curve to the world origin.
+
+    Randomize Length:
+        #id: cull_length_rand_toggle
+        Enables random variation of trunk length.
+
+    Length:
+        #id: trunk_length
+        Length of the generated trunk when no input curve is provided.
+
+    Min Length:
+        #id: length_main_rand_min
+        Minimum trunk length when random length variation is enabled.
+
+    Max Length:
+        #id: length_main_rand_max
+        Maximum trunk length when random length variation is enabled.
+
+    Cull Length:
+        #id: cull_length
+        Adjusts the overall length of the input curve when one is provided.
+
+    Min Length Variation:
+        #id: length_rand_min
+        Minimum adjustment applied to the input curve length.
+
+    Max Length Variation:
+        #id: length_rand_max
+        Maximum adjustment applied to the input curve length.
+
+    Radius:
+        #id: rad
+        Base radius of the trunk.
+
+    Radius Ramp:
+        #id: rad_ramp
+        Controls trunk thickness along its length.
+
+    == Tropism ==
+
+    Tropisms simulate environmental forces that influence trunk growth direction.
+
+    Override Tropism:
+        #id: tropism_override
+        Overrides tropism settings defined in the Tree Controller node.
+
+    === Bend ===
+
+    Applies a directional bend to the trunk.
+
+    Enable:
+        #id: enablebend
+        Enables trunk bending.
+
+    Bend:
+        #id: bend
+        Maximum bend angle applied to the trunk.
+
+    Up Vector Angle:
+        #id: upangle
+        Axis around which the trunk bends.
+
+    Offset Start:
+        #id: bend_start
+        Distance from the trunk base where bending begins.
+
+    Capture Length:
+        #id: capture_length
+        Distance from the trunk tip where bending stops.
+
+    Bend Profile:
+        #id: bend_profile
+        Controls how the bend is distributed along the trunk.
+
+    === Thigmotropism ===
+
+    Simulates trunk interaction with nearby geometry.
+
+    Enable:
+        #id: enable_thigmo
+        Enables collision-based trunk deformation when Tropism Override is enabled.
+
+    Object:
+        #id: objpath1
+        Object used for collision interaction.
+
+    Strength:
+        #id: thigmo_strength
+        Controls how strongly the trunk reacts to the object.
+
+    Falloff:
+        #id: thigmo_ramp
+        Adjusts interaction strength along the trunk length.
+
+    == Trunk Shape ==
+
+    Controls deformation and shaping of the trunk base.
+
+    Enable Roots:
+        #id: roots_toggle
+        Enables editing of the trunk base shape.
+
+    Shape Offset:
+        #id: root_offset
+        Amount the base shapes extend from the trunk.
+
+    Separate Resolution:
+        #id: roots_res_toggle
+        Allows the trunk base to use a different resolution than the rest of the trunk.
+
+    Shape Ramp:
+        #id: root_offset_ramp
+        Defines the extrusion profile of trunk base shapes.
+
+    Position Ramp:
+        #id: roots_strength_ramp
+        Determines where shapes appear along the trunk.
+
+    Roll:
+        #id: roll
+        Rotates shapes around the trunk axis.
+
+    Full Twists:
+        #id: fulltwists
+        Number of full rotations applied to the trunk shape.
+
+    Partial Twist:
+        #id: incroll
+        Applies additional angular rotation.
+
+    Twist Ramp:
+        #id: twist_ramp
+        Controls twisting along the trunk length.
+
+    == Noise ==
+
+    Adds procedural variation to trunk curves and mesh surfaces.
+
+    === Line Noise ===
+
+    Applies noise deformation to the trunk curve.
+
+    Override Line Noise:
+        #id: line_noise_override
+        Overrides line noise parameters defined in the Tree Controller.
+
+    Enable:
+        #id: enable_line_noise
+        Enables curve noise.
+
+    Intensity Ramp:
+        #id: line_noise_intensity_ramp
+        Adjusts noise strength along the trunk length.
+
+    ==== Primary ====
+
+    Curl noise used for large-scale curvature variation.
+
+    Noise Type:
+        #id: type
+        Type of curl noise applied.
+
+    Intensity:
+        #id: line_noise_amount
+        Strength of the noise deformation.
+
+    Frequency:
+        #id: line_noise_size
+        Controls the scale of the noise.
+
+    Roughness:
+        #id: line_noise_rough
+        Adds fractal detail to the noise.
+
+    Step Size:
+        #id: h
+        Sampling resolution used to evaluate the noise.
+
+    Randomize Offset:
+        #id: line_noise_rand
+        Randomizes the noise offset using the seed.
+
+    Offset:
+        #id: line_noise_offset
+        Offsets the noise pattern in space.
+
+    ==== Secondary ====
+
+    Additional anti-aliased noise layer used for fine variation.
+
+    Intensity:
+        #id: line_noise_amount2
+        Strength of the secondary noise.
+
+    Frequency:
+        #id: line_noise_size2
+        Controls the scale of the secondary noise.
+
+    Roughness:
+        #id: line_noise_rough2
+        Adds detail to the secondary noise.
+
+    Randomize Offset:
+        #id: line_noise_rand2
+        Randomizes the noise offset.
+
+    Offset:
+        #id: line_noise_offset2
+        Offsets the noise pattern in space.
+
+    === Mesh Noise ===
+
+    Applies noise to the trunk surface geometry.
+
+    Override Mesh Noise:
+        #id: mesh_noise_override
+        Overrides mesh noise parameters from the Tree Controller.
+
+    Enable:
+        #id: enable_mesh_noise
+        Enables mesh surface noise.
+
+    Type:
+        #id: mesh_noise_type
+        Type of turbulent noise used.
+
+    Frequency:
+        #id: mesh_noise_size
+        Controls the scale of the noise pattern.
+
+    Randomize Offset:
+        #id: mesh_noise_rand
+        Randomizes the noise offset.
+
+    Offset:
+        #id: mesh_noise_offset
+        Offsets the noise pattern in space.
+
+    Intensity:
+        #id: mesh_noise_amount
+        Strength of mesh deformation.
+
+    Reduce Intensity Per Branch Level:
+        #id: mesh_noise_amount
+        Reduces noise strength based on hierarchy level.
+
+    Multiply Intensity by Radius:
+        #id: mesh_noise_rad
+        Scales noise intensity relative to trunk radius.
+
+    Intensity Ramp:
+        #id: mesh_noise_intensity_ramp
+        Adjusts mesh noise along the trunk length.
+
+    == Meshing ==
+
+    Controls how trunk geometry is generated.
+
+    Override Meshing:
+        #id: meshing_override
+        Overrides meshing parameters from the Tree Controller.
+
+    Custom Branch Profile:
+        #id: branch_profile
+        Geometry used as the trunk profile when sweeping.  
+        The profile should be centered and oriented on the XY plane.
+
+    === End Caps ===
+
+    End Cap Type:
+        #id: endcaptype
+        Geometry used to close the trunk ends.
+
+    Cap Divisions:
+        #id: capdivs
+        Radial resolution of the end cap.
+
+    Triangular Poles:
+        #id: traingularpoles
+        Connects cap points to a central pole.
+
+    End Cap Scale:
+        #id: capscale
+        Controls the bulge of the cap shape.
+
+    End Cap Roundness:
+        #id: caproundness
+        Adjusts how smoothly the cap transitions to the trunk.
+
+    == Resolution ==
+
+    Override Resolution:
+        #id: res_override
+        Overrides resolution parameters from the Tree Controller.
+
+    Resolution:
+        #id: res
+        Number of subdivisions along the trunk length.
+
+    Refinement Amount:
+        #id: res_refine
+        Reduces subdivisions on straight sections.
+
+    Divisions:
+        #id: divs
+        Radial subdivision count of the trunk mesh.
+
+    == Displacement ==
+
+    Override Displacement:
+        #id: disp_override
+        Overrides displacement parameters from the Tree Controller.
+
+    Enable Displacement:
+        #id: enable_disp
+        Enables displacement mapping.
+
+    Displacement Texture:
+        #id: disp_texture
+        Texture used for displacement.
+
+    Displacement Intensity:
+        #id: disp_intensity
+        Strength of the displacement effect.
+
+    Subdivision Amount:
+        #id: subdiv_amount
+        Subdivides geometry before displacement.
+
+    Reduce Resolution:
+        #id: disp_reduce_toggle
+        Enables polygon reduction after displacement.
+
+    Polygon Count:
+        #id: res_count
+        Target polygon count after reduction.
+
+    Tolerance:
+        #id: res_tolerance
+        Error tolerance used for reduction.
+
+    == Visualization ==
+
+    Override Visualization:
+        #id: vis_override
+        Overrides visualization parameters from the Tree Controller.
+
+    Enable Visualization Color:
+        #id: vis_toggle
+        Enables viewport color visualization.
+
+    Color:
+        #id: color
+        Color used for visualization.
+
+@related
+- [Labs Tree Controller|Node:sop/labs--tree_controller-1.1]
+- [Labs Tree Branch Generator|Node:sop/labs--tree_branch_generator-1.2]
+- [Labs Tree Branch Placer|Node:sop/labs--tree_branch_placer-1.1]
+- [Labs Tree Leaf Generator|Node:sop/labs--tree_leaf_generator]
+- [Labs Tree Simple Leaf|Node:sop/labs--tree_simple_leaf]
+- [Labs Quick Basic Tree|Node:sop/labs--quick_basic_tree]

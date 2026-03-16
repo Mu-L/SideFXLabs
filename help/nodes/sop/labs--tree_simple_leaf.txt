@@ -1,58 +1,114 @@
+#type:      node
+#context:   sop
+#internal:  labs::tree_simple_leaf::1.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+
 = Labs Tree Simple Leaf =
 
-#type: node
-#context: sop
-#internal: labs::tree_simple_leaf::1.0
-#icon: tree_simple_leaf
-#tags: sidefxlabs, model
+"""Generates a simple leaf mesh for preview and procedural foliage workflows."""
 
-""" Simple leaf generator for visualization purposes """
+This node creates a lightweight procedural leaf model intended for use in tree and foliage systems.
 
-This node creates a simple leaf model to be used in a tree or foliage system and can be plugged into the custom leaf input of the Tree Leaf Generator for that purpose.
+It is primarily designed for visualization, look development, and rapid prototyping, and can be connected to the custom leaf input of the [Labs Tree Leaf Generator|Node:sop/labs--tree_leaf_generator] to provide leaf geometry for procedural tree setups.
+
+The node provides controls for overall size, segmentation, profile shape, folding, bending, point jitter, and color.
 
 @parameters
+
     == Size and Segments ==
+
     === Size ===
+
     Leaf Size:
-        Uniform leaf size
+        #id: leaf_size
+        Uniform scale applied to the leaf.
+
     Length:
-        Leaf length
+        #id: dist
+        Length of the leaf.
+
     Width:
-        Leaf width
+        #id: width
+        Width of the leaf.
+
     === Segments ===
+
     Length Segments:
-        Edges along leaf length
+        #id: points
+        Number of edges along the leaf length.
+
     Z Bias:
-        Adjusts placement of length segments
+        #id: pos_bias2
+        Adjusts the spacing of segments along the leaf length.
+
     Width Segments:
-        Edges along leaf width
+        #id: cols
+        Number of edges across the leaf width.
+
     X Bias:
-        Adjusts placement of width segments
+        #id: pos_bias
+        Adjusts the spacing of segments across the leaf width.
+
     == Shape ==
+
     === Shape Profile ===
+
     Method:
-        Different methods of meshing leaf to create different shapes
+        #id: shape_method
+        Method used to generate the leaf mesh.
+
     Leaf Profile:
-        Shape of the leaf
+        #id: leaf_profile
+        Profile defining the outer leaf shape.
+
     === Folding ===
+
     Folding Amount:
-        Amount to offset the leaf center fold
+        #id: folding_amount
+        Offset applied to the center fold of the leaf.
+
     Folding Profile:
-        Adjust leaf center fold offset along the leaf length
+        #id: folding
+        Controls fold strength along the leaf length.
+
     === Bend ===
+
     Bend:
-        Angle to bend leaf
+        #id: bend
+        Bend angle applied to the leaf.
+
     Bend Profile:
-        Adjust bend amount along length of leaf
+        #id: bend_profile
+        Controls bend strength along the leaf length.
+
     == Point Jitter ==
+
     Scale:
-        Amount of point jitter
+        #id: scale
+        Strength of the point jitter deformation.
+
     Seed:
-        Randomize point jitter
+        #id: seed
+        Random seed used for point jitter variation.
+
     == Color ==
+
     Leaf Color:
-        Leaf color ramp along length of leaf
+        #id: color
+        Color ramp applied along the leaf length.
+
     Stem Color:
-        Leaf center fold color ramp along length of leaf
+        #id: stem_color
+        Color ramp applied along the center fold of the leaf.
+
     Mix:
-        Blend steam color with leaf color
+        #id: mix
+        Blends the stem color with the leaf color.
+
+@related
+- [Labs Tree Controller|Node:sop/labs--tree_controller-1.1]
+- [Labs Tree Trunk Generator|Node:sop/labs--tree_trunk_generator-1.1]
+- [Labs Tree Branch Generator|Node:sop/labs--tree_branch_generator-1.2]
+- [Labs Tree Branch Placer|Node:sop/labs--tree_branch_placer-1.1]
+- [Labs Tree Leaf Generator|Node:sop/labs--tree_leaf_generator]
+- [Labs Quick Basic Tree|Node:sop/labs--quick_basic_tree]

@@ -5,246 +5,405 @@
 
 = Labs Tree Controller =
 
-"""Controls other tree nodes."""
+"""Controls global growth, deformation, pruning, and meshing settings for Labs tree nodes."""
 
-This sets parameters for all other tree nodes (Tree Trunk Generator, Tree Branch Generator, Tree Branch Placer) down the chain, and can be overridden per node.
+This node provides centralized control over multiple tree generation nodes in the network.
 
+Parameters set on this node automatically propagate to downstream tree nodes such as the
+[Labs Tree Trunk Generator|Node:sop/labs--tree_trunk_generator-1.1],
+[Labs Tree Branch Generator|Node:sop/labs--tree_branch_generator-1.2], and
+[Labs Tree Branch Placer|Node:sop/labs--tree_branch_placer-1.1].
+
+Individual nodes may override these values locally when needed.
+
+This controller allows you to adjust growth behavior, tropisms, noise deformation, pruning rules, meshing settings, and level-of-detail controls from a single location.
 
 @parameters
 
-    == Global ==
-
     Randomize:
-        Random seed value
+        #id: seed
+        Random seed used for procedural variation across the tree generation system.
 
     == Tropism ==
 
+    Tropisms simulate natural plant growth responses to environmental stimuli such as gravity, light, and nearby obstacles.
+
     === Bend Along Parent ===
 
-    Bends the branch along the axis of its parent branch
+    Applies curvature to branches relative to the direction of their parent branch.
+
     Enable:
-        Enable bend along parent
+        #id: enable_bend
+        Enables bending relative to the parent branch direction.
+
     Strength:
-        Amount to bend the branch along its parent
+        #id: bend_strength
+        Controls how strongly branches bend along the parent branch axis.
+
     Falloff:
-        Adjusts the bend amount along the length of the branch
+        #id: bend_ramp
+        Adjusts the bend intensity along the length of the branch.
+
     Multiply Intensity by Branch Level:
-        Multiplies the bend strength by the branch level in the tree hierarchy
+        #id: bend_mult
+        Scales bend strength based on the branch level in the tree hierarchy.
 
     === Gravitropism ===
+    
+    Simulates the effect of gravity on branch growth direction.
 
-    Bends the branch along the axis of the specified direction to simulate gravity
     Enable:
-        Enable gravitropism
+        #id: enable_grav
+        Enables gravity-based bending.
+
     Direction:
-        Direction of gravity
+        #id: grav_dir
+        Direction used to simulate gravity.
+
     Strength:
-        Amount to bend the branch by gravity
+        #id: grav_strength
+        Controls how strongly branches bend toward the gravity direction.
+
     Falloff:
-        Adjusts the bend amount along the length of the branch
+        #id: gravity_ramp
+        Adjusts gravity influence along the length of the branch.
+
     Multiply Intensity by Branch Level:
-        Multiplies the gravity strength by the branch level in the tree hierarchy
+        #id: grav_mult
+        Scales gravity strength based on branch hierarchy level.
 
     === Phototropism ===
 
-    Bends the branch along the axis of the specified direction to simulate growth towards light
+    Simulates branches growing toward a light source.
+
     Enable:
-        Enable phototropism
+        #id: enable_light
+        Enables light-based growth direction.
+
     Direction:
-        Direction of light
+        #id: light_dir
+        Direction of the simulated light source.
+
     Strength:
-        Amount to bend the branch towards light
+        #id: light_strength
+        Controls how strongly branches bend toward the light direction.
+
     Falloff:
-        Adjusts the bend amount along the length of the branch
+        #id: light_ramp
+        Adjusts the light influence along the length of the branch.
+
     Multiply Intensity by Branch Level:
-        Multiplies the bend towards light strength by the branch level in the tree hierarchy
+        #id: light_mult
+        Scales phototropism strength based on branch hierarchy level.
 
     === Thigmotropism ===
 
-    Bends and moves the branch to avoid and/or wrap around the input object
+    Simulates branches reacting to nearby objects by bending around them.
+
     Enable:
-        Enable thigmotropism
+        #id: enable_thigmo
+        Enables collision-based branch interaction.
+
     Object:
-        Input object for the branch to react to
+        #id: objpath1
+        Object used for branch interaction and avoidance.
+
     Strength:
-        Amount to bend the branch around the input object
+        #id: thigmo_strength
+        Controls how strongly branches react to the input object.
+
     Falloff:
-        Adjusts the bend amount along the length of the branch
+        #id: thigmo_ramp
+        Adjusts the interaction influence along the branch length.
 
     == Noise ==
 
+    Adds procedural variation to branch shapes and geometry.
+
     === Line Noise ===
 
+    Applies noise deformation to the branch curves.
+
     Enable:
-        Enable line noise
+        #id: enable_line_noise
+        Enables procedural noise on branch curves.
+
     Intensity Ramp:
-        Adjusts noise amplitude along the length of the branch
+        #id: line_noise_intensity_ramp
+        Adjusts noise amplitude along the length of the branch.
 
     ==== Primary ====
 
-    """ Curl Noise """
+    Curl noise applied to the branch curves.
+
     Noise Type:
-        Type of curl noise
+        #id: type 
+        Type of curl noise used.
+
     Intensity:
-        Noise amplitude
+        #id: line_noise_amount
+        Strength of the noise deformation.
+
     Frequency:
-        Amount of noise repetitions
+        #id: line_noise_size
+        Controls the scale and repetition of the noise.
+
     Roughness:
-        Amount of jitter in noise
+        #id: line_noise_rough
+        Adds fractal detail to the noise.
+
     Step Size:
-        Noise resolution
+        #id: h
+        Sampling resolution used to evaluate the noise.
+
     Randomize Offset:
-        Randomly generate an offset number based on random seed
+        #id: line_noise_rand
+        Randomizes the noise offset using the random seed.
+
     Offset:
-        Amount to move noise through space
+        #id: line_noise_offset
+        Offsets the noise pattern in space.
 
     ==== Secondary ====
 
-    """ Anti-Aliased Noise """
+    Secondary anti-aliased noise layer used for additional detail.
+
     Intensity:
-        Noise amplitude
+        #id: line_noise_amount2
+        Strength of the secondary noise.
+
     Frequency:
-        Amount of noise repetitions
+        #id: line_noise_size2
+        Scale of the secondary noise.
+
     Roughness:
-        Amount of jitter in noise
+        #id: line_noise_rough2
+        Fractal detail of the secondary noise.
+
     Randomize Offset:
-        Randomly generate an offset number based on random seed
+        #id: line_noise_rand2
+        Randomizes the secondary noise offset.
+
     Offset:
-        Amount to move noise through space
+        #id: line_noise_offset2
+        Spatial offset applied to the secondary noise.
 
     === Mesh Noise ===
 
-    """ Turbulent Noise """
+    Applies procedural noise to the generated branch mesh.
+
     Enable:
-        Enable mesh noise
+        #id: enable_mesh_noise
+        Enables mesh surface noise.
+
     Type:
-        Type of turbulent noise
+        #id: mesh_noise_type
+        Type of turbulent noise used.
+
     Frequency:
-        Amount of noise repetitions
+        #id: mesh_noise_size
+        Controls the scale of the mesh noise.
+
     Randomize Offset:
-        Randomly generate an offset number based on random seed
+        #id: mesh_noise_rand
+        Randomizes the noise offset using the seed.
+
     Offset:
-        Amount to move noise through space
+        #id: mesh_noise_offset
+        Spatial offset applied to the noise.
+
     Intensity:
-        Noise amplitude
+        #id: mesh_noise_amount
+        Strength of the mesh deformation.
+
     Reduce Intensity Per Branch Level:
-        Divides the noise amplitude by the branch level in the tree hierarchy
+        #id: mesh_noise_
+        Reduces noise intensity for higher branch levels.
+
     Multiply Intensity by Radius:
-        Multiplies the noise amplitude by the branch radius
+        #id: mesh_noise_rad
+        Scales noise intensity relative to branch thickness.
+
     Intensity Ramp:
-        Adjusts noise amplitude along the length of the branch
+        #id: mesh_noise_intensity_ramp
+        Adjusts mesh noise along the branch length.
 
     == Prune ==
+
+    Removes branches based on directional angles.
 
     === By Initial Angle ===
 
     Upward Facing Angle:
-        Angle from upwards Y axis to start removing branch points (based on initial branch angle)
+        #id: up_angle
+        Removes branches whose initial direction exceeds this upward angle.
+
     Downward Facing Angle:
-        Angle from downwards Y axis to start removing branch points (based on initial branch angle)
+        #id: down_angle
+        Removes branches whose initial direction exceeds this downward angle.
+
     Directional Angle:
-        Angle from specified axis to start removing branch points (based on initial branch angle)
+        #id: dir_angle
+        Removes branches based on deviation from the specified axis.
+
     Direction:
-        Axis for directional angle
+        #id: dir
+        Axis used for directional pruning.
 
     === By End Angle ===
 
     Upward Facing Angle:
-        Angle from upwards Y axis to start removing branch points (based on final branch direction)
+        #id: up_angle2
+        Removes branches based on their final upward direction.
+
     Downward Facing Angle:
-        Angle from downwards Y axis to start removing branch points (based on final branch direction)
+        #id: down_angle2
+        Removes branches based on their final downward direction.
+
     Directional Angle:
-        Angle from specified axis to start removing branch points (based on final branch direction)
+        #id: dir_angle2
+        Removes branches based on deviation from the specified axis at the branch tip.
+
     Direction:
-        Axis for directional angle
+        #id: dir2
+        Axis used for directional pruning.
 
     == Meshing ==
 
+    Controls how branch geometry is generated.
+
     Custom Branch Profile:
-        Input a profile or flat geometry to sweep along branch instead of the default tube. Please center and orient to the XY plane
+        #id: branch_profile
+        Geometry profile used when sweeping branches. The profile should be centered and oriented in the XY plane.
 
     === Intersections ===
 
     Intersection Behavior:
-        Options for how branch intersections are handled
-        * None - branch is stuck in parent with no intersection handling
-        * Boolean + Normal Blending - parent is subtracted from branch creating a flush intersection and the normals around the intersection are blended creating a seamless transition
-        * Normal Blending - the normals around the intersection are blended creating a seamless transition
+        #id: seam_options
+        Defines how branch intersections are generated.
+
     Smooth Amount:
-        Available when using Boolean + Normal Blending. Amount to smooth the intersection geometry
+        #id: bool_smooth
+        Controls smoothing of Boolean intersection geometry.
+
     Blend Falloff:
-        Available when using Normal Blending. Falloff of the normal blend
+        #id: blend_falloff
+        Controls the falloff of the normal blending around intersections.
 
     === UV Blending ===
 
-    Creates a second UV set that inherits the UVs from the parent and adds vertex color around branch intersections to use to blend the UV sets
-    Watch [this tutorial|https://www.youtube.com/watch?v=4max8Tdj15k] by Simon Verstraete for more information about this workflow
+    Generates a secondary UV set to blend UV seams between parent and child branches.
+
     Enable UV Blending:
-        Enable UV Blending
+        #id: uv_blend
+        Enables UV blending at branch intersections.
+
     Blend Distance:
-        Distance along branch to stretch vertex color
+        #id: uv_blend_dist
+        Distance along the branch used for blending.
+
     Blend Falloff:
-        Amount to blur vertex color
+        #id: uv_blend_smooth
+        Controls smoothing of the blend region.
 
     === End Caps ===
 
     End Cap Type:
-        Type of end cap geometry
+        #id: endcaptype
+        Type of geometry used to close branch ends.
+
     Cap Divisions:
-        Amount of divisions around end cap
+        #id: capdivs
+        Number of radial divisions in the end cap.
+
     Triangular Poles:
-        If enabled, connects all points at end cap pole
+        #id: triangularpoles
+        Connects all cap points to a central pole.
+
     End Cap Scale:
-        Amount of end cap bulge: 0 = flat, 1 = half sphere
+        #id: capscale
+        Controls the curvature of the cap shape.
+
     End Cap Roundness:
-        Amount of round or linear falloff to end cap bulge
+        #id: caproundness
+        Controls the falloff of the cap curvature.
+
     Reduce Cap Resolution Per Branch Level:
-        Reduces amount of end cap divisions per branch level in the tree hierarchy
+        #id: caps_
+        Reduces cap resolution for higher branch levels.
 
     == Resolution ==
 
     Resolution:
-        Density of horizontal cross sections on geometry
+        #id: res
+        Controls the number of horizontal subdivisions along branches.
+
     Refinement Amount:
-        Threshold to reduce amount of resolution on straight geometry
+        #id: res_refine
+        Reduces subdivisions on straight segments.
+
     Divisions:
-        Density of vertical cross sections on geometry
+        #id: divs
+        Number of radial subdivisions around branches.
+
     Reduce Divisions Per Branch Level:
-        Reduces amount of divisions per branch level in the tree hierarchy
+        #id: divs_
+        Reduces radial resolution for higher branch levels.
 
     == Displacement ==
 
     Enable Displacement:
-        Enable displacement
+        #id: enable_disp
+        Enables displacement mapping on branch geometry.
+
     Displacement Texture:
-        Displacement map
+        #id: disp_texture
+        Texture used for displacement.
+
     Displacement Intensity:
-        Displacement amplitude
+        #id: disp_intensity
+        Strength of the displacement effect.
+
     Subdivision Amount:
-        Amount to subdivide geometry before displacement
+        #id: subdiv_amount
+        Subdivides geometry before displacement is applied.
+
     Reduce Resolution:
-        Enable poly reduction after displacement
+        #id: disp_reduce_toggle
+        Enables polygon reduction after displacement.
+
     Polygon Count:
-        Polygon target for poly reduction
+        #id: res_count
+        Target polygon count for reduction.
+
     Tolerance:
-        Poly reduction tolerance to further reduce poly count
+        #id: res_tolerance
+        Error tolerance for polygon reduction.
 
     == LOD ==
 
     Offset:
-        Reduces resolution and scale of branches and increases size of leaves based on branch level in tree hierarchy
+        #id: offset
+        Adjusts resolution and scale across branch hierarchy levels.
+
     Start at Level:
-        Branch level at which to start reduction. Any levels below this number will not be affected by LOD offset slider
+        #id: lod_start
+        Branch level where LOD reduction begins.
 
     == Visualization ==
 
     Color:
-        Enable color Visualization on branches. Color is different per branch level in tree hierarchy
+        #id: enable_vis
+        Displays branch levels using different colors.
 
-    Curves only:
-        Only output curves from nodes instead of curves and geometry (for faster editing)
-
+    Show Curves:
+        #id: enable_curve
+        Outputs only the branch curves instead of full geometry for faster editing.
 
 @related
-- [Labs Capsule|Node:sop/labs--capsule-1.0]
-- [Labs Disc|Node:sop/labs--disc_generator-1.1]
+- [Labs Tree Trunk Generator|Node:sop/labs--tree_trunk_generator-1.1]
+- [Labs Tree Branch Generator|Node:sop/labs--tree_branch_generator-1.2]
+- [Labs Tree Branch Placer|Node:sop/labs--tree_branch_placer-1.1]
+- [Labs Tree Leaf Generator|Node:sop/labs--tree_leaf_generator]
+- [Labs Tree Simple Leaf|Node:sop/labs--tree_simple_leaf]
+- [Labs Quick Basic Tree|Node:sop/labs--quick_basic_tree]
