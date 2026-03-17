@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.35133 -0.639199
+position -0.5 -6.15
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -374,6 +374,20 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = chs(\"../instanceattrib\") }
     }
+    channel strvalue0 {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../variantpath0\") }
+    }
+    channel weight0 {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../variantweight0\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -405,7 +419,7 @@ median	[ 0	locks=0 ]	(	0	0	0	0	)
 onesidedmedian	[ 0	locks=0 ]	(	1	1	1	1	)
 medianattrib	[ 0	locks=0 ]	(	""	)
 stddev	[ 0	locks=0 ]	(	1	1	1	1	)
-onesidedstddev	[ 0	locks=0 ]	(	0.20000000000000001	0.20000000000000001	0.20000000000000001	0.20000000000000001	)
+onesidedstddev	[ 0	locks=0 ]	(	0.2	0.2	0.2	0.2	)
 usefit0to	[ 0	locks=0 ]	(	"off"	)
 fit0to	[ 0	locks=0 ]	(	0	)
 usefit1to	[ 0	locks=0 ]	(	"off"	)
@@ -414,7 +428,7 @@ ramp	[ 0	locks=0 ]	(	3	)
 useminlimit	[ 0	locks=0 ]	(	"off"	)
 minlimit	[ 0	locks=0 ]	(	-100	-100	-100	-100	)
 useonesidedmin	[ 0	locks=0 ]	(	"off"	)
-onesidedmin	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+onesidedmin	[ 0	locks=0 ]	(	0.1	0.1	0.1	0.1	)
 usemaxlimit	[ 0	locks=0 ]	(	"off"	)
 maxlimit	[ 0	locks=0 ]	(	100	100	100	100	)
 useconeangle	[ 0	locks=0 ]	(	"off"	)
@@ -425,7 +439,7 @@ direction	[ 0	locks=0 ]	(	1	0	0	0	)
 directionattrib	[ 0	locks=0 ]	(	""	)
 folder	[ 0	locks=0 ]	(	0	)
 valuetype	[ 0	locks=0 ]	(	[ valuetype	0 ] 	)
-values	[ 0	locks=0 ]	(	[ values	0 ] 	)
+values	[ 0	locks=0 ]	(	[ values	1 ] 	)
 normalize	[ 0	locks=0 ]	(	"off"	)
 visualize	[ 0	locks=0 ]	(	"off"	)
 nvisualizepts	[ 0	locks=0 ]	(	10000	)
@@ -443,6 +457,9 @@ ramp2interp	[ 0	locks=0 ]	(	"monotonecubic"	)
 ramp3pos	[ 0	locks=0 ]	(	1	)
 ramp3value	[ 0	locks=0 ]	(	1	)
 ramp3interp	[ 0	locks=0 ]	(	"monotonecubic"	)
+strvalue0	[ 0	locks=0 ]	(	[ strvalue0	"" ] 	)
+value0	[ 0	locks=0 ]	(	0	)
+weight0	[ 0	locks=0 ]	(	[ weight0	1 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -583,6 +600,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	1	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -939,6 +957,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	[ colorr	1 ] 	[ colorg	1 ] 	[ colorb	1 ] 	)
@@ -1018,7 +1037,7 @@ Content-Type: text/plain
 {
 version 0.8
 type	[ 0	locks=0 ]	(	"poly"	)
-origin	[ 0	locks=0 ]	(	0.10000000000000001	0	0	)
+origin	[ 0	locks=0 ]	(	0.1	0	0	)
 dir	[ 0	locks=0 ]	(	1	0	0	)
 dist	[ 0	locks=0 ]	(	1.5	)
 points	[ 0	locks=0 ]	(	2	)
@@ -1103,19 +1122,32 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
-radius	[ 0	locks=0 ]	(	0.050000000000000003	)
+radius	[ 0	locks=0 ]	(	0.05	)
+usescaleattrib	[ 0	locks=0 ]	(	"constant"	)
+scaleattrib	[ 0	locks=0 ]	(	pscale	)
+jointcorrect	[ 0	locks=0 ]	(	"on"	)
 maxscale	[ 0	locks=0 ]	(	100	)
 smooth	[ 0	locks=0 ]	(	1	)
+usesmoothattrib	[ 0	locks=0 ]	(	"constant"	)
+smoothattrib	[ 0	locks=0 ]	(	smooth	)
+maxvalence	[ 0	locks=0 ]	(	25	)
 div	[ 0	locks=0 ]	(	4	)
+usedivattrib	[ 0	locks=0 ]	(	"constant"	)
+divattrib	[ 0	locks=0 ]	(	div	)
 segs	[ 0	locks=0 ]	(	1	)
-segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	1 ] 	)
-jointcorrect	[ 0	locks=0 ]	(	"on"	)
+usesegsattrib	[ 0	locks=0 ]	(	"constant"	)
+segsattrib	[ 0	locks=0 ]	(	segs	)
+usesegscale	[ 0	locks=0 ]	(	"on"	)
+segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	0 ] 	)
 dotexture	[ 0	locks=0 ]	(	"off"	)
 uoff	[ 0	locks=0 ]	(	0	)
 textu	[ 0	locks=0 ]	(	0	1	)
+usetextvattrib	[ 0	locks=0 ]	(	"constant"	)
+textvattrib	[ 0	locks=0 ]	(	arc	)
 textv	[ 0	locks=0 ]	(	0	1	)
 upenable	[ 0	locks=0 ]	(	"off"	)
 upvector	[ 0	locks=0 ]	(	0	1	0	)
+upattrib	[ 0	locks=0 ]	(	up	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1178,6 +1210,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	0	0	)
@@ -1261,6 +1294,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	0	1	0	)
@@ -1344,6 +1378,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	0	0	1	)
@@ -1444,6 +1479,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -1531,6 +1567,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -1597,7 +1634,7 @@ Content-Type: text/plain
 {
 version 0.8
 type	[ 0	locks=0 ]	(	"poly"	)
-origin	[ 0	locks=0 ]	(	0	0.10000000000000001	0	)
+origin	[ 0	locks=0 ]	(	0	0.1	0	)
 dir	[ 0	locks=0 ]	(	0	1	0	)
 dist	[ 0	locks=0 ]	(	1.5	)
 points	[ 0	locks=0 ]	(	2	)
@@ -1696,19 +1733,32 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
-radius	[ 0	locks=0 ]	(	[ radius	0.10000000000000001 ] 	)
+radius	[ 0	locks=0 ]	(	[ radius	0.1 ] 	)
+usescaleattrib	[ 0	locks=0 ]	(	"constant"	)
+scaleattrib	[ 0	locks=0 ]	(	pscale	)
+jointcorrect	[ 0	locks=0 ]	(	"on"	)
 maxscale	[ 0	locks=0 ]	(	100	)
 smooth	[ 0	locks=0 ]	(	1	)
+usesmoothattrib	[ 0	locks=0 ]	(	"constant"	)
+smoothattrib	[ 0	locks=0 ]	(	smooth	)
+maxvalence	[ 0	locks=0 ]	(	25	)
 div	[ 0	locks=0 ]	(	[ div	4 ] 	)
+usedivattrib	[ 0	locks=0 ]	(	"constant"	)
+divattrib	[ 0	locks=0 ]	(	div	)
 segs	[ 0	locks=0 ]	(	1	)
-segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	1 ] 	)
-jointcorrect	[ 0	locks=0 ]	(	"on"	)
+usesegsattrib	[ 0	locks=0 ]	(	"constant"	)
+segsattrib	[ 0	locks=0 ]	(	segs	)
+usesegscale	[ 0	locks=0 ]	(	"on"	)
+segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	0 ] 	)
 dotexture	[ 0	locks=0 ]	(	"off"	)
 uoff	[ 0	locks=0 ]	(	0	)
 textu	[ 0	locks=0 ]	(	0	1	)
+usetextvattrib	[ 0	locks=0 ]	(	"constant"	)
+textvattrib	[ 0	locks=0 ]	(	arc	)
 textv	[ 0	locks=0 ]	(	0	1	)
 upenable	[ 0	locks=0 ]	(	"off"	)
 upvector	[ 0	locks=0 ]	(	0	1	0	)
+upattrib	[ 0	locks=0 ]	(	up	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1788,6 +1838,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -1854,7 +1905,7 @@ Content-Type: text/plain
 {
 version 0.8
 type	[ 0	locks=0 ]	(	"poly"	)
-origin	[ 0	locks=0 ]	(	0	0	0.10000000000000001	)
+origin	[ 0	locks=0 ]	(	0	0	0.1	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 dist	[ 0	locks=0 ]	(	1.5	)
 points	[ 0	locks=0 ]	(	2	)
@@ -1953,19 +2004,32 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
-radius	[ 0	locks=0 ]	(	[ radius	0.10000000000000001 ] 	)
+radius	[ 0	locks=0 ]	(	[ radius	0.1 ] 	)
+usescaleattrib	[ 0	locks=0 ]	(	"constant"	)
+scaleattrib	[ 0	locks=0 ]	(	pscale	)
+jointcorrect	[ 0	locks=0 ]	(	"on"	)
 maxscale	[ 0	locks=0 ]	(	100	)
 smooth	[ 0	locks=0 ]	(	1	)
+usesmoothattrib	[ 0	locks=0 ]	(	"constant"	)
+smoothattrib	[ 0	locks=0 ]	(	smooth	)
+maxvalence	[ 0	locks=0 ]	(	25	)
 div	[ 0	locks=0 ]	(	[ div	4 ] 	)
+usedivattrib	[ 0	locks=0 ]	(	"constant"	)
+divattrib	[ 0	locks=0 ]	(	div	)
 segs	[ 0	locks=0 ]	(	1	)
-segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	1 ] 	)
-jointcorrect	[ 0	locks=0 ]	(	"on"	)
+usesegsattrib	[ 0	locks=0 ]	(	"constant"	)
+segsattrib	[ 0	locks=0 ]	(	segs	)
+usesegscale	[ 0	locks=0 ]	(	"on"	)
+segscale	[ 8	locks=0 ]	(	[ segscale1	0 ] 	[ segscale2	0 ] 	)
 dotexture	[ 0	locks=0 ]	(	"off"	)
 uoff	[ 0	locks=0 ]	(	0	)
 textu	[ 0	locks=0 ]	(	0	1	)
+usetextvattrib	[ 0	locks=0 ]	(	"constant"	)
+textvattrib	[ 0	locks=0 ]	(	arc	)
 textv	[ 0	locks=0 ]	(	0	1	)
 upenable	[ 0	locks=0 ]	(	"off"	)
 upvector	[ 0	locks=0 ]	(	0	1	0	)
+upattrib	[ 0	locks=0 ]	(	up	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2275,6 +2339,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -2822,11 +2887,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"off"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2893,8 +2958,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -3052,6 +3117,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/guide_scale.chn"
@@ -3087,6 +3158,7 @@ f@g = @Cd.g;
 f@b = @Cd.b;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3189,6 +3261,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -3320,8 +3393,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -3489,6 +3562,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/variant_attribs.chn"
@@ -3520,6 +3599,7 @@ snippet	[ 0	locks=0 ]	(	"@pscale *= ch(\"instance_scale\");
 i@__variant_index = detail(-1, \"iteration\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3671,7 +3751,7 @@ median	[ 0	locks=0 ]	(	0	0	0	0	)
 onesidedmedian	[ 0	locks=0 ]	(	1	1	1	1	)
 medianattrib	[ 0	locks=0 ]	(	""	)
 stddev	[ 0	locks=0 ]	(	1	1	1	1	)
-onesidedstddev	[ 0	locks=0 ]	(	0.20000000000000001	0.20000000000000001	0.20000000000000001	0.20000000000000001	)
+onesidedstddev	[ 0	locks=0 ]	(	0.2	0.2	0.2	0.2	)
 usefit0to	[ 0	locks=0 ]	(	"off"	)
 fit0to	[ 0	locks=0 ]	(	0	)
 usefit1to	[ 0	locks=0 ]	(	"off"	)
@@ -3680,7 +3760,7 @@ ramp	[ 0	locks=0 ]	(	3	)
 useminlimit	[ 0	locks=0 ]	(	"off"	)
 minlimit	[ 0	locks=0 ]	(	-100	-100	-100	-100	)
 useonesidedmin	[ 0	locks=0 ]	(	"off"	)
-onesidedmin	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+onesidedmin	[ 0	locks=0 ]	(	0.1	0.1	0.1	0.1	)
 usemaxlimit	[ 0	locks=0 ]	(	"off"	)
 maxlimit	[ 0	locks=0 ]	(	100	100	100	100	)
 useconeangle	[ 0	locks=0 ]	(	"off"	)
@@ -3994,6 +4074,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	1	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4929,6 +5010,7 @@ writevalues1	[ 0	locks=0 ]	(	[ writevalues1	1 ] 	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	1	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 enable2	[ 0	locks=0 ]	(	"on"	)
 name2	[ 0	locks=0 ]	(	scale	)
 existing2	[ 0	locks=0 ]	(	"better"	)
@@ -4945,6 +5027,7 @@ writevalues2	[ 0	locks=0 ]	(	[ writevalues2	1 ] 	)
 uselocal2	[ 0	locks=0 ]	(	"on"	)
 value2v	[ 0	locks=0 ]	(	1	1	1	0	)
 string2	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5011,8 +5094,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -5169,6 +5252,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/unreal_instance.chn"
@@ -5200,6 +5289,7 @@ snippet	[ 0	locks=0 ]	(	"s@unreal_instance = s@`chs(\"instance_attrib\")`;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5668,8 +5758,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -5826,6 +5916,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/unity_instance.chn"
@@ -5857,6 +5953,7 @@ snippet	[ 0	locks=0 ]	(	"s@unity_instance = s@`chs(\"instance_attrib\")`;
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5936,8 +6033,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -6108,6 +6205,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/apply_uniform_scale.chn"
@@ -6154,6 +6257,7 @@ if (chi(\"apply_to\") == 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6328,8 +6432,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -6487,6 +6591,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/orient_from_N_up.chn"
@@ -6538,6 +6648,7 @@ if (reorient == 0) {
 @orient = quaternion(m);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6685,6 +6796,7 @@ vector4 q = set(i.x, i.y, i.z, cos(rad));
 @orient = qmultiply(q, @orient);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -6792,7 +6904,7 @@ median	[ 0	locks=0 ]	(	0	0	0	0	)
 onesidedmedian	[ 0	locks=0 ]	(	1	1	1	1	)
 medianattrib	[ 0	locks=0 ]	(	""	)
 stddev	[ 0	locks=0 ]	(	1	1	1	1	)
-onesidedstddev	[ 0	locks=0 ]	(	0.20000000000000001	0.20000000000000001	0.20000000000000001	0.20000000000000001	)
+onesidedstddev	[ 0	locks=0 ]	(	0.2	0.2	0.2	0.2	)
 usefit0to	[ 0	locks=0 ]	(	"off"	)
 fit0to	[ 0	locks=0 ]	(	0	)
 usefit1to	[ 0	locks=0 ]	(	"off"	)
@@ -6801,7 +6913,7 @@ ramp	[ 0	locks=0 ]	(	3	)
 useminlimit	[ 0	locks=0 ]	(	"off"	)
 minlimit	[ 0	locks=0 ]	(	-100	-100	-100	-100	)
 useonesidedmin	[ 0	locks=0 ]	(	"off"	)
-onesidedmin	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+onesidedmin	[ 0	locks=0 ]	(	0.1	0.1	0.1	0.1	)
 usemaxlimit	[ 0	locks=0 ]	(	"off"	)
 maxlimit	[ 0	locks=0 ]	(	100	100	100	100	)
 useconeangle	[ 0	locks=0 ]	(	"off"	)
@@ -6951,7 +7063,7 @@ median	[ 0	locks=0 ]	(	0	0	0	0	)
 onesidedmedian	[ 0	locks=0 ]	(	1	1	1	1	)
 medianattrib	[ 0	locks=0 ]	(	""	)
 stddev	[ 0	locks=0 ]	(	1	1	1	1	)
-onesidedstddev	[ 0	locks=0 ]	(	0.20000000000000001	0.20000000000000001	0.20000000000000001	0.20000000000000001	)
+onesidedstddev	[ 0	locks=0 ]	(	0.2	0.2	0.2	0.2	)
 usefit0to	[ 0	locks=0 ]	(	"off"	)
 fit0to	[ 0	locks=0 ]	(	0	)
 usefit1to	[ 0	locks=0 ]	(	"off"	)
@@ -6960,7 +7072,7 @@ ramp	[ 0	locks=0 ]	(	3	)
 useminlimit	[ 0	locks=0 ]	(	"off"	)
 minlimit	[ 0	locks=0 ]	(	-100	-100	-100	-100	)
 useonesidedmin	[ 0	locks=0 ]	(	"off"	)
-onesidedmin	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+onesidedmin	[ 0	locks=0 ]	(	0.1	0.1	0.1	0.1	)
 usemaxlimit	[ 0	locks=0 ]	(	"off"	)
 maxlimit	[ 0	locks=0 ]	(	100	100	100	100	)
 useconeangle	[ 0	locks=0 ]	(	"off"	)
@@ -7137,8 +7249,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -7296,6 +7408,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/spin.chn"
@@ -7339,6 +7457,7 @@ vector4 q = set(i.x, i.y, i.z, cos(rad));
 @orient = qmultiply(q, @orient);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7568,6 +7687,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"on"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	3	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -7579,13 +7699,13 @@ ramp1pos	[ 0	locks=0 ]	(	0	)
 ramp1c	[ 0	locks=0 ]	(	0.20000000298023224	0	1	)
 ramp1interp	[ 0	locks=0 ]	(	"linear"	)
 ramp2pos	[ 0	locks=0 ]	(	0.25	)
-ramp2c	[ 0	locks=0 ]	(	0	0.85000002384185791	1	)
+ramp2c	[ 0	locks=0 ]	(	0	0.8500000238418579	1	)
 ramp2interp	[ 0	locks=0 ]	(	"linear"	)
 ramp3pos	[ 0	locks=0 ]	(	0.5	)
 ramp3c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
 ramp3interp	[ 0	locks=0 ]	(	"linear"	)
 ramp4pos	[ 0	locks=0 ]	(	0.75	)
-ramp4c	[ 0	locks=0 ]	(	0.94999998807907104	1	0	)
+ramp4c	[ 0	locks=0 ]	(	0.949999988079071	1	0	)
 ramp4interp	[ 0	locks=0 ]	(	"linear"	)
 ramp5pos	[ 0	locks=0 ]	(	1	)
 ramp5c	[ 0	locks=0 ]	(	1	0	0	)
@@ -7880,6 +8000,7 @@ writevalues1	[ 8	locks=0 ]	(	"off"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	0	0	0	1	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -7949,6 +8070,7 @@ snippet	[ 0	locks=0 ]	(	"@N = qrotate(@orient, {0, 0, 1});
 @up = qrotate(@orient, {0, 1, 0});"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8157,8 +8279,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -8316,6 +8438,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/uniform_spin.chn"
@@ -8345,6 +8473,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@__spin_degrees = chf(\"spin_amount\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8571,8 +8700,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -8729,6 +8858,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/spin_from_attrib.chn"
@@ -8759,6 +8894,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@__spin_degrees = f@`chs(\"spin_attrib\")`;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8881,7 +9017,7 @@ median	[ 0	locks=0 ]	(	0	0	0	0	)
 onesidedmedian	[ 0	locks=0 ]	(	1	1	1	1	)
 medianattrib	[ 0	locks=0 ]	(	""	)
 stddev	[ 0	locks=0 ]	(	1	1	1	1	)
-onesidedstddev	[ 0	locks=0 ]	(	0.20000000000000001	0.20000000000000001	0.20000000000000001	0.20000000000000001	)
+onesidedstddev	[ 0	locks=0 ]	(	0.2	0.2	0.2	0.2	)
 usefit0to	[ 0	locks=0 ]	(	"off"	)
 fit0to	[ 0	locks=0 ]	(	0	)
 usefit1to	[ 0	locks=0 ]	(	"off"	)
@@ -8890,7 +9026,7 @@ ramp	[ 0	locks=0 ]	(	3	)
 useminlimit	[ 0	locks=0 ]	(	"off"	)
 minlimit	[ 0	locks=0 ]	(	-100	-100	-100	-100	)
 useonesidedmin	[ 0	locks=0 ]	(	"off"	)
-onesidedmin	[ 0	locks=0 ]	(	0.10000000000000001	0.10000000000000001	0.10000000000000001	0.10000000000000001	)
+onesidedmin	[ 0	locks=0 ]	(	0.1	0.1	0.1	0.1	)
 usemaxlimit	[ 0	locks=0 ]	(	"off"	)
 maxlimit	[ 0	locks=0 ]	(	100	100	100	100	)
 useconeangle	[ 0	locks=0 ]	(	"off"	)
@@ -9070,128 +9206,6 @@ color UT_Color RGB 0.8 1 0.7
 delscript ""
 exprlanguage hscript
 end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_use_N_up.spareparmdef"
-Content-Type: text/plain
-
-    parm {
-        name    "mergecondition"
-        baseparm
-        label   "Use Second Input If"
-        export  none
-    }
-    parm {
-        name    "testinput"
-        baseparm
-        label   "Test Input"
-        export  none
-    }
-    multiparm {
-        name    "tests"
-        label    "Number of Tests"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "enable#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "type#"
-            baseparm
-            label   "Test Type"
-            export  none
-        }
-        parm {
-            name    "expr#"
-            baseparm
-            label   "Enable"
-            export  none
-        }
-        parm {
-            name    "attribtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "attribowner#"
-            baseparm
-            label   "Class"
-            export  none
-        }
-        parm {
-            name    "attributes#"
-            baseparm
-            label   "Attributes"
-            export  none
-        }
-        parm {
-            name    "attribvaltype#"
-            baseparm
-            label   "Of Type"
-            export  none
-        }
-        parm {
-            name    "attribfloatcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribstringcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "attribsval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "counttype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "countgroup#"
-            baseparm
-            label   "In Group"
-            export  none
-        }
-        parm {
-            name    "countcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "countval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "hasinputtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-    }
-
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/switch_use_N_up.chn"

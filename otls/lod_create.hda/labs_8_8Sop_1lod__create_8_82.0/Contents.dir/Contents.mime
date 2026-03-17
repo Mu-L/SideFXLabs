@@ -32,7 +32,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.03367 -2.62141
+position -0.5 -7.15
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -72,6 +72,10 @@ Content-Type: text/plain
 	"___toolid___":{
 		"type":"string",
 		"value":"internalGameDev_CreateTool"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -85,10 +89,10 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "WIP - NormalMap per LOD... DONT USE MANUALLY";
-	height := 6.7160996453623589;
+	height := 6.716099645362359;
 	minimized := 0;
-	width := 10.934152350596319;
-	x_position := 21.527299989318848;
+	width := 10.93415235059632;
+	x_position := 21.52729998931885;
 	y_position := 1.2863703384728602;
 }
 {
@@ -209,7 +213,7 @@ Content-Type: text/plain
 	autofit := 0;
 	color := "UT_Color RGB 0.52 0.52 0.52 ";
 	comment := "Impostor Section";
-	height := 0.70000001788139343;
+	height := 0.7000000178813934;
 	minimized := 0;
 	width := 4.5252799999999995;
 	x_position := -4.4842900000000006;
@@ -635,8 +639,8 @@ camera_rig_full_path	[ 0	locks=0 ]	(	[ camera_rig_full_path	opfullpath(chs(\"cam
 sprite_res	[ 0	locks=0 ]	(	[ sprite_resx	128 ] 	[ sprite_resy	128 ] 	)
 frames	[ 0	locks=0 ]	(	[ frames	8 ] 	)
 fOctResolution	[ 0	locks=0 ]	(	[ fOctResolution	4 ] 	)
-fOctZoom	[ 0	locks=0 ]	(	[ fOctZoom	0.90000000000000002 ] 	)
-animzoom	[ 0	locks=0 ]	(	1.1000000000000001	)
+fOctZoom	[ 0	locks=0 ]	(	[ fOctZoom	0.9 ] 	)
+animzoom	[ 0	locks=0 ]	(	1.1	)
 anim_frames	[ 0	locks=0 ]	(	[ anim_framesx	0 ] 	[ anim_framesy	0 ] 	)
 output_sequence	[ 0	locks=0 ]	(	[ output_sequence	$HIP/render/$OS.$F4.exr ] 	)
 anim_output_sequence	[ 0	locks=0 ]	(	[ anim_output_sequence	$HIP/render/$OS.$F4.exr ] 	)
@@ -3491,7 +3495,7 @@ basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
 ior	[ 0	locks=0 ]	(	1.5	)
-rough	[ 0	locks=0 ]	(	0.29999999999999999	)
+rough	[ 0	locks=0 ]	(	0.3	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -3503,7 +3507,7 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
 transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
@@ -3511,7 +3515,7 @@ folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
 sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
 ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
@@ -3678,7 +3682,7 @@ shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"off"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -3703,7 +3707,7 @@ separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -3738,7 +3742,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -4000,7 +4004,7 @@ pbr_basecolor_useTexture_1	[ 0	locks=0 ]	(	"off"	)
 pbr_basecolor_texture_1	[ 0	locks=0 ]	(	""	)
 roughnessfolder_1_2	[ 0	locks=0 ]	(	0	)
 pbr_IOR_1	[ 0	locks=0 ]	(	1.5	)
-pbr_rough_1	[ 0	locks=0 ]	(	0.29999999999999999	)
+pbr_rough_1	[ 0	locks=0 ]	(	0.3	)
 pbr_horizon_fade_1	[ 0	locks=0 ]	(	1	)
 pbr_invert_rough_1	[ 0	locks=0 ]	(	"off"	)
 pbr_rough_useTexture_1	[ 0	locks=0 ]	(	"off"	)
@@ -4787,14 +4791,14 @@ coatspecmodel	[ 0	locks=0 ]	(	ggx	)
 specular_tint	[ 0	locks=0 ]	(	[ specular_tint	0 ] 	)
 diffuse_folder_15	[ 0	locks=0 ]	(	0	0	0	0	0	0	)
 folder7	[ 0	locks=0 ]	(	0	)
-basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.20000000000000001 ] 	[ basecolorg	0.20000000000000001 ] 	[ basecolorb	0.20000000000000001 ] 	)
+basecolor	[ 0	locks=0 ]	(	[ basecolorr	0.2 ] 	[ basecolorg	0.2 ] 	[ basecolorb	0.2 ] 	)
 albedomult	[ 0	locks=0 ]	(	1	)
 basecolor_usePointColor	[ 0	locks=0 ]	(	"on"	)
 basecolor_usePackedColor	[ 0	locks=0 ]	(	"off"	)
 frontface	[ 0	locks=0 ]	(	"on"	)
 folder4	[ 0	locks=0 ]	(	0	)
 ior	[ 0	locks=0 ]	(	[ ior	1.5 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.29999999999999999 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.3 ] 	)
 aniso	[ 0	locks=0 ]	(	0	)
 anisodir	[ 0	locks=0 ]	(	0	)
 folder12	[ 0	locks=0 ]	(	0	)
@@ -4806,7 +4810,7 @@ coatrough	[ 0	locks=0 ]	(	0	)
 folder13	[ 0	locks=0 ]	(	0	)
 transparency	[ 0	locks=0 ]	(	0	)
 transcolor	[ 0	locks=0 ]	(	1	1	1	)
-transdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+transdist	[ 0	locks=0 ]	(	0.1	)
 dispersion	[ 0	locks=0 ]	(	0	)
 priority	[ 0	locks=0 ]	(	0	)
 transcolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
@@ -4814,7 +4818,7 @@ folder8	[ 0	locks=0 ]	(	0	)
 sss	[ 0	locks=0 ]	(	0	)
 ssscolor	[ 0	locks=0 ]	(	1	1	1	)
 sssmodel	[ 0	locks=0 ]	(	pbrsss	)
-sssdist	[ 0	locks=0 ]	(	0.10000000000000001	)
+sssdist	[ 0	locks=0 ]	(	0.1	)
 sssphase	[ 0	locks=0 ]	(	0	)
 ssscolor_usePointColor	[ 0	locks=0 ]	(	"off"	)
 folder11	[ 0	locks=0 ]	(	0	)
@@ -4981,7 +4985,7 @@ shading_16	[ 0	locks=0 ]	(	0	0	)
 baseBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 baseBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 baseBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-baseBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+baseBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 baseBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 baseBump_wrap	[ 0	locks=0 ]	(	repeat	)
 baseBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -5006,7 +5010,7 @@ separateCoatNormals	[ 0	locks=0 ]	(	"off"	)
 coatBumpAndNormal_enable	[ 0	locks=0 ]	(	"on"	)
 coatBumpAndNormal_type	[ 0	locks=0 ]	(	normal	)
 coatBump_colorSpace	[ 0	locks=0 ]	(	linear	)
-coatBump_bumpScale	[ 0	locks=0 ]	(	0.050000000000000003	)
+coatBump_bumpScale	[ 0	locks=0 ]	(	0.05	)
 coatBump_bumpTexture	[ 0	locks=0 ]	(	""	)
 coatBump_wrap	[ 0	locks=0 ]	(	repeat	)
 coatBump_filter	[ 0	locks=0 ]	(	gauss	)
@@ -5041,7 +5045,7 @@ dispTex_colorSpace	[ 0	locks=0 ]	(	linear	)
 dispTex_vectorSpace	[ 0	locks=0 ]	(	uvtangent	)
 dispTex_channelOrder	[ 0	locks=0 ]	(	xyz	)
 dispTex_offset	[ 0	locks=0 ]	(	-0.5	)
-dispTex_scale	[ 0	locks=0 ]	(	0.050000000000000003	)
+dispTex_scale	[ 0	locks=0 ]	(	0.05	)
 dispTex_texture	[ 0	locks=0 ]	(	""	)
 dispTex_channel	[ 0	locks=0 ]	(	0	)
 dispTex_wrap	[ 0	locks=0 ]	(	repeat	)
@@ -5891,7 +5895,7 @@ udimpostprocess	[ 0	locks=0	autoscope=0 ]	(	[ udimpostprocess	diffusefill ] 	)
 currentcoppath	[ 0	locks=0	autoscope=0 ]	(	[ currentcoppath	`opfullpath(\"./ropnet1/rop_games_baker/extract_net/base_image\") ] 	)
 currentcopoutput	[ 0	locks=0	autoscope=0 ]	(	[ currentcopoutput	`chs(\"./ropnet1/rop_games_baker/tempdirectory\")`/initcop.tga ] 	)
 currentplane	[ 0	locks=0	autoscope=0 ]	(	[ currentplane	hou.pwd().node(\"ropnet1/rop_games_baker\").hdaModule().setplane(hou.pwd()) ] 	)
-currentgamma	[ 0	locks=0	autoscope=0 ]	(	[ currentgamma	2.2000000000000002 ] 	)
+currentgamma	[ 0	locks=0	autoscope=0 ]	(	[ currentgamma	2.2 ] 	)
 currentcustomattr	[ 0	locks=0	autoscope=0 ]	(	[ currentcustomattr	v ] 	)
 currentcustomsuffix	[ 0	locks=0	autoscope=0 ]	(	[ currentcustomsuffix	velocity ] 	)
 vm_uvunwrapres	[ 0	locks=0	autoscope=0 ]	(	[ vm_uvunwrapresx	512 ] 	[ vm_uvunwrapresy	512 ] 	)
@@ -5900,7 +5904,7 @@ base_path	[ 0	locks=0	autoscope=0 ]	(	`chs(\"../base_path\")`	)
 export_fbx	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 fbx_path	[ 0	locks=0	autoscope=0 ]	(	$HIP/render/${HIPNAME}.fbx	)
 scale	[ 0	locks=0 ]	(	1	)
-fd_channels	[ 0	locks=0 ]	(	0	0	)
+channels	[ 0	locks=0 ]	(	0	0	)
 bake_basecolor	[ 0	locks=0	autoscope=0 ]	(	[ bake_basecolor	1 ] 	)
 basecolor_suffix	[ 0	locks=0	autoscope=0 ]	(	`chs(\"../basecolor_suffix\")`	)
 bake_Nt	[ 0	locks=0	autoscope=0 ]	(	[ bake_Nt	1 ] 	)
@@ -6553,7 +6557,7 @@ udimpostprocess	[ 0	locks=0	autoscope=0 ]	(	diffusefill	)
 currentcoppath	[ 0	locks=0	autoscope=0 ]	(	`opfullpath(\"./ropnet1/rop_games_baker/extract_net/base_image\")	)
 currentcopoutput	[ 0	locks=0	autoscope=0 ]	(	`chs(\"./ropnet1/rop_games_baker/tempdirectory\")`/initcop.tga	)
 currentplane	[ 0	locks=0	autoscope=0 ]	(	basecolor	)
-currentgamma	[ 0	locks=0	autoscope=0 ]	(	2.2000000000000002	)
+currentgamma	[ 0	locks=0	autoscope=0 ]	(	2.2	)
 currentcustomattr	[ 0	locks=0	autoscope=0 ]	(	v	)
 currentcustomsuffix	[ 0	locks=0	autoscope=0 ]	(	velocity	)
 vm_uvunwrapres	[ 0	locks=0	autoscope=0 ]	(	1024	1024	)
@@ -6562,7 +6566,7 @@ base_path	[ 0	locks=0	autoscope=0 ]	(	[ base_path	$HIP/render/${HIPNAME}_$(CHANN
 export_fbx	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 fbx_path	[ 0	locks=0	autoscope=0 ]	(	$HIP/render/${HIPNAME}.fbx	)
 scale	[ 0	locks=0 ]	(	1	)
-fd_channels	[ 0	locks=0 ]	(	0	0	)
+channels	[ 0	locks=0 ]	(	0	0	)
 bake_basecolor	[ 0	locks=0	autoscope=0 ]	(	"off"	)
 basecolor_suffix	[ 0	locks=0	autoscope=0 ]	(	basecolor	)
 bake_Nt	[ 0	locks=0	autoscope=0 ]	(	"on"	)
@@ -6912,6 +6916,7 @@ Content-Type: text/plain
                 baseparm
                 label   "Enable"
                 nolabel
+                joinnext
                 export  none
             }
             parm {
@@ -6938,6 +6943,18 @@ Content-Type: text/plain
         help    "Refer to this in expressions as -1, such as: npoint(-1)"
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
+    }
+    parm {
+        name    "usenormaldevthreshold"
+        baseparm
+        label   "Limit Using Normal Deviation"
+        export  all
+    }
+    parm {
+        name    "normaldevthreshold"
+        baseparm
+        label   "Threshold Angle"
+        export  all
     }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -6999,7 +7016,9 @@ target	[ 0	locks=0 ]	(	"poly_percent"	)
 percentage	[ 8	locks=0 ]	(	[ percentage	100 ] 	)
 finalcount	[ 0	locks=0 ]	(	1000	)
 reducepassedtarget	[ 0	locks=0 ]	(	"off"	)
-qualitytolerance	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+qualitytolerance	[ 0	locks=0 ]	(	1e-5	)
+usenormaldevthreshold	[ 0	locks=0 ]	(	"off"	)
+normaldevthreshold	[ 0	locks=0 ]	(	90	)
 outputgeo	[ 0	locks=0 ]	(	0	)
 originalpoints	[ 0	locks=0 ]	(	"off"	)
 preservequads	[ 0	locks=0 ]	(	[ preservequads	0 ] 	)
@@ -7029,7 +7048,6 @@ sepparm	[ 0	locks=0 ]	(	)
 frontfacingweight	[ 0	locks=0 ]	(	1	)
 usefrontfacingfalloff	[ 0	locks=0 ]	(	"off"	)
 frontfacingfalloffdist	[ 0	locks=0 ]	(	1	)
-experimental	[ 0	locks=0 ]	(	0	)
 decimationcontrol	[ 0	locks=0 ]	(	0	)
 controlattribs	[ 0	locks=0 ]	(	0	)
 reductiontarget2	[ 0	locks=0 ]	(	0	)
@@ -7159,12 +7177,14 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"off"	)
 embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
 exportclips	[ 0	locks=0 ]	(	"off"	)
 numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"off"	)
@@ -10601,11 +10621,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"on"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -11419,7 +11439,7 @@ vm_matte	[ 0	locks=0 ]	(	"off"	)
 vm_rayshade	[ 0	locks=0 ]	(	"off"	)
 geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
 vm_shadingquality	[ 0	locks=0 ]	(	1	)
-vm_flatness	[ 0	locks=0 ]	(	0.050000000000000003	)
+vm_flatness	[ 0	locks=0 ]	(	0.05	)
 vm_raypredice	[ 0	locks=0 ]	(	0	)
 vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
 vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
@@ -12017,11 +12037,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"on"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -12139,6 +12159,7 @@ dopointidx	[ 0	locks=0 ]	(	"off"	)
 spointidx	[ 0	locks=0 ]	(	pointidx	)
 docopyattribs	[ 0	locks=0 ]	(	"off"	)
 attribstocopy	[ 0	locks=0 ]	(	*	)
+detailstocopy	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -12454,6 +12475,7 @@ f@fThresholdDistance = chf(sprintf(\"../fThresholdDistance%g\", val));
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -12540,6 +12562,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -12804,6 +12827,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@LOD = point(1, \"LOD\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -13081,8 +13105,9 @@ Content-Type: text/plain
     }
 
     groupsimple {
-        name    "switcher6"
+        name    "switcher7"
         label   "Keep in Bounding Regions"
+        grouptag { "sidefx::switcher" "switcher6" }
 
         parm {
             name    "groupbounding"
@@ -13129,8 +13154,9 @@ Content-Type: text/plain
     }
 
     groupsimple {
-        name    "switcher7"
+        name    "switcher8"
         label   "Keep by Normals"
+        grouptag { "sidefx::switcher" "switcher7" }
 
         parm {
             name    "groupnormal"
@@ -13173,8 +13199,9 @@ Content-Type: text/plain
     }
 
     groupsimple {
-        name    "switcher8"
+        name    "switcher9"
         label   "Include by Edges"
+        grouptag { "sidefx::switcher" "switcher8" }
 
         parm {
             name    "groupedges"
@@ -13287,6 +13314,49 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "initbounds"
+        baseparm
+        label   "Initialize to Input Bounds"
+        export  none
+    }
+    parm {
+        name    "oppositenormals"
+        baseparm
+        label   "Include Normals Matching Opposite Direction"
+        export  none
+    }
+    parm {
+        name    "grouprandom"
+        baseparm
+        label   "Enable"
+        export  none
+    }
+    parm {
+        name    "globalseed"
+        baseparm
+        label   "Global Seed"
+        export  none
+    }
+    parm {
+        name    "useseedattrib"
+        baseparm
+        label   "Use Seed Attribute"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "seedattrib"
+        baseparm
+        label   "Seed Attribute"
+        export  none
+    }
+    parm {
+        name    "percent"
+        baseparm
+        label   "Percent"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/group1.parm"
@@ -13307,6 +13377,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -13317,6 +13388,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"off"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -13333,10 +13405,16 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"off"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
-folder1	[ 0	locks=0 ]	(	0	)
 switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
+folder1	[ 0	locks=0 ]	(	0	)
 switcher7	[ 0	locks=0 ]	(	0	)
 switcher8	[ 0	locks=0 ]	(	0	)
+switcher9	[ 0	locks=0 ]	(	0	)
 spare_input0	[ 0	locks=0 ]	(	../null1	)
 }
 
@@ -13610,8 +13688,8 @@ iterations	[ 0	locks=0 ]	(	[ iterations	1 ] 	)
 randseed	[ 0	locks=0 ]	(	5489	)
 advanced	[ 0	locks=0 ]	(	0	)
 resolution	[ 0	locks=0 ]	(	"res3"	)
-uvtolerance	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
-scaletolerance	[ 0	locks=0 ]	(	0.0050000000000000001	)
+uvtolerance	[ 0	locks=0 ]	(	1e-5	)
+scaletolerance	[ 0	locks=0 ]	(	0.005	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -14259,8 +14337,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -14417,6 +14495,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle2.chn"
@@ -14473,6 +14557,7 @@ f@dist = dist;
 i@BestLOD = BestLOD;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14750,6 +14835,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@CameraDistance = detail(1, \"dist\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -14853,7 +14939,7 @@ axalist	[ 0	locks=0 ]	(	axalist	)
 useaxblist	[ 0	locks=0 ]	(	"off"	)
 axblist	[ 0	locks=0 ]	(	axblist	)
 collapsetinyedges	[ 0	locks=0 ]	(	"on"	)
-lengththreshold	[ 0	locks=0 ]	(	1.0000000000000001e-05	)
+lengththreshold	[ 0	locks=0 ]	(	1e-5	)
 outputprimgroups	[ 0	locks=0 ]	(	0	)
 useapolys	[ 0	locks=0 ]	(	"off"	)
 apolys	[ 0	locks=0 ]	(	apolys	)
@@ -15031,8 +15117,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -15189,6 +15275,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle5.chn"
@@ -15223,6 +15315,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"s@shop_materialpath = chs(\"parm\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -15592,7 +15685,7 @@ Content-Type: text/plain
 {
 version 0.8
 uvattrib	[ 0	locks=0 ]	(	[ uvattrib	uv ] 	)
-fFuseDist	[ 0	locks=0 ]	(	[ fFuseDist	1.0000000000000001e-05 ] 	)
+fFuseDist	[ 0	locks=0 ]	(	[ fFuseDist	1e-5 ] 	)
 cutoff	[ 0	locks=0 ]	(	[ cutoff	0.0001 ] 	)
 method	[ 0	locks=0 ]	(	[ method	1 ] 	)
 iterations	[ 0	locks=0 ]	(	[ iterations	100 ] 	)
@@ -15760,7 +15853,7 @@ version 0.8
 fd_general	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	[ mode	1 ] 	)
 bKeeplargest	[ 0	locks=0 ]	(	"off"	)
-threshold	[ 0	locks=0 ]	(	[ threshold	0.10000000000000001 ] 	)
+threshold	[ 0	locks=0 ]	(	[ threshold	0.1 ] 	)
 negate	[ 0	locks=0 ]	(	[ negate	0 ] 	)
 fd_advanced	[ 0	locks=0 ]	(	0	)
 bCalculatePieceAttr	[ 0	locks=0 ]	(	"on"	)
@@ -16006,6 +16099,12 @@ Content-Type: text/plain
         label   "Sprite Cutoff"
         export  none
     }
+    parm {
+        name    "shadeopencurves"
+        baseparm
+        label   "Shade Open Curves"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/visualize1.parm"
@@ -16016,6 +16115,7 @@ version 0.8
 setvisualizers	[ 0	locks=0 ]	(	"on"	)
 clearvisualizers	[ 0	locks=0 ]	(	"off"	)
 wireframe	[ 0	locks=0 ]	(	"nochange"	)
+shadeopencurves	[ 0	locks=0 ]	(	"nochange"	)
 lit	[ 0	locks=0 ]	(	"nochange"	)
 xray	[ 0	locks=0 ]	(	"nochange"	)
 setcuspangle	[ 0	locks=0 ]	(	"off"	)
@@ -16198,6 +16298,7 @@ snippet	[ 0	locks=0 ]	(	"s@LODVis = sprintf(\"LOD%g - %g tri\", int(detail(1, \"
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -16284,6 +16385,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -16670,6 +16772,12 @@ Content-Type: text/plain
         type    string
         default { "" }
     }
+    parm {
+        name    "maintainstate"
+        baseparm
+        label   "Maintain State"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/python1.parm"
@@ -16680,6 +16788,7 @@ version 0.8
 python	[ 0	locks=0 ]	(	"node = hou.pwd()
 
 print node.inputs()[0].parm('execute').pressButton()"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 parm	[ 0	locks=0 ]	(	""	)
 }
 
@@ -17093,11 +17202,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"on"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -17174,6 +17283,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@iteration = detail(1, \"iteration\", 0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -17570,10 +17680,12 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 keepOriginal	[ 0	locks=0 ]	(	"off"	)
+createboundinggeo	[ 0	locks=0 ]	(	"on"	)
 createempty	[ 0	locks=0 ]	(	"on"	)
 separator	[ 0	locks=0 ]	(	)
 boundtype	[ 0	locks=0 ]	(	"off"	)
 orientedbbox	[ 0	locks=0 ]	(	"off"	)
+refinementiterations	[ 0	locks=0 ]	(	6	)
 dodivs	[ 0	locks=0 ]	(	"off"	)
 divs	[ 0	locks=0 ]	(	3	3	3	)
 rebar	[ 0	locks=0 ]	(	"off"	)
@@ -17668,6 +17780,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -17825,6 +17938,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -18137,6 +18251,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -18212,6 +18327,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@size = max(vector(getbbox_size(0)).x, vector(getbbox_size(0)).y);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -18285,6 +18401,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	0	)
 color	[ 0	locks=0 ]	(	0	0	0	)

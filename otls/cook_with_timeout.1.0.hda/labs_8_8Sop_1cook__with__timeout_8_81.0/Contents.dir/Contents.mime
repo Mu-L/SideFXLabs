@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.821474 6.53996
+position -0.5 -2.0902
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -209,11 +213,19 @@ cookbutton	[ 0	locks=0 ]	(	[ cookbutton	0 ] 	)
 dirtybutton	[ 0	locks=0 ]	(	[ dirtybutton	0 ] 	)
 cancelbutton	[ 0	locks=0 ]	(	[ cancelbutton	0 ] 	)
 taskgraphsection	[ 0	locks=0 ]	(	0	)
+checkpointformat	[ 0	locks=0 ]	(	"1"	)
+taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 savetaskgraph	[ 0	locks=0 ]	(	0	)
 loadtaskgraph	[ 0	locks=0 ]	(	0	)
-taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 taskgraphautosave	[ 0	locks=0 ]	(	"off"	)
 taskgraphsaverate	[ 0	locks=0 ]	(	10	)
+checkpointfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.checkpoint.json	)
+loadcheckpoint	[ 0	locks=0 ]	(	0	)
+checkpointload	[ 0	locks=0 ]	(	"0"	)
+checkpointenabled	[ 0	locks=0 ]	(	"off"	)
+checkpointrate	[ 0	locks=0 ]	(	10	)
+sep2	[ 0	locks=0 ]	(	)
+savegraphattribs	[ 0	locks=0 ]	(	"on"	)
 schedulersection	[ 0	locks=0 ]	(	0	)
 topscheduler	[ 0	locks=0 ]	(	localscheduler	)
 usedefaultlabel	[ 0	locks=0 ]	(	"off"	)
@@ -222,6 +234,7 @@ sep1	[ 0	locks=0 ]	(	)
 regenerationtype	[ 0	locks=0 ]	(	"0"	)
 evaluationtime	[ 0	locks=0 ]	(	"0"	)
 customtime	[ 0	locks=0 ]	(	0	)
+savescenefile	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -249,7 +262,7 @@ Content-Type: text/plain
 comment ""
 position -0.50125 -0.14845
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -297,14 +310,20 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	1	1	)
+folder0	[ 0	locks=0 ]	(	1	1	0	)
 folder5	[ 0	locks=0 ]	(	0	)
 maxprocsmenu	[ 0	locks=0 ]	(	"0"	)
 maxprocs	[ 0	locks=0 ]	(	1	)
+pdg_usemaxtasks	[ 0	locks=0 ]	(	"off"	)
+pdg_maxtasks	[ 0	locks=0 ]	(	0	)
 verbose	[ 0	locks=0 ]	(	"off"	)
 pdg_waitforfailures	[ 0	locks=0 ]	(	"off"	)
 folder4	[ 0	locks=0 ]	(	0	)
 pdg_workingdir	[ 0	locks=0 ]	(	$HIP	)
+uselogfilename	[ 0	locks=0 ]	(	"off"	)
+logfilename	[ 0	locks=0 ]	(	`@pdg_name`.log	)
+hythonbin	[ 0	locks=0 ]	(	"0"	)
+hythonbincustomuniversal	[ 0	locks=0 ]	(	""	)
 pdg_workitemdatasource	[ 0	locks=0 ]	(	"0"	)
 pdg_compressworkitemdata	[ 0	locks=0 ]	(	"on"	)
 pdg_validateoutputs	[ 0	locks=0 ]	(	"on"	)
@@ -313,13 +332,23 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
-sepparm3	[ 0	locks=0 ]	(	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
 tempdircustom	[ 0	locks=0 ]	(	$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp	)
+pdg_deletetempdir	[ 0	locks=0 ]	(	"0"	)
 socketcallbacks	[ 0	locks=0 ]	(	1	)
-folder0_2	[ 0	locks=0 ]	(	0	)
+pdg_rpcignoreerrors	[ 0	locks=0 ]	(	"0"	)
+pdg_rpcmaxerrors	[ 0	locks=0 ]	(	5	)
+pdg_rpctimeout	[ 0	locks=0 ]	(	4	)
+pdg_rpcretries	[ 0	locks=0 ]	(	2	)
+pdg_rpcbackoff	[ 0	locks=0 ]	(	2	)
+pdg_rpcbatch	[ 0	locks=0 ]	(	1	)
+pdg_rpcrelease	[ 0	locks=0 ]	(	"on"	)
+folder0_3	[ 0	locks=0 ]	(	0	)
 local_single	[ 0	locks=0 ]	(	"off"	)
 local_is_CPU_number_set	[ 0	locks=0 ]	(	"off"	)
 local_CPUs_to_use	[ 0	locks=0 ]	(	1	)
@@ -332,6 +361,10 @@ local_enabletimeout	[ 0	locks=0 ]	(	[ local_enabletimeout	0 ] 	)
 local_maxtime	[ 0	locks=0 ]	(	[ local_maxtime	0 ] 	)
 local_handletimeout	[ 0	locks=0 ]	(	"0"	)
 sepparm4	[ 0	locks=0 ]	(	)
+local_enablemaxmemory	[ 0	locks=0 ]	(	"off"	)
+local_maxmemory	[ 0	locks=0 ]	(	0	)
+local_handlememory	[ 0	locks=0 ]	(	"0"	)
+sepparm5	[ 0	locks=0 ]	(	)
 local_echandleby	[ 0	locks=0 ]	(	"0"	)
 local_echandleall	[ 0	locks=0 ]	(	"on"	)
 local_eccustomcode	[ 0	locks=0 ]	(	1	)
@@ -345,6 +378,7 @@ local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
+local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
 }
 
@@ -373,7 +407,7 @@ Content-Type: text/plain
 comment ""
 position -0.5 -12.0902
 connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -464,14 +498,14 @@ Content-Type: text/plain
 
 {
 version 0.8
-ropgeometry	[ 0	locks=0 ]	(	0	0	0	0	0	0	)
+rop	[ 0	locks=0 ]	(	0	0	0	0	0	)
 framegeneration	[ 0	locks=0 ]	(	[ framegeneration	0 ] 	)
 useframeoverride	[ 0	locks=0 ]	(	[ useframeoverride	0 ] 	)
 frameoverride	[ 0	locks=0 ]	(	[ frameoverride	1 ] 	)
 f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	[ f3	1 ] 	)
 singletask	[ 0	locks=0 ]	(	[ singletask	0 ] 	)
 expandinputs	[ 0	locks=0 ]	(	"off"	)
-sepparm3	[ 0	locks=0 ]	(	)
+sepparm	[ 0	locks=0 ]	(	)
 take	[ 0	locks=0 ]	(	_current_	)
 usesoppath	[ 0	locks=0 ]	(	"on"	)
 soppath	[ 8	locks=0 ]	(	"`ifs(ch(\"../../cookpath\") < 2, ifs(ch(\"../../cookpath\") < 1, \"../../network_to_cook/\", chsop(\"../../soppath\")), \"../../../\" + opinput(\"../../\", ch(\"../../cookpath\") - 2))`"	)
@@ -487,23 +521,32 @@ saveretry	[ 0	locks=0 ]	(	0	)
 savebackground	[ 0	locks=0 ]	(	"on"	)
 pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"2"	)
+enablepdgservice	[ 0	locks=0 ]	(	"off"	)
+pdgservicename	[ 0	locks=0 ]	(	ropfetch	)
+pdg_servicename	[ 0	locks=0 ]	(	ropfetch	)
+manageservices	[ 0	locks=0 ]	(	0	)
+sepparm2	[ 0	locks=0 ]	(	)
 usereloadpath	[ 0	locks=0 ]	(	"off"	)
 reloadpath	[ 0	locks=0 ]	(	""	)
 sethip	[ 0	locks=0 ]	(	"off"	)
 ignoreerrors	[ 0	locks=0 ]	(	"off"	)
-sepparm7	[ 0	locks=0 ]	(	)
-logoutput	[ 0	locks=0 ]	(	"1"	)
-uselogformat	[ 0	locks=0 ]	(	"off"	)
-logformat	[ 0	locks=0 ]	(	OUTPUT_FILE:(.*);(.*)	)
-sepparm	[ 0	locks=0 ]	(	)
+unlocktargetrop	[ 0	locks=0 ]	(	"on"	)
+sepparm3	[ 0	locks=0 ]	(	)
+folder	[ 0	locks=0 ]	(	0	0	0	0	)
 batchall	[ 0	locks=0 ]	(	"off"	)
 framesperbatch	[ 0	locks=0 ]	(	1	)
 cookwhen	[ 0	locks=0 ]	(	"0"	)
+fixedframecount	[ 0	locks=0 ]	(	0	)
+percentframes	[ 0	locks=0 ]	(	100	)
 setframes	[ 0	locks=0 ]	(	"off"	)
 resumebatch	[ 0	locks=0 ]	(	"off"	)
-sepparm2	[ 0	locks=0 ]	(	)
+logoutput	[ 0	locks=0 ]	(	"1"	)
+uselogformat	[ 0	locks=0 ]	(	"off"	)
+logformat	[ 0	locks=0 ]	(	OUTPUT_FILE:(.*);(.*)	)
 distribute	[ 0	locks=0 ]	(	"off"	)
 control	[ 0	locks=0 ]	(	""	)
+hostname	[ 0	locks=0 ]	(	"0"	)
 usetrackerport	[ 0	locks=0 ]	(	"off"	)
 trackerport	[ 0	locks=0 ]	(	0	)
 usewebport	[ 0	locks=0 ]	(	"off"	)
@@ -513,8 +556,6 @@ sepparm4	[ 0	locks=0 ]	(	)
 slicetype	[ 0	locks=0 ]	(	"0"	)
 slicecount	[ 0	locks=0 ]	(	2	)
 slicedivs	[ 0	locks=0 ]	(	0	0	0	)
-sepparm5	[ 0	locks=0 ]	(	)
-debugging2	[ 0	locks=0 ]	(	0	)
 enableperfmon	[ 0	locks=0 ]	(	"off"	)
 saveperffile	[ 0	locks=0 ]	(	"on"	)
 perffile	[ 0	locks=0 ]	(	$HIP/$OS.performance.$F.hperf	)
@@ -538,16 +579,19 @@ postrender	[ 0	locks=0 ]	(	""	)
 lpostrender	[ 0	locks=0 ]	(	hscript	)
 execute	[ 0	locks=0 ]	(	0	)
 executebackground	[ 0	locks=0 ]	(	0	)
+renderdialog	[ 0	locks=0 ]	(	0	)
 trange	[ 0	locks=0 ]	(	"off"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
-addjobparms	[ 0	locks=0 ]	(	0	)
-sepparm6	[ 0	locks=0 ]	(	)
+addjobparms	[ 0	locks=0 ]	(	"Local"	)
+pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
+pdg_schedulewhen	[ 0	locks=0 ]	(	1	)
+sepparm5	[ 0	locks=0 ]	(	)
 pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"2"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
-enablepdgservice	[ 0	locks=0 ]	(	"off"	)
-pdgservicename	[ 0	locks=0 ]	(	ropfetch	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -557,7 +601,7 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":""
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -840,6 +884,7 @@ Content-Type: text/plain
 {
 version 0.8
 pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"1"	)
 folder0	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	"2"	)
 filepath	[ 0	locks=0 ]	(	""	)
@@ -994,6 +1039,25 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet1/partitionbyframe1.chn"
+Content-Type: text/plain
+
+{
+    channel filterrangex {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FSTART }
+    }
+    channel filterrangey {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FEND }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/topnet1/partitionbyframe1.parm"
 Content-Type: text/plain
 
@@ -1003,11 +1067,18 @@ frame	[ 0	locks=0 ]	(	0	0	0	)
 createpartitionsfor	[ 0	locks=0 ]	(	"1"	)
 framerounding	[ 0	locks=0 ]	(	"0"	)
 ignoremissing	[ 0	locks=0 ]	(	"on"	)
+useupdaterange	[ 0	locks=0 ]	(	"on"	)
+updaterange	[ 0	locks=0 ]	(	range	)
 indexfromframe	[ 0	locks=0 ]	(	"off"	)
 rangemissing	[ 0	locks=0 ]	(	"2"	)
 rangeattribute	[ 0	locks=0 ]	(	range	)
 isolate	[ 0	locks=0 ]	(	"off"	)
 sepparm2	[ 0	locks=0 ]	(	)
+filtertype	[ 0	locks=0 ]	(	"0"	)
+filterrange	[ 0	locks=0 ]	(	[ filterrangex	0 ] 	[ filterrangey	0 ] 	)
+filterpattern	[ 0	locks=0 ]	(	$FSTART-$FEND	)
+filterinclusive	[ 0	locks=0 ]	(	"on"	)
+sepparm3	[ 0	locks=0 ]	(	)
 pdg_partitionsplit	[ 0	locks=0 ]	(	"off"	)
 pdg_partitionsplitattrib	[ 0	locks=0 ]	(	wedgeindex	)
 pdg_partitionsplitmissing	[ 0	locks=0 ]	(	"0"	)
@@ -1016,11 +1087,13 @@ wedgeattribute	[ 0	locks=0 ]	(	wedgeindex	)
 missingattribute	[ 0	locks=0 ]	(	"0"	)
 pdg_partitionsplitdefault	[ 0	locks=0 ]	(	""	)
 pdg_partitionsplitpartial	[ 0	locks=0 ]	(	"off"	)
+pdg_partitionmergeoutputs	[ 0	locks=0 ]	(	"4"	)
 pdg_partitionmerge	[ 0	locks=0 ]	(	"off"	)
 pdg_partitionmergeattributes	[ 0	locks=0 ]	(	1	)
 pdg_partitionwhen	[ 0	locks=0 ]	(	"0"	)
 pdg_partitiontargettype	[ 0	locks=0 ]	(	"0"	)
 pdg_partitiontarget	[ 0	locks=0 ]	(	""	)
+pdg_partitionignorefailures	[ 0	locks=0 ]	(	"off"	)
 sepparm	[ 0	locks=0 ]	(	)
 pdg_partitionsort	[ 0	locks=0 ]	(	"1"	)
 pdg_partitionsortdirection	[ 0	locks=0 ]	(	"0"	)
@@ -1113,6 +1186,9 @@ Content-Type: text/plain
 {
 version 0.8
 input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+invalidindex	[ 0	locks=0 ]	(	"1"	)
+invalidate	[ 0	locks=0 ]	(	"on"	)
+keepfailed	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1230,12 +1306,22 @@ pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 filetypes	[ 0	locks=0 ]	(	1	)
 pattern	[ 0	locks=0 ]	(	`chs(\"../../sopoutput\")`	)
 recursive	[ 0	locks=0 ]	(	"off"	)
+followlinks	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
 nomatchbehavior	[ 0	locks=0 ]	(	"createattr"	)
 nomatchattr	[ 0	locks=0 ]	(	exists	)
 folder1	[ 0	locks=0 ]	(	0	)
-includeextensions	[ 0	locks=0 ]	(	"off"	)
 split	[ 0	locks=0 ]	(	"on"	)
+includeextensions	[ 0	locks=0 ]	(	"off"	)
 inheritupstreamindex	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+fileattrib	[ 0	locks=0 ]	(	filename	)
+directoryattrib	[ 0	locks=0 ]	(	directory	)
+extensionattrib	[ 0	locks=0 ]	(	extension	)
+usesizeattrib	[ 0	locks=0 ]	(	"off"	)
+sizeattrib	[ 0	locks=0 ]	(	filesize	)
+usemtimeattrib	[ 0	locks=0 ]	(	"off"	)
+mtimeattrib	[ 0	locks=0 ]	(	filemtime	)
 errornomatch	[ 0	locks=0 ]	(	"off"	)
 splitnomatchbehavior	[ 0	locks=0 ]	(	"ignore"	)
 folder2	[ 0	locks=0 ]	(	0	)
@@ -1318,6 +1404,9 @@ Content-Type: text/plain
 {
 version 0.8
 input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+invalidindex	[ 0	locks=0 ]	(	"1"	)
+invalidate	[ 0	locks=0 ]	(	"on"	)
+keepfailed	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1377,6 +1466,7 @@ Content-Type: text/plain
 {
 version 0.8
 pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"1"	)
 folder0	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	"2"	)
 filepath	[ 0	locks=0 ]	(	""	)
@@ -1413,7 +1503,7 @@ Content-Type: text/plain
 comment ""
 position -0.5 -14.0902
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -1444,18 +1534,49 @@ Content-Type: text/plain
 {
 version 0.8
 folder0	[ 0	locks=0 ]	(	0	0	0	)
-pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 inprocess	[ 0	locks=0 ]	(	"on"	)
+pdgservicename	[ 0	locks=0 ]	(	pythonscript	)
 sepparm2	[ 0	locks=0 ]	(	)
-expandstrings	[ 0	locks=0 ]	(	"off"	)
+evaluation	[ 0	locks=0 ]	(	1	)
+pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"1"	)
+pdg_useserviceblock	[ 0	locks=0 ]	(	"1"	)
+pdg_servicename	[ 0	locks=0 ]	(	pythonscript	)
+manageservices	[ 0	locks=0 ]	(	0	)
+pdg_servicereset	[ 0	locks=0 ]	(	"0"	)
+pdg_serviceresetwhen	[ 0	locks=0 ]	(	"1"	)
 exectuable	[ 0	locks=0 ]	(	0	)
 pythonbin	[ 0	locks=0 ]	(	"0"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
+pythonvenv	[ 0	locks=0 ]	(	`@venvroot`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
+nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	""	)
 extraargs	[ 0	locks=0 ]	(	""	)
 sepparm	[ 0	locks=0 ]	(	)
+pythonpaths	[ 0	locks=0 ]	(	0	)
+batching	[ 0	locks=0 ]	(	0	)
+batchtype	[ 0	locks=0 ]	(	"0"	)
+scripttype	[ 0	locks=0 ]	(	"0"	)
+batchactivation	[ 0	locks=0 ]	(	"0"	)
+usebatchframes	[ 0	locks=0 ]	(	"off"	)
+batchframes	[ 0	locks=0 ]	(	1	)
+batchsize	[ 0	locks=0 ]	(	1	)
+prescript	[ 0	locks=0 ]	(	"# Script code that runs once before a batch begins.
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+#
+# In addition to the above, in-process scripts can also access:
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+"	)
+expansion	[ 0	locks=0 ]	(	0	)
+expandscript	[ 0	locks=0 ]	(	"on"	)
+expandstrings	[ 0	locks=0 ]	(	"off"	)
+scriptsource	[ 0	locks=0 ]	(	"0"	)
 script	[ 0	locks=0 ]	(	"# Executes a Python script, either in process or as a job
 #
 # The following variables and functions are available in both case:
@@ -1470,6 +1591,7 @@ import hou
 hou.pwd().node('../../load_file').parm('reload').pressButton()
 
 "	)
+scriptfile	[ 0	locks=0 ]	(	$HIP/script.py	)
 pdg_cachemode	[ 0	locks=0 ]	(	"0"	)
 copyoutputs	[ 0	locks=0 ]	(	"2"	)
 sepparm5	[ 0	locks=0 ]	(	)
@@ -1478,13 +1600,30 @@ expectedoutputattr	[ 0	locks=0 ]	(	""	)
 useexpectedoutputtag	[ 0	locks=0 ]	(	"off"	)
 expectedoutputtag	[ 0	locks=0 ]	(	file	)
 expectedoutputfiles	[ 0	locks=0 ]	(	0	)
+expectedscript	[ 0	locks=0 ]	(	"# Script code that runs for each task to assign expectd outputs
+#
+# The following variables are available:
+# work_item    - the work item currently running 
+# graph        - the graph attributes for the current work item
+# self         - the current PDG node
+# parent_item  - the parent work item, if it exists
+#
+# For example:
+#
+# work_item.addExpectedOutputFile(
+#     \"example.{}.txt\".format(work_item.index),
+#     tag=\"file/txt\")"	)
 topscheduler	[ 0	locks=0 ]	(	""	)
 addjobparms	[ 0	locks=0 ]	(	0	)
+pdg_useschedulewhen	[ 0	locks=0 ]	(	"off"	)
+pdg_schedulewhen	[ 0	locks=0 ]	(	1	)
 sepparm4	[ 0	locks=0 ]	(	)
 pdg_workitemlabel	[ 0	locks=0 ]	(	"0"	)
 pdg_workitemlabelexpr	[ 0	locks=0 ]	(	""	)
 pdg_workitempriority	[ 0	locks=0 ]	(	"0"	)
 pdg_workitempriorityexpr	[ 0	locks=0 ]	(	0	)
+pdg_commandtype	[ 0	locks=0 ]	(	"0"	)
+pdg_command	[ 0	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1953,11 +2092,19 @@ cookbutton	[ 0	locks=0 ]	(	[ cookbutton	0 ] 	)
 dirtybutton	[ 0	locks=0 ]	(	[ dirtybutton	0 ] 	)
 cancelbutton	[ 0	locks=0 ]	(	0	)
 taskgraphsection	[ 0	locks=0 ]	(	0	)
+checkpointformat	[ 0	locks=0 ]	(	"1"	)
+taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 savetaskgraph	[ 0	locks=0 ]	(	0	)
 loadtaskgraph	[ 0	locks=0 ]	(	0	)
-taskgraphfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.taskgraph.$F.py	)
 taskgraphautosave	[ 0	locks=0 ]	(	"off"	)
 taskgraphsaverate	[ 0	locks=0 ]	(	10	)
+checkpointfile	[ 0	locks=0 ]	(	$HIP/$HIPNAME.checkpoint.json	)
+loadcheckpoint	[ 0	locks=0 ]	(	0	)
+checkpointload	[ 0	locks=0 ]	(	"0"	)
+checkpointenabled	[ 0	locks=0 ]	(	"off"	)
+checkpointrate	[ 0	locks=0 ]	(	10	)
+sep2	[ 0	locks=0 ]	(	)
+savegraphattribs	[ 0	locks=0 ]	(	"on"	)
 schedulersection	[ 0	locks=0 ]	(	0	)
 topscheduler	[ 0	locks=0 ]	(	localscheduler	)
 usedefaultlabel	[ 0	locks=0 ]	(	"off"	)
@@ -1966,6 +2113,7 @@ sep1	[ 0	locks=0 ]	(	)
 regenerationtype	[ 0	locks=0 ]	(	"0"	)
 evaluationtime	[ 0	locks=0 ]	(	"0"	)
 customtime	[ 0	locks=0 ]	(	0	)
+savescenefile	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1993,7 +2141,7 @@ Content-Type: text/plain
 comment ""
 position -0.50125 -0.14845
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -2021,14 +2169,20 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
+folder0	[ 0	locks=0 ]	(	0	0	0	)
 folder5	[ 0	locks=0 ]	(	0	)
 maxprocsmenu	[ 0	locks=0 ]	(	"0"	)
 maxprocs	[ 0	locks=0 ]	(	1	)
+pdg_usemaxtasks	[ 0	locks=0 ]	(	"off"	)
+pdg_maxtasks	[ 0	locks=0 ]	(	0	)
 verbose	[ 0	locks=0 ]	(	"off"	)
 pdg_waitforfailures	[ 0	locks=0 ]	(	"off"	)
 folder4	[ 0	locks=0 ]	(	0	)
 pdg_workingdir	[ 0	locks=0 ]	(	$HIP	)
+uselogfilename	[ 0	locks=0 ]	(	"off"	)
+logfilename	[ 0	locks=0 ]	(	`@pdg_name`.log	)
+hythonbin	[ 0	locks=0 ]	(	"0"	)
+hythonbincustomuniversal	[ 0	locks=0 ]	(	""	)
 pdg_workitemdatasource	[ 0	locks=0 ]	(	"0"	)
 pdg_compressworkitemdata	[ 0	locks=0 ]	(	"on"	)
 pdg_validateoutputs	[ 0	locks=0 ]	(	"on"	)
@@ -2037,13 +2191,23 @@ sepparm2	[ 0	locks=0 ]	(	)
 pdg_mapmode	[ 0	locks=0 ]	(	"0"	)
 pdg_usemapzone	[ 0	locks=0 ]	(	"off"	)
 pdg_mapzone	[ 0	locks=0 ]	(	$PDG_PATHMAP_ZONE	)
-sepparm3	[ 0	locks=0 ]	(	)
+sepparm6	[ 0	locks=0 ]	(	)
+pdg_transfertype	[ 0	locks=0 ]	(	"0"	)
+pdg_transferroot	[ 0	locks=0 ]	(	$HIP	)
 folder1	[ 0	locks=0 ]	(	0	)
 tempdirmenu	[ 0	locks=0 ]	(	"1"	)
 tempdirappendpid	[ 0	locks=0 ]	(	"on"	)
 tempdircustom	[ 0	locks=0 ]	(	$HOUDINI_TEMP_DIR/$HIPNAME/pdgtemp	)
+pdg_deletetempdir	[ 0	locks=0 ]	(	"0"	)
 socketcallbacks	[ 0	locks=0 ]	(	1	)
-folder0_2	[ 0	locks=0 ]	(	0	)
+pdg_rpcignoreerrors	[ 0	locks=0 ]	(	"0"	)
+pdg_rpcmaxerrors	[ 0	locks=0 ]	(	5	)
+pdg_rpctimeout	[ 0	locks=0 ]	(	4	)
+pdg_rpcretries	[ 0	locks=0 ]	(	2	)
+pdg_rpcbackoff	[ 0	locks=0 ]	(	2	)
+pdg_rpcbatch	[ 0	locks=0 ]	(	1	)
+pdg_rpcrelease	[ 0	locks=0 ]	(	"on"	)
+folder0_3	[ 0	locks=0 ]	(	0	)
 local_single	[ 0	locks=0 ]	(	"off"	)
 local_is_CPU_number_set	[ 0	locks=0 ]	(	"off"	)
 local_CPUs_to_use	[ 0	locks=0 ]	(	1	)
@@ -2056,6 +2220,10 @@ local_enabletimeout	[ 0	locks=0 ]	(	"off"	)
 local_maxtime	[ 0	locks=0 ]	(	0	)
 local_handletimeout	[ 0	locks=0 ]	(	"0"	)
 sepparm4	[ 0	locks=0 ]	(	)
+local_enablemaxmemory	[ 0	locks=0 ]	(	"off"	)
+local_maxmemory	[ 0	locks=0 ]	(	0	)
+local_handlememory	[ 0	locks=0 ]	(	"0"	)
+sepparm5	[ 0	locks=0 ]	(	)
 local_echandleby	[ 0	locks=0 ]	(	"0"	)
 local_echandleall	[ 0	locks=0 ]	(	"on"	)
 local_eccustomcode	[ 0	locks=0 ]	(	1	)
@@ -2069,6 +2237,7 @@ local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
+local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
 }
 
@@ -2129,6 +2298,7 @@ Content-Type: text/plain
 {
 version 0.8
 pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"1"	)
 folder0	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	"2"	)
 filepath	[ 0	locks=0 ]	(	""	)
@@ -2283,6 +2453,25 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/topnet2/partitionbyframe1.chn"
+Content-Type: text/plain
+
+{
+    channel filterrangex {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FSTART }
+    }
+    channel filterrangey {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = $FEND }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/topnet2/partitionbyframe1.parm"
 Content-Type: text/plain
 
@@ -2292,11 +2481,18 @@ frame	[ 0	locks=0 ]	(	0	0	0	)
 createpartitionsfor	[ 0	locks=0 ]	(	"1"	)
 framerounding	[ 0	locks=0 ]	(	"0"	)
 ignoremissing	[ 0	locks=0 ]	(	"on"	)
+useupdaterange	[ 0	locks=0 ]	(	"on"	)
+updaterange	[ 0	locks=0 ]	(	range	)
 indexfromframe	[ 0	locks=0 ]	(	"off"	)
 rangemissing	[ 0	locks=0 ]	(	"2"	)
 rangeattribute	[ 0	locks=0 ]	(	range	)
 isolate	[ 0	locks=0 ]	(	"off"	)
 sepparm2	[ 0	locks=0 ]	(	)
+filtertype	[ 0	locks=0 ]	(	"0"	)
+filterrange	[ 0	locks=0 ]	(	[ filterrangex	0 ] 	[ filterrangey	0 ] 	)
+filterpattern	[ 0	locks=0 ]	(	$FSTART-$FEND	)
+filterinclusive	[ 0	locks=0 ]	(	"on"	)
+sepparm3	[ 0	locks=0 ]	(	)
 pdg_partitionsplit	[ 0	locks=0 ]	(	"off"	)
 pdg_partitionsplitattrib	[ 0	locks=0 ]	(	wedgeindex	)
 pdg_partitionsplitmissing	[ 0	locks=0 ]	(	"0"	)
@@ -2305,11 +2501,13 @@ wedgeattribute	[ 0	locks=0 ]	(	wedgeindex	)
 missingattribute	[ 0	locks=0 ]	(	"0"	)
 pdg_partitionsplitdefault	[ 0	locks=0 ]	(	""	)
 pdg_partitionsplitpartial	[ 0	locks=0 ]	(	"off"	)
+pdg_partitionmergeoutputs	[ 0	locks=0 ]	(	"4"	)
 pdg_partitionmerge	[ 0	locks=0 ]	(	"off"	)
 pdg_partitionmergeattributes	[ 0	locks=0 ]	(	1	)
 pdg_partitionwhen	[ 0	locks=0 ]	(	"0"	)
 pdg_partitiontargettype	[ 0	locks=0 ]	(	"0"	)
 pdg_partitiontarget	[ 0	locks=0 ]	(	""	)
+pdg_partitionignorefailures	[ 0	locks=0 ]	(	"off"	)
 sepparm	[ 0	locks=0 ]	(	)
 pdg_partitionsort	[ 0	locks=0 ]	(	"1"	)
 pdg_partitionsortdirection	[ 0	locks=0 ]	(	"0"	)
@@ -2389,12 +2587,22 @@ pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
 filetypes	[ 0	locks=0 ]	(	1	)
 pattern	[ 0	locks=0 ]	(	`chs(\"../../sopoutput\")`	)
 recursive	[ 0	locks=0 ]	(	"off"	)
+followlinks	[ 0	locks=0 ]	(	"off"	)
+sepparm	[ 0	locks=0 ]	(	)
 nomatchbehavior	[ 0	locks=0 ]	(	"createattr"	)
 nomatchattr	[ 0	locks=0 ]	(	exists	)
 folder1	[ 0	locks=0 ]	(	0	)
-includeextensions	[ 0	locks=0 ]	(	"off"	)
 split	[ 0	locks=0 ]	(	"on"	)
+includeextensions	[ 0	locks=0 ]	(	"off"	)
 inheritupstreamindex	[ 0	locks=0 ]	(	"off"	)
+sepparm2	[ 0	locks=0 ]	(	)
+fileattrib	[ 0	locks=0 ]	(	filename	)
+directoryattrib	[ 0	locks=0 ]	(	directory	)
+extensionattrib	[ 0	locks=0 ]	(	extension	)
+usesizeattrib	[ 0	locks=0 ]	(	"off"	)
+sizeattrib	[ 0	locks=0 ]	(	filesize	)
+usemtimeattrib	[ 0	locks=0 ]	(	"off"	)
+mtimeattrib	[ 0	locks=0 ]	(	filemtime	)
 errornomatch	[ 0	locks=0 ]	(	"off"	)
 splitnomatchbehavior	[ 0	locks=0 ]	(	"ignore"	)
 folder2	[ 0	locks=0 ]	(	0	)
@@ -2477,6 +2685,9 @@ Content-Type: text/plain
 {
 version 0.8
 input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+invalidindex	[ 0	locks=0 ]	(	"1"	)
+invalidate	[ 0	locks=0 ]	(	"on"	)
+keepfailed	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2536,6 +2747,7 @@ Content-Type: text/plain
 {
 version 0.8
 pdg_workitemgeneration	[ 0	locks=0 ]	(	"2"	)
+pdg_cooktype	[ 0	locks=0 ]	(	"1"	)
 folder0	[ 0	locks=0 ]	(	0	)
 mode	[ 0	locks=0 ]	(	"2"	)
 filepath	[ 0	locks=0 ]	(	""	)

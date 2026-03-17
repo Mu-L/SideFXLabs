@@ -21,7 +21,7 @@ Content-Type: text/plain
 objflags objflags =  origin off
 pretransform UT_DMatrix4 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1
 comment ""
-position -0.5 -0.15
+position -2.5 -4.15
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on selectable on
 outputsNamed3
@@ -37,7 +37,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -52,7 +52,11 @@ Content-Type: text/plain
 {
 	"___Version___":{
 		"type":"string",
-		"value":"___EXTERNAL___"
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -892,7 +896,7 @@ vm_matte	[ 0	locks=0 ]	(	"off"	)
 vm_rayshade	[ 0	locks=0 ]	(	"off"	)
 geo_velocityblur	[ 0	locks=0 ]	(	"off"	)
 vm_shadingquality	[ 0	locks=0 ]	(	1	)
-vm_flatness	[ 0	locks=0 ]	(	0.050000000000000003	)
+vm_flatness	[ 0	locks=0 ]	(	0.05	)
 vm_raypredice	[ 0	locks=0 ]	(	0	)
 vm_curvesurface	[ 0	locks=0 ]	(	"off"	)
 vm_rmbackface	[ 0	locks=0 ]	(	"off"	)
@@ -1784,11 +1788,11 @@ closedall	[ 0	locks=0 ]	(	"off"	)
 addparticlesystem	[ 0	locks=0 ]	(	"off"	)
 particlegroup	[ 0	locks=0 ]	(	""	)
 appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
 usept0	[ 0	locks=0 ]	(	"on"	)
 pt0	[ 0	locks=0 ]	(	0	0	0	)
 weight0	[ 0	locks=0 ]	(	1	)
-prim0	[ 0	locks=0 ]	(	""	)
-closed0	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2004,12 +2008,14 @@ convertunits	[ 0	locks=0 ]	(	"off"	)
 polylod	[ 0	locks=0 ]	(	1	)
 detectconstpointobjs	[ 0	locks=0 ]	(	"on"	)
 convertsurfaces	[ 0	locks=0 ]	(	"off"	)
+preserveshapenames	[ 0	locks=0 ]	(	"off"	)
 conservemem	[ 0	locks=0 ]	(	"off"	)
 deformsasvcs	[ 0	locks=0 ]	(	"off"	)
 forceblendshape	[ 0	locks=0 ]	(	"off"	)
 forceskindeform	[ 0	locks=0 ]	(	"off"	)
 exportendeffectors	[ 0	locks=0 ]	(	"off"	)
 embedmedia	[ 0	locks=0 ]	(	"off"	)
+computesmoothinggroups	[ 0	locks=0 ]	(	"off"	)
 exportclips	[ 0	locks=0 ]	(	"off"	)
 numclips	[ 0	locks=0 ]	(	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)

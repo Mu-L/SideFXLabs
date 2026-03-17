@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -4.15
+position -0.5 1.85
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -127,8 +131,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -314,6 +318,12 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle4.chn"
@@ -393,6 +403,7 @@ f@__rawthicc = Thicc/numrays;
 f@__normalizedthicc = fit(Thicc, mindist*numrays, maxdist*numrays, 0, 1);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -495,6 +506,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	3	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -893,6 +905,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	__normalizedthicc	)
@@ -901,6 +914,7 @@ usenewname	[ 0	locks=0 ]	(	"on"	)
 newname	[ 0	locks=0 ]	(	`chs(\"../attrname\")`	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -967,6 +981,7 @@ srcgrouptype	[ 0	locks=0 ]	(	"points"	)
 destgroup	[ 0	locks=0 ]	(	""	)
 destgrouptype	[ 0	locks=0 ]	(	"points"	)
 matchbyattribute	[ 0	locks=0 ]	(	"off"	)
+matchbyattributemethod	[ 0	locks=0 ]	(	"byvalues"	)
 attributetomatch	[ 0	locks=0 ]	(	piece	)
 attrib	[ 0	locks=0 ]	(	"otherattrib"	)
 attribname	[ 0	locks=0 ]	(	__rawthicc	)
@@ -975,6 +990,7 @@ usenewname	[ 0	locks=0 ]	(	"on"	)
 newname	[ 8	locks=0 ]	(	`chs(\"../attrname\")`	)
 class	[ 0	locks=0 ]	(	"guess"	)
 copyvariable	[ 0	locks=0 ]	(	"on"	)
+copydata	[ 0	locks=0 ]	(	"on"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1117,6 +1133,13 @@ Content-Disposition: attachment; filename="hdaroot/attribremap1.chn"
 Content-Type: text/plain
 
 {
+    channel descriptiveparm {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { length = 0 expr = "chs(\"inname\") + ifs(strcmp(chs(\"outname\"), \"\"), \" -> \" + chs(\"outname\"), \"\")" }
+    }
     channel remap1pos {
       lefttype = extend
       righttype = extend
@@ -1183,6 +1206,7 @@ outputmax	[ 0	locks=0 ]	(	1	)
 clamptype	[ 0	locks=0 ]	(	"edge"	)
 useramp	[ 0	locks=0 ]	(	"on"	)
 remap	[ 0	locks=0 ]	(	[ remap	2 ] 	)
+descriptiveparm	[ 0	locks=0 ]	(	[ descriptiveparm	"chs(\"inname\") + ifs(strcmp(chs(\"outname\"), \"\"), \" -> \" + chs(\"outname\"), \"\")" ] 	)
 remap1pos	[ 0	locks=0 ]	(	[ remap1pos	0 ] 	)
 remap1value	[ 0	locks=0 ]	(	[ remap1value	0 ] 	)
 remap1interp	[ 0	locks=0 ]	(	[ remap1interp	1 ] 	)
@@ -1384,7 +1408,7 @@ Content-Type: text/plain
 version 0.8
 attribute	[ 0	locks=0 ]	(	__rawthicc	)
 attribute_type	[ 0	locks=0 ]	(	"2"	)
-fd_numofanalysis	[ 0	locks=0 ]	(	2	)
+folder0	[ 0	locks=0 ]	(	2	)
 method1	[ 0	locks=0 ]	(	"min"	)
 prefix1	[ 0	locks=0 ]	(	min_	)
 detail_attribute1	[ 0	locks=0 ]	(	"on"	)
@@ -1458,6 +1482,13 @@ Content-Disposition: attachment; filename="hdaroot/attribremap2.chn"
 Content-Type: text/plain
 
 {
+    channel descriptiveparm {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { length = 0 expr = "chs(\"inname\") + ifs(strcmp(chs(\"outname\"), \"\"), \" -> \" + chs(\"outname\"), \"\")" }
+    }
     channel remap1pos {
       lefttype = extend
       righttype = extend
@@ -1554,6 +1585,7 @@ outputmax	[ 0	locks=0 ]	(	[ outputmax	1 ] 	)
 clamptype	[ 0	locks=0 ]	(	"edge"	)
 useramp	[ 0	locks=0 ]	(	"on"	)
 remap	[ 8	locks=0 ]	(	[ remap	2 ] 	)
+descriptiveparm	[ 0	locks=0 ]	(	[ descriptiveparm	"chs(\"inname\") + ifs(strcmp(chs(\"outname\"), \"\"), \" -> \" + chs(\"outname\"), \"\")" ] 	)
 remap1pos	[ 0	locks=0 ]	(	[ remap1pos	0 ] 	)
 remap1value	[ 0	locks=0 ]	(	[ remap1value	0 ] 	)
 remap1interp	[ 0	locks=0 ]	(	[ remap1interp	1 ] 	)

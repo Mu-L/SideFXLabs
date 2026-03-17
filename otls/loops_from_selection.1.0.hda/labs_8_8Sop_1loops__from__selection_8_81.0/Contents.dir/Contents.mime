@@ -32,25 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -4.15
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -0.5 -10.15
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	loops_from_selection1 1 1 "input1"
 }
 inputs
 {
-0 	loops_from_selection1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author maia@truro
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -66,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -131,8 +133,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector uvselect "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -336,6 +338,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/select_quad_loop.chn"
@@ -680,6 +688,7 @@ i@iterations = iteration;
 */"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -793,6 +802,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -803,6 +813,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"off"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -819,6 +830,12 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"off"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
+switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -887,10 +904,13 @@ newname1	[ 0	locks=0 ]	(	_lfs_start_pt	)
 preserve1	[ 0	locks=0 ]	(	"on"	)
 onlyboundary1	[ 0	locks=0 ]	(	"off"	)
 includeunshared1	[ 0	locks=0 ]	(	"on"	)
+includecurveunshared1	[ 0	locks=0 ]	(	"on"	)
 useconnectivityattrib1	[ 0	locks=0 ]	(	"off"	)
 connectivityattrib1	[ 0	locks=0 ]	(	uv	)
+tol1	[ 0	locks=0 ]	(	0	)
 primsbyattribbndpts1	[ 0	locks=0 ]	(	"off"	)
 onlyfull1	[ 0	locks=0 ]	(	"off"	)
+onlyprimsedge1	[ 0	locks=0 ]	(	"off"	)
 removedegen1	[ 0	locks=0 ]	(	"off"	)
 toattrib1	[ 0	locks=0 ]	(	"off"	)
 }
@@ -1093,8 +1113,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector uvselect "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1292,6 +1312,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/select_edge_loop.chn"
@@ -1646,6 +1672,7 @@ i@iterations = iteration + 1;
 */"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1758,6 +1785,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -1768,6 +1796,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"off"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -1784,6 +1813,12 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"off"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
+switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1877,6 +1912,7 @@ groupbounding	[ 0	locks=0 ]	(	"off"	)
 boundtype	[ 0	locks=0 ]	(	"usebbox"	)
 size	[ 0	locks=0 ]	(	1	1	1	)
 t	[ 0	locks=0 ]	(	0	0	0	)
+initbounds	[ 0	locks=0 ]	(	0	)
 includenotwhollycontained	[ 0	locks=0 ]	(	"off"	)
 iso	[ 0	locks=0 ]	(	0	)
 invertvolume	[ 0	locks=0 ]	(	"off"	)
@@ -1887,6 +1923,7 @@ nonplanar	[ 0	locks=0 ]	(	"off"	)
 nonplanartol	[ 0	locks=0 ]	(	0.001	)
 dir	[ 0	locks=0 ]	(	0	0	1	)
 angle	[ 0	locks=0 ]	(	180	)
+oppositenormals	[ 0	locks=0 ]	(	"off"	)
 switcher5	[ 0	locks=0 ]	(	0	)
 groupedges	[ 0	locks=0 ]	(	"off"	)
 dominedgeangle	[ 0	locks=0 ]	(	"off"	)
@@ -1903,6 +1940,12 @@ edgestep	[ 0	locks=0 ]	(	0	)
 edgeptgrp	[ 0	locks=0 ]	(	0	)
 unshared	[ 0	locks=0 ]	(	"off"	)
 boundarygroups	[ 0	locks=0 ]	(	"off"	)
+switcher6	[ 0	locks=0 ]	(	0	)
+grouprandom	[ 0	locks=0 ]	(	"off"	)
+globalseed	[ 0	locks=0 ]	(	1	)
+useseedattrib	[ 0	locks=0 ]	(	"off"	)
+seedattrib	[ 0	locks=0 ]	(	id	)
+percent	[ 0	locks=0 ]	(	50	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1971,6 +2014,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_lfs_start_edge_count = nedgesgroup(0, \"_lfs_start_edge\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2042,6 +2086,8 @@ Content-Type: text/plain
 {
 version 0.8
 connecttype	[ 0	locks=0 ]	(	"point"	)
+primincgroup	[ 0	locks=0 ]	(	""	)
+pointincgroup	[ 0	locks=0 ]	(	""	)
 attribname	[ 0	locks=0 ]	(	_lfs_loop_index	)
 attribtype	[ 0	locks=0 ]	(	"int"	)
 prefix	[ 0	locks=0 ]	(	piece	)
@@ -2298,6 +2344,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "stopattrib"
+        baseparm
+        label   "Stop Attribute"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/foreach_end1.chn"
@@ -2335,6 +2387,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"on"	)
 spare_input0	[ 0	locks=0 ]	(	../compile_begin2	)
 }
@@ -2740,6 +2793,7 @@ unload	[ 0	locks=0 ]	(	"always"	)
 primarypath	[ 0	locks=0 ]	(	""	)
 forcerecompile	[ 0	locks=0 ]	(	0	)
 delayillegal	[ 0	locks=0 ]	(	"off"	)
+fallback	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3106,6 +3160,7 @@ Content-Type: text/plain
             baseparm
             label   "enable#"
             nolabel
+            joinnext
             export  none
         }
         parm {
@@ -3304,6 +3359,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_lfs_loop_index = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3435,6 +3491,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 0	locks=0 ]	(	"on"	)
 grouptype1	[ 0	locks=0 ]	(	"any"	)
 group1	[ 0	locks=0 ]	(	_lfs_start_edge	)
@@ -3516,6 +3575,7 @@ foreach (int neighbour; neighbours) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

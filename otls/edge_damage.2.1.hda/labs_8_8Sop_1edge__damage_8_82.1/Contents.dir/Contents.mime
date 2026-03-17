@@ -32,19 +32,17 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.914 -3.15
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position -0.5 -3.15
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
@@ -5933,6 +5931,174 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.init"
+Content-Type: text/plain
+
+type = mountain::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -26.3041 -39.9322
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	attribblur5 1 1 "input1"
+}
+inputs
+{
+0 	attribblur5 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author simon@LAPTOP-UT28NOSR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.chn"
+Content-Type: text/plain
+
+{
+    channel height {
+      lefttype = extend
+      righttype = extend
+      default = 0.97999999999999998
+      flags = 0
+      segment { length = 0 value = 0.97999999999999998 0.97999999999999998 expr = ch(\"../noise_amount\") }
+    }
+    channel elementsize {
+      lefttype = extend
+      righttype = extend
+      default = 1.9199999999999999
+      flags = 0
+      segment { length = 0 value = 1.9199999999999999 1.9199999999999999 expr = ch(\"../noise_size\") }
+    }
+    channel centernoise {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../centernoise\") }
+    }
+    channel offsetx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../seed\")*10 }
+    }
+    channel offsety {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../seed\")*10 }
+    }
+    channel offsetz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../seed\")*10 }
+    }
+    channel basis {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"simplex\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../noise_type\") }
+    }
+    channel rough {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../noise_rough\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+centernoise	[ 0	locks=0 ]	(	[ centernoise	1 ] 	)
+height	[ 0	locks=0 ]	(	[ height	1 ] 	)
+elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 8	locks=0 ]	(	[ offsetx	0 ] 	[ offsety	0 ] 	[ offsetz	0 ] 	)
+pulselength	[ 0	locks=0 ]	(	1	)
+time	[ 0	locks=0 ]	(	0	)
+folder0	[ 0	locks=0 ]	(	0	)
+basis	[ 0	locks=0 ]	(	[ basis	simplex ] 	)
+fractal	[ 0	locks=0 ]	(	hmfT	)
+oct	[ 0	locks=0 ]	(	8	)
+lac	[ 0	locks=0 ]	(	1.841	)
+rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
+flowrot	[ 0	locks=0 ]	(	0	)
+folder1	[ 0	locks=0 ]	(	0	)
+fold	[ 0	locks=0 ]	(	"off"	)
+complement	[ 0	locks=0 ]	(	"off"	)
+dogain	[ 0	locks=0 ]	(	"off"	)
+gain	[ 0	locks=0 ]	(	0.5	)
+dobias	[ 0	locks=0 ]	(	"off"	)
+bias	[ 0	locks=0 ]	(	0.5	)
+folder2	[ 0	locks=0 ]	(	0	)
+clipmin	[ 0	locks=0 ]	(	0	)
+clipmax	[ 0	locks=0 ]	(	1	)
+folder3	[ 0	locks=0 ]	(	0	)
+folder4	[ 0	locks=0 ]	(	0	)
+dolwarp	[ 0	locks=0 ]	(	"off"	)
+accuml	[ 0	locks=0 ]	(	"on"	)
+dispfreq	[ 0	locks=0 ]	(	1	)
+disp	[ 0	locks=0 ]	(	0.1	)
+folder5	[ 0	locks=0 ]	(	0	)
+dogwarp	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+gflow	[ 0	locks=0 ]	(	0.1	)
+updatenmls	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"20"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_mountain::2.0"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/mountain4.init"
 Content-Type: text/plain
 
@@ -6273,6 +6439,614 @@ Content-Type: text/plain
 	"referenced_from":{
 		"type":"string",
 		"value":"../mountain1"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.init"
+Content-Type: text/plain
+
+type = mountain::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Referenced from mountain1"
+position 12.1362 -22.7904
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass on display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	quality 1 1 "input1"
+}
+inputs
+{
+0 	quality 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author simon@LAPTOP-UT28NOSR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.chn"
+Content-Type: text/plain
+
+{
+    channel updatenmls {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/updatenmls\") }
+    }
+    channel gflow {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../mountain1/gflow\") }
+    }
+    channel accumg {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/accumg\") }
+    }
+    channel dogwarp {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/dogwarp\") }
+    }
+    channel disp {
+      lefttype = extend
+      righttype = extend
+      default = 0.10000000000000001
+      flags = 0
+      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../mountain1/disp\") }
+    }
+    channel dispfreq {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/dispfreq\") }
+    }
+    channel accuml {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/accuml\") }
+    }
+    channel dolwarp {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/dolwarp\") }
+    }
+    channel clipmax {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/clipmax\") }
+    }
+    channel clipmin {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/clipmin\") }
+    }
+    channel bias {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/bias\") }
+    }
+    channel dobias {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/dobias\") }
+    }
+    channel gain {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/gain\") }
+    }
+    channel dogain {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/dogain\") }
+    }
+    channel complement {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/complement\") }
+    }
+    channel fold {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/fold\") }
+    }
+    channel flowrot {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/flowrot\") }
+    }
+    channel rough {
+      lefttype = extend
+      righttype = extend
+      default = 0.5
+      flags = 0
+      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/rough\") }
+    }
+    channel lac {
+      lefttype = extend
+      righttype = extend
+      default = 1.841
+      flags = 0
+      segment { length = 0 value = 1.841 1.841 expr = ch(\"../mountain1/lac\") }
+    }
+    channel oct {
+      lefttype = extend
+      righttype = extend
+      default = 8
+      flags = 0
+      segment { length = 0 value = 8 8 expr = ch(\"../mountain1/oct\") }
+    }
+    channel fractal {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"hmfT\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../mountain1/fractal\") }
+    }
+    channel basis {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"simplex\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../mountain1/basis\") }
+    }
+    channel time {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/time\") }
+    }
+    channel pulselength {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/pulselength\") }
+    }
+    channel offsetz {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/offsetz\") }
+    }
+    channel offsety {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/offsety\") }
+    }
+    channel offsetx {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/offsetx\") }
+    }
+    channel elementscalez {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscalez\") }
+    }
+    channel elementscaley {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscaley\") }
+    }
+    channel elementscalex {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscalex\") }
+    }
+    channel elementsize {
+      lefttype = extend
+      righttype = extend
+      default = 0.71699999999999997
+      flags = 0
+      segment { length = 0 value = 0.71699999999999997 0.71699999999999997 expr = ch(\"../mountain1/elementsize\") }
+    }
+    channel height {
+      lefttype = extend
+      righttype = extend
+      default = 1.0549999999999999
+      flags = 0
+      segment { length = 0 value = 1.0549999999999999 1.0549999999999999 expr = ch(\"../mountain1/height\") }
+    }
+    channel centernoise {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = ch(\"../mountain1/centernoise\") }
+    }
+    channel group {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../mountain1/group\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	[ group	"" ] 	)
+centernoise	[ 0	locks=0 ]	(	[ centernoise	1 ] 	)
+height	[ 0	locks=0 ]	(	[ height	1 ] 	)
+elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
+elementscale	[ 0	locks=0 ]	(	[ elementscalex	1 ] 	[ elementscaley	1 ] 	[ elementscalez	1 ] 	)
+offset	[ 8	locks=0 ]	(	[ offsetx	0 ] 	[ offsety	0 ] 	[ offsetz	0 ] 	)
+pulselength	[ 0	locks=0 ]	(	[ pulselength	1 ] 	)
+time	[ 0	locks=0 ]	(	[ time	0 ] 	)
+folder0	[ 0	locks=0 ]	(	0	)
+basis	[ 0	locks=0 ]	(	[ basis	simplex ] 	)
+fractal	[ 0	locks=0 ]	(	[ fractal	hmfT ] 	)
+oct	[ 0	locks=0 ]	(	[ oct	8 ] 	)
+lac	[ 0	locks=0 ]	(	[ lac	1.841 ] 	)
+rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
+flowrot	[ 0	locks=0 ]	(	[ flowrot	0 ] 	)
+folder1	[ 0	locks=0 ]	(	0	)
+fold	[ 0	locks=0 ]	(	[ fold	0 ] 	)
+complement	[ 0	locks=0 ]	(	[ complement	0 ] 	)
+dogain	[ 0	locks=0 ]	(	[ dogain	0 ] 	)
+gain	[ 0	locks=0 ]	(	[ gain	0.5 ] 	)
+dobias	[ 0	locks=0 ]	(	[ dobias	0 ] 	)
+bias	[ 0	locks=0 ]	(	[ bias	0.5 ] 	)
+folder2	[ 0	locks=0 ]	(	0	)
+clipmin	[ 0	locks=0 ]	(	[ clipmin	0 ] 	)
+clipmax	[ 0	locks=0 ]	(	[ clipmax	1 ] 	)
+folder3	[ 0	locks=0 ]	(	0	)
+folder4	[ 0	locks=0 ]	(	0	)
+dolwarp	[ 0	locks=0 ]	(	[ dolwarp	0 ] 	)
+accuml	[ 0	locks=0 ]	(	[ accuml	1 ] 	)
+dispfreq	[ 0	locks=0 ]	(	[ dispfreq	1 ] 	)
+disp	[ 0	locks=0 ]	(	[ disp	0.1 ] 	)
+folder5	[ 0	locks=0 ]	(	0	)
+dogwarp	[ 0	locks=0 ]	(	[ dogwarp	0 ] 	)
+accumg	[ 0	locks=0 ]	(	[ accumg	0 ] 	)
+gflow	[ 0	locks=0 ]	(	[ gflow	0.1 ] 	)
+updatenmls	[ 0	locks=0 ]	(	[ updatenmls	1 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.netbox"
+Content-Type: text/plain
+
+__netbox3
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/mountain5.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"___toolcount___":{
+		"type":"string",
+		"value":"20"
+	},
+	"___toolid___":{
+		"type":"string",
+		"value":"sop_mountain::2.0"
+	},
+	"referenced_from":{
+		"type":"string",
+		"value":"../mountain1"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.init"
+Content-Type: text/plain
+
+type = attribadjustcolor
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -28.2314 -29.9342
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	attribwrangle2 1 1 "input1"
+}
+inputs
+{
+0 	attribwrangle2 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.chn"
+Content-Type: text/plain
+
+{
+    channel contrast {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../colors_contrast\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+doblend	[ 0	locks=0 ]	(	"off"	)
+blendweight	[ 0	locks=0 ]	(	1	)
+blendmode	[ 0	locks=0 ]	(	"value"	)
+blendspace	[ 0	locks=0 ]	(	"rgb"	)
+blendattrib	[ 0	locks=0 ]	(	mask	)
+attrib	[ 0	locks=0 ]	(	Cd	)
+componentscope_rgb	[ 0	locks=0 ]	(	111	)
+componentscope_hsv	[ 0	locks=0 ]	(	111	)
+class	[ 0	locks=0 ]	(	"point"	)
+folder13	[ 0	locks=0 ]	(	0	)
+enable_preprocess	[ 0	locks=0 ]	(	"off"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+doinitvalue	[ 0	locks=0 ]	(	"off"	)
+initvaluefrom	[ 0	locks=0 ]	(	"const"	)
+initvalue	[ 0	locks=0 ]	(	1	1	1	)
+initcolorattrib	[ 0	locks=0 ]	(	Cd	)
+componentscope_initcolor	[ 0	locks=0 ]	(	111	)
+initfloatattrib	[ 0	locks=0 ]	(	pscale	)
+componentscope_initfloat	[ 0	locks=0 ]	(	"g"	)
+folder1	[ 0	locks=0 ]	(	0	)
+adjustvalue	[ 0	locks=0 ]	(	"off"	)
+operation	[ 0	locks=0 ]	(	"set"	)
+valuetype	[ 0	locks=0 ]	(	"const"	)
+sepparm	[ 0	locks=0 ]	(	)
+rangemethod	[ 0	locks=0 ]	(	"ramp"	)
+singlevalue	[ 0	locks=0 ]	(	1	1	1	)
+randomcolormodel	[ 0	locks=0 ]	(	"rgb"	)
+dobasecolor	[ 0	locks=0 ]	(	"off"	)
+basecolor	[ 0	locks=0 ]	(	1	1	1	)
+randr	[ 0	locks=0 ]	(	0	1	)
+randg	[ 0	locks=0 ]	(	0	1	)
+randb	[ 0	locks=0 ]	(	0	1	)
+randhue	[ 0	locks=0 ]	(	-180	180	)
+randsat	[ 0	locks=0 ]	(	0	1	)
+randval	[ 0	locks=0 ]	(	0	1	)
+colorramp	[ 0	locks=0 ]	(	5	)
+colorpalette	[ 0	locks=0 ]	(	"none"	)
+nvalues	[ 0	locks=0 ]	(	1	)
+adjustmentattrib	[ 0	locks=0 ]	(	""	)
+componentscope_adjustmentattrib	[ 0	locks=0 ]	(	111	)
+adjustmentattribgain	[ 0	locks=0 ]	(	1	)
+adjustmentattribbrightness	[ 0	locks=0 ]	(	0	)
+cmap	[ 0	locks=0 ]	(	$HH/pic/Mandril.pic	)
+cmapmode	[ 0	locks=0 ]	(	"path"	)
+cmapattrib	[ 0	locks=0 ]	(	path	)
+cmapchannel	[ 0	locks=0 ]	(	""	)
+componentscope_cmap	[ 0	locks=0 ]	(	111	)
+cmapborder	[ 0	locks=0 ]	(	0	0	0	)
+srccolorspace	[ 0	locks=0 ]	(	"auto"	)
+cmapwrap	[ 0	locks=0 ]	(	repeat	)
+folder4	[ 0	locks=0 ]	(	0	)
+randmethod	[ 0	locks=0 ]	(	"ppnum"	)
+randattrib	[ 0	locks=0 ]	(	id	)
+randomseed	[ 0	locks=0 ]	(	39	)
+folder5	[ 0	locks=0 ]	(	0	)
+basis	[ 0	locks=0 ]	(	"simplex"	)
+locationattrib	[ 0	locks=0 ]	(	P	)
+elementsize	[ 0	locks=0 ]	(	1	)
+elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	)
+offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+offsetv	[ 0	locks=0 ]	(	0	0	0	)
+usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
+noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
+// Location Attribute - pos
+// Element Size - elementsize
+// Offset - offset
+
+"	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+folder9	[ 0	locks=0 ]	(	0	)
+animated	[ 0	locks=0 ]	(	"off"	)
+pulseduration	[ 0	locks=0 ]	(	1	)
+folder8	[ 0	locks=0 ]	(	0	)
+fractal	[ 0	locks=0 ]	(	"fBm"	)
+oct	[ 0	locks=0 ]	(	3	)
+lac	[ 0	locks=0 ]	(	2.01234	)
+rough	[ 0	locks=0 ]	(	0.5	)
+folder6	[ 0	locks=0 ]	(	0	)
+disp	[ 0	locks=0 ]	(	0	)
+dispesize	[ 0	locks=0 ]	(	1	)
+gflow	[ 0	locks=0 ]	(	0	)
+flowrot	[ 0	locks=0 ]	(	0	)
+accuml	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+folder7	[ 0	locks=0 ]	(	0	)
+startpos	[ 0	locks=0 ]	(	0	0	0	)
+endpos	[ 0	locks=0 ]	(	5	0	0	)
+folder12	[ 0	locks=0 ]	(	0	)
+bounddir	[ 0	locks=0 ]	(	"x"	)
+bbox_computerange	[ 0	locks=0 ]	(	0	)
+doboundmin	[ 0	locks=0 ]	(	"off"	)
+boundmin	[ 0	locks=0 ]	(	0	)
+doboundmax	[ 0	locks=0 ]	(	"off"	)
+boundmax	[ 0	locks=0 ]	(	1	)
+folder10	[ 0	locks=0 ]	(	0	)
+uvattrib	[ 0	locks=0 ]	(	uv	)
+t	[ 0	locks=0 ]	(	0.5	0.5	)
+r	[ 0	locks=0 ]	(	0	)
+scale	[ 0	locks=0 ]	(	1	)
+scaletype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+s	[ 0	locks=0 ]	(	1	1	)
+p	[ 0	locks=0 ]	(	0.5	0.5	)
+folder2	[ 0	locks=0 ]	(	0	)
+remapattrib	[ 0	locks=0 ]	(	mask	)
+remapattrib_range	[ 0	locks=0 ]	(	0	1	)
+remapattrib_rangemode	[ 0	locks=0 ]	(	"clamp"	)
+remapattrib_computerange	[ 0	locks=0 ]	(	0	)
+folder14	[ 0	locks=0 ]	(	0	)
+enable_cc	[ 0	locks=0 ]	(	"on"	)
+dohueshift	[ 0	locks=0 ]	(	"off"	)
+hueshift	[ 0	locks=0 ]	(	0	)
+hueshiftmode	[ 0	locks=0 ]	(	"uniform"	)
+hueshiftattrib	[ 0	locks=0 ]	(	hueshift	)
+dosat	[ 0	locks=0 ]	(	"on"	)
+sat	[ 0	locks=0 ]	(	0	)
+satmode	[ 0	locks=0 ]	(	"uniform"	)
+satattrib	[ 0	locks=0 ]	(	saturation	)
+doval	[ 0	locks=0 ]	(	"off"	)
+val	[ 0	locks=0 ]	(	1	)
+valmode	[ 0	locks=0 ]	(	"uniform"	)
+valattrib	[ 0	locks=0 ]	(	value	)
+dobrightness	[ 0	locks=0 ]	(	"on"	)
+brightness	[ 0	locks=0 ]	(	0	)
+brightnessmode	[ 0	locks=0 ]	(	"uniform"	)
+brightnessattrib	[ 0	locks=0 ]	(	brightness	)
+docontrast	[ 0	locks=0 ]	(	"on"	)
+contrast	[ 0	locks=0 ]	(	[ contrast	1 ] 	)
+contrastmode	[ 0	locks=0 ]	(	"uniform"	)
+contrastattrib	[ 0	locks=0 ]	(	contrast	)
+dogain	[ 0	locks=0 ]	(	"off"	)
+gain	[ 0	locks=0 ]	(	1	)
+gainmode	[ 0	locks=0 ]	(	"uniform"	)
+gainattrib	[ 0	locks=0 ]	(	gain	)
+dogamma	[ 0	locks=0 ]	(	"on"	)
+gamma	[ 0	locks=0 ]	(	2	)
+gammapresets	[ 0	locks=0 ]	(	"1"	)
+gammamode	[ 0	locks=0 ]	(	"uniform"	)
+gammaattrib	[ 0	locks=0 ]	(	gamma	)
+deleteallccattrib	[ 0	locks=0 ]	(	"off"	)
+folder3	[ 0	locks=0 ]	(	0	)
+enable_postprocess	[ 0	locks=0 ]	(	"on"	)
+deleteblendattrib	[ 0	locks=0 ]	(	"SOP_delete"	)
+doclampmin	[ 0	locks=0 ]	(	"on"	)
+clampminvalue	[ 0	locks=0 ]	(	0	0	0	)
+doclampmax	[ 0	locks=0 ]	(	"on"	)
+clampmaxvalue	[ 0	locks=0 ]	(	1	1	1	)
+docomplement	[ 0	locks=0 ]	(	"off"	)
+folder11	[ 0	locks=0 ]	(	0	)
+dodefault	[ 0	locks=0 ]	(	"off"	)
+default	[ 0	locks=0 ]	(	1	1	1	)
+dotypeinfo	[ 0	locks=0 ]	(	"off"	)
+typeinfo	[ 0	locks=0 ]	(	"color"	)
+colorramp1pos	[ 0	locks=0 ]	(	0	)
+colorramp1c	[ 0	locks=0 ]	(	0.20000000298023224	0	1	)
+colorramp1interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp2pos	[ 0	locks=0 ]	(	0.25	)
+colorramp2c	[ 0	locks=0 ]	(	0	0.8500000238418579	1	)
+colorramp2interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp3pos	[ 0	locks=0 ]	(	0.5	)
+colorramp3c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
+colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp4pos	[ 0	locks=0 ]	(	0.75	)
+colorramp4c	[ 0	locks=0 ]	(	0.949999988079071	1	0	)
+colorramp4interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp5pos	[ 0	locks=0 ]	(	1	)
+colorramp5c	[ 0	locks=0 ]	(	1	0	0	)
+colorramp5interp	[ 0	locks=0 ]	(	"linear"	)
+folder3_0_2	[ 0	locks=0 ]	(	0	)
+color0	[ 0	locks=0 ]	(	1	1	1	)
+colorscheme0	[ 0	locks=0 ]	(	"const"	)
+weight0	[ 0	locks=0 ]	(	1	)
+twoanalogangle0	[ 0	locks=0 ]	(	30	)
+fouranalogangle0	[ 0	locks=0 ]	(	30	)
+triadicangle0	[ 0	locks=0 ]	(	120	)
+tetradicangle0	[ 0	locks=0 ]	(	45	)
+fiveshadesdist0	[ 0	locks=0 ]	(	1	)
+fivetintsdist0	[ 0	locks=0 ]	(	1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.netbox"
+Content-Type: text/plain
+
+__netbox1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/color_adjustment.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -6756,174 +7530,6 @@ Content-Disposition: attachment; filename="hdaroot/pointvop6.net"
 Content-Type: text/plain
 
 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.init"
-Content-Type: text/plain
-
-type = mountain::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -26.3041 -39.9322
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	attribblur5 1 1 "input1"
-}
-inputs
-{
-0 	attribblur5 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author simon@LAPTOP-UT28NOSR
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.chn"
-Content-Type: text/plain
-
-{
-    channel height {
-      lefttype = extend
-      righttype = extend
-      default = 0.97999999999999998
-      flags = 0
-      segment { length = 0 value = 0.97999999999999998 0.97999999999999998 expr = ch(\"../noise_amount\") }
-    }
-    channel elementsize {
-      lefttype = extend
-      righttype = extend
-      default = 1.9199999999999999
-      flags = 0
-      segment { length = 0 value = 1.9199999999999999 1.9199999999999999 expr = ch(\"../noise_size\") }
-    }
-    channel centernoise {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../centernoise\") }
-    }
-    channel offsetx {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../seed\")*10 }
-    }
-    channel offsety {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../seed\")*10 }
-    }
-    channel offsetz {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../seed\")*10 }
-    }
-    channel basis {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"simplex\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../noise_type\") }
-    }
-    channel rough {
-      lefttype = extend
-      righttype = extend
-      default = 0.5
-      flags = 0
-      segment { length = 0 value = 0.5 0.5 expr = ch(\"../noise_rough\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-centernoise	[ 0	locks=0 ]	(	[ centernoise	1 ] 	)
-height	[ 0	locks=0 ]	(	[ height	1 ] 	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 8	locks=0 ]	(	[ offsetx	0 ] 	[ offsety	0 ] 	[ offsetz	0 ] 	)
-pulselength	[ 0	locks=0 ]	(	1	)
-time	[ 0	locks=0 ]	(	0	)
-folder0	[ 0	locks=0 ]	(	0	)
-basis	[ 0	locks=0 ]	(	[ basis	simplex ] 	)
-fractal	[ 0	locks=0 ]	(	hmfT	)
-oct	[ 0	locks=0 ]	(	8	)
-lac	[ 0	locks=0 ]	(	1.841	)
-rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
-flowrot	[ 0	locks=0 ]	(	0	)
-folder1	[ 0	locks=0 ]	(	0	)
-fold	[ 0	locks=0 ]	(	"off"	)
-complement	[ 0	locks=0 ]	(	"off"	)
-dogain	[ 0	locks=0 ]	(	"off"	)
-gain	[ 0	locks=0 ]	(	0.5	)
-dobias	[ 0	locks=0 ]	(	"off"	)
-bias	[ 0	locks=0 ]	(	0.5	)
-folder2	[ 0	locks=0 ]	(	0	)
-clipmin	[ 0	locks=0 ]	(	0	)
-clipmax	[ 0	locks=0 ]	(	1	)
-folder3	[ 0	locks=0 ]	(	0	)
-folder4	[ 0	locks=0 ]	(	0	)
-dolwarp	[ 0	locks=0 ]	(	"off"	)
-accuml	[ 0	locks=0 ]	(	"on"	)
-dispfreq	[ 0	locks=0 ]	(	1	)
-disp	[ 0	locks=0 ]	(	0.1	)
-folder5	[ 0	locks=0 ]	(	0	)
-dogwarp	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-gflow	[ 0	locks=0 ]	(	0.1	)
-updatenmls	[ 0	locks=0 ]	(	"on"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"20"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"sop_mountain::2.0"
-	}
-}
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/color1.init"
@@ -8223,350 +8829,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.init"
-Content-Type: text/plain
-
-type = mountain::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment "Referenced from mountain1"
-position 12.1362 -22.7904
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass on display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	quality 1 1 "input1"
-}
-inputs
-{
-0 	quality 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author simon@LAPTOP-UT28NOSR
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.chn"
-Content-Type: text/plain
-
-{
-    channel updatenmls {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/updatenmls\") }
-    }
-    channel gflow {
-      lefttype = extend
-      righttype = extend
-      default = 0.10000000000000001
-      flags = 0
-      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../mountain1/gflow\") }
-    }
-    channel accumg {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/accumg\") }
-    }
-    channel dogwarp {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/dogwarp\") }
-    }
-    channel disp {
-      lefttype = extend
-      righttype = extend
-      default = 0.10000000000000001
-      flags = 0
-      segment { length = 0 value = 0.10000000000000001 0.10000000000000001 expr = ch(\"../mountain1/disp\") }
-    }
-    channel dispfreq {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/dispfreq\") }
-    }
-    channel accuml {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/accuml\") }
-    }
-    channel dolwarp {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/dolwarp\") }
-    }
-    channel clipmax {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/clipmax\") }
-    }
-    channel clipmin {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/clipmin\") }
-    }
-    channel bias {
-      lefttype = extend
-      righttype = extend
-      default = 0.5
-      flags = 0
-      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/bias\") }
-    }
-    channel dobias {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/dobias\") }
-    }
-    channel gain {
-      lefttype = extend
-      righttype = extend
-      default = 0.5
-      flags = 0
-      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/gain\") }
-    }
-    channel dogain {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/dogain\") }
-    }
-    channel complement {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/complement\") }
-    }
-    channel fold {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/fold\") }
-    }
-    channel flowrot {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/flowrot\") }
-    }
-    channel rough {
-      lefttype = extend
-      righttype = extend
-      default = 0.5
-      flags = 0
-      segment { length = 0 value = 0.5 0.5 expr = ch(\"../mountain1/rough\") }
-    }
-    channel lac {
-      lefttype = extend
-      righttype = extend
-      default = 1.841
-      flags = 0
-      segment { length = 0 value = 1.841 1.841 expr = ch(\"../mountain1/lac\") }
-    }
-    channel oct {
-      lefttype = extend
-      righttype = extend
-      default = 8
-      flags = 0
-      segment { length = 0 value = 8 8 expr = ch(\"../mountain1/oct\") }
-    }
-    channel fractal {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"hmfT\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../mountain1/fractal\") }
-    }
-    channel basis {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"simplex\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../mountain1/basis\") }
-    }
-    channel time {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/time\") }
-    }
-    channel pulselength {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/pulselength\") }
-    }
-    channel offsetz {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/offsetz\") }
-    }
-    channel offsety {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/offsety\") }
-    }
-    channel offsetx {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/offsetx\") }
-    }
-    channel elementscalez {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscalez\") }
-    }
-    channel elementscaley {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscaley\") }
-    }
-    channel elementscalex {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../mountain1/elementscalex\") }
-    }
-    channel elementsize {
-      lefttype = extend
-      righttype = extend
-      default = 0.71699999999999997
-      flags = 0
-      segment { length = 0 value = 0.71699999999999997 0.71699999999999997 expr = ch(\"../mountain1/elementsize\") }
-    }
-    channel height {
-      lefttype = extend
-      righttype = extend
-      default = 1.0549999999999999
-      flags = 0
-      segment { length = 0 value = 1.0549999999999999 1.0549999999999999 expr = ch(\"../mountain1/height\") }
-    }
-    channel centernoise {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../mountain1/centernoise\") }
-    }
-    channel group {
-      lefttype = extend
-      righttype = extend
-      defaultString = \"\"
-      flags = 0
-      segment { length = 0 expr = chs(\"../mountain1/group\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	[ group	"" ] 	)
-centernoise	[ 0	locks=0 ]	(	[ centernoise	1 ] 	)
-height	[ 0	locks=0 ]	(	[ height	1 ] 	)
-elementsize	[ 0	locks=0 ]	(	[ elementsize	1 ] 	)
-elementscale	[ 0	locks=0 ]	(	[ elementscalex	1 ] 	[ elementscaley	1 ] 	[ elementscalez	1 ] 	)
-offset	[ 8	locks=0 ]	(	[ offsetx	0 ] 	[ offsety	0 ] 	[ offsetz	0 ] 	)
-pulselength	[ 0	locks=0 ]	(	[ pulselength	1 ] 	)
-time	[ 0	locks=0 ]	(	[ time	0 ] 	)
-folder0	[ 0	locks=0 ]	(	0	)
-basis	[ 0	locks=0 ]	(	[ basis	simplex ] 	)
-fractal	[ 0	locks=0 ]	(	[ fractal	hmfT ] 	)
-oct	[ 0	locks=0 ]	(	[ oct	8 ] 	)
-lac	[ 0	locks=0 ]	(	[ lac	1.841 ] 	)
-rough	[ 0	locks=0 ]	(	[ rough	0.5 ] 	)
-flowrot	[ 0	locks=0 ]	(	[ flowrot	0 ] 	)
-folder1	[ 0	locks=0 ]	(	0	)
-fold	[ 0	locks=0 ]	(	[ fold	0 ] 	)
-complement	[ 0	locks=0 ]	(	[ complement	0 ] 	)
-dogain	[ 0	locks=0 ]	(	[ dogain	0 ] 	)
-gain	[ 0	locks=0 ]	(	[ gain	0.5 ] 	)
-dobias	[ 0	locks=0 ]	(	[ dobias	0 ] 	)
-bias	[ 0	locks=0 ]	(	[ bias	0.5 ] 	)
-folder2	[ 0	locks=0 ]	(	0	)
-clipmin	[ 0	locks=0 ]	(	[ clipmin	0 ] 	)
-clipmax	[ 0	locks=0 ]	(	[ clipmax	1 ] 	)
-folder3	[ 0	locks=0 ]	(	0	)
-folder4	[ 0	locks=0 ]	(	0	)
-dolwarp	[ 0	locks=0 ]	(	[ dolwarp	0 ] 	)
-accuml	[ 0	locks=0 ]	(	[ accuml	1 ] 	)
-dispfreq	[ 0	locks=0 ]	(	[ dispfreq	1 ] 	)
-disp	[ 0	locks=0 ]	(	[ disp	0.1 ] 	)
-folder5	[ 0	locks=0 ]	(	0	)
-dogwarp	[ 0	locks=0 ]	(	[ dogwarp	0 ] 	)
-accumg	[ 0	locks=0 ]	(	[ accumg	0 ] 	)
-gflow	[ 0	locks=0 ]	(	[ gflow	0.1 ] 	)
-updatenmls	[ 0	locks=0 ]	(	[ updatenmls	1 ] 	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.netbox"
-Content-Type: text/plain
-
-__netbox3
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/mountain5.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"___toolcount___":{
-		"type":"string",
-		"value":"20"
-	},
-	"___toolid___":{
-		"type":"string",
-		"value":"sop_mountain::2.0"
-	},
-	"referenced_from":{
-		"type":"string",
-		"value":"../mountain1"
 	}
 }
 
@@ -16405,270 +16667,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.init"
-Content-Type: text/plain
-
-type = attribadjustcolor
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -28.2314 -29.9342
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	attribwrangle2 1 1 "input1"
-}
-inputs
-{
-0 	attribwrangle2 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.chn"
-Content-Type: text/plain
-
-{
-    channel contrast {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../colors_contrast\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-group	[ 0	locks=0 ]	(	""	)
-doblend	[ 0	locks=0 ]	(	"off"	)
-blendweight	[ 0	locks=0 ]	(	1	)
-blendmode	[ 0	locks=0 ]	(	"value"	)
-blendspace	[ 0	locks=0 ]	(	"rgb"	)
-blendattrib	[ 0	locks=0 ]	(	mask	)
-attrib	[ 0	locks=0 ]	(	Cd	)
-componentscope_rgb	[ 0	locks=0 ]	(	111	)
-componentscope_hsv	[ 0	locks=0 ]	(	111	)
-class	[ 0	locks=0 ]	(	"point"	)
-folder13	[ 0	locks=0 ]	(	0	)
-enable_preprocess	[ 0	locks=0 ]	(	"off"	)
-deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
-doinitvalue	[ 0	locks=0 ]	(	"off"	)
-initvaluefrom	[ 0	locks=0 ]	(	"const"	)
-initvalue	[ 0	locks=0 ]	(	1	1	1	)
-initcolorattrib	[ 0	locks=0 ]	(	Cd	)
-componentscope_initcolor	[ 0	locks=0 ]	(	111	)
-initfloatattrib	[ 0	locks=0 ]	(	pscale	)
-componentscope_initfloat	[ 0	locks=0 ]	(	"g"	)
-folder1	[ 0	locks=0 ]	(	0	)
-adjustvalue	[ 0	locks=0 ]	(	"off"	)
-operation	[ 0	locks=0 ]	(	"set"	)
-valuetype	[ 0	locks=0 ]	(	"const"	)
-sepparm	[ 0	locks=0 ]	(	)
-rangemethod	[ 0	locks=0 ]	(	"ramp"	)
-singlevalue	[ 0	locks=0 ]	(	1	1	1	)
-randomcolormodel	[ 0	locks=0 ]	(	"rgb"	)
-dobasecolor	[ 0	locks=0 ]	(	"off"	)
-basecolor	[ 0	locks=0 ]	(	1	1	1	)
-randr	[ 0	locks=0 ]	(	0	1	)
-randg	[ 0	locks=0 ]	(	0	1	)
-randb	[ 0	locks=0 ]	(	0	1	)
-randhue	[ 0	locks=0 ]	(	-180	180	)
-randsat	[ 0	locks=0 ]	(	0	1	)
-randval	[ 0	locks=0 ]	(	0	1	)
-colorramp	[ 0	locks=0 ]	(	5	)
-colorpalette	[ 0	locks=0 ]	(	"none"	)
-nvalues	[ 0	locks=0 ]	(	1	)
-adjustmentattrib	[ 0	locks=0 ]	(	""	)
-componentscope_adjustmentattrib	[ 0	locks=0 ]	(	111	)
-adjustmentattribgain	[ 0	locks=0 ]	(	1	)
-adjustmentattribbrightness	[ 0	locks=0 ]	(	0	)
-cmap	[ 0	locks=0 ]	(	$HH/pic/Mandril.pic	)
-cmapmode	[ 0	locks=0 ]	(	"path"	)
-cmapattrib	[ 0	locks=0 ]	(	path	)
-cmapchannel	[ 0	locks=0 ]	(	""	)
-componentscope_cmap	[ 0	locks=0 ]	(	111	)
-cmapborder	[ 0	locks=0 ]	(	0	0	0	)
-srccolorspace	[ 0	locks=0 ]	(	"auto"	)
-cmapwrap	[ 0	locks=0 ]	(	repeat	)
-folder4	[ 0	locks=0 ]	(	0	)
-randmethod	[ 0	locks=0 ]	(	"ppnum"	)
-randattrib	[ 0	locks=0 ]	(	id	)
-randomseed	[ 0	locks=0 ]	(	39	)
-folder5	[ 0	locks=0 ]	(	0	)
-basis	[ 0	locks=0 ]	(	"simplex"	)
-locationattrib	[ 0	locks=0 ]	(	P	)
-elementsize	[ 0	locks=0 ]	(	1	)
-elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 0	locks=0 ]	(	0	)
-offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-offsetv	[ 0	locks=0 ]	(	0	0	0	)
-usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
-noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
-// Location Attribute - pos
-// Element Size - elementsize
-// Offset - offset
-
-"	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-folder9	[ 0	locks=0 ]	(	0	)
-animated	[ 0	locks=0 ]	(	"off"	)
-pulseduration	[ 0	locks=0 ]	(	1	)
-folder8	[ 0	locks=0 ]	(	0	)
-fractal	[ 0	locks=0 ]	(	"fBm"	)
-oct	[ 0	locks=0 ]	(	3	)
-lac	[ 0	locks=0 ]	(	2.01234	)
-rough	[ 0	locks=0 ]	(	0.5	)
-folder6	[ 0	locks=0 ]	(	0	)
-disp	[ 0	locks=0 ]	(	0	)
-dispesize	[ 0	locks=0 ]	(	1	)
-gflow	[ 0	locks=0 ]	(	0	)
-flowrot	[ 0	locks=0 ]	(	0	)
-accuml	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-folder7	[ 0	locks=0 ]	(	0	)
-startpos	[ 0	locks=0 ]	(	0	0	0	)
-endpos	[ 0	locks=0 ]	(	5	0	0	)
-folder12	[ 0	locks=0 ]	(	0	)
-bounddir	[ 0	locks=0 ]	(	"x"	)
-bbox_computerange	[ 0	locks=0 ]	(	0	)
-doboundmin	[ 0	locks=0 ]	(	"off"	)
-boundmin	[ 0	locks=0 ]	(	0	)
-doboundmax	[ 0	locks=0 ]	(	"off"	)
-boundmax	[ 0	locks=0 ]	(	1	)
-folder10	[ 0	locks=0 ]	(	0	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-t	[ 0	locks=0 ]	(	0.5	0.5	)
-r	[ 0	locks=0 ]	(	0	)
-scale	[ 0	locks=0 ]	(	1	)
-scaletype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-s	[ 0	locks=0 ]	(	1	1	)
-p	[ 0	locks=0 ]	(	0.5	0.5	)
-folder2	[ 0	locks=0 ]	(	0	)
-remapattrib	[ 0	locks=0 ]	(	mask	)
-remapattrib_range	[ 0	locks=0 ]	(	0	1	)
-remapattrib_rangemode	[ 0	locks=0 ]	(	"clamp"	)
-remapattrib_computerange	[ 0	locks=0 ]	(	0	)
-folder14	[ 0	locks=0 ]	(	0	)
-enable_cc	[ 0	locks=0 ]	(	"on"	)
-dohueshift	[ 0	locks=0 ]	(	"off"	)
-hueshift	[ 0	locks=0 ]	(	0	)
-hueshiftmode	[ 0	locks=0 ]	(	"uniform"	)
-hueshiftattrib	[ 0	locks=0 ]	(	hueshift	)
-dosat	[ 0	locks=0 ]	(	"on"	)
-sat	[ 0	locks=0 ]	(	0	)
-satmode	[ 0	locks=0 ]	(	"uniform"	)
-satattrib	[ 0	locks=0 ]	(	saturation	)
-doval	[ 0	locks=0 ]	(	"off"	)
-val	[ 0	locks=0 ]	(	1	)
-valmode	[ 0	locks=0 ]	(	"uniform"	)
-valattrib	[ 0	locks=0 ]	(	value	)
-dobrightness	[ 0	locks=0 ]	(	"on"	)
-brightness	[ 0	locks=0 ]	(	0	)
-brightnessmode	[ 0	locks=0 ]	(	"uniform"	)
-brightnessattrib	[ 0	locks=0 ]	(	brightness	)
-docontrast	[ 0	locks=0 ]	(	"on"	)
-contrast	[ 0	locks=0 ]	(	[ contrast	1 ] 	)
-contrastmode	[ 0	locks=0 ]	(	"uniform"	)
-contrastattrib	[ 0	locks=0 ]	(	contrast	)
-dogain	[ 0	locks=0 ]	(	"off"	)
-gain	[ 0	locks=0 ]	(	1	)
-gainmode	[ 0	locks=0 ]	(	"uniform"	)
-gainattrib	[ 0	locks=0 ]	(	gain	)
-dogamma	[ 0	locks=0 ]	(	"on"	)
-gamma	[ 0	locks=0 ]	(	2	)
-gammapresets	[ 0	locks=0 ]	(	"1"	)
-gammamode	[ 0	locks=0 ]	(	"uniform"	)
-gammaattrib	[ 0	locks=0 ]	(	gamma	)
-deleteallccattrib	[ 0	locks=0 ]	(	"off"	)
-folder3	[ 0	locks=0 ]	(	0	)
-enable_postprocess	[ 0	locks=0 ]	(	"on"	)
-deleteblendattrib	[ 0	locks=0 ]	(	"SOP_delete"	)
-doclampmin	[ 0	locks=0 ]	(	"on"	)
-clampminvalue	[ 0	locks=0 ]	(	0	0	0	)
-doclampmax	[ 0	locks=0 ]	(	"on"	)
-clampmaxvalue	[ 0	locks=0 ]	(	1	1	1	)
-docomplement	[ 0	locks=0 ]	(	"off"	)
-folder11	[ 0	locks=0 ]	(	0	)
-dodefault	[ 0	locks=0 ]	(	"off"	)
-default	[ 0	locks=0 ]	(	1	1	1	)
-dotypeinfo	[ 0	locks=0 ]	(	"off"	)
-typeinfo	[ 0	locks=0 ]	(	"color"	)
-colorramp1pos	[ 0	locks=0 ]	(	0	)
-colorramp1c	[ 0	locks=0 ]	(	0.20000000298023224	0	1	)
-colorramp1interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp2pos	[ 0	locks=0 ]	(	0.25	)
-colorramp2c	[ 0	locks=0 ]	(	0	0.8500000238418579	1	)
-colorramp2interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp3pos	[ 0	locks=0 ]	(	0.5	)
-colorramp3c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
-colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp4pos	[ 0	locks=0 ]	(	0.75	)
-colorramp4c	[ 0	locks=0 ]	(	0.949999988079071	1	0	)
-colorramp4interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp5pos	[ 0	locks=0 ]	(	1	)
-colorramp5c	[ 0	locks=0 ]	(	1	0	0	)
-colorramp5interp	[ 0	locks=0 ]	(	"linear"	)
-folder3_0_2	[ 0	locks=0 ]	(	0	)
-color0	[ 0	locks=0 ]	(	1	1	1	)
-colorscheme0	[ 0	locks=0 ]	(	"const"	)
-weight0	[ 0	locks=0 ]	(	1	)
-twoanalogangle0	[ 0	locks=0 ]	(	30	)
-fouranalogangle0	[ 0	locks=0 ]	(	30	)
-triadicangle0	[ 0	locks=0 ]	(	120	)
-tetradicangle0	[ 0	locks=0 ]	(	45	)
-fiveshadesdist0	[ 0	locks=0 ]	(	1	)
-fivetintsdist0	[ 0	locks=0 ]	(	1	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.netbox"
-Content-Type: text/plain
-
-__netbox1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/color_adjustment.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
