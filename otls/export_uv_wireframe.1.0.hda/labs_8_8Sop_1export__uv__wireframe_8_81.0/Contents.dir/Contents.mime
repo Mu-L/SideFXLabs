@@ -32,20 +32,19 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.03997 -0.660473
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -7.96263 -2.50605
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	transform1 1 1 "input1"
+0 	uvtransform2 1 1 "input1"
 }
 inputs
 {
-0 	transform1 0 1
+0 	uvtransform2 0 1
 }
 stat
 {
@@ -215,7 +214,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"s@udim = itoa(1000+(floor(v@uv.x)+1)+(floor(v@uv.y)*10));"	)
+snippet	[ 0	locks=0 ]	(	"s@udim = itoa(1000+(floor(v@_uvw_uv.x)+1)+(floor(v@_uvw_uv.y)*10));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
@@ -382,7 +381,7 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
-attribname	[ 0	locks=0 ]	(	uv	)
+attribname	[ 0	locks=0 ]	(	`chs(\"../uvattrib\")`	)
 tol	[ 0	locks=0 ]	(	0.001	)
 promote	[ 0	locks=0 ]	(	"off"	)
 }
@@ -450,14 +449,14 @@ Content-Type: text/plain
 
 {
 version 0.8
-inname	[ 0	locks=0 ]	(	uv	)
+inname	[ 0	locks=0 ]	(	`chs(\"../uvattrib\")`	)
 inclass	[ 0	locks=0 ]	(	"vertex"	)
 outclass	[ 0	locks=0 ]	(	"point"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
-useoutname	[ 0	locks=0 ]	(	"off"	)
-outname	[ 0	locks=0 ]	(	""	)
+useoutname	[ 0	locks=0 ]	(	"on"	)
+outname	[ 0	locks=0 ]	(	_uvw_uv	)
 deletein	[ 0	locks=0 ]	(	"on"	)
 }
 
@@ -1320,7 +1319,7 @@ targetsize	[ 0	locks=0 ]	(	2	2	2	)
 doscale	[ 0	locks=0 ]	(	"off"	)
 dofitdepth	[ 0	locks=0 ]	(	"off"	)
 fitdepth	[ 0	locks=0 ]	(	-1	1	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
+uvattrib	[ 0	locks=0 ]	(	_uvw_uv	)
 addnormal	[ 0	locks=0 ]	(	"off"	)
 adddepth	[ 0	locks=0 ]	(	"off"	)
 depthattrib	[ 0	locks=0 ]	(	depth	)
@@ -2472,7 +2471,7 @@ grouptype	[ 0	locks=0 ]	(	"guess"	)
 class	[ 0	locks=0 ]	(	"point"	)
 vex_numcount	[ 0	locks=0 ]	(	10	)
 vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"vector uv = point(1, \"uv\", 0);
+snippet	[ 0	locks=0 ]	(	"vector uv = point(1, \"_uvw_uv\", 0);
 
 v@P = set(floor(uv.y) + 0.5, 0, floor(uv.x) + 0.5);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
