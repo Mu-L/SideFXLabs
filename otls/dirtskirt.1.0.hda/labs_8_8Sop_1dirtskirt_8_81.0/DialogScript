@@ -1,0 +1,188 @@
+# Dialog script for labs::dirtskirt::1.0 automatically generated
+
+{
+    name	labs::dirtskirt::1.0
+    script	gamedev::sop_dirtskirt
+    label	"Labs Dirt Skirt"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Object Mesh"
+    inputlabel	2	"Ground Mesh"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    groupsimple {
+        name    "fd_objectskirt"
+        label   "Object Skirt"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "objdistance"
+            label   "Distance"
+            type    float
+            default { "0.15" }
+            help    "Distance up the mesh for the skirt to reach"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "objfrequency"
+            label   "Noise Frequency"
+            type    float
+            default { "0.1" }
+            help    "Noise on the upper portion of the skirt. High Frequency means tighter noise "
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "objintensity"
+            label   "Noise Intensity"
+            type    float
+            default { "0.2" }
+            help    "Strength of the noise on the upper portion of the skirt"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_groundskirt"
+        label   "Ground Skirt"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "gnddistance"
+            label   "Distance"
+            type    float
+            default { "0.2" }
+            help    "Distance on the ground the skirt will reach"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "gndfrequency"
+            label   "Noise Frequency"
+            type    float
+            default { "0.81" }
+            help    "Noise on the ground portion of the skirt. High Frequency means tighter noise "
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+        parm {
+            name    "gndintensity"
+            label   "Noise Intensity"
+            type    float
+            default { "0.3" }
+            help    "Strength of the noise on the ground portion of the skirt"
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "parmvop" "1" }
+            parmtag { "shaderparmcontexts" "cvex" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_tweakparameters"
+        label   "Tweak Parameters"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "iterations"
+            label   "Relaxation Iterations"
+            type    integer
+            default { "3" }
+            help    "Amount to relax the inner surface of the skirt. Higher values will even out the topology, creating a softer blend."
+            range   { 0 100 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "groundoffset"
+            label   "Ground Offset"
+            type    float
+            default { "0.1" }
+            help    "Vertical height to offset start of dirt skirt above the ground geometry. "
+            range   { 0 10 }
+        }
+        parm {
+            name    "rotatex"
+            label   "Rotate X"
+            type    float
+            default { "0" }
+            help    "Rotation on X to slump the dirt skirt higher on +Z or -Z."
+            range   { 0 10 }
+        }
+        parm {
+            name    "rotatez"
+            label   "Rotate Z"
+            type    float
+            default { "0" }
+            help    "Rotation on Z to slump the dirt skirt higher on +X or -X."
+            range   { 0 10 }
+        }
+        parm {
+            name    "addvtxcolor"
+            label   "Add Vertex Color"
+            type    toggle
+            default { "1" }
+            help    "When enabled will add a gradient to the edges of the dirt skirt. When exported to a game engine this can be used as alpha fade, or a mask to blend between materials used for the object and the ground."
+        }
+    }
+
+    groupsimple {
+        name    "fd_cleanup"
+        label   "Clean Up"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "finalcount"
+            label   "Target Polycount"
+            type    integer
+            default { "500" }
+            help    "Total amount of polygons to be used in the skirt, default is 1000."
+            range   { 1! 10000 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "threshold"
+            label   "Delete Small Area Threshold"
+            type    float
+            default { "0.15" }
+            help    "Area threshold used to identify small triangles and delete them."
+            range   { 0 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "zoffset"
+            label   "Z Offset"
+            type    float
+            default { "0.01" }
+            help    "Amount to push all points along their normals, to avoid intersections with the ground or object mesh."
+            range   { -10 10 }
+            parmtag { "autoscope" "0000000000000000" }
+        }
+        parm {
+            name    "keepgroundmesh"
+            label   "Keep Ground Mesh"
+            type    toggle
+            default { "0" }
+            help    "When enabled will include the ground mesh in the output geometry."
+        }
+        parm {
+            name    "keepobjectmesh"
+            label   "Keep Object Mesh"
+            type    toggle
+            default { "0" }
+            help    "When enabled will include the object mesh in the output geometry."
+        }
+    }
+
+}
