@@ -23,7 +23,6 @@
             label   "Alignment"
             type    ordinal
             default { "0" }
-            help    "Method of orientating the cuts. Bounding box is for worldspace cutting, longest edge is relative to the shape. "
             menu {
                 "0" "Longest Edge"
                 "1" "Bounding Box XZ"
@@ -34,7 +33,6 @@
             label   "Minimum Lot Size"
             type    float
             default { "0.1" }
-            help    "Primitives smaller than this size will no longer be considered for cutting"
             range   { 0.001 1 }
         }
         parm {
@@ -42,7 +40,6 @@
             label   "Iterations"
             type    integer
             default { "10" }
-            help    "Number of Subdivisions of cutting. 1 will give you 2 primitives, 2 will give you 4, etc etc "
             range   { 1! 10 }
         }
         parm {
@@ -50,7 +47,6 @@
             label   "Random Seed"
             type    float
             default { "0" }
-            help    "Randomization control"
             range   { 0 10 }
         }
     }
@@ -64,7 +60,6 @@
             label   "Irregularity"
             type    float
             default { "1" }
-            help    "Smaller values mean the cuts will be halfway along a primitive, higher values will yield primitives of different sizes. "
             range   { 0 1 }
         }
         parm {
@@ -90,14 +85,12 @@
             label   "Cluster Lots"
             type    toggle
             default { "0" }
-            help    "Enables joining of lots into clusters"
         }
         parm {
             name    "numberofclusters"
             label   "Number of Clusters"
             type    integer
             default { "50" }
-            help    "Final Number of Lots after merging them into clusters"
             hidewhen "{ clusterlots == 0 }"
             range   { 1! 200 }
         }
@@ -106,7 +99,6 @@
             label   "Random Seed"
             type    float
             default { "0" }
-            help    "Randomization control"
             hidewhen "{ clusterlots == 0 }"
             range   { 0 10 }
         }
