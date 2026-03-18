@@ -32,26 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.4411 -6.54162
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position 2.15138 -16.7298
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-3 "output1"
 }
 inputsNamed3
 {
-0 	polybevel1 1 1 "input1"
 }
 inputs
 {
-0 	polybevel1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Bailey@BaileysPC
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -67,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -4807,6 +4808,7 @@ frontseamgrp	[ 0	locks=0 ]	(	extrudeFrontSeam	)
 outputbackseamgrp	[ 0	locks=0 ]	(	"off"	)
 backseamgrp	[ 0	locks=0 ]	(	extrudeBackSeam	)
 preservegroups	[ 0	locks=0 ]	(	"on"	)
+copyedgegroups	[ 0	locks=0 ]	(	"off"	)
 insettingsection	[ 0	locks=0 ]	(	0	)
 limitinset	[ 0	locks=0 ]	(	"on"	)
 commonlimit	[ 0	locks=0 ]	(	"on"	)
@@ -5400,6 +5402,12 @@ Content-Type: text/plain
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
+mask	[ 0	locks=0 ]	(	1	)
+enablemaskattrib	[ 0	locks=0 ]	(	"noscaling"	)
+maskattrib	[ 0	locks=0 ]	(	mask	)
+usecustomattrib	[ 0	locks=0 ]	(	"off"	)
+customattrib	[ 0	locks=0 ]	(	N	)
+normalizeattrib	[ 0	locks=0 ]	(	"on"	)
 dist	[ 8	locks=0 ]	(	[ dist	0 ] 	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 }
@@ -6546,8 +6554,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -6705,6 +6713,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle1.parm"
@@ -6742,6 +6756,7 @@ rotate(m, radians(f@Rotation), v@N);
 p@orient = quaternion(m);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7060,6 +7075,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	1	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -7197,6 +7213,7 @@ snippet	[ 0	locks=0 ]	(	"if (i@decal_index != point(1, \"decal_index\", 0)){
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -7347,6 +7364,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -7549,8 +7567,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -7708,6 +7726,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/attribwrangle3.chn"
@@ -7743,6 +7767,7 @@ v@Translate = chv(sprintf(\"../vDecalTranslate%g\", @ptnum+1));
 f@SurfaceOffset = chf(sprintf(\"../fDecalSurfaceOffset%g\", @ptnum+1));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -8175,6 +8200,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@decal_index = clamp(i@decal_index, 0, detail(1, \"decal_index_max\", 0) );"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
