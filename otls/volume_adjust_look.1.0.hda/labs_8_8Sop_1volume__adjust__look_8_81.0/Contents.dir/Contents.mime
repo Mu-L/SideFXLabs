@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.5 -5.15
+position 1.5 -60.15
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author maia@truro
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -130,6 +134,7 @@ snippet	[ 0	locks=0 ]	(	"i@volvis_motionvec = 1;
 i@volvis_normals = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -210,6 +215,7 @@ snippet	[ 0	locks=0 ]	(	"i@volvis_normals = 1;
 i@volvis_motionvec = 0;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -484,8 +490,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -650,6 +656,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/volume_ao_quality.chn"
@@ -693,6 +705,7 @@ f@volvis_ambientmapsize = chf(\"map_size\");
 f@volvis_ambientsteprate = chf(\"step_rate\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1129,6 +1142,12 @@ Content-Type: text/plain
         label   "Python Code"
         export  none
     }
+    parm {
+        name    "maintainstate"
+        baseparm
+        label   "Maintain State"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/cdramp_to_greyscale.chn"
@@ -1232,6 +1251,7 @@ if geo.findGlobalAttrib(attrib):
         
     ramp_str = dumps(ramp_dict)
     geo.setGlobalAttribValue(attrib, ramp_str)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 attrib_name	[ 0	locks=0 ]	(	volvis_cdramp	)
 greyscale_mode	[ 0	locks=0 ]	(	[ greyscale_mode	0 ] 	)
 coefficients	[ 0	locks=0 ]	(	[ coefficientsx	0 ] 	[ coefficientsy	0 ] 	[ coefficientsz	0 ] 	)
@@ -1302,8 +1322,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1478,6 +1498,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/const_Cd_to_greyscale.chn"
@@ -1566,6 +1592,7 @@ if (greyscale_mode > 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1635,128 +1662,6 @@ color UT_Color RGB 0.8 1 0.7
 delscript ""
 exprlanguage hscript
 end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_has_emitcdramp.spareparmdef"
-Content-Type: text/plain
-
-    parm {
-        name    "mergecondition"
-        baseparm
-        label   "Use Second Input If"
-        export  none
-    }
-    parm {
-        name    "testinput"
-        baseparm
-        label   "Test Input"
-        export  none
-    }
-    multiparm {
-        name    "tests"
-        label    "Number of Tests"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "enable#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "type#"
-            baseparm
-            label   "Test Type"
-            export  none
-        }
-        parm {
-            name    "expr#"
-            baseparm
-            label   "Enable"
-            export  none
-        }
-        parm {
-            name    "attribtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "attribowner#"
-            baseparm
-            label   "Class"
-            export  none
-        }
-        parm {
-            name    "attributes#"
-            baseparm
-            label   "Attributes"
-            export  none
-        }
-        parm {
-            name    "attribvaltype#"
-            baseparm
-            label   "Of Type"
-            export  none
-        }
-        parm {
-            name    "attribfloatcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribstringcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "attribsval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "counttype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "countgroup#"
-            baseparm
-            label   "In Group"
-            export  none
-        }
-        parm {
-            name    "countcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "countval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "hasinputtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-    }
-
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/switch_has_emitcdramp.parm"
@@ -1970,6 +1875,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/scatter_to_greyscale.chn"
@@ -2083,6 +1994,7 @@ if (greyscale_mode > 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"off"	)
 bindings	[ 0	locks=0 ]	(	4	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -2293,6 +2205,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Cd_vol_to_greyscale.chn"
@@ -2406,6 +2324,7 @@ if (greyscale_mode > 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"off"	)
 bindings	[ 0	locks=0 ]	(	4	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -2495,8 +2414,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2654,6 +2573,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/emission_multiplier.chn"
@@ -2683,6 +2608,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@volvis_emitscale *= chf(\"emit_scale_mul\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2792,6 +2718,12 @@ Content-Type: text/plain
         label   "Python Code"
         export  none
     }
+    parm {
+        name    "maintainstate"
+        baseparm
+        label   "Maintain State"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/emitcdramp_to_greyscale.chn"
@@ -2895,6 +2827,7 @@ if geo.findGlobalAttrib(attrib):
         
     ramp_str = dumps(ramp_dict)
     geo.setGlobalAttribValue(attrib, ramp_str)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 attrib_name	[ 0	locks=0 ]	(	volvis_emitcdramp	)
 greyscale_mode	[ 0	locks=0 ]	(	[ greyscale_mode	0 ] 	)
 coefficients	[ 0	locks=0 ]	(	[ coefficientsx	0 ] 	[ coefficientsy	0 ] 	[ coefficientsz	0 ] 	)
@@ -3353,6 +3286,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/Ce_to_greyscale.chn"
@@ -3466,6 +3405,7 @@ if (greyscale_mode > 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"off"	)
 bindings	[ 0	locks=0 ]	(	4	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -3659,6 +3599,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/density_multiplier.chn"
@@ -3692,6 +3638,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"f@density *= chf(\"density_mul\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"off"	)
 bindings	[ 0	locks=0 ]	(	1	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -3864,8 +3811,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -4031,6 +3978,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/volume_emitfield.chn"
@@ -4076,6 +4029,7 @@ u@volvis_emitrange = set(chf(\"emit_range1\"), chf(\"emit_range2\"));
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4276,6 +4230,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@_val_has_Ce = 1;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4353,8 +4308,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -4512,6 +4467,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/shadow_multiplier.chn"
@@ -4541,6 +4502,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@volvis_shadowscale *= chf(\"shadow_mul\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4795,128 +4757,6 @@ color UT_Color RGB 0.8 1 0.7
 delscript ""
 exprlanguage hscript
 end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/switch_has_cdramp.spareparmdef"
-Content-Type: text/plain
-
-    parm {
-        name    "mergecondition"
-        baseparm
-        label   "Use Second Input If"
-        export  none
-    }
-    parm {
-        name    "testinput"
-        baseparm
-        label   "Test Input"
-        export  none
-    }
-    multiparm {
-        name    "tests"
-        label    "Number of Tests"
-        baseparm
-        default 1
-
-        parm {
-            name    "enable#"
-            baseparm
-            label   "enable#"
-            nolabel
-            export  none
-        }
-        parm {
-            name    "type#"
-            baseparm
-            label   "Test Type"
-            export  none
-        }
-        parm {
-            name    "expr#"
-            baseparm
-            label   "Enable"
-            export  none
-        }
-        parm {
-            name    "attribtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "attribowner#"
-            baseparm
-            label   "Class"
-            export  none
-        }
-        parm {
-            name    "attributes#"
-            baseparm
-            label   "Attributes"
-            export  none
-        }
-        parm {
-            name    "attribvaltype#"
-            baseparm
-            label   "Of Type"
-            export  none
-        }
-        parm {
-            name    "attribfloatcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribstringcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "attribval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "attribsval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "counttype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-        parm {
-            name    "countgroup#"
-            baseparm
-            label   "In Group"
-            export  none
-        }
-        parm {
-            name    "countcomp#"
-            baseparm
-            label   "Is"
-            export  none
-        }
-        parm {
-            name    "countval#"
-            baseparm
-            label   "Value"
-            export  none
-        }
-        parm {
-            name    "hasinputtype#"
-            baseparm
-            label   "Enable When"
-            export  none
-        }
-    }
-
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/switch_has_cdramp.parm"
@@ -5383,6 +5223,7 @@ python	[ 0	locks=0 ]	(	"# Sometimes the viewport does not update after a volume
 
 # This node forces the viewport to update even though
 # this node contains no code."	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

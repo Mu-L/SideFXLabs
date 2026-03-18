@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.5 2.85
+position 1.5 -48.15
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author maia@truro
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -183,6 +187,36 @@ Content-Type: text/plain
         range   { 0 10 }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "mindist"
+        baseparm
+        label   "Minimum Edge Length"
+        export  none
+    }
+    parm {
+        name    "minspeed"
+        baseparm
+        label   "Minimum Speed"
+        export  none
+    }
+    parm {
+        name    "extrapolationtype"
+        baseparm
+        label   "Extrapolation Type"
+        export  none
+    }
+    parm {
+        name    "tangentialonly"
+        baseparm
+        label   "Tangential Component Only"
+        export  none
+    }
+    parm {
+        name    "globalrotation"
+        baseparm
+        label   "Global Rotation"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/lower_diffusion.chn"
@@ -243,8 +277,13 @@ source	[ 0	locks=0 ]	(	""	)
 weights	[ 0	locks=0 ]	(	""	)
 speed	[ 8	locks=0 ]	(	[ speed	"" ] 	)
 boundary	[ 8	locks=0 ]	(	[ boundary	"" ] 	)
+mindist	[ 0	locks=0 ]	(	1e-8	)
+minspeed	[ 0	locks=0 ]	(	1e-8	)
 timestep	[ 8	locks=0 ]	(	[ timestep	0.02 ] 	)
 unreachableval	[ 0	locks=0 ]	(	-1	)
+extrapolationtype	[ 0	locks=0 ]	(	"scalar"	)
+tangentialonly	[ 0	locks=0 ]	(	"off"	)
+globalrotation	[ 0	locks=0 ]	(	0	)
 scaled_time	[ 8	locks=0 ]	(	[ scaled_time	0 ] 	)
 time_scale	[ 8	locks=0 ]	(	[ time_scale	0 ] 	)
 }
@@ -369,6 +408,36 @@ Content-Type: text/plain
         range   { 0 10 }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "mindist"
+        baseparm
+        label   "Minimum Edge Length"
+        export  none
+    }
+    parm {
+        name    "minspeed"
+        baseparm
+        label   "Minimum Speed"
+        export  none
+    }
+    parm {
+        name    "extrapolationtype"
+        baseparm
+        label   "Extrapolation Type"
+        export  none
+    }
+    parm {
+        name    "tangentialonly"
+        baseparm
+        label   "Tangential Component Only"
+        export  none
+    }
+    parm {
+        name    "globalrotation"
+        baseparm
+        label   "Global Rotation"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/higher_diffusion.chn"
@@ -429,8 +498,13 @@ source	[ 0	locks=0 ]	(	""	)
 weights	[ 0	locks=0 ]	(	""	)
 speed	[ 8	locks=0 ]	(	[ speed	"" ] 	)
 boundary	[ 8	locks=0 ]	(	[ boundary	"" ] 	)
+mindist	[ 0	locks=0 ]	(	1e-8	)
+minspeed	[ 0	locks=0 ]	(	1e-8	)
 timestep	[ 8	locks=0 ]	(	[ timestep	0.02 ] 	)
 unreachableval	[ 0	locks=0 ]	(	-1	)
+extrapolationtype	[ 0	locks=0 ]	(	"scalar"	)
+tangentialonly	[ 0	locks=0 ]	(	"off"	)
+globalrotation	[ 0	locks=0 ]	(	0	)
 scaled_time	[ 8	locks=0 ]	(	[ scaled_time	0 ] 	)
 time_scale	[ 8	locks=0 ]	(	[ time_scale	0 ] 	)
 }
@@ -778,6 +852,24 @@ Content-Type: text/plain
         range   { 0 10 }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "useweightattribute"
+        baseparm
+        label   "Use Weight Attribute"
+        export  none
+    }
+    parm {
+        name    "weightattribute"
+        baseparm
+        label   "Weight Attribute"
+        export  all
+    }
+    parm {
+        name    "updateaffectednmls"
+        baseparm
+        label   "Recompute Affected Normals"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/lower_smooth.chn"
@@ -842,9 +934,12 @@ group	[ 0	locks=0 ]	(	""	)
 contrainedboundary	[ 0	locks=0 ]	(	[ contrainedboundary	2 ] 	)
 constrainedpoints	[ 8	locks=0 ]	(	[ constrainedpoints	"" ] 	)
 attributes	[ 8	locks=0 ]	(	[ attributes	P ] 	)
+useweightattribute	[ 0	locks=0 ]	(	"off"	)
+weightattribute	[ 0	locks=0 ]	(	weight	)
 method	[ 8	locks=0 ]	(	[ method	0 ] 	)
 strength	[ 8	locks=0 ]	(	[ strength	10 ] 	)
 filterquality	[ 8	locks=0 ]	(	[ filterquality	2 ] 	)
+updateaffectednmls	[ 0	locks=0 ]	(	"off"	)
 strength_scale	[ 8	locks=0 ]	(	[ strength_scale	0 ] 	)
 }
 
@@ -916,8 +1011,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -1075,6 +1170,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/extract_float.chn"
@@ -1123,6 +1224,7 @@ if (chi(\"invert\")) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	2	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1247,6 +1349,24 @@ Content-Type: text/plain
         range   { 0 10 }
         parmtag { "script_callback_language" "python" }
     }
+    parm {
+        name    "useweightattribute"
+        baseparm
+        label   "Use Weight Attribute"
+        export  none
+    }
+    parm {
+        name    "weightattribute"
+        baseparm
+        label   "Weight Attribute"
+        export  all
+    }
+    parm {
+        name    "updateaffectednmls"
+        baseparm
+        label   "Recompute Affected Normals"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/higher_smooth.chn"
@@ -1312,9 +1432,12 @@ group	[ 0	locks=0 ]	(	""	)
 contrainedboundary	[ 8	locks=0 ]	(	[ contrainedboundary	2 ] 	)
 constrainedpoints	[ 8	locks=0 ]	(	[ constrainedpoints	"" ] 	)
 attributes	[ 8	locks=0 ]	(	[ attributes	P ] 	)
+useweightattribute	[ 0	locks=0 ]	(	"off"	)
+weightattribute	[ 0	locks=0 ]	(	weight	)
 method	[ 0	locks=0 ]	(	[ method	0 ] 	)
 strength	[ 8	locks=0 ]	(	[ strength	10 ] 	)
 filterquality	[ 8	locks=0 ]	(	[ filterquality	2 ] 	)
+updateaffectednmls	[ 0	locks=0 ]	(	"off"	)
 strength_scale	[ 8	locks=0 ]	(	[ strength_scale	0 ] 	)
 }
 
@@ -1880,6 +2003,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"@group__sfe_unshared = neighbourcount(0, @ptnum) != len(pointprims(0, @ptnum));"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -1966,6 +2090,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 8	locks=0 ]	(	[ enable1	1 ] 	)
 grouptype1	[ 0	locks=0 ]	(	"points"	)
 group1	[ 0	locks=0 ]	(	_sfe_unshared	)
@@ -2044,6 +2171,9 @@ Content-Type: text/plain
 version 0.8
 deletions	[ 0	locks=0 ]	(	1	)
 removegrp	[ 0	locks=0 ]	(	"off"	)
+selection_folder	[ 0	locks=0 ]	(	0	)
+selectiongroup	[ 0	locks=0 ]	(	""	)
+selectiongrouptype	[ 0	locks=0 ]	(	"guess"	)
 enable1	[ 8	locks=0 ]	(	[ enable1	1 ] 	)
 grouptype1	[ 0	locks=0 ]	(	"points"	)
 group1	[ 0	locks=0 ]	(	_sfe_unshared	)
@@ -2117,8 +2247,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -2283,6 +2413,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/extract_vec.chn"
@@ -2359,6 +2495,7 @@ if (chi(\"enable_projection\")) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	4	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3021,6 +3158,12 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
+    parm {
+        name    "enable"
+        baseparm
+        label   "Set Color Attribute"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/vis_float.chn"
@@ -3222,6 +3365,7 @@ version 0.8
 group	[ 0	locks=0 ]	(	""	)
 grouptype	[ 0	locks=0 ]	(	"guess"	)
 deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+enable	[ 0	locks=0 ]	(	"on"	)
 class	[ 0	locks=0 ]	(	2	)
 colortype	[ 0	locks=0 ]	(	3	)
 color	[ 0	locks=0 ]	(	1	1	1	)
@@ -3734,6 +3878,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"f@_sfe_out_mag = length(v@_sfe_out_v);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	1	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3972,6 +4117,7 @@ if (abs(f@_sfe_out_mag - min) < 0.00001) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	1	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4051,8 +4197,8 @@ Content-Type: text/plain
             baseparm
             label   "Group"
             export  none
-            bindselector points "Modify Points"
-                "Select the points to affect and press Enter to complete."
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
                 0 1 0xffffffff 0 grouptype 0
         }
         parm {
@@ -4217,6 +4363,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/vis_vector.chn"
@@ -4266,6 +4418,7 @@ if (chi(\"color_mode\") == 0) {
 }"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	1	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)

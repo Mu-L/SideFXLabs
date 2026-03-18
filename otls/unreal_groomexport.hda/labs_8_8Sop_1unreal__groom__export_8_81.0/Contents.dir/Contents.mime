@@ -32,29 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -4.89522 -1.32068
-connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position 1.5 -56.15
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	enumerate1 1 1 "input1"
-1 	"" "" 1 "input2"
-2 	headgeom 0 1 "input3"
 }
 inputs
 {
-0 	enumerate1 0 1
-1 	"" 0 1
-2 	headgeom 0 1
 }
 stat
 {
   create -1
   modify -1
-  author Danicka@DESKTOP-2416QFR
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -70,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -166,6 +164,7 @@ u@groom_root_uv = set(uv.x, uv.y);
 "	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -437,8 +436,9 @@ Content-Type: text/plain
             export  none
         }
         group {
-            name    "stdswitcher5"
+            name    "stdswitcher6"
             label   "Hierarchy"
+            grouptag { "sidefx::switcher" "stdswitcher5" }
 
             parm {
                 name    "use_sop_path"
@@ -521,7 +521,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_1"
+            name    "stdswitcher6_1"
             label   "Geometry"
 
             parm {
@@ -605,7 +605,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_2"
+            name    "stdswitcher6_2"
             label   "Layering"
 
             parm {
@@ -629,6 +629,7 @@ Content-Type: text/plain
                     name    "nodepath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -636,6 +637,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -656,6 +658,7 @@ Content-Type: text/plain
                     name    "vizpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -663,6 +666,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -683,6 +687,7 @@ Content-Type: text/plain
                     name    "attrpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -690,6 +695,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -697,6 +703,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -717,6 +724,7 @@ Content-Type: text/plain
                     name    "facesetpath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -724,6 +732,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -731,6 +740,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -751,6 +761,7 @@ Content-Type: text/plain
                     name    "userproppath#"
                     baseparm
                     label   "Path #"
+                    joinnext
                     export  none
                 }
                 parm {
@@ -758,6 +769,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Picker #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -765,6 +777,7 @@ Content-Type: text/plain
                     baseparm
                     label   "Pattern #"
                     nolabel
+                    joinnext
                     export  none
                 }
                 parm {
@@ -779,7 +792,7 @@ Content-Type: text/plain
         }
 
         group {
-            name    "stdswitcher5_3"
+            name    "stdswitcher6_3"
             label   "Motion Blur"
 
             parm {
@@ -810,119 +823,91 @@ Content-Type: text/plain
 
         parm {
             name    "tprerender"
-            label   "tprerender"
-            type    toggle
+            baseparm
+            label   "Pre-Render Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "prerender"
+            baseparm
             label   "Pre-Render Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tprerender == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lprerender"
-            label   "lprerender"
-            type    string
+            baseparm
+            label   "Pre-Render Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tprerender == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpreframe"
-            label   "tpreframe"
-            type    toggle
+            baseparm
+            label   "Pre-Frame Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "preframe"
+            baseparm
             label   "Pre-Frame Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpreframe == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpreframe"
-            label   "lpreframe"
-            type    string
+            baseparm
+            label   "Pre-Frame Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpreframe == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpostframe"
-            label   "tpostframe"
-            type    toggle
+            baseparm
+            label   "Post-Frame Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "postframe"
+            baseparm
             label   "Post-Frame Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpostframe == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpostframe"
-            label   "lpostframe"
-            type    string
+            baseparm
+            label   "Post-Frame Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpostframe == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
         parm {
             name    "tpostrender"
-            label   "tpostrender"
-            type    toggle
+            baseparm
+            label   "Post-Render Script"
             nolabel
             joinnext
-            default { "1" }
+            export  none
         }
         parm {
             name    "postrender"
+            baseparm
             label   "Post-Render Script"
-            type    file
             joinnext
-            default { "" }
-            disablewhen "{ tpostrender == 0 }"
-            parmtag { "filechooser_mode" "read" }
+            export  none
         }
         parm {
             name    "lpostrender"
-            label   "lpostrender"
-            type    string
+            baseparm
+            label   "Post-Render Script Language"
             nolabel
-            default { "hscript" }
-            disablewhen "{ tpostrender == 0 }"
-            menu {
-                "hscript"   "Hscript"
-                "python"    "Python"
-            }
+            export  none
         }
     }
 
@@ -930,6 +915,12 @@ Content-Type: text/plain
         name    "outputindexedarrays"
         baseparm
         label   "Output Indexed Arrays"
+        export  none
+    }
+    parm {
+        name    "camera_suffix"
+        baseparm
+        label   "Camera Suffix"
         export  none
     }
 
@@ -1042,7 +1033,7 @@ format	[ 0	locks=0 ]	(	[ format	0 ] 	)
 mkpath	[ 0	locks=0 ]	(	[ mkpath	1 ] 	)
 render_full_range	[ 0	locks=0 ]	(	[ render_full_range	1 ] 	)
 initsim	[ 0	locks=0 ]	(	[ initsim	0 ] 	)
-stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	)
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
 use_sop_path	[ 0	locks=0 ]	(	"off"	)
 sop_path	[ 0	locks=0 ]	(	""	)
 subdgroup	[ 0	locks=0 ]	(	""	)
@@ -1055,6 +1046,7 @@ save_hidden	[ 0	locks=0 ]	(	"on"	)
 displaysop	[ 0	locks=0 ]	(	"off"	)
 partition_mode	[ 0	locks=0 ]	(	"no"	)
 partition_attribute	[ 0	locks=0 ]	(	""	)
+camera_suffix	[ 0	locks=0 ]	(	Camera	)
 full_bounds	[ 0	locks=0 ]	(	"off"	)
 packed_transform	[ 0	locks=0 ]	(	"transformparent"	)
 use_instancing	[ 0	locks=0 ]	(	"on"	)
@@ -1080,8 +1072,6 @@ numuserprops	[ 0	locks=0 ]	(	0	)
 motionBlur	[ 0	locks=0 ]	(	"off"	)
 samples	[ 0	locks=0 ]	(	2	)
 shutter	[ 0	locks=0 ]	(	0	1	)
-folder0	[ 0	locks=0 ]	(	0	0	)
-stdswitcher5	[ 0	locks=0 ]	(	0	0	0	0	)
 tprerender	[ 0	locks=0 ]	(	"on"	)
 prerender	[ 0	locks=0 ]	(	""	)
 lprerender	[ 0	locks=0 ]	(	hscript	)
@@ -1094,6 +1084,8 @@ lpostframe	[ 0	locks=0 ]	(	hscript	)
 tpostrender	[ 0	locks=0 ]	(	"on"	)
 postrender	[ 0	locks=0 ]	(	""	)
 lpostrender	[ 0	locks=0 ]	(	hscript	)
+folder0	[ 0	locks=0 ]	(	0	0	)
+stdswitcher6	[ 0	locks=0 ]	(	0	0	0	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2731,6 +2723,7 @@ prexform_r	[ 0	locks=0 ]	(	0	0	0	)
 prexform_s	[ 0	locks=0 ]	(	1	1	1	)
 prexform_shear	[ 0	locks=0 ]	(	0	0	0	)
 movecentroid	[ 0	locks=0 ]	(	0	)
+movepivot	[ 0	locks=0 ]	(	0	)
 attribs	[ 0	locks=0 ]	(	*	)
 updatenmls	[ 0	locks=0 ]	(	"off"	)
 updateaffectednmls	[ 0	locks=0 ]	(	"on"	)
@@ -3780,6 +3773,7 @@ vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
 snippet	[ 0	locks=0 ]	(	"i@groom_id = @primnum;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -3860,6 +3854,7 @@ snippet	[ 0	locks=0 ]	(	"setattribtypeinfo(geoself(), \"point\", \"groom_color\"
 setattribtypeinfo(geoself(), \"prim\", \"groom_root_uv\", \"vector\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -4012,16 +4007,16 @@ Content-Disposition: attachment; filename="hdaroot/alembicxform2.data"
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
-f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDE5LjUuNjQwJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxEBKwQLdmVydGV4Y291bnQmBBEBKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHBmFydGlzdCYHKwg=
-B0Rhbmlja2EmCCsJCHNvZnR3YXJlJgkrChBIb3VkaW5pIDE5LjUuNjQwJgorCwRkYXRlJgsrDBMyMDIzLTA3LTE0IDEyOjM1OjQyJgwrDQhob3N0bmFtZSYNKw4PREVTS1RPUC0yNDE2UUZSJg4rDwZib3VuZHMmD0AZBgAAAAA=
-AAAAAAAAAAAAAAAAAAAAAAAAAAArEBFwcmltY291bnRfc3VtbWFyeSYQJxsgICAgICAgICAgMSBQYWNrZWQgQWxlbWJpYworERFhdHRyaWJ1dGVfc3VtbWFyeSYRJxsgICAgIDEgcG9pbnQgYXR0cmlidXRlczoJUAp9KxIIdG8=
-cG9sb2d5JhJbKxMIcG9pbnRyZWYmE1srFAdpbmRpY2VzJhRAEgEAAF1dKxUKYXR0cmlidXRlcyYVWysWD3BvaW50YXR0cmlidXRlcyYWW1tbKxcFc2NvcGUmFysYBnB1YmxpYyYYKxkEdHlwZSYZKxoHbnVtZXJpYyYaKxsEbmE=
-bWUmGyscAVAmHCsdB29wdGlvbnMmHXsmGXsmGSseBnN0cmluZyYeKx8FdmFsdWUmHysgBXBvaW50JiB9fV1bKyEEc2l6ZSYhEQMrIgdzdG9yYWdlJiIrIwhmcHJlYWwzMiYjKyQIZGVmYXVsdHMmJFsmIREBJiIrJQhmcHJlYWw=
-NjQmJSsmBnZhbHVlcyYmQBoBAAAAAAAAAABdJiZbJiERAyYiJiMrJwhwYWdlc2l6ZSYnEgAEKygRY29uc3RhbnRwYWdlZmxhZ3MmKFtAEAEBAAAAXSspC3Jhd3BhZ2VkYXRhJilAGQMAAAAAAAAAAAAAAABdXV1dXSsqCnByaW0=
-aXRpdmVzJipbW1smGSsrCkFsZW1iaWNSZWYmK11bKywKcGFyYW1ldGVycyYseystCWZpbGVuYW1lcyYtKy4kWyJvcGRlZjpTb3AvYWxlbWJpY3hmb3JtP3hmb3JtLmFiYyJdJi4rLwVmcmFtZSYvGgAAAAAAAAAAKzAGb2JqZWM=
-dCYwKzEGL3hmb3JtJjErMhZwb2ludGluc3RhbmNldHJhbnNmb3JtJjIRACszDHVzZXRyYW5zZm9ybSYzEQErNA11c2V2aXNpYmlsaXR5JjQRAX0rNQVwaXZvdCY1QBkDAAAAAAAAAAAAAAAAKzYJdHJhbnNmb3JtJjZAGgkAAAA=
-AAAA8D8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA/KzcGdmVydGV4JjcRACs4C3ZpZXdwb3J0bG9kJjgrOQRmdWxsJjldXV0rOhNzaGFyZWRwcmltaXRpdmU=
-ZGF0YSY6W10nBWluZGV4WycOaW50ZWdlcmVudHJpZXN7fScNc3RyaW5nZW50cmllc3t9JxFpbnRlZ2Vya2V5ZW50aXJlc3t9JxBzdHJpbmdrZXllbnRyaWVze31dJw1pbmRleHBvc2l0aW9uFGYAAAAAAAAAXQ==
+f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNjU3JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxEBKwQLdmVydGV4Y291bnQmBBEBKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHBmFydGlzdCYHKwg=
+CWNocmlzdG9zcyYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMjEuMC42NTcmCisLBGRhdGUmCysMEzIwMjYtMDMtMTggMTM6MDc6MDYmDCsNCGhvc3RuYW1lJg0rDgxjYXl1Z2EubG9jYWwmDisPBmJvdW5kcyYPQBkGAAAAAAA=
+AAAAAAAAAAAAAAAAAAAAAAAAACsQEXByaW1jb3VudF9zdW1tYXJ5JhAnGyAgICAgICAgICAxIFBhY2tlZCBBbGVtYmljCisREWF0dHJpYnV0ZV9zdW1tYXJ5JhEnGyAgICAgMSBwb2ludCBhdHRyaWJ1dGVzOglQCn0rEgh0b3A=
+b2xvZ3kmElsrEwhwb2ludHJlZiYTWysUB2luZGljZXMmFEASAQAAXV0rFQphdHRyaWJ1dGVzJhVbKxYPcG9pbnRhdHRyaWJ1dGVzJhZbW1srFwVzY29wZSYXKxgGcHVibGljJhgrGQR0eXBlJhkrGgdudW1lcmljJhorGwRuYW0=
+ZSYbKxwBUCYcKx0Hb3B0aW9ucyYdeyYZeyYZKx4Gc3RyaW5nJh4rHwV2YWx1ZSYfKyAFcG9pbnQmIH19XVsrIQRzaXplJiERAysiB3N0b3JhZ2UmIisjCGZwcmVhbDMyJiMrJAhkZWZhdWx0cyYkWyYhEQEmIislCGZwcmVhbDY=
+NCYlKyYGdmFsdWVzJiZAGgEAAAAAAAAAAF0mJlsmIREDJiImIysnCHBhZ2VzaXplJicSAAQrKBFjb25zdGFudHBhZ2VmbGFncyYoW0AQAQEAAABdKykLcmF3cGFnZWRhdGEmKUAZAwAAAAAAAAAAAAAAAF1dXV1dKyoKcHJpbWk=
+dGl2ZXMmKltbWyYZKysKQWxlbWJpY1JlZiYrXVsrLApwYXJhbWV0ZXJzJix7Ky0JZmlsZW5hbWVzJi0rLiRbIm9wZGVmOlNvcC9hbGVtYmljeGZvcm0/eGZvcm0uYWJjIl0mLisvBWZyYW1lJi8aAAAAAAAAAAArMAZvYmplY3Q=
+JjArMQYveGZvcm0mMSsyFnBvaW50aW5zdGFuY2V0cmFuc2Zvcm0mMhEAKzMMdXNldHJhbnNmb3JtJjMRASs0DXVzZXZpc2liaWxpdHkmNBEBfSs1BXBpdm90JjVAGQMAAAAAAAAAAAAAAAArNgl0cmFuc2Zvcm0mNkAaCQAAAAA=
+AADwPwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D8rNwZ2ZXJ0ZXgmNxEAKzgLdmlld3BvcnRsb2QmOCs5BGZ1bGwmOV1dXSs6E3NoYXJlZHByaW1pdGl2ZWQ=
+YXRhJjpbXScFaW5kZXhbJw5pbnRlZ2VyZW50cmllc3t9Jw1zdHJpbmdlbnRyaWVze30nEWludGVnZXJrZXllbnRpcmVze30nEHN0cmluZ2tleWVudHJpZXN7fV0nDWluZGV4cG9zaXRpb24UZgAAAAAAAABd
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/alembicxform2.userdata"

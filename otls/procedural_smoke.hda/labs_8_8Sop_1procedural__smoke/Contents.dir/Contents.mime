@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.132131 1.34665
+position 1.5 -39.15
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -204,7 +208,7 @@ disp	[ 0	locks=0 ]	(	0.5	)
 dispfreq	[ 0	locks=0 ]	(	1	)
 dogwarp	[ 0	locks=0 ]	(	"on"	)
 accumg	[ 0	locks=0 ]	(	"on"	)
-gflow	[ 0	locks=0 ]	(	-0.20000000000000001	)
+gflow	[ 0	locks=0 ]	(	-0.2	)
 flowrot	[ 0	locks=0 ]	(	0	)
 folder0	[ 0	locks=0 ]	(	0	)
 clampmin	[ 0	locks=0 ]	(	"on"	)
@@ -214,17 +218,17 @@ maxval	[ 0	locks=0 ]	(	1	)
 pdf1pos	[ 0	locks=0 ]	(	0	)
 pdf1value	[ 0	locks=0 ]	(	1	)
 pdf1interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf2pos	[ 0	locks=0 ]	(	0.20000000000000001	)
-pdf2value	[ 0	locks=0 ]	(	0.69999999999999996	)
+pdf2pos	[ 0	locks=0 ]	(	0.2	)
+pdf2value	[ 0	locks=0 ]	(	0.7	)
 pdf2interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf3pos	[ 0	locks=0 ]	(	0.40000000000000002	)
-pdf3value	[ 0	locks=0 ]	(	0.29999999999999999	)
+pdf3pos	[ 0	locks=0 ]	(	0.4	)
+pdf3value	[ 0	locks=0 ]	(	0.3	)
 pdf3interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf4pos	[ 0	locks=0 ]	(	0.59999999999999998	)
-pdf4value	[ 0	locks=0 ]	(	0.10000000000000001	)
+pdf4pos	[ 0	locks=0 ]	(	0.6	)
+pdf4value	[ 0	locks=0 ]	(	0.1	)
 pdf4interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf5pos	[ 0	locks=0 ]	(	0.80000000000000004	)
-pdf5value	[ 0	locks=0 ]	(	0.050000000000000003	)
+pdf5pos	[ 0	locks=0 ]	(	0.8	)
+pdf5value	[ 0	locks=0 ]	(	0.05	)
 pdf5interp	[ 0	locks=0 ]	(	"monotonecubic"	)
 pdf6pos	[ 0	locks=0 ]	(	1	)
 pdf6value	[ 0	locks=0 ]	(	0	)
@@ -777,6 +781,12 @@ Content-Type: text/plain
         label   "Attributes to Create"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/fade_density_towards_bounds.chn"
@@ -1053,6 +1063,7 @@ clear	[ 0	locks=0 ]	(	0	)
 vexsnippet	[ 0	locks=0 ]	(	""	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
 vex_exportlist	[ 0	locks=0 ]	(	*	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 vop_compiler	[ 0	locks=0 ]	(	"vcc -q $VOP_INCLUDEPATH -o $VOP_OBJECTFILE -e $VOP_ERRORFILE $VOP_SOURCEFILE"	)
 vop_forcecompile	[ 0	locks=0 ]	(	0	)
 vex_cwdpath	[ 0	locks=0 ]	(	""	)
@@ -1330,6 +1341,7 @@ Content-Type: text/plain
 
 {
 version 0.8
+opinput	[ 0	locks=0 ]	(	file	)
 group	[ 0	locks=0 ]	(	""	)
 }
 
@@ -1725,6 +1737,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -1811,7 +1825,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	default	)
-min	[ 0	locks=0 ]	(	0.90000000000000002	)
+min	[ 0	locks=0 ]	(	0.9	)
 max	[ 0	locks=0 ]	(	2	)
 amount	[ 0	locks=0 ]	(	0.5	)
 rolloff	[ 0	locks=0 ]	(	1	)
@@ -2040,6 +2054,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2149,6 +2165,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -2997,6 +3015,12 @@ Content-Type: text/plain
         label   "Prune VDB Blocks"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/extra_noise_detail_along_the_edges.chn"
@@ -3166,6 +3190,7 @@ vop_forcecompile	[ 0	locks=0 ]	(	0	)
 vexsnippet	[ 0	locks=0 ]	(	""	)
 vex_exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 vex_cwdpath	[ 0	locks=0 ]	(	""	)
 vex_outputmask	[ 0	locks=0 ]	(	*	)
 vex_multithread	[ 0	locks=0 ]	(	"on"	)
@@ -3611,8 +3636,8 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	default	)
-srcmin	[ 0	locks=0 ]	(	0.050000000000000003	)
-srcmax	[ 0	locks=0 ]	(	0.45000000000000001	)
+srcmin	[ 0	locks=0 ]	(	0.05	)
+srcmax	[ 0	locks=0 ]	(	0.45	)
 destmin	[ 0	locks=0 ]	(	0	)
 destmax	[ 0	locks=0 ]	(	1	)
 srcmin_v2	[ 0	locks=0 ]	(	0	0	)
@@ -3960,6 +3985,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4092,6 +4119,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4224,6 +4253,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4356,6 +4387,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4488,6 +4521,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4783,6 +4818,8 @@ coshaderdef	[ 0	locks=0 ]	(	""	)
 surfacedef	[ 0	locks=0 ]	(	""	)
 displacementdef	[ 0	locks=0 ]	(	""	)
 atmospheredef	[ 0	locks=0 ]	(	""	)
+lightdef	[ 0	locks=0 ]	(	""	)
+lightfilterdef	[ 0	locks=0 ]	(	""	)
 floatadef	[ 0	locks=0 ]	(	)
 intadef	[ 0	locks=0 ]	(	)
 vector2adef	[ 0	locks=0 ]	(	)
@@ -4973,7 +5010,7 @@ disp	[ 0	locks=0 ]	(	0.5	)
 dispfreq	[ 0	locks=0 ]	(	1	)
 dogwarp	[ 0	locks=0 ]	(	"on"	)
 accumg	[ 0	locks=0 ]	(	"on"	)
-gflow	[ 0	locks=0 ]	(	-0.20000000000000001	)
+gflow	[ 0	locks=0 ]	(	-0.2	)
 flowrot	[ 0	locks=0 ]	(	0	)
 folder0	[ 0	locks=0 ]	(	0	)
 clampmin	[ 0	locks=0 ]	(	"on"	)
@@ -4983,17 +5020,17 @@ maxval	[ 0	locks=0 ]	(	1	)
 pdf1pos	[ 0	locks=0 ]	(	0	)
 pdf1value	[ 0	locks=0 ]	(	1	)
 pdf1interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf2pos	[ 0	locks=0 ]	(	0.20000000000000001	)
-pdf2value	[ 0	locks=0 ]	(	0.69999999999999996	)
+pdf2pos	[ 0	locks=0 ]	(	0.2	)
+pdf2value	[ 0	locks=0 ]	(	0.7	)
 pdf2interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf3pos	[ 0	locks=0 ]	(	0.40000000000000002	)
-pdf3value	[ 0	locks=0 ]	(	0.29999999999999999	)
+pdf3pos	[ 0	locks=0 ]	(	0.4	)
+pdf3value	[ 0	locks=0 ]	(	0.3	)
 pdf3interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf4pos	[ 0	locks=0 ]	(	0.59999999999999998	)
-pdf4value	[ 0	locks=0 ]	(	0.10000000000000001	)
+pdf4pos	[ 0	locks=0 ]	(	0.6	)
+pdf4value	[ 0	locks=0 ]	(	0.1	)
 pdf4interp	[ 0	locks=0 ]	(	"monotonecubic"	)
-pdf5pos	[ 0	locks=0 ]	(	0.80000000000000004	)
-pdf5value	[ 0	locks=0 ]	(	0.050000000000000003	)
+pdf5pos	[ 0	locks=0 ]	(	0.8	)
+pdf5value	[ 0	locks=0 ]	(	0.05	)
 pdf5interp	[ 0	locks=0 ]	(	"monotonecubic"	)
 pdf6pos	[ 0	locks=0 ]	(	1	)
 pdf6value	[ 0	locks=0 ]	(	0	)
@@ -5083,7 +5120,7 @@ source	[ 0	locks=0 ]	(	"auto"	)
 pointmethod	[ 0	locks=0 ]	(	"sparse"	)
 invert	[ 0	locks=0 ]	(	"off"	)
 inittype	[ 0	locks=0 ]	(	"grid"	)
-particlesep	[ 0	locks=0 ]	(	[ particlesep	0.10000000000000001 ] 	)
+particlesep	[ 0	locks=0 ]	(	[ particlesep	0.1 ] 	)
 iso	[ 0	locks=0 ]	(	0	)
 dominiso	[ 0	locks=0 ]	(	"off"	)
 miniso	[ 0	locks=0 ]	(	0	)
@@ -5191,17 +5228,18 @@ points	[ 0	locks=0 ]	(	""	)
 attributes	[ 0	locks=0 ]	(	density	)
 filterbysrcattrib	[ 0	locks=0 ]	(	"off"	)
 srcattrib	[ 0	locks=0 ]	(	source_name	)
+fogvolumes	[ 0	locks=0 ]	(	*	)
 folder1	[ 0	locks=0 ]	(	0	)
 filter	[ 0	locks=0 ]	(	gauss	)
-voxelsize	[ 8	locks=0 ]	(	[ voxelsize	0.10000000000000001 ] 	)
+voxelsize	[ 8	locks=0 ]	(	[ voxelsize	0.1 ] 	)
 particlescale	[ 0	locks=0 ]	(	1	)
 minfilter	[ 0	locks=0 ]	(	0.75	)
-sepparm	[ 0	locks=0 ]	(	)
+folder2	[ 0	locks=0 ]	(	0	)
 velocityblur	[ 0	locks=0 ]	(	"off"	)
 shutter	[ 0	locks=0 ]	(	0.5	)
 shutteroffset	[ 0	locks=0 ]	(	1	)
 blursamples	[ 0	locks=0 ]	(	4	)
-sepparm2	[ 0	locks=0 ]	(	)
+folder3	[ 0	locks=0 ]	(	1	)
 densityattrib	[ 0	locks=0 ]	(	""	)
 densityscale	[ 0	locks=0 ]	(	1	)
 normalize	[ 0	locks=0 ]	(	"on"	)
@@ -5443,6 +5481,12 @@ Content-Type: text/plain
         label   "VEX Precision"
         export  none
     }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/increase_density.chn"
@@ -5470,6 +5514,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@density *= ch(\"mult\");"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -5550,6 +5595,7 @@ snippet	[ 0	locks=0 ]	(	"@density = smooth(0, 2, @density + @opinput1_density);
 @Alpha = @density;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -5770,6 +5816,7 @@ writevalues1	[ 0	locks=0 ]	(	"on"	)
 uselocal1	[ 0	locks=0 ]	(	"on"	)
 value1v	[ 0	locks=0 ]	(	[ value1v1	0 ] 	0	0	0	)
 string1	[ 0	locks=0 ]	(	""	)
+numattr_spacerparm1	[ 0	locks=0 ]	(	)
 enable2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"on"	)
 name2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	density	)
 existing2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"better"	)
@@ -5786,6 +5833,7 @@ writevalues2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"on"	)
 uselocal2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"on"	)
 value2v	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	0.75	0	0	0	)
 string2	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	""	)
+numattr_spacerparm2	[ 0	locks=0 ]	(	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

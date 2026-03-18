@@ -32,9 +32,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -1.74524 -0.15
+position 1.5 -51.15
 connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author christoss@oxbow
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -64,6 +64,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -723,6 +727,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 0	locks=0 ]	(	*	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -919,7 +927,7 @@ Content-Type: text/plain
         parm {
             name    "convertcolorspace"
             baseparm
-            label   "Convert to Image Format's Colorspace"
+            label   "Output Colorspace"
             export  none
         }
         parm {
@@ -1294,6 +1302,30 @@ Content-Type: text/plain
         label   "PNG/TGA Premultiplication"
         export  none
     }
+    parm {
+        name    "ocio_colorspace"
+        baseparm
+        label   "Color Space"
+        export  none
+    }
+    parm {
+        name    "ocio_look"
+        baseparm
+        label   "Look"
+        export  none
+    }
+    parm {
+        name    "ocio_display"
+        baseparm
+        label   "Display"
+        export  none
+    }
+    parm {
+        name    "ocio_view"
+        baseparm
+        label   "View"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/heightfield_output_height/cop2net1/tiled_out.chn"
@@ -1351,6 +1383,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 0	locks=0 ]	(	"`chs(\"../../deep_raster_layers\")` `chs(\"../../deep_raster_layers01\")` `chs(\"../../deep_raster_layers_11\")`"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -1507,6 +1543,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 0	locks=0 ]	(	*	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -1703,7 +1743,7 @@ Content-Type: text/plain
         parm {
             name    "convertcolorspace"
             baseparm
-            label   "Convert to Image Format's Colorspace"
+            label   "Output Colorspace"
             export  none
         }
         parm {
@@ -2078,6 +2118,30 @@ Content-Type: text/plain
         label   "PNG/TGA Premultiplication"
         export  none
     }
+    parm {
+        name    "ocio_colorspace"
+        baseparm
+        label   "Color Space"
+        export  none
+    }
+    parm {
+        name    "ocio_look"
+        baseparm
+        label   "Look"
+        export  none
+    }
+    parm {
+        name    "ocio_display"
+        baseparm
+        label   "Display"
+        export  none
+    }
+    parm {
+        name    "ocio_view"
+        baseparm
+        label   "View"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/heightfield_output_mask/cop2net1/tiled_out.chn"
@@ -2135,6 +2199,10 @@ color	[ 0	locks=0 ]	(	C	)
 alpha	[ 0	locks=0 ]	(	A	)
 scopeplanes	[ 0	locks=0 ]	(	"`chs(\"../../deep_raster_layers\")` `chs(\"../../deep_raster_layers01\")` `chs(\"../../deep_raster_layers_11\")`"	)
 convertcolorspace	[ 0	locks=0 ]	(	"off"	)
+ocio_colorspace	[ 0	locks=0 ]	(	automatic	)
+ocio_look	[ 0	locks=0 ]	(	""	)
+ocio_display	[ 0	locks=0 ]	(	default	)
+ocio_view	[ 0	locks=0 ]	(	default	)
 gamma	[ 0	locks=0 ]	(	1	)
 lut	[ 0	locks=0 ]	(	""	)
 framedepend	[ 0	locks=0 ]	(	"off"	)
@@ -2268,6 +2336,7 @@ s@exportlayers = FullName;
 f@__voxeldiameter = volumevoxeldiameter(0, \"height\") / sqrt(3);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 groupautobind	[ 0	locks=0 ]	(	"on"	)
@@ -2344,6 +2413,7 @@ bindeach	[ 0	locks=0 ]	(	"off"	)
 snippet	[ 0	locks=0 ]	(	"@height -= 1.0 - (1.0/256.0);"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
@@ -2607,6 +2677,7 @@ resetcookpass	[ 0	locks=0 ]	(	0	)
 dosinglepass	[ 0	locks=0 ]	(	"off"	)
 singlepass	[ 0	locks=0 ]	(	0	)
 stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
 multithread	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -2778,6 +2849,7 @@ else:
         SaveLayer(LayerName)
     elif LayerName in hou.pwd().geometry().attribValue(\"exportlayers\").split(\" \"):
         SaveLayer(LayerName)"	)
+maintainstate	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3053,6 +3125,7 @@ snippet	[ 0	locks=0 ]	(	"@height = (@height >= 256) ? 256 : @height;
 @height = (@height <= -256) ? -256 : @height;"	)
 exportlist	[ 0	locks=0 ]	(	*	)
 vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
 autobind	[ 0	locks=0 ]	(	"on"	)
 bindings	[ 0	locks=0 ]	(	0	)
 vex_geometrygenerator	[ 0	locks=0 ]	(	"off"	)
