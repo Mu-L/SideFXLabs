@@ -31,8 +31,8 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment "Replaced by Bake Geometry Textures COP. To be removed in Houdini 23.0."
-position -70.2896 80.3559
+comment "Replaced by Bake Geometry Textures COP and Karma Texture Baker LOP. To be removed in Houdini 23.0."
+position 1.5 -32.9116
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
@@ -48,7 +48,7 @@ stat
 {
   create -1
   modify -1
-  author Danicka@DESKTOP-2416QFR
+  author christoss@cayuga.local
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -67,22 +67,10 @@ Content-Type: text/plain
         invisible
         export  none
     }
-    parm {
-        name    "gamma"
-        baseparm
-        label   "Gamma"
-        invisible
-        export  none
-    }
-    parm {
-        name    "bManualMode"
-        baseparm
-        label   "Manual Mode"
-        export  none
-    }
     groupsimple {
-        name    "folder12"
-        label   "Bake Settings"
+        name    "folder10"
+        label   "Bake"
+        grouptag { "group_type" "simple" }
         grouptag { "sidefx::switcher" "folder0" }
 
         parm {
@@ -104,6 +92,12 @@ Content-Type: text/plain
             baseparm
             label   "Bake Attributes"
             invisible
+            export  none
+        }
+        parm {
+            name    "newparameter"
+            baseparm
+            label   "Bake"
             export  none
         }
         parm {
@@ -136,7 +130,6 @@ Content-Type: text/plain
             name    "fMaxTraceDist"
             baseparm
             label   "Max Trace Distance"
-            joinnext
             export  none
         }
         parm {
@@ -155,13 +148,15 @@ Content-Type: text/plain
     }
 
     groupsimple {
-        name    "folder13"
+        name    "folder11"
         label   "Bake Options"
+        grouptag { "group_type" "simple" }
         grouptag { "sidefx::switcher" "folder2" }
 
         groupsimple {
-            name    "folder14"
+            name    "folder12"
             label   "Transfer"
+            grouptag { "group_type" "simple" }
             grouptag { "sidefx::switcher" "folder6" }
 
             parm {
@@ -176,7 +171,6 @@ Content-Type: text/plain
                 name    "sDiffuse"
                 baseparm
                 label   "Diffuse Map"
-                joinnext
                 export  none
             }
             parm {
@@ -191,7 +185,6 @@ Content-Type: text/plain
                 name    "sNormal"
                 baseparm
                 label   "Normal Map"
-                joinnext
                 export  none
             }
             parm {
@@ -206,7 +199,6 @@ Content-Type: text/plain
                 name    "sOpacity"
                 baseparm
                 label   "Opacity Map"
-                joinnext
                 export  none
             }
             parm {
@@ -221,7 +213,6 @@ Content-Type: text/plain
                 name    "sRoughness"
                 baseparm
                 label   "Roughness Map"
-                joinnext
                 export  none
             }
             parm {
@@ -241,8 +232,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder15"
+            name    "folder13"
             label   "Generate"
+            grouptag { "group_type" "simple" }
             grouptag { "sidefx::switcher" "folder5" }
 
             parm {
@@ -257,7 +249,6 @@ Content-Type: text/plain
                 name    "sVertexColor"
                 baseparm
                 label   "Vertex Color"
-                joinnext
                 export  none
             }
             parm {
@@ -272,7 +263,6 @@ Content-Type: text/plain
                 name    "sAO"
                 baseparm
                 label   "AO"
-                joinnext
                 export  none
             }
             parm {
@@ -287,7 +277,6 @@ Content-Type: text/plain
                 name    "sCurvature"
                 baseparm
                 label   "Curvature"
-                joinnext
                 export  none
             }
             parm {
@@ -302,7 +291,6 @@ Content-Type: text/plain
                 name    "sWorldNormal"
                 baseparm
                 label   "World Normal"
-                joinnext
                 export  none
             }
             parm {
@@ -317,7 +305,6 @@ Content-Type: text/plain
                 name    "sHeight"
                 baseparm
                 label   "Height"
-                joinnext
                 export  none
             }
             parm {
@@ -332,7 +319,6 @@ Content-Type: text/plain
                 name    "sAlpha"
                 baseparm
                 label   "Alpha"
-                joinnext
                 export  none
             }
             parm {
@@ -354,8 +340,9 @@ Content-Type: text/plain
     }
 
     groupsimple {
-        name    "folder16"
+        name    "folder14"
         label   "Attributes"
+        grouptag { "group_type" "simple" }
         grouptag { "sidefx::switcher" "folder4" }
 
         multiparm {
@@ -375,20 +362,21 @@ Content-Type: text/plain
     }
 
     groupcollapsible {
-        name    "folder17"
+        name    "folder15"
         label   "Advanced"
+        grouptag { "group_type" "collapsible" }
         grouptag { "sidefx::switcher" "folder1" }
 
-        groupsimple {
-            name    "folder18"
-            label   "Sampling"
-            grouptag { "sidefx::switcher" "folder10" }
-
+        parm {
+            name    "bManualMode"
+            baseparm
+            label   "Manual Mode"
+            export  none
         }
-
         groupsimple {
-            name    "folder19"
+            name    "folder16"
             label   "Normal Map"
+            grouptag { "group_type" "simple" }
             grouptag { "sidefx::switcher" "folder7" }
 
             parm {
@@ -406,8 +394,9 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder20"
+            name    "folder17"
             label   "AO Map"
+            grouptag { "group_type" "simple" }
             grouptag { "sidefx::switcher" "folder8" }
 
             parm {
@@ -429,6 +418,12 @@ Content-Type: text/plain
                 export  none
             }
             parm {
+                name    "gamma"
+                baseparm
+                label   "Gamma"
+                export  none
+            }
+            parm {
                 name    "conewidth"
                 baseparm
                 label   "Cone Width"
@@ -444,14 +439,7 @@ Content-Type: text/plain
         }
 
         groupsimple {
-            name    "folder21"
-            label   "Thickness Map"
-            grouptag { "sidefx::switcher" "folder11" }
-
-        }
-
-        groupsimple {
-            name    "folder22"
+            name    "folder18"
             label   "Curvature Map"
             grouptag { "sidefx::switcher" "folder9" }
 
@@ -509,12 +497,6 @@ Content-Type: text/plain
         default { "0" }
         range   { 0 10 }
     }
-    parm {
-        name    "newparameter"
-        baseparm
-        label   "Bake"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.userdata"
@@ -524,6 +506,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
