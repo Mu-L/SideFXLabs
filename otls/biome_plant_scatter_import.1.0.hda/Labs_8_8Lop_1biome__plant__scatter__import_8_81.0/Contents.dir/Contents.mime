@@ -31,17 +31,20 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position 0.547125 -2.94771
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress on colordefault on exposed on debug off
+position -82.0961 58.3581
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on debug off
 outputsNamed3
 {
+1 "output1"
 }
 inputsNamed3
 {
+0 	sceneimport_terrain 0 1 "input1"
 }
 inputs
 {
+0 	sceneimport_terrain 0 1
 }
 stat
 {
@@ -50,7 +53,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.8 0.8 0.8 
+color UT_Color RGB 1 0.976 0.666 
 delscript ""
 exprlanguage hscript
 end
@@ -115,10 +118,747 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sopcreate_manual_material.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "asreference"
+        baseparm
+        label   "Load As Reference"
+        export  none
+    }
+    parm {
+        name    "copycontents"
+        baseparm
+        label   "Sublayer Style"
+        export  none
+    }
+    parm {
+        name    "adjustxformsforinput"
+        baseparm
+        label   "Adjust Transforms for Input Hierarchy"
+        export  none
+    }
+    parm {
+        name    "bindmaterials"
+        baseparm
+        label   "Bind Materials"
+        export  none
+    }
+    parm {
+        name    "reftype"
+        baseparm
+        label   "Reference Type"
+        export  none
+    }
+    parm {
+        name    "refprim"
+        baseparm
+        label   "Reference Primitive"
+        export  none
+    }
+    parm {
+        name    "refprimpath"
+        baseparm
+        label   "Reference Primitive Path"
+        export  none
+    }
+    parm {
+        name    "primpath"
+        baseparm
+        label   "Primitive Path"
+        export  none
+    }
+    parm {
+        name    "instanceable"
+        baseparm
+        label   "Make Instanceable"
+        export  none
+    }
+    parm {
+        name    "parentprimkind"
+        baseparm
+        label   "Parent Primitive Kind"
+        export  none
+    }
+    parm {
+        name    "parentprimtype"
+        baseparm
+        label   "Parent Primitive Type"
+        export  none
+    }
+    parm {
+        name    "showlopstage"
+        baseparm
+        label   "Show LOP Stage in SOPs"
+        export  none
+    }
+    parm {
+        name    "sepparm"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    parm {
+        name    "enable_group"
+        baseparm
+        label   "Enable Import Group"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "group"
+        baseparm
+        label   "Import Group"
+        export  none
+    }
+    parm {
+        name    "enable_grouptype"
+        baseparm
+        label   "Enable Import Group Type"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "grouptype"
+        baseparm
+        label   "Import Group Type"
+        export  none
+    }
+    parm {
+        name    "enable_pathprefix"
+        baseparm
+        label   "Enable Import Path Prefix"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "pathprefix"
+        baseparm
+        label   "Import Path Prefix"
+        export  none
+    }
+    parm {
+        name    "enable_savepath"
+        baseparm
+        label   "Enable Layer Save Path"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "savepath"
+        baseparm
+        label   "Layer Save Path"
+        export  none
+    }
+    parm {
+        name    "sepparm2"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    group {
+        name    "folder2"
+        label   "Transform"
+        grouptag { "sidefx::switcher" "folder1" }
+
+        parm {
+            name    "xOrd"
+            baseparm
+            label   "Transform Order"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "rOrd"
+            baseparm
+            label   "Rotate Order"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "t"
+            baseparm
+            label   "Translate"
+            export  none
+        }
+        parm {
+            name    "r"
+            baseparm
+            label   "Rotate"
+            export  none
+        }
+        parm {
+            name    "s"
+            baseparm
+            label   "Scale"
+            export  none
+        }
+        parm {
+            name    "shear"
+            baseparm
+            label   "Shear"
+            export  none
+        }
+        parm {
+            name    "scale"
+            baseparm
+            label   "Uniform Scale"
+            export  none
+        }
+        groupcollapsible {
+            name    "parmgroup_pivotxform2"
+            label   "Pivot Transform"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "parmgroup_pivotxform" }
+
+            parm {
+                name    "p"
+                baseparm
+                label   "Pivot Translate"
+                export  none
+            }
+            parm {
+                name    "pr"
+                baseparm
+                label   "Pivot Rotate"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder2_1"
+        label   "Import from SOPs"
+
+        groupcollapsible {
+            name    "primitivedefinitiongroup2"
+            label   "Primitive Definition"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "primitivedefinitiongroup" }
+
+            parm {
+                name    "enable_packedusdhandling"
+                baseparm
+                label   "Enable Packed USD Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "packedusdhandling"
+                baseparm
+                label   "Packed USD Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_otherprimhandling"
+                baseparm
+                label   "Enable Other Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "otherprimhandling"
+                baseparm
+                label   "Other Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_defineonlyleafprims"
+                baseparm
+                label   "Enable Define Only Leaf Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "defineonlyleafprims"
+                baseparm
+                label   "Define Only Leaf Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_packedhandling"
+                baseparm
+                label   "Enable Packed Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "packedhandling"
+                baseparm
+                label   "Packed Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_nurbscurvehandling"
+                baseparm
+                label   "Enable NURBS Curves"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "nurbscurvehandling"
+                baseparm
+                label   "NURBS Curves"
+                export  none
+            }
+            parm {
+                name    "enable_nurbssurfhandling"
+                baseparm
+                label   "Enable NURBS Surfaces"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "nurbssurfhandling"
+                baseparm
+                label   "NURBS Surfaces"
+                export  none
+            }
+            parm {
+                name    "enable_kindschema"
+                baseparm
+                label   "Enable Kind Authoring"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "kindschema"
+                baseparm
+                label   "Kind Authoring"
+                export  none
+            }
+            parm {
+                name    "enable_pathattr"
+                baseparm
+                label   "Enable Path Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "pathattr"
+                baseparm
+                label   "Path Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_prefixabsolutepaths"
+                baseparm
+                label   "Prefix Absolute Paths"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "prefixabsolutepaths"
+                baseparm
+                label   "Prefix Absolute Paths"
+                export  none
+            }
+            parm {
+                name    "enable_heightfieldconvert"
+                baseparm
+                label   "Enable Import Height Fields as Mesh"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "heightfieldconvert"
+                baseparm
+                label   "Import Height Fields as Mesh"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "geometryhandlinggroup2"
+            label   "Geometry Handling"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "geometryhandlinggroup" }
+
+            parm {
+                name    "enable_polygonsassubd"
+                baseparm
+                label   "Enable Treat Polygons as Subdivision Surfaces"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "polygonsassubd"
+                baseparm
+                label   "Treat Polygons as Subdivision Surfaces"
+                export  none
+            }
+            parm {
+                name    "enable_subdgroup"
+                baseparm
+                label   "Enable Subdivision Group"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "subdgroup"
+                baseparm
+                label   "Subdivision Group"
+                export  none
+            }
+            parm {
+                name    "enable_reversepolygons"
+                baseparm
+                label   "Enable Reverse Polygon Vertex Ordering"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "reversepolygons"
+                baseparm
+                label   "Reverse Polygon Vertex Ordering"
+                export  none
+            }
+            parm {
+                name    "enable_setmissingwidths"
+                baseparm
+                label   "Enable Set Missing Widths"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "setmissingwidths"
+                baseparm
+                label   "Set Missing Widths"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "importdatagroup2"
+            label   "Import Data"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "importdatagroup" }
+
+            parm {
+                name    "authortimesamples"
+                baseparm
+                label   "Author Time Samples"
+                export  none
+            }
+            parm {
+                name    "enable_setdefaultprim"
+                baseparm
+                label   "Enable Set Default Primitive"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "setdefaultprim"
+                baseparm
+                label   "Set Default Primitive"
+                export  none
+            }
+            parm {
+                name    "enable_topologyhandling"
+                baseparm
+                label   "Enable Topology Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "topologyhandling"
+                baseparm
+                label   "Topology Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_attribs"
+                baseparm
+                label   "Enable Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "attribs"
+                baseparm
+                label   "Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_indexattribs"
+                baseparm
+                label   "Enable Indexed Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "indexattribs"
+                baseparm
+                label   "Indexed Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_constantattribs"
+                baseparm
+                label   "Enable Import as Single Element Array"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "constantattribs"
+                baseparm
+                label   "Import as Single Element Array"
+                export  none
+            }
+            parm {
+                name    "enable_scalarconstantattribs"
+                baseparm
+                label   "Enable Import as Single Value"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "scalarconstantattribs"
+                baseparm
+                label   "Import as Single Value"
+                export  none
+            }
+            parm {
+                name    "enable_boolattribs"
+                baseparm
+                label   "Enable Boolean Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "boolattribs"
+                baseparm
+                label   "Boolean Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_uintattribs"
+                baseparm
+                label   "Enable Unsigned 32-bit Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "uintattribs"
+                baseparm
+                label   "Unsigned 32-bit Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_uint64attribs"
+                baseparm
+                label   "Enable Unsigned 64-bit Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "uint64attribs"
+                baseparm
+                label   "Unsigned 64-bit Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_staticattribs"
+                baseparm
+                label   "Enable Set Default Values"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "staticattribs"
+                baseparm
+                label   "Set Default Values"
+                export  none
+            }
+            parm {
+                name    "enable_partitionattribs"
+                baseparm
+                label   "Enable Subset Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "partitionattribs"
+                baseparm
+                label   "Subset Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_prefixpartitionsubsets"
+                baseparm
+                label   "Enable Prefix Subsets with Attribute Name"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "prefixpartitionsubsets"
+                baseparm
+                label   "Prefix Subsets with Attribute Name"
+                export  none
+            }
+            parm {
+                name    "enable_subsetgroups"
+                baseparm
+                label   "Enable Subset Groups"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "subsetgroups"
+                baseparm
+                label   "Subset Groups"
+                export  none
+            }
+            parm {
+                name    "enable_customattribs"
+                baseparm
+                label   "Enable USD Custom Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "customattribs"
+                baseparm
+                label   "USD Custom Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_translateuvtost"
+                baseparm
+                label   "Enable Translate UV Attribute to ST"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "translateuvtost"
+                baseparm
+                label   "Translate UV Attribute to ST"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "materialsgroup2"
+            label   "Materials"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "materialsgroup" }
+
+        }
+
+    }
+
+    group {
+        name    "folder2_2"
+        label   "Materials"
+
+        parm {
+            name    "fillmaterials"
+            baseparm
+            label   "Auto-fill Materials"
+            export  none
+        }
+        multiparm {
+            name    "materials"
+            label    "Number of Materials"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "matnode#"
+                baseparm
+                label   "Material VOP"
+                export  none
+            }
+            parm {
+                name    "matpath#"
+                baseparm
+                label   "Material Path"
+                export  none
+            }
+            parm {
+                name    "geopath#"
+                baseparm
+                label   "Geometry Path"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "ineditlayerblock"
+        baseparm
+        label   "In Edit Layer Block"
+        export  none
+    }
+    parm {
+        name    "ineditlayerblockwarning"
+        baseparm
+        label   "ineditlayerblockwarning"
+        export  none
+    }
+    parm {
+        name    "enable_assetpathattribs"
+        baseparm
+        label   "Enable Asset Path Attributes"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "assetpathattribs"
+        baseparm
+        label   "Asset Path Attributes"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/sopcreate_manual_material.chn"
 Content-Type: text/plain
 
 {
+    channel ineditlayerblock {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = hou.pwd().inputs()[0].inEditLayerBlock() language = python }
+    }
     channel fillmaterials {
       lefttype = extend
       righttype = extend
@@ -134,7 +874,9 @@ Content-Type: text/plain
 {
 version 0.8
 asreference	[ 0	locks=0 ]	(	"off"	)
+ineditlayerblock	[ 0	locks=0 ]	(	[ ineditlayerblock	0 ] 	)
 copycontents	[ 0	locks=0 ]	(	"on"	)
+ineditlayerblockwarning	[ 0	locks=0 ]	(	"First input is in an Edit Layer Block. Merging SOP Layer Into First Input's Active Layer."	)
 adjustxformsforinput	[ 0	locks=0 ]	(	"on"	)
 bindmaterials	[ 0	locks=0 ]	(	nobind	)
 reftype	[ 0	locks=0 ]	(	payloadweak	)
@@ -155,7 +897,7 @@ pathprefix	[ 0	locks=0 ]	(	/$OS	)
 enable_savepath	[ 0	locks=0 ]	(	"off"	)
 savepath	[ 0	locks=0 ]	(	""	)
 sepparm2	[ 0	locks=0 ]	(	)
-folder1	[ 0	locks=0 ]	(	2	2	2	)
+folder1	[ 0	locks=0 ]	(	1	1	1	)
 xOrd	[ 0	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
 t	[ 0	locks=0 ]	(	0	0	0	)
@@ -216,6 +958,8 @@ enable_uintattribs	[ 0	locks=0 ]	(	"off"	)
 uintattribs	[ 0	locks=0 ]	(	""	)
 enable_uint64attribs	[ 0	locks=0 ]	(	"off"	)
 uint64attribs	[ 0	locks=0 ]	(	""	)
+enable_assetpathattribs	[ 0	locks=0 ]	(	"off"	)
+assetpathattribs	[ 0	locks=0 ]	(	""	)
 enable_staticattribs	[ 0	locks=0 ]	(	"off"	)
 staticattribs	[ 0	locks=0 ]	(	""	)
 enable_partitionattribs	[ 0	locks=0 ]	(	"on"	)
@@ -231,6 +975,12 @@ translateuvtost	[ 0	locks=0 ]	(	"on"	)
 materialsgroup	[ 0	locks=0 ]	(	0	)
 fillmaterials	[ 0	locks=0 ]	(	[ fillmaterials	0 ] 	)
 materials	[ 0	locks=0 ]	(	0	)
+folder2	[ 0	locks=0 ]	(	0	0	0	)
+parmgroup_pivotxform2	[ 0	locks=0 ]	(	0	)
+primitivedefinitiongroup2	[ 0	locks=0 ]	(	0	)
+geometryhandlinggroup2	[ 0	locks=0 ]	(	0	)
+importdatagroup2	[ 0	locks=0 ]	(	0	)
+materialsgroup2	[ 0	locks=0 ]	(	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -286,10 +1036,747 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/sopcreate_promoted_global_point_material.spareparmdef"
+Content-Type: text/plain
+
+    parm {
+        name    "asreference"
+        baseparm
+        label   "Load As Reference"
+        export  none
+    }
+    parm {
+        name    "copycontents"
+        baseparm
+        label   "Sublayer Style"
+        export  none
+    }
+    parm {
+        name    "adjustxformsforinput"
+        baseparm
+        label   "Adjust Transforms for Input Hierarchy"
+        export  none
+    }
+    parm {
+        name    "bindmaterials"
+        baseparm
+        label   "Bind Materials"
+        export  none
+    }
+    parm {
+        name    "reftype"
+        baseparm
+        label   "Reference Type"
+        export  none
+    }
+    parm {
+        name    "refprim"
+        baseparm
+        label   "Reference Primitive"
+        export  none
+    }
+    parm {
+        name    "refprimpath"
+        baseparm
+        label   "Reference Primitive Path"
+        export  none
+    }
+    parm {
+        name    "primpath"
+        baseparm
+        label   "Primitive Path"
+        export  none
+    }
+    parm {
+        name    "instanceable"
+        baseparm
+        label   "Make Instanceable"
+        export  none
+    }
+    parm {
+        name    "parentprimkind"
+        baseparm
+        label   "Parent Primitive Kind"
+        export  none
+    }
+    parm {
+        name    "parentprimtype"
+        baseparm
+        label   "Parent Primitive Type"
+        export  none
+    }
+    parm {
+        name    "showlopstage"
+        baseparm
+        label   "Show LOP Stage in SOPs"
+        export  none
+    }
+    parm {
+        name    "sepparm"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    parm {
+        name    "enable_group"
+        baseparm
+        label   "Enable Import Group"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "group"
+        baseparm
+        label   "Import Group"
+        export  none
+    }
+    parm {
+        name    "enable_grouptype"
+        baseparm
+        label   "Enable Import Group Type"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "grouptype"
+        baseparm
+        label   "Import Group Type"
+        export  none
+    }
+    parm {
+        name    "enable_pathprefix"
+        baseparm
+        label   "Enable Import Path Prefix"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "pathprefix"
+        baseparm
+        label   "Import Path Prefix"
+        export  none
+    }
+    parm {
+        name    "enable_savepath"
+        baseparm
+        label   "Enable Layer Save Path"
+        nolabel
+        joinnext
+        export  none
+    }
+    parm {
+        name    "savepath"
+        baseparm
+        label   "Layer Save Path"
+        export  none
+    }
+    parm {
+        name    "sepparm2"
+        baseparm
+        label   "Separator"
+        export  none
+    }
+    group {
+        name    "folder2"
+        label   "Transform"
+        grouptag { "sidefx::switcher" "folder1" }
+
+        parm {
+            name    "xOrd"
+            baseparm
+            label   "Transform Order"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "rOrd"
+            baseparm
+            label   "Rotate Order"
+            nolabel
+            export  none
+        }
+        parm {
+            name    "t"
+            baseparm
+            label   "Translate"
+            export  none
+        }
+        parm {
+            name    "r"
+            baseparm
+            label   "Rotate"
+            export  none
+        }
+        parm {
+            name    "s"
+            baseparm
+            label   "Scale"
+            export  none
+        }
+        parm {
+            name    "shear"
+            baseparm
+            label   "Shear"
+            export  none
+        }
+        parm {
+            name    "scale"
+            baseparm
+            label   "Uniform Scale"
+            export  none
+        }
+        groupcollapsible {
+            name    "parmgroup_pivotxform2"
+            label   "Pivot Transform"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "parmgroup_pivotxform" }
+
+            parm {
+                name    "p"
+                baseparm
+                label   "Pivot Translate"
+                export  none
+            }
+            parm {
+                name    "pr"
+                baseparm
+                label   "Pivot Rotate"
+                export  none
+            }
+        }
+
+    }
+
+    group {
+        name    "folder2_1"
+        label   "Import from SOPs"
+
+        groupcollapsible {
+            name    "primitivedefinitiongroup2"
+            label   "Primitive Definition"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "primitivedefinitiongroup" }
+
+            parm {
+                name    "enable_packedusdhandling"
+                baseparm
+                label   "Enable Packed USD Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "packedusdhandling"
+                baseparm
+                label   "Packed USD Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_otherprimhandling"
+                baseparm
+                label   "Enable Other Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "otherprimhandling"
+                baseparm
+                label   "Other Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_defineonlyleafprims"
+                baseparm
+                label   "Enable Define Only Leaf Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "defineonlyleafprims"
+                baseparm
+                label   "Define Only Leaf Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_packedhandling"
+                baseparm
+                label   "Enable Packed Primitives"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "packedhandling"
+                baseparm
+                label   "Packed Primitives"
+                export  none
+            }
+            parm {
+                name    "enable_nurbscurvehandling"
+                baseparm
+                label   "Enable NURBS Curves"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "nurbscurvehandling"
+                baseparm
+                label   "NURBS Curves"
+                export  none
+            }
+            parm {
+                name    "enable_nurbssurfhandling"
+                baseparm
+                label   "Enable NURBS Surfaces"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "nurbssurfhandling"
+                baseparm
+                label   "NURBS Surfaces"
+                export  none
+            }
+            parm {
+                name    "enable_kindschema"
+                baseparm
+                label   "Enable Kind Authoring"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "kindschema"
+                baseparm
+                label   "Kind Authoring"
+                export  none
+            }
+            parm {
+                name    "enable_pathattr"
+                baseparm
+                label   "Enable Path Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "pathattr"
+                baseparm
+                label   "Path Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_prefixabsolutepaths"
+                baseparm
+                label   "Prefix Absolute Paths"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "prefixabsolutepaths"
+                baseparm
+                label   "Prefix Absolute Paths"
+                export  none
+            }
+            parm {
+                name    "enable_heightfieldconvert"
+                baseparm
+                label   "Enable Import Height Fields as Mesh"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "heightfieldconvert"
+                baseparm
+                label   "Import Height Fields as Mesh"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "geometryhandlinggroup2"
+            label   "Geometry Handling"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "geometryhandlinggroup" }
+
+            parm {
+                name    "enable_polygonsassubd"
+                baseparm
+                label   "Enable Treat Polygons as Subdivision Surfaces"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "polygonsassubd"
+                baseparm
+                label   "Treat Polygons as Subdivision Surfaces"
+                export  none
+            }
+            parm {
+                name    "enable_subdgroup"
+                baseparm
+                label   "Enable Subdivision Group"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "subdgroup"
+                baseparm
+                label   "Subdivision Group"
+                export  none
+            }
+            parm {
+                name    "enable_reversepolygons"
+                baseparm
+                label   "Enable Reverse Polygon Vertex Ordering"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "reversepolygons"
+                baseparm
+                label   "Reverse Polygon Vertex Ordering"
+                export  none
+            }
+            parm {
+                name    "enable_setmissingwidths"
+                baseparm
+                label   "Enable Set Missing Widths"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "setmissingwidths"
+                baseparm
+                label   "Set Missing Widths"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "importdatagroup2"
+            label   "Import Data"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "importdatagroup" }
+
+            parm {
+                name    "authortimesamples"
+                baseparm
+                label   "Author Time Samples"
+                export  none
+            }
+            parm {
+                name    "enable_setdefaultprim"
+                baseparm
+                label   "Enable Set Default Primitive"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "setdefaultprim"
+                baseparm
+                label   "Set Default Primitive"
+                export  none
+            }
+            parm {
+                name    "enable_topologyhandling"
+                baseparm
+                label   "Enable Topology Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "topologyhandling"
+                baseparm
+                label   "Topology Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_attribs"
+                baseparm
+                label   "Enable Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "attribs"
+                baseparm
+                label   "Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_indexattribs"
+                baseparm
+                label   "Enable Indexed Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "indexattribs"
+                baseparm
+                label   "Indexed Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_constantattribs"
+                baseparm
+                label   "Enable Import as Single Element Array"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "constantattribs"
+                baseparm
+                label   "Import as Single Element Array"
+                export  none
+            }
+            parm {
+                name    "enable_scalarconstantattribs"
+                baseparm
+                label   "Enable Import as Single Value"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "scalarconstantattribs"
+                baseparm
+                label   "Import as Single Value"
+                export  none
+            }
+            parm {
+                name    "enable_boolattribs"
+                baseparm
+                label   "Enable Boolean Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "boolattribs"
+                baseparm
+                label   "Boolean Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_uintattribs"
+                baseparm
+                label   "Enable Unsigned 32-bit Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "uintattribs"
+                baseparm
+                label   "Unsigned 32-bit Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_uint64attribs"
+                baseparm
+                label   "Enable Unsigned 64-bit Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "uint64attribs"
+                baseparm
+                label   "Unsigned 64-bit Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_staticattribs"
+                baseparm
+                label   "Enable Set Default Values"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "staticattribs"
+                baseparm
+                label   "Set Default Values"
+                export  none
+            }
+            parm {
+                name    "enable_partitionattribs"
+                baseparm
+                label   "Enable Subset Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "partitionattribs"
+                baseparm
+                label   "Subset Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_prefixpartitionsubsets"
+                baseparm
+                label   "Enable Prefix Subsets with Attribute Name"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "prefixpartitionsubsets"
+                baseparm
+                label   "Prefix Subsets with Attribute Name"
+                export  none
+            }
+            parm {
+                name    "enable_subsetgroups"
+                baseparm
+                label   "Enable Subset Groups"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "subsetgroups"
+                baseparm
+                label   "Subset Groups"
+                export  none
+            }
+            parm {
+                name    "enable_customattribs"
+                baseparm
+                label   "Enable USD Custom Attributes"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "customattribs"
+                baseparm
+                label   "USD Custom Attributes"
+                export  none
+            }
+            parm {
+                name    "enable_translateuvtost"
+                baseparm
+                label   "Enable Translate UV Attribute to ST"
+                nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "translateuvtost"
+                baseparm
+                label   "Translate UV Attribute to ST"
+                export  none
+            }
+        }
+
+        groupcollapsible {
+            name    "materialsgroup2"
+            label   "Materials"
+            grouptag { "group_type" "collapsible" }
+            grouptag { "sidefx::switcher" "materialsgroup" }
+
+        }
+
+    }
+
+    group {
+        name    "folder2_2"
+        label   "Materials"
+
+        parm {
+            name    "fillmaterials"
+            baseparm
+            label   "Auto-fill Materials"
+            export  none
+        }
+        multiparm {
+            name    "materials"
+            label    "Number of Materials"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "matnode#"
+                baseparm
+                label   "Material VOP"
+                export  none
+            }
+            parm {
+                name    "matpath#"
+                baseparm
+                label   "Material Path"
+                export  none
+            }
+            parm {
+                name    "geopath#"
+                baseparm
+                label   "Geometry Path"
+                export  none
+            }
+        }
+
+    }
+
+    parm {
+        name    "ineditlayerblock"
+        baseparm
+        label   "In Edit Layer Block"
+        export  none
+    }
+    parm {
+        name    "ineditlayerblockwarning"
+        baseparm
+        label   "ineditlayerblockwarning"
+        export  none
+    }
+    parm {
+        name    "enable_assetpathattribs"
+        baseparm
+        label   "Enable Asset Path Attributes"
+        nolabel
+        export  none
+    }
+    parm {
+        name    "assetpathattribs"
+        baseparm
+        label   "Asset Path Attributes"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/sopcreate_promoted_global_point_material.chn"
 Content-Type: text/plain
 
 {
+    channel ineditlayerblock {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { length = 0 expr = hou.pwd().inputs()[0].inEditLayerBlock() language = python }
+    }
     channel fillmaterials {
       lefttype = extend
       righttype = extend
@@ -305,7 +1792,9 @@ Content-Type: text/plain
 {
 version 0.8
 asreference	[ 0	locks=0 ]	(	"off"	)
+ineditlayerblock	[ 0	locks=0 ]	(	[ ineditlayerblock	0 ] 	)
 copycontents	[ 0	locks=0 ]	(	"on"	)
+ineditlayerblockwarning	[ 0	locks=0 ]	(	"First input is in an Edit Layer Block. Merging SOP Layer Into First Input's Active Layer."	)
 adjustxformsforinput	[ 0	locks=0 ]	(	"on"	)
 bindmaterials	[ 0	locks=0 ]	(	nobind	)
 reftype	[ 0	locks=0 ]	(	payloadweak	)
@@ -326,7 +1815,7 @@ pathprefix	[ 0	locks=0 ]	(	/$OS	)
 enable_savepath	[ 0	locks=0 ]	(	"off"	)
 savepath	[ 0	locks=0 ]	(	""	)
 sepparm2	[ 0	locks=0 ]	(	)
-folder1	[ 0	locks=0 ]	(	2	2	2	)
+folder1	[ 0	locks=0 ]	(	1	1	1	)
 xOrd	[ 0	locks=0 ]	(	"srt"	)
 rOrd	[ 0	locks=0 ]	(	"xyz"	)
 t	[ 0	locks=0 ]	(	0	0	0	)
@@ -387,6 +1876,8 @@ enable_uintattribs	[ 0	locks=0 ]	(	"off"	)
 uintattribs	[ 0	locks=0 ]	(	""	)
 enable_uint64attribs	[ 0	locks=0 ]	(	"off"	)
 uint64attribs	[ 0	locks=0 ]	(	""	)
+enable_assetpathattribs	[ 0	locks=0 ]	(	"off"	)
+assetpathattribs	[ 0	locks=0 ]	(	""	)
 enable_staticattribs	[ 0	locks=0 ]	(	"off"	)
 staticattribs	[ 0	locks=0 ]	(	""	)
 enable_partitionattribs	[ 0	locks=0 ]	(	"on"	)
@@ -401,7 +1892,16 @@ enable_translateuvtost	[ 0	locks=0 ]	(	"off"	)
 translateuvtost	[ 0	locks=0 ]	(	"on"	)
 materialsgroup	[ 0	locks=0 ]	(	0	)
 fillmaterials	[ 0	locks=0 ]	(	[ fillmaterials	0 ] 	)
-materials	[ 0	locks=0 ]	(	0	)
+materials	[ 0	locks=0 ]	(	1	)
+folder2	[ 0	locks=0 ]	(	0	0	0	)
+parmgroup_pivotxform2	[ 0	locks=0 ]	(	0	)
+primitivedefinitiongroup2	[ 0	locks=0 ]	(	0	)
+geometryhandlinggroup2	[ 0	locks=0 ]	(	0	)
+importdatagroup2	[ 0	locks=0 ]	(	0	)
+materialsgroup2	[ 0	locks=0 ]	(	0	)
+matnode1	[ 0	locks=0 ]	(	../../materiallibrary1/Plants	)
+matpath1	[ 0	locks=0 ]	(	"`ifs(ch(\"enable_pathprefix\"), chs(\"pathprefix\"), \"\")`/materials/Plants"	)
+geopath1	[ 0	locks=0 ]	(	"`ifs(ch(\"enable_pathprefix\"), chs(\"pathprefix\")+\"/instances\", \"/Geometry/instances\")`"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -945,6 +2445,7 @@ Content-Type: text/plain
 {
 version 0.8
 mergestyle	[ 0	locks=0 ]	(	flattenloplayers	)
+ineditblocklabel	[ 0	locks=0 ]	(	"First input is in an Edit Layer Block. Flattening Into First Input's Active Layer."	)
 alwaysstriplabel	[ 0	locks=0 ]	(	"Layers above layer breaks will be stripped"	)
 multistriplabel	[ 0	locks=0 ]	(	"Layers above layer breaks will be stripped for all but the first input"	)
 striplayerbreaks	[ 0	locks=0 ]	(	"off"	)
