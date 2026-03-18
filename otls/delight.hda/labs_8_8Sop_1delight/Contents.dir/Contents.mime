@@ -32,19 +32,17 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -2.15
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+position 1.5 -18.6962
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
@@ -666,8 +664,6 @@ vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
 vex_matchattrib	[ 0	locks=0 ]	(	id	)
 vex_inplace	[ 0	locks=0 ]	(	"off"	)
 vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-bindname1	[ 8	locks=0 ]	(	Cd	)
-bindparm1	[ 0	locks=0 ]	(	occlusion	)
 stdswitcher3	[ 0	locks=0 ]	(	1	1	)
 ptnum	[ 0	locks=0 ]	(	0	)
 vtxnum	[ 0	locks=0 ]	(	0	)
@@ -693,14 +689,16 @@ Cd	[ 0	locks=0 ]	(	1	1	1	)
 N	[ 0	locks=0 ]	(	0	0	0	)
 colorout	[ 0	locks=0 ]	(	"on"	)
 outputramp	[ 0	locks=0 ]	(	2	)
-intensity	[ 0	locks=0 ]	(	[ intensity	1 ] 	)
-gamma	[ 0	locks=0 ]	(	1	)
 outputramp1pos	[ 0	locks=0 ]	(	0	)
 outputramp1value	[ 0	locks=0 ]	(	0	)
 outputramp1interp	[ 0	locks=0 ]	(	"linear"	)
+intensity	[ 0	locks=0 ]	(	[ intensity	1 ] 	)
+gamma	[ 0	locks=0 ]	(	1	)
 outputramp2pos	[ 0	locks=0 ]	(	1	)
 outputramp2value	[ 0	locks=0 ]	(	1	)
 outputramp2interp	[ 0	locks=0 ]	(	"linear"	)
+bindname1	[ 8	locks=0 ]	(	Cd	)
+bindparm1	[ 0	locks=0 ]	(	occlusion	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2049,6 +2047,264 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.init"
+Content-Type: text/plain
+
+type = attribadjustcolor
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -2.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	pointwrangle6 2 1 "input1"
+}
+inputs
+{
+0 	pointwrangle6 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.chn"
+Content-Type: text/plain
+
+{
+    channel sat {
+      lefttype = extend
+      righttype = extend
+      default = 1
+      flags = 0
+      segment { length = 0 value = 1 1 expr = ch(\"../lighting_saturation\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+group	[ 0	locks=0 ]	(	""	)
+doblend	[ 0	locks=0 ]	(	"off"	)
+blendweight	[ 0	locks=0 ]	(	1	)
+blendmode	[ 0	locks=0 ]	(	"value"	)
+blendspace	[ 0	locks=0 ]	(	"rgb"	)
+blendattrib	[ 0	locks=0 ]	(	mask	)
+attrib	[ 0	locks=0 ]	(	Cd	)
+componentscope_rgb	[ 0	locks=0 ]	(	111	)
+componentscope_hsv	[ 0	locks=0 ]	(	111	)
+class	[ 0	locks=0 ]	(	"point"	)
+folder13	[ 0	locks=0 ]	(	0	)
+enable_preprocess	[ 0	locks=0 ]	(	"off"	)
+deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
+doinitvalue	[ 0	locks=0 ]	(	"off"	)
+initvaluefrom	[ 0	locks=0 ]	(	"const"	)
+initvalue	[ 0	locks=0 ]	(	1	1	1	)
+initcolorattrib	[ 0	locks=0 ]	(	Cd	)
+componentscope_initcolor	[ 0	locks=0 ]	(	111	)
+initfloatattrib	[ 0	locks=0 ]	(	pscale	)
+componentscope_initfloat	[ 0	locks=0 ]	(	"g"	)
+folder1	[ 0	locks=0 ]	(	0	)
+adjustvalue	[ 0	locks=0 ]	(	"off"	)
+operation	[ 0	locks=0 ]	(	"set"	)
+valuetype	[ 0	locks=0 ]	(	"const"	)
+sepparm	[ 0	locks=0 ]	(	)
+rangemethod	[ 0	locks=0 ]	(	"ramp"	)
+singlevalue	[ 0	locks=0 ]	(	1	1	1	)
+randomcolormodel	[ 0	locks=0 ]	(	"rgb"	)
+dobasecolor	[ 0	locks=0 ]	(	"off"	)
+basecolor	[ 0	locks=0 ]	(	1	1	1	)
+randr	[ 0	locks=0 ]	(	0	1	)
+randg	[ 0	locks=0 ]	(	0	1	)
+randb	[ 0	locks=0 ]	(	0	1	)
+randhue	[ 0	locks=0 ]	(	-180	180	)
+randsat	[ 0	locks=0 ]	(	0	1	)
+randval	[ 0	locks=0 ]	(	0	1	)
+colorramp	[ 0	locks=0 ]	(	5	)
+colorpalette	[ 0	locks=0 ]	(	"none"	)
+nvalues	[ 0	locks=0 ]	(	1	)
+adjustmentattrib	[ 0	locks=0 ]	(	""	)
+componentscope_adjustmentattrib	[ 0	locks=0 ]	(	111	)
+adjustmentattribgain	[ 0	locks=0 ]	(	1	)
+adjustmentattribbrightness	[ 0	locks=0 ]	(	0	)
+cmap	[ 0	locks=0 ]	(	$HH/pic/Mandril.pic	)
+cmapmode	[ 0	locks=0 ]	(	"path"	)
+cmapattrib	[ 0	locks=0 ]	(	path	)
+cmapchannel	[ 0	locks=0 ]	(	""	)
+componentscope_cmap	[ 0	locks=0 ]	(	111	)
+cmapborder	[ 0	locks=0 ]	(	0	0	0	)
+srccolorspace	[ 0	locks=0 ]	(	"auto"	)
+cmapwrap	[ 0	locks=0 ]	(	repeat	)
+folder4	[ 0	locks=0 ]	(	0	)
+randmethod	[ 0	locks=0 ]	(	"ppnum"	)
+randattrib	[ 0	locks=0 ]	(	id	)
+randomseed	[ 0	locks=0 ]	(	56	)
+folder5	[ 0	locks=0 ]	(	0	)
+basis	[ 0	locks=0 ]	(	"simplex"	)
+locationattrib	[ 0	locks=0 ]	(	P	)
+elementsize	[ 0	locks=0 ]	(	1	)
+elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+elementscale	[ 0	locks=0 ]	(	1	1	1	)
+offset	[ 0	locks=0 ]	(	0	)
+offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+offsetv	[ 0	locks=0 ]	(	0	0	0	)
+usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
+noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
+// Location Attribute - pos
+// Element Size - elementsize
+// Offset - offset
+
+"	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+folder9	[ 0	locks=0 ]	(	0	)
+animated	[ 0	locks=0 ]	(	"off"	)
+pulseduration	[ 0	locks=0 ]	(	1	)
+folder8	[ 0	locks=0 ]	(	0	)
+fractal	[ 0	locks=0 ]	(	"fBm"	)
+oct	[ 0	locks=0 ]	(	3	)
+lac	[ 0	locks=0 ]	(	2.01234	)
+rough	[ 0	locks=0 ]	(	0.5	)
+folder6	[ 0	locks=0 ]	(	0	)
+disp	[ 0	locks=0 ]	(	0	)
+dispesize	[ 0	locks=0 ]	(	1	)
+gflow	[ 0	locks=0 ]	(	0	)
+flowrot	[ 0	locks=0 ]	(	0	)
+accuml	[ 0	locks=0 ]	(	"off"	)
+accumg	[ 0	locks=0 ]	(	"off"	)
+folder7	[ 0	locks=0 ]	(	0	)
+startpos	[ 0	locks=0 ]	(	0	0	0	)
+endpos	[ 0	locks=0 ]	(	5	0	0	)
+folder12	[ 0	locks=0 ]	(	0	)
+bounddir	[ 0	locks=0 ]	(	"x"	)
+bbox_computerange	[ 0	locks=0 ]	(	0	)
+doboundmin	[ 0	locks=0 ]	(	"off"	)
+boundmin	[ 0	locks=0 ]	(	0	)
+doboundmax	[ 0	locks=0 ]	(	"off"	)
+boundmax	[ 0	locks=0 ]	(	1	)
+folder10	[ 0	locks=0 ]	(	0	)
+uvattrib	[ 0	locks=0 ]	(	uv	)
+t	[ 0	locks=0 ]	(	0.5	0.5	)
+r	[ 0	locks=0 ]	(	0	)
+scale	[ 0	locks=0 ]	(	1	)
+scaletype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
+s	[ 0	locks=0 ]	(	1	1	)
+p	[ 0	locks=0 ]	(	0.5	0.5	)
+folder2	[ 0	locks=0 ]	(	0	)
+remapattrib	[ 0	locks=0 ]	(	mask	)
+remapattrib_range	[ 0	locks=0 ]	(	0	1	)
+remapattrib_rangemode	[ 0	locks=0 ]	(	"clamp"	)
+remapattrib_computerange	[ 0	locks=0 ]	(	0	)
+folder14	[ 0	locks=0 ]	(	0	)
+enable_cc	[ 0	locks=0 ]	(	"on"	)
+dohueshift	[ 0	locks=0 ]	(	"off"	)
+hueshift	[ 0	locks=0 ]	(	0	)
+hueshiftmode	[ 0	locks=0 ]	(	"uniform"	)
+hueshiftattrib	[ 0	locks=0 ]	(	hueshift	)
+dosat	[ 0	locks=0 ]	(	"on"	)
+sat	[ 0	locks=0 ]	(	[ sat	1 ] 	)
+satmode	[ 0	locks=0 ]	(	"uniform"	)
+satattrib	[ 0	locks=0 ]	(	saturation	)
+doval	[ 0	locks=0 ]	(	"off"	)
+val	[ 0	locks=0 ]	(	1	)
+valmode	[ 0	locks=0 ]	(	"uniform"	)
+valattrib	[ 0	locks=0 ]	(	value	)
+dobrightness	[ 0	locks=0 ]	(	"on"	)
+brightness	[ 0	locks=0 ]	(	0	)
+brightnessmode	[ 0	locks=0 ]	(	"uniform"	)
+brightnessattrib	[ 0	locks=0 ]	(	brightness	)
+docontrast	[ 0	locks=0 ]	(	"on"	)
+contrast	[ 0	locks=0 ]	(	1	)
+contrastmode	[ 0	locks=0 ]	(	"uniform"	)
+contrastattrib	[ 0	locks=0 ]	(	contrast	)
+dogain	[ 0	locks=0 ]	(	"off"	)
+gain	[ 0	locks=0 ]	(	1	)
+gainmode	[ 0	locks=0 ]	(	"uniform"	)
+gainattrib	[ 0	locks=0 ]	(	gain	)
+dogamma	[ 0	locks=0 ]	(	"on"	)
+gamma	[ 0	locks=0 ]	(	1	)
+gammapresets	[ 0	locks=0 ]	(	"1"	)
+gammamode	[ 0	locks=0 ]	(	"uniform"	)
+gammaattrib	[ 0	locks=0 ]	(	gamma	)
+deleteallccattrib	[ 0	locks=0 ]	(	"off"	)
+folder3	[ 0	locks=0 ]	(	0	)
+enable_postprocess	[ 0	locks=0 ]	(	"off"	)
+deleteblendattrib	[ 0	locks=0 ]	(	"SOP_delete"	)
+doclampmin	[ 0	locks=0 ]	(	"off"	)
+clampminvalue	[ 0	locks=0 ]	(	0	0	0	)
+doclampmax	[ 0	locks=0 ]	(	"off"	)
+clampmaxvalue	[ 0	locks=0 ]	(	1	1	1	)
+docomplement	[ 0	locks=0 ]	(	"off"	)
+folder11	[ 0	locks=0 ]	(	0	)
+dodefault	[ 0	locks=0 ]	(	"off"	)
+default	[ 0	locks=0 ]	(	1	1	1	)
+dotypeinfo	[ 0	locks=0 ]	(	"off"	)
+typeinfo	[ 0	locks=0 ]	(	"color"	)
+colorramp1pos	[ 0	locks=0 ]	(	0	)
+colorramp1c	[ 0	locks=0 ]	(	0.20000000298023224	0	1	)
+colorramp1interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp2pos	[ 0	locks=0 ]	(	0.25	)
+colorramp2c	[ 0	locks=0 ]	(	0	0.8500000238418579	1	)
+colorramp2interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp3pos	[ 0	locks=0 ]	(	0.5	)
+colorramp3c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
+colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp4pos	[ 0	locks=0 ]	(	0.75	)
+colorramp4c	[ 0	locks=0 ]	(	0.949999988079071	1	0	)
+colorramp4interp	[ 0	locks=0 ]	(	"linear"	)
+colorramp5pos	[ 0	locks=0 ]	(	1	)
+colorramp5c	[ 0	locks=0 ]	(	1	0	0	)
+colorramp5interp	[ 0	locks=0 ]	(	"linear"	)
+folder3_0_2	[ 0	locks=0 ]	(	0	)
+color0	[ 0	locks=0 ]	(	1	1	1	)
+colorscheme0	[ 0	locks=0 ]	(	"const"	)
+weight0	[ 0	locks=0 ]	(	1	)
+twoanalogangle0	[ 0	locks=0 ]	(	30	)
+fouranalogangle0	[ 0	locks=0 ]	(	30	)
+triadicangle0	[ 0	locks=0 ]	(	120	)
+tetradicangle0	[ 0	locks=0 ]	(	45	)
+fiveshadesdist0	[ 0	locks=0 ]	(	1	)
+fivetintsdist0	[ 0	locks=0 ]	(	1	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	},
+	"wirestyle":{
+		"type":"string",
+		"value":"rounded"
 	}
 }
 
@@ -5306,264 +5562,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.init"
-Content-Type: text/plain
-
-type = attribadjustcolor
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 -2.15
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	pointwrangle6 2 1 "input1"
-}
-inputs
-{
-0 	pointwrangle6 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.chn"
-Content-Type: text/plain
-
-{
-    channel sat {
-      lefttype = extend
-      righttype = extend
-      default = 1
-      flags = 0
-      segment { length = 0 value = 1 1 expr = ch(\"../lighting_saturation\") }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-group	[ 0	locks=0 ]	(	""	)
-doblend	[ 0	locks=0 ]	(	"off"	)
-blendweight	[ 0	locks=0 ]	(	1	)
-blendmode	[ 0	locks=0 ]	(	"value"	)
-blendspace	[ 0	locks=0 ]	(	"rgb"	)
-blendattrib	[ 0	locks=0 ]	(	mask	)
-attrib	[ 0	locks=0 ]	(	Cd	)
-componentscope_rgb	[ 0	locks=0 ]	(	111	)
-componentscope_hsv	[ 0	locks=0 ]	(	111	)
-class	[ 0	locks=0 ]	(	"point"	)
-folder13	[ 0	locks=0 ]	(	0	)
-enable_preprocess	[ 0	locks=0 ]	(	"off"	)
-deleteallcolorattribs	[ 0	locks=0 ]	(	"off"	)
-doinitvalue	[ 0	locks=0 ]	(	"off"	)
-initvaluefrom	[ 0	locks=0 ]	(	"const"	)
-initvalue	[ 0	locks=0 ]	(	1	1	1	)
-initcolorattrib	[ 0	locks=0 ]	(	Cd	)
-componentscope_initcolor	[ 0	locks=0 ]	(	111	)
-initfloatattrib	[ 0	locks=0 ]	(	pscale	)
-componentscope_initfloat	[ 0	locks=0 ]	(	"g"	)
-folder1	[ 0	locks=0 ]	(	0	)
-adjustvalue	[ 0	locks=0 ]	(	"off"	)
-operation	[ 0	locks=0 ]	(	"set"	)
-valuetype	[ 0	locks=0 ]	(	"const"	)
-sepparm	[ 0	locks=0 ]	(	)
-rangemethod	[ 0	locks=0 ]	(	"ramp"	)
-singlevalue	[ 0	locks=0 ]	(	1	1	1	)
-randomcolormodel	[ 0	locks=0 ]	(	"rgb"	)
-dobasecolor	[ 0	locks=0 ]	(	"off"	)
-basecolor	[ 0	locks=0 ]	(	1	1	1	)
-randr	[ 0	locks=0 ]	(	0	1	)
-randg	[ 0	locks=0 ]	(	0	1	)
-randb	[ 0	locks=0 ]	(	0	1	)
-randhue	[ 0	locks=0 ]	(	-180	180	)
-randsat	[ 0	locks=0 ]	(	0	1	)
-randval	[ 0	locks=0 ]	(	0	1	)
-colorramp	[ 0	locks=0 ]	(	5	)
-colorpalette	[ 0	locks=0 ]	(	"none"	)
-nvalues	[ 0	locks=0 ]	(	1	)
-adjustmentattrib	[ 0	locks=0 ]	(	""	)
-componentscope_adjustmentattrib	[ 0	locks=0 ]	(	111	)
-adjustmentattribgain	[ 0	locks=0 ]	(	1	)
-adjustmentattribbrightness	[ 0	locks=0 ]	(	0	)
-cmap	[ 0	locks=0 ]	(	$HH/pic/Mandril.pic	)
-cmapmode	[ 0	locks=0 ]	(	"path"	)
-cmapattrib	[ 0	locks=0 ]	(	path	)
-cmapchannel	[ 0	locks=0 ]	(	""	)
-componentscope_cmap	[ 0	locks=0 ]	(	111	)
-cmapborder	[ 0	locks=0 ]	(	0	0	0	)
-srccolorspace	[ 0	locks=0 ]	(	"auto"	)
-cmapwrap	[ 0	locks=0 ]	(	repeat	)
-folder4	[ 0	locks=0 ]	(	0	)
-randmethod	[ 0	locks=0 ]	(	"ppnum"	)
-randattrib	[ 0	locks=0 ]	(	id	)
-randomseed	[ 0	locks=0 ]	(	56	)
-folder5	[ 0	locks=0 ]	(	0	)
-basis	[ 0	locks=0 ]	(	"simplex"	)
-locationattrib	[ 0	locks=0 ]	(	P	)
-elementsize	[ 0	locks=0 ]	(	1	)
-elementsizetype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-elementscale	[ 0	locks=0 ]	(	1	1	1	)
-offset	[ 0	locks=0 ]	(	0	)
-offsettype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-offsetv	[ 0	locks=0 ]	(	0	0	0	)
-usenoiseexpression	[ 0	locks=0 ]	(	"off"	)
-noiseexpression	[ 0	locks=0 ]	(	"// Parameters to modify:
-// Location Attribute - pos
-// Element Size - elementsize
-// Offset - offset
-
-"	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-folder9	[ 0	locks=0 ]	(	0	)
-animated	[ 0	locks=0 ]	(	"off"	)
-pulseduration	[ 0	locks=0 ]	(	1	)
-folder8	[ 0	locks=0 ]	(	0	)
-fractal	[ 0	locks=0 ]	(	"fBm"	)
-oct	[ 0	locks=0 ]	(	3	)
-lac	[ 0	locks=0 ]	(	2.01234	)
-rough	[ 0	locks=0 ]	(	0.5	)
-folder6	[ 0	locks=0 ]	(	0	)
-disp	[ 0	locks=0 ]	(	0	)
-dispesize	[ 0	locks=0 ]	(	1	)
-gflow	[ 0	locks=0 ]	(	0	)
-flowrot	[ 0	locks=0 ]	(	0	)
-accuml	[ 0	locks=0 ]	(	"off"	)
-accumg	[ 0	locks=0 ]	(	"off"	)
-folder7	[ 0	locks=0 ]	(	0	)
-startpos	[ 0	locks=0 ]	(	0	0	0	)
-endpos	[ 0	locks=0 ]	(	5	0	0	)
-folder12	[ 0	locks=0 ]	(	0	)
-bounddir	[ 0	locks=0 ]	(	"x"	)
-bbox_computerange	[ 0	locks=0 ]	(	0	)
-doboundmin	[ 0	locks=0 ]	(	"off"	)
-boundmin	[ 0	locks=0 ]	(	0	)
-doboundmax	[ 0	locks=0 ]	(	"off"	)
-boundmax	[ 0	locks=0 ]	(	1	)
-folder10	[ 0	locks=0 ]	(	0	)
-uvattrib	[ 0	locks=0 ]	(	uv	)
-t	[ 0	locks=0 ]	(	0.5	0.5	)
-r	[ 0	locks=0 ]	(	0	)
-scale	[ 0	locks=0 ]	(	1	)
-scaletype	[ 0	locks=0 ]	(	"BUTTONS_decompose_transforms"	)
-s	[ 0	locks=0 ]	(	1	1	)
-p	[ 0	locks=0 ]	(	0.5	0.5	)
-folder2	[ 0	locks=0 ]	(	0	)
-remapattrib	[ 0	locks=0 ]	(	mask	)
-remapattrib_range	[ 0	locks=0 ]	(	0	1	)
-remapattrib_rangemode	[ 0	locks=0 ]	(	"clamp"	)
-remapattrib_computerange	[ 0	locks=0 ]	(	0	)
-folder14	[ 0	locks=0 ]	(	0	)
-enable_cc	[ 0	locks=0 ]	(	"on"	)
-dohueshift	[ 0	locks=0 ]	(	"off"	)
-hueshift	[ 0	locks=0 ]	(	0	)
-hueshiftmode	[ 0	locks=0 ]	(	"uniform"	)
-hueshiftattrib	[ 0	locks=0 ]	(	hueshift	)
-dosat	[ 0	locks=0 ]	(	"on"	)
-sat	[ 0	locks=0 ]	(	[ sat	1 ] 	)
-satmode	[ 0	locks=0 ]	(	"uniform"	)
-satattrib	[ 0	locks=0 ]	(	saturation	)
-doval	[ 0	locks=0 ]	(	"off"	)
-val	[ 0	locks=0 ]	(	1	)
-valmode	[ 0	locks=0 ]	(	"uniform"	)
-valattrib	[ 0	locks=0 ]	(	value	)
-dobrightness	[ 0	locks=0 ]	(	"on"	)
-brightness	[ 0	locks=0 ]	(	0	)
-brightnessmode	[ 0	locks=0 ]	(	"uniform"	)
-brightnessattrib	[ 0	locks=0 ]	(	brightness	)
-docontrast	[ 0	locks=0 ]	(	"on"	)
-contrast	[ 0	locks=0 ]	(	1	)
-contrastmode	[ 0	locks=0 ]	(	"uniform"	)
-contrastattrib	[ 0	locks=0 ]	(	contrast	)
-dogain	[ 0	locks=0 ]	(	"off"	)
-gain	[ 0	locks=0 ]	(	1	)
-gainmode	[ 0	locks=0 ]	(	"uniform"	)
-gainattrib	[ 0	locks=0 ]	(	gain	)
-dogamma	[ 0	locks=0 ]	(	"on"	)
-gamma	[ 0	locks=0 ]	(	1	)
-gammapresets	[ 0	locks=0 ]	(	"1"	)
-gammamode	[ 0	locks=0 ]	(	"uniform"	)
-gammaattrib	[ 0	locks=0 ]	(	gamma	)
-deleteallccattrib	[ 0	locks=0 ]	(	"off"	)
-folder3	[ 0	locks=0 ]	(	0	)
-enable_postprocess	[ 0	locks=0 ]	(	"off"	)
-deleteblendattrib	[ 0	locks=0 ]	(	"SOP_delete"	)
-doclampmin	[ 0	locks=0 ]	(	"off"	)
-clampminvalue	[ 0	locks=0 ]	(	0	0	0	)
-doclampmax	[ 0	locks=0 ]	(	"off"	)
-clampmaxvalue	[ 0	locks=0 ]	(	1	1	1	)
-docomplement	[ 0	locks=0 ]	(	"off"	)
-folder11	[ 0	locks=0 ]	(	0	)
-dodefault	[ 0	locks=0 ]	(	"off"	)
-default	[ 0	locks=0 ]	(	1	1	1	)
-dotypeinfo	[ 0	locks=0 ]	(	"off"	)
-typeinfo	[ 0	locks=0 ]	(	"color"	)
-colorramp1pos	[ 0	locks=0 ]	(	0	)
-colorramp1c	[ 0	locks=0 ]	(	0.20000000298023224	0	1	)
-colorramp1interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp2pos	[ 0	locks=0 ]	(	0.25	)
-colorramp2c	[ 0	locks=0 ]	(	0	0.8500000238418579	1	)
-colorramp2interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp3pos	[ 0	locks=0 ]	(	0.5	)
-colorramp3c	[ 0	locks=0 ]	(	0	1	0.10000000149011612	)
-colorramp3interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp4pos	[ 0	locks=0 ]	(	0.75	)
-colorramp4c	[ 0	locks=0 ]	(	0.949999988079071	1	0	)
-colorramp4interp	[ 0	locks=0 ]	(	"linear"	)
-colorramp5pos	[ 0	locks=0 ]	(	1	)
-colorramp5c	[ 0	locks=0 ]	(	1	0	0	)
-colorramp5interp	[ 0	locks=0 ]	(	"linear"	)
-folder3_0_2	[ 0	locks=0 ]	(	0	)
-color0	[ 0	locks=0 ]	(	1	1	1	)
-colorscheme0	[ 0	locks=0 ]	(	"const"	)
-weight0	[ 0	locks=0 ]	(	1	)
-twoanalogangle0	[ 0	locks=0 ]	(	30	)
-fouranalogangle0	[ 0	locks=0 ]	(	30	)
-triadicangle0	[ 0	locks=0 ]	(	120	)
-tetradicangle0	[ 0	locks=0 ]	(	45	)
-fiveshadesdist0	[ 0	locks=0 ]	(	1	)
-fivetintsdist0	[ 0	locks=0 ]	(	1	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/attribadjustcolor1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
