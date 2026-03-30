@@ -32,27 +32,27 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -0.837673 0.818267
+position 16.2137 -10.0851
 connectornextid 6
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
-4 "output1"
+0 "output1"
 5 "output2"
 }
 inputsNamed3
 {
-0 	OUT_DEFINE_PLANTS 0 1 "input1"
-1 	biome_attributes_evolve 0 1 "input2"
-2 	biome_region_assign 0 1 "input3"
-3 	OUT_RIVER 0 1 "input4"
+1 	Tundra_Shrub 0 1 "input1"
+2 	biome_attributes_evolve 0 1 "input2"
+3 	BIOME_REGIONS 1 1 "input3"
+4 	WATER_MASK 1 1 "input4"
 }
 inputs
 {
-0 	OUT_DEFINE_PLANTS 0 1
+0 	Tundra_Shrub 0 1
 1 	biome_attributes_evolve 0 1
-2 	biome_region_assign 0 1
-3 	OUT_RIVER 0 1
+2 	BIOME_REGIONS 0 1
+3 	WATER_MASK 0 1
 }
 stat
 {
@@ -61,7 +61,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 1 0.73 0 
+color UT_Color RGB 0.475 0.812 0.204 
 delscript ""
 exprlanguage hscript
 end
@@ -1247,7 +1247,7 @@ sopflags sopflags =
 comment ""
 position 3.18451 -125.88
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -15847,7 +15847,7 @@ sopflags sopflags =
 comment ""
 position 3.29171 -18.2013
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 1 "output1"
@@ -17306,7 +17306,7 @@ Content-Type: text/plain
       lefttype = extend
       righttype = extend
       flags = 0
-      segment { length = 0 expr = ch(\"../outputname\") }
+      segment { length = 0 expr = ch(\"../outputunrealpath\") }
     }
   }
 
@@ -17406,7 +17406,7 @@ updatevar	[ 0	locks=0 ]	(	"on"	)
 overwrite	[ 0	locks=0 ]	(	"off"	)
 encodenames	[ 0	locks=0 ]	(	"off"	)
 frompt0	[ 8	locks=0	autoscope=0	autosel=4294967295 ]	(	unreal_instance	)
-topt0	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	`chs(\"../namename\")`	)
+topt0	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	`chs(\"../unrealassetpath\")`	)
 fromvtx0	[ 0	locks=0 ]	(	""	)
 tovtx0	[ 0	locks=0 ]	(	""	)
 fromvtx1	[ 0	locks=0 ]	(	""	)

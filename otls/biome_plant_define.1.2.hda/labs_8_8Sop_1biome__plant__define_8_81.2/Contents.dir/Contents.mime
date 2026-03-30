@@ -32,23 +32,21 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -5.95767 2.99827
-connectornextid 4
+position -90.1568 53.6355
+connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
-2 "output1"
-3 "output2"
+0 "output1"
+2 "output2"
 }
 inputsNamed3
 {
-0 	PINE 0 1 "input1"
-1 	PINE 1 1 "input2"
+1 	Temperate_Shrub 0 1 "input1"
 }
 inputs
 {
-0 	PINE 0 1
-1 	PINE 1 1
+0 	Temperate_Shrub 0 1
 }
 stat
 {
@@ -57,7 +55,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.47 0.81 0.2 
+color UT_Color RGB 0.145 0.667 0.557 
 delscript ""
 exprlanguage hscript
 end
@@ -70,6 +68,10 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":""
+	},
+	"__last_invoked_recipes__":{
+		"type":"string",
+		"value":"{\"preset\": \"labs::sop/biome_plant_define::1.1::labs::temperate_deciduous_tree\", \"node_preset_recipe\": \"labs::sop/biome_plant_define::1.1::labs::temperate_deciduous_tree\", \"submenus\": {\"Default Group\": {\"preset\": \"labs::sop/biome_plant_define::1.1::labs::temperate_deciduous_tree\", \"node_preset_recipe\": \"labs::sop/biome_plant_define::1.1::labs::temperate_deciduous_tree\"}}}"
 	},
 	"wirestyle":{
 		"type":"string",
@@ -9624,7 +9626,7 @@ sopflags sopflags =
 comment ""
 position -5.17834 -59.483
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
@@ -11532,9 +11534,9 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2578 -58.6097
+position 34.2578 -59.327
 connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -11591,7 +11593,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2594 -55.1808
+position 34.2594 -55.8981
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -11674,7 +11676,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2594 -52.8918
+position 34.2594 -53.6091
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -11683,11 +11685,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-1 	unpack_transfer_name_and_mat 1 1 "input1"
+1 	unpack_transfer_name_and_mat_to_prototype 1 1 "input1"
 }
 inputs
 {
-0 	unpack_transfer_name_and_mat 0 1
+0 	unpack_transfer_name_and_mat_to_prototype 0 1
 }
 stat
 {
@@ -11744,7 +11746,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2599 -54.0347
+position 34.2599 -54.752
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -11806,19 +11808,19 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat.init"
+Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat_to_prototype.init"
 Content-Type: text/plain
 
 type = unpack
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat.def"
+Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat_to_prototype.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2578 -51.7448
+position 34.2578 -52.4621
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -11827,11 +11829,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	keep_mesh_path_and_pscale2 1 1 "input1"
+0 	attribpromote_name_to_prim 1 1 "input1"
 }
 inputs
 {
-0 	keep_mesh_path_and_pscale2 0 1
+0 	attribpromote_name_to_prim 0 1
 }
 stat
 {
@@ -11846,7 +11848,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat.parm"
+Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat_to_prototype.parm"
 Content-Type: text/plain
 
 {
@@ -11865,13 +11867,13 @@ convertpolysoup	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat.netbox"
+Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat_to_prototype.netbox"
 Content-Type: text/plain
 
 __netbox10
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat.userdata"
+Content-Disposition: attachment; filename="hdaroot/unpack_transfer_name_and_mat_to_prototype.userdata"
 Content-Type: text/plain
 
 {
@@ -11894,7 +11896,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2578 -57.4706
+position 34.2578 -58.1879
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -12104,7 +12106,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2566 -56.3183
+position 34.2566 -57.0356
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -12118,7 +12120,7 @@ inputsNamed3
 }
 inputs
 {
-0 	(1) 1 1
+0 	(1) 0 1
 1 	foreach_end3 0 1
 }
 stat
@@ -13459,8 +13461,8 @@ Content-Disposition: attachment; filename="hdaroot/facet4.data"
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
-f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNTU5JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJZAisEC3ZlcnRleGNvdW50JgQSWwIrBQ5wcmltaXRpdmVjb3VudCYFEQIrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
-KwgGQmFpbGV5JggrCQhzb2Z0d2FyZSYJKwoQSG91ZGluaSAyMS4wLjU1OSYKKwsEZGF0ZSYLKwwTMjAyNi0wMS0xNCAxMjoxOTo1MiYMKw0IaG9zdG5hbWUmDSsOCUJhaWxleXNQQyYOKw8GYm91bmRzJg9AGQaQ+dW/kfnVP5E=
+f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNjMxJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxJZAisEC3ZlcnRleGNvdW50JgQSWwIrBQ5wcmltaXRpdmVjb3VudCYFEQIrBgRpbmZvJgZ7KwcGYXJ0aXN0Jgc=
+KwgGQmFpbGV5JggrCQhzb2Z0d2FyZSYJKwoQSG91ZGluaSAyMS4wLjYzMSYKKwsEZGF0ZSYLKwwTMjAyNi0wMy0wMyAxNTo1NjoxNSYMKw0IaG9zdG5hbWUmDSsOCUJhaWxleXNQQyYOKw8GYm91bmRzJg9AGQaQ+dW/kfnVP5E=
 +dW/kPnVPyUHbKUmB2wlKxARcHJpbWNvdW50X3N1bW1hcnkmECcVICAgICAgICAgIDIgUG9seWdvbnMKKxERYXR0cmlidXRlX3N1bW1hcnkmEScbICAgICAxIHBvaW50IGF0dHJpYnV0ZXM6CVAKfSsSCHRvcG9sb2d5JhJbKxM=
 CHBvaW50cmVmJhNbKxQHaW5kaWNlcyYUQBLyWwIAAAEAAgADAAQABQAGAAcACAAJAAoACwAMAA0ADgAPABAAEQASABMAFAAVABYAFwAYABkAGgAbABwAHQAeAB8AIAAhACIAIwAkACUAJgAnACgAKQAqACsALAAtAC4ALwAwADE=
 ADIAMwA0ADUANgA3ADgAOQA6ADsAPAA9AD4APwBAAEEAQgBDAEQARQBGAEcASABJAEoASwBMAE0ATgBPAFAAUQBSAFMAVABVAFYAVwBYAFkAWgBbAFwAXQBeAF8AYABhAGIAYwBkAGUAZgBnAGgAaQBqAGsAbABtAG4AbwBwAHE=
@@ -17102,8 +17104,8 @@ Content-Disposition: attachment; filename="hdaroot/facet7.data"
 Content-Type: application/octet-stream
 Content-Transfer-Encoding: base64
 
-f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNTU5JgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFbKwQLdmVydGV4Y291bnQmBBFbKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHBmFydGlzdCYHKwg=
-BkJhaWxleSYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMjEuMC41NTkmCisLBGRhdGUmCysMEzIwMjYtMDEtMTQgMTI6MTk6NTImDCsNCGhvc3RuYW1lJg0rDglCYWlsZXlzUEMmDisPBmJvdW5kcyYPQBkGfyzAvn4swD63q3k=
+f05TSmJbKwALZmlsZXZlcnNpb24mACsBCDIxLjAuNjMxJgErAghoYXNpbmRleCYCMSsDCnBvaW50Y291bnQmAxFbKwQLdmVydGV4Y291bnQmBBFbKwUOcHJpbWl0aXZlY291bnQmBREBKwYEaW5mbyYGeysHBmFydGlzdCYHKwg=
+BkJhaWxleSYIKwkIc29mdHdhcmUmCSsKEEhvdWRpbmkgMjEuMC42MzEmCisLBGRhdGUmCysMEzIwMjYtMDMtMDMgMTU6NTY6MTUmDCsNCGhvc3RuYW1lJg0rDglCYWlsZXlzUEMmDisPBmJvdW5kcyYPQBkGfyzAvn4swD63q3k=
 o7WreSPOV2K+zFdiPisQEXByaW1jb3VudF9zdW1tYXJ5JhAnFCAgICAgICAgICAxIFBvbHlnb24KKxERYXR0cmlidXRlX3N1bW1hcnkmEScbICAgICAxIHBvaW50IGF0dHJpYnV0ZXM6CVAKfSsSCHRvcG9sb2d5JhJbKxMIcG8=
 aW50cmVmJhNbKxQHaW5kaWNlcyYUQBJbAAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA=
 NAA1ADYANwA4ADkAOgA7ADwAPQA+AD8AQABBAEIAQwBEAEUARgBHAEgASQBKAEsATABNAE4ATwBQAFEAUgBTAFQAVQBWAFcAWABZAFoAXV0rFQphdHRyaWJ1dGVzJhVbKxYPcG9pbnRhdHRyaWJ1dGVzJhZbW1srFwVzY29wZSY=
@@ -20367,7 +20369,7 @@ stat
   author Bailey@BaileysPC
   access 0777
 }
-color UT_Color RGB 0.47 0.81 0.2 
+color UT_Color RGB 0.475 0.812 0.204 
 delscript ""
 exprlanguage hscript
 end
@@ -20416,7 +20418,6 @@ Content-Type: text/plain
         groupsimple {
             name    "folder_generatedparms_snippet"
             label   "Generated Channel Parameters"
-            grouptag { "group_type" "simple" }
             grouptag { "sidefx::look" "blank" }
 
             parm {
@@ -20591,7 +20592,7 @@ vex_selectiongroup	[ 0	locks=0 ]	(	""	)
 vex_precision	[ 0	locks=0 ]	(	auto	)
 folder1	[ 0	locks=0 ]	(	0	0	)
 folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-meshpath	[ 0	locks=0 ]	(	/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1	)
+meshpath	[ 8	locks=0 ]	(	""	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -20861,7 +20862,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 34.2543 -50.7448
+position 34.2544 -50.4621
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -20897,7 +20898,7 @@ version 0.8
 usereference	[ 0	locks=0 ]	(	"off"	)
 negate	[ 0	locks=0 ]	(	"off"	)
 doptdel	[ 0	locks=0 ]	(	"on"	)
-ptdel	[ 0	locks=0 ]	(	"* ^_bps_mesh_path ^pscale ^shop_materialpath"	)
+ptdel	[ 0	locks=0 ]	(	"* ^_bps_mesh_path ^pscale ^shop_materialpath ^name"	)
 dovtxdel	[ 0	locks=0 ]	(	"on"	)
 vtxdel	[ 0	locks=0 ]	(	""	)
 doprimdel	[ 0	locks=0 ]	(	"on"	)
@@ -21840,10 +21841,84 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribpromote_name_to_prim.init"
+Content-Type: text/plain
+
+type = attribpromote
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribpromote_name_to_prim.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 34.2544 -51.4621
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	keep_mesh_path_and_pscale2 1 1 "input1"
+}
+inputs
+{
+0 	keep_mesh_path_and_pscale2 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribpromote_name_to_prim.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+inname	[ 0	locks=0 ]	(	name	)
+inclass	[ 0	locks=0 ]	(	"point"	)
+outclass	[ 0	locks=0 ]	(	"primitive"	)
+usepieceattrib	[ 0	locks=0 ]	(	"off"	)
+pieceattrib	[ 0	locks=0 ]	(	name	)
+method	[ 0	locks=0 ]	(	"mean"	)
+useoutname	[ 0	locks=0 ]	(	"off"	)
+outname	[ 0	locks=0 ]	(	""	)
+deletein	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribpromote_name_to_prim.netbox"
+Content-Type: text/plain
+
+__netbox10
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/attribpromote_name_to_prim.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-151
+152
 copnet_whittaker_biome_graph
 matnet1
 output0
@@ -21882,7 +21957,7 @@ output2
 foreach_end3
 foreach_begin3
 pack_name_and_mat
-unpack_transfer_name_and_mat
+unpack_transfer_name_and_mat_to_prototype
 Renamed_Prototypes
 point_material
 promote_point_material_to_prim
@@ -21995,6 +22070,7 @@ Crosshair
 carve_outline
 transform_up2
 make_color_emissive1
+attribpromote_name_to_prim
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
