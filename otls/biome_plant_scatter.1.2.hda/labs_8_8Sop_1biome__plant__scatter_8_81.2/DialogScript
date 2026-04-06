@@ -735,6 +735,24 @@
                 parmtag { "script_callback_language" "python" }
             }
             parm {
+                name    "enableshrub"
+                label   "Enable Shrub"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "shrubname"
+                label   "Shrub"
+                type    string
+                default { "shrub" }
+                disablewhen "{ enableshrub == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
                 name    "enableplantid"
                 label   "Enable Plant ID"
                 type    toggle
