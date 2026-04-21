@@ -250,31 +250,106 @@
             hidewhen "{ simtype != 1 }"
 
             parm {
-                name    "targetratio"
-                label   "Cable Stretch"
-                type    float
-                default { "1.2" }
-                range   { 1! 2 }
-                parmtag { "autoscope" "0000000000000000" }
-                parmtag { "script_callback_language" "python" }
-            }
-            parm {
-                name    "userestlengthscaleattrib"
-                label   "Scale Cable Stretch by Attribute"
-                type    toggle
-                nolabel
-                joinnext
+                name    "pseudogravitytype"
+                label   "Pseudo Gravity Type"
+                type    ordinal
                 default { "0" }
+                menu {
+                    "0" "Catenary Curve (cosh)"
+                    "1" "Quadratic"
+                }
                 parmtag { "script_callback_language" "python" }
             }
-            parm {
-                name    "restlengthscaleattrib"
-                label   "Cable Stretch Scale"
-                type    string
-                default { "restlength" }
-                disablewhen "{ userestlengthscaleattrib == 0 }"
-                parmtag { "script_callback_language" "python" }
+            groupsimple {
+                name    "folder0"
+                label   "Catenary (cosh)"
+                hidewhen "{ pseudogravitytype != 0 }"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "targetratio"
+                    label   "Cable Stretch"
+                    type    float
+                    default { "1.2" }
+                    range   { 1! 2 }
+                    parmtag { "autoscope" "0000000000000000" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "addrandomrestlength"
+                    label   "Add Random Stretch"
+                    type    float
+                    default { "0" }
+                    range   { 0 10 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "seedcatenary"
+                    label   "Seed"
+                    type    float
+                    default { "0" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "userestlengthscaleattrib"
+                    label   "Scale Cable Stretch by Attribute"
+                    type    toggle
+                    nolabel
+                    joinnext
+                    default { "0" }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "restlengthscaleattrib"
+                    label   "Cable Stretch Scale"
+                    type    string
+                    default { "restlength" }
+                    disablewhen "{ userestlengthscaleattrib == 0 }"
+                    parmtag { "script_callback_language" "python" }
+                }
             }
+
+            groupsimple {
+                name    "folder1"
+                label   "Quadratic"
+                hidewhen "{ pseudogravitytype != 1 }"
+                grouptag { "sidefx::look" "blank" }
+
+                parm {
+                    name    "mingravity"
+                    label   "Min"
+                    type    float
+                    default { "0.1" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "maxgravity"
+                    label   "Max"
+                    type    float
+                    default { "0.7" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "seedgravity"
+                    label   "Seed"
+                    type    float
+                    default { "0.383" }
+                    range   { 0 1 }
+                    parmtag { "script_callback_language" "python" }
+                }
+                parm {
+                    name    "boostgravity"
+                    label   "Gravity Multiplier"
+                    type    float
+                    default { "3.5" }
+                    range   { 0 20 }
+                    parmtag { "script_callback_language" "python" }
+                }
+            }
+
         }
 
         groupsimple {
