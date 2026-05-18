@@ -32,30 +32,31 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 -3.15
-connectornextid 4
+position -1.44628 -3.85696
+connectornextid 5
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-0 "output1"
+1 "output1"
+3 "output2"
 }
 inputsNamed3
 {
-1 	tree_branch_placer1 2 1 "input1"
-2 	tree_branch_placer1 3 1 "input2"
-3 	tree_simple_leaf1 0 1 "input3"
+0 	tree_branch_generator2 2 1 "input1"
+2 	tree_branch_generator2 3 1 "input2"
+4 	tree_simple_leaf1 0 1 "input3"
 }
 inputs
 {
-0 	tree_branch_placer1 0 1
-1 	tree_branch_placer1 1 1
+0 	tree_branch_generator2 0 1
+1 	tree_branch_generator2 1 1
 2 	tree_simple_leaf1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@cayuga.local
+  author Danicka@DESKTOP-2416QFR
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -7197,7 +7198,7 @@ sopflags sopflags =
 comment ""
 position 6.70945 -166.215
 connectornextid 1
-flags =  lock off model off template on footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
 {
 }
@@ -10159,11 +10160,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	set_tag_attrib1 1 1 "input1"
+0 	set_tag_attrib_points 1 1 "input1"
 }
 inputs
 {
-0 	set_tag_attrib1 0 1
+0 	set_tag_attrib_points 0 1
 }
 stat
 {
@@ -10271,12 +10272,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	set_tag_attrib1 1 1 "input1"
+0 	set_tag_attrib_points 1 1 "input1"
 2 	color1 1 1 "input2"
 }
 inputs
 {
-0 	set_tag_attrib1 0 1
+0 	set_tag_attrib_points 0 1
 1 	color1 0 1
 }
 stat
@@ -13852,14 +13853,14 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.init"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.init"
 Content-Type: text/plain
 
 type = attribwrangle
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.def"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
@@ -13892,7 +13893,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.spareparmdef"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.spareparmdef"
 Content-Type: text/plain
 
     group {
@@ -14070,7 +14071,7 @@ Content-Type: text/plain
     }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.chn"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.chn"
 Content-Type: text/plain
 
 {
@@ -14084,7 +14085,7 @@ Content-Type: text/plain
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.parm"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.parm"
 Content-Type: text/plain
 
 {
@@ -14115,7 +14116,7 @@ tag	[ 8	locks=0 ]	(	[ tag	"" ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/set_tag_attrib1.userdata"
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_prims.userdata"
 Content-Type: text/plain
 
 {
@@ -15843,6 +15844,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"first"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -19056,6 +19059,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"first"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -19130,6 +19135,8 @@ outclass	[ 0	locks=0 ]	(	"point"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -20977,6 +20984,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	radius_max	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -21051,6 +21060,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"min"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	radius_min	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -21518,6 +21529,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	variant_max	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -21772,6 +21785,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	max_level	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -21925,6 +21940,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	max_level	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -27019,6 +27036,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -28392,6 +28411,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -28466,6 +28487,8 @@ outclass	[ 0	locks=0 ]	(	"point"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -28623,6 +28646,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mode"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -29551,6 +29576,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mode"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -30051,6 +30078,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mode"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -30501,6 +30530,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -30575,6 +30606,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -30649,6 +30682,8 @@ outclass	[ 0	locks=0 ]	(	"point"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -30723,6 +30758,8 @@ outclass	[ 0	locks=0 ]	(	"point"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mean"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -31346,6 +31383,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	light_max	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -31420,6 +31459,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"min"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"on"	)
 outname	[ 0	locks=0 ]	(	light_min	)
 deletein	[ 0	locks=0 ]	(	"off"	)
@@ -33507,6 +33548,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mode"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -33664,6 +33707,8 @@ outclass	[ 0	locks=0 ]	(	"detail"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"mode"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -34781,6 +34826,280 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 5.70601 -103.088
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	set_tag_attrib_prims 1 1 "input1"
+}
+inputs
+{
+0 	set_tag_attrib_prims 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author ryan@LAPTOP-NCMF9RBJ
+  access 0777
+}
+color UT_Color RGB 1 0 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.spareparmdef"
+Content-Type: text/plain
+
+    group {
+        name    "folder1"
+        label   "Code"
+
+        parm {
+            name    "group"
+            baseparm
+            label   "Group"
+            export  none
+            bindselector uvselect "Modify Attribs"
+                "Select the geometry to affect and press Enter to complete."
+                0 1 0xffffffff 0 grouptype 0
+        }
+        parm {
+            name    "grouptype"
+            baseparm
+            label   "Group Type"
+            export  none
+        }
+        parm {
+            name    "class"
+            baseparm
+            label   "Run Over"
+            export  none
+        }
+        parm {
+            name    "vex_numcount"
+            baseparm
+            label   "Number Count"
+            export  none
+        }
+        parm {
+            name    "vex_threadjobsize"
+            baseparm
+            label   "Thread Job Size"
+            export  none
+        }
+        parm {
+            name    "snippet"
+            baseparm
+            label   "VEXpression"
+            export  all
+        }
+        parm {
+            name    "exportlist"
+            baseparm
+            label   "Attributes to Create"
+            export  none
+        }
+        parm {
+            name    "vex_strict"
+            baseparm
+            label   "Enforce Prototypes"
+            export  none
+        }
+    }
+
+    group {
+        name    "folder1_1"
+        label   "Bindings"
+
+        parm {
+            name    "autobind"
+            baseparm
+            label   "Autobind by Name"
+            export  none
+        }
+        multiparm {
+            name    "bindings"
+            label    "Number of Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindname#"
+                baseparm
+                label   "Attribute Name"
+                export  none
+            }
+            parm {
+                name    "bindparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "groupautobind"
+            baseparm
+            label   "Autobind Groups by Name"
+            export  none
+        }
+        multiparm {
+            name    "groupbindings"
+            label    "Group Bindings"
+            baseparm
+            default 0
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "multistartoffset" "1" }
+
+            parm {
+                name    "bindgroupname#"
+                baseparm
+                label   "Group Name"
+                export  none
+            }
+            parm {
+                name    "bindgroupparm#"
+                baseparm
+                label   "VEX Parameter"
+                export  none
+            }
+        }
+
+        parm {
+            name    "vex_cwdpath"
+            baseparm
+            label   "Evaluation Node Path"
+            export  none
+        }
+        parm {
+            name    "vex_outputmask"
+            baseparm
+            label   "Export Parameters"
+            export  none
+        }
+        parm {
+            name    "vex_updatenmls"
+            baseparm
+            label   "Update Normals If Displaced"
+            export  none
+        }
+        parm {
+            name    "vex_matchattrib"
+            baseparm
+            label   "Attribute to Match"
+            export  none
+        }
+        parm {
+            name    "vex_inplace"
+            baseparm
+            label   "Compute Results In Place"
+            export  none
+        }
+        parm {
+            name    "vex_selectiongroup"
+            baseparm
+            label   "Output Selection Group"
+            export  none
+        }
+        parm {
+            name    "vex_precision"
+            baseparm
+            label   "VEX Precision"
+            export  none
+        }
+    }
+
+    parm {
+        name    "tag"
+        label   "Tag"
+        type    string
+        default { "" }
+    }
+    parm {
+        name    "vex_strictvariables"
+        baseparm
+        label   "Standard Variable Names Only"
+        export  none
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.chn"
+Content-Type: text/plain
+
+{
+    channel tag {
+      lefttype = extend
+      righttype = extend
+      defaultString = \"$OS\"
+      flags = 0
+      segment { length = 0 expr = chs(\"../tag\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"s@tag = chs('tag');"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+folder1	[ 0	locks=0 ]	(	0	0	)
+tag	[ 8	locks=0 ]	(	[ tag	"" ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_tag_attrib_points.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
 Content-Type: text/plain
 
@@ -34824,7 +35143,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-252
+253
 CURVE
 GEO
 set_phyllotaxis_angle
@@ -34879,7 +35198,7 @@ pitch2
 polyframe1
 roll4
 set_up_attrib
-set_tag_attrib1
+set_tag_attrib_prims
 add1
 grouprange6
 grouprange7
@@ -35077,6 +35396,7 @@ sort1
 groupdelete6
 attribwrangle26
 line5
+set_tag_attrib_points
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
