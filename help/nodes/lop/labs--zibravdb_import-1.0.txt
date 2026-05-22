@@ -1,0 +1,78 @@
+#type:     node
+#context:  lop
+#internal: labs::zibravdb_import::1.0
+#icon:     /labs_icons/zibravdb.svg
+#since:    21.0
+
+= Labs ZibraVDB Import =
+
+"""References ZibraVDB data on disk into a volume prim containing field prims."""
+
+
+As a part of the [ZibraVDB for Houdini |https://www.zibra.ai] plugin, this node loads a single, highly compressed `.zibravdb` file from disk and creates volume and field primitives that point to the contained data. The file may contain either a single frame or a frame sequence of VDB geometry.
+
+The compression often achieves up to 97–99% reduction in VDB file size with minimal quality loss. The compression rate is adjustable for each VDB field, providing independent control over the quality and memory footprint of `density`, `temperature`, `flame`, and other standard or custom fields. Up to 8 float fields can be compressed simultaneously.
+
+NOTE:
+    ZibraVDB for Houdini ships with a custom USD Asset Resolver that decompresses `.zibravdb` files into OpenVDB. The decompressed OpenVDB file path is provided to USD as the resolved path.
+
+TIP:
+    If you want ZibraVDB files imported with this node to be linked in a USD file, add ZibraVDB Output Processor to the list of Output Processors on the USD ROP node.
+
+TIP:
+    You can force the compression and decompression to run on CPU instead of GPU via an environment variable:
+    `ZIBRAVDB_FOR_HOUDINI_FORCE_SOFTWARE_DEVICE = 1`
+
+    On Windows, you can force the choice of graphics API via an environment variable:
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = D3D12`
+    * `ZIBRAVDB_FOR_HOUDINI_FORCE_GRAPHICS_API = VULKAN`
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#gettingready:
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#aboutzibravdb:
+
+
+:include /nodes/out/labs--zibravdb_compress-1.0#feedback:
+
+
+@parameters
+
+    ZibraVDB File:
+        #id: file
+        The file path which the compressed VDB geometry will be loaded from. The file extension must be `.zibravdb`.
+
+    Frame Index:
+        #id: frame
+        The original Houdini frame number when the cache was compressed. For example, if your VDB sequence was originally cached from frame `1001` to `1240`, set this to `1001` to decompress and display the first frame of the sequence.
+
+    Primitive Path:
+        #id: primpath
+        Create the main volume primitive at this scene graph path.
+
+    Parent Primitive Type:
+        #id: parentprimtype
+        If any parents of the path in Primitive Path do not exist, this node will automatically create them. In this case, it will create parent nodes of this type.
+
+    Channels:
+        #id: channels
+        A space separated list of channel names (as they appear in the file) to read. You can use patterns to match multiple names.
+
+    :include /nodes/out/labs--zibravdb_compress-1.0#openmanagement:
+
+
+@examples
+
+    TIP:
+        When viewing in Houdini's Help Browser, please copy the example file's URL to a regular browser to proceed with the download.
+
+    - [Example File|https://github.com/sideeffects/SideFXLabsExamples/blob/main/examples/zibravdb/zibravdb.1.0.hip]
+
+
+@related
+
+    - [Node:out/labs--zibravdb_compress-1.0]
+    - [Node:sop/labs--rop_zibravdb_compress-1.0]
+    - [Node:sop/labs--zibravdb_decompress-1.0]
+    - [Node:sop/labs--zibravdb_filecache-1.0]
