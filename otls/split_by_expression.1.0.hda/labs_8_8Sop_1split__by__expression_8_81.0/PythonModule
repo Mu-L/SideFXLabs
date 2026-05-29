@@ -1,0 +1,6 @@
+def updateCode(node):
+    snippet = node.node('attribvop1')
+    code = snippet.parm('vexsnippet').evalAsString()
+    node.parm('generatedcode').lock(False)
+    node.parm('generatedcode').set(code)
+    node.parm('generatedcode').lock(True)

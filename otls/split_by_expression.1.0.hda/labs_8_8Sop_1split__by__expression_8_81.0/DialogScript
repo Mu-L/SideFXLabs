@@ -1,0 +1,137 @@
+# Dialog script for labs::split_by_expression::1.0 automatically generated
+
+{
+    name	labs::split_by_expression::1.0
+    script	groupexpression
+    label	"Labs Split by Expression"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry to Process with Split Expressions"
+    inputlabel	2	"Ancillary Input, point(1, ...) to Access."
+    inputlabel	3	"Ancillary Input, point(2, ...) to Access."
+    inputlabel	4	"Ancillary Input, point(3, ...) to Access."
+    outputlabel	1	"Selected Geometry"
+    outputlabel	2	"Non-Selected Geometry"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "node = kwargs[\"node\"]" ]
+            [ "" ]
+            [ "geo = node.inputs()[0].geometry()" ]
+            [ "grouptype = node.evalParm(\"grouptype\")" ]
+            [ "" ]
+            [ "items = []" ]
+            [ "" ]
+            [ "if grouptype == 0:" ]
+            [ "" ]
+            [ "    for g in geo.pointGroups():" ]
+            [ "        items.extend([g.name(), f\"{g.name()} (Points)\"])" ]
+            [ "" ]
+            [ "    for g in geo.primGroups():" ]
+            [ "        items.extend([g.name(), f\"{g.name()} (Prims)\"])" ]
+            [ "" ]
+            [ "    for g in geo.edgeGroups():" ]
+            [ "        items.extend([g.name(), f\"{g.name()} (Edges)\"])" ]
+            [ "" ]
+            [ "    for g in geo.vertexGroups():" ]
+            [ "        items.extend([g.name(), f\"{g.name()} (Vertices)\"])" ]
+            [ "" ]
+            [ "    return items" ]
+            [ "    " ]
+            [ "elif grouptype == 3:" ]
+            [ "    groups = geo.pointGroups()" ]
+            [ "elif grouptype == 4:" ]
+            [ "    groups = geo.primGroups()" ]
+            [ "elif grouptype == 2:" ]
+            [ "    groups = geo.edgeGroups()" ]
+            [ "elif grouptype == 1:" ]
+            [ "    groups = geo.vertexGroups()" ]
+            [ "else:" ]
+            [ "    groups = []" ]
+            [ "" ]
+            [ "for group in groups:" ]
+            [ "    name = group.name()" ]
+            [ "    items += [name, name]" ]
+            [ "" ]
+            [ "return items" ]
+            language python
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = kwargs['node'].parmTuple('bindgrouptype')\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_help" "Select geometry from an available viewport.\nShift-click to turn on Select Groups." }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+    }
+    parm {
+        name    "grouptype"
+        label   "Group Type"
+        type    ordinal
+        default { "guess" }
+        menu {
+            "guess"     "Guess from Group"
+            "vertices"  "Vertices"
+            "edges"     "Edges"
+            "points"    "Points"
+            "prims"     "Primitives"
+        }
+        parmtag { "autoscope" "0000000000000000" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "class"
+        label   "Run Over"
+        type    ordinal
+        default { "point" }
+        menu {
+            "primitive" "Primitives"
+            "point"     "Points"
+            "vertex"    "Vertices"
+        }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "negate"
+        label   "Invert Selection"
+        type    toggle
+        default { "off" }
+        range   { 0 1 }
+        parmtag { "autoscope" "0000000000000000" }
+    }
+    parm {
+        name    "singlesnippet"
+        label   "VEXpression"
+        type    string
+        default { "" }
+        disablewhen "{ mode == 1 }"
+        hidewhen "{ mode == 1 }"
+        menureplace {
+            [ "import vexpressionmenu" ]
+            [ "items = []" ]
+            [ "items = vexpressionmenu.buildSingleLineSnippetMenu('groupexpression/snippet')" ]
+            [ "items += [\"@N.y > 0.7\", \"Up-facing surfaces\"]" ]
+            [ "items += [\"xyzdist(1, @P) < ch('distance')\", \"Near surface of Input 1\"]" ]
+            [ "items += [\"nearpoint(1, @P) >= 0 && distance(@P, point(1, 'P', nearpoint(1, @P))) < chf('distance')\", \"Near geometry from Input 1\"]" ]
+            [ "items += [\"relbbox(0, @P).y > 0.5\", \"Top half by bounding box\"]" ]
+            [ "items += [\"dot(@N, normalize(chv('direction'))) > chf('threshold')\", \"Facing a custom direction\"]" ]
+            [ "items += [\"noise(@P * chf('scale')) > chf('threshold')\", \"Noise-based selection\"]" ]
+            [ "items += [\"sin(@P.x * chf('freq')) > chf('cutoff')\", \"Stripes\"]" ]
+            [ "items += [\"match(chs('pattern'), s@name)\", \"Wildcard string matching on attribute\"]" ]
+            [ "items += [\"@curveu > chf('start') && @curveu < chf('end')\", \"Middle segment of curve\"]" ]
+            [ "items += [\"primintrinsic(0, 'measuredarea', @primnum) > chf('area')\", \"Large faces\"]" ]
+            [ "" ]
+            [ "return items" ]
+            language python
+        }
+        parmtag { "editor" "1" }
+        parmtag { "script_action" "import vexpressionmenu\n\nnode = kwargs['node']\nparmname = kwargs['parmtuple'].name()\n\nvexpressionmenu.createSpareParmsFromChCalls(node, parmname)" }
+        parmtag { "script_action_help" "Creates spare parameters for each unique call of ch() " }
+        parmtag { "script_action_icon" "BUTTONS_create_parm_from_ch" }
+    }
+}

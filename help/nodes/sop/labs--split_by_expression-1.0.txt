@@ -1,0 +1,47 @@
+#type:     node
+#context:  sop
+#internal: labs::split_by_expression::1.0
+#icon: /labs_icons/sidefx_labs_default.svg
+#tags: vex, delete, polygons, points, edges
+#since:    20.5
+
+= Labs Split by Expression =
+
+"""Runs a VEX expression to split geometry into two streams."""
+
+Split by Expression divides geometry into two separate streams, the portion for which the VEX expression evaluates to true and the portion that evaluates to false. 
+* Unlike Wrangle nodes, you do not have to write a complete VEX statement, only a VEX expression. 
+* You can use the VEX function `ch` to evaluate parameters.
+* Unlike the [Attrib Create SOP|Node:sop/attribcreate], this does not use local variables.
+  Further, all backtick expressions and `$F` variables will be evaluated at frame 1,
+  not the current time.
+  Use `@Frame`, `@Time`, or `@TimeInc` instead.
+
+The __VEX snippet__ parameter lets you enter a snippet of [VEX code|https://www.sidefx.com/docs/houdini/vex/] to run on the input geometry. See [VEX snippets|https://www.sidefx.com/docs/houdini/vex/snippets.html] for basic information on the syntax available in the snippet parameter. 
+
+@parameters
+
+    Group:
+        #id: group
+        Name of the group to split. Elements outside of the group will output to the second stream along with elements within the group that evaluate to false.   
+    Group Type:
+        #id: grouptype
+        What type of group to split.
+                    
+    Run Over:
+        #id: class
+        Apply the VEX code to each component of this type (points, primitives/faces, or vertices).  For each component, the code runs with attributes bound to variables starting with @ (for example @Cd) for reading and writing.
+    
+    Invert Selection:
+        #id: negate
+        Negates the sense of the selection. Instead of sending things that match on the first output, send things that match as the second output.
+    VEXpression:
+        #id: singlesnippet
+        A single expression in VEX, with no assignment or semi-colon. Select the parameter dropdown to preview examples. If the expression contains a `ch` call, press the button to the left of the dropdown to create spare parameters. 
+
+@locals
+    
+    
+@related
+- [Group Expression|Node:sop/groupexpression]
+- [Split|Node:sop/split]
