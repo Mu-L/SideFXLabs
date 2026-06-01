@@ -1,0 +1,98 @@
+#type:     node
+#context:  sop
+#internal: labs::multi_attribute_promote::1.0
+#icon:     SOP/labs::multi_attribute_promote::1.0
+
+= Labs Multi Attribute Promote =
+
+"""An enhancement to the [Attribute Promote SOP|Node:sop/attribpromote]. Allows promoting multiple attributes and types at once. Promotes or demotes multiple attributes from one geometry level to another."""
+
+This node provides a straightforward way to convert multiple attributes
+from one class to another. For example, a point attribute can be
+converted to a primitive attribute using any one of a number of
+different merge methods.
+
+For index attributes, the merge methods treat the attribute as a string -
+__Average__ will perform median, __Sum__ will perform concatenation, and the other
+numeric methods will resort to __First Match__.
+
+For attributes with multiple components (such as vectors), each merge is done independently on each component.
+
+NOTE:
+    Use Attribute Promote when you want to copy attributes between geometry in the same stream (it has one input). Use [Attribute Transfer|Node:sop/attribtransfer] when you want to copy attributes from geometry in one input onto geometry in another input.
+
+
+@parameters
+
+    === Attribute ===
+
+        
+    Original Name:
+        #id: inname#
+        The name of the attribute in the source class. For example, Cd will pick color. This can also be a pattern or space-separated list of attributes, such as * or Cd pscale.
+        
+    Original Class:
+        #id: inclass#
+        The class that the attribute starts in. It can be one of `Point`, `Primitive`, `Detail`, or `Vertex`.
+            
+    New Class:
+        #id: outclass#
+        The class to which the attribute is promoted. Unless __Piece Attribute__ is turned on, __New Class__ must be different than __Original Class__. Otherwise a warning is raised and nothing is done.
+        
+    Piece Attribute:
+        #id: pieceattrib#
+        The name of a partition attribute in the __New Class__, which must be a string or integer type.
+        Each point/vertex/primitive where the attribute has the same value is considered part of the same piece.
+        The __Promotion Method__ will be applied using the corresponding elements in the __Original Class__ for the piece, and the result will be written to all of the piece's elements.
+
+        For example, when promoting from `Points` to `Primitives`, the __Promotion Method__ will be applied to all of the points referenced by the primitives in the piece:
+
+        * Elements from the __Original Class__ will not be included multiple times (for example, if a point is referenced by multiple primitives in the piece).
+
+        * Elements from the __Original Class__ will be ordered by index (for example, __First Match__ will return the value for the lowest point index of any point referenced by the piece's primitives).
+
+        * The __Original Class__ may be the same as the __New Class__ when using a piece attribute (for example, this can be used to compute the average value of an attribute for each piece).
+
+
+    Promotion Method:
+        #id: method#
+        Whenever there is more than one attribute in the __Original Class__ that matches a single entity in the __New Class__, some method must be used to determine the new value. For example, if converting from point attribute to primitive attribute, there will be many points corresponding to a single polygon.
+
+        Maximum:
+            Picks the largest match.
+        Minimum:
+            Picks the smallest match.
+        Average:
+            The mean, or the sum of all matches divided by the number of matches.
+        Mode:
+            The most common match. If there is more than one most common, it will be the minimum of the most common.
+        Median:
+            The middle of the matches. If there is an even number of elements, it is the higher of the two possible middles.
+        Sum:
+            All of the matches added together.
+        Sum of Squares:
+            All of the matches squared, and then added together.
+        Root Mean Square:
+            The square root of the average of the squares of all the matches.
+        First Match:
+             The first valid match. For promoting points to primitives, this would be the point of the first vertex in the primitive.
+        Last Match:
+            The last valid match. For promoting points to primitives, this would be the point of the last vertex in the primitive.
+        Array of All:
+            Provided the source attribute is a tuple attribute, a new array attribute is created. The array attribute is populated with all the values of the matches.
+    Change New Name:
+        #id: useoutname#
+        When turned off, the attributes __New Name__ will match the __Original Name__.
+    New Name:
+        #id: outname#
+        The new name for the attribute if __Change New Name__ is turned on. If the source is a pattern, this new name should be a pattern that can expand to the same length.  Glob-style renaming is done, so if the matching pattern is `instance*` and the new name is `my*instance`, then the attribute `instancepoint` would be promoted into `mypointinstance`.
+    Delete Original:
+        #id: deletein#
+        When turned on, the original attribute is deleted after promotion. Note that in some cases, such as promoting a vertex attribute to a point attribute of the same name, the original attribute will always be deleted. To avoid this, rename the attribute when promoting.
+
+@related
+    - [Node:sop/attribpromote]
+    - [Node:sop/attribute]
+    - [Node:sop/attribcreate]
+
+

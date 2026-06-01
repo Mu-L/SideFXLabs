@@ -1,0 +1,228 @@
+# Dialog script for labs::multi_attribute_promote::1.0 automatically generated
+
+{
+    name	labs::multi_attribute_promote::1.0
+    script	labs::promote_attributes::1.0
+    label	"Labs Multi Attribute Promote"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Input 1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Output 1"
+
+    multiparm {
+        name    "fd_promotions"
+        label    "Number of Promotions"
+        default 1
+
+        groupcollapsible {
+            name    "fd_attribs#"
+            label   "Attribute"
+            parmtag { "group_default" "1" }
+            grouptag { "sidefx::header_label" "labelheader#" }
+            parmtag { "sidefx::header_toggle" "enable#" }
+
+            parm {
+                name    "labelheader#"
+                label   "Label"
+                type    label
+                nolabel
+                default { "`chs(\"inname\" + substr($CH, 11, 5))`" }
+            }
+            parm {
+                name    "enable#"
+                label   "Enable"
+                type    toggle
+                nolabel
+                default { "1" }
+            }
+            parm {
+                name    "inname#"
+                label   "Original Name"
+                type    string
+                default { "" }
+                disablewhen "{ enable# == 0 }"
+                menutoggle {
+                    [ "import re" ]
+                    [ "" ]
+                    [ "r = []" ]
+                    [ "node = kwargs['node']" ]
+                    [ "" ]
+                    [ "# parmName and parmNum get the attribute name and multiparm number of selected attribute" ]
+                    [ "parmName = kwargs['parm'].name()" ]
+                    [ "parmNum = \"\".join([x for x in parmName if x.isdigit()])" ]
+                    [ "inputs = node.inputs()" ]
+                    [ "" ]
+                    [ "if inputs and inputs[0]:" ]
+                    [ "" ]
+                    [ "    geo = inputs[0].geometry()" ]
+                    [ "    attribute_type = node.parm(\"inclass\" + parmNum).eval()" ]
+                    [ "    " ]
+                    [ "    if geo:" ]
+                    [ "    " ]
+                    [ "        if attribute_type == 0:" ]
+                    [ "            attrs = geo.globalAttribs()" ]
+                    [ "    " ]
+                    [ "        if attribute_type == 1:" ]
+                    [ "            attrs = geo.primAttribs()" ]
+                    [ "            " ]
+                    [ "        if attribute_type == 2:" ]
+                    [ "            attrs = geo.pointAttribs()" ]
+                    [ "            " ]
+                    [ "        if attribute_type == 3:" ]
+                    [ "            attrs = geo.vertexAttribs()" ]
+                    [ "       " ]
+                    [ "        for a in attrs:" ]
+                    [ "            r.extend([a.name(), a.name()])" ]
+                    [ "                " ]
+                    [ "return r" ]
+                    language python
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "inclass#"
+                label   "Original Class"
+                type    ordinal
+                default { "point" }
+                disablewhen "{ enable# == 0 }"
+                menu {
+                    "detail"    "Detail"
+                    "primitive" "Primitive"
+                    "point"     "Point"
+                    "vertex"    "Vertex"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "outclass#"
+                label   "New Class"
+                type    ordinal
+                default { "point" }
+                disablewhen "{ enable# == 0 }"
+                menu {
+                    "detail"    "Detail"
+                    "primitive" "Primitive"
+                    "point"     "Point"
+                    "vertex"    "Vertex"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "usepieceattrib#"
+                label   "Use Piece Attribute"
+                type    toggle
+                nolabel
+                joinnext
+                default { "off" }
+                disablewhen "{ outclass# == detail } { inclass# == detail } { enable# == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "pieceattrib#"
+                label   "Piece Attribute"
+                type    string
+                default { "name" }
+                disablewhen "{ usepieceattrib# == 0 } { outclass# == detail } { inclass# == detail } { enable# == 0 }"
+                menureplace {
+                    [ "import re" ]
+                    [ "" ]
+                    [ "r = []" ]
+                    [ "node = kwargs['node']" ]
+                    [ "" ]
+                    [ "# parmName and parmNum get the attribute name and multiparm number of selected attribute" ]
+                    [ "parmName = kwargs['parm'].name()" ]
+                    [ "parmNum = \"\".join([x for x in parmName if x.isdigit()])" ]
+                    [ "inputs = node.inputs()" ]
+                    [ "" ]
+                    [ "if inputs and inputs[0]:" ]
+                    [ "" ]
+                    [ "    geo = inputs[0].geometry()" ]
+                    [ "    attribute_type = node.parm(\"outclass\" + parmNum).eval()" ]
+                    [ "    " ]
+                    [ "    if geo:" ]
+                    [ "    " ]
+                    [ "        if attribute_type == 0:" ]
+                    [ "            attrs = geo.globalAttribs()" ]
+                    [ "    " ]
+                    [ "        if attribute_type == 1:" ]
+                    [ "            attrs = geo.primAttribs()" ]
+                    [ "            " ]
+                    [ "        if attribute_type == 2:" ]
+                    [ "            attrs = geo.pointAttribs()" ]
+                    [ "            " ]
+                    [ "        if attribute_type == 3:" ]
+                    [ "            attrs = geo.vertexAttribs()" ]
+                    [ "       " ]
+                    [ "        for a in attrs:" ]
+                    [ "            r.extend([a.name(), a.name()])" ]
+                    [ "                " ]
+                    [ "return r" ]
+                    language python
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "method#"
+                label   "Promotion Method"
+                type    ordinal
+                default { "mean" }
+                disablewhen "{ enable# == 0 }"
+                menu {
+                    "max"       "Maximum"
+                    "min"       "Minimum"
+                    "mean"      "Average"
+                    "mode"      "Mode"
+                    "median"    "Median"
+                    "sum"       "Sum"
+                    "sumsquare" "Sum of Squares"
+                    "rms"       "Root Mean Square"
+                    "first"     "First Match"
+                    "last"      "Last Match"
+                    "array"     "Array of All"
+                }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "useoutname#"
+                label   "Change New Name"
+                type    toggle
+                default { "off" }
+                disablewhen "{ enable# == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "outname#"
+                label   "New Name"
+                type    string
+                default { "" }
+                disablewhen "{ useoutname# == 0 } { enable# == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "deletein#"
+                label   "Delete Original"
+                type    toggle
+                default { "on" }
+                disablewhen "{ useoutname# == 0 inclass# == point outclass# == vertex } { useoutname# == 0 inclass# == vertex outclass# == point } { enable# == 0 }"
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+        }
+
+    }
+
+}
