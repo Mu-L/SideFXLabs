@@ -38,7 +38,11 @@ def writeHeader(node, nodename, context):
     dirname = context
     if(context in dirsubs): 
         dirname = dirsubs[context]
-    sys.stdout.write("#icon:     " + dirname + "/" + nodename + "\n")
+        
+    #The document's icon path points to a single icon in the help file. Previous version commented out but kept for reference
+    #sys.stdout.write("#icon:     " + dirname + "/" + nodename + "\n")
+    sys.stdout.write("#icon:     /labs_icons/sidefx_labs_default.svg")
+
     sys.stdout.write("\n= " + node.description() + " =\n")
     sys.stdout.write("\n\"\"\"Summary.\"\"\"\n\n")
     sys.stdout.write("<Description goes here>\n\n\n")
