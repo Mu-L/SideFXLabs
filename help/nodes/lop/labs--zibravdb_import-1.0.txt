@@ -9,7 +9,7 @@
 """References ZibraVDB data on disk into a volume prim containing field prims."""
 
 
-As a part of the [ZibraVDB for Houdini |https://www.zibra.ai] plugin, this node loads a single, highly compressed `.zibravdb` file from disk and creates volume and field primitives that point to the contained data. The file may contain either a single frame or a frame sequence of VDB geometry.
+As a part of the [ZibraVDB for Houdini|https://www.zibra.ai] plugin, this node loads a single, highly compressed `.zibravdb` file from disk and creates volume and field primitives that point to the contained data. The file may contain either a single frame or a frame sequence of VDB geometry.
 
 The compression often achieves up to 97–99% reduction in VDB file size with minimal quality loss. The compression rate is adjustable for each VDB field, providing independent control over the quality and memory footprint of `density`, `temperature`, `flame`, and other standard or custom fields. Up to 8 float fields can be compressed simultaneously.
 
@@ -49,7 +49,7 @@ TIP:
 
     Primitive Path:
         #id: primpath
-        Create the main volume primitive at this scene graph path.
+        The scene graph path where the main volume primitive will be created.
 
     Parent Primitive Type:
         #id: parentprimtype
