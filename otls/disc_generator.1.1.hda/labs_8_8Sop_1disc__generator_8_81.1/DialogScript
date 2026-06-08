@@ -88,7 +88,7 @@
     }
     parm {
         name    "t"
-        label   "Translate"
+        label   "Center"
         type    vector
         size    3
         default { "0" "0" "0" }
@@ -100,7 +100,7 @@
         label   "Rotate"
         type    vector
         size    3
-        default { [ "ch(\"../r\")" hscript-expr ] "0" "0" }
+        default { [ "0" hscript-expr ] "0" "0" }
         range   { 0 360 }
         parmtag { "autoscope" "1110000000000000" }
     }
