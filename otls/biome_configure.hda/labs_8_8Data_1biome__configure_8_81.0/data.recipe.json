@@ -5,7 +5,7 @@
     },
     "children": {
       "biome_plant_scatter": {
-        "type": "labs::biome_plant_scatter::1.2",
+        "type": "labs::biome_plant_scatter::1.3",
         "inputs": [
           {
             "from": "OUT_DEFINE_PLANTS",
@@ -34,6 +34,11 @@
         ],
         "user_data": {
           "wirestyle": "rounded"
+        },
+        "parms": {
+          "species": {
+            "expression": "Shrub"
+          }
         }
       },
       "OUT_PLANT_SCATTER_AND_INSTANCE": {
@@ -56,7 +61,7 @@
         ]
       },
       "ASPEN": {
-        "type": "labs::biome_plant_define::1.2",
+        "type": "labs::biome_plant_define::1.3",
         "inputs": [
           {
             "from": "PINE",
@@ -96,8 +101,8 @@
           "normterrain": 0.05,
           "variants": [
             {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_1.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Dead_1.bgeo.sc",
               "radius#": 2.517249999999999,
               "trunkradius#": 0.3285000000000008,
               "agemax#": 0.33,
@@ -105,8 +110,8 @@
               "deadratio#": 0.3
             },
             {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_2.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_2.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Growth_2.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Dead_2.bgeo.sc",
               "radius#": 3.3502499999999986,
               "trunkradius#": 0.32850000000000035,
               "agemin#": 0.33,
@@ -115,8 +120,8 @@
               "deadratio#": 0.3
             },
             {
-              "filemeshvariant#": "opdef:.?SM_Deciduous_Tree_Growth_3.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Deciduous_Tree_Dead_3.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Growth_3.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Deciduous_Tree_Dead_3.bgeo.sc",
               "radius#": 4.718750000000004,
               "trunkradius#": 0.43475000000000036,
               "agemin#": 0.66,
@@ -132,7 +137,7 @@
               "unload": true
             },
             "parms": {
-              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
+              "file": "op:/obj/Plant_Define_and_Plant_Definitions_File/cylinder"
             }
           },
           "editable_meshpath": {
@@ -147,7 +152,6 @@
               "unload": true
             },
             "parms": {
-              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
               "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
             },
             "parmtemplates": [
@@ -178,7 +182,7 @@
         }
       },
       "PINE": {
-        "type": "labs::biome_plant_define::1.2",
+        "type": "labs::biome_plant_define::1.3",
         "inputs": [
           {
             "from": "TEMPERATE_SHRUB",
@@ -218,8 +222,8 @@
           "normterrain": 0.05,
           "variants": [
             {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_1.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Dead_1.bgeo.sc",
               "radius#": 1.2550000000000014,
               "trunkradius#": 1.2295000000000005,
               "agemax#": 0.33,
@@ -227,8 +231,8 @@
               "deadratio#": 0.1
             },
             {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_2.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_2.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Growth_2.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Dead_2.bgeo.sc",
               "radius#": 1.7607499999999996,
               "trunkradius#": 1.7097499999999992,
               "agemin#": 0.33,
@@ -237,8 +241,8 @@
               "deadratio#": 0.1
             },
             {
-              "filemeshvariant#": "opdef:.?SM_Coniferous_Tree_Growth_3.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Coniferous_Tree_Dead_3.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Growth_3.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Coniferous_Tree_Dead_3.bgeo.sc",
               "radius#": 2.0880000000000005,
               "trunkradius#": 0.3497500000000001,
               "agemin#": 0.66,
@@ -254,7 +258,7 @@
               "unload": true
             },
             "parms": {
-              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
+              "file": "op:/obj/Plant_Define_and_Plant_Definitions_File/cylinder"
             }
           },
           "editable_meshpath": {
@@ -269,7 +273,6 @@
               "unload": true
             },
             "parms": {
-              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
               "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
             },
             "parmtemplates": [
@@ -300,7 +303,7 @@
         }
       },
       "TEMPERATE_SHRUB": {
-        "type": "labs::biome_plant_define::1.2",
+        "type": "labs::biome_plant_define::1.3",
         "position": [
           -6.63,
           3.99
@@ -330,8 +333,8 @@
           "normterrain": 0.8,
           "variants": [
             {
-              "filemeshvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
-              "filemeshdeadvariant#": "opdef:.?SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
+              "filemeshvariant#": "$SIDEFXLABS/geo/SM_Temperate_Forest_Shrub_Growth_1.bgeo.sc",
+              "filemeshdeadvariant#": "$SIDEFXLABS/geo/SM_Temperate_Forest_Shrub_Dead_1.bgeo.sc",
               "radius#": 1.6842499999999994,
               "deadratio#": 0.2
             }
@@ -344,7 +347,7 @@
               "unload": true
             },
             "parms": {
-              "file": "op:/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1"
+              "file": "op:/obj/Plant_Define_and_Plant_Definitions_File/cylinder"
             }
           },
           "editable_meshpath": {
@@ -359,7 +362,6 @@
               "unload": true
             },
             "parms": {
-              "meshpath": "/stage/Plants/sopnet/create/SM_Temperate_Forest_Shrub_Dead_1",
               "snippet": "s@_bpd_mesh_path = chs('meshpath');\nif(startswith(opfullpath(s@_bpd_mesh_path), \"/obj\") || startswith(opfullpath(s@_bpd_mesh_path), \"/stage\"))\n{\n    s@_bpd_mesh_path = \"op:\" + opfullpath(s@_bpd_mesh_path);\n}"
             },
             "parmtemplates": [
@@ -440,7 +442,7 @@
         }
       },
       "biome_attributes_to_terrain": {
-        "type": "labs::biome_attributes_to_terrain::1.0",
+        "type": "labs::biome_attributes_to_terrain::1.1",
         "inputs": [
           {
             "from": "OUT_SAMPLE_TERRAIN",
@@ -1704,8 +1706,8 @@
   },
   "info": {
     "author": "Bailey",
-    "created": "January 08, 2026 - 16:18:51",
-    "houdini_version": "21.0.559",
+    "created": "June 10, 2026 - 13:00:52",
+    "houdini_version": "21.0.631",
     "data_version": "1.0",
     "comment": ""
   },
@@ -1714,7 +1716,7 @@
     "visible": true,
     "nodetype_category": "Sop",
     "nodetype_patterns": [
-      "labs::Sop/biome_plant_scatter::1.2"
+      "labs::Sop/biome_plant_scatter::1.3"
     ]
   },
   "tool": {
