@@ -41,7 +41,7 @@ Texel density defines how many texture pixels (pixel elements) are allocated per
 
     Apply Texel Density:
         #id: applytexeldensity
-        Scales the UVs to match the target texel density derived from the texture size and coverage settings.
+        Scales the UVs to match the target texel density derived from the __Texture Size__, __Coverage__, and __Unit__ settings.
 
     Layout UVs:
         #id: layoutuvs
@@ -51,7 +51,7 @@ Texel density defines how many texture pixels (pixel elements) are allocated per
 
     Visualize Texel Density:
         #id: vistexeldensity
-        Displays texel density differences in the viewport using a color gradient.
+        Colors each UV island by its current texel density relative to the target. Green means on-target; warmer colors (toward red) are under-dense, cooler colors (toward blue) are over-dense. View this with __Apply Texel Density__ off to diagnose the mesh — once applied, islands equalize to target and the mesh turns uniformly green.
 
     Show UV Grid:
         #id: addchecker
