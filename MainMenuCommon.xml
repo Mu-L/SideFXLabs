@@ -92,6 +92,14 @@ else:
             <label>Labs</label>
             <scriptItem id="labs_pref">
                 <label>Labs Add-ons</label>
+				<!-- This context block hides this menu item for H versions >= 22. This whole menu item to be removed in 2027 -->
+				<context>
+					<expression>
+						<![CDATA[
+			return hou.applicationVersion()[0] < 22
+						]]>
+					</expression>
+				</context>
                 <scriptCode>
                     <![CDATA[
 import labprefs
@@ -107,6 +115,16 @@ window.show()
                     <![CDATA[
 from labsopui import reset_viewport
 reset_viewport.resetSceneViewers()
+                    ]]>
+                </scriptCode>
+            </scriptItem>
+            <scriptItem id="reload_python_modules">
+                <label>Reload Python Modules</label>
+                <scriptCode>
+                    <![CDATA[
+from labsopui import reload_python_modules
+pythonReloadWindow = reload_python_modules.Reload(hou.qt.mainWindow())
+pythonReloadWindow.show()
                     ]]>
                 </scriptCode>
             </scriptItem>
