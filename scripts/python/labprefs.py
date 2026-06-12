@@ -79,37 +79,56 @@ class LabsPreferences(QtWidgets.QDialog):
 
         layout = QtWidgets.QVBoxLayout()
 
-        # Label
-        config_label = QtWidgets.QLabel("Select add-ons to enable:\n")
-        layout.addWidget(config_label)
 
-        # OCIO
-        self.OCIO_checkbox = QtWidgets.QCheckBox("OCIO ACES 1.2 (Minimal)")
-        if 'ocio' in self.prefstate and self.prefstate['ocio']:
-            self.OCIO_checkbox.setCheckState(QtCore.Qt.Checked)
-        layout.addWidget(self.OCIO_checkbox)
 
-        # Viewport Alt Grey
-        self.ALT_GREY_checkbox = QtWidgets.QCheckBox("Viewport Alternative Grey Background")
-        if 'alt_grey' in self.prefstate and self.prefstate['alt_grey']:
-            self.ALT_GREY_checkbox.setCheckState(QtCore.Qt.Checked)
-        layout.addWidget(self.ALT_GREY_checkbox)
+        # Certain settings only available before H22
+        if hou.applicationVersion()[0] < 22:
+            # Label
+            config_label = QtWidgets.QLabel("Select add-ons to enable:\n")
+            layout.addWidget(config_label)
+                
+            # OCIO
+            self.OCIO_checkbox = QtWidgets.QCheckBox("OCIO ACES 1.2 (Minimal)")
+            if 'ocio' in self.prefstate and self.prefstate['ocio']:
+                self.OCIO_checkbox.setCheckState(QtCore.Qt.Checked)
+            layout.addWidget(self.OCIO_checkbox)
 
-        # Spacing
-        layout.addSpacing(self.OCIO_checkbox.iconSize().height())
+            # Viewport Alt Grey
+            self.ALT_GREY_checkbox = QtWidgets.QCheckBox("Viewport Alternative Grey Background")
+            if 'alt_grey' in self.prefstate and self.prefstate['alt_grey']:
+                self.ALT_GREY_checkbox.setCheckState(QtCore.Qt.Checked)
+            layout.addWidget(self.ALT_GREY_checkbox)
 
-        # Buttons
-        apply_button = QtWidgets.QPushButton("Apply")
-        accept_button = QtWidgets.QPushButton("Accept")
-        cancel_button = QtWidgets.QPushButton("Cancel")
-        apply_button.clicked.connect(self.apply_settings)
-        accept_button.clicked.connect(self.accept_settings)
-        cancel_button.clicked.connect(self.close_ui)
-        button_layout = QtWidgets.QHBoxLayout()
-        button_layout.addWidget(apply_button)
-        button_layout.addWidget(accept_button)
-        button_layout.addWidget(cancel_button)
-        layout.addLayout(button_layout)
+             # Spacing
+            layout.addSpacing(self.OCIO_checkbox.iconSize().height())
+
+            # Buttons
+            apply_button = QtWidgets.QPushButton("Apply")
+            accept_button = QtWidgets.QPushButton("Accept")
+            cancel_button = QtWidgets.QPushButton("Cancel")
+            apply_button.clicked.connect(self.apply_settings)
+            accept_button.clicked.connect(self.accept_settings)
+            cancel_button.clicked.connect(self.close_ui)
+            button_layout = QtWidgets.QHBoxLayout()
+            button_layout.addWidget(apply_button)
+            button_layout.addWidget(accept_button)
+            button_layout.addWidget(cancel_button)
+            layout.addLayout(button_layout)
+
+        else:
+            # Label
+            config_label = QtWidgets.QLabel("No Labs preferences available for this version of Houdini.")
+            config_label.setContentsMargins(4, 10, 4, 10)
+            layout.addWidget(config_label)
+
+            close_button = QtWidgets.QPushButton("Close")
+            close_button.clicked.connect(self.close_ui)
+            button_layout = QtWidgets.QHBoxLayout()
+            button_layout.addWidget(close_button)
+            layout.addLayout(button_layout)
+
+
+
 
         self.setLayout(layout)
         self.setMaximumSize(self.baseSize())
