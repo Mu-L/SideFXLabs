@@ -1,0 +1,82 @@
+# Dialog script for labs::points_grid::1.0 automatically generated
+
+{
+    name	labs::points_grid::1.0
+    script	labs::points_grid::1.0
+    label	"Labs Points Grid"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Sub-Network Input #1"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "useuniformsize"
+        label   "Use Uniform Size"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "unisize"
+        label   "Uniform Size"
+        type    float
+        default { "1" }
+        hidewhen "{ useuniformsize == 0 }"
+        range   { 0! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "size"
+        label   "Grid Size"
+        type    vector
+        size    3
+        default { "1" "1" "1" }
+        hidewhen "{ useuniformsize == 1 }"
+        range   { 0! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "points"
+        label   "Point Count"
+        type    intvector
+        size    3
+        default { "5" "5" "5" }
+        range   { 2! 10 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "sepparm"
+        label   "Spacer"
+        type    separator
+        default { "" }
+        parmtag { "sidefx::layout_height" "small" }
+        parmtag { "sidefx::look" "blank" }
+    }
+    parm {
+        name    "t"
+        label   "Center"
+        type    vector
+        size    3
+        default { "0" "0" "0" }
+        range   { -1 1 }
+        parmtag { "autoscope" "1110000000000000" }
+    }
+    parm {
+        name    "sepparm2"
+        label   "Separator"
+        type    separator
+        default { "" }
+    }
+    parm {
+        name    "visualize"
+        label   "Show Lattice"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+}

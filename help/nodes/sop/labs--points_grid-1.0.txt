@@ -1,0 +1,42 @@
+#type:      node
+#context:   sop
+#internal:  labs::points_grid::1.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     21.0
+
+= Labs Points Grid =
+
+"""Generates a grid of points in 3D space."""
+
+This node creates a grid of points in 3D space. The grid can be defined using either a single uniform size or independent dimensions along each axis.
+
+Unlike the standard [Grid|Node:sop/grid], this node outputs points only and supports three-dimensional point layouts.
+
+@parameters
+
+    Use Uniform Size:
+        #id: useuniformsize
+        Uses a single size value for all grid dimensions.
+
+    Uniform Size:
+        #id: unisize
+        Overall size of the grid when __Use Uniform Size__ is enabled.
+
+    Grid Size:
+        #id: size
+        Size of the grid along each axis.
+
+    Point Count:
+        #id: points
+        Number of points generated along each axis.
+
+    Center:
+        #id: t
+        Center position of the grid.
+
+    Show Lattice:
+        #id: visualize
+        Displays lines connecting neighboring points to visualize the grid structure.
+
+@related
+- [Grid|Node:sop/grid]
