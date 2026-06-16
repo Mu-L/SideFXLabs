@@ -1,0 +1,95 @@
+#type:      node
+#context:   sop
+#internal:  labs::delete_small_parts::1.2
+#icon:      /labs_icons/sidefx_labs_default.svg
+
+= Labs Delete Small Parts =
+
+"""Removes pieces based on connectivity and size"""
+
+This node calculates the size of each piece on a mesh and removes those that fall below a specified size threshold.
+
+This is incredibly useful in photogrammetry and fluid mesh cleanup, where you might have many small droplets or disconnected pieces that aren't of interest. 
+
+@parameters
+
+    Piece Attribute:
+        #id: pieceattrib
+        The attribute used to define piece membership when connectivity is not computed.
+
+    Mode:
+        #id: mode
+        Describes the method used to evaluate piece size.
+    
+    Threshold:
+        #id: threshold
+        The minimum size required for a piece to be kept. Pieces with an area or perimeter smaller than this value are removed.
+
+    Extract Largest Piece:
+        #id: extractlargest
+        Keeps only the single largest piece and ignores the __Threshold__.
+
+    Delete Selected:
+        #id: deleteselected
+        Deletes all elements that were selected.
+
+    Create Group from Selected:
+        #id: creategroup
+        Creates a group containing the randomly selected elements.
+
+    Group Name:
+        #id: groupname
+        Name of the group created from the selected elements.
+
+    Integer Attribute from Selected:
+        #id: intattribfromselected
+        Creates an integer attribute marking selected elements. Selected elements are assigned a value of 1, while non-selected elements receive 0.
+
+    Attribute Name:
+        #id: attribname
+        Name of the integer attribute created when __Integer Attribute from Selected__ is enabled.
+
+    == Color Selected ==
+
+    Color Selected:
+        #id: colorselected
+        Applies a color to the selected elements for visualization in the viewport.
+
+    Delete All Existing Color Attributes:
+        #id: deleteallcolorattribs
+        Removes Cd attributes of all types, point, primitive, vertex, or detail. This gives a clean slate so only the new color attributes will exist. Note some combinations, like primitive and point attributes, allow attributes of the same name.
+
+    Color Type:
+        #id: colortype
+        What sort of color to add. Can be one of:
+
+        __Constant__:
+            The same color is applied to all of the group.
+
+        __Bounding Box__:
+
+            A color gradient is applied depending on the position of the entity in the bounding box.
+
+        __Random__:
+
+            A random color is assigned to each group element.
+
+        __Ramp from Attribute__:
+
+            An incoming attribute is remapped to color according to the provided ramp.
+
+    Color:
+        #id: color
+        This is the color to apply when __Color Type__ is set to __Constant__.
+
+    Color Seed:
+        #id: seed
+        This is the random number seed when __Color Type__ is set to __Random__.
+
+    Attribute:
+        #id: rampattribute
+        The attribute to be remapped into color. If it is a single float, it is indexed directly into the ramp. If it is more than one float, each component is remapped independently.
+
+    Range:
+        #id: ramprange
+        The incoming range of valid attribute values. Attribute values within this range will be remapped to 0-1 for the ramp lookup, values outside will be clamped.
