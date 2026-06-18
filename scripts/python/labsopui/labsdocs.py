@@ -16,7 +16,8 @@ dirsubs = { "chop":"CHOP",
             "sop": "SOP",
             "vex": "VEX",
             "vop": "VOP",
-            "top": "TOP" }
+            "top": "TOP",
+            "cop": "COP"}
 
 catsubs = { "chop":"Chop", 
             "cop2":"Cop2", 
@@ -29,7 +30,8 @@ catsubs = { "chop":"Chop",
             "sop": "Sop", 
             "vex": "VopNet", 
             "vop": "Vop",
-            "top": "Top" }
+            "top": "Top",
+            "cop": "Cop" }
 
 def writeHeader(node, nodename, context):
     sys.stdout.write("#type:     node\n")
