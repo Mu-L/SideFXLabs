@@ -240,3 +240,62 @@ def manage_viewport_alt_grey(destination="$HOUDINI_USER_PREF_DIR/config/3DSceneC
     else:
         if os.path.isfile(destination):
             os.remove(destination)
+
+
+def getLabsConfigFilePath():
+    try:
+        all_config_files = hou.findFiles("labs.config")
+        return hou.text.expandString(all_config_files[-1])
+    except hou.OperationFailed:
+        return os.path.join(hou.text.expandString('$HOUDINI_USER_PREF_DIR'), "labs.config")
+
+def getConfigKeys():
+    keys = ['ocio', 'alt_grey']
+    return keys
+
+def getConfigDefaults():
+    defaults = [False, False]
+    return defaults
+
+def loadConfigFile():
+    file = getLabsConfigFilePath()
+
+    if os.path.isfile(file):
+        with open(file, "r") as savefile:
+            return json.load(savefile)
+    else:
+        return dict(zip(getConfigKeys(), getConfigDefaults()))
+
+def saveConfigFile(configlist):
+    file = getLabsConfigFilePath()
+
+    configs = dict(zip(getConfigKeys(), configlist))
+    
+    with open(file, "w") as savefile:
+        json.dump(configs, savefile, indent=4) 
+
+def deprecate_settings_warnings():
+    
+    labs_prefs_path = getLabsConfigFilePath()
+    labs_prefs = loadConfigFile()
+
+    # OCIO settings and the Dark Grey alternate background are included in Houdini versions 20+. 
+    # The Labs versions are disabled for 22+, so this is a gentle phase-out for versions 20 - 21
+    if hou.applicationVersion()[0] >= 20:
+
+        # If OCIO in labs.config is 1, or if Labs_OpenColorIO.json exists in $HOUDINI_USER_PREF_DIR/packages
+        ocio_path = hou.expandString("$HOUDINI_USER_PREF_DIR/packages/Labs_OpenColorIO.json")
+        if 'ocio' in labs_prefs and labs_prefs['ocio'] or os.path.isfile(ocio_path):
+            print("Warning: The Labs OCIO ACES profile is currently enabled. It is no longer supported and disabling it is strongly recommended."
+                "\n\nHoudini versions 20.0 and later include built-in OCIO support by default."
+                "\n\nTo disable the Labs OCIO profile, go to Labs -> Labs Add-ons and turn it off."
+                "\nTo use the native Houdini version, go to Edit -> OCIO Settings.\n")
+
+        # If alt_grey in labs.config is 1 or if 3DSceneColors.bw exists in $HOUDINI_USER_PREF_DIR/config
+        alt_grey_path = hou.expandString("$HOUDINI_USER_PREF_DIR/config/3DSceneColors.bw")
+        if 'alt_grey' in labs_prefs and labs_prefs['alt_grey'] or os.path.isfile(alt_grey_path):
+            print("Warning: The Labs Viewport Alternative Grey Background is currently enabled. It is no longer supported and disabling it is strongly recommended."
+                "\n\nHoudini versions 20.0 and later include the Dark Grey viewport background by default." 
+                "\n\nTo disable the Labs version, go to Labs -> Labs Add-ons and turn it off.\n")
+            
+
