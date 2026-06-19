@@ -31,7 +31,7 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position 0.00125003 -1.24861
+position -0.992256 -1.047
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render off highlight off unload off savedata off compress off colordefault on exposed on
 outputsNamed3
@@ -47,7 +47,7 @@ stat
 {
   create -1
   modify -1
-  author Josh@xps1
+  author Josh@DESKTOP-5ED8IA1
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -2607,37 +2607,6 @@ Content-Type: text/plain
         label   "Frames per Batch"
         export  none
     }
-    parm {
-        name    "backgroundtask"
-        baseparm
-        label   "Background Task"
-        export  none
-    }
-    parm {
-        name    "sepparm6"
-        baseparm
-        label   "Separator"
-        export  none
-    }
-    parm {
-        name    "usescenefile"
-        baseparm
-        label   "Use Scene File"
-        nolabel
-        export  none
-    }
-    parm {
-        name    "scenefile"
-        baseparm
-        label   "Load Scene File"
-        export  none
-    }
-    parm {
-        name    "applywedges"
-        baseparm
-        label   "Apply Wedges"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/header_info.chn"
@@ -2675,11 +2644,6 @@ pythonbin	[ 0	locks=0 ]	(	"0"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	""	)
@@ -2950,7 +2914,6 @@ local_usehoudinimaxthreads	[ 0	locks=0 ]	(	"off"	)
 local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
-local_setworkingdir	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
 local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
@@ -3916,7 +3879,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	1	)
 setres	[ 0	locks=0 ]	(	"off"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	"none"	)
@@ -3926,16 +3888,6 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"clamp"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
-folder1	[ 0	locks=0 ]	(	0	)
-setcanvas	[ 0	locks=0 ]	(	"off"	)
-canvassource	[ 0	locks=0 ]	(	"camera"	)
-camera	[ 0	locks=0 ]	(	""	)
-plane_orient	[ 0	locks=0 ]	(	"xy"	)
-plane_size	[ 0	locks=0 ]	(	1	1	)
-plane_t	[ 0	locks=0 ]	(	0	0	0	)
-plane_r	[ 0	locks=0 ]	(	0	0	0	)
-plane_scale	[ 0	locks=0 ]	(	1	)
-folder2	[ 0	locks=0 ]	(	0	)
 setudim	[ 0	locks=0 ]	(	"off"	)
 udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
@@ -4058,7 +4010,6 @@ vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
 mktx	[ 0	locks=0 ]	(	"off"	)
 txtilesize	[ 0	locks=0 ]	(	64	64	)
 txmipmapfilter	[ 0	locks=0 ]	(	box	)
-txopaquedetect	[ 0	locks=0 ]	(	"on"	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -4181,7 +4132,6 @@ missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
 loadcamera	[ 0	locks=0 ]	(	"off"	)
-keepdisplaywindow	[ 0	locks=0 ]	(	"off"	)
 addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	4	)
 aov1	[ 0	locks=0 ]	(	C	)
@@ -4263,7 +4213,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	f1	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -4272,7 +4221,6 @@ mode	[ 0	locks=0 ]	(	"over"	)
 alpha	[ 0	locks=0 ]	(	"on"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4391,7 +4339,6 @@ vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
 mktx	[ 0	locks=0 ]	(	"off"	)
 txtilesize	[ 0	locks=0 ]	(	64	64	)
 txmipmapfilter	[ 0	locks=0 ]	(	box	)
-txopaquedetect	[ 0	locks=0 ]	(	"on"	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -4519,10 +4466,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"off"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"off"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -4725,7 +4668,6 @@ local_usehoudinimaxthreads	[ 0	locks=0 ]	(	"off"	)
 local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
-local_setworkingdir	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
 local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
@@ -5459,11 +5401,6 @@ pythonbin	[ 0	locks=0 ]	(	"3"	)
 python	[ 0	locks=0 ]	(	`@localpy`	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot_fo`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	""	)
@@ -5879,10 +5816,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"off"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"on"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -6137,10 +6070,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"off"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"on"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -6894,18 +6823,13 @@ environment	[ 0	locks=0 ]	(	1	)
 venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`	)
 pythonbin	[ 8	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	""	)
-pipargs	[ 0	locks=0 ]	(	""	)
-installargs	[ 0	locks=0 ]	(	""	)
-sepparm2	[ 0	locks=0 ]	(	)
 venvsymlink	[ 8	locks=0 ]	(	"on"	)
 usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
+requirements	[ 0	locks=0 ]	(	"1"	)
 userequirementshfs	[ 0	locks=0 ]	(	"off"	)
 requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
-requirementshfssetperm	[ 0	locks=0 ]	(	"off"	)
-sepparm	[ 0	locks=0 ]	(	)
-requirements	[ 0	locks=0 ]	(	"1"	)
 filetype	[ 0	locks=0 ]	(	"2"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
@@ -7071,23 +6995,17 @@ environment	[ 0	locks=0 ]	(	1	)
 venvpath	[ 0	locks=0 ]	(	`chs(\"../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
-pipargs	[ 0	locks=0 ]	(	""	)
-installargs	[ 0	locks=0 ]	(	""	)
-sepparm2	[ 0	locks=0 ]	(	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
 usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
+requirements	[ 0	locks=0 ]	(	"1"	)
 userequirementshfs	[ 0	locks=0 ]	(	"off"	)
 requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
-requirementshfssetperm	[ 0	locks=0 ]	(	"off"	)
-sepparm	[ 0	locks=0 ]	(	)
-requirements	[ 0	locks=0 ]	(	"1"	)
 filetype	[ 0	locks=0 ]	(	"2"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
-filestring	[ 0	locks=0 ]	(	"fiftyone==1.14.0
-numpy==2.1.0
+filestring	[ 0	locks=0 ]	(	"fiftyone==1.17.0
 pycocotools==2.0.11"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
 requirementdict	[ 0	locks=0 ]	(	key_value_dict:{}	)
@@ -7398,23 +7316,17 @@ environment	[ 0	locks=0 ]	(	1	)
 venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`_fiftyone	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
-pipargs	[ 0	locks=0 ]	(	""	)
-installargs	[ 0	locks=0 ]	(	""	)
-sepparm2	[ 0	locks=0 ]	(	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
 usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
+requirements	[ 0	locks=0 ]	(	"1"	)
 userequirementshfs	[ 0	locks=0 ]	(	"off"	)
 requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
-requirementshfssetperm	[ 0	locks=0 ]	(	"off"	)
-sepparm	[ 0	locks=0 ]	(	)
-requirements	[ 0	locks=0 ]	(	"1"	)
 filetype	[ 0	locks=0 ]	(	"2"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
-filestring	[ 0	locks=0 ]	(	"fiftyone==1.14.0
-numpy==2.1.0
+filestring	[ 0	locks=0 ]	(	"fiftyone==1.17.0
 pycocotools==2.0.11"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
 requirementdict	[ 0	locks=0 ]	(	key_value_dict:{}	)
@@ -7762,11 +7674,6 @@ pythonbin	[ 0	locks=0 ]	(	"3"	)
 python	[ 0	locks=0 ]	(	`@localpy`	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot_fo`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	""	)
@@ -8013,11 +7920,6 @@ pythonbin	[ 0	locks=0 ]	(	"3"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot_fo`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	-u	)
@@ -8496,23 +8398,17 @@ environment	[ 0	locks=0 ]	(	1	)
 venvpath	[ 0	locks=0 ]	(	`chs(\"../../venvpath\")`	)
 pythonbin	[ 0	locks=0 ]	(	"1"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
-pipargs	[ 0	locks=0 ]	(	""	)
-installargs	[ 0	locks=0 ]	(	""	)
-sepparm2	[ 0	locks=0 ]	(	)
 venvsymlink	[ 0	locks=0 ]	(	"on"	)
 usepipcache	[ 0	locks=0 ]	(	"on"	)
 venvlock	[ 0	locks=0 ]	(	"on"	)
 packages	[ 0	locks=0 ]	(	1	)
+requirements	[ 0	locks=0 ]	(	"1"	)
 userequirementshfs	[ 0	locks=0 ]	(	"off"	)
 requirementshfs	[ 0	locks=0 ]	(	hutil/ml	)
-requirementshfssetperm	[ 0	locks=0 ]	(	"off"	)
-sepparm	[ 0	locks=0 ]	(	)
-requirements	[ 0	locks=0 ]	(	"1"	)
 filetype	[ 0	locks=0 ]	(	"2"	)
 filetag	[ 0	locks=0 ]	(	file/txt	)
 customfile	[ 0	locks=0 ]	(	$HIP/requirements.txt	)
-filestring	[ 0	locks=0 ]	(	"fiftyone==1.14.0
-numpy==2.1.0
+filestring	[ 0	locks=0 ]	(	"fiftyone==1.17.0
 pycocotools==2.0.11"	)
 requirementlist	[ 0	locks=0 ]	(	"fiftyone==0.23.2, pycocotools==2.0.7"	)
 requirementdict	[ 0	locks=0 ]	(	key_value_dict:{}	)
@@ -9227,10 +9123,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"on"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"off"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -9380,11 +9272,6 @@ pythonbin	[ 0	locks=0 ]	(	"3"	)
 python	[ 0	locks=0 ]	(	`@localpy`	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot_core`	)
 resetpython	[ 0	locks=0 ]	(	[ resetpython	0 ] 	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	-u	)
@@ -9943,7 +9830,6 @@ local_usehoudinimaxthreads	[ 0	locks=0 ]	(	"off"	)
 local_houdinimaxthreads	[ 0	locks=0 ]	(	0	)
 local_requireswindow	[ 0	locks=0 ]	(	"off"	)
 local_skippackages	[ 0	locks=0 ]	(	"on"	)
-local_setworkingdir	[ 0	locks=0 ]	(	"on"	)
 local_envunset	[ 0	locks=0 ]	(	""	)
 local_env_file	[ 0	locks=0 ]	(	""	)
 local_envmulti	[ 0	locks=0 ]	(	0	)
@@ -10423,11 +10309,6 @@ pythonbin	[ 0	locks=0 ]	(	"3"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot_core`	)
 resetpython	[ 8	locks=0 ]	(	[ resetpython	0 ] 	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	""	)
@@ -10890,11 +10771,6 @@ pythonbin	[ 0	locks=0 ]	(	"0"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	-u	)
@@ -11785,37 +11661,6 @@ Content-Type: text/plain
         label   "Frames per Batch"
         export  none
     }
-    parm {
-        name    "backgroundtask"
-        baseparm
-        label   "Background Task"
-        export  none
-    }
-    parm {
-        name    "sepparm6"
-        baseparm
-        label   "Separator"
-        export  none
-    }
-    parm {
-        name    "usescenefile"
-        baseparm
-        label   "Use Scene File"
-        nolabel
-        export  none
-    }
-    parm {
-        name    "scenefile"
-        baseparm
-        label   "Load Scene File"
-        export  none
-    }
-    parm {
-        name    "applywedges"
-        baseparm
-        label   "Apply Wedges"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/validate_dataset/pass_attrs.chn"
@@ -11853,11 +11698,6 @@ pythonbin	[ 0	locks=0 ]	(	"0"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	-u	)
@@ -13384,10 +13224,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"off"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"off"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -13489,10 +13325,6 @@ useoutputattrib	[ 0	locks=0 ]	(	"off"	)
 outputattrib	[ 0	locks=0 ]	(	files	)
 overrideresultdatatag	[ 0	locks=0 ]	(	"off"	)
 resultdatatag	[ 0	locks=0 ]	(	file	)
-userootattrib	[ 0	locks=0 ]	(	"off"	)
-rootattrib	[ 0	locks=0 ]	(	rootdirectory	)
-usecountattrib	[ 0	locks=0 ]	(	"off"	)
-countattrib	[ 0	locks=0 ]	(	filecount	)
 copyfiles	[ 0	locks=0 ]	(	"off"	)
 }
 
@@ -14887,7 +14719,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	1	)
 setres	[ 0	locks=0 ]	(	"off"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	"none"	)
@@ -14897,16 +14728,6 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"clamp"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
-folder1	[ 0	locks=0 ]	(	0	)
-setcanvas	[ 0	locks=0 ]	(	"off"	)
-canvassource	[ 0	locks=0 ]	(	"camera"	)
-camera	[ 0	locks=0 ]	(	""	)
-plane_orient	[ 0	locks=0 ]	(	"xy"	)
-plane_size	[ 0	locks=0 ]	(	1	1	)
-plane_t	[ 0	locks=0 ]	(	0	0	0	)
-plane_r	[ 0	locks=0 ]	(	0	0	0	)
-plane_scale	[ 0	locks=0 ]	(	1	)
-folder2	[ 0	locks=0 ]	(	0	)
 setudim	[ 0	locks=0 ]	(	"off"	)
 udim	[ 0	locks=0 ]	(	1001	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
@@ -15006,7 +14827,6 @@ missingcolor	[ 0	locks=0 ]	(	0	0	0	0	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
 loadcamera	[ 0	locks=0 ]	(	"off"	)
-keepdisplaywindow	[ 0	locks=0 ]	(	"off"	)
 addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	1	)
 aov1	[ 0	locks=0 ]	(	C	)
@@ -15079,7 +14899,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	5	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	Backplate	)
@@ -15272,7 +15091,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -15281,7 +15099,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15343,7 +15160,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -15352,7 +15168,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15475,7 +15290,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -15484,7 +15298,6 @@ mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15546,7 +15359,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -15555,7 +15367,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -15758,9 +15569,8 @@ version 0.8
 filter	[ 0	locks=0 ]	(	[ filter	1 ] 	)
 readoutside	[ 0	locks=0 ]	(	[ readoutside	1 ] 	)
 units	[ 0	locks=0 ]	(	[ units	0 ] 	)
-size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
-size_world	[ 0	locks=0 ]	(	0.005	)
+size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
 scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
@@ -15901,7 +15711,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	src	)
@@ -16143,9 +15952,8 @@ version 0.8
 filter	[ 0	locks=0 ]	(	[ filter	1 ] 	)
 readoutside	[ 0	locks=0 ]	(	[ readoutside	1 ] 	)
 units	[ 0	locks=0 ]	(	[ units	0 ] 	)
-size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
-size_world	[ 0	locks=0 ]	(	0.005	)
+size	[ 8	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
 scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
@@ -16286,7 +16094,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	src	)
@@ -16481,7 +16288,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -16490,7 +16296,6 @@ mode	[ 0	locks=0 ]	(	"over"	)
 alpha	[ 0	locks=0 ]	(	"on"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -16551,7 +16356,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	2	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	C	)
@@ -17063,7 +16867,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	chosen	)
@@ -17742,9 +17545,8 @@ version 0.8
 filter	[ 0	locks=0 ]	(	[ filter	1 ] 	)
 readoutside	[ 0	locks=0 ]	(	[ readoutside	1 ] 	)
 units	[ 0	locks=0 ]	(	[ units	0 ] 	)
-size	[ 0	locks=0 ]	(	[ size	0.005 ] 	)
 size_pixel	[ 0	locks=0 ]	(	3	)
-size_world	[ 0	locks=0 ]	(	0.005	)
+size	[ 0	locks=0 ]	(	[ size	0.005 ] 	)
 scales	[ 0	locks=0 ]	(	[ scalesx	1 ] 	[ scalesy	1 ] 	)
 scalebytimeinc	[ 0	locks=0 ]	(	"off"	)
 }
@@ -17885,7 +17687,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	src	)
@@ -18147,12 +17948,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/comped_levels.chn"
@@ -18200,7 +17995,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 from3	[ 8	locks=0 ]	(	[ from31	1 ] 	[ from32	0 ] 	)
@@ -18510,13 +18304,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -18677,12 +18471,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -18704,12 +18492,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -18857,12 +18639,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -18926,7 +18702,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -18946,12 +18722,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -19032,7 +18802,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -19057,12 +18826,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -19087,7 +18854,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -19104,12 +18870,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -19134,7 +18898,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -19256,13 +19019,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -19423,12 +19186,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -19450,12 +19207,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -19603,12 +19354,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -19672,7 +19417,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -19692,12 +19437,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -19778,7 +19517,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -19803,12 +19541,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -19833,7 +19569,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -19850,12 +19585,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -19880,7 +19613,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -20215,7 +19947,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	src	)
@@ -20467,7 +20198,6 @@ vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
 mktx	[ 0	locks=0 ]	(	"off"	)
 txtilesize	[ 0	locks=0 ]	(	64	64	)
 txmipmapfilter	[ 0	locks=0 ]	(	box	)
-txopaquedetect	[ 0	locks=0 ]	(	"on"	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"piz"	)
@@ -20680,12 +20410,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/fg_levels.chn"
@@ -20733,7 +20457,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 from3	[ 8	locks=0 ]	(	[ from31	1 ] 	[ from32	0 ] 	)
@@ -21043,13 +20766,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -21210,12 +20933,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -21237,12 +20954,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -21390,12 +21101,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -21459,7 +21164,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -21479,12 +21184,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -21565,7 +21264,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -21590,12 +21288,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -21620,7 +21316,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -21637,12 +21332,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -21667,7 +21360,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -21789,13 +21481,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -21956,12 +21648,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -21983,12 +21669,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -22136,12 +21816,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -22205,7 +21879,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -22225,12 +21899,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -22311,7 +21979,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -22336,12 +22003,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -22366,7 +22031,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -22383,12 +22047,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -22413,7 +22075,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -22572,12 +22233,6 @@ Content-Type: text/plain
         }
     }
 
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/image_compositor/compositing/bg_levels.chn"
@@ -22625,7 +22280,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	1	)
 outputs	[ 0	locks=0 ]	(	1	)
 from3	[ 8	locks=0 ]	(	[ from31	1 ] 	[ from32	0 ] 	)
@@ -22935,13 +22589,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -23102,12 +22756,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -23129,12 +22777,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -23282,12 +22924,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -23351,7 +22987,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -23371,12 +23007,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -23457,7 +23087,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -23482,12 +23111,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -23512,7 +23139,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -23529,12 +23155,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -23559,7 +23183,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -23681,13 +23304,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Kernel Iterations"
+            label   "Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Kernel Iteration"
+            label   "Include Iteration"
             export  none
         }
         parm {
@@ -23848,12 +23471,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_rampinputtype"
-                    baseparm
-                    label   "Input Type"
-                    export  none
-                }
-                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -23875,12 +23492,6 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
-                    export  none
-                }
-                parm {
-                    name    "bindings#_rampraw"
-                    baseparm
-                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -24028,12 +23639,6 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
-                    name    "bindings#_attribbvh"
-                    baseparm
-                    label   "Build BVH"
-                    export  none
-                }
-                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -24097,7 +23702,7 @@ Content-Type: text/plain
     parm {
         name    "options_timeinccontext"
         baseparm
-        label   "Use Timestep"
+        label   "Use Context's Timestep"
         export  none
     }
     parm {
@@ -24117,12 +23722,6 @@ Content-Type: text/plain
         baseparm
         label   "Time Method"
         nolabel
-        export  none
-    }
-    parm {
-        name    "cablerenamebylabel"
-        baseparm
-        label   "Rename Wires Using Output Labels"
         export  none
     }
 
@@ -24203,7 +23802,6 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	1	)
@@ -24228,12 +23826,10 @@ output1_metaname	[ 0	locks=0 ]	(	""	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	min1	)
 bindings1_type	[ 0	locks=0 ]	(	"float"	)
-bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	min1	)
@@ -24258,7 +23854,6 @@ bindings1_fval	[ 0	locks=0 ]	(	[ bindings1_fval	0 ] 	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -24275,12 +23870,10 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	max1	)
 bindings2_type	[ 0	locks=0 ]	(	"float"	)
-bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
-bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	max1	)
@@ -24305,7 +23898,6 @@ bindings2_fval	[ 0	locks=0 ]	(	[ bindings2_fval	0 ] 	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
-bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -24429,7 +24021,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	f3	)
-typeinfo	[ 0	locks=0 ]	(	"node"	)
 folder1	[ 0	locks=0 ]	(	1	)
 amp	[ 0	locks=0 ]	(	[ amp	0.5 ] 	)
 center	[ 0	locks=0 ]	(	0.5	)
@@ -24454,11 +24045,9 @@ timescale	[ 0	locks=0 ]	(	1	)
 doloop	[ 0	locks=0 ]	(	"off"	)
 looplen	[ 0	locks=0 ]	(	10	)
 folder0	[ 0	locks=0 ]	(	1	)
-fractaltype	[ 0	locks=0 ]	(	"sharp"	)
 oct	[ 0	locks=0 ]	(	8	)
 lac	[ 0	locks=0 ]	(	2.01234	)
 rough	[ 0	locks=0 ]	(	0.5	)
-octaveoffset	[ 0	locks=0 ]	(	-1	-1	)
 folder4	[ 0	locks=0 ]	(	0	)
 post_dofold	[ 0	locks=0 ]	(	"off"	)
 post_docomplement	[ 0	locks=0 ]	(	"off"	)
@@ -24573,7 +24162,6 @@ missingcolor	[ 0	locks=0 ]	(	0	0	0	1	)
 colorspace	[ 0	locks=0 ]	(	"ocio"	)
 premultiplied	[ 0	locks=0 ]	(	"on"	)
 loadcamera	[ 0	locks=0 ]	(	"off"	)
-keepdisplaywindow	[ 0	locks=0 ]	(	"off"	)
 addaovs	[ 0	locks=0 ]	(	0	)
 aovs	[ 0	locks=0 ]	(	5	)
 aov1	[ 0	locks=0 ]	(	C	)
@@ -24737,7 +24325,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 inputs	[ 0	locks=0 ]	(	5	)
 outputs	[ 0	locks=0 ]	(	1	)
 inputlabel1	[ 0	locks=0 ]	(	C	)
@@ -24930,7 +24517,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -24939,7 +24525,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25001,7 +24586,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -25010,7 +24594,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25133,7 +24716,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -25142,7 +24724,6 @@ mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25204,7 +24785,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -25213,7 +24793,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25277,7 +24856,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -25286,7 +24864,6 @@ mode	[ 0	locks=0 ]	(	"add"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -25495,7 +25072,6 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
-space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -25504,7 +25080,6 @@ mode	[ 0	locks=0 ]	(	"overlay"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
-clipbydata	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -28105,37 +27680,6 @@ Content-Type: text/plain
         parmtag { "opfilter" "!!SOP!!" }
         parmtag { "oprelative" "." }
     }
-    parm {
-        name    "backgroundtask"
-        baseparm
-        label   "Background Task"
-        export  none
-    }
-    parm {
-        name    "sepparm6"
-        baseparm
-        label   "Separator"
-        export  none
-    }
-    parm {
-        name    "usescenefile"
-        baseparm
-        label   "Use Scene File"
-        nolabel
-        export  none
-    }
-    parm {
-        name    "scenefile"
-        baseparm
-        label   "Load Scene File"
-        export  none
-    }
-    parm {
-        name    "applywedges"
-        baseparm
-        label   "Apply Wedges"
-        export  none
-    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/eval_custom_id.parm"
@@ -28160,11 +27704,6 @@ pythonbin	[ 0	locks=0 ]	(	"0"	)
 python	[ 0	locks=0 ]	(	__PDG_PYTHON__	)
 pythonvenv	[ 0	locks=0 ]	(	`@venvroot`	)
 resetpython	[ 0	locks=0 ]	(	"off"	)
-backgroundtask	[ 0	locks=0 ]	(	"off"	)
-sepparm6	[ 0	locks=0 ]	(	)
-usescenefile	[ 0	locks=0 ]	(	"off"	)
-scenefile	[ 0	locks=0 ]	(	$HIPFILE	)
-applywedges	[ 0	locks=0 ]	(	"off"	)
 nativeworkitem	[ 0	locks=0 ]	(	"off"	)
 sepparm3	[ 0	locks=0 ]	(	)
 pythonargs	[ 0	locks=0 ]	(	-u	)
