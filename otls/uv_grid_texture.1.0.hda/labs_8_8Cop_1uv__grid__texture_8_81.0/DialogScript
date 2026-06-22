@@ -1,0 +1,343 @@
+# Dialog script for labs::uv_grid_texture::1.0 automatically generated
+
+{
+    name	labs::uv_grid_texture::1.0
+    script	labs::uv_grid_texture::1.0
+    label	"UV Grid Texture"
+
+    output	output1	texture
+    signature	default	Default	{ }	{ RGBA }
+
+    help {
+	""
+    }
+
+    groupsimple {
+        name    "fd_texture"
+        label   "Texture"
+
+        parm {
+            name    "resolution"
+            label   "Resolution"
+            type    ordinal
+            default { "1024" }
+            menu usetokenvalue {
+                "256"   "256^2"
+                "512"   "512^2"
+                "1024"  "1024^2"
+                "2048"  "2048^2"
+                "4096"  "4096^2"
+                "8192"  "8192^2"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "griddivisions"
+            label   "Grid Divisions"
+            type    integer
+            default { "16" }
+            range   { 4! 16 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "bgcolor"
+            label   "Background Color"
+            type    color
+            size    3
+            default { "0" "0" "0" }
+            disablewhen "{ addroundedcorners == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_tiles"
+        label   "Tiles"
+
+        parm {
+            name    "tilecolormode"
+            label   "Coloring Mode"
+            type    ordinal
+            default { "1" }
+            menu {
+                "0" "Uniform"
+                "1" "Checker"
+                "2" "Gradient"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "tileunicolor"
+            label   "Uniform Color"
+            type    color
+            size    3
+            default { "0.025" "0.025" "0.025" }
+            hidewhen "{ tilecolormode != 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "tilechecker1color"
+            label   "Checker Color 1"
+            type    color
+            size    3
+            default { "0.38422" "0.388818" "0.413845" }
+            hidewhen "{ tilecolormode != 1 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "autoselect" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "tilechecker2color"
+            label   "Checker Color 2"
+            type    color
+            size    3
+            default { "0.150959" "0.145576" "0.162685" }
+            hidewhen "{ tilecolormode != 1 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "tileramp"
+            label   "Color Gradient"
+            type    ramp_rgb
+            default { "5" }
+            hidewhen "{ tilecolormode != 2 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0.20000000298023224 0 1 ) 1interp ( linear ) 2pos ( 0.25 ) 2c ( 0 0.8500000238418579 1 ) 2interp ( linear ) 3pos ( 0.5 ) 3c ( 0 1 0.10000000149011612 ) 3interp ( linear ) 4pos ( 0.75 ) 4c ( 0.949999988079071 1 0 ) 4interp ( linear ) 5pos ( 1 ) 5c ( 1 0 0 ) 5interp ( linear )" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "addtileoutlines"
+            label   "Add Tile Outlines"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outlinewidth"
+            label   "Outline Width"
+            type    float
+            default { "0.025" }
+            hidewhen "{ addtileoutlines == 0 }"
+            range   { 0! 0.1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outlinecolor"
+            label   "Outline Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ addtileoutlines == 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sepparm3"
+            label   "Separator"
+            type    separator
+            default { "" }
+        }
+        parm {
+            name    "addroundedcorners"
+            label   "Add Rounded Corners"
+            type    toggle
+            default { "0.25" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "cornerradius"
+            label   "Corner Radius"
+            type    float
+            default { "0.25" }
+            hidewhen "{ addroundedcorners == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_markers"
+        label   "Markers"
+
+        parm {
+            name    "markertype"
+            label   "Marker Type"
+            type    ordinal
+            default { "0" }
+            menu {
+                "0" "Text"
+                "1" "Cross"
+                "2" "Arrow"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "textmode"
+            label   "Text Mode"
+            type    ordinal
+            default { "0" }
+            hidewhen "{ markertype != 0 }"
+            menu {
+                "0" "Letters & Numbers"
+                "1" "Coordinates"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "font"
+            label   "Font"
+            type    file
+            default { "Gotham Medium" }
+            hidewhen "{ markertype != 0 }"
+            menureplace {
+                [ "opmenu -l -a text_sop/text file" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "filechooser_mode" "read" }
+            parmtag { "filechooser_pattern" "*.ttf, *.otf, *.ttc, *.otc, *.pfa, *.pfb" }
+        }
+        parm {
+            name    "sepparm6"
+            label   "Spacer"
+            type    separator
+            default { "" }
+            parmtag { "sidefx::layout_height" "small" }
+            parmtag { "sidefx::look" "blank" }
+        }
+        parm {
+            name    "markersize"
+            label   "Marker Size"
+            type    float
+            default { "0.07" }
+            range   { 0! 0.1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "markercolormode"
+            label   "Coloring Mode"
+            type    ordinal
+            default { "1" }
+            menu {
+                "0" "Uniform"
+                "1" "Checker"
+                "2" "Gradient"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "markerunicolor"
+            label   "Uniform Color"
+            type    color
+            size    3
+            default { "1" "1" "1" }
+            hidewhen "{ markercolormode != 0 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "markerchecker1color"
+            label   "Checker Color 1"
+            type    color
+            size    3
+            default { "0.150959" "0.153614" "0.169725" }
+            hidewhen "{ markercolormode != 1 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "markerchecker2color"
+            label   "Checker Color 2"
+            type    color
+            size    3
+            default { "0.28469" "0.288481" "0.311728" }
+            hidewhen "{ markercolormode != 1 }"
+            range   { 0 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_action" "import cop.stateutils as csu\ncsu.enterPickerState(kwargs[\"node\"], \"f4\")" }
+            parmtag { "script_action_help" "Click a layer to sample its value." }
+            parmtag { "script_action_icon" "hicon:/SVGIcons.index?BUTTONS_layer_sample.svg" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "markerramp"
+            label   "Color Gradient"
+            type    ramp_rgb
+            default { "5" }
+            hidewhen "{ markercolormode != 2 }"
+            range   { 1! 10 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "rampcolordefault" "1pos ( 0 ) 1c ( 0.20000000298023224 0 1 ) 1interp ( linear ) 2pos ( 0.25 ) 2c ( 0 0.8500000238418579 1 ) 2interp ( linear ) 3pos ( 0.5 ) 3c ( 0 1 0.10000000149011612 ) 3interp ( linear ) 4pos ( 0.75 ) 4c ( 0.949999988079071 1 0 ) 4interp ( linear ) 5pos ( 1 ) 5c ( 1 0 0 ) 5interp ( linear )" }
+            parmtag { "rampshowcontrolsdefault" "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_export"
+        label   "Export"
+
+        parm {
+            name    "outputfile"
+            label   "Output File"
+            type    file
+            default { "$HIP/$HIPNAME.png" }
+            menureplace {
+                [ "opmenu -l -a rop_image1 copoutput" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "filechooser_mode" "write" }
+        }
+        parm {
+            name    "render"
+            label   "Render"
+            type    button
+            default { "0" }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "takecontrol" "always" }
+        }
+    }
+
+}

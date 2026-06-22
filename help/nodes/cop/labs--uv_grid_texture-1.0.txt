@@ -1,0 +1,147 @@
+#type:      node
+#context:   cop
+#internal:  labs::uv_grid_texture::1.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     21.0
+
+= Labs UV Grid Texture =
+
+"""Generates procedural UV grid textures."""
+
+This node generates procedural UV textures for validating UV layouts, texture orientation, texel density, and distortion.
+
+The generated texture can be customized using tile colors, markers, outlines, and text labels. The resulting image can be exported to disk and used directly in texturing, and asset validation workflows.
+
+This node is also used internally by the [Labs UV Visualize|Node:sop/labs--visualize_uvs-2.0] SOP to generate procedural UV visualization textures.
+
+@parameters
+
+    == Texture ==
+
+    Resolution:
+        #id: resolution
+        Resolution of the generated texture.
+
+    Grid Divisions:
+        #id: griddivisions
+        Number of subdivisions within each UV tile.
+
+    Background Color:
+        #id: bgcolor
+        Background color of the generated texture. Available only when __Add Rounded Corners__ is enabled.
+
+    == Tiles ==
+
+    Coloring Mode:
+        #id: tilecolormode
+        Method used to color UV tiles.
+
+        <p>__Uniform__: Uses a single color for all tiles.</p>
+
+        <p>__Checker__: Alternates between two colors.</p>
+
+        <p>__Gradient__: Uses a color ramp.</p>
+
+    Uniform Color:
+        #id: tileunicolor
+        Color used when __Coloring Mode__ is set to __Uniform__.
+
+    Checker Color 1:
+        #id: tilechecker1color
+        First color used for checkerboard tiles.
+
+    Checker Color 2:
+        #id: tilechecker2color
+        Second color used for checkerboard tiles.
+
+    Color Gradient:
+        #id: tileramp
+        Color ramp used when __Coloring Mode__ is set to __Gradient__.
+
+    Add Tile Outlines:
+        #id: addtileoutlines
+        Adds outlines around UV tiles.
+
+    Outline Width:
+        #id: outlinewidth
+        Width of the tile outlines.
+
+    Outline Color:
+        #id: outlinecolor
+        Color of the tile outlines.
+
+    Add Rounded Corners:
+        #id: addroundedcorners
+        Adds rounded corners on UV tiles.
+
+    Corner Radius:
+        #id: cornerradius
+        Radius of the tile corner rounding.
+
+    == Markers ==
+
+    Marker Type:
+        #id: markertype
+        Marker displayed within each UV tile.
+
+        <p>__Text__: Displays text labels.</p>
+
+        <p>__Cross__: Displays cross markers.</p>
+
+        <p>__Arrow__: Displays directional arrows.</p>
+
+    Text Mode:
+        #id: textmode
+        Text displayed when __Marker Type__ is set to __Text__.
+
+        <p>__Letters & Numbers__: Displays alphanumeric identifiers.</p>
+
+        <p>__Coordinates__: Displays tile coordinates.</p>
+
+    Font:
+        #id: font
+        Font used for text markers.
+
+    Marker Size:
+        #id: markersize
+        Size of the markers.
+
+    Coloring Mode:
+        #id: markercolormode
+        Method used to color markers.
+
+        <p>__Uniform__: Uses a single color.</p>
+
+        <p>__Checker__: Alternates between two colors.</p>
+
+        <p>__Gradient__: Uses a color ramp.</p>
+
+    Uniform Color:
+        #id: markerunicolor
+        Marker color used when __Coloring Mode__ is set to __Uniform__.
+
+    Checker Color 1:
+        #id: markerchecker1color
+        First checker marker color.
+
+    Checker Color 2:
+        #id: markerchecker2color
+        Second checker marker color.
+
+    Color Gradient:
+        #id: markerramp
+        Marker color ramp used when __Coloring Mode__ is set to __Gradient__.
+
+    == Export ==
+
+    Output File:
+        #id: outputfile
+        File path where the generated texture will be written.
+
+    Render:
+        #id: render
+        Generates the texture and saves it to the specified output file.
+
+@related
+- [Labs UV Visualize|Node:sop/labs--visualize_uvs-2.0]
+- [Labs Export UV Wireframe|Node:sop/labs--export_uv_wireframe-1.0]
