@@ -1,0 +1,76 @@
+#type:      node
+#context:   sop
+#internal:  labs::texel_density::1.1
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     21.0
+
+= Labs Texel Density =
+
+"""Measures, visualizes, and calculates UV texel density."""
+
+This node measures the texel density of UVs relative to real-world surface area and allows you to normalize that density to a consistent target value.
+
+Texel density defines how many texture pixels (pixel elements) are allocated per unit of surface area. Maintaining consistent texel density ensures uniform texture resolution across assets, prevents blurry or overly sharp areas, and helps to ensure visual consistency.
+
+
+@parameters
+
+    Group:
+        #id: group
+        The selection of primitives to unwrap UVs.
+
+    UV Attribute:
+        #id: uvattrib
+        Name of the UV attribute used for measurement and scaling.
+
+    == Texel Density ==
+
+    Define By:
+        #id: defineby
+        Defines how the target texel density is specified.
+
+        <p>__Value__: Specifies the target texel density directly.</p>
+
+        <p>__Texture Size__: Calculates the target texel density from the __Texture Size__, __Coverage Length__, and __Unit__.</p>
+
+    Texel Density:
+        #id: texeldensity
+        Target texel density when __Define By__ is set to __Value__.
+
+    Unit:
+        #id: pxperunit
+        Unit used to express the target texel density.
+
+    Texture Size:
+        #id: texturesize
+        Resolution of the texture map in pixels (for example: 1024, 2048, 4096) when __Define By__ is set to __Texture Size__. Used to calculate pixel-to-surface-area ratios.
+
+    Coverage Length:
+        #id: length
+        Real-world length represented by one texture tile. Used to determine how many texture pixels correspond to one unit of surface space.
+
+    Unit:
+        #id: unit
+        Unit of measurement used for coverage calculations (for example: meters, centimeters).
+
+    Apply Texel Density:
+        #id: applytexeldensity
+        Scales the UVs to match the target texel density derived from the __Texture Size__, __Coverage__, and __Unit__ settings.
+
+    Layout UVs:
+        #id: layoutuvs
+        Re-packs and normalizes UV islands after scaling to maintain efficient UV space usage.
+
+    == Visualization ==
+
+    Visualize Texel Density:
+        #id: vistexeldensity
+        Colors each UV island by its current texel density relative to the target. Green means on-target; warmer colors (toward red) are under-dense, cooler colors (toward blue) are over-dense. View this with __Apply Texel Density__ off to diagnose the mesh — once applied, islands equalize to target and the mesh turns uniformly green.
+
+    Show UV Grid:
+        #id: addchecker
+        Overlays a UV grid texture in the viewport to visually inspect scaling and distortion.
+
+    Color Ramp:
+        #id: colorramp
+        Defines the color mapping used when visualizing texel density.
