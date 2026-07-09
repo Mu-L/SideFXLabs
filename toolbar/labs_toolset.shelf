@@ -6,6 +6,7 @@
  a single file. -->
 
   <toolshelf name="labs_toolset" label="SideFX Labs">
+    <memberTool name="labs::select_node"/>
     <memberTool name="labs::autouv"/>
     <memberTool name="labs::visualize_uvs"/>
     <memberTool name="labs::vertex_animation_textures"/>
@@ -97,7 +98,7 @@ node.setCurrent(True, True)
 node.moveToGoodPosition()]]></script>
   </tool>
 
-  <tool name="labs::sticker_placer" label="Labs Sticker Placer" icon="$SIDEFXLABS/help/icons/stickerplacer.svg">
+  <tool name="labs::sticker_placer" label="Sticker Placer" icon="$SIDEFXLABS/help/icons/stickerplacer.svg">
     <helpURL>/nodes/other/labs--sticker_picker</helpURL>
     <toolMenuContext name="viewer">
       <contextNetType>OBJ</contextNetType>
@@ -133,7 +134,7 @@ except NameError:
 dialog = module.StickerPlacer(hou.qt.mainWindow())
 dialog.show()
 ]]></script>
-</tool>
+  </tool>
 
   <tool name="labs::random_selection" label="Random Selection" icon="$SIDEFXLABS/config/Icons/sidefx_labs_default.svg">
     <helpURL>operator:Sop/random_selection?namespace=labs</helpURL>
@@ -152,7 +153,7 @@ soptoolutils.genericTool(kwargs, 'labs::align_and_distribute', exact_node_type=F
     <script scriptType="python"><![CDATA[import soptoolutils
 soptoolutils.genericTool(kwargs, 'labs::multi_attribute_promote', exact_node_type=False)]]></script>
   </tool>
- 
+
   <tool name="labs::parameter_diff" label="Parameter Diff" icon="$SIDEFXLABS/help/icons/parameter_diff.svg">
     <helpURL>/shelf/labs--parameter_diff.txt</helpURL>
     <script scriptType="python"><![CDATA[import pyper.widgets.diff as diffmodule
@@ -173,4 +174,3126 @@ hou.session.dummy = win]]></script>
 soptoolutils.genericTool(kwargs, 'labs::fast_remesh', exact_node_type=False)]]></script>
   </tool>
 
+  <tool name="labs::select_node" label="Select Node" icon="$SIDEFXLABS/config/Icons/sidefx_labs_default.svg">
+    <script scriptType="python"><![CDATA[import math
+
+import hou
+
+
+STATE_NAME = "labs_select_node"
+STATE_LABEL = "Select Node"
+DEFAULT_ATTRIBUTE = "selectnode"
+DEFAULT_ATTRIBUTE_CLASS = "primitive"
+DEFAULT_RESOLVE_MODE = "name"
+SESSION_ATTRIBUTE_NAME = "_labs_select_node_attribute"
+SESSION_ATTRIBUTE_CLASS_NAME = "_labs_select_node_attribute_class"
+SESSION_RESOLVE_MODE_NAME = "_labs_select_node_resolve_mode"
+SESSION_MENU_ATTR_MAP_NAME = "_labs_select_node_menu_attr_map"
+SESSION_HOVER_SPHERE_RADIUS_NAME = "_labs_select_node_hover_sphere_radius"
+ATTRIBUTE_RADIO_MENU = "matching_attribute_radio"
+ATTRIBUTE_CLASS_RADIO_MENU = "attribute_class_radio"
+RESOLVE_MODE_RADIO_MENU = "resolve_mode_radio"
+ATTRIBUTE_CLASS_PRIMITIVE = "primitive"
+ATTRIBUTE_CLASS_POINT = "point"
+ATTRIBUTE_CLASS_VERTEX = "vertex"
+ATTRIBUTE_CLASS_DETAIL = "detail"
+ATTRIBUTE_CLASS_ITEMS = (
+    (ATTRIBUTE_CLASS_PRIMITIVE, "Primitive"),
+    (ATTRIBUTE_CLASS_POINT, "Point"),
+    (ATTRIBUTE_CLASS_VERTEX, "Vertex"),
+    (ATTRIBUTE_CLASS_DETAIL, "Detail"),
+)
+RESOLVE_MODE_EXACT_PATH = "exact_path"
+RESOLVE_MODE_NODE_NAME = "name"
+RESOLVE_MODE_RELATIVE_PATH = "relative_path"
+RESOLVE_MODE_ATTRIBUTE_ORIGIN = "attribute_origin"
+RESOLVE_MODE_ITEMS = (
+    (RESOLVE_MODE_EXACT_PATH, "Exact Path"),
+    (RESOLVE_MODE_NODE_NAME, "Name"),
+    (RESOLVE_MODE_RELATIVE_PATH, "Relative Path"),
+)
+MENU_SELECT_ATTRIBUTE_ORIGIN = "select_attribute_origin"
+HOVER_DRAWABLE_NAME = "labs_select_node_hover"
+HOVER_POINT_DRAWABLE_NAME = "labs_select_node_hover_point"
+HOVER_SPHERE_DRAWABLE_NAME = "labs_select_node_hover_sphere"
+HOVER_TEXT_DRAWABLE_NAME = "labs_select_node_hover_text"
+HOVER_FULL_INDEX_PRIM_LIMIT = 200000
+HOVER_POINT_SCREEN_RADIUS = 16.0
+DEFAULT_HOVER_SPHERE_RADIUS = 0.04
+MIN_HOVER_SPHERE_RADIUS = 0.005
+MAX_HOVER_SPHERE_RADIUS = 0.5
+HOVER_SPHERE_WHEEL_FACTOR = 1.15
+HOVER_TEXT_OFFSET_X = 14.0
+HOVER_TEXT_OFFSET_Y = 18.0
+HOVER_ALPHA = 0.38
+HOVER_GLOW_ALPHA = 0.22
+GOLDEN_RATIO_CONJUGATE = 0.618033988749895
+HOVER_HUE_KEY_SCALE = 1000000
+
+
+def _show_status(message, severity=hou.severityType.Message):
+    try:
+        hou.ui.setStatusMessage(message, severity=severity)
+        return
+    except Exception:
+        pass
+
+    try:
+        hou.ui.displayMessage(message, severity=severity)
+        return
+    except Exception:
+        pass
+
+    print(message)
+
+
+def _matching_attribute():
+    attr_name = getattr(hou.session, SESSION_ATTRIBUTE_NAME, DEFAULT_ATTRIBUTE)
+    if not isinstance(attr_name, str):
+        attr_name = DEFAULT_ATTRIBUTE
+
+    attr_name = attr_name.strip()
+    if not attr_name:
+        attr_name = DEFAULT_ATTRIBUTE
+
+    setattr(hou.session, SESSION_ATTRIBUTE_NAME, attr_name)
+    return attr_name
+
+
+def _valid_attribute_classes():
+    return [item[0] for item in ATTRIBUTE_CLASS_ITEMS]
+
+
+def _normalize_attribute_class(attr_class):
+    attr_class = str(attr_class).strip().lower()
+    if attr_class not in _valid_attribute_classes():
+        return DEFAULT_ATTRIBUTE_CLASS
+    return attr_class
+
+
+def _attribute_class():
+    attr_class = getattr(hou.session, SESSION_ATTRIBUTE_CLASS_NAME, DEFAULT_ATTRIBUTE_CLASS)
+    attr_class = _normalize_attribute_class(attr_class)
+    setattr(hou.session, SESSION_ATTRIBUTE_CLASS_NAME, attr_class)
+    return attr_class
+
+
+def _clamp_hover_sphere_radius(radius):
+    try:
+        radius = float(radius)
+    except Exception:
+        radius = DEFAULT_HOVER_SPHERE_RADIUS
+
+    return max(MIN_HOVER_SPHERE_RADIUS, min(MAX_HOVER_SPHERE_RADIUS, radius))
+
+
+def _hover_sphere_radius():
+    radius = getattr(
+        hou.session,
+        SESSION_HOVER_SPHERE_RADIUS_NAME,
+        DEFAULT_HOVER_SPHERE_RADIUS,
+    )
+    radius = _clamp_hover_sphere_radius(radius)
+    setattr(hou.session, SESSION_HOVER_SPHERE_RADIUS_NAME, radius)
+    return radius
+
+
+def _set_hover_sphere_radius(radius):
+    radius = _clamp_hover_sphere_radius(radius)
+    setattr(hou.session, SESSION_HOVER_SPHERE_RADIUS_NAME, radius)
+    return radius
+
+
+def _resolve_mode():
+    mode = getattr(hou.session, SESSION_RESOLVE_MODE_NAME, DEFAULT_RESOLVE_MODE)
+    valid_modes = [item[0] for item in RESOLVE_MODE_ITEMS]
+    if mode not in valid_modes:
+        mode = DEFAULT_RESOLVE_MODE
+
+    setattr(hou.session, SESSION_RESOLVE_MODE_NAME, mode)
+    return mode
+
+
+def _resolve_mode_label(mode=None):
+    mode = mode or _resolve_mode()
+    if mode == RESOLVE_MODE_ATTRIBUTE_ORIGIN:
+        return "Attribute Origin"
+
+    for value, label in RESOLVE_MODE_ITEMS:
+        if value == mode:
+            return label
+    return "Name"
+
+
+def _attribute_class_label(attr_class=None):
+    attr_class = _normalize_attribute_class(attr_class or _attribute_class())
+    for value, label in ATTRIBUTE_CLASS_ITEMS:
+        if value == attr_class:
+            return label
+    return "Primitive"
+
+
+def _attribute_class_label_lower(attr_class=None):
+    return _attribute_class_label(attr_class).lower()
+
+
+def _set_matching_attribute(attr_name):
+    attr_name = str(attr_name).strip()
+    if not attr_name:
+        _show_status("Matching attribute cannot be empty.", hou.severityType.Warning)
+        return False
+
+    setattr(hou.session, SESSION_ATTRIBUTE_NAME, attr_name)
+    _update_viewer_prompt()
+    _show_status(
+        "Select Node matching attribute set to '{0}'.".format(attr_name),
+        hou.severityType.Message,
+    )
+    return True
+
+
+def _set_attribute_class(attr_class):
+    attr_class = _normalize_attribute_class(attr_class)
+    setattr(hou.session, SESSION_ATTRIBUTE_CLASS_NAME, attr_class)
+    _update_viewer_prompt()
+    _show_status(
+        "Select Node attribute class set to '{0}'.".format(
+            _attribute_class_label(attr_class)
+        ),
+        hou.severityType.Message,
+    )
+    return True
+
+
+def _set_resolve_mode(mode):
+    valid_modes = [item[0] for item in RESOLVE_MODE_ITEMS]
+    if mode not in valid_modes:
+        _show_status("Unknown Select Node resolve mode.", hou.severityType.Warning)
+        return False
+
+    setattr(hou.session, SESSION_RESOLVE_MODE_NAME, mode)
+    _update_viewer_prompt()
+    _show_status(
+        "Select Node resolve mode set to '{0}'.".format(_resolve_mode_label(mode)),
+        hou.severityType.Message,
+    )
+    return True
+
+
+def _prompt_message():
+    return (
+        "Select Node | Click geometry to select its source node | "
+        "Class: {0} | Attribute: '{1}' | Mode: {2} | Right-click: settings"
+    ).format(
+        _attribute_class_label(),
+        _matching_attribute(),
+        _resolve_mode_label(),
+    )
+
+
+def _update_viewer_prompt():
+    try:
+        viewer = hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
+        if viewer is not None:
+            viewer.setPromptMessage(_prompt_message())
+    except Exception:
+        pass
+
+
+def _displayed_sop_and_geometry(scene_viewer=None):
+    try:
+        viewer = scene_viewer or hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
+        if viewer is None:
+            return None, None
+
+        pwd = viewer.pwd()
+        if pwd is None:
+            return None, None
+
+        sop = pwd.displayNode()
+        if sop is None:
+            return None, None
+
+        geo = sop.geometry()
+    except Exception:
+        return None, None
+
+    return sop, geo
+
+
+def _geometry_attributes(geo, attr_class):
+    if geo is None:
+        return []
+
+    method_names = {
+        ATTRIBUTE_CLASS_PRIMITIVE: "primAttribs",
+        ATTRIBUTE_CLASS_POINT: "pointAttribs",
+        ATTRIBUTE_CLASS_VERTEX: "vertexAttribs",
+        ATTRIBUTE_CLASS_DETAIL: "globalAttribs",
+    }
+    method_name = method_names.get(_normalize_attribute_class(attr_class))
+    if not method_name:
+        return []
+
+    try:
+        method = getattr(geo, method_name)
+        return list(method())
+    except Exception:
+        return []
+
+
+def _find_geometry_attribute(geo, attr_class, attr_name):
+    if geo is None:
+        return None
+
+    attr_name = str(attr_name).strip()
+    if not attr_name:
+        return None
+
+    method_names = {
+        ATTRIBUTE_CLASS_PRIMITIVE: "findPrimAttrib",
+        ATTRIBUTE_CLASS_POINT: "findPointAttrib",
+        ATTRIBUTE_CLASS_VERTEX: "findVertexAttrib",
+        ATTRIBUTE_CLASS_DETAIL: "findGlobalAttrib",
+    }
+    method_name = method_names.get(_normalize_attribute_class(attr_class))
+    if not method_name:
+        return None
+
+    try:
+        method = getattr(geo, method_name)
+        return method(attr_name)
+    except Exception:
+        return None
+
+
+def _attribute_names_from_geo(geo, attr_class):
+    names = []
+    for attrib in _geometry_attributes(geo, attr_class):
+        try:
+            name = attrib.name().strip()
+        except Exception:
+            name = ""
+
+        if name:
+            names.append(name)
+
+    return sorted(set(names))
+
+
+def _displayed_attribute_names(scene_viewer=None, attr_class=None):
+    sop, geo = _displayed_sop_and_geometry(scene_viewer)
+    return _attribute_names_from_geo(geo, attr_class or _attribute_class())
+
+
+def _attribute_menu_source_key(scene_viewer=None):
+    sop, geo = _displayed_sop_and_geometry(scene_viewer)
+    if sop is None or geo is None:
+        return None
+
+    attr_class = _attribute_class()
+    return sop.path(), attr_class, tuple(_attribute_names_from_geo(geo, attr_class))
+
+
+def _attribute_is_string_like(attrib):
+    try:
+        data_type = attrib.dataType()
+        return data_type == hou.attribData.String
+    except Exception:
+        return False
+
+
+def _primitive_attribute_node_path_counts(source_sop, geo, attrib):
+    counts = {}
+    nonempty_count = 0
+    mode = _resolve_mode()
+
+    for prim in geo.prims():
+        try:
+            attr_value = _node_path_from_value(prim.attribValue(attrib))
+        except Exception:
+            attr_value = ""
+
+        if not attr_value:
+            continue
+
+        nonempty_count += 1
+        node, _warning, _info = _resolve_node_from_value(source_sop, attr_value, mode)
+        if node is not None:
+            node_path = node.path()
+            counts[node_path] = counts.get(node_path, 0) + 1
+
+    return counts, nonempty_count
+
+
+def _attribute_menu_items_from_geo(source_sop, geo, attr_class):
+    if geo is None:
+        return []
+
+    attr_class = _normalize_attribute_class(attr_class)
+    candidates = []
+    for attrib in _geometry_attributes(geo, attr_class):
+        try:
+            name = attrib.name().strip()
+        except Exception:
+            name = ""
+
+        if not name:
+            continue
+
+        is_string = _attribute_is_string_like(attrib)
+        node_set_count = 0
+        nonempty_count = 0
+        if attr_class == ATTRIBUTE_CLASS_PRIMITIVE:
+            node_path_counts, nonempty_count = _primitive_attribute_node_path_counts(
+                source_sop,
+                geo,
+                attrib,
+            )
+            node_set_count = len(node_path_counts)
+
+        candidates.append({
+            "name": name,
+            "is_string": is_string,
+            "node_set_count": node_set_count,
+            "nonempty_count": nonempty_count,
+        })
+
+    candidates.sort(key=lambda candidate: (
+        -candidate["node_set_count"],
+        not candidate["is_string"],
+        candidate["name"].lower(),
+    ))
+
+    items = []
+    for candidate in candidates:
+        name = candidate["name"]
+        if candidate["node_set_count"] > 0:
+            label = "{0} ({1} node sets)".format(name, candidate["node_set_count"])
+        elif candidate["is_string"]:
+            label = "{0} (string)".format(name)
+        elif attr_class != ATTRIBUTE_CLASS_PRIMITIVE:
+            label = name
+        elif candidate["nonempty_count"] > 0:
+            label = "{0} (not node paths)".format(name)
+        else:
+            label = "{0} (empty)".format(name)
+        items.append((name, label))
+
+    return items
+
+
+def _displayed_attribute_menu_items(scene_viewer=None, attr_class=None):
+    sop, geo = _displayed_sop_and_geometry(scene_viewer)
+    return _attribute_menu_items_from_geo(sop, geo, attr_class or _attribute_class())
+
+
+def _displayed_attribute_menu_names(scene_viewer=None, attr_class=None):
+    names = []
+    for item in _displayed_attribute_menu_items(scene_viewer, attr_class):
+        name = item[0] if isinstance(item, tuple) else item
+        if name and name not in names:
+            names.append(name)
+    return names
+
+
+def _safe_menu_handle(index):
+    return "attr_{0}".format(index)
+
+
+def _set_menu_attribute_map(attr_items):
+    attr_map = {}
+    for index, item in enumerate(attr_items):
+        attr_name = item[0] if isinstance(item, tuple) else item
+        attr_map[_safe_menu_handle(index)] = attr_name
+    setattr(hou.session, SESSION_MENU_ATTR_MAP_NAME, attr_map)
+    return attr_map
+
+
+def _menu_attribute_map():
+    attr_map = getattr(hou.session, SESSION_MENU_ATTR_MAP_NAME, {})
+    if not isinstance(attr_map, dict):
+        return {}
+    return attr_map
+
+
+def _menu_item_name(menu_item):
+    if hasattr(menu_item, "name"):
+        try:
+            return menu_item.name()
+        except Exception:
+            pass
+
+    if menu_item is None:
+        return ""
+
+    return str(menu_item)
+
+
+def _radio_value_from_menu_kwargs(kwargs, strip_id, valid_values):
+    menu_item = _menu_item_name(kwargs.get("menu_item"))
+    selected_value = _menu_item_name(kwargs.get(strip_id))
+
+    if menu_item == strip_id and selected_value:
+        return selected_value
+
+    if menu_item in valid_values:
+        return menu_item
+
+    if selected_value in valid_values:
+        return selected_value
+
+    return ""
+
+
+def _refresh_attribute_menu(quiet=False):
+    if not quiet:
+        _show_status("Refreshing Select Node attribute menu.", hou.severityType.Message)
+
+    def _do():
+        _register_viewer_state()
+        _activate_viewer_state()
+
+    try:
+        hou.ui.postEventCallback(_do)
+    except Exception:
+        _do()
+
+
+def _node_path_from_value(value):
+    if isinstance(value, str):
+        return value.strip()
+
+    if isinstance(value, bytes):
+        try:
+            return value.decode("utf-8").strip()
+        except Exception:
+            return ""
+
+    if isinstance(value, (tuple, list)) and value:
+        first_value = value[0]
+        if isinstance(first_value, str):
+            return first_value.strip()
+
+    return ""
+
+
+def _short_preview(value, limit=72):
+    value = str(value).replace("\r", "\\r").replace("\n", "\\n")
+    if len(value) <= limit:
+        return value
+    return value[:limit - 3] + "..."
+
+
+def _attribute_display_value(value):
+    try:
+        if isinstance(value, str):
+            return _short_preview(value)
+
+        if isinstance(value, bytes):
+            try:
+                return _short_preview(value.decode("utf-8"))
+            except Exception:
+                return _short_preview(value)
+
+        if isinstance(value, (tuple, list)):
+            values = [_short_preview(item, limit=24) for item in value]
+            return _short_preview("({0})".format(", ".join(values)))
+
+        return _short_preview(value)
+    except Exception:
+        return "<unavailable>"
+
+
+def _html_escape(value):
+    text = str(value)
+    return (
+        text.replace("&", "&amp;")
+        .replace("<", "&lt;")
+        .replace(">", "&gt;")
+        .replace('"', "&quot;")
+        .replace("'", "&#39;")
+    )
+
+
+def _hover_label_text(entity_label, attr_name, attr_value):
+    return "{0}<br><b>{1}</b>: {2}".format(
+        _html_escape(entity_label),
+        _html_escape(attr_name),
+        _html_escape(_attribute_display_value(attr_value)),
+    )
+
+
+def _primitive_click_only_warning():
+    return (
+        "Detail attribute click selection is not supported. "
+        "Use Select Attribute Origin or switch to Primitive, Point, or Vertex."
+    )
+
+
+def _resolve_node_from_element_value(sop, attr_class, attr_name, attr_value):
+    mode = _resolve_mode()
+    node_path = _node_path_from_value(attr_value)
+    if not node_path:
+        return None, "{0} attribute '{1}' exists but has no node path.".format(
+            _attribute_class_label(attr_class),
+            attr_name,
+        )
+
+    node, warning, info = _resolve_node_from_value(sop, node_path, mode)
+    if warning:
+        return None, "{0} in {1} attribute '{2}': {3}".format(
+            warning,
+            _attribute_class_label_lower(attr_class),
+            attr_name,
+            node_path,
+        )
+
+    return (node, attr_name, node_path, mode, node.path(), info), None
+
+
+def _hash_for_path(node_path):
+    hash_value = 2166136261
+    for char in node_path:
+        hash_value ^= ord(char)
+        hash_value = (hash_value * 16777619) & 0xffffffff
+    return hash_value
+
+
+def _hsv_to_rgb(hue, saturation, value):
+    hue = hue % 1.0
+    scaled_hue = hue * 6.0
+    chroma = value * saturation
+    secondary = chroma * (1.0 - abs((scaled_hue % 2.0) - 1.0))
+    match = value - chroma
+
+    if scaled_hue < 1.0:
+        red, green, blue = chroma, secondary, 0.0
+    elif scaled_hue < 2.0:
+        red, green, blue = secondary, chroma, 0.0
+    elif scaled_hue < 3.0:
+        red, green, blue = 0.0, chroma, secondary
+    elif scaled_hue < 4.0:
+        red, green, blue = 0.0, secondary, chroma
+    elif scaled_hue < 5.0:
+        red, green, blue = secondary, 0.0, chroma
+    else:
+        red, green, blue = chroma, 0.0, secondary
+
+    return red + match, green + match, blue + match
+
+
+def _rgba_vector(red, green, blue, alpha):
+    try:
+        return hou.Vector4((red, green, blue, alpha))
+    except Exception:
+        return (red, green, blue, alpha)
+
+
+def _hover_color_for_hue(hue, alpha):
+    red, green, blue = _hsv_to_rgb(hue, 0.82, 1.0)
+    return _rgba_vector(red, green, blue, alpha)
+
+
+def _hover_color_pair_for_hue(hue):
+    return (
+        _hover_color_for_hue(hue, HOVER_ALPHA),
+        _hover_color_for_hue(hue, HOVER_GLOW_ALPHA),
+    )
+
+
+def _hover_neutral_color_pair():
+    return (
+        _rgba_vector(0.92, 0.94, 1.0, 0.32),
+        _rgba_vector(0.30, 0.48, 1.0, 0.20),
+    )
+
+
+def _hover_point_color_pair(attr_class):
+    if _normalize_attribute_class(attr_class) == ATTRIBUTE_CLASS_VERTEX:
+        return (
+            _rgba_vector(1.0, 0.58, 0.18, 1.0),
+            _rgba_vector(1.0, 0.35, 0.05, 0.55),
+        )
+
+    return (
+        _rgba_vector(0.20, 0.95, 1.0, 1.0),
+        _rgba_vector(0.10, 0.55, 1.0, 0.55),
+    )
+
+
+def _create_hover_sphere_geometry(rings=8, segments=12):
+    try:
+        geo = hou.Geometry()
+    except Exception:
+        return None
+
+    try:
+        rings = max(3, int(rings))
+        segments = max(3, int(segments))
+
+        top = geo.createPoint()
+        top.setPosition((0.0, 1.0, 0.0))
+        bottom = geo.createPoint()
+        bottom.setPosition((0.0, -1.0, 0.0))
+
+        rows = []
+        for ring in range(1, rings):
+            theta = math.pi * float(ring) / float(rings)
+            row = []
+            sin_theta = math.sin(theta)
+            cos_theta = math.cos(theta)
+            for segment in range(segments):
+                phi = 2.0 * math.pi * float(segment) / float(segments)
+                point = geo.createPoint()
+                point.setPosition((
+                    sin_theta * math.cos(phi),
+                    cos_theta,
+                    sin_theta * math.sin(phi),
+                ))
+                row.append(point)
+            rows.append(row)
+
+        for segment in range(segments):
+            next_segment = (segment + 1) % segments
+            polygon = geo.createPolygon()
+            polygon.addVertex(top)
+            polygon.addVertex(rows[0][segment])
+            polygon.addVertex(rows[0][next_segment])
+
+        for ring in range(len(rows) - 1):
+            for segment in range(segments):
+                next_segment = (segment + 1) % segments
+                polygon = geo.createPolygon()
+                polygon.addVertex(rows[ring][segment])
+                polygon.addVertex(rows[ring + 1][segment])
+                polygon.addVertex(rows[ring + 1][next_segment])
+                polygon.addVertex(rows[ring][next_segment])
+
+        last_row = rows[-1]
+        for segment in range(segments):
+            next_segment = (segment + 1) % segments
+            polygon = geo.createPolygon()
+            polygon.addVertex(last_row[next_segment])
+            polygon.addVertex(last_row[segment])
+            polygon.addVertex(bottom)
+
+        return geo
+    except Exception:
+        return None
+
+
+def _hue_key(hue):
+    return int(round((hue % 1.0) * HOVER_HUE_KEY_SCALE)) % HOVER_HUE_KEY_SCALE
+
+
+def _distinct_hover_color_pairs(node_paths):
+    unique_paths = sorted(
+        set(node_path for node_path in node_paths if node_path),
+        key=lambda node_path: (_hash_for_path(node_path), node_path),
+    )
+    if not unique_paths:
+        return {}
+
+    used_hue_keys = set()
+    color_pairs = {}
+    path_count = len(unique_paths)
+
+    for index, node_path in enumerate(unique_paths):
+        hue = ((index * GOLDEN_RATIO_CONJUGATE) + 0.07) % 1.0
+        hue_key = _hue_key(hue)
+
+        attempts = 0
+        while hue_key in used_hue_keys:
+            attempts += 1
+            hue = (hue + GOLDEN_RATIO_CONJUGATE) % 1.0
+            hue_key = _hue_key(hue)
+            if attempts > path_count + 8:
+                break
+
+        if hue_key in used_hue_keys:
+            for fallback_index in range(path_count * 2 + 1):
+                hue = (index + fallback_index + 0.5) / float(path_count * 2 + 1)
+                hue_key = _hue_key(hue)
+                if hue_key not in used_hue_keys:
+                    break
+
+        used_hue_keys.add(hue_key)
+        color_pairs[node_path] = _hover_color_pair_for_hue(hue)
+
+    return color_pairs
+
+
+def _node_inputs(node):
+    try:
+        return [input_node for input_node in node.inputs() if input_node is not None]
+    except Exception:
+        return []
+
+
+def _iter_upstream_nodes(source_sop):
+    if source_sop is None:
+        return []
+
+    seen_paths = set()
+    queue = _node_inputs(source_sop)
+    upstream_nodes = []
+
+    while queue:
+        node = queue.pop(0)
+        try:
+            node_path = node.path()
+        except Exception:
+            continue
+
+        if node_path in seen_paths:
+            continue
+
+        seen_paths.add(node_path)
+        upstream_nodes.append(node)
+        queue.extend(_node_inputs(node))
+
+    return upstream_nodes
+
+
+def _node_path(node):
+    if node is None:
+        return ""
+
+    try:
+        return node.path()
+    except Exception:
+        return ""
+
+
+def _node_type_name(node):
+    try:
+        return node.type().name().lower()
+    except Exception:
+        return ""
+
+
+def _node_is_wrangle_wrapper(node):
+    return "wrangle" in _node_type_name(node)
+
+
+def _nearest_wrangle_origin_node(node):
+    current = node
+    seen_paths = set()
+
+    while current is not None:
+        current_path = _node_path(current)
+        if current_path:
+            if current_path in seen_paths:
+                break
+            seen_paths.add(current_path)
+
+        if _node_is_wrangle_wrapper(current):
+            return current
+
+        try:
+            current = current.parent()
+        except Exception:
+            break
+
+    return None
+
+
+def _canonical_origin_node(node):
+    wrangle_node = _nearest_wrangle_origin_node(node)
+    if wrangle_node is not None:
+        return wrangle_node
+    return node
+
+
+def _node_dataflow_inputs(node):
+    if node is None:
+        return []
+
+    for method_name in ("inputsFollowingOutputs", "inputs"):
+        method = getattr(node, method_name, None)
+        if method is None:
+            continue
+
+        try:
+            return [input_node for input_node in method() if input_node is not None]
+        except Exception:
+            continue
+
+    return []
+
+
+def _subnet_output_nodes(node):
+    if node is None:
+        return []
+
+    method = getattr(node, "subnetOutputs", None)
+    if method is None:
+        return []
+
+    try:
+        return [output_node for output_node in method() if output_node is not None]
+    except Exception:
+        return []
+
+
+def _origin_traversal_nodes(node):
+    if node is None:
+        return []
+
+    node = _canonical_origin_node(node)
+    if node is None:
+        return []
+
+    if _node_is_wrangle_wrapper(node):
+        return [node]
+
+    output_nodes = _subnet_output_nodes(node)
+    if output_nodes:
+        return output_nodes
+
+    return [node]
+
+
+def _origin_dataflow_inputs(node):
+    node = _canonical_origin_node(node)
+    if node is None:
+        return []
+
+    if _node_is_wrangle_wrapper(node):
+        raw_inputs = _node_inputs(node)
+    else:
+        raw_inputs = _node_dataflow_inputs(node)
+
+    inputs = []
+    seen_paths = set()
+    for input_node in raw_inputs:
+        for traversal_node in _origin_traversal_nodes(input_node):
+            node_path = _node_path(traversal_node)
+            if not node_path or node_path in seen_paths:
+                continue
+            seen_paths.add(node_path)
+            inputs.append(traversal_node)
+    return inputs
+
+
+def _iter_upstream_nodes_with_depth(source_sop):
+    if source_sop is None:
+        return []
+
+    seen_paths = set()
+    order = 0
+    queue = []
+    for node in _origin_traversal_nodes(source_sop):
+        queue.append((node, 0, order))
+        order += 1
+    upstream_nodes = []
+
+    while queue:
+        node, depth, visit_order = queue.pop(0)
+        node = _canonical_origin_node(node)
+        node_path = _node_path(node)
+        if not node_path or node_path in seen_paths:
+            continue
+
+        seen_paths.add(node_path)
+        upstream_nodes.append((node, depth, visit_order, node_path))
+
+        for input_node in _origin_dataflow_inputs(node):
+            queue.append((input_node, depth + 1, order))
+            order += 1
+
+    return upstream_nodes
+
+
+def _origin_candidate_sort_key(candidate):
+    return (
+        -candidate.get("depth", 0),
+        candidate.get("order", 0),
+        candidate.get("path", ""),
+    )
+
+
+def _node_has_attribute(node, attr_class, attr_name, attr_cache=None):
+    if node is None or not attr_name:
+        return False
+
+    attr_class = _normalize_attribute_class(attr_class)
+    node_path = _node_path(node)
+    cache_key = (node_path, attr_class, attr_name)
+    if attr_cache is not None and cache_key in attr_cache:
+        return attr_cache[cache_key]
+
+    try:
+        geo = node.geometry()
+    except Exception:
+        if attr_cache is not None:
+            attr_cache[cache_key] = False
+        return False
+
+    try:
+        has_attr = _find_geometry_attribute(geo, attr_class, attr_name) is not None
+    except Exception:
+        has_attr = False
+
+    if attr_cache is not None:
+        attr_cache[cache_key] = has_attr
+    return has_attr
+
+
+def _attribute_origin_candidates(source_sop, attr_name, attr_class=None):
+    attr_name = str(attr_name).strip()
+    attr_class = _normalize_attribute_class(attr_class or _attribute_class())
+    if not attr_name:
+        return [], "{0} attribute name is empty.".format(
+            _attribute_class_label(attr_class)
+        )
+
+    if source_sop is None:
+        return [], "No displayed SOP node found for attribute origin search."
+
+    candidates_by_path = {}
+    attr_cache = {}
+    for node, depth, visit_order, node_path in _iter_upstream_nodes_with_depth(source_sop):
+        origin_node = _canonical_origin_node(node)
+        origin_path = _node_path(origin_node)
+        if not origin_path:
+            continue
+
+        if not _node_has_attribute(origin_node, attr_class, attr_name, attr_cache):
+            continue
+
+        input_nodes = _origin_dataflow_inputs(origin_node)
+        if any(
+            _node_has_attribute(input_node, attr_class, attr_name, attr_cache)
+            for input_node in input_nodes
+        ):
+            continue
+
+        candidate = {
+            "node": origin_node,
+            "depth": depth,
+            "order": visit_order,
+            "path": origin_path,
+        }
+        existing = candidates_by_path.get(origin_path)
+        if existing is None or (
+            _origin_candidate_sort_key(candidate) < _origin_candidate_sort_key(existing)
+        ):
+            candidates_by_path[origin_path] = candidate
+
+    candidates = list(candidates_by_path.values())
+
+    if not candidates:
+        return [], (
+            "Could not find an upstream SOP that first creates {0} attribute '{1}'."
+        ).format(_attribute_class_label_lower(attr_class), attr_name)
+
+    candidates.sort(key=_origin_candidate_sort_key)
+
+    return candidates, None
+
+
+def _find_attribute_origin_node(source_sop, attr_name, attr_class=None):
+    attr_name = str(attr_name).strip()
+    attr_class = _normalize_attribute_class(attr_class or _attribute_class())
+    candidates, warning = _attribute_origin_candidates(source_sop, attr_name, attr_class)
+    if warning:
+        return None, warning, None
+
+    selected = candidates[0]
+
+    info = None
+    if len(candidates) > 1:
+        info = (
+            "{0} attribute '{1}' has multiple origin candidates; using {2}."
+        ).format(_attribute_class_label(attr_class), attr_name, selected["path"])
+
+    return selected["node"], None, info
+
+
+def _find_name_match_in_current_network(source_sop, node_name):
+    if source_sop is None:
+        return None
+
+    try:
+        parent = source_sop.parent()
+    except Exception:
+        parent = None
+
+    if parent is None:
+        return None
+
+    try:
+        match = parent.node(node_name)
+    except Exception:
+        match = None
+
+    return match
+
+
+def _resolve_node_from_value(source_sop, attr_value, mode):
+    attr_value = str(attr_value).strip()
+    if not attr_value:
+        return None, "The matching attribute is empty.", None
+
+    if mode == RESOLVE_MODE_EXACT_PATH:
+        if not attr_value.startswith("/"):
+            return None, "Expected a full Houdini node path, but found: {0}".format(attr_value), None
+
+        node = hou.node(attr_value)
+        if node is None:
+            return None, "Stored node path no longer exists: {0}".format(attr_value), None
+        return node, None, None
+
+    if mode == RESOLVE_MODE_RELATIVE_PATH:
+        try:
+            parent = source_sop.parent()
+        except Exception:
+            parent = None
+
+        if parent is None:
+            return None, "The displayed SOP has no parent network for relative path resolving.", None
+
+        try:
+            node = parent.node(attr_value)
+        except Exception:
+            node = None
+
+        if node is None:
+            return None, "Relative node path does not resolve from {0}: {1}".format(
+                parent.path(),
+                attr_value,
+            ), None
+        return node, None, None
+
+    if mode == RESOLVE_MODE_NODE_NAME:
+        try:
+            if source_sop is not None and source_sop.name() == attr_value:
+                return source_sop, None, None
+        except Exception:
+            pass
+
+        upstream_matches = [
+            node for node in _iter_upstream_nodes(source_sop)
+            if node.name() == attr_value
+        ]
+        if upstream_matches:
+            node = upstream_matches[0]
+            info = None
+            if len(upstream_matches) > 1:
+                info = "Name '{0}' matched multiple upstream nodes; using {1}.".format(
+                    attr_value,
+                    node.path(),
+                )
+            return node, None, info
+
+        node = _find_name_match_in_current_network(source_sop, attr_value)
+        if node is not None:
+            return node, None, None
+
+        return None, "Could not find a node named '{0}' upstream or in the current network.".format(
+            attr_value
+        ), None
+
+    return None, "Unknown Select Node resolve mode: {0}".format(mode), None
+
+
+def _screen_position(scene_viewer, position):
+    try:
+        viewport = scene_viewer.curViewport()
+        screen_pos = viewport.mapToScreen(position)
+        return float(screen_pos[0]), float(screen_pos[1])
+    except Exception:
+        return None
+
+
+def _screen_distance_squared(a, b):
+    if a is None or b is None:
+        return None
+
+    try:
+        dx = float(a[0]) - float(b[0])
+        dy = float(a[1]) - float(b[1])
+        return dx * dx + dy * dy
+    except Exception:
+        return None
+
+
+def _point_position(point):
+    try:
+        return point.position()
+    except Exception:
+        return None
+
+
+def _pick_display_hit(scene_viewer, ui_event):
+    try:
+        pwd = scene_viewer.pwd()
+    except Exception:
+        pwd = None
+
+    if pwd is None:
+        return None, None, None, None, None, "Select Node needs an active SOP network in the Scene Viewer."
+
+    try:
+        sop = pwd.displayNode()
+    except Exception:
+        sop = None
+
+    if sop is None:
+        return None, None, None, None, None, "No displayed SOP node found to pick from."
+
+    try:
+        geo = sop.geometry()
+    except Exception as exc:
+        return None, None, None, None, None, "Could not read cooked geometry from {0}: {1}".format(
+            sop.path(),
+            exc,
+        )
+
+    try:
+        ray_origin, ray_dir = ui_event.ray()
+        hit_pos = hou.Vector3()
+        hit_nrm = hou.Vector3()
+        hit_uvw = hou.Vector3()
+        prim_num = geo.intersect(ray_origin, ray_dir, hit_pos, hit_nrm, hit_uvw)
+    except Exception as exc:
+        return None, None, None, None, None, "Could not pick the displayed geometry: {0}".format(exc)
+
+    if prim_num < 0:
+        return None, None, None, None, None, "No primitive was picked."
+
+    prim = geo.prim(prim_num)
+    if prim is None:
+        return None, None, None, None, None, "The picked primitive is no longer available."
+
+    screen_pos = _screen_position(scene_viewer, hit_pos)
+    return sop, geo, prim, hit_pos, screen_pos, None
+
+
+def _pick_display_primitive(scene_viewer, ui_event):
+    sop, geo, prim, _hit_pos, _screen_pos, warning = _pick_display_hit(
+        scene_viewer,
+        ui_event,
+    )
+    return sop, geo, prim, warning
+
+
+def _nearest_hit_point(scene_viewer, prim, hit_screen_pos):
+    if hit_screen_pos is None:
+        return None
+
+    try:
+        points = prim.points()
+    except Exception:
+        return None
+
+    best_point = None
+    best_distance = None
+    for point in points:
+        position = _point_position(point)
+        if position is None:
+            continue
+
+        distance = _screen_distance_squared(
+            _screen_position(scene_viewer, position),
+            hit_screen_pos,
+        )
+        if distance is None:
+            continue
+
+        if best_distance is None or distance < best_distance:
+            best_distance = distance
+            best_point = point
+
+    if best_distance is None or best_distance > HOVER_POINT_SCREEN_RADIUS * HOVER_POINT_SCREEN_RADIUS:
+        return None
+
+    return best_point
+
+
+def _nearest_hit_vertex(scene_viewer, prim, hit_screen_pos):
+    if hit_screen_pos is None:
+        return None
+
+    try:
+        vertices = prim.vertices()
+    except Exception:
+        return None
+
+    best_vertex = None
+    best_distance = None
+    for vertex in vertices:
+        try:
+            point = vertex.point()
+        except Exception:
+            point = None
+        if point is None:
+            continue
+
+        position = _point_position(point)
+        if position is None:
+            continue
+
+        distance = _screen_distance_squared(
+            _screen_position(scene_viewer, position),
+            hit_screen_pos,
+        )
+        if distance is None:
+            continue
+
+        if best_distance is None or distance < best_distance:
+            best_distance = distance
+            best_vertex = vertex
+
+    if best_distance is None or best_distance > HOVER_POINT_SCREEN_RADIUS * HOVER_POINT_SCREEN_RADIUS:
+        return None
+
+    return best_vertex
+
+
+def _resolve_node_from_primitive(sop, geo, prim):
+    attr_name = _matching_attribute()
+    attrib = _find_geometry_attribute(geo, ATTRIBUTE_CLASS_PRIMITIVE, attr_name)
+    if attrib is None:
+        return None, (
+            "Missing primitive attribute '{0}'. Choose a primitive attribute from the right-click menu."
+        ).format(attr_name)
+
+    try:
+        attr_value = prim.attribValue(attrib)
+    except Exception:
+        attr_value = ""
+
+    return _resolve_node_from_element_value(
+        sop,
+        ATTRIBUTE_CLASS_PRIMITIVE,
+        attr_name,
+        attr_value,
+    )
+
+
+def _resolve_node_from_point(sop, geo, point):
+    attr_name = _matching_attribute()
+    attrib = _find_geometry_attribute(geo, ATTRIBUTE_CLASS_POINT, attr_name)
+    if attrib is None:
+        return None, (
+            "Missing point attribute '{0}'. Choose a point attribute from the right-click menu."
+        ).format(attr_name)
+
+    try:
+        attr_value = point.attribValue(attrib)
+    except Exception:
+        attr_value = ""
+
+    return _resolve_node_from_element_value(
+        sop,
+        ATTRIBUTE_CLASS_POINT,
+        attr_name,
+        attr_value,
+    )
+
+
+def _resolve_node_from_vertex(sop, geo, vertex):
+    attr_name = _matching_attribute()
+    attrib = _find_geometry_attribute(geo, ATTRIBUTE_CLASS_VERTEX, attr_name)
+    if attrib is None:
+        return None, (
+            "Missing vertex attribute '{0}'. Choose a vertex attribute from the right-click menu."
+        ).format(attr_name)
+
+    try:
+        attr_value = vertex.attribValue(attrib)
+    except Exception:
+        attr_value = ""
+
+    return _resolve_node_from_element_value(
+        sop,
+        ATTRIBUTE_CLASS_VERTEX,
+        attr_name,
+        attr_value,
+    )
+
+
+def _geometry_cache_token(geo):
+    for method_name in ("vexAttribDataId", "modificationCounter"):
+        try:
+            method = getattr(geo, method_name)
+            return (method_name, method())
+        except Exception:
+            pass
+
+    try:
+        return ("prim_count", geo.primCount())
+    except Exception:
+        return ("geometry_id", id(geo))
+
+
+def _primitive_count(geo):
+    try:
+        return geo.primCount()
+    except Exception:
+        pass
+
+    try:
+        return len(geo.prims())
+    except Exception:
+        return 0
+
+
+def _attribute_tuple_size(attrib):
+    try:
+        size = attrib.size()
+        if isinstance(size, int) and size > 0:
+            return size
+    except Exception:
+        pass
+
+    return 1
+
+
+def _primitive_attribute_values(geo, attr_name, attrib, prim_count):
+    if _attribute_is_string_like(attrib):
+        try:
+            values = geo.primStringAttribValues(attr_name)
+            tuple_size = _attribute_tuple_size(attrib)
+            if tuple_size > 1:
+                values = values[0::tuple_size]
+            if len(values) == prim_count:
+                return [_node_path_from_value(value) for value in values]
+        except Exception:
+            pass
+
+    raw_values = []
+    try:
+        prims = geo.prims()
+    except Exception:
+        prims = []
+
+    for prim in prims:
+        try:
+            raw_values.append(_node_path_from_value(prim.attribValue(attrib)))
+        except Exception:
+            raw_values.append("")
+
+    return raw_values
+
+
+def _build_hover_primitive_index(source_sop, geo, attr_name, mode):
+    prim_count = _primitive_count(geo)
+    try:
+        attrib = geo.findPrimAttrib(attr_name)
+    except Exception:
+        attrib = None
+
+    if attrib is None:
+        return {
+            "dense": False,
+            "node_to_indices": {},
+            "node_colors": {},
+            "prim_count": prim_count,
+        }
+
+    if prim_count > HOVER_FULL_INDEX_PRIM_LIMIT:
+        return {
+            "dense": True,
+            "node_to_indices": {},
+            "node_colors": {},
+            "prim_count": prim_count,
+        }
+
+    raw_values = _primitive_attribute_values(geo, attr_name, attrib, prim_count)
+    if len(raw_values) != prim_count:
+        return {
+            "dense": True,
+            "node_to_indices": {},
+            "node_colors": {},
+            "prim_count": prim_count,
+        }
+
+    raw_to_resolved_path = {}
+    node_to_indices = {}
+    for prim_number, attr_value in enumerate(raw_values):
+        if not attr_value:
+            continue
+
+        if attr_value in raw_to_resolved_path:
+            node_path = raw_to_resolved_path[attr_value]
+        else:
+            node, _warning, _info = _resolve_node_from_value(source_sop, attr_value, mode)
+            node_path = ""
+            if node is not None:
+                try:
+                    node_path = node.path()
+                except Exception:
+                    node_path = ""
+            raw_to_resolved_path[attr_value] = node_path
+
+        if node_path:
+            node_to_indices.setdefault(node_path, []).append(prim_number)
+
+    return {
+        "dense": False,
+        "node_to_indices": node_to_indices,
+        "node_colors": _distinct_hover_color_pairs(node_to_indices.keys()),
+        "prim_count": prim_count,
+    }
+
+
+def _frame_network_selection(network_editor):
+    if network_editor is None:
+        return
+
+    for method_name in ("homeToSelection", "frameSelection"):
+        method = getattr(network_editor, method_name, None)
+        if method is None:
+            continue
+        try:
+            method()
+            return
+        except Exception:
+            pass
+
+
+def _network_editor_pane():
+    try:
+        return hou.ui.paneTabOfType(hou.paneTabType.NetworkEditor)
+    except Exception:
+        return None
+
+
+def _node_parent_or_warn(node):
+    if node is None:
+        _show_status("The picked node no longer exists.", hou.severityType.Warning)
+        return None
+
+    parent = node.parent()
+    if parent is None:
+        _show_status("The picked node has no parent network.", hou.severityType.Warning)
+        return None
+
+    return parent
+
+
+def _set_ui_network_context(node, scene_viewer):
+    parent = _node_parent_or_warn(node)
+    if parent is None:
+        return None, None
+
+    try:
+        scene_viewer.setPwd(parent)
+    except Exception:
+        pass
+
+    network_editor = _network_editor_pane()
+
+    try:
+        if network_editor is not None:
+            network_editor.setPwd(parent)
+    except Exception:
+        pass
+
+    return parent, network_editor
+
+
+def _set_network_editor_context(node):
+    parent = _node_parent_or_warn(node)
+    if parent is None:
+        return None, None
+
+    network_editor = _network_editor_pane()
+
+    try:
+        if network_editor is not None:
+            network_editor.setPwd(parent)
+    except Exception:
+        pass
+
+    return parent, network_editor
+
+
+def _select_node_in_ui(node, scene_viewer, attr_name, mode):
+    _parent, network_editor = _set_ui_network_context(node, scene_viewer)
+    if _parent is None:
+        return False
+
+    try:
+        node.setCurrent(True, clear_all_selected=True)
+        node.setSelected(True, clear_all_selected=True)
+    except Exception as exc:
+        _show_status(
+            "Could not select node {0}: {1}".format(node.path(), exc),
+            hou.severityType.Warning,
+        )
+        return False
+
+    _frame_network_selection(network_editor)
+    _show_status(
+        "Selected {0} from '{1}' ({2}).".format(
+            node.path(),
+            attr_name,
+            _resolve_mode_label(mode),
+        ),
+        hou.severityType.Message,
+    )
+    return True
+
+
+def _select_origin_node_paths_in_ui(node_paths, attr_name, mode, attr_class=None):
+    attr_class = _normalize_attribute_class(attr_class or _attribute_class())
+    attr_label = _attribute_class_label_lower(attr_class)
+    unique_paths = []
+    seen_paths = set()
+    for node_path in node_paths:
+        node_path = str(node_path).strip()
+        if not node_path or node_path in seen_paths:
+            continue
+        seen_paths.add(node_path)
+        unique_paths.append(node_path)
+
+    nodes = []
+    missing_paths = []
+    for node_path in unique_paths:
+        node = hou.node(node_path)
+        if node is None:
+            missing_paths.append(node_path)
+            continue
+        nodes.append(node)
+
+    if missing_paths:
+        _show_attribute_origin_warning(
+            "Some selected attribute origin nodes are no longer available: {0}".format(
+                ", ".join(missing_paths)
+            ),
+        )
+        return False
+
+    if not nodes:
+        _show_status("No attribute origin nodes were selected.", hou.severityType.Warning)
+        return False
+
+    parent_paths = set()
+    for node in nodes:
+        try:
+            parent = node.parent()
+            parent_paths.add(parent.path() if parent is not None else "")
+        except Exception:
+            parent_paths.add("")
+
+    if "" in parent_paths:
+        _show_attribute_origin_warning(
+            "One or more selected attribute origin nodes have no parent network."
+        )
+        return False
+
+    _parent, network_editor = _set_network_editor_context(nodes[0])
+    if _parent is None:
+        return False
+
+    try:
+        try:
+            selected_nodes = hou.selectedNodes()
+        except Exception:
+            selected_nodes = ()
+
+        for selected_node in selected_nodes:
+            try:
+                selected_node.setSelected(False, clear_all_selected=False)
+            except Exception:
+                pass
+
+        for node in nodes:
+            node.setSelected(True, clear_all_selected=False)
+        nodes[0].setCurrent(True, clear_all_selected=False)
+    except Exception as exc:
+        _show_status(
+            "Could not select attribute origin nodes: {0}".format(exc),
+            hou.severityType.Warning,
+        )
+        return False
+
+    _frame_network_selection(network_editor)
+    try:
+        focus_path = nodes[0].path()
+    except Exception:
+        focus_path = "<unknown>"
+
+    if len(parent_paths) > 1:
+        message = "Selected {0} {1} attribute origin nodes across {2} networks; focused {3}.".format(
+            len(nodes),
+            attr_label,
+            len(parent_paths),
+            focus_path,
+        )
+    elif len(nodes) == 1:
+        message = "Selected {0} from {1} attribute '{2}' ({3}).".format(
+            focus_path,
+            attr_label,
+            attr_name,
+            _resolve_mode_label(mode),
+        )
+    else:
+        message = "Selected {0} origin nodes from {1} attribute '{2}' ({3}).".format(
+            len(nodes),
+            attr_label,
+            attr_name,
+            _resolve_mode_label(mode),
+        )
+
+    _show_status(message, hou.severityType.Message)
+    return True
+
+
+def _defer_select_origin_node_paths(node_paths, attr_name, attr_class):
+    node_paths = tuple(str(node_path) for node_path in node_paths if node_path)
+    attr_name = str(attr_name)
+    attr_class = _normalize_attribute_class(attr_class)
+
+    def _deferred_select():
+        try:
+            _select_origin_node_paths_in_ui(
+                node_paths,
+                attr_name,
+                RESOLVE_MODE_ATTRIBUTE_ORIGIN,
+                attr_class,
+            )
+        except Exception as exc:
+            _show_attribute_origin_warning(
+                "Attribute origin selection failed: {0}".format(exc)
+            )
+
+    try:
+        import hdefereval
+        hdefereval.executeDeferred(_deferred_select)
+        return True
+    except Exception as exc:
+        _show_attribute_origin_warning(
+            "Could not defer attribute origin selection: {0}".format(exc)
+        )
+        return False
+
+
+def _origin_candidate_label(candidate, index):
+    node_path = candidate.get("path", "")
+    if index == 0:
+        return "{0}  (Attribute Origin default)".format(node_path)
+    return node_path
+
+
+def _choose_attribute_origin_paths(candidates, attr_name, attr_class, source_sop):
+    attr_class = _normalize_attribute_class(attr_class)
+    labels = [
+        _origin_candidate_label(candidate, index)
+        for index, candidate in enumerate(candidates)
+    ]
+
+    try:
+        source_path = source_sop.path()
+    except Exception:
+        source_path = "<displayed SOP>"
+
+    message = (
+        "Choose one or more origin nodes for {0} attribute '{1}' on {2}."
+    ).format(_attribute_class_label_lower(attr_class), attr_name, source_path)
+
+    try:
+        selection = hou.ui.selectFromList(
+            labels,
+            default_choices=(0,),
+            exclusive=False,
+            message=message,
+            title="Select Attribute Origin",
+            column_header="Origin Nodes",
+            clear_on_cancel=True,
+            sort=False,
+        )
+    except Exception as exc:
+        _show_attribute_origin_warning(
+            "Could not open attribute origin chooser: {0}".format(exc),
+        )
+        return None
+
+    if not selection:
+        return []
+
+    selected_paths = []
+    selected_indices = set()
+    for selected_index in selection:
+        if selected_index < 0 or selected_index >= len(candidates):
+            _show_attribute_origin_warning("Attribute origin selection is out of range.")
+            return []
+        if selected_index in selected_indices:
+            continue
+        selected_indices.add(selected_index)
+        selected_paths.append(candidates[selected_index].get("path", ""))
+
+    return selected_paths
+
+
+def _show_attribute_origin_warning(message):
+    _show_status(message, hou.severityType.Warning)
+    try:
+        hou.ui.displayMessage(
+            message,
+            severity=hou.severityType.Warning,
+            title="Select Attribute Origin",
+        )
+    except Exception:
+        pass
+
+
+def _select_attribute_origin_from_popup(scene_viewer):
+    source_sop, geo = _displayed_sop_and_geometry(scene_viewer)
+    if source_sop is None or geo is None:
+        _show_attribute_origin_warning(
+            "No displayed SOP node found for attribute origin search.",
+        )
+        return False
+
+    attr_name = _matching_attribute()
+    attr_class = _attribute_class()
+    attrib = _find_geometry_attribute(geo, attr_class, attr_name)
+
+    if attrib is None:
+        _show_attribute_origin_warning(
+            "Missing {0} attribute '{1}'. Choose a {0} attribute from the right-click menu.".format(
+                _attribute_class_label_lower(attr_class),
+                attr_name,
+            ),
+        )
+        return False
+
+    candidates, warning = _attribute_origin_candidates(source_sop, attr_name, attr_class)
+    if warning:
+        _show_attribute_origin_warning(warning)
+        return False
+
+    selected_paths = _choose_attribute_origin_paths(
+        candidates,
+        attr_name,
+        attr_class,
+        source_sop,
+    )
+    if selected_paths is None:
+        return False
+
+    if not selected_paths:
+        return True
+
+    return _defer_select_origin_node_paths(selected_paths, attr_name, attr_class)
+
+
+class State(object):
+    def __init__(self, state_name, scene_viewer):
+        self.state_name = state_name
+        self.scene_viewer = scene_viewer
+        self._menu_source_key = None
+        self._auto_refresh_pending = False
+        self._hover_drawable = None
+        self._hover_drawable_failed = False
+        self._hover_point_drawable = None
+        self._hover_point_drawable_failed = False
+        self._hover_sphere_drawable = None
+        self._hover_sphere_drawable_failed = False
+        self._hover_sphere_geometry = None
+        self._hover_text_drawable = None
+        self._hover_text_drawable_failed = False
+        self._hover_key = None
+        self._hover_visible = False
+        self._hover_point_key = None
+        self._hover_point_visible = False
+        self._hover_sphere_key = None
+        self._hover_sphere_visible = False
+        self._hover_sphere_position = None
+        self._hover_sphere_attr_class = None
+        self._hover_text_key = None
+        self._hover_text_visible = False
+        self._hover_text_params = None
+        self._hover_geometry_key = None
+        self._hover_disabled_geometry_key = None
+        self._hover_point_geometry_key = None
+        self._hover_point_disabled_geometry_key = None
+        self._hover_index_cache_key = None
+        self._hover_index_cache = None
+        self._hover_fallback_color_pairs = {}
+        self._hover_fallback_hue_keys = set()
+        self._hover_status_path = None
+
+    def onGenerate(self, kwargs):
+        self._menu_source_key = _attribute_menu_source_key(self.scene_viewer)
+        self.scene_viewer.setPromptMessage(_prompt_message())
+        _show_status(_prompt_message(), hou.severityType.Message)
+        self._ensure_hover_drawable()
+
+    def onMenuAction(self, kwargs):
+        menu_item = _menu_item_name(kwargs.get("menu_item"))
+        attr_map = _menu_attribute_map()
+        attr_handles = set(attr_map.keys())
+        attr_handles.add("attr_current_custom")
+        attr_classes = set(item[0] for item in ATTRIBUTE_CLASS_ITEMS)
+        resolve_modes = set(item[0] for item in RESOLVE_MODE_ITEMS)
+
+        if menu_item == ATTRIBUTE_CLASS_RADIO_MENU or menu_item in attr_classes:
+            selected_class = _radio_value_from_menu_kwargs(
+                kwargs,
+                ATTRIBUTE_CLASS_RADIO_MENU,
+                attr_classes,
+            )
+            if _set_attribute_class(selected_class):
+                self._clear_hover(clear_cache=True)
+                _refresh_attribute_menu(quiet=True)
+                return True
+            return False
+
+        if menu_item == ATTRIBUTE_RADIO_MENU or menu_item in attr_handles:
+            selected_handle = _radio_value_from_menu_kwargs(
+                kwargs,
+                ATTRIBUTE_RADIO_MENU,
+                attr_handles,
+            )
+            if selected_handle == "attr_current_custom":
+                return True
+
+            attr_name = attr_map.get(selected_handle, "")
+            if attr_name:
+                _set_matching_attribute(attr_name)
+                self._clear_hover(clear_cache=True)
+                return True
+            return False
+
+        if menu_item == RESOLVE_MODE_RADIO_MENU or menu_item in resolve_modes:
+            selected_mode = _radio_value_from_menu_kwargs(
+                kwargs,
+                RESOLVE_MODE_RADIO_MENU,
+                resolve_modes,
+            )
+            if _set_resolve_mode(selected_mode):
+                self._clear_hover(clear_cache=True)
+                _refresh_attribute_menu(quiet=True)
+                return True
+            return False
+
+        if menu_item == MENU_SELECT_ATTRIBUTE_ORIGIN:
+            self._clear_hover()
+            _select_attribute_origin_from_popup(self.scene_viewer)
+            return True
+
+
+        return False
+
+    def onDraw(self, kwargs):
+        draw_handle = kwargs.get("draw_handle")
+        if draw_handle is None:
+            return
+
+        drawables = (
+            (self._hover_drawable, self._hover_visible, None),
+            (self._hover_sphere_drawable, self._hover_sphere_visible, None),
+            (self._hover_point_drawable, self._hover_point_visible, None),
+            (self._hover_text_drawable, self._hover_text_visible, self._hover_text_params),
+        )
+        for drawable, visible, params in drawables:
+            if drawable is None or not visible:
+                continue
+            try:
+                if params is None:
+                    drawable.draw(draw_handle)
+                else:
+                    drawable.draw(draw_handle, params)
+            except Exception:
+                self._clear_hover()
+                return
+
+    def onExit(self, kwargs):
+        self._clear_hover(clear_cache=True)
+
+    def onMouseEvent(self, kwargs):
+        try:
+            return self._on_mouse_event(kwargs)
+        except Exception as exc:
+            _show_status(
+                "Select Node could not process the viewport event: {0}".format(exc),
+                hou.severityType.Warning,
+            )
+            self._clear_hover()
+            return False
+
+    def onMouseWheelEvent(self, kwargs):
+        try:
+            return self._on_mouse_wheel_event(kwargs)
+        except Exception as exc:
+            _show_status(
+                "Select Node could not process the mouse wheel event: {0}".format(exc),
+                hou.severityType.Warning,
+            )
+            return False
+
+    def _on_mouse_wheel_event(self, kwargs):
+        ui_event = kwargs.get("ui_event")
+        if ui_event is None:
+            return False
+
+        try:
+            device = ui_event.device()
+            scroll = device.mouseWheel()
+        except Exception:
+            return False
+
+        if not scroll:
+            return False
+
+        try:
+            ctrl_pressed = bool(device.isCtrlKey())
+        except Exception:
+            ctrl_pressed = False
+
+        try:
+            shift_pressed = bool(device.isShiftKey())
+        except Exception:
+            shift_pressed = False
+
+        if ctrl_pressed and shift_pressed:
+            _show_status(
+                "Use Ctrl+wheel for attributes or Shift+wheel for geometry modes.",
+                hou.severityType.Warning,
+            )
+            return True
+
+        direction = 1 if scroll > 0 else -1
+        try:
+            steps = max(1, int(abs(scroll)))
+        except Exception:
+            steps = 1
+
+        if ctrl_pressed:
+            self._cycle_matching_attribute(direction, steps)
+            return True
+
+        if shift_pressed:
+            self._cycle_attribute_class(direction, steps)
+            return True
+
+        return self._resize_hover_sphere(direction, steps)
+
+    def _cycle_value(self, values, current_value, direction, steps):
+        if not values:
+            return None
+
+        if current_value in values:
+            index = values.index(current_value)
+            return values[(index + (direction * steps)) % len(values)]
+
+        if direction > 0:
+            return values[0]
+        return values[-1]
+
+    def _cycle_matching_attribute(self, direction, steps):
+        attr_class = _attribute_class()
+        attr_names = _displayed_attribute_menu_names(self.scene_viewer, attr_class)
+        if not attr_names:
+            _show_status(
+                "No {0} attributes found on the displayed SOP.".format(
+                    _attribute_class_label_lower(attr_class)
+                ),
+                hou.severityType.Warning,
+            )
+            return False
+
+        current_attr = _matching_attribute()
+        next_attr = self._cycle_value(attr_names, current_attr, direction, steps)
+        if not next_attr:
+            return False
+
+        if next_attr != current_attr:
+            _set_matching_attribute(next_attr)
+            self._clear_hover(clear_cache=True)
+        else:
+            _show_status(
+                "Select Node matching attribute remains '{0}'.".format(next_attr),
+                hou.severityType.Message,
+            )
+        return True
+
+    def _cycle_attribute_class(self, direction, steps):
+        attr_classes = [item[0] for item in ATTRIBUTE_CLASS_ITEMS]
+        current_class = _attribute_class()
+        next_class = self._cycle_value(attr_classes, current_class, direction, steps)
+        if not next_class:
+            return False
+
+        if next_class != current_class:
+            _set_attribute_class(next_class)
+
+        attr_names = _displayed_attribute_menu_names(self.scene_viewer, next_class)
+        current_attr = _matching_attribute()
+        if attr_names and current_attr not in attr_names:
+            _set_matching_attribute(attr_names[0])
+        elif not attr_names:
+            _show_status(
+                "No {0} attributes found on the displayed SOP; keeping '{1}'.".format(
+                    _attribute_class_label_lower(next_class),
+                    current_attr,
+                ),
+                hou.severityType.Warning,
+            )
+
+        self._clear_hover(clear_cache=True)
+        self._menu_source_key = _attribute_menu_source_key(self.scene_viewer)
+        _refresh_attribute_menu(quiet=True)
+        return True
+
+    def _resize_hover_sphere(self, direction, steps):
+        if (
+            not self._hover_sphere_visible
+            or self._hover_sphere_position is None
+            or self._hover_sphere_attr_class is None
+        ):
+            return False
+
+        current_radius = _hover_sphere_radius()
+        factor = HOVER_SPHERE_WHEEL_FACTOR ** max(1, steps)
+        if direction < 0:
+            next_radius = current_radius / factor
+        else:
+            next_radius = current_radius * factor
+        next_radius = _set_hover_sphere_radius(next_radius)
+
+        if not self._set_hover_sphere_params(
+            self._hover_sphere_position,
+            self._hover_sphere_attr_class,
+        ):
+            self._hide_sphere_hover()
+
+        _show_status(
+            "Select Node hover sphere radius: {0:.3f}".format(next_radius),
+            hou.severityType.Message,
+        )
+        return True
+
+    def _on_mouse_event(self, kwargs):
+        ui_event = kwargs.get("ui_event")
+        if ui_event is None:
+            _show_status("Select Node did not receive a viewport event.", hou.severityType.Warning)
+            return False
+
+        if ui_event.reason() != hou.uiEventReason.Picked:
+            self._update_hover(ui_event)
+            return False
+
+        self._clear_hover()
+        self._maybe_auto_refresh_attribute_menu()
+
+        sop, geo, prim, _hit_pos, screen_pos, warning = _pick_display_hit(
+            self.scene_viewer,
+            ui_event,
+        )
+        if warning:
+            _show_status(warning, hou.severityType.Warning)
+            return True
+
+        resolved, warning = self._resolve_node_from_clicked_element(
+            sop,
+            geo,
+            prim,
+            screen_pos,
+        )
+        if warning:
+            _show_status(warning, hou.severityType.Warning)
+            return True
+
+        node, attr_name, _attr_value, mode, node_path, info = resolved
+        if info:
+            _show_status(info, hou.severityType.Warning)
+
+        def _do():
+            current_node = hou.node(node_path)
+            _select_node_in_ui(current_node, self.scene_viewer, attr_name, mode)
+
+        hou.ui.postEventCallback(_do)
+        return True
+
+    def _resolve_node_from_clicked_element(self, sop, geo, prim, screen_pos):
+        attr_class = _attribute_class()
+
+        if attr_class == ATTRIBUTE_CLASS_PRIMITIVE:
+            return _resolve_node_from_primitive(sop, geo, prim)
+
+        if attr_class == ATTRIBUTE_CLASS_POINT:
+            point = _nearest_hit_point(self.scene_viewer, prim, screen_pos)
+            if point is None:
+                return None, "Click closer to a point to select from the point attribute."
+            return _resolve_node_from_point(sop, geo, point)
+
+        if attr_class == ATTRIBUTE_CLASS_VERTEX:
+            vertex = _nearest_hit_vertex(self.scene_viewer, prim, screen_pos)
+            if vertex is None:
+                return None, "Click closer to a vertex to select from the vertex attribute."
+            return _resolve_node_from_vertex(sop, geo, vertex)
+
+        if attr_class == ATTRIBUTE_CLASS_DETAIL:
+            return None, _primitive_click_only_warning()
+
+        return None, "Unknown Select Node attribute class: {0}".format(attr_class)
+
+    def _ensure_hover_drawable(self):
+        if self._hover_drawable is not None or self._hover_drawable_failed:
+            return self._hover_drawable
+
+        if not hasattr(hou, "GeometryDrawable") or not hasattr(hou, "drawableGeometryType"):
+            self._hover_drawable_failed = True
+            return None
+
+        geometry_type = getattr(hou.drawableGeometryType, "Face", None)
+        if geometry_type is None:
+            self._hover_drawable_failed = True
+            return None
+
+        try:
+            self._hover_drawable = hou.GeometryDrawable(
+                self.scene_viewer,
+                geometry_type,
+                HOVER_DRAWABLE_NAME,
+            )
+            try:
+                self._hover_drawable.setIsControl(True)
+            except Exception:
+                pass
+            self._hover_drawable.show(False)
+        except Exception:
+            self._hover_drawable = None
+            self._hover_drawable_failed = True
+
+        return self._hover_drawable
+
+    def _ensure_hover_point_drawable(self):
+        if self._hover_point_drawable is not None or self._hover_point_drawable_failed:
+            return self._hover_point_drawable
+
+        if not hasattr(hou, "GeometryDrawable") or not hasattr(hou, "drawableGeometryType"):
+            self._hover_point_drawable_failed = True
+            return None
+
+        geometry_type = getattr(hou.drawableGeometryType, "Point", None)
+        if geometry_type is None:
+            self._hover_point_drawable_failed = True
+            return None
+
+        try:
+            self._hover_point_drawable = hou.GeometryDrawable(
+                self.scene_viewer,
+                geometry_type,
+                HOVER_POINT_DRAWABLE_NAME,
+            )
+            try:
+                self._hover_point_drawable.setIsControl(True)
+            except Exception:
+                pass
+            self._hover_point_drawable.show(False)
+        except Exception:
+            self._hover_point_drawable = None
+            self._hover_point_drawable_failed = True
+
+        return self._hover_point_drawable
+
+    def _ensure_hover_sphere_drawable(self):
+        if self._hover_sphere_drawable is not None or self._hover_sphere_drawable_failed:
+            return self._hover_sphere_drawable
+
+        if not hasattr(hou, "GeometryDrawable") or not hasattr(hou, "drawableGeometryType"):
+            self._hover_sphere_drawable_failed = True
+            return None
+
+        geometry_type = getattr(hou.drawableGeometryType, "Face", None)
+        if geometry_type is None:
+            self._hover_sphere_drawable_failed = True
+            return None
+
+        sphere_geo = _create_hover_sphere_geometry()
+        if sphere_geo is None:
+            self._hover_sphere_drawable_failed = True
+            return None
+
+        try:
+            self._hover_sphere_drawable = hou.GeometryDrawable(
+                self.scene_viewer,
+                geometry_type,
+                HOVER_SPHERE_DRAWABLE_NAME,
+            )
+            self._hover_sphere_drawable.setGeometry(sphere_geo)
+            self._hover_sphere_geometry = sphere_geo
+            try:
+                self._hover_sphere_drawable.setIsControl(True)
+            except Exception:
+                pass
+            self._hover_sphere_drawable.show(False)
+        except Exception:
+            self._hover_sphere_drawable = None
+            self._hover_sphere_geometry = None
+            self._hover_sphere_drawable_failed = True
+
+        return self._hover_sphere_drawable
+
+    def _ensure_hover_text_drawable(self):
+        if self._hover_text_drawable is not None or self._hover_text_drawable_failed:
+            return self._hover_text_drawable
+
+        if not hasattr(hou, "TextDrawable"):
+            self._hover_text_drawable_failed = True
+            return None
+
+        try:
+            self._hover_text_drawable = hou.TextDrawable(
+                self.scene_viewer,
+                HOVER_TEXT_DRAWABLE_NAME,
+            )
+            self._hover_text_drawable.show(False)
+        except Exception:
+            self._hover_text_drawable = None
+            self._hover_text_drawable_failed = True
+
+        return self._hover_text_drawable
+
+    def _clear_hover_cache(self):
+        self._hover_index_cache_key = None
+        self._hover_index_cache = None
+        self._hover_geometry_key = None
+        self._hover_disabled_geometry_key = None
+        self._hover_point_geometry_key = None
+        self._hover_point_disabled_geometry_key = None
+        self._hover_fallback_color_pairs = {}
+        self._hover_fallback_hue_keys = set()
+
+    def _clear_hover(self, clear_cache=False):
+        self._hover_key = None
+        self._hover_visible = False
+        self._hover_point_key = None
+        self._hover_point_visible = False
+        self._hover_sphere_key = None
+        self._hover_sphere_visible = False
+        self._hover_sphere_position = None
+        self._hover_sphere_attr_class = None
+        self._hover_text_key = None
+        self._hover_text_visible = False
+        self._hover_text_params = None
+
+        if clear_cache:
+            self._hover_status_path = None
+            self._clear_hover_cache()
+
+        for drawable in (
+            self._hover_drawable,
+            self._hover_sphere_drawable,
+            self._hover_point_drawable,
+            self._hover_text_drawable,
+        ):
+            if drawable is None:
+                continue
+            try:
+                drawable.show(False)
+            except Exception:
+                pass
+
+    def _hover_cache_key(self, sop, geo, attr_name, mode):
+        try:
+            sop_path = sop.path()
+        except Exception:
+            sop_path = ""
+        return (sop_path, attr_name, mode, _geometry_cache_token(geo))
+
+    def _hover_index_for_geometry(self, sop, geo, attr_name, mode):
+        cache_key = self._hover_cache_key(sop, geo, attr_name, mode)
+        if cache_key != self._hover_index_cache_key:
+            self._hover_index_cache = _build_hover_primitive_index(
+                sop,
+                geo,
+                attr_name,
+                mode,
+            )
+            self._hover_index_cache_key = cache_key
+        return self._hover_index_cache, cache_key
+
+    def _hover_indices_for_primitive(self, sop, geo, prim, attr_name, mode, node_path):
+        try:
+            prim_number = prim.number()
+        except Exception:
+            return [], None
+
+        hover_index, cache_key = self._hover_index_for_geometry(sop, geo, attr_name, mode)
+        if not hover_index or hover_index.get("dense"):
+            return [prim_number], cache_key + ("dense", node_path, prim_number)
+
+        indices = hover_index.get("node_to_indices", {}).get(node_path)
+        if not indices:
+            return [prim_number], cache_key + ("single", node_path, prim_number)
+
+        return indices, cache_key + ("full", node_path)
+
+    def _set_drawable_geometry_cached(self, drawable, geo, cache_key, key_attr, disabled_attr):
+        if drawable is None:
+            return False
+
+        geometry_key = (cache_key[0], cache_key[3])
+        if geometry_key == getattr(self, disabled_attr):
+            return False
+
+        if geometry_key == getattr(self, key_attr):
+            return True
+
+        try:
+            drawable.setGeometry(geo)
+            setattr(self, key_attr, geometry_key)
+            setattr(self, disabled_attr, None)
+            return True
+        except Exception:
+            setattr(self, key_attr, None)
+            setattr(self, disabled_attr, geometry_key)
+            return False
+
+    def _set_hover_drawable_geometry(self, drawable, geo, cache_key):
+        return self._set_drawable_geometry_cached(
+            drawable,
+            geo,
+            cache_key,
+            "_hover_geometry_key",
+            "_hover_disabled_geometry_key",
+        )
+
+    def _set_hover_point_drawable_geometry(self, drawable, geo, cache_key):
+        return self._set_drawable_geometry_cached(
+            drawable,
+            geo,
+            cache_key,
+            "_hover_point_geometry_key",
+            "_hover_point_disabled_geometry_key",
+        )
+
+    def _fallback_hover_color_pair(self, node_path):
+        color_pair = self._hover_fallback_color_pairs.get(node_path)
+        if color_pair is not None:
+            return color_pair
+
+        color_index = len(self._hover_fallback_color_pairs)
+        hue = ((color_index * GOLDEN_RATIO_CONJUGATE) + 0.07) % 1.0
+        hue_key = _hue_key(hue)
+
+        attempts = 0
+        while hue_key in self._hover_fallback_hue_keys:
+            attempts += 1
+            hue = (hue + GOLDEN_RATIO_CONJUGATE) % 1.0
+            hue_key = _hue_key(hue)
+            if attempts > HOVER_HUE_KEY_SCALE:
+                break
+
+        self._hover_fallback_hue_keys.add(hue_key)
+        color_pair = _hover_color_pair_for_hue(hue)
+        self._hover_fallback_color_pairs[node_path] = color_pair
+        return color_pair
+
+    def _hover_color_pair(self, node_path):
+        if self._hover_index_cache is not None:
+            color_pair = self._hover_index_cache.get("node_colors", {}).get(node_path)
+            if color_pair is not None:
+                return color_pair
+
+        return self._fallback_hover_color_pair(node_path)
+
+    def _set_hover_drawable_params(self, indices, node_path, color_pair=None):
+        if self._hover_drawable is None:
+            return False
+
+        if color_pair is None:
+            color, glow_color = self._hover_color_pair(node_path)
+        else:
+            color, glow_color = color_pair
+
+        param_sets = [
+            {
+                "indices": indices,
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+                "fade_factor": 0.15,
+                "glow_width": 2,
+            },
+            {
+                "indices": indices,
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+            },
+            {
+                "indices": indices,
+                "color1": color,
+                "use_cd": False,
+            },
+            {
+                "indices": indices,
+            },
+        ]
+
+        for params in param_sets:
+            try:
+                self._hover_drawable.setParams(params)
+                return True
+            except Exception:
+                pass
+
+        return False
+
+    def _set_hover_point_drawable_params(self, indices, attr_class):
+        if self._hover_point_drawable is None:
+            return False
+
+        color, glow_color = _hover_point_color_pair(attr_class)
+        style = None
+        try:
+            point_style = getattr(hou, "drawableGeometryPointStyle", None)
+            if point_style is not None:
+                style = (
+                    getattr(point_style, "RingsCircle", None)
+                    or getattr(point_style, "LinearCircle", None)
+                )
+        except Exception:
+            style = None
+
+        rich_params = {
+            "indices": indices,
+            "color1": color,
+            "color2": glow_color,
+            "use_cd": False,
+            "radius": 0.18,
+            "num_rings": 3,
+            "falloff_range": (0.0, 1.0),
+            "fade_factor": 0.0,
+            "glow_width": 6,
+        }
+        if style is not None:
+            rich_params["style"] = style
+
+        param_sets = [
+            rich_params,
+            {
+                "indices": indices,
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+                "radius": 0.18,
+                "glow_width": 5,
+            },
+            {
+                "indices": indices,
+                "color1": color,
+                "use_cd": False,
+            },
+            {
+                "indices": indices,
+            },
+        ]
+
+        for params in param_sets:
+            try:
+                self._hover_point_drawable.setParams(params)
+                return True
+            except Exception:
+                pass
+
+        return False
+
+    def _hover_sphere_transform(self, position):
+        radius = _hover_sphere_radius()
+        scale = (
+            radius,
+            radius,
+            radius,
+        )
+
+        try:
+            return hou.hmath.buildTransform({
+                "translate": position,
+                "scale": scale,
+            })
+        except Exception:
+            pass
+
+        try:
+            return hou.hmath.buildScale(scale) * hou.hmath.buildTranslate(position)
+        except Exception:
+            return None
+
+    def _set_hover_sphere_transform(self, position):
+        if self._hover_sphere_drawable is None:
+            return False
+
+        transform = self._hover_sphere_transform(position)
+        if transform is None:
+            return False
+
+        try:
+            self._hover_sphere_drawable.setTransform(transform)
+            return True
+        except Exception:
+            return False
+
+    def _set_hover_sphere_params(self, position, attr_class):
+        if self._hover_sphere_drawable is None:
+            return False
+
+        color, glow_color = _hover_point_color_pair(attr_class)
+        radius = _hover_sphere_radius()
+        scale = (radius, radius, radius)
+        color_param_sets = [
+            {
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+                "fade_factor": 0.0,
+                "glow_width": 5,
+            },
+            {
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+            },
+            {
+                "color1": color,
+                "use_cd": False,
+            },
+        ]
+
+        for params in color_param_sets:
+            try:
+                self._hover_sphere_drawable.setParams(params)
+                break
+            except Exception:
+                pass
+
+        if self._set_hover_sphere_transform(position):
+            return True
+
+        param_sets = [
+            {
+                "translate": position,
+                "scale": scale,
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+                "fade_factor": 0.0,
+                "glow_width": 5,
+            },
+            {
+                "translate": position,
+                "scale": scale,
+                "color1": color,
+                "color2": glow_color,
+                "use_cd": False,
+            },
+            {
+                "translate": position,
+                "scale": scale,
+                "color1": color,
+                "use_cd": False,
+            },
+            {
+                "translate": position,
+                "scale": scale,
+            },
+        ]
+
+        for params in param_sets:
+            try:
+                self._hover_sphere_drawable.setParams(params)
+                return True
+            except Exception:
+                pass
+
+        return False
+
+    def _hover_text_color(self):
+        try:
+            return hou.Color((1.0, 0.96, 0.72))
+        except Exception:
+            return (1.0, 0.96, 0.72)
+
+    def _hover_text_translate(self, screen_pos):
+        if screen_pos is None:
+            x_pos, y_pos = 24.0, 96.0
+        else:
+            x_pos = float(screen_pos[0]) + HOVER_TEXT_OFFSET_X
+            y_pos = float(screen_pos[1]) + HOVER_TEXT_OFFSET_Y
+
+        try:
+            return hou.Vector3((x_pos, y_pos, 0.0))
+        except Exception:
+            return (x_pos, y_pos, 0.0)
+
+    def _set_hover_text(self, text, screen_pos, hover_key):
+        drawable = self._ensure_hover_text_drawable()
+        if drawable is None:
+            return False
+
+        params = {
+            "text": text,
+            "multi_line": True,
+            "translate": self._hover_text_translate(screen_pos),
+            "color1": self._hover_text_color(),
+        }
+
+        try:
+            origin = getattr(hou.drawableTextOrigin, "BottomLeft", None)
+            if origin is not None:
+                params["origin"] = origin
+        except Exception:
+            pass
+
+        self._hover_text_params = params
+        self._hover_text_key = hover_key
+        self._hover_text_visible = True
+        try:
+            drawable.show(True)
+        except Exception:
+            pass
+        return True
+
+    def _hide_face_hover(self):
+        self._hover_key = None
+        self._hover_visible = False
+        if self._hover_drawable is None:
+            return
+        try:
+            self._hover_drawable.show(False)
+        except Exception:
+            pass
+
+    def _hide_point_hover(self):
+        self._hover_point_key = None
+        self._hover_point_visible = False
+        if self._hover_point_drawable is None:
+            return
+        try:
+            self._hover_point_drawable.show(False)
+        except Exception:
+            pass
+
+    def _hide_sphere_hover(self):
+        self._hover_sphere_key = None
+        self._hover_sphere_visible = False
+        self._hover_sphere_position = None
+        self._hover_sphere_attr_class = None
+        if self._hover_sphere_drawable is None:
+            return
+        try:
+            self._hover_sphere_drawable.show(False)
+        except Exception:
+            pass
+
+    def _set_face_hover(self, sop, geo, cache_key, indices, hover_key, node_path, color_pair=None):
+        drawable = self._ensure_hover_drawable()
+        if drawable is None:
+            self._hide_face_hover()
+            return False
+
+        if not self._set_hover_drawable_geometry(drawable, geo, cache_key):
+            self._hide_face_hover()
+            return False
+
+        if not self._set_hover_drawable_params(indices, node_path, color_pair=color_pair):
+            self._hide_face_hover()
+            return False
+
+        try:
+            drawable.show(True)
+        except Exception:
+            self._hide_face_hover()
+            return False
+
+        self._hover_key = hover_key
+        self._hover_visible = True
+        return True
+
+    def _set_point_hover(self, sop, geo, cache_key, point_number, attr_class, hover_key):
+        drawable = self._ensure_hover_point_drawable()
+        if drawable is None:
+            self._hide_point_hover()
+            return False
+
+        if not self._set_hover_point_drawable_geometry(drawable, geo, cache_key):
+            self._hide_point_hover()
+            return False
+
+        if not self._set_hover_point_drawable_params([point_number], attr_class):
+            self._hide_point_hover()
+            return False
+
+        try:
+            drawable.show(True)
+        except Exception:
+            self._hide_point_hover()
+            return False
+
+        self._hover_point_key = hover_key
+        self._hover_point_visible = True
+        return True
+
+    def _set_sphere_hover(self, position, attr_class, hover_key):
+        drawable = self._ensure_hover_sphere_drawable()
+        if drawable is None:
+            self._hide_sphere_hover()
+            return False
+
+        if not self._set_hover_sphere_params(position, attr_class):
+            self._hide_sphere_hover()
+            return False
+
+        try:
+            drawable.show(True)
+        except Exception:
+            self._hide_sphere_hover()
+            return False
+
+        self._hover_sphere_key = hover_key
+        self._hover_sphere_visible = True
+        self._hover_sphere_position = position
+        self._hover_sphere_attr_class = attr_class
+        return True
+
+    def _hover_primitive_value(self, sop, geo, prim, attrib, attr_name, screen_pos):
+        try:
+            prim_number = prim.number()
+            attr_value = prim.attribValue(attrib)
+        except Exception:
+            self._clear_hover()
+            return
+
+        mode = _resolve_mode()
+        attr_value_as_path = _node_path_from_value(attr_value)
+        node = None
+        node_path = ""
+        if attr_value_as_path:
+            node, _warning, _info = _resolve_node_from_value(sop, attr_value_as_path, mode)
+            if node is not None:
+                node_path = _node_path(node)
+
+        cache_key = self._hover_cache_key(sop, geo, attr_name, mode)
+        if node_path:
+            indices, hover_key = self._hover_indices_for_primitive(
+                sop,
+                geo,
+                prim,
+                attr_name,
+                mode,
+                node_path,
+            )
+            color_pair = None
+        else:
+            indices = [prim_number]
+            hover_key = cache_key + ("primitive_value", prim_number)
+            color_pair = _hover_neutral_color_pair()
+            node_path = "__attribute_value__"
+            self._hover_status_path = None
+
+        self._hide_point_hover()
+        self._hide_sphere_hover()
+        if indices:
+            self._set_face_hover(
+                sop,
+                geo,
+                cache_key,
+                indices,
+                hover_key,
+                node_path,
+                color_pair=color_pair,
+            )
+
+        self._set_hover_text(
+            _hover_label_text("Primitive {0}".format(prim_number), attr_name, attr_value),
+            screen_pos,
+            hover_key + ("text",),
+        )
+
+        if color_pair is None and self._hover_status_path != node_path:
+            self._hover_status_path = node_path
+            _show_status("Selectable set: {0}".format(node_path), hou.severityType.Message)
+
+    def _hover_point_value(self, sop, geo, prim, attrib, attr_name, attr_class, screen_pos):
+        point = _nearest_hit_point(self.scene_viewer, prim, screen_pos)
+        if point is None:
+            self._clear_hover()
+            return
+
+        try:
+            point_number = point.number()
+            attr_value = point.attribValue(attrib)
+        except Exception:
+            self._clear_hover()
+            return
+
+        cache_key = self._hover_cache_key(sop, geo, attr_name, attr_class)
+        hover_key = cache_key + ("point", point_number)
+        self._hover_status_path = None
+        self._hide_face_hover()
+        position = _point_position(point)
+        if position is not None and self._set_sphere_hover(position, attr_class, hover_key):
+            self._hide_point_hover()
+        else:
+            self._set_point_hover(sop, geo, cache_key, point_number, attr_class, hover_key)
+        self._set_hover_text(
+            _hover_label_text("Point {0}".format(point_number), attr_name, attr_value),
+            screen_pos,
+            hover_key + ("text",),
+        )
+
+    def _hover_vertex_value(self, sop, geo, prim, attrib, attr_name, attr_class, screen_pos):
+        vertex = _nearest_hit_vertex(self.scene_viewer, prim, screen_pos)
+        if vertex is None:
+            self._clear_hover()
+            return
+
+        try:
+            vertex_number = vertex.linearNumber()
+        except Exception:
+            try:
+                vertex_number = vertex.number()
+            except Exception:
+                vertex_number = "?"
+
+        try:
+            point = vertex.point()
+            point_number = point.number()
+            attr_value = vertex.attribValue(attrib)
+        except Exception:
+            self._clear_hover()
+            return
+
+        cache_key = self._hover_cache_key(sop, geo, attr_name, attr_class)
+        hover_key = cache_key + ("vertex", vertex_number, point_number)
+        self._hover_status_path = None
+        self._hide_face_hover()
+        position = _point_position(point)
+        if position is not None and self._set_sphere_hover(position, attr_class, hover_key):
+            self._hide_point_hover()
+        else:
+            self._set_point_hover(sop, geo, cache_key, point_number, attr_class, hover_key)
+        self._set_hover_text(
+            _hover_label_text("Vertex {0}".format(vertex_number), attr_name, attr_value),
+            screen_pos,
+            hover_key + ("text",),
+        )
+
+    def _hover_detail_value(self, sop, geo, attrib, attr_name, attr_class, screen_pos):
+        try:
+            attr_value = geo.attribValue(attrib)
+        except Exception:
+            self._clear_hover()
+            return
+
+        cache_key = self._hover_cache_key(sop, geo, attr_name, attr_class)
+        hover_key = cache_key + ("detail",)
+        self._hover_status_path = None
+        self._hide_face_hover()
+        self._hide_point_hover()
+        self._hide_sphere_hover()
+        self._set_hover_text(
+            _hover_label_text("Detail", attr_name, attr_value),
+            screen_pos,
+            hover_key + ("text",),
+        )
+
+    def _update_hover(self, ui_event):
+        try:
+            self._update_hover_impl(ui_event)
+        except Exception:
+            self._clear_hover()
+
+    def _update_hover_impl(self, ui_event):
+        sop, geo, prim, _hit_pos, screen_pos, warning = _pick_display_hit(
+            self.scene_viewer,
+            ui_event,
+        )
+        if warning:
+            self._clear_hover()
+            return
+
+        attr_class = _attribute_class()
+        attr_name = _matching_attribute()
+        attrib = _find_geometry_attribute(geo, attr_class, attr_name)
+        if attrib is None:
+            self._clear_hover()
+            return
+
+        if attr_class == ATTRIBUTE_CLASS_PRIMITIVE:
+            self._hover_primitive_value(sop, geo, prim, attrib, attr_name, screen_pos)
+            return
+
+        if attr_class == ATTRIBUTE_CLASS_POINT:
+            self._hover_point_value(sop, geo, prim, attrib, attr_name, attr_class, screen_pos)
+            return
+
+        if attr_class == ATTRIBUTE_CLASS_VERTEX:
+            self._hover_vertex_value(sop, geo, prim, attrib, attr_name, attr_class, screen_pos)
+            return
+
+        if attr_class == ATTRIBUTE_CLASS_DETAIL:
+            self._hover_detail_value(sop, geo, attrib, attr_name, attr_class, screen_pos)
+            return
+
+        self._clear_hover()
+
+    def _maybe_auto_refresh_attribute_menu(self):
+        if self._auto_refresh_pending:
+            return
+
+        current_key = _attribute_menu_source_key(self.scene_viewer)
+        if current_key is None:
+            return
+
+        if self._menu_source_key is None:
+            self._menu_source_key = current_key
+            return
+
+        if current_key == self._menu_source_key:
+            return
+
+        self._menu_source_key = current_key
+        self._auto_refresh_pending = True
+        self._clear_hover(clear_cache=True)
+        _show_status("Displayed attributes changed; refreshing Select Node menu.", hou.severityType.Message)
+        _refresh_attribute_menu(quiet=True)
+
+
+def _create_viewer_menu():
+    if not hasattr(hou, "ViewerStateMenu"):
+        return None
+
+    try:
+        menu = hou.ViewerStateMenu("labs_select_node_menu", STATE_LABEL)
+
+        current_class = _attribute_class()
+        class_menu = hou.ViewerStateMenu("labs_select_node_class_menu", "Attribute Class")
+        class_menu.addRadioStrip(
+            ATTRIBUTE_CLASS_RADIO_MENU,
+            "Attribute Class",
+            current_class,
+        )
+        for attr_class, label in ATTRIBUTE_CLASS_ITEMS:
+            class_menu.addRadioStripItem(ATTRIBUTE_CLASS_RADIO_MENU, attr_class, label)
+        menu.addMenu(class_menu)
+        menu.addSeparator()
+
+        attr_items = _displayed_attribute_menu_items(attr_class=current_class)
+        displayed_attr_names = _displayed_attribute_names(attr_class=current_class)
+        current_attr = _matching_attribute()
+        item_names = [item[0] for item in attr_items]
+        if current_attr in displayed_attr_names and current_attr not in item_names:
+            attr_items.insert(0, (current_attr, "{0} (current)".format(current_attr)))
+
+        attr_map = _set_menu_attribute_map(attr_items)
+
+        if attr_items:
+            attr_menu_label = "{0} Attribute".format(_attribute_class_label(current_class))
+            attr_menu = hou.ViewerStateMenu("labs_select_node_attr_menu", attr_menu_label)
+            selected_handle = ""
+            for handle, attr_name in attr_map.items():
+                if attr_name == current_attr:
+                    selected_handle = handle
+                    break
+            if not selected_handle:
+                selected_handle = "attr_current_custom"
+
+            attr_menu.addRadioStrip(ATTRIBUTE_RADIO_MENU, attr_menu_label, selected_handle)
+            if selected_handle == "attr_current_custom":
+                attr_menu.addRadioStripItem(
+                    ATTRIBUTE_RADIO_MENU,
+                    selected_handle,
+                    "Current: {0} (not on displayed {1} attributes)".format(
+                        current_attr,
+                        _attribute_class_label_lower(current_class),
+                    ),
+                )
+            for handle, attr_name in attr_map.items():
+                label = attr_name
+                for item_name, item_label in attr_items:
+                    if item_name == attr_name:
+                        label = item_label
+                        break
+                attr_menu.addRadioStripItem(ATTRIBUTE_RADIO_MENU, handle, label)
+            menu.addMenu(attr_menu)
+            menu.addSeparator()
+        else:
+            _set_menu_attribute_map([])
+            _show_status(
+                "No {0} attributes found on the displayed SOP.".format(
+                    _attribute_class_label_lower(current_class)
+                ),
+                hou.severityType.Message,
+            )
+
+        resolve_menu = hou.ViewerStateMenu("labs_select_node_resolve_menu", "Resolve Mode")
+        current_mode = _resolve_mode()
+        resolve_menu.addRadioStrip(RESOLVE_MODE_RADIO_MENU, "Resolve Mode", current_mode)
+        for mode, label in RESOLVE_MODE_ITEMS:
+            resolve_menu.addRadioStripItem(RESOLVE_MODE_RADIO_MENU, mode, label)
+        menu.addMenu(resolve_menu)
+        menu.addSeparator()
+
+        menu.addActionItem(MENU_SELECT_ATTRIBUTE_ORIGIN, "Select Attribute Origin")
+        return menu
+    except Exception as exc:
+        _show_status(
+            "Select Node menu could not be created: {0}".format(exc),
+            hou.severityType.Warning,
+        )
+        return None
+
+
+def createViewerStateTemplate():
+    template = hou.ViewerStateTemplate(
+        STATE_NAME,
+        STATE_LABEL,
+        hou.sopNodeTypeCategory()
+    )
+    template.bindFactory(State)
+
+    menu = _create_viewer_menu()
+    if menu is not None and hasattr(template, "bindMenu"):
+        try:
+            template.bindMenu(menu)
+        except Exception as exc:
+            _show_status(
+                "Select Node right-click menu could not be bound: {0}".format(exc),
+                hou.severityType.Warning,
+            )
+
+    return template
+
+
+def _register_viewer_state():
+    if hasattr(hou.ui, "unregisterViewerState"):
+        try:
+            hou.ui.unregisterViewerState(STATE_NAME)
+        except Exception:
+            pass
+
+    try:
+        hou.ui.registerViewerState(createViewerStateTemplate())
+    except Exception as exc:
+        if "already" not in str(exc).lower():
+            raise
+
+
+def _activate_viewer_state():
+    viewer = hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
+    if viewer is None:
+        _show_status("Open a Scene Viewer before running Select Node.", hou.severityType.Warning)
+        return
+
+    viewer.setCurrentState(STATE_NAME, generate=hou.stateGenerateMode.Insert)
+    viewer.setPromptMessage(_prompt_message())
+    _show_status(_prompt_message(), hou.severityType.Message)
+
+
+_register_viewer_state()
+_activate_viewer_state()
+]]></script>
+  </tool>
 </shelfDocument>
