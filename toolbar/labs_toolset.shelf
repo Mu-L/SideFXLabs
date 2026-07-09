@@ -185,6 +185,7 @@ STATE_LABEL = "Select Node"
 DEFAULT_ATTRIBUTE = "selectnode"
 DEFAULT_ATTRIBUTE_CLASS = "primitive"
 DEFAULT_RESOLVE_MODE = "name"
+DISPLAY_GEOMETRY_PROMPT = "Display geometry in the viewport before running Select Node."
 SESSION_ATTRIBUTE_NAME = "_labs_select_node_attribute"
 SESSION_ATTRIBUTE_CLASS_NAME = "_labs_select_node_attribute_class"
 SESSION_RESOLVE_MODE_NAME = "_labs_select_node_resolve_mode"
@@ -419,6 +420,38 @@ def _displayed_sop_and_geometry(scene_viewer=None):
         return None, None
 
     return sop, geo
+
+
+def _displayed_pickable_sop_for_activation(scene_viewer=None):
+    viewer = scene_viewer or hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
+    if viewer is None:
+        return None, None, None, "Open a Scene Viewer and display geometry in the viewport before running Select Node."
+
+    try:
+        pwd = viewer.pwd()
+    except Exception:
+        pwd = None
+
+    if pwd is None:
+        return viewer, None, None, DISPLAY_GEOMETRY_PROMPT
+
+    try:
+        sop = pwd.displayNode()
+    except Exception:
+        sop = None
+
+    if sop is None:
+        return viewer, None, None, DISPLAY_GEOMETRY_PROMPT
+
+    try:
+        geo = sop.geometry()
+    except Exception:
+        return viewer, sop, None, DISPLAY_GEOMETRY_PROMPT
+
+    if _primitive_count(geo) <= 0:
+        return viewer, sop, geo, DISPLAY_GEOMETRY_PROMPT
+
+    return viewer, sop, geo, None
 
 
 def _geometry_attributes(geo, attr_class):
@@ -3281,14 +3314,71 @@ def _register_viewer_state():
             raise
 
 
-def _activate_viewer_state():
-    viewer = hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
-    if viewer is None:
-        _show_status("Open a Scene Viewer before running Select Node.", hou.severityType.Warning)
+def _set_scene_viewer_context_to_sop_parent(viewer, sop):
+    try:
+        parent = sop.parent()
+    except Exception:
+        parent = None
+
+    if parent is None:
         return
 
-    viewer.setCurrentState(STATE_NAME, generate=hou.stateGenerateMode.Insert)
-    viewer.setPromptMessage(_prompt_message())
+    try:
+        viewer.setPwd(parent)
+    except Exception:
+        pass
+
+
+def _set_select_node_viewer_state(viewer):
+    first_error = None
+    try:
+        viewer.setCurrentState(STATE_NAME, generate=hou.stateGenerateMode.Insert)
+        return True, None
+    except hou.OperationFailed as exc:
+        first_error = exc
+    except Exception as exc:
+        first_error = exc
+
+    try:
+        viewer.setCurrentState(STATE_NAME)
+        return True, None
+    except hou.OperationFailed as exc:
+        if first_error is not None:
+            return False, "Could not activate Select Node: {0}".format(first_error)
+        return False, "Could not activate Select Node: {0}".format(exc)
+    except Exception as exc:
+        if first_error is not None:
+            return False, "Could not activate Select Node: {0}".format(first_error)
+        return False, "Could not activate Select Node: {0}".format(exc)
+
+
+def _activate_viewer_state():
+    viewer, sop, _geo, warning = _displayed_pickable_sop_for_activation()
+    if warning:
+        if viewer is not None:
+            try:
+                viewer.setPromptMessage(warning)
+            except Exception:
+                pass
+        _show_status(warning, hou.severityType.Warning)
+        return
+
+    _set_scene_viewer_context_to_sop_parent(viewer, sop)
+
+    activated, activation_warning = _set_select_node_viewer_state(viewer)
+    if not activated:
+        warning = activation_warning or DISPLAY_GEOMETRY_PROMPT
+        try:
+            viewer.setPromptMessage(warning)
+        except Exception:
+            pass
+        _show_status(warning, hou.severityType.Warning)
+        return
+
+    try:
+        viewer.setPromptMessage(_prompt_message())
+    except Exception:
+        pass
     _show_status(_prompt_message(), hou.severityType.Message)
 
 
