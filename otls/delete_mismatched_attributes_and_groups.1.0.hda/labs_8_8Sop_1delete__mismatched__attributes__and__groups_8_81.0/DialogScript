@@ -1,0 +1,490 @@
+# Dialog script for labs::delete_mismatched_attributes_and_groups::1.0 automatically generated
+
+{
+    name	labs::delete_mismatched_attributes_and_groups::1.0
+    script	labs::remove_mismatched_attributes_and_groups::1.0
+    label	"Labs Delete Mismatched Attributes and Groups"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry to Delete Attributes/Groups from"
+    inputlabel	2	"Reference Geometry"
+    parmtag { inputisref2 1 }
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	"Geometry without Deleted Attributes/Groups"
+
+    parm {
+        name    "enabledelattributes"
+        label   "Delete Mismatched Attributes"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "enabledelgroups"
+        label   "Delete Mismatched Groups"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    group {
+        name    "fd_keep"
+        label   "Keep"
+
+        groupsimple {
+            name    "fd_attrtokeep"
+            label   "Attributes to Keep"
+            disablewhen "{ enabledelattributes == 0 }"
+            hidewhen "{ enabledelattributes == 0 }"
+
+            parm {
+                name    "doptkeep"
+                label   "Point Attributes"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "autoscope" "0000000000000000" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "ptkeep"
+                label   "Point Attributes"
+                type    string
+                default { "" }
+                disablewhen "{ doptkeep == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"ptkeep\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for attrib in geo.pointAttribs():" ]
+                    [ "    name = attrib.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dovtxkeep"
+                label   "Vertex Attributes"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "vtxkeep"
+                label   "Vertex Attributes"
+                type    string
+                default { "" }
+                disablewhen "{ dovtxkeep == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"vtxkeep\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for attrib in geo.vertexAttribs():" ]
+                    [ "    name = attrib.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "doprimkeep"
+                label   "Primitive Attributes"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "primkeep"
+                label   "Primitive Attributes"
+                type    string
+                default { "" }
+                disablewhen "{ doprimkeep == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"primkeep\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for attrib in geo.primAttribs():" ]
+                    [ "    name = attrib.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+            parm {
+                name    "dodtlkeep"
+                label   "Detail Attributes"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                parmtag { "script_callback_language" "python" }
+            }
+            parm {
+                name    "dtlkeep"
+                label   "Detail Attributes"
+                type    string
+                default { "" }
+                disablewhen "{ dodtlkeep == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"dtlkeep\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for attrib in geo.globalAttribs():" ]
+                    [ "    name = attrib.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+                parmtag { "autoscope" "0000000000000000" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_groupstokeep"
+            label   "Groups to Keep"
+            disablewhen "{ enabledelgroups == 0 }"
+            hidewhen "{ enabledelgroups == 0 }"
+
+            parm {
+                name    "dokeepptgroups"
+                label   "Point Groups"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "keepptgroups"
+                label   "Point Groups"
+                type    string
+                default { "" }
+                disablewhen "{ dokeepptgroups == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"keepptgroups\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for group in geo.pointGroups():" ]
+                    [ "    name = group.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "dokeepvtxgroups"
+                label   "Vertex Groups"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "keepvtxgroups"
+                label   "Vertex Groups"
+                type    string
+                default { "" }
+                disablewhen "{ dokeepvtxgroups == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"keepvtxgroups\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for group in geo.vertexGroups():" ]
+                    [ "    name = group.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "dokeepprimgroups"
+                label   "Primitive Groups"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "keepprimgroups"
+                label   "Primitive Groups"
+                type    string
+                default { "" }
+                disablewhen "{ dokeepprimgroups == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"keepprimgroups\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for group in geo.primGroups():" ]
+                    [ "    name = group.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+            }
+            parm {
+                name    "dokeepedgegroups"
+                label   "Edge Groups"
+                type    toggle
+                nolabel
+                joinnext
+                default { "0" }
+                range   { 0 1 }
+            }
+            parm {
+                name    "keepedgegroups"
+                label   "Edge Groups"
+                type    string
+                default { "" }
+                disablewhen "{ dokeepedgegroups == 0 }"
+                menutoggle {
+                    [ "node = kwargs[\"node\"]" ]
+                    [ "if not node:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "geo = node.inputGeometry(0)" ]
+                    [ "parm = hou.evalParm(\"keepedgegroups\")" ]
+                    [ "" ]
+                    [ "if not geo:" ]
+                    [ "    return []" ]
+                    [ "" ]
+                    [ "menu = []" ]
+                    [ "for group in geo.edgeGroups():" ]
+                    [ "    name = group.name()" ]
+                    [ "    if name in parm.split(\" \"):" ]
+                    [ "        menu += [name, name + \" ✓\"]" ]
+                    [ "    else:" ]
+                    [ "        menu += [name, name]" ]
+                    [ "" ]
+                    [ "return menu" ]
+                    language python
+                }
+                range   { 0 1 }
+            }
+        }
+
+    }
+
+    group {
+        name    "fd_keep_1"
+        label   "Show Deleted"
+
+        groupsimple {
+            name    "fd_deletedptattributes"
+            label   "Point Attributes"
+            hidewhen "{ lb_deletedptattributes == \"\" }"
+
+            parm {
+                name    "lb_deletedptattributes"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removepointattributes\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletedvtxattributes"
+            label   "Vertex Attributes"
+            hidewhen "{ lb_deletedvtxattributes == \"\" }"
+
+            parm {
+                name    "lb_deletedvtxattributes"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removevertexattributes\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletedprimattributes"
+            label   "Primitive Attributes"
+            hidewhen "{ lb_deletedprimattributes == \"\" }"
+
+            parm {
+                name    "lb_deletedprimattributes"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removeprimitiveattributes\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deleteddtlattributes"
+            label   "Detail Attributes"
+            hidewhen "{ lb_deleteddtlattributes == \"\" }"
+
+            parm {
+                name    "lb_deleteddtlattributes"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removedetailattributes\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletedptgroups"
+            label   "Point Groups"
+            hidewhen "{ lb_deletedptgroups == \"\" }"
+
+            parm {
+                name    "lb_deletedptgroups"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removepointgroups\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletedvtxgroups"
+            label   "Vertex Groups"
+            hidewhen "{ lb_deletedvtxgroups == \"\" }"
+
+            parm {
+                name    "lb_deletedvtxgroups"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removevertexgroups\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletedprimgroups"
+            label   "Primitive Groups"
+            hidewhen "{ lb_deletedprimgroups == \"\" }"
+
+            parm {
+                name    "lb_deletedprimgroups"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removeprimitivegroups\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+        groupsimple {
+            name    "fd_deletededgegroups"
+            label   "Edge Groups"
+            hidewhen "{ lb_deletededgegroups == \"\" }"
+
+            parm {
+                name    "lb_deletededgegroups"
+                label   "Message"
+                type    label
+                default { "`details(\"remove_attributes\",\"_rma_removeedgegroups\")`" }
+                parmtag { "sidefx::look" "block" }
+            }
+        }
+
+    }
+
+}

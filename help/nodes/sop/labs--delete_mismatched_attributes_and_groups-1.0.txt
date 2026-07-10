@@ -1,0 +1,125 @@
+#type:     node
+#context:  sop
+#internal: labs::delete_mismatched_attributes_and_groups::1.0
+#icon:     /labs_icons/sidefx_labs_default.svg
+#since:     21.5
+
+= Labs Delete Mismatched Attributes and Groups =
+
+"""Deletes any attributes and groups from Input 1 that don't exist in Input 2."""
+
+This tool compares the geometry on Input 1 against Input 2 and removes any attributes or groups from Input 1 that do not exist on Input 2. You can optionally specify attributes or groups to always preserve, regardless of whether they exist on the reference geometry, using the keep list parameters.
+
+Useful for cleaning geometry before merging, caching, exporting, or processing multiple geometry streams that require consistent attributes and groups.
+
+@parameters
+    Delete Mismatched Attributes:
+	#id: enabledelattributes
+	Enable deletion of mismatched attributes.
+    Delete Mismatched Groups:
+	#id: enabledelgroups
+	Enable deletion of mismatched groups.
+
+    == Attributes to Keep ==
+
+    Point Attributes:
+	#id: doptkeep
+	Enable preservation of specific point attributes.
+        
+    Point Attributes:
+	#id: ptkeep
+	Space-separated list of point attributes to preserve.
+        
+    Vertex Attributes:
+        #id: dovtxkeep
+        Enable preservation of specific vertex attributes.
+
+    Vertex Attributes:
+        #id: vtxkeep
+        Space-separated list of vertex attributes to preserve.
+
+    Primitive Attributes:
+        #id: doprimkeep
+        Enable preservation of specific primitive attributes.
+
+    Primitive Attributes:
+        #id: primkeep
+        Space-separated list of primitive attributes to preserve.
+
+    Detail Attributes:
+        #id: dodtlkeep
+        Enable preservation of specific detail attributes.
+
+    Detail Attributes:
+        #id: dtlkeep
+        Space-separated list of detail attributes to preserve.
+
+    == Groups to Keep ==
+
+    Point Groups:
+        #id: dokeepptgroups
+        Enable preservation of specific point groups.
+
+    Point Groups:
+        #id: keepptgroups
+        Space-separated list of point groups to preserve.
+
+    Vertex Groups:
+        #id: dokeepvtxgroups
+        Enable preservation of specific vertex groups.
+
+    Vertex Groups:
+        #id: keepvtxgroups
+        Space-separated list of vertex groups to preserve.
+
+    Primitive Groups:
+        #id: dokeepprimgroups
+        Enable preservation of specific primitive groups.
+
+    Primitive Groups:
+        #id: keepprimgroups
+        Space-separated list of primitive groups to preserve.
+
+    Edge Groups:
+        #id: dokeepedgegroups
+        Enable preservation of specific edge groups.
+
+    Edge Groups:
+        #id: keepedgegroups
+        Space-separated list of edge groups to preserve.
+
+    == Show Deleted ==
+    
+    Point Attributes:
+	#id: lb_deletedptattributes
+	List of mismatched point attributes that were deleted.
+    Vertex Attributes:
+	#id: lb_deletedvtxattributes
+	List of mismatched vertex attributes that were deleted.
+    Primitive Attributes:
+	#id: lb_deletedprimattributes
+	List of mismatched primitive attributes that were deleted.
+    Detail Attributes:
+	#id: lb_deleteddtlattributes
+	List of mismatched detail attributes that were deleted.
+    Point Groups:
+	#id: lb_deletedptgroups
+	List of mismatched point groups that were deleted.
+    Vertex Groups:
+	#id: lb_deletedvtxgroups
+	List of mismatched vertex groups that were deleted.
+    Primitive Groups:
+	#id: lb_deletedprimgroups
+	List of mismatched primitive groups that were deleted.
+    Edge Groups:
+	#id: lb_deletededgegroups
+	List of mismatched edge groups that were deleted. 
+   
+
+
+@locals
+    
+    
+@related
+- [Attribute Delete SOP | /nodes/sop/attribdelete]
+
