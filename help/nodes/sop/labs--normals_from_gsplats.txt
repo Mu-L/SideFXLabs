@@ -1,0 +1,65 @@
+#type:      node
+#context:   sop
+#internal:  labs::normals_from_gsplats::1.0
+#icon:      /labs_icons/sidefx_labs_beta.svg
+#since:     22.0 
+
+= Labs Normals from GSplats =
+
+"""Computes Normals on GSplats."""
+
+This node computes surface normals on Gaussian Splats. Since standard Gaussian Splats do not contain reliable per-point normals, this node reconstructs an underlying geometric surface then transfers the resulting surface normals back to each splat point.
+
+@parameters
+
+    Overwrite Point Separation:
+        #id: overwritepointseparation 
+        By default, the node will estimate the appropriate point separation based on the Gaussian Splat point cloud distribution. Enable this if you want to overwrite the point separation manually.
+        
+    Point Separation:
+        #id: pointseparation 
+        Defines the point separation of the Gaussian Splat point cloud manually. 
+            
+    Overwrite Surface Separation:
+        #id: overwritesurfaceseparation 
+        By default, the node will estimate the appropriate surface separation based on the point separation value. Enable this if you want to overwrite the surface separation manually.
+
+    Surface Separation:
+        #id: surfaceseparation 
+        Controls the thickness of the reconstructed surface manually. Lower values cause the mesh to conform to the input points more tightly. Higher values produce smoother, cleaner surfaces at the expense of detail.
+
+    Voxel Scale:
+        #id: voxelscale 
+        Scales the voxel side length of the VDB used for generating the surfaced mesh. Lower values produce finer density sampling but increase computation time.
+
+    Visualize Normals:
+        #id: visnormals 
+        Overwrites the `Cd` attribute with a gamma-corrected visualization of the `N` attribute.
+
+    == Post Processing ==
+
+    Refine Normals:
+        #id: refinenormals 
+        Applies a KNN-based bilateral filtering pass to smooth and sharpen the normals. When disabled, raw surface normals are used directly.
+        
+    Search Radius:
+        #id: searchradius 
+        Defines the neighbor search radius for normal refinement. Controls how many surrounding points are considered when computing the smoothed normal.
+        
+    Smooth Amount:
+        #id: smoothamount 
+        Blending factor between the original and refined normals. A value of 0 preserves the original normals while a value of 1 replaces them entirely with the smoothed result.
+        
+    Sharpen Amount:
+        #id: sharpenamount 
+        Controls the sharpening strength applied after smoothing and restores edge contrast.
+
+@Inputs
+    GSplats:
+        The incoming GSplats to compute normals for.
+
+@Outputs
+    GSplats:
+        The GSplats with normals.
+    GSplats Surface:
+        The surfaced mesh of the input GSplats.

@@ -1,0 +1,113 @@
+# Dialog script for labs::normals_from_gsplats::1.0 automatically generated
+
+{
+    name	labs::normals_from_gsplats::1.0
+    script	labs::gsplats_normal::1.0
+    label	"Labs Normals from GSplats (Beta)"
+
+    help {
+	""
+    }
+
+    inputlabel	1	GSplats
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+    outputlabel	1	GSplats
+    outputlabel	2	"GSplats Surface"
+
+    parm {
+        name    "overwritepointseparation"
+        label   "overwritepointseparation"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "pointseparation"
+        label   "Point Separation"
+        type    float
+        default { "0.1" }
+        disablewhen "{ overwritepointseparation == 0 }"
+        range   { 0! 1 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "overwritesurfaceseparation"
+        label   "overwritesurfaceseparation"
+        type    toggle
+        nolabel
+        joinnext
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "surfaceseparation"
+        label   "Surface Separation"
+        type    float
+        default { "0.1" }
+        disablewhen "{ overwritesurfaceseparation == 0 }"
+        range   { 0! 1 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "voxelscale"
+        label   "Voxel Scale"
+        type    float
+        default { "1" }
+        range   { 0! 2 }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupcollapsible {
+        name    "postprocessing"
+        label   "Post Processing"
+
+        parm {
+            name    "refinenormals"
+            label   "Refine Normals"
+            type    toggle
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "searchradius"
+            label   "Search Radius"
+            type    float
+            default { "0.1" }
+            disablewhen "{ refinenormals == 0 }"
+            range   { 0! 1 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "smoothamount"
+            label   "Smooth Amount"
+            type    float
+            default { "0.5" }
+            disablewhen "{ refinenormals == 0 }"
+            range   { 0! 1! }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "sharpenamount"
+            label   "Sharpen Amount"
+            type    float
+            default { "1" }
+            disablewhen "{ refinenormals == 0 }"
+            range   { 0! 5 }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    parm {
+        name    "visnormals"
+        label   "Visualize Normals"
+        type    toggle
+        default { "0" }
+        parmtag { "script_callback_language" "python" }
+    }
+}
