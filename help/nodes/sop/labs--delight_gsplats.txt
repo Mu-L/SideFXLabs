@@ -1,0 +1,104 @@
+#type:      node
+#context:   sop
+#internal:  labs::delight_gsplats::1.0
+#icon:      /labs_icons/sidefx_labs_beta.svg
+#since:     22.0 
+
+= Labs Delight GSplats =
+
+"""Removes baked lighting from Gaussian Splats and generates an albedo attribute."""
+
+This node estimates the local illumination of a Gaussian Splat point cloud then removes the estimated lighting to recover an approximate diffuse albedo. The algorithm is designed specifically for Gaussian Splats, adapting its neighborhood size to the splat scale while attempting to preserve local detail and minimizing color bleeding.
+
+Several safeguards are included to produce more stable results, including chroma-aware illumination estimation to reduce color bleeding, preservation of small-scale shadowing, and an optional ambient occlusion pass to restore depth after delighting.
+
+The result is stored in the `albedo` point attribute and can be viewed by enabling the `Visualize Albedo` parameter.
+
+@parameters
+
+    Delight Amount:
+        #id: delightamount
+        Blends between the original color and the computed albedo.
+
+    Light Blur Radius:
+        #id: lightblurradius
+        Defines the base search radius used for estimating the local illumination. Larger values produce smoother lighting estimates but may remove more local detail.
+
+    Max Blur Points:
+        #id: maxblurpoints
+        The maximum number of neighboring splats considered when estimating the illumination field.
+
+    Spatial Falloff Sigma:
+        #id: spatialfalloffsigma
+        Controls the spatial falloff of the bilateral illumination filter. Smaller values preserve local detail, while larger values produce smoother lighting estimates.
+
+    == Edge Preservation ==
+
+        Edge Preservation Sigma:
+            #id: edgepreservationsigma
+            Controls how strongly color and luminance differences reduce neighbor influence during illumination estimation. Lower values preserve sharper transitions between materials and lighting regions, while higher values produce smoother illumination estimates.
+
+        Chroma Influence:
+            #id: chromainfluence
+            Controls how strongly color similarity affects the illumination estimation filter. Higher values preserve boundaries between differently colored splats and reduce color bleeding, while lower values allow illumination to be averaged more freely across color transitions.
+
+    == Ambient Occlusion ==
+
+        AO Amount:
+            #id: aoamount
+            Controls how much estimated ambient occlusion is multiplied back into the computed albedo after delighting.
+
+        AO Radius:
+            #id: aoradius
+            Controls the search radius used for estimating ambient occlusion.
+
+        Crevice Shadow Lift:
+            #id: creviceshadowlift
+            Preserves local shadowing within cavities and creases by reducing the amount of lighting removed in highly occluded regions.
+
+        Visualize Albedo:
+            #id: visalbedo 
+            Overwrites the `Cd` attribute with a visualization of the calculated `albedo` attribute. 
+        
+
+    == Color Correction ==
+
+    White Balance:
+        #id: whitebalance 
+        Adjusts the white balance of the estimated illumination before removing it from the resulting albedo. The selected color represents the light color that should be neutralized, allowing colored lighting such as warm indoor illumination or cool outdoor lighting to be removed more accurately.
+
+    Exposure:
+        #id: exposure 
+        Adjusts the exposure of the resulting albedo. Each integer value represents approximately one stop.
+        
+    Gamma:
+        #id: gamma 
+        Adjusts the gamma of the resulting albedo. Values below 1 increase contrast by darkening midtones, while values above 1 lift midtones and produce a flatter result.
+
+    Saturation:
+        #id: Saturation 
+        Adjusts the saturation of the resulting albedo. Higher saturation produces more vibrant colors. 
+
+    == Advanced ==
+
+    Alpha Weighting:
+        #id: alphaweighting
+        Controls how strongly neighboring splats are weighted by their opacity and scale during illumination estimation. Higher values give more influence to larger, more opaque splats.
+
+    Scale Influence:
+        #id: scaleinfluence
+        Controls how strongly the Gaussian Splat scale influences the neighbor search radius. Increasing this value allows larger splats to estimate illumination over a wider region while keeping smaller splats localized.
+
+    Light Color Preservation:
+        #id: lightcolorpreservation
+        Controls how much of the estimated illumination color is preserved during delighting. Lower values remove more colored lighting by neutralizing the illumination estimate, while higher values retain more of the original lighting color for a more natural result.
+
+@Inputs
+
+    GSplats:
+        The incoming GSplats to delight.
+
+@Outputs
+
+    GSplats:
+        The input GSplats with the computed `albedo` point attribute.
