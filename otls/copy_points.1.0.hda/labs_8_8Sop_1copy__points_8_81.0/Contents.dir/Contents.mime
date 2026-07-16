@@ -872,11 +872,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	carry_mode_switch 2 1 "input1"
+0 	previous_level_mode_switch 2 1 "input1"
 }
 inputs
 {
-0 	carry_mode_switch 0 1
+0 	previous_level_mode_switch 0 1
 }
 stat
 {
@@ -1667,34 +1667,34 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.init"
+Content-Disposition: attachment; filename="hdaroot/previous_level_mode_switch.init"
 Content-Type: text/plain
 
 type = switch
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.def"
+Content-Disposition: attachment; filename="hdaroot/previous_level_mode_switch.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
-comment ""
+comment "Default: consecutive Copy to Points. Optional: isolate rotation and scale to the previous level."
 position -1.82506 -8.06837
 connectornextid 3
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
 {
 2 "output1"
 }
 inputsNamed3
 {
-0 	resolve_previous_only 2 1 "input1"
-1 	copy_to_current_target 2 1 "input2"
+0 	copy_to_current_target 2 1 "input1"
+1 	resolve_previous_only 2 1 "input2"
 }
 inputs
 {
-0 	resolve_previous_only 0 1
-1 	copy_to_current_target 0 1
+0 	copy_to_current_target 0 1
+1 	resolve_previous_only 0 1
 }
 stat
 {
@@ -1709,7 +1709,7 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.chn"
+Content-Disposition: attachment; filename="hdaroot/previous_level_mode_switch.chn"
 Content-Type: text/plain
 
 {
@@ -1719,12 +1719,12 @@ Content-Type: text/plain
       flags = 0
       segment { options = {	 untie  iv ov is os ia oa }
 
-	 length = 0 expr = ch(\"../carry_rotation_scale\") }
+	 length = 0 expr = ch(\"../previous_level_only\") }
     }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.parm"
+Content-Disposition: attachment; filename="hdaroot/previous_level_mode_switch.parm"
 Content-Type: text/plain
 
 {
@@ -1733,7 +1733,7 @@ input	[ 0	locks=0 ]	(	[ input	0 ] 	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.userdata"
+Content-Disposition: attachment; filename="hdaroot/previous_level_mode_switch.userdata"
 Content-Type: text/plain
 
 {
@@ -1853,7 +1853,7 @@ prepare_previous_only_source
 prepare_previous_only_target
 copy_previous_only
 resolve_previous_only
-carry_mode_switch
+previous_level_mode_switch
 cleanup_internal_attrs
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

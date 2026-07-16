@@ -34,11 +34,11 @@
             help    "Applies target scale attributes (scale and pscale) when copying the previous packed item. When disabled, target scale is ignored."
         }
         parm {
-            name    "carry_rotation_scale"
-            label   "Carry Rotation and Scale Through"
+            name    "previous_level_only"
+            label   "Only Affect Previous Level"
             type    toggle
             default { "0" }
-            help    "When enabled, target rotation and scale accumulate through all later packed items. When disabled, each stage keeps its transformed point layout but its leaf rotation and scale are reset before the next stage."
+            help    "When enabled, each packed item's rotation and scale affect only the immediately previous packed level. When disabled, transforms compose like consecutive Copy to Points SOPs."
         }
     }
 
