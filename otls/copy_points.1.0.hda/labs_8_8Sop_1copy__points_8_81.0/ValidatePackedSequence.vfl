@@ -1,0 +1,15 @@
+int count = nprimitives(0);
+if (count < 2)
+{
+    error("Copy Points 1.2 requires a source packed primitive followed by at least one packed target.");
+    return;
+}
+for (int prim_number = 0; prim_number < count; ++prim_number)
+{
+    if (!startswith(primintrinsic(0, "typename", prim_number), "Packed"))
+    {
+        error("Copy Points 1.2 accepts packed primitives only.");
+        return;
+    }
+}
+setdetailattrib(0, "cp12_container_count", count, "set");

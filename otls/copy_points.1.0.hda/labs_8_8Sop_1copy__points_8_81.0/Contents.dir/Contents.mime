@@ -1,0 +1,1865 @@
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPfallbacks"
+Content-Type: application/external-reference
+
+.OPfallbacks
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename=".OPdummydefs"
+Content-Type: application/external-reference
+
+.OPdummydefs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="node_type"
+Content-Type: text/plain
+
+Sop
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.init"
+Content-Type: text/plain
+
+type = labs::copy_points::1.0
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.647059 0.294118
+connectornextid 0
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.inp"
+Content-Type: text/plain
+
+1
+0 -4.8695500023460943 8.8098999244703613 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/validate_packed_sequence.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/validate_packed_sequence.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Validate the packed sequence and record its item count."
+position -4.86795 5.638
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	compile_begin1 0 1 "input1"
+}
+inputs
+{
+0 	compile_begin1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/validate_packed_sequence.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int count = nprimitives(0);
+if (count < 2)
+{
+    error(\"Copy Points requires a source packed primitive followed by at least one packed target.\");
+    return;
+}
+for (int prim_number = 0; prim_number < count; ++prim_number)
+{
+    if (!startswith(primintrinsic(0, \"typename\", prim_number), \"Packed\"))
+    {
+        error(\"Copy Points accepts packed primitives only.\");
+        return;
+    }
+}
+setdetailattrib(0, \"container_count\", count, \"set\");
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/validate_packed_sequence.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_source_item.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_source_item.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Keep packed item 0 as the source."
+position -4.86795 4.5085
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	validate_packed_sequence 1 1 "input1"
+}
+inputs
+{
+0 	validate_packed_sequence 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_source_item.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"for (int prim_number = nprimitives(0) - 1; prim_number >= 0; --prim_number)
+{
+    if (prim_number != 0)
+        removeprim(0, prim_number, 1);
+}
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_source_item.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_source_item.init"
+Content-Type: text/plain
+
+type = unpack
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_source_item.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86495 3.4706
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	select_source_item 1 1 "input1"
+}
+inputs
+{
+0 	select_source_item 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_source_item.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+limit_iterations	[ 0	locks=0 ]	(	"on"	)
+iterations	[ 0	locks=0 ]	(	1	)
+detail_attributes	[ 0	locks=0 ]	(	"detail"	)
+transfer_attributes	[ 0	locks=0 ]	(	*	)
+transfer_groups	[ 0	locks=0 ]	(	""	)
+apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
+scene_style_sheet	[ 0	locks=0 ]	(	""	)
+obj_style_sheet	[ 0	locks=0 ]	(	""	)
+dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_source_item.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/source_points_only.init"
+Content-Type: text/plain
+
+type = add
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/source_points_only.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86495 2.4706
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	unpack_source_item 1 1 "input1"
+}
+inputs
+{
+0 	unpack_source_item 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/source_points_only.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+stdswitcher	[ 0	locks=0 ]	(	0	0	0	)
+keep	[ 0	locks=0 ]	(	"on"	)
+points	[ 0	locks=0 ]	(	0	)
+remove	[ 0	locks=0 ]	(	"off"	)
+switcher	[ 0	locks=0 ]	(	0	0	)
+prims	[ 0	locks=0 ]	(	1	)
+group	[ 0	locks=0 ]	(	""	)
+add	[ 0	locks=0 ]	(	"all"	)
+inc	[ 0	locks=0 ]	(	2	)
+attrname	[ 0	locks=0 ]	(	""	)
+closedall	[ 0	locks=0 ]	(	"off"	)
+addparticlesystem	[ 0	locks=0 ]	(	"off"	)
+particlegroup	[ 0	locks=0 ]	(	""	)
+appendunusedtoparticlesystem	[ 0	locks=0 ]	(	"off"	)
+prim0	[ 0	locks=0 ]	(	""	)
+closed0	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/source_points_only.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_begin.init"
+Content-Type: text/plain
+
+type = block_begin
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_begin.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86795 -0.00949992
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	pack_source_for_feedback 1 1 "input1"
+}
+inputs
+{
+0 	pack_source_for_feedback 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.9 0.5 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_begin.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"feedback"	)
+blockpath	[ 0	locks=0 ]	(	../copy_sequence_end	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+createmetablock	[ 0	locks=0 ]	(	0	)
+label1	[ 0	locks=0 ]	(	"iteration, numiterations, value, ivalue"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_begin.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata.init"
+Content-Type: text/plain
+
+type = block_begin
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 4.0024 3.2284
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.9 0.5 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"metadata"	)
+blockpath	[ 0	locks=0 ]	(	../copy_sequence_end	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+createmetablock	[ 0	locks=0 ]	(	0	)
+label1	[ 0	locks=0 ]	(	"iteration, numiterations, value, ivalue"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_current_target_item.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_current_target_item.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Select packed target item iteration + 1."
+position -0.91435 1.7977
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	copy_sequence_metadata1 0 1 "input1"
+1 	copy_sequence_metadata 0 1 "input2"
+}
+inputs
+{
+0 	copy_sequence_metadata1 0 1
+1 	copy_sequence_metadata 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_current_target_item.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int iteration = int(detail(1, \"iteration\", 0));
+int target_index = iteration + 1;
+int count = int(detail(0, \"container_count\", 0));
+for (int prim_number = nprimitives(0) - 1; prim_number >= 0; --prim_number)
+{
+    if (prim_number != target_index || target_index >= count)
+        removeprim(0, prim_number, 1);
+}
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/select_current_target_item.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_current_target.init"
+Content-Type: text/plain
+
+type = unpack
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_current_target.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.91435 0.6682
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	select_current_target_item 2 1 "input1"
+}
+inputs
+{
+0 	select_current_target_item 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_current_target.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+limit_iterations	[ 0	locks=0 ]	(	"on"	)
+iterations	[ 0	locks=0 ]	(	1	)
+detail_attributes	[ 0	locks=0 ]	(	"detail"	)
+transfer_attributes	[ 0	locks=0 ]	(	*	)
+transfer_groups	[ 0	locks=0 ]	(	""	)
+apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
+scene_style_sheet	[ 0	locks=0 ]	(	""	)
+obj_style_sheet	[ 0	locks=0 ]	(	""	)
+dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_current_target.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/filter_target_transforms.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/filter_target_transforms.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment "Optionally remove rotation and scale target attributes."
+position -0.91435 -0.4613
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on displaycomment on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	unpack_current_target 1 1 "input1"
+}
+inputs
+{
+0 	unpack_current_target 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/filter_target_transforms.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"if (!chi(\"../inherit_rotation\"))
+{
+    if (haspointattrib(0, \"orient\")) removeattrib(0, \"point\", \"orient\");
+    if (haspointattrib(0, \"N\")) removeattrib(0, \"point\", \"N\");
+    if (haspointattrib(0, \"up\")) removeattrib(0, \"point\", \"up\");
+    if (haspointattrib(0, \"rot\")) removeattrib(0, \"point\", \"rot\");
+}
+if (!chi(\"../inherit_scale\"))
+{
+    if (haspointattrib(0, \"scale\")) removeattrib(0, \"point\", \"scale\");
+    if (haspointattrib(0, \"pscale\")) removeattrib(0, \"point\", \"pscale\");
+}
+"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/filter_target_transforms.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_to_current_target.init"
+Content-Type: text/plain
+
+type = copytopoints::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_to_current_target.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.554716 -3.98977
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	copy_sequence_begin 1 1 "input1"
+1 	filter_target_transforms 1 1 "input2"
+}
+inputs
+{
+0 	copy_sequence_begin 0 1
+1 	filter_target_transforms 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 1 0.65 0.1 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_to_current_target.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+sourcegroup	[ 0	locks=0 ]	(	""	)
+sourcegrouptype	[ 0	locks=0 ]	(	"guess"	)
+targetgroup	[ 0	locks=0 ]	(	""	)
+useidattrib	[ 0	locks=0 ]	(	"off"	)
+idattrib	[ 0	locks=0 ]	(	name	)
+pack	[ 0	locks=0 ]	(	"off"	)
+pivot	[ 0	locks=0 ]	(	"centroid"	)
+viewportlod	[ 0	locks=0 ]	(	"full"	)
+transform	[ 0	locks=0 ]	(	"on"	)
+useimplicitn	[ 0	locks=0 ]	(	"on"	)
+resettargetattribs	[ 0	locks=0 ]	(	0	)
+targetattribs	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_to_current_target.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_end.init"
+Content-Type: text/plain
+
+type = block_end
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_end.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82346 -9.82675
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	carry_mode_switch 2 1 "input1"
+}
+inputs
+{
+0 	carry_mode_switch 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.9 0.5 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_end.chn"
+Content-Type: text/plain
+
+{
+    channel iterations {
+      lefttype = extend
+      righttype = extend
+      default = 2
+      flags = 0
+      segment { length = 0 value = 2 2 expr = ch(\"../packed_count\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_end.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+itermethod	[ 0	locks=0 ]	(	"count"	)
+method	[ 0	locks=0 ]	(	"feedback"	)
+iterations	[ 8	locks=0 ]	(	[ iterations	10 ] 	)
+startvalue	[ 0	locks=0 ]	(	1	)
+increment	[ 0	locks=0 ]	(	1	)
+class	[ 0	locks=0 ]	(	"point"	)
+useattrib	[ 0	locks=0 ]	(	"on"	)
+attrib	[ 0	locks=0 ]	(	""	)
+usemaxiter	[ 0	locks=0 ]	(	"off"	)
+maxiter	[ 0	locks=0 ]	(	10	)
+blockpath	[ 0	locks=0 ]	(	../copy_sequence_begin	)
+templatepath	[ 0	locks=0 ]	(	""	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+dosinglepass	[ 0	locks=0 ]	(	"off"	)
+singlepass	[ 0	locks=0 ]	(	0	)
+stopcondition	[ 0	locks=0 ]	(	0	)
+stopattrib	[ 0	locks=0 ]	(	""	)
+multithread	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_end.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output0.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output0.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82346 -14.3448
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	compile_end1 1 1 "input1"
+}
+inputs
+{
+0 	compile_end1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output0.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+outputidx	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/output0.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_end1.init"
+Content-Type: text/plain
+
+type = compile_end
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_end1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82346 -13.2153
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	unpack_final_result 1 1 "input1"
+}
+inputs
+{
+0 	unpack_final_result 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.75 0.75 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_end1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+docompile	[ 0	locks=0 ]	(	"on"	)
+unload	[ 0	locks=0 ]	(	"always"	)
+primarypath	[ 0	locks=0 ]	(	""	)
+forcerecompile	[ 0	locks=0 ]	(	0	)
+delayillegal	[ 0	locks=0 ]	(	"off"	)
+fallback	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_end1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_begin1.init"
+Content-Type: text/plain
+
+type = compile_begin
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_begin1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86795 6.7675
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	(0) "" 1 "input1"
+}
+inputs
+{
+0 	(0) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.75 0.75 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_begin1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+blockpath	[ 0	locks=0 ]	(	../compile_end1	)
+name	[ 0	locks=0 ]	(	""	)
+optional	[ 0	locks=0 ]	(	"off"	)
+createbeginblock	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/compile_begin1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata1.init"
+Content-Type: text/plain
+
+type = block_begin
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata1.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -0.90975 3.2284
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	validate_packed_sequence 1 1 "input1"
+}
+inputs
+{
+0 	validate_packed_sequence 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.9 0.5 0 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+method	[ 0	locks=0 ]	(	"input"	)
+blockpath	[ 0	locks=0 ]	(	../copy_sequence_end	)
+resetcookpass	[ 0	locks=0 ]	(	0	)
+createmetablock	[ 0	locks=0 ]	(	0	)
+label1	[ 0	locks=0 ]	(	"iteration, numiterations, value, ivalue"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_sequence_metadata1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/pack_source_for_feedback.init"
+Content-Type: text/plain
+
+type = pack
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/pack_source_for_feedback.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86285 1.4359
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	source_points_only 1 1 "input1"
+}
+inputs
+{
+0 	source_points_only 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/pack_source_for_feedback.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+viewportlod	[ 0	locks=0 ]	(	"full"	)
+createpath	[ 0	locks=0 ]	(	"off"	)
+path	[ 0	locks=0 ]	(	op:`opfullpath('.')`	)
+packbyname	[ 0	locks=0 ]	(	"off"	)
+nameattribute	[ 0	locks=0 ]	(	name	)
+packedfragments	[ 0	locks=0 ]	(	"on"	)
+pivot	[ 0	locks=0 ]	(	"centroid"	)
+transfer_attributes	[ 0	locks=0 ]	(	""	)
+transfer_groups	[ 0	locks=0 ]	(	""	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/pack_source_for_feedback.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_final_result.init"
+Content-Type: text/plain
+
+type = unpack
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_final_result.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82346 -12.0858
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	cleanup_internal_attrs 1 1 "input1"
+}
+inputs
+{
+0 	cleanup_internal_attrs 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_final_result.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+limit_iterations	[ 0	locks=0 ]	(	"on"	)
+iterations	[ 0	locks=0 ]	(	1	)
+detail_attributes	[ 0	locks=0 ]	(	"detail"	)
+transfer_attributes	[ 0	locks=0 ]	(	""	)
+transfer_groups	[ 0	locks=0 ]	(	""	)
+apply_style_sheets	[ 0	locks=0 ]	(	"off"	)
+scene_style_sheet	[ 0	locks=0 ]	(	""	)
+obj_style_sheet	[ 0	locks=0 ]	(	""	)
+dotransform	[ 0	locks=0 ]	(	"on"	)
+convertpolysoup	[ 0	locks=0 ]	(	"off"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/unpack_final_result.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_source.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_source.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.86795 -1.139
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	copy_sequence_begin 1 1 "input1"
+}
+inputs
+{
+0 	copy_sequence_begin 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_source.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"v@__cp_lower_raw = v@__cp_lower;
+v@__cp_lower_xf = v@__cp_lower;
+setattribtypeinfo(0, \"prim\", \"__cp_lower_xf\", \"vector\");"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_source.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_target.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_target.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -3.99792 -2.58485
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	filter_target_transforms 1 1 "input1"
+}
+inputs
+{
+0 	filter_target_transforms 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_target.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"v@__cp_targetP = @P;"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/prepare_previous_only_target.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_previous_only.init"
+Content-Type: text/plain
+
+type = copytopoints::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_previous_only.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.73204 -3.98977
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	prepare_previous_only_source 1 1 "input1"
+1 	prepare_previous_only_target 1 1 "input2"
+}
+inputs
+{
+0 	prepare_previous_only_source 0 1
+1 	prepare_previous_only_target 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 1 0.65 0.1 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_previous_only.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+sourcegroup	[ 0	locks=0 ]	(	""	)
+sourcegrouptype	[ 0	locks=0 ]	(	"guess"	)
+targetgroup	[ 0	locks=0 ]	(	""	)
+useidattrib	[ 0	locks=0 ]	(	"off"	)
+idattrib	[ 0	locks=0 ]	(	name	)
+pack	[ 0	locks=0 ]	(	"off"	)
+pivot	[ 0	locks=0 ]	(	"centroid"	)
+viewportlod	[ 0	locks=0 ]	(	"full"	)
+transform	[ 0	locks=0 ]	(	"on"	)
+useimplicitn	[ 0	locks=0 ]	(	"on"	)
+resettargetattribs	[ 0	locks=0 ]	(	0	)
+targetattribs	[ 0	locks=0 ]	(	1	)
+useapply1	[ 0	locks=0 ]	(	"on"	)
+applyto1	[ 0	locks=0 ]	(	"prims"	)
+applymethod1	[ 0	locks=0 ]	(	"copy"	)
+applyattribs1	[ 0	locks=0 ]	(	__cp_targetP	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/copy_previous_only.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/resolve_previous_only.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/resolve_previous_only.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -4.73504 -6.08993
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	copy_previous_only 2 1 "input1"
+1 	copy_sequence_metadata 0 1 "input2"
+}
+inputs
+{
+0 	copy_previous_only 0 1
+1 	copy_sequence_metadata 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/resolve_previous_only.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"primitive"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"int iteration = detail(1, \"iteration\", 0);
+int pt = primpoint(0, @primnum, 0);
+vector pos = point(0, \"P\", pt);
+vector targetp = v@__cp_targetP;
+if (iteration == 0)
+{
+    v@__cp_lower = pos - targetp;
+    3@__cp_leaf_xform = primintrinsic(0, \"transform\", @primnum);
+}
+else
+{
+    pos += v@__cp_lower_raw - v@__cp_lower_xf;
+    setpointattrib(0, \"P\", pt, pos, \"set\");
+    v@__cp_lower = pos - targetp;
+    setprimintrinsic(0, \"transform\", @primnum, 3@__cp_leaf_xform, \"set\");
+}"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/resolve_previous_only.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.init"
+Content-Type: text/plain
+
+type = switch
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82506 -8.06837
+connectornextid 3
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+2 "output1"
+}
+inputsNamed3
+{
+0 	resolve_previous_only 2 1 "input1"
+1 	copy_to_current_target 2 1 "input2"
+}
+inputs
+{
+0 	resolve_previous_only 0 1
+1 	copy_to_current_target 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 1 0.7 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.chn"
+Content-Type: text/plain
+
+{
+    channel input {
+      lefttype = extend
+      righttype = extend
+      flags = 0
+      segment { options = {	 untie  iv ov is os ia oa }
+
+	 length = 0 expr = ch(\"../carry_rotation_scale\") }
+    }
+  }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+input	[ 0	locks=0 ]	(	[ input	0 ] 	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/carry_mode_switch.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cleanup_internal_attrs.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cleanup_internal_attrs.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -1.82346 -10.9563
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	copy_sequence_end 1 1 "input1"
+}
+inputs
+{
+0 	copy_sequence_end 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author mohhd@NodesOfNature
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cleanup_internal_attrs.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"detail"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"removeprimattrib(0, \"__cp_targetP\");
+removeprimattrib(0, \"__cp_lower\");
+removeprimattrib(0, \"__cp_lower_raw\");
+removeprimattrib(0, \"__cp_lower_xf\");
+removeprimattrib(0, \"__cp_leaf_xform\");"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/cleanup_internal_attrs.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.order"
+Content-Type: text/plain
+
+23
+validate_packed_sequence
+select_source_item
+unpack_source_item
+source_points_only
+copy_sequence_begin
+copy_sequence_metadata
+select_current_target_item
+unpack_current_target
+filter_target_transforms
+copy_to_current_target
+copy_sequence_end
+output0
+compile_end1
+compile_begin1
+copy_sequence_metadata1
+pack_source_for_feedback
+unpack_final_result
+prepare_previous_only_source
+prepare_previous_only_target
+copy_previous_only
+resolve_previous_only
+carry_mode_switch
+cleanup_internal_attrs
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY--

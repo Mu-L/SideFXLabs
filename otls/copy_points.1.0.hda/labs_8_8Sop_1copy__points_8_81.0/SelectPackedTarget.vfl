@@ -1,0 +1,8 @@
+int iteration = int(detail(1, "iteration", 0));
+int target_index = iteration + 1;
+int count = int(detail(0, "cp12_container_count", 0));
+for (int prim_number = nprimitives(0) - 1; prim_number >= 0; --prim_number)
+{
+    if (prim_number != target_index || target_index >= count)
+        removeprim(0, prim_number, 1);
+}

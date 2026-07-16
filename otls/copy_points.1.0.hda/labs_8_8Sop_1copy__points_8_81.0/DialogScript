@@ -1,0 +1,61 @@
+# Dialog script for labs::copy_points::1.0 automatically generated
+
+{
+    name	labs::copy_points::1.0
+    script	labs::copy_points::1.2
+    label	"Labs Copy Points"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Packed Points"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    groupsimple {
+        name    "transform_options"
+        label   "Transform Options"
+        grouptag { "group_type" "simple" }
+
+        parm {
+            name    "inherit_rotation"
+            label   "Inherit Rotation"
+            type    toggle
+            default { "1" }
+            help    "Applies target rotation attributes (orient, N, up, and rot) when copying the previous packed item. When disabled, target rotation is ignored."
+        }
+        parm {
+            name    "inherit_scale"
+            label   "Inherit Scale"
+            type    toggle
+            default { "1" }
+            help    "Applies target scale attributes (scale and pscale) when copying the previous packed item. When disabled, target scale is ignored."
+        }
+        parm {
+            name    "carry_rotation_scale"
+            label   "Carry Rotation and Scale Through"
+            type    toggle
+            default { "0" }
+            help    "When enabled, target rotation and scale accumulate through all later packed items. When disabled, each stage keeps its transformed point layout but its leaf rotation and scale are reset before the next stage."
+        }
+    }
+
+    groupcollapsible {
+        name    "packed_count_folder"
+        label   "Advanced"
+        grouptag { "group_type" "collapsible" }
+
+        parm {
+            name    "packed_count"
+            label   "Packed Count"
+            type    integer
+            default { [ "npoints(0)-1" hscript-expr ] }
+            help    "Number of packed target items to process after the first packed source item. Set this to the total number of packed input items minus one."
+            range   { 0 10 }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}
