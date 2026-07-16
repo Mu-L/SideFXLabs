@@ -7,6 +7,7 @@
 
   <toolshelf name="labs_toolset" label="SideFX Labs">
     <memberTool name="labs::select_node"/>
+    <memberTool name="labs::rename_attributes"/>
     <memberTool name="labs::autouv"/>
     <memberTool name="labs::visualize_uvs"/>
     <memberTool name="labs::vertex_animation_textures"/>
@@ -183,6 +184,18 @@ except NameError:
   reload(module)
 
 module.activate()
+]]></script>
+  </tool>
+  <tool name="labs::rename_attributes" label="Rename Attributes and Groups" icon="$SIDEFXLABS/config/Icons/sidefx_labs_default.svg">
+    <script scriptType="python"><![CDATA[from labsopui import labs_rename_attributes as module
+
+try:
+  reload(module)
+except NameError:
+  from importlib import reload
+  reload(module)
+
+module.run()
 ]]></script>
   </tool>
 </shelfDocument>
