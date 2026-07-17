@@ -2,6 +2,7 @@ import hou
 import importlib
 import sys
 import os
+from datetime import datetime
 
 from hutil.PySide import QtCore, QtGui, QtWidgets
 
@@ -55,6 +56,7 @@ class Reload(QtWidgets.QDialog):
     def runReloader(self):
         module_names = self.input_box.displayText().replace(" ", "").split(",")
         status_msg = ""
+        current_time = datetime.now().strftime("%H:%M:%S")
 
         for mod_name in module_names:
 
@@ -70,13 +72,13 @@ class Reload(QtWidgets.QDialog):
                 module_references = sys.modules[full_name]
                 importlib.reload(module_references)
 
-                status_msg += '<span style="color: #66ff66;">Successfully reloaded ' + full_name + '!</span><br>'
+                status_msg += '<span style="color: #66ff66;">Successfully reloaded ' + full_name + " at " + current_time + '!</span><br>'
 
             except:
                 # If it hasn't been imported yet, it will try to import it from the standard Python library paths
                 try:
                     importlib.import_module(mod_name)
-                    status_msg += '<span style="color: #66ff66;">Successfully loaded ' + sys.modules[mod_name].__file__.replace("\\", "/") + '!</span><br>'
+                    status_msg += '<span style="color: #66ff66;">Successfully loaded ' + sys.modules[mod_name].__file__.replace("\\", "/") + " at " + current_time + '!</span><br>'
 
                 # If we can't find the module from standard Python library paths that were loaded on startup, we search specific
                 # Houdini subdirectories across all loaded packages that might not be loaded yet.
@@ -101,14 +103,14 @@ class Reload(QtWidgets.QDialog):
                                             else:
                                                 module = rel_path.replace("\\", ".").replace("/", ".") + "." + file.removesuffix(".py")
                                             importlib.import_module(module)
-                                            status_msg += '<span style="color: #66ff66;">Successfully loaded ' + module + '!</span><br>'
+                                            status_msg += '<span style="color: #66ff66;">Successfully loaded ' + module + " at " + current_time + '!</span><br>'
                                             found = True
                                         except Exception as e:
-                                            status_msg += '<span style="color: #ff6666;">Error loading ' + mod_name + ': ' + str(e) + '</span><br>'
+                                            status_msg += '<span style="color: #ff6666;">Error loading ' + mod_name + ': ' + str(e) + " at " + current_time + '</span><br>'
                                             found = True
                                         break
 
                     if not found:
-                        status_msg += '<span style="color: #ff6666;">Could not find module ' + mod_name + '.</span><br>'
+                        status_msg += '<span style="color: #ff6666;">Could not find module ' + mod_name + " at " + current_time + '.</span><br>'
 
         self.reload_status.setText(status_msg)
