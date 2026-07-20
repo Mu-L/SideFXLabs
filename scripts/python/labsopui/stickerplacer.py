@@ -1,8 +1,9 @@
 import os
+import tempfile
 import hou
 import labutils
 
-from hutil.Qt import QtCore, QtGui, QtWidgets
+from hutil.Qt import QtCore, QtGui, QtWidgets, QtSvg
 
 sticker_source_dirs = ["$SIDEFXLABS/misc/stickers"]
 
@@ -37,7 +38,32 @@ class StickerPlacer(QtWidgets.QDialog):
 
         if len(pane_tab) > 0 :
             pane_tab = pane_tab[0]
-            labutils.add_network_image(pane_tab, hou.text.expandString(item.data(QtCore.Qt.UserRole)), scale=0.4, embedded=True)
+            img_path = hou.text.expandString(item.data(QtCore.Qt.UserRole))
+            img_tmp_path = None
+
+            # If loading in SVGs, they are rasterized as a temp PNG and embedded in the HIP file
+            if img_path.lower().endswith(".svg"):
+                renderer = QtSvg.QSvgRenderer(img_path)
+                size = QtCore.QSize(396, 396)
+
+                image = QtGui.QImage(size, QtGui.QImage.Format_ARGB32)
+                image.fill(QtCore.Qt.transparent)
+                painter = QtGui.QPainter(image)
+                renderer.render(painter)
+                painter.end()
+
+                tmp_file = tempfile.NamedTemporaryFile(suffix=".png", delete=False)
+                tmp_file.close()
+                image.save(tmp_file.name, "PNG")
+                img_tmp_path = tmp_file.name
+                img_path = img_tmp_path
+
+            try:
+                labutils.add_network_image(pane_tab, img_path, scale=0.4, embedded=True)
+            # Delete the temp PNG file
+            finally:
+                if img_tmp_path is not None:
+                    os.remove(img_tmp_path)
 
     def build_ui(self):
         self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
@@ -78,17 +104,17 @@ class StickerPlacer(QtWidgets.QDialog):
     def populate_widget_icons(self):
         self.listwidget.clear()
 
-        stickers = []
         active_dir = hou.text.expandString(self.iconset.currentText())
         if active_dir != "":
             for file in os.listdir(active_dir):
-                if os.path.splitext(file)[-1] in [".png", ".jpg"]:
+                if os.path.splitext(file)[-1] in [".png", ".jpg", ".svg"]:
                     _relpath = os.path.normpath(os.path.join(self.iconset.currentText(), file))
                     _abspath = hou.text.expandString(_relpath)
 
                     item = QtWidgets.QListWidgetItem()
+
                     icon = QtGui.QIcon()
-                    icon.addPixmap(QtGui.QPixmap(_abspath), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                    icon.addFile(_abspath, QtCore.QSize(64, 64))
                     item.setIcon(icon)
                     item.setData(QtCore.Qt.UserRole, _relpath)
                     self.listwidget.addItem(item)
