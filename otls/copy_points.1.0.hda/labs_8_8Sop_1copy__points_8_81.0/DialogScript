@@ -51,8 +51,8 @@
             name    "packed_count"
             label   "Packed Count"
             type    integer
-            default { [ "npoints(0)-1" hscript-expr ] }
-            help    "Number of packed target items to process after the first packed source item. Set this to the total number of packed input items minus one."
+            default { [ "npoints(0)" hscript-expr ] }
+            help    "Number of packed target items to process after the first packed source item. Set this to the total number of packed input items."
             range   { 0 10 }
             parmtag { "script_callback_language" "python" }
         }
