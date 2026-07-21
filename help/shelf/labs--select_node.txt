@@ -1,0 +1,131 @@
+= Select Node =
+
+#internal: labs::select_node
+#icon: /labs_icons/sidefx_labs_default.svg
+#tags: sidefxlabs, utility, shelf, viewport, selection
+
+""" Selects SOP nodes from the viewport. """
+
+== Overview ==
+
+Select Node enters a Scene Viewer state that reads an attribute from the
+displayed SOP geometry. By storing a path to the desired node in a string attribute,
+the node can be selected from the viewport by clicking on the geometry to sample the node's path.
+
+By default, the tool reads the primitive string attribute `selectnode` and
+resolves each value as a node name. Use the right-click menu to choose another
+attribute class, attribute, or resolve mode.
+
+== Quick start ==
+
+# Display cooked SOP geometry in a Scene Viewer.
+
+# Add a primitive string attribute named `selectnode`. Set each value to the
+  name of the SOP node that produced or owns that part of the geometry.
+
+# Click __Select Node__ on the Labs shelf.
+
+# Hover over the geometry to preview the matching set and attribute value.
+
+# Click the geometry. The tool changes the network context, selects the
+  resolved node, and frames it in the Network Editor.
+
+NOTE:
+    The tool needs an active Scene Viewer with displayed SOP geometry containing
+    at least one primitive.
+
+== Viewport controls ==
+
+((LMB)):
+    Select the node resolved from the attribute value on the clicked primitive,
+    point, or vertex.
+
+((RMB)):
+    Open the tool menu to choose the attribute class, matching attribute,
+    resolve mode, or __Select Attribute Origin__.
+
+Mouse wheel:
+    Resize the hover sphere while hovering a point or vertex.
+
+((CTRL)) + Mouse wheel:
+    Cycle through attributes on the displayed geometry for the current
+    attribute class.
+
+((SHIFT)) + Mouse wheel:
+    Cycle through Primitive, Point, Vertex, and Detail attribute classes.
+
+== Attribute classes ==
+
+Primitive:
+    Read the matching attribute from the clicked primitive. Hovering normally
+    highlights every primitive whose value resolves to the same node.
+
+Point:
+    Read the attribute from the point nearest the cursor. Click close to a
+    point to select its resolved node.
+
+Vertex:
+    Read the attribute from the vertex nearest the cursor. Click close to a
+    vertex to select its resolved node.
+
+Detail:
+    Display the detail attribute value while hovering. Detail attributes cannot
+    select a node by clicking; use __Select Attribute Origin__ instead.
+
+The right-click attribute list is built from the displayed SOP and refreshes
+when its available attributes change. String attributes that resolve to nodes
+are listed first when possible.
+
+== Resolve modes ==
+
+Name:
+    Treat the attribute value as a node name. The tool checks the displayed SOP,
+    then upstream nodes, then nodes in the current network. If multiple upstream
+    nodes have the same name, it uses the first match and displays a warning.
+
+Exact Path:
+    Require a full Houdini node path such as `/obj/geo1/attribwrangle1`.
+
+Relative Path:
+    Resolve the value relative to the displayed SOP's parent network.
+
+== Select Attribute Origin ==
+
+__Select Attribute Origin__ searches upstream from the displayed SOP for nodes
+that first introduce the selected attribute: the attribute exists on the node's
+output but not on any of its inputs. If multiple branches introduce it, the tool
+lets you select one or more origin nodes before framing the result.
+
+This operation uses the selected attribute and class, not the attribute's stored
+node-name or path values. It is therefore useful for detail attributes and for
+attributes whose values are not node references.
+
+== Hover behavior ==
+
+Primitive values that resolve to the same node use a shared highlight color.
+Unresolved values use a neutral highlight while still displaying the raw value.
+Point and vertex modes show the nearest element with a resizable sphere and a
+text label. Detail mode shows only the text label.
+
+For geometry above 200,000 primitives, the tool highlights only the primitive
+under the cursor instead of building complete matching sets.
+
+== Troubleshooting ==
+
+Missing attribute:
+    Choose the correct class and attribute from the right-click menu.
+
+Empty or unresolved value:
+    Confirm the attribute contains a node name, full path, or relative path that
+    matches the selected resolve mode.
+
+No point or vertex selected:
+    Click closer to the point or vertex marker.
+
+No primitive picked:
+    Make sure the cursor is over the displayed geometry and that the SOP cooks
+    successfully.
+
+Duplicate node names:
+    Use __Exact Path__ or __Relative Path__ when node-name resolution is
+    ambiguous.
