@@ -1,11 +1,11 @@
 try:
     from hutil.PySide.QtCore import Qt, QRect, QEvent, QPoint
     from hutil.PySide.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget, QLabel, QGraphicsPixmapItem
-    from hutil.PySide.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication
+    from hutil.PySide.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication, QImage
 except ImportError:
     from PySide2.QtCore import Qt, QRect, QEvent, QPoint
     from PySide2.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QWidget, QLabel, QGraphicsPixmapItem
-    from PySide2.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication
+    from PySide2.QtGui import QColor, QPainter, QPen, QCursor, QPixmap, QGuiApplication, QImage
 
 
 import hou, datetime, os, labutils
@@ -14,6 +14,9 @@ import hou, datetime, os, labutils
 class NetworkEditorPainter(QWidget):
     def __init__(self, parent, editor):
         super(NetworkEditorPainter, self).__init__(parent)
+
+        self.setWindowFlags(Qt.Tool | Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
 
         self.networkeditor = editor
         self.mouseX = [-1,-1, 0]
@@ -33,6 +36,7 @@ class NetworkEditorPainter(QWidget):
 
 
         self.colorpickeractive = False
+        self.eraseractive = False
         self.brushcolor = QColor('#FFCC4D')
         self.brushsize = 8
 
@@ -71,6 +75,7 @@ class NetworkEditorPainter(QWidget):
         self.graphicsview.setSceneRect(0,0,self.networkeditorsize[0], self.networkeditorsize[1])
         self.graphicsview.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
         self.graphicsview.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.graphicsview.setViewportUpdateMode(QGraphicsView.FullViewportUpdate)
 
         self.outputdrawingcanvas = QPixmap(self.networkeditorlocalrect.width(), self.networkeditorlocalrect.height())
         self.outputdrawingcanvas.fill(Qt.transparent)
@@ -83,12 +88,14 @@ class NetworkEditorPainter(QWidget):
         _adjustedcrop = QRect(self.networkeditorbottomleftglobalpos.x()-screen.geometry().x(),self.networkeditortoprightglobalpos.y()-screen.geometry().y(), self.networkeditorsize[0], self.networkeditorsize[1])
 
         self.graphicsscene.addPixmap(self.screenshots[screenid].copy(_adjustedcrop))
-        self.instructiontext = QLabel("Hold LMB to draw. ENTER to store drawing or ESC to cancel\nPress i to enable the color picker, then LMB click canvas to pick color\nScrollwheel changes brush size\nCTRL + i to transform stored drawing")
+        self.strokesitem = self.graphicsscene.addPixmap(self.outputdrawingcanvas)
+        self.instructiontext = QLabel("Hold LMB to draw. ENTER to store drawing or ESC to cancel\nPress e to erase and b to resume painting\nPress i to enable the color picker, then LMB on canvas color\nScrollwheel changes brush size\nCTRL + i to transform stored drawing")
         self.instructiontext.setAlignment(Qt.AlignCenter)
         self.instructiontext.setFocusPolicy(Qt.NoFocus)
         self.instructiontext.adjustSize()
 
-        self.instructiontext.move((self.networkeditorsize[0]/2) - (self.instructiontext.width()/2), 0)
+        margin = 10;
+        self.instructiontext.move(self.networkeditorsize[0] - self.instructiontext.width() - margin, self.networkeditorsize[1] - self.instructiontext.height() - margin)
 
         self.graphicsscene.addWidget(self.instructiontext)
         self.graphicsview.setScene(self.graphicsscene)
@@ -161,6 +168,10 @@ class NetworkEditorPainter(QWidget):
             self.exportPaintingToEditor()
         if event.key() == Qt.Key_I:
             self.storeScreenColors()
+        if event.key() == Qt.Key_B:
+            self.eraseractive = False
+        if event.key() == Qt.Key_E:
+            self.eraseractive = True
         if event.key() == Qt.Key_Escape:
             self.closeWidget()
 
@@ -178,27 +189,27 @@ class NetworkEditorPainter(QWidget):
         if self.oldMouseX[1] >= 0 and self.mouseX[1] >= 0 and not self.colorpickeractive:
 
             if self.oldMouseX[0] == self.mouseX[0]:
-                # Make a painter with the visible pixmap. Have to make a new copy since the original reference gets nuked on self.update() :(
-                visiblecanvas = [x.pixmap().copy() for x in self.graphicsscene.items() if type(x) == QGraphicsPixmapItem][0]
-                pixmaps = [self.outputdrawingcanvas, visiblecanvas]
+                painter = QPainter(self.outputdrawingcanvas)
+                painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
+                try:
+                    painter.setRenderHint(QPainter.Antialiasing, True)
+                except:
+                    painter.setRenderHint(QPainter.HighQualityAntialiasing, True)
 
-                for pix in pixmaps:
-                    painter = QPainter(pix)
-                    pen = QPen()
-                    painter.setRenderHint(QPainter.SmoothPixmapTransform, True)
-                    # HighQualityAntialiasing is obsolete in Qt6. Updating with Antialiasing
-                    try:
-                        painter.setRenderHint(QPainter.Antialiasing, True)
-                    except:
-                        painter.setRenderHint(QPainter.HighQualityAntialiasing, True)
-                    pen.setWidth(self.brushsize)
+                pen = QPen()
+                pen.setWidth(self.brushsize)
+                pen.setCapStyle(Qt.RoundCap)
+
+                if self.eraseractive:
+                    self.eraseColors(painter)
+                else:
                     pen.setColor(self.brushcolor)
-                    pen.setCapStyle(Qt.RoundCap)
-                    painter.setPen(pen)
-                    painter.drawLine(self.oldMouseX[1], self.oldMouseY[1], self.mouseX[1], self.mouseY[1])
-                    painter.end()
 
-                [x for x in self.graphicsscene.items() if type(x) == QGraphicsPixmapItem][0].setPixmap(visiblecanvas)
+                painter.setPen(pen)
+                painter.drawLine(self.oldMouseX[1], self.oldMouseY[1], self.mouseX[1], self.mouseY[1])
+                painter.end()
+
+                self.strokesitem.setPixmap(self.outputdrawingcanvas)
 
         self.oldMouseX = self.mouseX
         self.oldMouseY = self.mouseY
@@ -211,6 +222,10 @@ class NetworkEditorPainter(QWidget):
         self.graphicsview.setCursor(QCursor(Qt.PointingHandCursor))
         self.screenshots = [x.grabWindow(0) for x in QApplication.screens()]
         self.colorpickeractive = True
+
+    def eraseColors(self, painter):
+        painter.setCompositionMode(QPainter.CompositionMode_Clear)
+        self.updateBrush()
 
     def updateBrush(self):
         newbrushpix = QPixmap(self.brushsize, self.brushsize)
