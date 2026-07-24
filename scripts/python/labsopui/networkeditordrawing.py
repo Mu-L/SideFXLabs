@@ -95,7 +95,7 @@ class NetworkEditorPainter(QWidget):
         self.instructiontext.adjustSize()
 
         margin = 10;
-        self.instructiontext.move(self.networkeditorsize[0] - self.instructiontext.width() - margin, self.networkeditorsize[1] - self.instructiontext.height() - margin)
+        self.instructiontext.move(margin, self.networkeditorsize[1] - self.instructiontext.height() - margin)
 
         self.graphicsscene.addWidget(self.instructiontext)
         self.graphicsview.setScene(self.graphicsscene)
