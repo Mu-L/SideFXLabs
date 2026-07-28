@@ -1,0 +1,61 @@
+= Rename Attributes and Groups =
+
+#internal: labs::rename_attributes
+#icon: /labs_icons/sidefx_labs_default.svg
+#tags: sidefxlabs, utility, shelf, attributes, groups, refactor
+
+""" Renames attribute and group references in SOP node parameters, VEX and Python code. """
+
+== Overview ==
+
+This shelf tool finds attribute and group names on SOP geometry on selected nodes,
+then renames them.
+
+It changes references to a name. It does not rename attributes or groups on the
+geometry directly.
+
+== Quick Start ==
+
+# Select nodes and click __Rename Attributes and Groups__ on the Labs shelf.
+
+# Choose __Attributes__ or __Groups__, then select a scope and code options.
+
+# Choose a discovered name. Use __Find Rename Locations__ or
+  __View Rename Locations__ if you want to inspect the matching nodes.
+
+# Enter the new name. Resolve any collision warning, then click __Preview__.
+
+# Review the checked edits, click __Accept__, and read the final report.
+
+== Scope and Code Options ==
+
+Selected Nodes:
+    Scan the selection in the current Network Editor.
+
+Upstream / Downstream:
+    Include connected nodes before or after the selection.
+
+Inside Nodes:
+    Include subnets and editable asset contents. Locked hidden contents are
+    skipped and reported.
+
+All Nodes:
+    Scan the editable node surface of the whole HIP file.
+
+Rename in VEX / Rename in Python:
+    Include supported references in those code languages.
+
+Aggressive VEX Strings:
+    Also rename exact, complete string literals in detected VEX code. These
+    edits are high risk and require confirmation.
+
+Ambiguous ownership, dynamic code, unsupported expressions, and inaccessible
+content are left unchanged and reported.
+
+== Notes ==
+
+Scanning and previewing do not change parameters. Changes begin only after
+__Accept__.
+
+All accepted edits use one Houdini undo group, so ((CTRL)) + `Z` undoes the
+batch as one action.

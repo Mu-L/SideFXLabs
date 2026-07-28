@@ -1,4 +1,14 @@
-import ast
+"""Interactive Houdini workflow for renaming attributes and groups safely.
+
+This module owns scope discovery, the rich Qt workflow, previews, guarded
+application, undo, and reporting.  ``labs_rename_attributes_engine`` owns the
+read-only language-aware rewrite decisions for individual parameters.
+
+Discovery and preview never mutate parameters.  Application resolves every
+node and parameter again, verifies that its source still matches the preview,
+and records all successful writes in one Houdini undo group.
+"""
+
 import importlib
 import re
 from collections import deque
@@ -6,14 +16,20 @@ from contextlib import contextmanager
 
 import hou
 
-from labsopui import labs_rename_rewrite
+from . import labs_rename_attributes_engine as rename_engine
 
-labs_rename_rewrite = importlib.reload(labs_rename_rewrite)
+# Reload the planner with the shelf module so both sides of the public
+# boundary stay synchronized after Houdini refreshes shelf code.
+rename_engine = importlib.reload(rename_engine)
+
+
+# ---------------------------------------------------------------------------
+# Configuration, owner classes, scope identifiers, and session keys
+# ---------------------------------------------------------------------------
 
 RENAME_TITLE = "Rename Attributes and Groups"
 DEFAULT_ATTRIBUTE = "selectnode"
 DEFAULT_ATTRIBUTE_CLASS = "primitive"
-DEFAULT_GROUP = "group1"
 DEFAULT_GROUP_CLASS = "primitive"
 RENAME_KIND_ATTRIBUTE = "attribute"
 RENAME_KIND_GROUP = "group"
@@ -58,18 +74,12 @@ SCOPE_TARGET_ITEMS = (
     (SCOPE_TARGET_SELECTED_NODES, "Selected Nodes"),
     (SCOPE_TARGET_WHOLE_HIP, SCOPE_ALL_NODES_LABEL),
 )
-SCOPE_SELECTED_NODES = SCOPE_TARGET_SELECTED_NODES
-SCOPE_SELECTED_NODES_INTERNALS = "selected_nodes_internals"
-SCOPE_UPSTREAM_DISPLAYED = "upstream_displayed"
-SCOPE_CURRENT_NETWORK = "current_network"
-SCOPE_CURRENT_NETWORK_INTERNALS = "current_network_internals"
-SCOPE_WHOLE_HIP = SCOPE_TARGET_WHOLE_HIP
-SCOPE_WHOLE_HIP_INTERNALS = "whole_hip_internals"
-SCOPE_DOWNSTREAM_DISPLAYED = "downstream_displayed"
-SCOPE_ITEMS = (
-    (SCOPE_SELECTED_NODES, "Selected Nodes"),
-    (SCOPE_WHOLE_HIP, SCOPE_ALL_NODES_LABEL),
-)
+
+
+# ---------------------------------------------------------------------------
+# Status reporting and persisted user selections
+# ---------------------------------------------------------------------------
+
 
 def _show_status(message, severity=hou.severityType.Message):
     try:
@@ -88,6 +98,7 @@ def _show_status(message, severity=hou.severityType.Message):
 
 
 def _append_discovery_issue(issues, node_path, source_name, reason):
+    """Append one stable discovery problem without repeating it."""
     if issues is None:
         return
 
@@ -107,13 +118,22 @@ def _append_discovery_issue(issues, node_path, source_name, reason):
             return
     issues.append(issue)
 
-def _valid_rename_kinds():
-    return [item[0] for item in RENAME_KIND_ITEMS]
+
+def _operation_interrupted(error):
+    return error.__class__.__name__ == "OperationInterrupted"
+
+
+def _append_rename_issue(records, node_path, parm_name, reason):
+    records.append({
+        "node_path": node_path,
+        "parm_name": parm_name,
+        "reason": reason,
+    })
 
 
 def _normalize_rename_kind(rename_kind):
     rename_kind = str(rename_kind or RENAME_KIND_ATTRIBUTE).strip().lower()
-    if rename_kind not in _valid_rename_kinds():
+    if rename_kind not in dict(RENAME_KIND_ITEMS):
         return RENAME_KIND_ATTRIBUTE
     return rename_kind
 
@@ -146,6 +166,13 @@ def _rename_kind_label_singular(rename_kind=None):
     return "attribute"
 
 
+def _rename_kind_indefinite_label(rename_kind=None):
+    """Return the singular rename kind with its natural English article."""
+    if _normalize_rename_kind(rename_kind or _rename_kind()) == RENAME_KIND_GROUP:
+        return "a group"
+    return "an attribute"
+
+
 def _rename_kind_label_plural_lower(rename_kind=None):
     rename_kind = _normalize_rename_kind(rename_kind or _rename_kind())
     if rename_kind == RENAME_KIND_GROUP:
@@ -153,24 +180,9 @@ def _rename_kind_label_plural_lower(rename_kind=None):
     return "attributes"
 
 
-def _matching_attribute():
-    attr_name = getattr(hou.session, SESSION_ATTRIBUTE_NAME, DEFAULT_ATTRIBUTE)
-    if not isinstance(attr_name, str):
-        attr_name = DEFAULT_ATTRIBUTE
-
-    attr_name = attr_name.strip()
-    if not attr_name:
-        attr_name = DEFAULT_ATTRIBUTE
-
-    setattr(hou.session, SESSION_ATTRIBUTE_NAME, attr_name)
-    return attr_name
-
-def _valid_attribute_classes():
-    return [item[0] for item in ATTRIBUTE_CLASS_ITEMS]
-
 def _normalize_attribute_class(attr_class):
     attr_class = str(attr_class).strip().lower()
-    if attr_class not in _valid_attribute_classes():
+    if attr_class not in dict(ATTRIBUTE_CLASS_ITEMS):
         return DEFAULT_ATTRIBUTE_CLASS
     return attr_class
 
@@ -187,8 +199,6 @@ def _attribute_class_label(attr_class=None):
             return label
     return "Primitive"
 
-def _attribute_class_label_lower(attr_class=None):
-    return _attribute_class_label(attr_class).lower()
 
 def _set_matching_attribute(attr_name):
     attr_name = str(attr_name).strip()
@@ -205,15 +215,11 @@ def _set_attribute_class(attr_class):
     setattr(hou.session, SESSION_ATTRIBUTE_CLASS_NAME, attr_class)
     return True
 
-def _valid_group_classes():
-    return [item[0] for item in GROUP_CLASS_ITEMS]
-
-
 def _normalize_group_class(group_class):
     group_class = str(group_class or DEFAULT_GROUP_CLASS).strip().lower()
     if group_class == GROUP_CLASS_ANY:
         return GROUP_CLASS_ANY
-    if group_class not in _valid_group_classes():
+    if group_class not in dict(GROUP_CLASS_ITEMS):
         return DEFAULT_GROUP_CLASS
     return group_class
 
@@ -235,27 +241,10 @@ def _group_class_label(group_class=None):
     return "Primitive"
 
 
-def _group_class_label_lower(group_class=None):
-    return _group_class_label(group_class).lower()
-
-
 def _set_group_class(group_class):
     group_class = _normalize_group_class(group_class)
     setattr(hou.session, SESSION_GROUP_CLASS_NAME, group_class)
     return True
-
-
-def _matching_group():
-    group_name = getattr(hou.session, SESSION_GROUP_NAME, DEFAULT_GROUP)
-    if not isinstance(group_name, str):
-        group_name = DEFAULT_GROUP
-
-    group_name = group_name.strip()
-    if not group_name:
-        group_name = DEFAULT_GROUP
-
-    setattr(hou.session, SESSION_GROUP_NAME, group_name)
-    return group_name
 
 
 def _set_matching_group(group_name):
@@ -278,12 +267,6 @@ def _item_class_label_lower(rename_kind, item_class):
     return _item_class_label(rename_kind, item_class).lower()
 
 
-def _matching_item_name(rename_kind):
-    if _normalize_rename_kind(rename_kind) == RENAME_KIND_GROUP:
-        return _matching_group()
-    return _matching_attribute()
-
-
 def _set_matching_item(rename_kind, item_class, item_name):
     if _normalize_rename_kind(rename_kind) == RENAME_KIND_GROUP:
         _set_group_class(item_class)
@@ -292,7 +275,13 @@ def _set_matching_item(rename_kind, item_class, item_name):
     return _set_matching_attribute(item_name)
 
 
+# ---------------------------------------------------------------------------
+# Geometry, parameter, and rename-candidate discovery
+# ---------------------------------------------------------------------------
+
+
 def _displayed_sop_and_geometry(scene_viewer=None, cook_geometry=True):
+    """Return the displayed SOP and optionally cook its current geometry."""
     try:
         viewer = scene_viewer or hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
         if viewer is None:
@@ -330,7 +319,7 @@ def _geometry_attributes(geo, attr_class, discovery_issues=None, source_key=""):
         method = getattr(geo, method_name)
         return list(method())
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -392,7 +381,7 @@ def _node_inputs(node, discovery_issues=None):
     try:
         return [input_node for input_node in node.inputs() if input_node is not None]
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -409,7 +398,9 @@ def _selected_nodes_in_current_network(selected):
 
     try:
         current_parent_path = _node_path(selected[-1].parent())
-    except Exception:
+    except Exception as exc:
+        if _operation_interrupted(exc):
+            raise
         current_parent_path = ""
     if not current_parent_path:
         return selected[-1:]
@@ -418,45 +409,178 @@ def _selected_nodes_in_current_network(selected):
     for node in selected:
         try:
             parent_path = _node_path(node.parent())
-        except Exception:
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
             parent_path = ""
         if parent_path == current_parent_path:
             current_network_selection.append(node)
     return current_network_selection
 
 
-def _selected_nodes():
+def _network_editor_selected_nodes(global_selected):
+    """Return the selection owned by the visible Network Editor, when known."""
+    if not hasattr(hou, "ui"):
+        return None, None
+
+    try:
+        pane_tabs = tuple(hou.ui.paneTabs())
+        network_editor_type = hou.paneTabType.NetworkEditor
+    except Exception as exc:
+        if _operation_interrupted(exc):
+            raise
+        return [], (
+            "Could not inspect the visible Network Editors: {0}. "
+            "No previous selection was kept."
+        ).format(exc)
+
+    pane_under_cursor_failed = False
+    try:
+        pane_under_cursor = hou.ui.paneTabUnderCursor()
+    except Exception as exc:
+        if _operation_interrupted(exc):
+            raise
+        pane_under_cursor = None
+        pane_under_cursor_failed = True
+
+    inspected_editors = []
+    visible_editor_count = 0
+    inspected_editor_count = 0
+    failed_editor_count = 0
+    for editor in pane_tabs:
+        try:
+            if editor.type() != network_editor_type:
+                continue
+            if not editor.isCurrentTab():
+                continue
+            visible_editor_count += 1
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            failed_editor_count += 1
+            continue
+
+        try:
+            network = editor.pwd()
+            if network is None:
+                failed_editor_count += 1
+                continue
+
+            selected = list(network.selectedChildren())
+            if not selected:
+                current = editor.currentNode()
+                if (
+                    current is not None
+                    and current.isSelected()
+                    and _node_path(current.parent()) == _node_path(network)
+                ):
+                    selected = [current]
+
+            network_path = _node_path(network)
+            selected = _unique_nodes(
+                node
+                for node in selected
+                if node is not None
+                and _node_path(node.parent()) == network_path
+            )
+            inspected_editor_count += 1
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            failed_editor_count += 1
+            continue
+
+        inspected_editors.append((editor, network_path, selected))
+
+    if not visible_editor_count:
+        if pane_under_cursor_failed:
+            return [], (
+                "Could not inspect the pane under the cursor while resolving "
+                "the Network Editor selection. No previous selection was kept."
+            )
+        if failed_editor_count:
+            return [], (
+                "Could not inspect every visible pane while resolving the "
+                "Network Editor selection. No previous selection was kept."
+            )
+        return None, None
+
+    for editor, _network_path, selected in inspected_editors:
+        try:
+            if editor == pane_under_cursor:
+                if not selected:
+                    return [], (
+                        "No nodes are selected in the current Network Editor."
+                    )
+                return selected, None
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            pass
+
+    if pane_under_cursor_failed:
+        return [], (
+            "Could not inspect the pane under the cursor while resolving the "
+            "Network Editor selection. No previous selection was kept."
+        )
+
+    if failed_editor_count:
+        return [], (
+            "Could not inspect every visible Network Editor. "
+            "Make the intended Network Editor active, then refresh."
+        )
+
+    if not inspected_editor_count:
+        return [], (
+            "Could not inspect the visible Network Editors. "
+            "No previous selection was kept."
+        )
+
+    candidates = []
+    seen_signatures = set()
+    for _editor, network_path, selected in inspected_editors:
+        if not selected:
+            continue
+        signature = (
+            network_path,
+            tuple(_node_path(node) for node in selected),
+        )
+        if signature in seen_signatures:
+            continue
+        seen_signatures.add(signature)
+        candidates.append(selected)
+
+    if not candidates:
+        return [], "No nodes are selected in the current Network Editor."
+    if len(candidates) == 1:
+        return candidates[0], None
+
+    return [], (
+        "Selected nodes exist in more than one visible Network Editor. "
+        "Make the intended node current or clear the other selection, then refresh."
+    )
+
+
+def _selected_nodes_with_warning():
     try:
         selected = hou.selectedNodes()
-    except Exception:
-        return []
-    return _selected_nodes_in_current_network(selected)
-
-def _node_geometry(node, output_index=0):
-    if node is None:
-        return None
-
-    if not _node_is_sop(node):
-        return None
-
-    try:
-        return node.geometry(output_index)
-    except TypeError:
-        if output_index != 0:
-            return None
-        try:
-            return node.geometry()
-        except Exception as exc:
-            if exc.__class__.__name__ == "OperationInterrupted":
-                raise
-            return None
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
-        return None
+        selected = []
+
+    editor_selected, warning = _network_editor_selected_nodes(selected)
+    if editor_selected is not None:
+        return editor_selected, warning
+
+    selected = _selected_nodes_in_current_network(selected)
+    if selected:
+        return selected, None
+    return [], "No nodes are selected in the current network."
 
 
 def _node_output_indices(node, discovery_issues=None):
+    """Return every inspectable SOP output, falling back to output zero."""
     method = getattr(node, "outputConnectors", None)
     if method is None:
         return (0,)
@@ -464,7 +588,7 @@ def _node_output_indices(node, discovery_issues=None):
     try:
         connectors = tuple(method())
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -477,6 +601,7 @@ def _node_output_indices(node, discovery_issues=None):
 
 
 def _node_geometry_for_discovery(node, output_index, discovery_issues=None):
+    """Cook one output while converting local failures into reportable issues."""
     node_path = _node_path(node)
     source_name = "<output {0}>".format(output_index + 1)
     try:
@@ -493,7 +618,7 @@ def _node_geometry_for_discovery(node, output_index, discovery_issues=None):
         try:
             geo = node.geometry()
         except Exception as exc:
-            if exc.__class__.__name__ == "OperationInterrupted":
+            if _operation_interrupted(exc):
                 raise
             _append_discovery_issue(
                 discovery_issues,
@@ -503,7 +628,7 @@ def _node_geometry_for_discovery(node, output_index, discovery_issues=None):
             )
             return None
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -554,6 +679,7 @@ def _node_is_sop(node):
 
 @contextmanager
 def _interruptable_scan(title):
+    """Yield a Houdini progress operation when the host can create one."""
     try:
         operation = hou.InterruptableOperation(
             title,
@@ -568,6 +694,7 @@ def _interruptable_scan(title):
 
 
 def _iter_nodes_with_progress(nodes, title, progress_callback=None):
+    """Yield unique nodes while maintaining one monotonic progress stream."""
     unique_nodes = _unique_nodes(nodes or ())
     total = max(len(unique_nodes), 1)
     if progress_callback is not None:
@@ -585,50 +712,9 @@ def _iter_nodes_with_progress(nodes, title, progress_callback=None):
         if operation is not None:
             operation.updateProgress(1.0)
 
-def _selected_sop_geometries():
-    geometries = []
-    for node in _selected_nodes():
-        geo = _node_geometry(node)
-        if geo is not None:
-            geometries.append(geo)
-    return geometries
-
-def _attribute_choices_from_geometry_items(geometry_items):
-    choices = []
-    source_counts = {}
-    seen_source_choices = set()
-
-    for source_key, geo in geometry_items:
-        if geo is None:
-            continue
-
-        source_key = str(source_key or id(geo))
-        for attr_class, _label in ATTRIBUTE_CLASS_ITEMS:
-            for attr_name in _attribute_names_from_geo(geo, attr_class):
-                choice = (attr_class, attr_name)
-                source_choice = (source_key, choice)
-                if source_choice in seen_source_choices:
-                    continue
-
-                seen_source_choices.add(source_choice)
-                if choice not in source_counts:
-                    source_counts[choice] = 0
-                    choices.append(choice)
-                source_counts[choice] += 1
-
-    return [
-        (attr_class, attr_name, source_counts.get((attr_class, attr_name), 1))
-        for attr_class, attr_name in choices
-    ]
-
-def _attribute_choices_from_geometries(geometries):
-    geometry_items = [
-        ("geometry:{0}".format(index), geo)
-        for index, geo in enumerate(geometries)
-    ]
-    return _attribute_choices_from_geometry_items(geometry_items)
 
 def _discover_geometry_items_from_nodes(nodes):
+    """Collect valid geometry from every SOP output without aborting the scan."""
     geometry_items = []
     discovery_issues = []
     seen_sources = set()
@@ -667,26 +753,8 @@ def _discover_geometry_items_from_nodes(nodes):
     return geometry_items, discovery_issues
 
 
-def _geometry_items_from_nodes(nodes):
-    geometry_items, _discovery_issues = _discover_geometry_items_from_nodes(nodes)
-    return geometry_items
-
-def _available_attribute_choices(displayed_geo=None, nodes=None, displayed_sop=None):
-    geometry_items = []
-    displayed_path = _node_path(displayed_sop)
-
-    if displayed_geo is not None:
-        geometry_items.append((displayed_path or "<displayed>", displayed_geo))
-
-    for node_path, geo in _geometry_items_from_nodes(nodes):
-        if displayed_path and node_path == displayed_path:
-            continue
-        geometry_items.append((node_path, geo))
-
-    return _attribute_choices_from_geometry_items(geometry_items), len(geometry_items)
-
-
 def _geometry_groups(geo, group_class, discovery_issues=None, source_key=""):
+    """Read one group owner class while isolating geometry inspection failures."""
     if geo is None:
         return []
 
@@ -717,7 +785,7 @@ def _geometry_groups(geo, group_class, discovery_issues=None, source_key=""):
         method = getattr(geo, method_name)
         return list(method())
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -777,6 +845,7 @@ def _item_choices_from_geometry_items(
     geometry_items,
     discovery_issues=None,
 ):
+    """Merge discovered names and retain every geometry source for each choice."""
     rename_kind = _normalize_rename_kind(rename_kind)
     choices = []
     source_paths = {}
@@ -839,129 +908,6 @@ def _merge_item_choices(primary_choices, extra_choices):
     ]
 
 
-def _group_class_from_text(value):
-    text = str(value or "").strip().lower()
-    if not text:
-        return None
-    if "vertex" in text or "vertices" in text:
-        return GROUP_CLASS_UNSUPPORTED_VERTEX
-    if "edge" in text:
-        return GROUP_CLASS_EDGE
-    if "point" in text:
-        return GROUP_CLASS_POINT
-    if "prim" in text or "primitive" in text:
-        return GROUP_CLASS_PRIMITIVE
-    if text in ("any", "guess", "auto", "automatic"):
-        return GROUP_CLASS_ANY
-    return None
-
-
-def _parm_is_named_for_groups(parm):
-    parm_name = _parm_name(parm).strip().lower()
-    parm_label = _parm_label(parm).strip().lower()
-    search_text = "{0} {1}".format(parm_name, parm_label)
-    return "group" in search_text
-
-
-def _parm_value_descriptors(parm):
-    descriptors = []
-    try:
-        descriptors.append(parm.evalAsString())
-    except Exception:
-        pass
-
-    try:
-        template = parm.parmTemplate()
-        menu_items = tuple(template.menuItems())
-        menu_labels = tuple(template.menuLabels())
-        index = int(parm.evalAsInt())
-        if 0 <= index < len(menu_items):
-            descriptors.append(menu_items[index])
-        if 0 <= index < len(menu_labels):
-            descriptors.append(menu_labels[index])
-    except Exception:
-        pass
-    return descriptors
-
-
-def _parm_group_discovery_class(node, parm, node_parms=None):
-    parm_name = _parm_name(parm).strip().lower()
-    parm_label = _parm_label(parm).strip().lower()
-    search_text = "{0} {1}".format(parm_name, parm_label)
-
-    explicit_class = _group_class_from_text(search_text)
-    if explicit_class is not None:
-        return explicit_class
-
-    suffix_match = re.search(r"(\d+)$", parm_name)
-    suffix = suffix_match.group(1) if suffix_match else ""
-    numbered_companion_names = (
-        "grouptype{0}".format(suffix),
-        "groupclass{0}".format(suffix),
-        "groupentity{0}".format(suffix),
-        "entity{0}".format(suffix),
-    ) if suffix else ()
-    generic_companion_names = (
-        "grouptype",
-        "groupclass",
-        "groupentity",
-    )
-
-    if node_parms is None:
-        try:
-            node_parms = node.parms()
-        except Exception:
-            node_parms = ()
-
-    parms_by_name = {}
-    for candidate in node_parms or ():
-        candidate_name = _parm_name(candidate).strip().lower()
-        if candidate_name and candidate_name not in parms_by_name:
-            parms_by_name[candidate_name] = candidate
-
-    ranked_companions = []
-    seen_companion_names = set()
-    for candidate_name in numbered_companion_names + generic_companion_names:
-        candidate = parms_by_name.get(candidate_name)
-        if candidate is None or candidate_name in seen_companion_names:
-            continue
-        seen_companion_names.add(candidate_name)
-        ranked_companions.append(candidate)
-
-    for candidate in node_parms or ():
-        candidate_name = _parm_name(candidate).strip().lower()
-        candidate_label = _parm_label(candidate).strip().lower()
-        candidate_text = "{0} {1}".format(candidate_name, candidate_label)
-        if candidate_name in seen_companion_names:
-            continue
-        candidate_suffix_match = re.search(r"(\d+)$", candidate_name)
-        candidate_suffix = candidate_suffix_match.group(1) if candidate_suffix_match else ""
-        compatible_suffix = not suffix or not candidate_suffix or candidate_suffix == suffix
-        if compatible_suffix and (
-            "group type" in candidate_text
-            or "group class" in candidate_text
-        ):
-            seen_companion_names.add(candidate_name)
-            ranked_companions.append(candidate)
-
-    seen_names = set()
-    for candidate in ranked_companions:
-        candidate_name = _parm_name(candidate)
-        if candidate_name in seen_names:
-            continue
-        seen_names.add(candidate_name)
-        for descriptor in _parm_value_descriptors(candidate):
-            group_class = _group_class_from_text(descriptor)
-            if group_class is not None:
-                return group_class
-
-    try:
-        node_type_text = "{0} {1}".format(_node_type_name(node), node.type().description())
-    except Exception:
-        node_type_text = _node_type_name(node)
-    return _group_class_from_text(node_type_text)
-
-
 def _group_names_from_parameter_value(value):
     names = []
     seen = set()
@@ -980,6 +926,7 @@ def _group_names_from_parameter_value(value):
 
 
 def _group_choices_from_node_parameters(nodes):
+    """Discover concrete group names from class-aware parameter fields."""
     choices = []
     source_paths = {}
     seen_sources = set()
@@ -995,7 +942,7 @@ def _group_choices_from_node_parameters(nodes):
         try:
             parms = node.parms()
         except Exception as exc:
-            if exc.__class__.__name__ == "OperationInterrupted":
+            if _operation_interrupted(exc):
                 raise
             _append_discovery_issue(
                 skipped,
@@ -1005,9 +952,17 @@ def _group_choices_from_node_parameters(nodes):
             )
             parms = []
         for parm in parms:
-            if not _parm_is_string_like(parm):
-                continue
-            if not _parm_is_named_for_groups(parm):
+            field = rename_engine._plain_field_info(
+                node,
+                parm,
+                rename_engine.RENAME_KIND_GROUP,
+                node_parms=parms,
+            )
+            if (
+                not field["editable"]
+                or field["owner_metadata"]
+                or not field["explicit"]
+            ):
                 continue
             value = _parm_string_value(parm)
             if value is None:
@@ -1023,7 +978,9 @@ def _group_choices_from_node_parameters(nodes):
             group_names = _group_names_from_parameter_value(value)
             if not group_names:
                 continue
-            group_class = _parm_group_discovery_class(node, parm, node_parms=parms)
+            group_class = (
+                None if field["ambiguous_owner"] else field["owner"]
+            )
             if group_class == GROUP_CLASS_UNSUPPORTED_VERTEX:
                 _append_discovery_issue(
                     skipped,
@@ -1052,35 +1009,31 @@ def _group_choices_from_node_parameters(nodes):
 
 
 def _geometry_discovery_for_scope(displayed_geo=None, nodes=None, displayed_sop=None):
+    """Merge displayed and scoped geometry without reporting a source twice."""
     geometry_items = []
     discovery_issues = []
     displayed_path = _node_path(displayed_sop)
     scoped_paths = set(_node_path(node) for node in _unique_nodes(nodes or ()))
     scoped_paths.discard("")
+    displayed_geometry_added = (
+        displayed_geo is not None and displayed_path in scoped_paths
+    )
 
-    if displayed_geo is not None and displayed_path in scoped_paths:
+    if displayed_geometry_added:
         geometry_items.append((displayed_path or "<displayed>", displayed_geo))
 
     discovered_items, node_issues = _discover_geometry_items_from_nodes(nodes)
     discovery_issues.extend(node_issues)
     for source_key, geo in discovered_items:
-        if displayed_path and source_key == displayed_path:
+        if displayed_geometry_added and source_key == displayed_path:
             continue
         geometry_items.append((source_key, geo))
 
     return geometry_items, discovery_issues
 
 
-def _geometry_items_for_scope(displayed_geo=None, nodes=None, displayed_sop=None):
-    geometry_items, _discovery_issues = _geometry_discovery_for_scope(
-        displayed_geo,
-        nodes=nodes,
-        displayed_sop=displayed_sop,
-    )
-    return geometry_items
-
-
 def _available_item_choices(rename_kind, displayed_geo=None, nodes=None, displayed_sop=None):
+    """Discover rename candidates and the sources that exposed each name."""
     rename_kind = _normalize_rename_kind(rename_kind)
     geometry_items, discovery_issues = _geometry_discovery_for_scope(
         displayed_geo,
@@ -1100,6 +1053,7 @@ def _available_item_choices(rename_kind, displayed_geo=None, nodes=None, display
 
 
 def _target_item_exists(rename_kind, item_class, item_name, geometry_items, item_choices=None):
+    """Check collisions only in compatible owner-class contexts."""
     for _source_key, geo in geometry_items or []:
         if _geometry_has_item(geo, rename_kind, item_class, item_name):
             return True
@@ -1155,38 +1109,6 @@ def _item_choice_key(choice):
     return rename_kind, item_class, item_name
 
 
-def _attribute_choice_parts(choice):
-    _rename_kind, attr_class, attr_name, source_count, _sources = _item_choice_parts(choice)
-    return attr_class, attr_name, source_count
-
-
-def _item_choice_label(choice):
-    rename_kind, item_class, item_name, source_count, _sources = _item_choice_parts(choice)
-    suffix = " ({0} found)".format(source_count)
-    return "{0}: {1}{2}".format(_item_class_label(rename_kind, item_class), item_name, suffix)
-
-
-def _attribute_choice_label(choice):
-    return _item_choice_label(choice)
-
-
-def _default_attribute_choice_index(choices):
-    current_attr = _matching_attribute()
-    current_class = _attribute_class()
-    for index, choice in enumerate(choices):
-        attr_class, attr_name, _source_count = _attribute_choice_parts(choice)
-        if (attr_class, attr_name) == (current_class, current_attr):
-            return index
-
-    default_choice = (DEFAULT_ATTRIBUTE_CLASS, DEFAULT_ATTRIBUTE)
-    for index, choice in enumerate(choices):
-        attr_class, attr_name, _source_count = _attribute_choice_parts(choice)
-        if (attr_class, attr_name) == default_choice:
-            return index
-
-    return 0
-
-
 def _choice_matches_attribute_search(choice, search_text):
     search_text = str(search_text or "").strip().lower()
     if not search_text:
@@ -1196,300 +1118,150 @@ def _choice_matches_attribute_search(choice, search_text):
     return search_text in str(item_name).lower()
 
 
-def _qt_user_role(QtCore):
-    role = getattr(QtCore.Qt, "UserRole", None)
-    if role is not None:
-        return role
-    return QtCore.Qt.ItemDataRole.UserRole
+# ---------------------------------------------------------------------------
+# PySide compatibility helpers
+# ---------------------------------------------------------------------------
 
 
-def _qt_checked_state(QtCore):
-    state = getattr(QtCore.Qt, "Checked", None)
-    if state is not None:
-        return state
-    return QtCore.Qt.CheckState.Checked
+def _qt_enum(owner, enum_name, member_name):
+    value = getattr(owner, member_name, None)
+    if value is None:
+        value = getattr(getattr(owner, enum_name), member_name)
+    return value
 
 
-def _qt_unchecked_state(QtCore):
-    state = getattr(QtCore.Qt, "Unchecked", None)
-    if state is not None:
-        return state
-    return QtCore.Qt.CheckState.Unchecked
-
-
-def _qt_scrollbar_as_needed(QtCore):
-    policy = getattr(QtCore.Qt, "ScrollBarAsNeeded", None)
-    if policy is not None:
-        return policy
-    return QtCore.Qt.ScrollBarPolicy.ScrollBarAsNeeded
-
-
-def _qt_elide_none(QtCore):
-    elide = getattr(QtCore.Qt, "ElideNone", None)
-    if elide is not None:
-        return elide
-    return QtCore.Qt.TextElideMode.ElideNone
-
-
-def _qt_select_rows(QtWidgets):
-    behavior = getattr(QtWidgets.QAbstractItemView, "SelectRows", None)
-    if behavior is not None:
-        return behavior
-    return QtWidgets.QAbstractItemView.SelectionBehavior.SelectRows
-
-
-def _qt_extended_selection(QtWidgets):
-    mode = getattr(QtWidgets.QAbstractItemView, "ExtendedSelection", None)
-    if mode is not None:
-        return mode
-    return QtWidgets.QAbstractItemView.SelectionMode.ExtendedSelection
-
-
-def _qt_no_edit_triggers(QtWidgets):
-    triggers = getattr(QtWidgets.QAbstractItemView, "NoEditTriggers", None)
-    if triggers is not None:
-        return triggers
-    return QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers
-
-
-def _qt_resize_to_contents(QtWidgets):
-    mode = getattr(QtWidgets.QHeaderView, "ResizeToContents", None)
-    if mode is not None:
-        return mode
-    return QtWidgets.QHeaderView.ResizeMode.ResizeToContents
-
-
-def _qt_non_modal(QtCore):
-    modality = getattr(QtCore.Qt, "NonModal", None)
-    if modality is not None:
-        return modality
-    return QtCore.Qt.WindowModality.NonModal
-
-
-def _qt_mouse_button_press(QtCore):
-    event_type = getattr(QtCore.QEvent, "MouseButtonPress", None)
-    if event_type is not None:
-        return event_type
-    return QtCore.QEvent.Type.MouseButtonPress
-
-
-def _choose_attribute_to_rename_dialog(choices):
-    from hutil.Qt import QtCore, QtWidgets
-
-    class AttributeChoiceDialog(QtWidgets.QDialog):
-        def __init__(self, parent=None):
-            super(AttributeChoiceDialog, self).__init__(parent)
-            self.setWindowTitle(RENAME_TITLE)
-            try:
-                self.setWindowFlags(
-                    self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint
-                )
-            except Exception:
-                pass
-
-            self._choices = list(choices)
-            self._selected_index = None
-            self._user_role = _qt_user_role(QtCore)
-            self._default_index = _default_attribute_choice_index(self._choices)
-
-            layout = QtWidgets.QVBoxLayout()
-
-            label = QtWidgets.QLabel("Choose an attribute to rename.")
-            label.setWordWrap(True)
-            layout.addWidget(label)
-
-            search_layout = QtWidgets.QHBoxLayout()
-            self.search_edit = QtWidgets.QLineEdit()
-            self.search_edit.setPlaceholderText("Attribute name")
-            self.search_button = QtWidgets.QPushButton("Search")
-            search_layout.addWidget(self.search_edit, 1)
-            search_layout.addWidget(self.search_button)
-            layout.addLayout(search_layout)
-
-            self.list_widget = QtWidgets.QListWidget()
-            single_selection = getattr(QtWidgets.QAbstractItemView, "SingleSelection", None)
-            if single_selection is None:
-                single_selection = QtWidgets.QAbstractItemView.SelectionMode.SingleSelection
-            self.list_widget.setSelectionMode(single_selection)
-            layout.addWidget(self.list_widget)
-
-            self.status_label = QtWidgets.QLabel("")
-            self.status_label.setWordWrap(True)
-            self.status_label.setStyleSheet("color: #ff9a9a;")
-            self.status_label.hide()
-            layout.addWidget(self.status_label)
-
-            button_layout = QtWidgets.QHBoxLayout()
-            button_layout.addStretch(1)
-            self.choose_button = QtWidgets.QPushButton("Choose")
-            self.cancel_button = QtWidgets.QPushButton("Cancel")
-            self.choose_button.setDefault(True)
-            button_layout.addWidget(self.choose_button)
-            button_layout.addWidget(self.cancel_button)
-            layout.addLayout(button_layout)
-
-            self.setLayout(layout)
-            self.setMinimumSize(520, 420)
-
-            self.search_button.clicked.connect(self._apply_filter)
-            self.search_edit.returnPressed.connect(self._apply_filter)
-            self.choose_button.clicked.connect(self.accept)
-            self.cancel_button.clicked.connect(self.reject)
-            self.list_widget.itemDoubleClicked.connect(self._accept_item)
-
-            self._populate_list("")
-
-        def _show_status(self, message):
-            self.status_label.setText(message)
-            self.status_label.show()
-
-        def _clear_status(self):
-            self.status_label.clear()
-            self.status_label.hide()
-
-        def _populate_list(self, search_text):
-            self.list_widget.clear()
-            matched_default_item = None
-            first_item = None
-
-            for index, choice in enumerate(self._choices):
-                if not _choice_matches_attribute_search(choice, search_text):
-                    continue
-
-                item = QtWidgets.QListWidgetItem(_attribute_choice_label(choice))
-                item.setData(self._user_role, index)
-                self.list_widget.addItem(item)
-                if first_item is None:
-                    first_item = item
-                if index == self._default_index:
-                    matched_default_item = item
-
-            if self.list_widget.count() == 0:
-                self._show_status("No matching attributes found.")
-                return
-
-            self._clear_status()
-            item_to_select = matched_default_item or first_item
-            if item_to_select is not None:
-                self.list_widget.setCurrentItem(item_to_select)
-
-        def _apply_filter(self):
-            self._populate_list(self.search_edit.text())
-
-        def _selected_choice_index(self):
-            item = self.list_widget.currentItem()
-            if item is None:
-                return None
-            try:
-                return int(item.data(self._user_role))
-            except Exception:
-                return None
-
-        def _accept_item(self, item):
-            if item is not None:
-                self.list_widget.setCurrentItem(item)
-            self.accept()
-
-        def accept(self):
-            index = self._selected_choice_index()
-            if index is None or index < 0 or index >= len(self._choices):
-                self._show_status("Choose an attribute or press Cancel.")
-                return
-
-            self._selected_index = index
-            super(AttributeChoiceDialog, self).accept()
-
-        def selected_choice(self):
-            if self._selected_index is None:
-                return None
-            return self._choices[self._selected_index]
-
-    parent = None
+def _configure_qt_dialog(dialog, QtCore, nonmodal=False):
+    if nonmodal:
+        dialog.setModal(False)
+        try:
+            dialog.setWindowModality(
+                _qt_enum(QtCore.Qt, "WindowModality", "NonModal")
+            )
+        except Exception:
+            pass
     try:
-        parent = hou.qt.mainWindow()
+        dialog.setWindowFlags(
+            dialog.windowFlags()
+            ^ _qt_enum(
+                QtCore.Qt,
+                "WindowType",
+                "WindowContextHelpButtonHint",
+            )
+        )
     except Exception:
         pass
 
-    dialog = AttributeChoiceDialog(parent)
-    exec_method = getattr(dialog, "exec", None)
-    if exec_method is None:
-        exec_method = getattr(dialog, "exec_")
 
-    accepted = getattr(QtWidgets.QDialog, "Accepted", None)
-    if accepted is None:
-        accepted = QtWidgets.QDialog.DialogCode.Accepted
-
-    if exec_method() != accepted:
-        return None
-    return dialog.selected_choice()
-
-
-def _choose_attribute_to_rename_fallback(choices):
-    labels = [_attribute_choice_label(choice) for choice in choices]
-    default_index = _default_attribute_choice_index(choices)
+def _qt_main_window():
     try:
-        selection = hou.ui.selectFromList(
-            labels,
-            default_choices=(default_index,),
-            exclusive=True,
-            message="Choose an attribute to rename.",
-            title=RENAME_TITLE,
-            column_header="Attribute",
-            clear_on_cancel=True,
-            sort=False,
-        )
-    except Exception as exc:
-        _show_attribute_rename_warning(
-            "Could not open attribute rename picker: {0}".format(exc)
-        )
+        return hou.qt.mainWindow()
+    except Exception:
         return None
 
-    if not selection:
-        return None
 
-    index = selection[0]
-    if index < 0 or index >= len(choices):
-        _show_attribute_rename_warning("Attribute rename selection is out of range.")
-        return None
-
-    return choices[index]
+def _focus_qt_dialog(dialog):
+    for method_name in ("raise_", "activateWindow"):
+        try:
+            getattr(dialog, method_name)()
+        except Exception:
+            pass
 
 
-def _choose_attribute_to_rename(displayed_geo=None, nodes=None, displayed_sop=None, scope_label=None):
-    choices, geometry_source_count = _available_attribute_choices(
-        displayed_geo,
-        nodes=nodes,
-        displayed_sop=displayed_sop,
+def _show_qt_dialog(dialog):
+    dialog.show()
+    _focus_qt_dialog(dialog)
+
+
+def _delete_qt_later(dialog):
+    try:
+        dialog.deleteLater()
+    except Exception:
+        pass
+
+
+def _resize_qt_dialog(dialog, QtWidgets, width, height):
+    maximum_width = None
+    maximum_height = None
+    screens = []
+    try:
+        screens.append(dialog.screen())
+    except Exception:
+        pass
+    try:
+        screens.append(QtWidgets.QApplication.primaryScreen())
+    except Exception:
+        pass
+
+    for screen in screens:
+        if screen is None:
+            continue
+        try:
+            geometry = screen.availableGeometry()
+            available_width = int(geometry.width())
+            available_height = int(geometry.height())
+        except Exception:
+            continue
+        if available_width > 0 and available_height > 0:
+            maximum_width = max(int(available_width * 0.9), 1)
+            maximum_height = max(int(available_height * 0.9), 1)
+            break
+
+    try:
+        minimum_width = max(int(dialog.minimumWidth()), 0)
+    except Exception:
+        minimum_width = 0
+    try:
+        minimum_height = max(int(dialog.minimumHeight()), 0)
+    except Exception:
+        minimum_height = 0
+
+    target_width = int(width)
+    target_height = int(height)
+    if maximum_width is not None:
+        target_width = min(target_width, maximum_width)
+    if maximum_height is not None:
+        target_height = min(target_height, maximum_height)
+    target_width = max(target_width, minimum_width)
+    target_height = max(target_height, minimum_height)
+    try:
+        dialog.resize(target_width, target_height)
+    except Exception:
+        pass
+
+
+def _configure_readonly_table(
+    table,
+    QtCore,
+    QtWidgets,
+    selection_mode="ExtendedSelection",
+    vertical_scroll=True,
+):
+    table.setWordWrap(False)
+    table.setTextElideMode(
+        _qt_enum(QtCore.Qt, "TextElideMode", "ElideNone")
     )
-    if not choices:
-        if geometry_source_count > 0:
-            _show_attribute_rename_warning(
-                "No attributes were found in {0} to rename.".format(
-                    scope_label or "the selected scope"
-                )
-            )
-            return None
+    scrollbar_policy = _qt_enum(
+        QtCore.Qt, "ScrollBarPolicy", "ScrollBarAsNeeded"
+    )
+    table.setHorizontalScrollBarPolicy(scrollbar_policy)
+    if vertical_scroll:
+        table.setVerticalScrollBarPolicy(scrollbar_policy)
+    view = QtWidgets.QAbstractItemView
+    table.setSelectionBehavior(
+        _qt_enum(view, "SelectionBehavior", "SelectRows")
+    )
+    table.setSelectionMode(
+        _qt_enum(view, "SelectionMode", selection_mode)
+    )
+    table.setEditTriggers(
+        _qt_enum(view, "EditTrigger", "NoEditTriggers")
+    )
 
-        _show_attribute_rename_warning(
-            "No inspectable geometry was found. Select nodes and use Refresh From Current Selection."
-        )
-        return None
 
-    try:
-        choice = _choose_attribute_to_rename_dialog(choices)
-    except Exception as exc:
-        _show_attribute_rename_warning(
-            "Could not open searchable attribute picker: {0}. Falling back to simple picker.".format(exc)
-        )
-        choice = _choose_attribute_to_rename_fallback(choices)
+# ---------------------------------------------------------------------------
+# Scope graph traversal and locked-asset boundaries
+# ---------------------------------------------------------------------------
 
-    if choice is None:
-        return None
-
-    attr_class, old_attr, _source_count = _attribute_choice_parts(choice)
-    _set_attribute_class(attr_class)
-    _set_matching_attribute(old_attr)
-    return attr_class, old_attr
 
 def _node_path(node):
     if node is None:
@@ -1510,6 +1282,7 @@ def _node_is_wrangle_wrapper(node):
     return "wrangle" in _node_type_name(node)
 
 def _nearest_wrangle_origin_node(node):
+    """Map an internal wrangle implementation node to its visible wrapper."""
     current = node
     seen_paths = set()
 
@@ -1531,12 +1304,14 @@ def _nearest_wrangle_origin_node(node):
     return None
 
 def _canonical_origin_node(node):
+    """Return the stable user-facing node used for scope traversal."""
     wrangle_node = _nearest_wrangle_origin_node(node)
     if wrangle_node is not None:
         return wrangle_node
     return node
 
 def _origin_traversal_nodes(node):
+    """Return concrete dataflow nodes represented by one visible origin."""
     if node is None:
         return []
 
@@ -1546,6 +1321,7 @@ def _origin_traversal_nodes(node):
     return [node]
 
 def _origin_dataflow_inputs(node, discovery_issues=None):
+    """Collect unique inputs across a visible node and its implementation."""
     node = _canonical_origin_node(node)
     if node is None:
         return []
@@ -1564,6 +1340,7 @@ def _origin_dataflow_inputs(node, discovery_issues=None):
     return inputs
 
 def _iter_upstream_nodes_with_depth(source_sop, discovery_issues=None):
+    """Traverse upstream breadth-first while retaining deterministic depth."""
     if source_sop is None:
         return []
 
@@ -1603,7 +1380,7 @@ def _node_outputs(node, discovery_issues=None):
         try:
             return [output_node for output_node in method() if output_node is not None]
         except Exception as exc:
-            if exc.__class__.__name__ == "OperationInterrupted":
+            if _operation_interrupted(exc):
                 raise
             _append_discovery_issue(
                 discovery_issues,
@@ -1619,6 +1396,7 @@ def _node_outputs(node, discovery_issues=None):
     return []
 
 def _iter_downstream_nodes_with_depth(source_sop, discovery_issues=None):
+    """Traverse downstream breadth-first through visible dataflow origins."""
     if source_sop is None:
         return []
 
@@ -1649,7 +1427,7 @@ def _node_children(node, discovery_issues=None):
     try:
         return [child for child in node.children() if child is not None]
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -1659,35 +1437,70 @@ def _node_children(node, discovery_issues=None):
         )
         return []
 
-def _node_allows_internal_scan(node):
+def _node_allows_internal_scan(node, discovery_issues=None):
     if node is None:
-        return False
+        return None
 
     method = getattr(node, "isLockedHDA", None)
-    if method is not None:
-        try:
-            if method():
-                return False
-        except Exception:
-            pass
+    if method is None:
+        _append_discovery_issue(
+            discovery_issues,
+            _node_path(node),
+            "<internals>",
+            "could not verify whether node internals are locked; internals were not entered",
+        )
+        return None
+
+    try:
+        if method():
+            return False
+    except Exception as exc:
+        if _operation_interrupted(exc):
+            raise
+        _append_discovery_issue(
+            discovery_issues,
+            _node_path(node),
+            "<internals>",
+            "could not verify whether node internals are locked; internals were not entered: {0}".format(
+                exc
+            ),
+        )
+        return None
 
     return True
 
 
-def _node_is_editable_inside_locked_hda(node):
+def _node_is_editable_inside_locked_hda(node, discovery_issues=None):
     if node is None:
-        return False
+        return None
 
     method = getattr(node, "isEditableInsideLockedHDA", None)
     if method is None:
-        return False
+        _append_discovery_issue(
+            discovery_issues,
+            _node_path(node),
+            "<internals>",
+            "could not verify whether locked-asset internals are editable; "
+            "this branch was not entered",
+        )
+        return None
     try:
         return bool(method())
-    except Exception:
-        return False
+    except Exception as exc:
+        if _operation_interrupted(exc):
+            raise
+        _append_discovery_issue(
+            discovery_issues,
+            _node_path(node),
+            "<internals>",
+            "could not verify whether locked-asset internals are editable; "
+            "this branch was not entered: {0}".format(exc),
+        )
+        return None
 
 
 def _editable_descendants_of_locked_hda(node, discovery_issues=None):
+    """Return only editable islands exposed inside a locked asset."""
     editable = []
     seen_paths = set()
     queue = deque(_node_children(node, discovery_issues))
@@ -1697,8 +1510,14 @@ def _editable_descendants_of_locked_hda(node, discovery_issues=None):
         if not child_path or child_path in seen_paths:
             continue
         seen_paths.add(child_path)
-        if _node_is_editable_inside_locked_hda(child):
+        editable_state = _node_is_editable_inside_locked_hda(
+            child,
+            discovery_issues,
+        )
+        if editable_state is True:
             editable.append(child)
+            continue
+        if editable_state is None:
             continue
         queue.extend(_node_children(child, discovery_issues))
     return editable
@@ -1715,6 +1534,7 @@ def _unique_nodes(nodes):
     return unique_nodes
 
 def _expand_nodes_with_internals(nodes, discovery_issues=None):
+    """Expand scope through editable internals without entering locked details."""
     expanded = []
     seen_paths = set()
     queue = deque(nodes)
@@ -1728,7 +1548,13 @@ def _expand_nodes_with_internals(nodes, discovery_issues=None):
         seen_paths.add(node_path)
         expanded.append(node)
 
-        if not _node_allows_internal_scan(node):
+        internal_scan_state = _node_allows_internal_scan(
+            node,
+            discovery_issues,
+        )
+        if internal_scan_state is None:
+            continue
+        if internal_scan_state is False:
             queue.extend(
                 _editable_descendants_of_locked_hda(
                     node,
@@ -1744,40 +1570,13 @@ def _expand_nodes_with_internals(nodes, discovery_issues=None):
 def _nodes_from_tuples(node_tuples):
     return _unique_nodes(item[0] for item in node_tuples if item)
 
-def _current_network_node(scene_viewer=None):
-    try:
-        viewer = scene_viewer or hou.ui.paneTabOfType(hou.paneTabType.SceneViewer)
-    except Exception:
-        viewer = None
-
-    if viewer is not None:
-        try:
-            pwd = viewer.pwd()
-            if pwd is not None:
-                return pwd
-        except Exception:
-            pass
-
-    try:
-        network_editor = hou.ui.paneTabOfType(hou.paneTabType.NetworkEditor)
-    except Exception:
-        network_editor = None
-
-    if network_editor is not None:
-        try:
-            pwd = network_editor.pwd()
-            if pwd is not None:
-                return pwd
-        except Exception:
-            pass
-
-    return None
 
 def _whole_hip_surface_nodes(discovery_issues=None):
+    """Collect the editable node surface of the current Houdini scene."""
     try:
         root = hou.node("/")
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             raise
         _append_discovery_issue(
             discovery_issues,
@@ -1804,6 +1603,11 @@ def _whole_hip_surface_nodes(discovery_issues=None):
             nodes.append(context_node)
     return _unique_nodes(nodes)
 
+# ---------------------------------------------------------------------------
+# Scope options and non-modal dialog state
+# ---------------------------------------------------------------------------
+
+
 def _default_rename_scope_options():
     return {
         "target": SCOPE_TARGET_SELECTED_NODES,
@@ -1819,45 +1623,27 @@ def _default_rename_scope_options():
     }
 
 
-def _valid_scope_targets():
-    return [value for value, _label in SCOPE_TARGET_ITEMS]
-
-
 def _normalize_rename_scope_options(scope):
+    """Normalize persisted scope settings into one complete option mapping."""
     options = _default_rename_scope_options()
+    scope = scope if isinstance(scope, dict) else {}
+    target = scope.get("target", options["target"])
+    if target not in {value for value, _label in SCOPE_TARGET_ITEMS}:
+        target = options["target"]
 
-    if isinstance(scope, dict):
-        target = scope.get("target", options["target"])
-        if target not in _valid_scope_targets():
-            target = options["target"]
-
-        options["target"] = target
-        options["rename_kind"] = _normalize_rename_kind(scope.get("rename_kind", options.get("rename_kind", RENAME_KIND_ATTRIBUTE)))
-        options["include_internals"] = bool(scope.get("include_internals", False))
-        options["include_upstream"] = bool(scope.get("include_upstream", False))
-        options["include_downstream"] = bool(scope.get("include_downstream", False))
-        options["rename_vex"] = bool(scope.get("rename_vex", True))
-        options["rename_python"] = bool(scope.get("rename_python", True))
-        options["aggressive_vex"] = bool(scope.get("aggressive_vex", False))
-        if not options["rename_vex"]:
-            options["aggressive_vex"] = False
-        if target == SCOPE_TARGET_WHOLE_HIP:
-            options["include_internals"] = True
-            options["include_upstream"] = False
-            options["include_downstream"] = False
-        return options
-
-    scope = scope or SCOPE_SELECTED_NODES
-    if scope == SCOPE_SELECTED_NODES_INTERNALS:
-        options["include_internals"] = True
-    elif scope == SCOPE_UPSTREAM_DISPLAYED:
-        options["include_upstream"] = True
-    elif scope == SCOPE_DOWNSTREAM_DISPLAYED:
-        options["include_downstream"] = True
-    elif scope == SCOPE_CURRENT_NETWORK_INTERNALS:
-        options["include_internals"] = True
-    elif scope in (SCOPE_WHOLE_HIP, SCOPE_WHOLE_HIP_INTERNALS):
-        options["target"] = SCOPE_TARGET_WHOLE_HIP
+    options["target"] = target
+    options["rename_kind"] = _normalize_rename_kind(
+        scope.get("rename_kind", options["rename_kind"])
+    )
+    options["include_internals"] = bool(scope.get("include_internals", False))
+    options["include_upstream"] = bool(scope.get("include_upstream", False))
+    options["include_downstream"] = bool(scope.get("include_downstream", False))
+    options["rename_vex"] = bool(scope.get("rename_vex", True))
+    options["rename_python"] = bool(scope.get("rename_python", True))
+    options["aggressive_vex"] = bool(scope.get("aggressive_vex", False))
+    if not options["rename_vex"]:
+        options["aggressive_vex"] = False
+    if target == SCOPE_TARGET_WHOLE_HIP:
         options["include_internals"] = True
         options["include_upstream"] = False
         options["include_downstream"] = False
@@ -1879,13 +1665,6 @@ def _set_stored_rename_scope_options(options):
         SESSION_AGGRESSIVE_VEX_NAME,
         bool(normalized.get("aggressive_vex", False)),
     )
-
-
-def _scope_target_label(target):
-    for value, label in SCOPE_TARGET_ITEMS:
-        if value == target:
-            return label
-    return "Selected Nodes"
 
 
 def _scope_label(scope):
@@ -1938,18 +1717,12 @@ def _focus_existing_rename_scope_dialog():
         _clear_stored_rename_scope_dialog(dialog)
         return False
 
-    try:
-        dialog.raise_()
-    except Exception:
-        pass
-    try:
-        dialog.activateWindow()
-    except Exception:
-        pass
+    _focus_qt_dialog(dialog)
     return True
 
 
 def _open_rename_scope_dialog(on_accept):
+    """Show the reusable non-modal scope dialog and continue through a callback."""
     if _focus_existing_rename_scope_dialog():
         return True
 
@@ -1959,25 +1732,9 @@ def _open_rename_scope_dialog(on_accept):
         def __init__(self, parent=None):
             super(RenameScopeDialog, self).__init__(parent)
             self.setWindowTitle(RENAME_TITLE)
-            self.setModal(False)
-            try:
-                self.setWindowModality(_qt_non_modal(QtCore))
-            except Exception:
-                pass
-            try:
-                self.setWindowFlags(
-                    self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint
-                )
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore, nonmodal=True)
 
             layout = QtWidgets.QVBoxLayout()
-
-            message = QtWidgets.QLabel(
-                "Choose what to rename and where to search. You can select nodes while this window is open."
-            )
-            message.setWordWrap(True)
-            layout.addWidget(message)
 
             kind_layout = QtWidgets.QHBoxLayout()
             kind_label = QtWidgets.QLabel("Rename")
@@ -2045,6 +1802,7 @@ def _open_rename_scope_dialog(on_accept):
             self._apply_initial_options(_stored_rename_scope_options())
             self.setLayout(layout)
             self.setMinimumWidth(390)
+            _resize_qt_dialog(self, QtWidgets, 520, 400)
             self.target_combo.currentIndexChanged.connect(self._update_scope_controls)
             self.rename_vex_check.toggled.connect(self._update_code_controls)
             self._update_scope_controls()
@@ -2067,11 +1825,15 @@ def _open_rename_scope_dialog(on_accept):
             target = options.get("target", SCOPE_TARGET_SELECTED_NODES)
             rename_kind = _normalize_rename_kind(options.get("rename_kind", RENAME_KIND_ATTRIBUTE))
             try:
-                target_index = _valid_scope_targets().index(target)
+                target_index = tuple(
+                    value for value, _label in SCOPE_TARGET_ITEMS
+                ).index(target)
             except ValueError:
                 target_index = 0
             try:
-                kind_index = _valid_rename_kinds().index(rename_kind)
+                kind_index = tuple(
+                    value for value, _label in RENAME_KIND_ITEMS
+                ).index(rename_kind)
             except ValueError:
                 kind_index = 0
 
@@ -2094,10 +1856,6 @@ def _open_rename_scope_dialog(on_accept):
                 self.upstream_check.setChecked(False)
                 self.downstream_check.setChecked(False)
                 self.include_internals_check.setChecked(True)
-            try:
-                self.adjustSize()
-            except Exception:
-                pass
 
         def _update_code_controls(self, *_args):
             enabled = self.rename_vex_check.isChecked()
@@ -2118,21 +1876,14 @@ def _open_rename_scope_dialog(on_accept):
                 "aggressive_vex": self.aggressive_vex_check.isChecked(),
             })
 
-    parent = None
-    try:
-        parent = hou.qt.mainWindow()
-    except Exception:
-        pass
-
-    dialog = RenameScopeDialog(parent)
+    dialog = RenameScopeDialog(_qt_main_window())
+    # The session reference keeps the non-modal dialog alive until its
+    # finished callback releases it.
     _set_stored_rename_scope_dialog(dialog)
 
     def _finished(_result=None):
         _clear_stored_rename_scope_dialog(dialog)
-        try:
-            dialog.deleteLater()
-        except Exception:
-            pass
+        _delete_qt_later(dialog)
 
     def _accepted():
         scope_options = dialog.scope_options()
@@ -2148,20 +1899,12 @@ def _open_rename_scope_dialog(on_accept):
 
     dialog.accepted.connect(_accepted)
     dialog.finished.connect(_finished)
-    dialog.show()
-    try:
-        dialog.raise_()
-    except Exception:
-        pass
-    try:
-        dialog.activateWindow()
-    except Exception:
-        pass
+    _show_qt_dialog(dialog)
     return True
 
 
 def _choose_rename_scope_fallback():
-    labels = [label for _value, label in SCOPE_ITEMS]
+    labels = [label for _value, label in SCOPE_TARGET_ITEMS]
     try:
         selection = hou.ui.selectFromList(
             labels,
@@ -2183,11 +1926,13 @@ def _choose_rename_scope_fallback():
         return None
 
     index = selection[0]
-    if index < 0 or index >= len(SCOPE_ITEMS):
+    if index < 0 or index >= len(SCOPE_TARGET_ITEMS):
         _show_attribute_rename_warning("Rename scope selection is out of range.")
         return None
 
-    return _normalize_rename_scope_options(SCOPE_ITEMS[index][0])
+    return _normalize_rename_scope_options({
+        "target": SCOPE_TARGET_ITEMS[index][0],
+    })
 
 
 def _choose_rename_scope():
@@ -2204,6 +1949,7 @@ def _nodes_from_selected_scope_nodes(
     include_downstream=False,
     discovery_issues=None,
 ):
+    """Expand selected nodes through the requested dataflow directions."""
     nodes = list(base_nodes)
     if include_upstream:
         for node in base_nodes:
@@ -2223,13 +1969,17 @@ def _nodes_from_selected_scope_nodes(
 
 
 def _nodes_for_rename_scope_with_issues(scope, source_sop=None, scene_viewer=None):
+    """Resolve one scope while preserving recoverable traversal problems."""
     options = _normalize_rename_scope_options(scope)
     target = options.get("target", SCOPE_TARGET_SELECTED_NODES)
     discovery_issues = []
 
     if target == SCOPE_TARGET_SELECTED_NODES:
+        selected_nodes, selection_warning = _selected_nodes_with_warning()
+        if selection_warning:
+            return [], selection_warning, discovery_issues
         nodes = _nodes_from_selected_scope_nodes(
-            _selected_nodes(),
+            selected_nodes,
             include_upstream=options.get("include_upstream", False),
             include_downstream=options.get("include_downstream", False),
             discovery_issues=discovery_issues,
@@ -2242,15 +1992,6 @@ def _nodes_for_rename_scope_with_issues(scope, source_sop=None, scene_viewer=Non
     if options.get("include_internals"):
         nodes = _expand_nodes_with_internals(nodes, discovery_issues)
     return _unique_nodes(nodes), None, discovery_issues
-
-
-def _nodes_for_rename_scope(scope, source_sop=None, scene_viewer=None):
-    nodes, warning, _discovery_issues = _nodes_for_rename_scope_with_issues(
-        scope,
-        source_sop,
-        scene_viewer,
-    )
-    return nodes, warning
 
 
 def _stored_item_dialog():
@@ -2268,7 +2009,35 @@ def _clear_stored_item_dialog(dialog=None):
     setattr(hou.session, SESSION_ITEM_DIALOG_NAME, None)
 
 
+def _retire_stored_item_dialog():
+    """Close an earlier browser without relying on its reloaded class."""
+    dialog = _stored_item_dialog()
+    if dialog is None:
+        return
+
+    _clear_stored_item_dialog(dialog)
+    try:
+        close_locations = getattr(dialog, "_close_locations_dialog", None)
+        if close_locations is not None:
+            close_locations()
+    except Exception:
+        pass
+
+    for method_name in ("reject", "close", "hide"):
+        try:
+            getattr(dialog, method_name)()
+            break
+        except Exception:
+            continue
+
+
+# ---------------------------------------------------------------------------
+# Rename context, location cache, and item browser
+# ---------------------------------------------------------------------------
+
+
 def _build_rename_context(scope, scene_viewer=None):
+    """Build the immutable inputs and stable metadata used by item browsing."""
     source_sop, geo = _displayed_sop_and_geometry(
         scene_viewer,
         cook_geometry=False,
@@ -2291,13 +2060,11 @@ def _build_rename_context(scope, scene_viewer=None):
         )
         discovery_issues = list(scope_issues) + list(discovery_issues)
     except Exception as exc:
-        if exc.__class__.__name__ == "OperationInterrupted":
+        if _operation_interrupted(exc):
             return {"warning": "Rename scan canceled; no parameters were changed."}
         raise
     return {
         "scope": scope,
-        "source_sop": source_sop,
-        "displayed_geo": geo,
         "nodes": nodes,
         "choices": choices,
         "geometry_source_count": geometry_source_count,
@@ -2305,6 +2072,20 @@ def _build_rename_context(scope, scene_viewer=None):
         "discovery_issues": discovery_issues,
         "scope_label": _scope_label(scope),
         "rename_kind": rename_kind,
+    }
+
+
+def _empty_rename_context(scope):
+    scope = _normalize_rename_scope_options(scope)
+    return {
+        "scope": scope,
+        "nodes": (),
+        "choices": (),
+        "geometry_source_count": 0,
+        "geometry_items": (),
+        "discovery_issues": (),
+        "scope_label": _scope_label(scope),
+        "rename_kind": scope["rename_kind"],
     }
 
 
@@ -2361,6 +2142,7 @@ def _no_safe_rename_locations_message(rename_kind, scope_label, can_refresh):
 
 
 def _open_rename_locations_dialog(parent, choice, result):
+    """Show stable node paths from a completed read-only location scan."""
     from hutil.Qt import QtCore, QtWidgets
 
     rename_kind, item_class, item_name, _source_count, _sources = _item_choice_parts(choice)
@@ -2375,15 +2157,7 @@ def _open_rename_locations_dialog(parent, choice, result):
             self.setWindowTitle("{0} Rename Locations".format(
                 _rename_kind_label_singular(rename_kind).title()
             ))
-            self.setModal(False)
-            try:
-                self.setWindowModality(_qt_non_modal(QtCore))
-            except Exception:
-                pass
-            try:
-                self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore, nonmodal=True)
 
             layout = QtWidgets.QVBoxLayout()
             summary = QtWidgets.QLabel(
@@ -2403,13 +2177,7 @@ def _open_rename_locations_dialog(parent, choice, result):
 
             self.table = QtWidgets.QTableWidget(len(locations), 3)
             self.table.setHorizontalHeaderLabels(("Node", "Parameters", "Find"))
-            self.table.setWordWrap(False)
-            self.table.setTextElideMode(_qt_elide_none(QtCore))
-            self.table.setHorizontalScrollBarPolicy(_qt_scrollbar_as_needed(QtCore))
-            self.table.setVerticalScrollBarPolicy(_qt_scrollbar_as_needed(QtCore))
-            self.table.setSelectionBehavior(_qt_select_rows(QtWidgets))
-            self.table.setSelectionMode(_qt_extended_selection(QtWidgets))
-            self.table.setEditTriggers(_qt_no_edit_triggers(QtWidgets))
+            _configure_readonly_table(self.table, QtCore, QtWidgets)
             self.table.verticalHeader().setVisible(False)
             self.table.setColumnWidth(0, 470)
             self.table.setColumnWidth(1, 290)
@@ -2467,6 +2235,7 @@ def _open_rename_locations_dialog(parent, choice, result):
             self.close_button.clicked.connect(self.close)
             self.setLayout(layout)
             self.setMinimumSize(820, 390)
+            _resize_qt_dialog(self, QtWidgets, 1050, 600)
 
         def _selected_paths(self):
             rows = []
@@ -2497,46 +2266,18 @@ def _open_rename_locations_dialog(parent, choice, result):
                 _focus_rename_node_paths((locations[row].get("node_path", ""),))
 
     dialog = RenameLocationsDialog(parent)
-    dialog.show()
-    try:
-        dialog.raise_()
-        dialog.activateWindow()
-    except Exception:
-        pass
+    _show_qt_dialog(dialog)
     return dialog
 
 
-def _show_discovery_issues(issues):
-    issues = tuple(issues or ())
-    if not issues:
-        return
-    message = "{0} discovery issue{1} occurred while scanning rename sources.".format(
-        len(issues),
-        "" if len(issues) == 1 else "s",
-    )
-    details = "\n".join(_rename_skip_label(item) for item in issues)
-    try:
-        hou.ui.displayMessage(
-            message,
-            severity=hou.severityType.Warning,
-            title="Rename Discovery Issues",
-            details=details,
-            details_expanded=True,
-        )
-    except Exception:
-        print("{0}\n{1}".format(message, details))
+# ---------------------------------------------------------------------------
+# Searchable item selection and replacement-name validation
+# ---------------------------------------------------------------------------
 
 
 def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_context=None):
-    existing = _stored_item_dialog()
-    if existing is not None:
-        try:
-            if existing.isVisible():
-                existing.raise_()
-                existing.activateWindow()
-                return True
-        except Exception:
-            _clear_stored_item_dialog(existing)
+    """Show the searchable candidate browser without blocking viewport work."""
+    _retire_stored_item_dialog()
 
     from hutil.Qt import QtCore, QtWidgets
 
@@ -2549,22 +2290,16 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
         def __init__(self, parent=None):
             super(ItemChoiceDialog, self).__init__(parent)
             self.setWindowTitle(RENAME_TITLE)
-            self.setModal(False)
-            try:
-                self.setWindowModality(_qt_non_modal(QtCore))
-            except Exception:
-                pass
-            try:
-                self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore, nonmodal=True)
 
             self._context = None
             self._choices = []
             self._visible_indexes = []
             self._location_cache = {}
             self._locations_dialog = None
-            self._user_role = _qt_user_role(QtCore)
+            self._user_role = _qt_enum(
+                QtCore.Qt, "ItemDataRole", "UserRole"
+            )
 
             layout = QtWidgets.QVBoxLayout()
             self.message_label = QtWidgets.QLabel("")
@@ -2577,25 +2312,20 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             self.search_button = QtWidgets.QPushButton("Search")
             self.refresh_button = QtWidgets.QPushButton("Refresh From Current Selection")
             self.refresh_button.setVisible(refresh_from_current_selection)
-            self.skipped_sources_button = QtWidgets.QPushButton("View Discovery Issues")
-            self.skipped_sources_button.hide()
             search_layout.addWidget(self.search_edit, 1)
             search_layout.addWidget(self.search_button)
             search_layout.addWidget(self.refresh_button)
-            search_layout.addWidget(self.skipped_sources_button)
             layout.addLayout(search_layout)
 
             self.table = QtWidgets.QTableWidget(0, 3)
             self.table.setHorizontalHeaderLabels(("Name", "Matching Nodes", "Locations"))
-            self.table.setWordWrap(False)
-            self.table.setTextElideMode(_qt_elide_none(QtCore))
-            self.table.setHorizontalScrollBarPolicy(_qt_scrollbar_as_needed(QtCore))
-            self.table.setSelectionBehavior(_qt_select_rows(QtWidgets))
-            single_selection = getattr(QtWidgets.QAbstractItemView, "SingleSelection", None)
-            if single_selection is None:
-                single_selection = QtWidgets.QAbstractItemView.SelectionMode.SingleSelection
-            self.table.setSelectionMode(single_selection)
-            self.table.setEditTriggers(_qt_no_edit_triggers(QtWidgets))
+            _configure_readonly_table(
+                self.table,
+                QtCore,
+                QtWidgets,
+                selection_mode="SingleSelection",
+                vertical_scroll=False,
+            )
             self.table.verticalHeader().setVisible(False)
             self.table.setColumnWidth(0, 360)
             self.table.setColumnWidth(1, 130)
@@ -2621,11 +2351,11 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
 
             self.setLayout(layout)
             self.setMinimumSize(820, 460)
+            _resize_qt_dialog(self, QtWidgets, 1050, 650)
 
             self.search_button.clicked.connect(self._apply_filter)
             self.search_edit.returnPressed.connect(self._apply_filter)
             self.refresh_button.clicked.connect(self._refresh_from_scope)
-            self.skipped_sources_button.clicked.connect(self._show_discovery_issues)
             self.choose_button.clicked.connect(self._choose)
             self.cancel_button.clicked.connect(self.reject)
             self.back_button.clicked.connect(self._back)
@@ -2658,12 +2388,13 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             self._close_locations_dialog()
             self._context = context
             self._choices = list(context.get("choices", ()))
+            # Location caches keep paths and parameter names only, so a dialog
+            # cannot prolong the lifetime of mutable HOM objects.
             self._location_cache = dict(location_cache or {})
             context["location_cache"] = dict(self._location_cache)
-            self._update_discovery_issues()
             self.message_label.setText(
-                "Choose a {0} to rename in {1}.".format(
-                    _rename_kind_label_singular(
+                "Choose {0} to rename in {1}.".format(
+                    _rename_kind_indefinite_label(
                         context.get("rename_kind", RENAME_KIND_ATTRIBUTE)
                     ),
                     context.get("scope_label", "selected scope"),
@@ -2671,28 +2402,16 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             )
             self._populate_table()
 
-        def _scan_and_set_context(self, context, keep_existing_on_failure):
+        def _scan_and_set_context(self, context):
             try:
                 location_cache = _collect_item_rename_location_cache(
                     context,
                     context.get("choices", ()),
                 )
             except Exception as exc:
-                canceled = exc.__class__.__name__ == "OperationInterrupted"
-                if keep_existing_on_failure and self._context is not None:
-                    if canceled:
-                        message = (
-                            "Automatic rename-location refresh canceled; "
-                            "previous results were kept."
-                        )
-                    else:
-                        message = (
-                            "Could not refresh rename locations; previous results "
-                            "were kept: {0}"
-                        ).format(exc)
-                    self._show_status(message)
-                    return False
-
+                canceled = _operation_interrupted(exc)
+                # A refresh always belongs to the newly sampled scope.  Keeping
+                # an earlier cache here would leave stale rows actionable.
                 self._set_context(context, {})
                 if canceled:
                     message = (
@@ -2711,25 +2430,27 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             return True
 
         def _refresh_from_scope(self):
-            context = _build_rename_context(scope, scene_viewer)
-            if context.get("warning"):
-                self._show_status(context.get("warning"))
-                return
-            self._scan_and_set_context(
-                context,
-                keep_existing_on_failure=self._context is not None,
-            )
-
-        def _update_discovery_issues(self):
-            issues = list((self._context or {}).get("discovery_issues", ()))
-            self.skipped_sources_button.setVisible(bool(issues))
-            if issues:
-                self.skipped_sources_button.setText(
-                    "View Discovery Issues ({0})".format(len(issues))
+            try:
+                context = _build_rename_context(scope, scene_viewer)
+            except Exception as exc:
+                canceled = _operation_interrupted(exc)
+                message = (
+                    "Rename refresh canceled; previous results were cleared."
+                    if canceled
+                    else (
+                        "Could not refresh the rename scope: {0}. "
+                        "Previous results were cleared."
+                    ).format(exc)
                 )
-
-        def _show_discovery_issues(self):
-            _show_discovery_issues((self._context or {}).get("discovery_issues", ()))
+                self._set_context(_empty_rename_context(scope), {})
+                self._show_status(message)
+                return
+            if context.get("warning"):
+                warning = context.get("warning")
+                self._set_context(_empty_rename_context(scope), {})
+                self._show_status(warning)
+                return
+            self._scan_and_set_context(context)
 
         def _choice_matches(self, choice):
             return _choice_matches_attribute_search(choice, self.search_edit.text())
@@ -2781,6 +2502,7 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
                 )
                 self.table.setCellWidget(row, 2, locations_button)
 
+            self.choose_button.setEnabled(bool(self._visible_indexes))
             if not self._visible_indexes:
                 if hidden_zero_count and hidden_zero_count == matching_choice_count:
                     all_choices_scanned = _rename_location_cache_is_complete(
@@ -2824,7 +2546,7 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
                     rename_kind = _normalize_rename_kind(scope.get("rename_kind", RENAME_KIND_ATTRIBUTE))
                     if self._context.get("discovery_issues"):
                         self._show_status(
-                            "No renameable items were found, and some sources could not be inspected. View Discovery Issues for details."
+                            "No renameable items were found, and some sources could not be inspected."
                         )
                     elif rename_kind == RENAME_KIND_GROUP:
                         message = "No inspectable geometry or group-name parameters were found."
@@ -2836,6 +2558,32 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
                         if refresh_from_current_selection:
                             message += " Select nodes and click Refresh From Current Selection."
                         self._show_status(message)
+
+                discovery_issues = list(
+                    (self._context or {}).get("discovery_issues", ())
+                )
+                if discovery_issues:
+                    first_issue = _short_preview(
+                        _rename_skip_label(discovery_issues[0]),
+                        limit=160,
+                    )
+                    issue_summary = (
+                        "{0} discovery issue{1}. First issue: {2}"
+                    ).format(
+                        len(discovery_issues),
+                        "" if len(discovery_issues) == 1 else "s",
+                        first_issue,
+                    )
+                    remaining = len(discovery_issues) - 1
+                    if remaining:
+                        issue_summary += " {0} more.".format(remaining)
+                    current_status = str(self.status_label.text() or "").strip()
+                    self._show_status(
+                        "{0} {1}".format(
+                            current_status,
+                            issue_summary,
+                        ).strip()
+                    )
                 return
 
             self._clear_status()
@@ -2853,7 +2601,7 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
                 try:
                     result = _collect_item_rename_locations(self._context, choice)
                 except Exception as exc:
-                    if exc.__class__.__name__ == "OperationInterrupted":
+                    if _operation_interrupted(exc):
                         self._show_status("Rename location scan canceled.")
                     else:
                         self._show_status(
@@ -2876,10 +2624,7 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             def _locations_finished(_result=None):
                 if self._locations_dialog is dialog:
                     self._locations_dialog = None
-                try:
-                    dialog.deleteLater()
-                except Exception:
-                    pass
+                _delete_qt_later(dialog)
 
             dialog.finished.connect(_locations_finished)
 
@@ -2913,32 +2658,17 @@ def _open_item_choice_dialog(scope, scene_viewer, on_choose, on_back, initial_co
             on_back()
             self.close()
 
-    parent = None
-    try:
-        parent = hou.qt.mainWindow()
-    except Exception:
-        pass
-
-    dialog = ItemChoiceDialog(parent)
+    dialog = ItemChoiceDialog(_qt_main_window())
+    # Keep a strong reference while viewport interaction returns control to
+    # Houdini; the finished callback clears it.
     _set_stored_item_dialog(dialog)
 
     def _finished(_result=None):
         _clear_stored_item_dialog(dialog)
-        try:
-            dialog.deleteLater()
-        except Exception:
-            pass
+        _delete_qt_later(dialog)
 
     dialog.finished.connect(_finished)
-    dialog.show()
-    try:
-        dialog.raise_()
-    except Exception:
-        pass
-    try:
-        dialog.activateWindow()
-    except Exception:
-        pass
+    _show_qt_dialog(dialog)
     return True
 
 
@@ -2983,10 +2713,6 @@ def _new_item_name_error(rename_kind, new_name, old_name):
     return None
 
 
-def _new_attribute_name_error(new_attr, old_attr):
-    return _new_item_name_error(RENAME_KIND_ATTRIBUTE, new_attr, old_attr)
-
-
 def _prompt_new_item_name_dialog(
     old_name,
     item_class,
@@ -2995,6 +2721,7 @@ def _prompt_new_item_name_dialog(
     initial_name=None,
     item_choices=None,
 ):
+    """Prompt for a valid replacement and require confirmation on collisions."""
     from hutil.Qt import QtCore, QtWidgets
 
     rename_kind = _normalize_rename_kind(rename_kind)
@@ -3007,12 +2734,7 @@ def _prompt_new_item_name_dialog(
             self.setWindowTitle(RENAME_TITLE)
             self._result = None
             self._collision_confirmed_for = None
-            try:
-                self.setWindowFlags(
-                    self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint
-                )
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore)
 
             layout = QtWidgets.QVBoxLayout()
 
@@ -3105,22 +2827,12 @@ def _prompt_new_item_name_dialog(
         def result_value(self):
             return self._result
 
-    parent = None
-    try:
-        parent = hou.qt.mainWindow()
-    except Exception:
-        pass
-
-    dialog = NewItemNameDialog(parent)
+    dialog = NewItemNameDialog(_qt_main_window())
     exec_method = getattr(dialog, "exec", None)
     if exec_method is None:
         exec_method = getattr(dialog, "exec_")
 
-    accepted = getattr(QtWidgets.QDialog, "Accepted", None)
-    if accepted is None:
-        accepted = QtWidgets.QDialog.DialogCode.Accepted
-
-    if exec_method() != accepted:
+    if exec_method() != _qt_enum(QtWidgets.QDialog, "DialogCode", "Accepted"):
         return None
     return dialog.result_value()
 
@@ -3133,6 +2845,7 @@ def _prompt_new_item_name_fallback(
     initial_name=None,
     item_choices=None,
 ):
+    """Validate a replacement name through Houdini's native input dialog."""
     rename_kind = _normalize_rename_kind(rename_kind)
     item_label = _rename_kind_label_singular(rename_kind)
     try:
@@ -3223,43 +2936,16 @@ def _prompt_new_item_name(
         )
 
 
-def _prompt_new_attribute_name_dialog(old_attr, attr_class):
-    return _prompt_new_item_name_dialog(old_attr, attr_class, RENAME_KIND_ATTRIBUTE)
+# ---------------------------------------------------------------------------
+# Parameter-source metadata and edit presentation
+# ---------------------------------------------------------------------------
 
-
-def _prompt_new_attribute_name_fallback(old_attr, attr_class):
-    return _prompt_new_item_name_fallback(old_attr, attr_class, RENAME_KIND_ATTRIBUTE)
-
-
-def _prompt_new_attribute_name(old_attr, attr_class):
-    return _prompt_new_item_name(old_attr, attr_class, RENAME_KIND_ATTRIBUTE)
-
-def _parm_label(parm):
-    try:
-        return parm.parmTemplate().label()
-    except Exception:
-        return ""
 
 def _parm_name(parm):
     try:
         return parm.name()
     except Exception:
         return ""
-
-def _parm_is_string_like(parm):
-    try:
-        data_type = parm.parmTemplate().dataType()
-        if data_type == hou.parmData.String:
-            return True
-        return False
-    except Exception:
-        pass
-
-    try:
-        parm.evalAsString()
-        return True
-    except Exception:
-        return False
 
 def _parm_string_value(parm):
     try:
@@ -3271,954 +2957,6 @@ def _parm_string_value(parm):
         return parm.evalAsString()
     except Exception:
         return None
-
-def _parm_expression_data(parm):
-    try:
-        expression = parm.expression()
-        language = parm.expressionLanguage()
-    except Exception:
-        return None
-
-    if expression is None:
-        return None
-
-    return {
-        "kind": "expression",
-        "value": expression,
-        "language": language,
-        "language_kind": _expression_language_kind(language),
-        "language_label": _expression_language_label(language),
-    }
-
-def _expression_language_kind(language):
-    try:
-        expr_language = hou.exprLanguage
-    except Exception:
-        expr_language = None
-
-    if expr_language is not None:
-        try:
-            if language == getattr(expr_language, "Python", None):
-                return "python"
-        except Exception:
-            pass
-
-        try:
-            if language == getattr(expr_language, "Hscript", None):
-                return "hscript"
-        except Exception:
-            pass
-
-    language_text = str(language).lower()
-    if "python" in language_text:
-        return "python"
-    if "hscript" in language_text or "h-script" in language_text:
-        return "hscript"
-    return ""
-
-def _expression_language_label(language):
-    kind = _expression_language_kind(language)
-    if kind == "python":
-        return "Python expression"
-    if kind == "hscript":
-        return "HScript expression"
-    return "Expression"
-
-def _parm_rename_source(parm):
-    expression_data = _parm_expression_data(parm)
-    if expression_data is not None:
-        return expression_data
-
-    if not _parm_is_string_like(parm):
-        return None
-
-    value = _parm_string_value(parm)
-    if value is None:
-        return None
-
-    return {
-        "kind": "value",
-        "value": value,
-        "language": None,
-        "language_kind": "",
-        "language_label": "Parameter value",
-    }
-
-def _parm_has_keyframes_or_expression(parm):
-    try:
-        return bool(parm.keyframes())
-    except Exception:
-        return False
-
-def _text_looks_like_vex_code(value):
-    text = value or ""
-    return (
-        "@" in text
-        or re.search(r"\bset(?:point|prim|vertex|detail)attrib\s*\(", text) is not None
-    )
-
-def _parm_is_vex_code_parameter(parm, value):
-    parm_name = _parm_name(parm).lower()
-    label = _parm_label(parm).lower()
-    search_text = "{0} {1}".format(parm_name, label)
-
-    if any(token in search_text for token in ("snippet", "vex", "code")):
-        return True
-
-    if any(token in search_text for token in ("expr", "expression")):
-        return _text_looks_like_vex_code(value)
-
-    return False
-
-def _parm_should_skip_expression_state(node, parm, value):
-    return (
-        _parm_has_keyframes_or_expression(parm)
-        and not _parm_is_vex_code_parameter(parm, value)
-    )
-
-def _parm_is_locked(parm):
-    try:
-        return bool(parm.isLocked())
-    except Exception:
-        return False
-
-def _parm_looks_like_vex_code(node, parm, value):
-    parm_name = _parm_name(parm).lower()
-    label = _parm_label(parm).lower()
-    node_type = _node_type_name(node)
-    text = value or ""
-
-    if "wrangle" in node_type:
-        return True
-
-    if any(token in parm_name for token in ("snippet", "vex", "code", "expr")):
-        return True
-
-    if any(token in label for token in ("snippet", "vex", "code", "expression")):
-        return True
-
-    return _text_looks_like_vex_code(text)
-
-def _text_looks_like_python_attribute_code(value):
-    text = value or ""
-    return (
-        "hou." in text
-        or re.search(
-            r"\b(?:find(?:Point|Prim|Vertex|Global)Attrib|(?:point|prim|vertex)(?:Float|Int|String)AttribValues|attribValue|setAttribValue|setGlobalAttribValue|addAttrib)\s*\(",
-            text,
-        ) is not None
-    )
-
-def _parm_looks_like_python_code(node, parm, value):
-    parm_name = _parm_name(parm).lower()
-    label = _parm_label(parm).lower()
-    node_type = _node_type_name(node)
-    search_text = "{0} {1} {2}".format(node_type, parm_name, label)
-
-    if "python" in search_text:
-        return True
-
-    return _text_looks_like_python_attribute_code(value)
-
-def _text_looks_like_hscript_attribute_code(value):
-    text = value or ""
-    return re.search(
-        r"\b(?:point|prim|primuv|vertex|detail|details|has(?:point|prim|vertex|detail)attrib)\s*\(",
-        text,
-        re.IGNORECASE,
-    ) is not None
-
-def _parm_looks_like_hscript_code(node, parm, value):
-    parm_name = _parm_name(parm).lower()
-    label = _parm_label(parm).lower()
-    search_text = "{0} {1}".format(parm_name, label)
-
-    if "hscript" in search_text or "h-script" in search_text:
-        return True
-
-    return _text_looks_like_hscript_attribute_code(value)
-
-def _parm_is_attribute_like(parm, value, old_attr):
-    value = value or ""
-    if value.strip() == old_attr:
-        return True
-
-    parm_name = _parm_name(parm)
-    label = _parm_label(parm)
-    search_text = "{0} {1}".format(parm_name, label).lower()
-    if any(keyword in search_text for keyword in ("attrib", "attribute", "attr", "group")):
-        return True
-
-    if (
-        parm_name.lower().startswith("name")
-        or label.strip().lower() == "name"
-    ):
-        token_pattern = re.compile(
-            r"(?<![A-Za-z0-9_]){0}(?![A-Za-z0-9_])".format(
-                re.escape(old_attr)
-            )
-        )
-        return token_pattern.search(value) is not None
-
-    return False
-
-def _matching_close_paren(text, open_index, code_mask=None):
-    depth = 0
-    quote = ""
-    escape = False
-
-    for index in range(open_index, len(text)):
-        char = text[index]
-
-        if code_mask is not None and not code_mask[index]:
-            continue
-
-        if quote:
-            if escape:
-                escape = False
-            elif char == "\\":
-                escape = True
-            elif char == quote:
-                quote = ""
-            continue
-
-        if char in ("'", '"'):
-            quote = char
-            continue
-
-        if char == "(":
-            depth += 1
-        elif char == ")":
-            depth -= 1
-            if depth == 0:
-                return index
-
-    return -1
-
-def _trim_arg_span(text, start, end, base_offset):
-    while start < end and text[start].isspace():
-        start += 1
-    while end > start and text[end - 1].isspace():
-        end -= 1
-    return text[start:end], base_offset + start, base_offset + end
-
-def _split_top_level_args(arg_text, base_offset):
-    args = []
-    depth = 0
-    quote = ""
-    escape = False
-    start = 0
-
-    code_mask = labs_rename_rewrite.vex_code_mask(arg_text)
-    for index, char in enumerate(arg_text):
-        if not code_mask[index]:
-            continue
-        if quote:
-            if escape:
-                escape = False
-            elif char == "\\":
-                escape = True
-            elif char == quote:
-                quote = ""
-            continue
-
-        if char in ("'", '"'):
-            quote = char
-            continue
-
-        if char in "([{":
-            depth += 1
-        elif char in ")]}":
-            depth = max(0, depth - 1)
-        elif char == "," and depth == 0:
-            args.append(_trim_arg_span(arg_text, start, index, base_offset))
-            start = index + 1
-
-    args.append(_trim_arg_span(arg_text, start, len(arg_text), base_offset))
-    return args
-
-def _setattrib_function_for_class(attr_class):
-    return {
-        ATTRIBUTE_CLASS_POINT: "setpointattrib",
-        ATTRIBUTE_CLASS_PRIMITIVE: "setprimattrib",
-        ATTRIBUTE_CLASS_VERTEX: "setvertexattrib",
-        ATTRIBUTE_CLASS_DETAIL: "setdetailattrib",
-    }.get(_normalize_attribute_class(attr_class), "setprimattrib")
-
-def _setattrib_attribute_args(value):
-    calls = []
-    code_mask = labs_rename_rewrite.vex_code_mask(value)
-    pattern = re.compile(r"\b(?P<function>set(?:point|prim|vertex|detail)attrib)\s*\(")
-    for match in pattern.finditer(value):
-        if not labs_rename_rewrite.span_is_code(code_mask, match.start(), match.end()):
-            continue
-        open_index = match.end() - 1
-        close_index = _matching_close_paren(value, open_index, code_mask=code_mask)
-        if close_index < 0:
-            continue
-
-        args = _split_top_level_args(
-            value[open_index + 1:close_index],
-            open_index + 1,
-        )
-        if len(args) < 2:
-            continue
-
-        arg_text, start, end = args[1]
-        calls.append({
-            "function": match.group("function"),
-            "text": arg_text.strip(),
-            "start": start,
-            "end": end,
-        })
-
-    return calls
-
-def _span_overlaps(start, end, spans):
-    return any(not (end <= span_start or start >= span_end) for span_start, span_end in spans)
-
-def _string_literal_value(text):
-    match = re.match(r"^([\"'])(.*)\1$", text.strip(), re.DOTALL)
-    if match:
-        return match.group(2), match.group(1)
-    return None, ""
-
-def _is_simple_identifier(text):
-    return re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", text.strip()) is not None
-
-def _chs_reference(text):
-    match = re.match(r"^chs\(\s*([\"'])([^\"']+)\1\s*\)$", text.strip())
-    if match:
-        return match.group(2)
-    return ""
-
-def _local_string_assignments(value, identifier):
-    escaped_identifier = re.escape(identifier)
-    literal_pattern = re.compile(
-        r"(?<![A-Za-z0-9_])(?:string\s+)?{0}\s*=\s*(?P<literal>(?P<quote>[\"'])(?P<value>[^\"']*)(?P=quote))\s*;".format(
-            escaped_identifier
-        )
-    )
-    chs_pattern = re.compile(
-        r"(?<![A-Za-z0-9_])(?:string\s+)?{0}\s*=\s*chs\(\s*(?P<quote>[\"'])(?P<parm>[^\"']+)(?P=quote)\s*\)\s*;".format(
-            escaped_identifier
-        )
-    )
-
-    assignments = []
-    for match in literal_pattern.finditer(value):
-        assignments.append({
-            "kind": "literal",
-            "start": match.start("literal"),
-            "end": match.end("literal"),
-            "value": match.group("value"),
-            "quote": match.group("quote"),
-        })
-
-    for match in chs_pattern.finditer(value):
-        assignments.append({
-            "kind": "chs",
-            "parm_name": match.group("parm"),
-        })
-
-    return assignments
-
-def _replace_spans(value, replacements):
-    if not replacements:
-        return value
-
-    new_value = value
-    used_ranges = []
-    for replacement in sorted(replacements, key=lambda item: item["start"], reverse=True):
-        start = replacement["start"]
-        end = replacement["end"]
-        if start < 0 or end < start or end > len(value):
-            continue
-
-        overlaps = any(not (end <= used_start or start >= used_end) for used_start, used_end in used_ranges)
-        if overlaps:
-            continue
-
-        new_value = new_value[:start] + replacement["text"] + new_value[end:]
-        used_ranges.append((start, end))
-
-    return new_value
-
-def _ast_node_span(value, node):
-    return labs_rename_rewrite.python_ast_node_span(value, node)
-
-def _python_string_literal_replacement(source_text, new_attr):
-    match = re.match(
-        r"^(?P<prefix>[rRuUbB]*)(?P<quote>'''|\"\"\"|'|\")(?P<body>.*)(?P=quote)$",
-        source_text,
-        re.DOTALL,
-    )
-    if not match:
-        return repr(new_attr)
-
-    prefix = match.group("prefix") or ""
-    quote = match.group("quote")
-    escaped = str(new_attr).replace("\\", "\\\\")
-    if quote in ("'", '"'):
-        escaped = escaped.replace(quote, "\\" + quote)
-    else:
-        escaped = escaped.replace(quote[:1] * 3, "\\" + quote[:1] * 3)
-    return "{0}{1}{2}{1}".format(prefix, quote, escaped)
-
-def _python_literal_replacement(value, node, new_attr):
-    span = _ast_node_span(value, node)
-    if span is None:
-        return None
-
-    start, end = span
-    return {
-        "start": start,
-        "end": end,
-        "text": _python_string_literal_replacement(value[start:end], new_attr),
-    }
-
-def _python_call_name(call):
-    try:
-        if isinstance(call.func, ast.Attribute):
-            return call.func.attr
-        if isinstance(call.func, ast.Name):
-            return call.func.id
-    except Exception:
-        pass
-    return ""
-
-def _python_attribute_method_arg_indexes(method_name, attr_class):
-    attr_class = _normalize_attribute_class(attr_class)
-    class_methods = {
-        ATTRIBUTE_CLASS_POINT: {
-            "findPointAttrib",
-            "deletePointAttrib",
-            "pointFloatAttribValues",
-            "pointIntAttribValues",
-            "pointStringAttribValues",
-            "setPointFloatAttribValues",
-            "setPointIntAttribValues",
-            "setPointStringAttribValues",
-        },
-        ATTRIBUTE_CLASS_PRIMITIVE: {
-            "findPrimAttrib",
-            "deletePrimAttrib",
-            "primFloatAttribValues",
-            "primIntAttribValues",
-            "primStringAttribValues",
-            "setPrimFloatAttribValues",
-            "setPrimIntAttribValues",
-            "setPrimStringAttribValues",
-        },
-        ATTRIBUTE_CLASS_VERTEX: {
-            "findVertexAttrib",
-            "deleteVertexAttrib",
-            "vertexFloatAttribValues",
-            "vertexIntAttribValues",
-            "vertexStringAttribValues",
-            "setVertexFloatAttribValues",
-            "setVertexIntAttribValues",
-            "setVertexStringAttribValues",
-        },
-        ATTRIBUTE_CLASS_DETAIL: {
-            "findGlobalAttrib",
-            "deleteGlobalAttrib",
-            "attribValue",
-            "setGlobalAttribValue",
-        },
-    }
-
-    if method_name in class_methods.get(attr_class, set()):
-        return (0,)
-
-    if method_name in ("attribValue", "setAttribValue"):
-        return (0,)
-
-    if method_name == "addAttrib":
-        return (1,)
-
-    return ()
-
-def _python_string_assignments(tree, old_attr):
-    assignments = {}
-    blocked = set()
-
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Assign):
-            targets = node.targets
-            value_node = node.value
-        elif isinstance(node, ast.AnnAssign):
-            targets = (node.target,)
-            value_node = node.value
-        else:
-            continue
-
-        for target in targets:
-            if not isinstance(target, ast.Name):
-                continue
-
-            if (
-                isinstance(value_node, ast.Constant)
-                and isinstance(value_node.value, str)
-                and value_node.value == old_attr
-            ):
-                assignments.setdefault(target.id, []).append(value_node)
-            else:
-                blocked.add(target.id)
-
-    for name in blocked:
-        if name in assignments:
-            assignments.setdefault(name, [])
-            assignments[name].append(None)
-    return assignments
-
-def _python_attribute_replacements(value, old_attr, new_attr, attr_class, node_path, parm_name):
-    replacements = []
-    reasons = []
-    skipped = []
-
-    try:
-        try:
-            tree = ast.parse(value, mode="eval")
-        except SyntaxError:
-            tree = ast.parse(value, mode="exec")
-    except SyntaxError as exc:
-        if old_attr in value:
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": parm_name,
-                "reason": "Python expression could not be parsed: {0}".format(exc),
-            })
-        return replacements, reasons, skipped
-
-    assignments = _python_string_assignments(tree, old_attr)
-
-    for call in [node for node in ast.walk(tree) if isinstance(node, ast.Call)]:
-        method_name = _python_call_name(call)
-        arg_indexes = _python_attribute_method_arg_indexes(method_name, attr_class)
-        if not arg_indexes:
-            continue
-
-        for arg_index in arg_indexes:
-            if arg_index >= len(call.args):
-                continue
-
-            arg = call.args[arg_index]
-            if (
-                isinstance(arg, ast.Constant)
-                and isinstance(arg.value, str)
-                and arg.value == old_attr
-            ):
-                replacement = _python_literal_replacement(value, arg, new_attr)
-                if replacement:
-                    replacements.append(replacement)
-                    reasons.append("Python {0} attribute".format(method_name))
-                continue
-
-            if isinstance(arg, ast.Name):
-                assigned_literals = assignments.get(arg.id)
-                if assigned_literals is None:
-                    continue
-                if len(assigned_literals) == 1 and assigned_literals[0] is not None:
-                    replacement = _python_literal_replacement(value, assigned_literals[0], new_attr)
-                    if replacement:
-                        replacements.append(replacement)
-                        reasons.append("Python {0} local string reference".format(method_name))
-                    continue
-
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "Python {0} reference '{1}' has ambiguous local assignments".format(
-                        method_name,
-                        arg.id,
-                    ),
-                })
-                continue
-
-            arg_span = _ast_node_span(value, arg)
-            arg_text = value[arg_span[0]:arg_span[1]] if arg_span else ""
-            if old_attr in arg_text:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "Python {0} attribute name is generated by an unsupported expression".format(
-                        method_name
-                    ),
-                })
-
-    if replacements:
-        reasons.append("Python attribute reference")
-    return replacements, reasons, skipped
-
-def _hscript_attribute_function_arg_indexes(function_name, attr_class):
-    function_name = str(function_name).lower()
-    attr_class = _normalize_attribute_class(attr_class)
-    function_args = {
-        ATTRIBUTE_CLASS_POINT: {
-            "point": 2,
-            "haspointattrib": 1,
-        },
-        ATTRIBUTE_CLASS_PRIMITIVE: {
-            "prim": 2,
-            "primuv": 2,
-            "hasprimattrib": 1,
-        },
-        ATTRIBUTE_CLASS_VERTEX: {
-            "vertex": 3,
-            "hasvertexattrib": 1,
-        },
-        ATTRIBUTE_CLASS_DETAIL: {
-            "detail": 1,
-            "details": 1,
-            "hasdetailattrib": 1,
-        },
-    }
-    arg_index = function_args.get(attr_class, {}).get(function_name)
-    if arg_index is None:
-        return ()
-    return (arg_index,)
-
-def _hscript_attribute_args(value, attr_class):
-    calls = []
-    code_mask = labs_rename_rewrite.vex_code_mask(value)
-    pattern = re.compile(
-        r"\b(?P<function>point|primuv|prim|vertex|details|detail|haspointattrib|hasprimattrib|hasvertexattrib|hasdetailattrib)\s*\(",
-        re.IGNORECASE,
-    )
-    for match in pattern.finditer(value):
-        if not labs_rename_rewrite.span_is_code(code_mask, match.start(), match.end()):
-            continue
-        function_name = match.group("function")
-        arg_indexes = _hscript_attribute_function_arg_indexes(function_name, attr_class)
-        if not arg_indexes:
-            continue
-
-        open_index = match.end() - 1
-        close_index = _matching_close_paren(value, open_index, code_mask=code_mask)
-        if close_index < 0:
-            continue
-
-        args = _split_top_level_args(
-            value[open_index + 1:close_index],
-            open_index + 1,
-        )
-        for arg_index in arg_indexes:
-            if arg_index >= len(args):
-                continue
-            arg_text, start, end = args[arg_index]
-            calls.append({
-                "function": function_name,
-                "text": arg_text.strip(),
-                "start": start,
-                "end": end,
-            })
-
-    return calls
-
-def _make_rename_edit(
-    node_path,
-    parm_name,
-    old_value,
-    new_value,
-    reasons,
-    value_kind="value",
-    language=None,
-    language_label="",
-):
-    edit = {
-        "node_path": node_path,
-        "parm_name": parm_name,
-        "old_value": old_value,
-        "new_value": new_value,
-        "reasons": tuple(reasons),
-        "value_kind": value_kind,
-    }
-    if language is not None:
-        edit["language"] = language
-    if language_label:
-        edit["language_label"] = language_label
-    return edit
-
-def _referenced_string_parm_edit(
-    node,
-    node_path,
-    source_parm_name,
-    parm_name,
-    old_attr,
-    new_attr,
-    function_name,
-):
-    if not parm_name or "/" in parm_name or "\\" in parm_name:
-        return None, {
-            "node_path": node_path,
-            "parm_name": source_parm_name,
-            "reason": "{0} chs() reference is not a simple local parameter".format(function_name),
-        }
-
-    parm = node.parm(parm_name) if node is not None else None
-    if parm is None:
-        return None, {
-            "node_path": node_path,
-            "parm_name": source_parm_name,
-            "reason": "{0} chs() parameter '{1}' was not found".format(
-                function_name,
-                parm_name,
-            ),
-        }
-
-    value = _parm_string_value(parm)
-    if value != old_attr:
-        return None, None
-
-    if _parm_is_locked(parm):
-        return None, {
-            "node_path": node_path,
-            "parm_name": parm_name,
-            "reason": "referenced parameter is locked",
-        }
-
-    if _parm_should_skip_expression_state(node, parm, value):
-        return None, {
-            "node_path": node_path,
-            "parm_name": parm_name,
-            "reason": "referenced non-code parameter has keyframes or an expression",
-        }
-
-    return _make_rename_edit(
-        node_path,
-        parm_name,
-        value,
-        new_attr,
-        ("{0} chs() reference".format(function_name),),
-    ), None
-
-def _rename_attribute_value(
-    node,
-    parm,
-    value,
-    old_attr,
-    new_attr,
-    attr_class,
-    attr_like,
-    vex_like,
-    python_like=False,
-    hscript_like=False,
-    aggressive_vex=False,
-):
-    node_path = _node_path(node)
-    parm_name = _parm_name(parm)
-    replacements = []
-    reasons = []
-    extra_edits = []
-    skipped = []
-    escaped_old = re.escape(old_attr)
-
-    if python_like:
-        python_replacements, python_reasons, python_skips = _python_attribute_replacements(
-            value,
-            old_attr,
-            new_attr,
-            attr_class,
-            node_path,
-            parm_name,
-        )
-        replacements.extend(python_replacements)
-        reasons.extend(python_reasons)
-        skipped.extend(python_skips)
-
-    if hscript_like:
-        for call in _hscript_attribute_args(value, attr_class):
-            function_name = call.get("function", "")
-            arg_text = call.get("text", "")
-            literal_value, quote = _string_literal_value(arg_text)
-            if literal_value is not None:
-                if literal_value == old_attr:
-                    replacements.append({
-                        "start": call["start"],
-                        "end": call["end"],
-                        "text": "{0}{1}{0}".format(quote, new_attr),
-                    })
-                    reasons.append("HScript {0} attribute".format(function_name))
-                continue
-
-            chs_parm = _chs_reference(arg_text)
-            if chs_parm:
-                edit, skip = _referenced_string_parm_edit(
-                    node,
-                    node_path,
-                    parm_name,
-                    chs_parm,
-                    old_attr,
-                    new_attr,
-                    "HScript {0}".format(function_name),
-                )
-                if edit:
-                    extra_edits.append(edit)
-                if skip:
-                    skipped.append(skip)
-                continue
-
-            if old_attr in arg_text:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "HScript {0} attribute name is generated by an unsupported expression".format(
-                        function_name
-                    ),
-                })
-
-    if vex_like:
-        vex_code_mask = labs_rename_rewrite.vex_code_mask(value)
-        target_function = _setattrib_function_for_class(attr_class)
-        setattrib_calls = _setattrib_attribute_args(value)
-        for call in setattrib_calls:
-            function_name = call.get("function", "")
-            if function_name != target_function:
-                continue
-
-            arg_text = call["text"]
-            literal_value, quote = _string_literal_value(arg_text)
-            if literal_value is not None:
-                if literal_value == old_attr:
-                    replacements.append({
-                        "start": call["start"],
-                        "end": call["end"],
-                        "text": "{0}{1}{0}".format(quote, new_attr),
-                    })
-                    reasons.append("{0} literal".format(function_name))
-                continue
-
-            chs_parm = _chs_reference(arg_text)
-            if chs_parm:
-                edit, skip = _referenced_string_parm_edit(
-                    node,
-                    node_path,
-                    parm_name,
-                    chs_parm,
-                    old_attr,
-                    new_attr,
-                    function_name,
-                )
-                if edit:
-                    extra_edits.append(edit)
-                if skip:
-                    skipped.append(skip)
-                continue
-
-            if _is_simple_identifier(arg_text):
-                assignments = _local_string_assignments(value, arg_text)
-                if not assignments:
-                    skipped.append({
-                        "node_path": node_path,
-                        "parm_name": parm_name,
-                        "reason": "{0} reference '{1}' is not a simple local string or chs() value".format(
-                            function_name,
-                            arg_text,
-                        ),
-                    })
-                    continue
-
-                if len(assignments) > 1:
-                    skipped.append({
-                        "node_path": node_path,
-                        "parm_name": parm_name,
-                        "reason": "{0} reference '{1}' has ambiguous local assignments".format(
-                            function_name,
-                            arg_text,
-                        ),
-                    })
-                    continue
-
-                assignment = assignments[0]
-                if assignment["kind"] == "literal":
-                    if assignment.get("value") == old_attr:
-                        replacements.append({
-                            "start": assignment["start"],
-                            "end": assignment["end"],
-                            "text": "{0}{1}{0}".format(assignment.get("quote", '"'), new_attr),
-                        })
-                        reasons.append("{0} local string reference".format(function_name))
-                    continue
-
-                if assignment["kind"] == "chs":
-                    edit, skip = _referenced_string_parm_edit(
-                        node,
-                        node_path,
-                        parm_name,
-                        assignment.get("parm_name", ""),
-                        old_attr,
-                        new_attr,
-                        function_name,
-                    )
-                    if edit:
-                        extra_edits.append(edit)
-                    if skip:
-                        skipped.append(skip)
-                    continue
-
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": parm_name,
-                "reason": "{0} attribute name is generated by an unsupported expression".format(function_name),
-            })
-
-        typed_binding_pattern = re.compile(
-            r"(?<![A-Za-z0-9_])([A-Za-z]?)@{0}(?![A-Za-z0-9_])".format(escaped_old)
-        )
-        typed_binding_replacements = []
-        for match in typed_binding_pattern.finditer(value):
-            if not labs_rename_rewrite.span_is_code(
-                vex_code_mask, match.start(), match.end()
-            ):
-                continue
-            typed_binding_replacements.append({
-                "start": match.start(),
-                "end": match.end(),
-                "text": "{0}@{1}".format(match.group(1), new_attr),
-            })
-        if typed_binding_replacements:
-            replacements.extend(typed_binding_replacements)
-            reasons.append("VEX @ binding")
-
-        if aggressive_vex:
-            aggressive_replacements = labs_rename_rewrite.vex_exact_string_replacements(
-                value, old_attr, new_attr
-            )
-            aggressive_replacements = [
-                replacement
-                for replacement in aggressive_replacements
-                if not _span_overlaps(
-                    replacement["start"],
-                    replacement["end"],
-                    ((item["start"], item["end"]) for item in replacements),
-                )
-            ]
-            if aggressive_replacements:
-                replacements.extend(aggressive_replacements)
-                reasons.append("Aggressive VEX string")
-
-    value_after_replacements = _replace_spans(value, replacements)
-
-    if (
-        attr_like
-        and not python_like
-        and not hscript_like
-        and not _parm_is_vex_code_parameter(parm, value)
-    ):
-        token_pattern = re.compile(
-            r"(?<![A-Za-z0-9_]){0}(?![A-Za-z0-9_])".format(escaped_old)
-        )
-        value_after_replacements, count = token_pattern.subn(new_attr, value_after_replacements)
-        if count:
-            reasons.append("attribute token")
-
-    unique_reasons = []
-    for reason in reasons:
-        if reason not in unique_reasons:
-            unique_reasons.append(reason)
-
-    return value_after_replacements, tuple(unique_reasons), extra_edits, skipped
 
 def _short_preview(value, limit=72):
     value = str(value).replace("\r", "\\r").replace("\n", "\\n")
@@ -4248,6 +2986,7 @@ def _rename_skip_label(skip):
     )
 
 def _append_unique_rename_edit(edits, edit, edit_index=None):
+    """Merge identical plans and reject conflicting plans for one parameter."""
     key = (edit.get("node_path", ""), edit.get("parm_name", ""))
     if edit_index is not None:
         existing = edit_index.get(key)
@@ -4278,463 +3017,6 @@ def _append_unique_rename_edit(edits, edit, edit_index=None):
     if edit_index is not None:
         edit_index[key] = edit
     return True
-
-
-def _collect_attribute_rename_edits(
-    nodes,
-    old_attr,
-    new_attr,
-    attr_class,
-    rename_vex=True,
-    rename_python=True,
-    aggressive_vex=False,
-    progress_callback=None,
-):
-    attr_class = _normalize_attribute_class(attr_class)
-    edits = []
-    skipped = []
-    seen_parms = set()
-    edit_index = {}
-
-    for node in _iter_nodes_with_progress(
-        nodes,
-        "Finding attribute references",
-        progress_callback=progress_callback,
-    ):
-        node_path = _node_path(node)
-        if not node_path:
-            continue
-
-        try:
-            parms = node.parms()
-        except Exception as exc:
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": "<parms>",
-                "reason": "could not inspect parameters: {0}".format(exc),
-            })
-            continue
-
-        for parm in parms:
-            parm_name = _parm_name(parm)
-            if not parm_name:
-                continue
-
-            parm_key = (node_path, parm_name)
-            if parm_key in seen_parms:
-                continue
-            seen_parms.add(parm_key)
-
-            source = _parm_rename_source(parm)
-            if source is None:
-                continue
-
-            value = source.get("value")
-            if old_attr not in str(value or "") and "chs(" not in str(value or ""):
-                continue
-            value_kind = source.get("kind", "value")
-            language = source.get("language")
-            language_kind = source.get("language_kind", "")
-            language_label = source.get("language_label", "")
-            attr_like = _parm_is_attribute_like(parm, value, old_attr)
-            python_like = (
-                language_kind == "python"
-                or (
-                    value_kind != "expression"
-                    and _parm_looks_like_python_code(node, parm, value)
-                )
-            )
-            hscript_like = (
-                language_kind == "hscript"
-                or (
-                    value_kind != "expression"
-                    and _parm_looks_like_hscript_code(node, parm, value)
-                )
-            )
-            vex_like = (
-                not python_like
-                and not hscript_like
-                and language_kind != "hscript"
-                and _parm_looks_like_vex_code(node, parm, value)
-            )
-
-            if python_like and not rename_python:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "Python rename disabled",
-                })
-                continue
-
-            if vex_like and not rename_vex:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "VEX rename disabled",
-                })
-                continue
-
-            new_value, reasons, extra_edits, extra_skips = _rename_attribute_value(
-                node,
-                parm,
-                value,
-                old_attr,
-                new_attr,
-                attr_class,
-                attr_like,
-                vex_like,
-                python_like=python_like,
-                hscript_like=hscript_like,
-                aggressive_vex=aggressive_vex,
-            )
-            skipped.extend(extra_skips)
-
-            if new_value != value:
-                edit = _make_rename_edit(
-                    node_path,
-                    parm_name,
-                    value,
-                    new_value,
-                    reasons,
-                    value_kind=value_kind,
-                    language=language,
-                    language_label=language_label,
-                )
-
-                if _parm_is_locked(parm):
-                    edit["reason"] = "parameter is locked"
-                    skipped.append(edit)
-                    continue
-
-                if (
-                    value_kind != "expression"
-                    and _parm_should_skip_expression_state(node, parm, value)
-                ):
-                    edit["reason"] = "non-code parameter has keyframes or an expression"
-                    skipped.append(edit)
-                    continue
-
-                if not _append_unique_rename_edit(edits, edit, edit_index=edit_index):
-                    skipped.append({
-                        "node_path": node_path,
-                        "parm_name": parm_name,
-                        "reason": "multiple rename edits conflict for this parameter",
-                    })
-
-            for extra_edit in extra_edits:
-                if not _append_unique_rename_edit(edits, extra_edit, edit_index=edit_index):
-                    skipped.append({
-                        "node_path": extra_edit.get("node_path", ""),
-                        "parm_name": extra_edit.get("parm_name", ""),
-                        "reason": "multiple rename edits conflict for this referenced parameter",
-                    })
-
-    return edits, skipped
-
-def _group_vex_function_names(group_class):
-    group_class = _normalize_group_class(group_class)
-    if group_class == GROUP_CLASS_ANY:
-        names = set()
-        for concrete_class, _label in GROUP_CLASS_ITEMS:
-            names.update(_group_vex_function_names(concrete_class))
-        return names
-    if group_class == GROUP_CLASS_POINT:
-        return {
-            "setpointgroup",
-            "inpointgroup",
-            "expandpointgroup",
-            "npointsgroup",
-        }
-    if group_class == GROUP_CLASS_EDGE:
-        return {
-            "setedgegroup",
-            "inedgegroup",
-            "expandedgegroup",
-            "nedgesgroup",
-        }
-    return {
-        "setprimgroup",
-        "inprimgroup",
-        "expandprimgroup",
-        "nprimitivesgroup",
-    }
-
-
-def _vex_group_args(value, group_class):
-    calls = []
-    code_mask = labs_rename_rewrite.vex_code_mask(value)
-    names = _group_vex_function_names(group_class)
-    pattern = re.compile(
-        r"\b(?P<function>setpointgroup|setprimgroup|setedgegroup|inpointgroup|inprimgroup|inedgegroup|expandpointgroup|expandprimgroup|expandedgegroup|npointsgroup|nprimitivesgroup|nedgesgroup)\s*\(",
-        re.IGNORECASE,
-    )
-    for match in pattern.finditer(value):
-        if not labs_rename_rewrite.span_is_code(code_mask, match.start(), match.end()):
-            continue
-        function_name = match.group("function").lower()
-        if function_name not in names:
-            continue
-
-        open_index = match.end() - 1
-        close_index = _matching_close_paren(value, open_index, code_mask=code_mask)
-        if close_index < 0:
-            continue
-
-        args = _split_top_level_args(
-            value[open_index + 1:close_index],
-            open_index + 1,
-        )
-        if len(args) < 2:
-            continue
-
-        arg_text, start, end = args[1]
-        calls.append({
-            "function": function_name,
-            "text": arg_text.strip(),
-            "start": start,
-            "end": end,
-        })
-
-    return calls
-
-
-def _python_group_method_names(group_class):
-    group_class = _normalize_group_class(group_class)
-    if group_class == GROUP_CLASS_ANY:
-        names = set()
-        for concrete_class, _label in GROUP_CLASS_ITEMS:
-            names.update(_python_group_method_names(concrete_class))
-        return names
-    if group_class == GROUP_CLASS_POINT:
-        return {
-            "findPointGroup",
-            "createPointGroup",
-            "deletePointGroup",
-            "destroyPointGroup",
-        }
-    if group_class == GROUP_CLASS_EDGE:
-        return {
-            "findEdgeGroup",
-            "createEdgeGroup",
-            "deleteEdgeGroup",
-            "destroyEdgeGroup",
-        }
-    return {
-        "findPrimGroup",
-        "createPrimGroup",
-        "deletePrimGroup",
-        "destroyPrimGroup",
-    }
-
-
-def _python_group_replacements(value, old_group, new_group, group_class, node_path, parm_name):
-    replacements = []
-    reasons = []
-    skipped = []
-
-    try:
-        try:
-            tree = ast.parse(value, mode="eval")
-        except SyntaxError:
-            tree = ast.parse(value, mode="exec")
-    except SyntaxError as exc:
-        if old_group in value:
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": parm_name,
-                "reason": "Python expression could not be parsed: {0}".format(exc),
-            })
-        return replacements, reasons, skipped
-
-    assignments = _python_string_assignments(tree, old_group)
-    group_methods = _python_group_method_names(group_class)
-
-    for call in [node for node in ast.walk(tree) if isinstance(node, ast.Call)]:
-        method_name = _python_call_name(call)
-        if method_name not in group_methods or not call.args:
-            continue
-
-        arg = call.args[0]
-        if isinstance(arg, ast.Constant) and isinstance(arg.value, str) and arg.value == old_group:
-            replacement = _python_literal_replacement(value, arg, new_group)
-            if replacement:
-                replacements.append(replacement)
-                reasons.append("Python {0} group".format(method_name))
-            continue
-
-        if isinstance(arg, ast.Name):
-            assigned_literals = assignments.get(arg.id)
-            if assigned_literals is None:
-                continue
-            if len(assigned_literals) == 1 and assigned_literals[0] is not None:
-                replacement = _python_literal_replacement(value, assigned_literals[0], new_group)
-                if replacement:
-                    replacements.append(replacement)
-                    reasons.append("Python {0} local string reference".format(method_name))
-                continue
-
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": parm_name,
-                "reason": "Python {0} group reference '{1}' has ambiguous local assignments".format(
-                    method_name,
-                    arg.id,
-                ),
-            })
-            continue
-
-        arg_span = _ast_node_span(value, arg)
-        arg_text = value[arg_span[0]:arg_span[1]] if arg_span else ""
-        if old_group in arg_text:
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": parm_name,
-                "reason": "Python {0} group name is generated by an unsupported expression".format(method_name),
-            })
-
-    if replacements:
-        reasons.append("Python group reference")
-    return replacements, reasons, skipped
-
-
-def _parm_is_group_like(node, parm):
-    if _parm_is_named_for_groups(parm):
-        return True
-
-    node_type = _node_type_name(node)
-    parm_name = _parm_name(parm).strip().lower()
-    return "group" in node_type and parm_name in {
-        "name",
-        "name1",
-        "newname",
-        "rename",
-    }
-
-
-def _rename_group_value(
-    node,
-    parm,
-    value,
-    old_group,
-    new_group,
-    group_class,
-    group_like,
-    vex_like,
-    python_like=False,
-    hscript_like=False,
-    aggressive_vex=False,
-):
-    node_path = _node_path(node)
-    parm_name = _parm_name(parm)
-    replacements = []
-    reasons = []
-    extra_edits = []
-    skipped = []
-    escaped_old = re.escape(old_group)
-
-    if python_like:
-        python_replacements, python_reasons, python_skips = _python_group_replacements(
-            value,
-            old_group,
-            new_group,
-            group_class,
-            node_path,
-            parm_name,
-        )
-        replacements.extend(python_replacements)
-        reasons.extend(python_reasons)
-        skipped.extend(python_skips)
-
-    if vex_like:
-        vex_code_mask = labs_rename_rewrite.vex_code_mask(value)
-        group_calls = _vex_group_args(value, group_class)
-        for call in group_calls:
-            function_name = call.get("function", "")
-            arg_text = call.get("text", "")
-            literal_value, quote = _string_literal_value(arg_text)
-            if literal_value is not None:
-                if literal_value == old_group:
-                    replacements.append({
-                        "start": call["start"],
-                        "end": call["end"],
-                        "text": "{0}{1}{0}".format(quote, new_group),
-                    })
-                    reasons.append("{0} literal".format(function_name))
-                continue
-
-            chs_parm = _chs_reference(arg_text)
-            if chs_parm:
-                edit, skip = _referenced_string_parm_edit(
-                    node,
-                    node_path,
-                    parm_name,
-                    chs_parm,
-                    old_group,
-                    new_group,
-                    function_name,
-                )
-                if edit:
-                    extra_edits.append(edit)
-                if skip:
-                    skipped.append(skip)
-                continue
-
-            if old_group in arg_text:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "{0} group name is generated by an unsupported expression".format(function_name),
-                })
-
-        group_binding_pattern = re.compile(
-            r"(?<![A-Za-z0-9_])([A-Za-z]?)@group_{0}(?![A-Za-z0-9_])".format(escaped_old)
-        )
-        for match in group_binding_pattern.finditer(value):
-            if not labs_rename_rewrite.span_is_code(
-                vex_code_mask, match.start(), match.end()
-            ):
-                continue
-            replacements.append({
-                "start": match.start(),
-                "end": match.end(),
-                "text": "{0}@group_{1}".format(match.group(1), new_group),
-            })
-        if replacements:
-            reasons.append("VEX group reference")
-
-        if aggressive_vex:
-            aggressive_replacements = labs_rename_rewrite.vex_exact_string_replacements(
-                value, old_group, new_group
-            )
-            aggressive_replacements = [
-                replacement
-                for replacement in aggressive_replacements
-                if not _span_overlaps(
-                    replacement["start"],
-                    replacement["end"],
-                    ((item["start"], item["end"]) for item in replacements),
-                )
-            ]
-            if aggressive_replacements:
-                replacements.extend(aggressive_replacements)
-                reasons.append("Aggressive VEX string")
-
-    value_after_replacements = _replace_spans(value, replacements)
-
-    if group_like and not python_like and not hscript_like and not _parm_is_vex_code_parameter(parm, value):
-        token_pattern = re.compile(
-            r"(?<![A-Za-z0-9_]){0}(?![A-Za-z0-9_])".format(escaped_old)
-        )
-        value_after_replacements, count = token_pattern.subn(new_group, value_after_replacements)
-        if count:
-            reasons.append("group token")
-
-    unique_reasons = []
-    for reason in reasons:
-        if reason not in unique_reasons:
-            unique_reasons.append(reason)
-
-    return value_after_replacements, tuple(unique_reasons), extra_edits, skipped
 
 
 def _edit_code_type(edit):
@@ -4768,155 +3050,567 @@ def _annotate_rename_edit(edit):
     return edit
 
 
-def _collect_group_rename_edits(
-    nodes,
-    old_group,
-    new_group,
-    group_class,
-    rename_vex=True,
-    rename_python=True,
-    aggressive_vex=False,
-    progress_callback=None,
-):
-    group_class = _normalize_group_class(group_class)
-    edits = []
-    skipped = []
-    seen_parms = set()
-    edit_index = {}
+# ---------------------------------------------------------------------------
+# Engine delegation and stable location planning
+# ---------------------------------------------------------------------------
 
-    for node in _iter_nodes_with_progress(
-        nodes,
-        "Finding group references",
-        progress_callback=progress_callback,
-    ):
+
+class _RenamePreviewTargetGuard:
+    """Track the exact HOM targets authorized by one final preview.
+
+    Planner records deliberately contain only stable, public data.  This
+    preview-lifetime guard keeps volatile node identity and event callbacks
+    beside those records, then releases them as soon as the preview/apply
+    workflow finishes.
+    """
+
+    _STRUCTURAL_EVENT_NAMES = (
+        "BeingDeleted",
+        "NameChanged",
+        "SpareParmTemplatesChanged",
+    )
+    _PARM_EVENT_NAMES = (
+        "ParmTupleChanged",
+        "ParmTupleAnimated",
+        "ParmTupleChannelChanged",
+        "ParmTupleLockChanged",
+    )
+
+    def __init__(self):
+        self._targets = {}
+        self._scan_targets = {}
+        self._nodes = {}
+        self._writing_targets = set()
+        self._pending_writes = {}
+        self._closed = False
+
+        event_owner = getattr(hou, "nodeEventType", None)
+        if event_owner is None:
+            raise RuntimeError("Houdini node event metadata is unavailable")
+
+        structural_events = []
+        for event_name in self._STRUCTURAL_EVENT_NAMES:
+            event_type = getattr(event_owner, event_name, None)
+            if event_type is None:
+                raise RuntimeError(
+                    "required Houdini node event is unavailable: {0}".format(
+                        event_name
+                    )
+                )
+            structural_events.append(event_type)
+
+        parm_events = [
+            getattr(event_owner, event_name, None)
+            for event_name in self._PARM_EVENT_NAMES
+        ]
+        self._structural_events = tuple(structural_events)
+        self._parm_events = tuple(
+            event_type for event_type in parm_events if event_type is not None
+        )
+        self._event_types = self._structural_events + self._parm_events
+
+    @staticmethod
+    def _target_key(edit):
+        return (
+            str(edit.get("node_path", "")),
+            str(edit.get("parm_name", "")),
+        )
+
+    @staticmethod
+    def _node_session_id(node):
+        try:
+            return int(node.sessionId())
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not inspect node identity: {0}".format(exc)
+            )
+
+    @staticmethod
+    def _parm_tuple_id(parm):
+        try:
+            return int(parm.tuple()._asVoidPointer())
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not inspect parameter tuple identity: {0}".format(exc)
+            )
+
+    @staticmethod
+    def _node_modification_id(node):
+        try:
+            method = getattr(node, "_OpNode__modificationTime", None)
+            if method is not None:
+                return method()
+            return node.modificationTime()
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not inspect node modification state: {0}".format(exc)
+            )
+
+    def _invalidate_node(self, node_path, event_type, parm_tuple=None):
+        if self._closed:
+            return
+        node_record = self._nodes.get(node_path)
+        if node_record is None or node_record.get("invalid_reason"):
+            return
+
+        if event_type in self._parm_events and parm_tuple is not None:
+            try:
+                event_parm_names = {
+                    _parm_name(event_parm)
+                    for event_parm in parm_tuple
+                }
+            except Exception:
+                event_parm_names = set()
+            if any(
+                writing_path == node_path
+                and writing_parm in event_parm_names
+                for writing_path, writing_parm in self._writing_targets
+            ):
+                return
+
+        if event_type == getattr(hou.nodeEventType, "BeingDeleted", None):
+            reason = "preview target node was deleted"
+        elif event_type == getattr(hou.nodeEventType, "NameChanged", None):
+            reason = "preview target node was renamed"
+        elif event_type == getattr(
+            hou.nodeEventType, "SpareParmTemplatesChanged", None
+        ):
+            reason = "preview target parameter layout changed"
+        else:
+            reason = "preview target node parameters changed"
+        node_record["invalid_reason"] = reason
+
+    def _watch_node(self, node):
         node_path = _node_path(node)
         if not node_path:
-            continue
+            raise RuntimeError("preview target node path is unavailable")
+        session_id = self._node_session_id(node)
+
+        existing = self._nodes.get(node_path)
+        if existing is not None:
+            if existing.get("session_id") != session_id:
+                raise RuntimeError(
+                    "preview target node was replaced during the final scan"
+                )
+            return existing
+
+        def _node_event_callback(
+            _guard=self,
+            _node_path_value=node_path,
+            **kwargs
+        ):
+            _guard._invalidate_node(
+                _node_path_value,
+                kwargs.get("event_type"),
+                parm_tuple=kwargs.get("parm_tuple"),
+            )
 
         try:
-            parms = node.parms()
+            node.addEventCallback(self._event_types, _node_event_callback)
         except Exception as exc:
-            skipped.append({
-                "node_path": node_path,
-                "parm_name": "<parms>",
-                "reason": "could not inspect parameters: {0}".format(exc),
-            })
-            continue
-
-        for parm in parms:
-            parm_name = _parm_name(parm)
-            if not parm_name:
-                continue
-
-            parm_key = (node_path, parm_name)
-            if parm_key in seen_parms:
-                continue
-            seen_parms.add(parm_key)
-
-            source = _parm_rename_source(parm)
-            if source is None:
-                continue
-
-            value = source.get("value")
-            if old_group not in str(value or "") and "chs(" not in str(value or ""):
-                continue
-            value_kind = source.get("kind", "value")
-            language = source.get("language")
-            language_kind = source.get("language_kind", "")
-            language_label = source.get("language_label", "")
-            group_like = _parm_is_group_like(node, parm)
-            python_like = (
-                language_kind == "python"
-                or (
-                    value_kind != "expression"
-                    and _parm_looks_like_python_code(node, parm, value)
+            # Treat registration as potentially partial and make a best-effort
+            # removal before propagating either cancellation or failure.
+            try:
+                node.removeEventCallback(
+                    self._event_types,
+                    _node_event_callback,
                 )
-            )
-            hscript_like = (
-                language_kind == "hscript"
-                or (
-                    value_kind != "expression"
-                    and _parm_looks_like_hscript_code(node, parm, value)
-                )
-            )
-            vex_like = (
-                not python_like
-                and not hscript_like
-                and language_kind != "hscript"
-                and _parm_looks_like_vex_code(node, parm, value)
-            )
-
-            if python_like and not rename_python:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "Python rename disabled",
-                })
-                continue
-
-            if vex_like and not rename_vex:
-                skipped.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "VEX rename disabled",
-                })
-                continue
-
-            new_value, reasons, extra_edits, extra_skips = _rename_group_value(
-                node,
-                parm,
-                value,
-                old_group,
-                new_group,
-                group_class,
-                group_like,
-                vex_like,
-                python_like=python_like,
-                hscript_like=hscript_like,
-                aggressive_vex=aggressive_vex,
-            )
-            skipped.extend(extra_skips)
-
-            if new_value != value:
-                edit = _make_rename_edit(
+            except Exception:
+                pass
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not guard preview target node '{0}': {1}".format(
                     node_path,
-                    parm_name,
-                    value,
-                    new_value,
-                    reasons,
-                    value_kind=value_kind,
-                    language=language,
-                    language_label=language_label,
+                    exc,
                 )
-                _annotate_rename_edit(edit)
+            )
 
-                if _parm_is_locked(parm):
-                    edit["reason"] = "parameter is locked"
-                    skipped.append(edit)
-                    continue
+        try:
+            modification_id = self._node_modification_id(node)
+        except Exception:
+            # Registration and baseline capture form one operation.  If the
+            # latter fails, leave no callback behind on an untracked node.
+            try:
+                node.removeEventCallback(
+                    self._event_types,
+                    _node_event_callback,
+                )
+            except Exception:
+                pass
+            raise
 
-                if value_kind != "expression" and _parm_should_skip_expression_state(node, parm, value):
-                    edit["reason"] = "non-code parameter has keyframes or an expression"
-                    skipped.append(edit)
-                    continue
+        node_record = {
+            "node": node,
+            "session_id": session_id,
+            "modification_id": modification_id,
+            "callback": _node_event_callback,
+            "invalid_reason": "",
+        }
+        self._nodes[node_path] = node_record
+        return node_record
 
-                if not _append_unique_rename_edit(edits, edit, edit_index=edit_index):
-                    skipped.append({
-                        "node_path": node_path,
-                        "parm_name": parm_name,
-                        "reason": "multiple rename edits conflict for this parameter",
-                    })
+    def watch_scan_node(self, node):
+        """Begin event tracking before any parameter on a node is planned."""
+        if self._closed:
+            raise RuntimeError("preview target guard is already closed")
+        self._watch_node(node)
 
-            for extra_edit in extra_edits:
-                _annotate_rename_edit(extra_edit)
-                if not _append_unique_rename_edit(edits, extra_edit, edit_index=edit_index):
-                    skipped.append({
-                        "node_path": extra_edit.get("node_path", ""),
-                        "parm_name": extra_edit.get("parm_name", ""),
-                        "reason": "multiple rename edits conflict for this referenced parameter",
-                    })
+    def watch_scan_parm(self, node, parm):
+        """Capture native tuple identity before the planner reads a parameter."""
+        if self._closed:
+            raise RuntimeError("preview target guard is already closed")
+        node_path = _node_path(node)
+        parm_name = _parm_name(parm)
+        if not node_path or not parm_name:
+            raise RuntimeError("preview scan target path is incomplete")
+        node_record = self._watch_node(node)
+        if node_record.get("invalid_reason"):
+            raise RuntimeError(node_record.get("invalid_reason"))
+        if (
+            self._node_modification_id(node)
+            != node_record.get("modification_id")
+        ):
+            raise RuntimeError(
+                "preview target node changed during the final scan"
+            )
+        key = (node_path, parm_name)
+        parm_tuple_id = self._parm_tuple_id(parm)
+        try:
+            current_parm = node.parm(parm_name)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not resolve current preview scan parameter: {0}".format(
+                    exc
+                )
+            )
+        if (
+            current_parm is None
+            or self._parm_tuple_id(current_parm) != parm_tuple_id
+        ):
+            raise RuntimeError(
+                "preview target parameter was replaced during the final scan"
+            )
+        existing = self._scan_targets.get(key)
+        if existing is not None and existing != parm_tuple_id:
+            raise RuntimeError(
+                "preview target parameter was replaced during the final scan"
+            )
+        self._scan_targets[key] = parm_tuple_id
 
-    return edits, skipped
+    def watch(self, edit, node=None, parm=None):
+        """Attach one planner record to its exact live node and parameter."""
+        if self._closed:
+            raise RuntimeError("preview target guard is already closed")
+
+        node_path, parm_name = self._target_key(edit)
+        if not node_path or not parm_name:
+            raise RuntimeError("preview target path is incomplete")
+
+        if node is None:
+            try:
+                node = hou.node(node_path)
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                raise RuntimeError(
+                    "could not resolve preview target node: {0}".format(exc)
+                )
+        if node is None or _node_path(node) != node_path:
+            raise RuntimeError("preview target node no longer exists")
+
+        if parm is None:
+            try:
+                parm = node.parm(parm_name)
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                raise RuntimeError(
+                    "could not resolve preview target parameter: {0}".format(
+                        exc
+                    )
+                )
+        if parm is None or _parm_name(parm) != parm_name:
+            raise RuntimeError("preview target parameter no longer exists")
+
+        try:
+            current_parm = node.parm(parm_name)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            raise RuntimeError(
+                "could not resolve current preview target parameter: {0}".format(
+                    exc
+                )
+            )
+        if current_parm is None or _parm_name(current_parm) != parm_name:
+            raise RuntimeError("preview target parameter no longer exists")
+
+        node_record = self._watch_node(node)
+        if node_record.get("invalid_reason"):
+            raise RuntimeError(node_record.get("invalid_reason"))
+        if (
+            self._node_modification_id(node)
+            != node_record.get("modification_id")
+        ):
+            raise RuntimeError(
+                "preview target node changed during the final scan"
+            )
+        key = (node_path, parm_name)
+        parm_tuple_id = self._parm_tuple_id(parm)
+        current_parm_tuple_id = self._parm_tuple_id(current_parm)
+        if current_parm_tuple_id != parm_tuple_id:
+            raise RuntimeError(
+                "preview target parameter was replaced during the final scan"
+            )
+        scan_tuple_id = self._scan_targets.get(key)
+        if (
+            scan_tuple_id is not None
+            and scan_tuple_id != current_parm_tuple_id
+        ):
+            raise RuntimeError(
+                "preview target parameter was replaced during the final scan"
+            )
+        existing = self._targets.get(key)
+        if existing is not None:
+            if (
+                existing.get("session_id") != node_record.get("session_id")
+                or existing.get("parm_tuple_id") != current_parm_tuple_id
+            ):
+                raise RuntimeError(
+                    "preview target was replaced during the final scan"
+                )
+            return
+        self._targets[key] = {
+            "session_id": node_record.get("session_id"),
+            "parm_tuple_id": current_parm_tuple_id,
+        }
+
+    def validate_identity(self, edit, node=None, parm=None):
+        """Validate target identity without considering later node changes."""
+        if self._closed:
+            return "preview target guard is no longer active"
+        node_path, parm_name = self._target_key(edit)
+        target_record = self._targets.get((node_path, parm_name))
+        if target_record is None:
+            return "parameter was not guarded by the final preview"
+        try:
+            current_node = hou.node(node_path)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            return "could not resolve guarded node: {0}".format(exc)
+        if current_node is None:
+            return "preview target node no longer exists"
+        if (
+            self._node_session_id(current_node)
+            != target_record.get("session_id")
+        ):
+            return "preview target node was replaced"
+        if node is not None and (
+            self._node_session_id(node)
+            != target_record.get("session_id")
+        ):
+            return "resolved parameter belongs to a different node"
+        try:
+            current_parm = current_node.parm(parm_name)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            return "could not resolve guarded parameter: {0}".format(exc)
+        if current_parm is None:
+            return "preview target parameter no longer exists"
+        if (
+            self._parm_tuple_id(current_parm)
+            != target_record.get("parm_tuple_id")
+        ):
+            return "preview target parameter was replaced"
+        if parm is not None:
+            if _parm_name(parm) != parm_name:
+                return "resolved parameter does not match the preview target"
+            if (
+                self._parm_tuple_id(parm)
+                != target_record.get("parm_tuple_id")
+            ):
+                return "resolved parameter was replaced"
+        return ""
+
+    def validate(
+        self,
+        edit,
+        node=None,
+        parm=None,
+        allow_pending_write=False,
+    ):
+        """Return an explanation when a watched target is no longer exact."""
+        node_path, parm_name = self._target_key(edit)
+        node_record = self._nodes.get(node_path)
+        if node_record is None:
+            return "preview target node was not guarded"
+        if node_record.get("invalid_reason"):
+            return node_record.get("invalid_reason")
+        try:
+            callback_node = hou.node(node_path)
+            callbacks = (
+                tuple(callback_node.eventCallbacks())
+                if callback_node is not None
+                else ()
+            )
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            return "could not verify preview target tracking: {0}".format(exc)
+        expected_callback = node_record.get("callback")
+        callback_registered = any(
+            len(callback_record) >= 2
+            and callback_record[1] is expected_callback
+            and frozenset(callback_record[0]) == frozenset(self._event_types)
+            for callback_record in callbacks
+        )
+        if not callback_registered:
+            return "preview target tracking callback was removed"
+
+        identity_reason = self.validate_identity(
+            edit,
+            node=node,
+            parm=parm,
+        )
+        if identity_reason:
+            return identity_reason
+
+        try:
+            current_node = hou.node(node_path)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            return "could not resolve guarded node: {0}".format(exc)
+        if current_node is None:
+            return "preview target node no longer exists"
+
+        try:
+            current_session_id = self._node_session_id(current_node)
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            return str(exc)
+        current_modification_id = self._node_modification_id(current_node)
+        expected_modification_id = node_record.get("modification_id")
+        if allow_pending_write:
+            expected_modification_id = self._pending_writes.get(
+                (node_path, parm_name),
+                expected_modification_id,
+            )
+        if current_modification_id != expected_modification_id:
+            return "preview target node changed"
+
+        if node is not None:
+            try:
+                if self._node_session_id(node) != current_session_id:
+                    return "resolved parameter belongs to a different node"
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                return str(exc)
+
+        return ""
+
+    def accept_write(self, edit, node=None):
+        """Advance the node baseline only after an own write is verified."""
+        node_path, parm_name = self._target_key(edit)
+        key = (node_path, parm_name)
+        node_record = self._nodes.get(node_path)
+        if node_record is None:
+            raise RuntimeError("preview target node was not guarded")
+        pending_modification_id = self._pending_writes.get(key)
+        if pending_modification_id is None:
+            raise RuntimeError("guarded write has no pending modification state")
+        if node is None:
+            node = hou.node(node_path)
+        if node is None:
+            raise RuntimeError("preview target node no longer exists")
+        identity_reason = self.validate_identity(edit, node=node)
+        if identity_reason:
+            raise RuntimeError(identity_reason)
+        if self._node_modification_id(node) != pending_modification_id:
+            raise RuntimeError("preview target node changed after the write")
+        self._pending_writes.pop(key, None)
+        node_record["modification_id"] = pending_modification_id
+
+    def validate_all(self):
+        """Validate every watched target before the preview becomes actionable."""
+        for node_path, parm_name in tuple(self._targets):
+            reason = self.validate({
+                "node_path": node_path,
+                "parm_name": parm_name,
+            })
+            if reason:
+                return "{0}/{1}: {2}".format(node_path, parm_name, reason)
+        return ""
+
+    @contextmanager
+    def writing(self, edit):
+        """Ignore only synchronous value events caused by this guarded write."""
+        key = self._target_key(edit)
+        self._writing_targets.add(key)
+        try:
+            yield
+        finally:
+            self._writing_targets.discard(key)
+            node_path, _parm_name_value = key
+            node_record = self._nodes.get(node_path)
+            if node_record is not None:
+                try:
+                    self._pending_writes[key] = self._node_modification_id(
+                        node_record["node"]
+                    )
+                except Exception as exc:
+                    self._pending_writes.pop(key, None)
+                    if _operation_interrupted(exc):
+                        raise
+                    if not node_record.get("invalid_reason"):
+                        node_record["invalid_reason"] = (
+                            "could not capture node modification state after "
+                            "the guarded write: {0}"
+                        ).format(exc)
+
+    def close(self):
+        """Remove callbacks and release every preview-lifetime HOM reference."""
+        if self._closed:
+            return
+        self._closed = True
+        for node_record in tuple(self._nodes.values()):
+            try:
+                node_record["node"].removeEventCallback(
+                    self._event_types,
+                    node_record["callback"],
+                )
+            except Exception:
+                pass
+        self._writing_targets.clear()
+        self._nodes.clear()
+        self._targets.clear()
+        self._scan_targets.clear()
+        self._pending_writes.clear()
+
+
+def _create_rename_preview_target_guard(edits=None):
+    """Create a fail-closed guard without adding data to planner records."""
+    guard = _RenamePreviewTargetGuard()
+    try:
+        for edit in edits or ():
+            guard.watch(edit)
+    except Exception:
+        guard.close()
+        raise
+    return guard
 
 
 def _collect_item_rename_edits(
@@ -4929,29 +3623,141 @@ def _collect_item_rename_edits(
     rename_python=True,
     aggressive_vex=False,
     progress_callback=None,
+    target_guard=None,
 ):
-    if _normalize_rename_kind(rename_kind) == RENAME_KIND_GROUP:
-        edits, skipped = _collect_group_rename_edits(
-            nodes,
-            old_name,
-            new_name,
-            item_class,
-            rename_vex=rename_vex,
-            rename_python=rename_python,
-            aggressive_vex=aggressive_vex,
-            progress_callback=progress_callback,
-        )
+    """Collect safe parameter edits using the standalone rewrite engine.
+
+    The UI owns scope, progress, preview, application, undo, and reporting.
+    The engine owns only the read-only language-aware decision for one
+    parameter.  Keeping iteration here preserves per-node and per-parameter
+    error isolation and ensures cached edit records contain stable paths rather
+    than live HOM objects.
+    """
+    rename_kind = _normalize_rename_kind(rename_kind)
+    if rename_kind == RENAME_KIND_GROUP:
+        item_class = _normalize_group_class(item_class)
+        progress_title = "Finding group references"
     else:
-        edits, skipped = _collect_attribute_rename_edits(
-            nodes,
-            old_name,
-            new_name,
-            item_class,
-            rename_vex=rename_vex,
-            rename_python=rename_python,
-            aggressive_vex=aggressive_vex,
-            progress_callback=progress_callback,
-        )
+        item_class = _normalize_attribute_class(item_class)
+        progress_title = "Finding attribute references"
+
+    edits = []
+    skipped = []
+    seen_parms = set()
+    edit_index = {}
+
+    for node in _iter_nodes_with_progress(
+        nodes,
+        progress_title,
+        progress_callback=progress_callback,
+    ):
+        node_path = _node_path(node)
+        if not node_path:
+            continue
+
+        if target_guard is not None:
+            target_guard.watch_scan_node(node)
+
+        try:
+            parms = node.parms()
+        except Exception as exc:
+            if _operation_interrupted(exc):
+                raise
+            _append_rename_issue(
+                skipped,
+                node_path,
+                "<parms>",
+                "could not inspect parameters: {0}".format(exc),
+            )
+            continue
+
+        for parm in parms:
+            try:
+                parm_name = parm.name()
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    skipped,
+                    node_path,
+                    "<unknown>",
+                    "could not inspect parameter name: {0}".format(exc),
+                )
+                continue
+
+            if not parm_name:
+                continue
+            parm_key = (node_path, parm_name)
+            if parm_key in seen_parms:
+                continue
+            seen_parms.add(parm_key)
+
+            if target_guard is not None:
+                target_guard.watch_scan_parm(node, parm)
+
+            try:
+                # The planner only reads HOM state and returns path-based
+                # records for preview and later stale-value validation.
+                edit, _, extra_skips = (
+                    rename_engine.plan_parameter_rewrite(
+                        node,
+                        parm,
+                        rename_kind,
+                        item_class,
+                        old_name,
+                        new_name,
+                        rename_vex=rename_vex,
+                        rename_python=rename_python,
+                        aggressive_vex=aggressive_vex,
+                    )
+                )
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    skipped,
+                    node_path,
+                    parm_name,
+                    "could not inspect parameter: {0}".format(exc),
+                )
+                continue
+
+            skipped.extend(extra_skips or ())
+
+            if edit is not None:
+                try:
+                    parameter_is_locked = bool(parm.isLocked())
+                except Exception as exc:
+                    if _operation_interrupted(exc):
+                        raise
+                    _append_rename_issue(
+                        skipped,
+                        node_path,
+                        parm_name,
+                        "could not inspect parameter lock state: {0}".format(exc),
+                    )
+                    parameter_is_locked = None
+
+                if parameter_is_locked is True:
+                    _append_rename_issue(
+                        skipped, node_path, parm_name, "parameter is locked"
+                    )
+                elif parameter_is_locked is False:
+                    edit_added = _append_unique_rename_edit(
+                        edits,
+                        edit,
+                        edit_index=edit_index,
+                    )
+                    if not edit_added:
+                        _append_rename_issue(
+                            skipped,
+                            node_path,
+                            parm_name,
+                            "multiple rename edits conflict for this parameter",
+                        )
+                    elif target_guard is not None:
+                        target_guard.watch(edit, node=node, parm=parm)
+
     for edit in edits:
         _annotate_rename_edit(edit)
     return edits, skipped
@@ -4995,6 +3801,7 @@ def _rename_location_rows(edits):
 
 
 def _collect_item_rename_locations(context, choice, progress_callback=None):
+    """Probe one candidate with a temporary name and return stable locations."""
     context = context or {}
     scope = context.get("scope") or {}
     if not isinstance(scope, dict):
@@ -5034,6 +3841,7 @@ def _rename_batch_progress_callback(operation, choice_index, choice_count):
 
 
 def _collect_item_rename_location_cache(context, choices):
+    """Build an all-or-nothing location result for every visible candidate."""
     choices = list(choices or ())
     if not choices:
         return {}
@@ -5059,10 +3867,6 @@ def _collect_item_rename_location_cache(context, choices):
     return location_cache
 
 
-def _collect_upstream_attribute_rename_edits(source_sop, old_attr, new_attr, attr_class):
-    nodes = _nodes_from_tuples(_iter_upstream_nodes_with_depth(source_sop))
-    return _collect_attribute_rename_edits(nodes, old_attr, new_attr, attr_class)
-
 def _rename_edit_reason_text(edit):
     reason_text = ", ".join(edit.get("reasons", ()))
     language_label = edit.get("language_label", "")
@@ -5078,7 +3882,13 @@ def _rename_edit_change_preview(edit):
     )
 
 
+# ---------------------------------------------------------------------------
+# Network focus and edit preview
+# ---------------------------------------------------------------------------
+
+
 def _focus_rename_node_paths(node_paths):
+    """Resolve stable paths, select their nodes, and frame them in the editor."""
     paths = []
     for node_path in node_paths or ():
         node_path = str(node_path or "")
@@ -5228,42 +4038,21 @@ def _choose_attribute_rename_edits_message(
     rename_kind=RENAME_KIND_ATTRIBUTE,
     discovery_issues=None,
 ):
-    return (
-        "Preview rename {0} in {1}. Select parameter edits to apply. "
-        "{2} safe edits, {3} skipped, {4} discovery issues."
-    ).format(
-        _rename_item_preview_text(rename_kind, attr_class, old_attr, new_attr),
+    edit_count = len(edits)
+    issue_count = len(discovery_issues or ())
+    return "Preview: {0} · {1} · {2} edit{3} · {4} skipped · {5} issue{6}".format(
+        "{0} {1} '{2}' → '{3}'".format(
+            _item_class_label_lower(rename_kind, attr_class),
+            _rename_kind_label_singular(rename_kind),
+            old_attr,
+            new_attr,
+        ),
         scope_label,
-        len(edits),
+        edit_count,
+        "" if edit_count == 1 else "s",
         len(skipped),
-        len(discovery_issues or ()),
-    )
-
-
-def _rename_risk_summary(nodes, edits, skipped, discovery_issues=None):
-    scanned_nodes = len(_unique_nodes(nodes or []))
-    edit_nodes = sorted(set(edit.get("node_path", "") for edit in edits if edit.get("node_path", "")))
-    vex_edits = sum(1 for edit in edits if _edit_code_type(edit) == "VEX")
-    python_edits = sum(1 for edit in edits if _edit_code_type(edit) == "Python")
-    plain_edits = sum(1 for edit in edits if _edit_code_type(edit) == "Plain")
-    locked_skips = sum(1 for skip in skipped if "locked" in str(skip.get("reason", "")).lower())
-    conflict_skips = sum(1 for skip in skipped if "conflict" in str(skip.get("reason", "")).lower())
-    high_risk_edits = sum(1 for edit in edits if _edit_risk(edit) == "High")
-    return (
-        "Scanned {0} nodes. Editable matches on {1} nodes. "
-        "Plain {2}, VEX {3}, Python {4}. High risk {5}. "
-        "Skipped {6}, Locked {7}, Conflicts {8}. Discovery Issues {9}."
-    ).format(
-        scanned_nodes,
-        len(edit_nodes),
-        plain_edits,
-        vex_edits,
-        python_edits,
-        high_risk_edits,
-        len(skipped),
-        locked_skips,
-        conflict_skips,
-        len(discovery_issues or ()),
+        issue_count,
+        "" if issue_count == 1 else "s",
     )
 
 
@@ -5291,22 +4080,22 @@ def _choose_attribute_rename_edits_dialog(
     nodes=None,
     discovery_issues=None,
 ):
+    """Preview risks and let the user select the exact edits to apply."""
     from hutil.Qt import QtCore, QtWidgets
 
     class PlannedEditsDialog(QtWidgets.QDialog):
         def __init__(self, parent=None):
             super(PlannedEditsDialog, self).__init__(parent)
             self.setWindowTitle(RENAME_TITLE)
-            try:
-                self.setWindowFlags(
-                    self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint
-                )
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore)
 
             self._edits = [_annotate_rename_edit(dict(edit)) for edit in edits]
-            self._checked = _qt_checked_state(QtCore)
-            self._unchecked = _qt_unchecked_state(QtCore)
+            self._checked = _qt_enum(
+                QtCore.Qt, "CheckState", "Checked"
+            )
+            self._unchecked = _qt_enum(
+                QtCore.Qt, "CheckState", "Unchecked"
+            )
             self._checked_indexes = set(range(len(self._edits)))
             self._row_edit_indexes = list(range(len(self._edits)))
             self._edit_index_to_row = {
@@ -5338,17 +4127,6 @@ def _choose_attribute_rename_edits_dialog(
             label.setWordWrap(True)
             layout.addWidget(label)
 
-            summary_label = QtWidgets.QLabel(
-                _rename_risk_summary(
-                    nodes,
-                    self._edits,
-                    skipped,
-                    discovery_issues=discovery_issues,
-                )
-            )
-            summary_label.setWordWrap(True)
-            layout.addWidget(summary_label)
-
             filter_layout = QtWidgets.QHBoxLayout()
             self.search_edit = QtWidgets.QLineEdit()
             self.search_edit.setPlaceholderText("Filter planned edits")
@@ -5366,13 +4144,7 @@ def _choose_attribute_rename_edits_dialog(
                 "Change",
                 "Reason",
             ))
-            self.table.setWordWrap(False)
-            self.table.setTextElideMode(_qt_elide_none(QtCore))
-            self.table.setHorizontalScrollBarPolicy(_qt_scrollbar_as_needed(QtCore))
-            self.table.setVerticalScrollBarPolicy(_qt_scrollbar_as_needed(QtCore))
-            self.table.setSelectionBehavior(_qt_select_rows(QtWidgets))
-            self.table.setSelectionMode(_qt_extended_selection(QtWidgets))
-            self.table.setEditTriggers(_qt_no_edit_triggers(QtWidgets))
+            _configure_readonly_table(self.table, QtCore, QtWidgets)
             self.table.verticalHeader().setVisible(False)
             self.table.setColumnWidth(0, 64)
             self.table.setColumnWidth(1, 430)
@@ -5390,14 +4162,9 @@ def _choose_attribute_rename_edits_dialog(
             self.back_button = QtWidgets.QPushButton("Back")
             self.select_all_button = QtWidgets.QPushButton("Select All")
             self.select_none_button = QtWidgets.QPushButton("Select None")
-            self.discovery_issues_button = QtWidgets.QPushButton(
-                "View Discovery Issues ({0})".format(len(discovery_issues or ()))
-            )
-            self.discovery_issues_button.setVisible(bool(discovery_issues))
             button_layout.addWidget(self.back_button)
             button_layout.addWidget(self.select_all_button)
             button_layout.addWidget(self.select_none_button)
-            button_layout.addWidget(self.discovery_issues_button)
             button_layout.addStretch(1)
             self.accept_button = QtWidgets.QPushButton("Accept")
             self.cancel_button = QtWidgets.QPushButton("Cancel")
@@ -5408,10 +4175,7 @@ def _choose_attribute_rename_edits_dialog(
 
             self.setLayout(layout)
             self.setMinimumSize(1080, 610)
-            try:
-                self.resize(1360, 720)
-            except Exception:
-                pass
+            _resize_qt_dialog(self, QtWidgets, 1440, 800)
 
             self.table.itemChanged.connect(self._apply_check_to_selected_rows)
             self.search_button.clicked.connect(self._apply_filter)
@@ -5420,9 +4184,6 @@ def _choose_attribute_rename_edits_dialog(
             self._filter_timer.timeout.connect(self._apply_filter)
             self.select_all_button.clicked.connect(lambda: self._set_all_checks(self._checked))
             self.select_none_button.clicked.connect(lambda: self._set_all_checks(self._unchecked))
-            self.discovery_issues_button.clicked.connect(
-                lambda: _show_discovery_issues(discovery_issues)
-            )
             self.accept_button.clicked.connect(self.accept)
             self.cancel_button.clicked.connect(self.reject)
             self.back_button.clicked.connect(self._back)
@@ -5493,7 +4254,11 @@ def _choose_attribute_rename_edits_dialog(
 
         def eventFilter(self, obj, event):
             try:
-                if obj is self.table.viewport() and event.type() == _qt_mouse_button_press(QtCore):
+                if (
+                    obj is self.table.viewport()
+                    and event.type()
+                    == _qt_enum(QtCore.QEvent, "Type", "MouseButtonPress")
+                ):
                     index = self.table.indexAt(event.pos())
                     if index.isValid() and index.column() == 0:
                         row = index.row()
@@ -5568,22 +4333,12 @@ def _choose_attribute_rename_edits_dialog(
                 return DIALOG_BACK
             return self._selected_edits or []
 
-    parent = None
-    try:
-        parent = hou.qt.mainWindow()
-    except Exception:
-        pass
-
-    dialog = PlannedEditsDialog(parent)
+    dialog = PlannedEditsDialog(_qt_main_window())
     exec_method = getattr(dialog, "exec", None)
     if exec_method is None:
         exec_method = getattr(dialog, "exec_")
 
-    accepted = getattr(QtWidgets.QDialog, "Accepted", None)
-    if accepted is None:
-        accepted = QtWidgets.QDialog.DialogCode.Accepted
-
-    if exec_method() != accepted:
+    if exec_method() != _qt_enum(QtWidgets.QDialog, "DialogCode", "Accepted"):
         return []
     return dialog.result_value()
 
@@ -5598,6 +4353,7 @@ def _choose_attribute_rename_edits_fallback(
     rename_kind=RENAME_KIND_ATTRIBUTE,
     discovery_issues=None,
 ):
+    """Offer the same edit selection through Houdini's native list UI."""
     labels = [_rename_edit_label(edit) for edit in edits]
     try:
         selection = hou.ui.selectFromList(
@@ -5649,6 +4405,7 @@ def _choose_attribute_rename_edits(
     nodes=None,
     discovery_issues=None,
 ):
+    """Return selected plans while preserving Back and cancel semantics."""
     rename_kind = _normalize_rename_kind(rename_kind)
     if rename_kind == RENAME_KIND_GROUP:
         attr_class = _normalize_group_class(attr_class)
@@ -5709,6 +4466,11 @@ def _choose_attribute_rename_edits(
             discovery_issues=discovery_issues,
         )
 
+# ---------------------------------------------------------------------------
+# Reporting, guarded application, and one-step undo
+# ---------------------------------------------------------------------------
+
+
 def _rename_report_text(
     applied,
     skipped,
@@ -5719,6 +4481,7 @@ def _rename_report_text(
     rename_kind,
     discovery_issues=None,
 ):
+    """Build one complete report for applied, skipped, and failed work."""
     message = "Renamed {0} in {1} parameter edits.".format(
         _rename_item_preview_text(rename_kind, item_class, old_name, new_name),
         len(applied),
@@ -5744,6 +4507,7 @@ def _rename_report_text(
 
 
 def _show_rename_report_dialog(report_text):
+    """Display a copyable report without hiding fallback status output."""
     try:
         from hutil.Qt import QtCore, QtWidgets
     except Exception:
@@ -5754,10 +4518,7 @@ def _show_rename_report_dialog(report_text):
         def __init__(self, parent=None):
             super(RenameReportDialog, self).__init__(parent)
             self.setWindowTitle(RENAME_TITLE)
-            try:
-                self.setWindowFlags(self.windowFlags() ^ QtCore.Qt.WindowContextHelpButtonHint)
-            except Exception:
-                pass
+            _configure_qt_dialog(self, QtCore)
 
             layout = QtWidgets.QVBoxLayout()
             label = QtWidgets.QLabel("Rename report")
@@ -5776,6 +4537,7 @@ def _show_rename_report_dialog(report_text):
             layout.addLayout(button_layout)
             self.setLayout(layout)
             self.setMinimumSize(720, 420)
+            _resize_qt_dialog(self, QtWidgets, 900, 600)
             self.copy_button.clicked.connect(self._copy_report)
             self.close_button.clicked.connect(self.accept)
 
@@ -5787,16 +4549,14 @@ def _show_rename_report_dialog(report_text):
             except Exception as exc:
                 _show_attribute_rename_warning("Could not copy rename report: {0}".format(exc))
 
-    parent = None
     try:
-        parent = hou.qt.mainWindow()
+        dialog = RenameReportDialog(_qt_main_window())
+        exec_method = getattr(dialog, "exec", None)
+        if exec_method is None:
+            exec_method = getattr(dialog, "exec_")
+        exec_method()
     except Exception:
-        pass
-    dialog = RenameReportDialog(parent)
-    exec_method = getattr(dialog, "exec", None)
-    if exec_method is None:
-        exec_method = getattr(dialog, "exec_")
-    exec_method()
+        _show_attribute_rename_warning("Rename report", details=report_text)
 
 
 def _show_attribute_rename_report(
@@ -5809,6 +4569,7 @@ def _show_attribute_rename_report(
     rename_kind=RENAME_KIND_ATTRIBUTE,
     discovery_issues=None,
 ):
+    """Publish the final report even when only part of a batch succeeded."""
     report_text = _rename_report_text(
         applied,
         skipped,
@@ -5824,16 +4585,193 @@ def _show_attribute_rename_report(
     if applied or skipped or failed or discovery_issues:
         _show_rename_report_dialog(report_text)
 
-def _rename_edit_current_value(parm, edit):
-    if edit.get("value_kind") == "expression":
-        expression_data = _parm_expression_data(parm)
-        if expression_data is None:
-            return None
-        return expression_data.get("value")
+def _rename_parm_storage_type(parm):
+    """Return the supported HOM storage kind without evaluating the parameter."""
+    data_type = parm.parmTemplate().dataType()
+    storage_types = (
+        ("string", getattr(hou.parmData, "String", None)),
+        ("int", getattr(hou.parmData, "Int", None)),
+        ("float", getattr(hou.parmData, "Float", None)),
+    )
+    for storage_name, hom_type in storage_types:
+        if hom_type is not None and data_type == hom_type:
+            return storage_name
+    raise RuntimeError("unsupported parameter storage")
 
-    return _parm_string_value(parm)
+
+def _rename_edit_current_source(parm):
+    """Return the exact, unevaluated storage snapshot used by stale checks."""
+    storage_type = _rename_parm_storage_type(parm)
+    try:
+        expression = parm.expression()
+    except Exception as exc:
+        operation_failed = getattr(hou, "OperationFailed", None)
+        if operation_failed is None or not isinstance(exc, operation_failed):
+            raise
+    else:
+        if expression is None:
+            raise RuntimeError("expression source is unavailable")
+        try:
+            language = parm.expressionLanguage()
+        except Exception as exc:
+            raise RuntimeError(
+                "expression language metadata is unavailable: {0}".format(exc)
+            )
+        if language is None:
+            raise RuntimeError("expression language metadata is unavailable")
+        return {
+            "value_kind": "expression",
+            "source": expression,
+            "language": language,
+            "storage_type": storage_type,
+        }
+
+    if storage_type != "string":
+        raise RuntimeError("unsupported non-string parameter storage")
+    if parm.keyframes():
+        raise RuntimeError("keyframed string parameter storage is unsupported")
+
+    return {
+        "value_kind": "value",
+        "source": parm.unexpandedString(),
+        "language": None,
+        "storage_type": storage_type,
+    }
+
+
+def _rename_edit_planned_storage_type(edit):
+    """Normalize storage metadata while supporting legacy raw string records."""
+    value_kind = edit.get("value_kind")
+    if "storage_type" not in edit:
+        if value_kind == "value":
+            return "string", ""
+        return None, "preview is missing expression storage metadata"
+
+    storage_type = str(edit.get("storage_type") or "").strip().lower()
+    if storage_type not in ("string", "int", "float"):
+        return None, "preview has unsupported parameter storage metadata"
+    if value_kind == "value" and storage_type != "string":
+        return None, "preview storage metadata is inconsistent"
+    return storage_type, ""
+
+
+def _rename_edit_stale_reason(current_source, edit):
+    """Explain any mismatch between a preview record and current HOM source."""
+    planned_kind = edit.get("value_kind")
+    if planned_kind not in ("value", "expression"):
+        return "preview has unsupported parameter storage"
+
+    if current_source.get("value_kind") != planned_kind:
+        return "parameter storage changed since preview"
+
+    planned_storage, storage_error = _rename_edit_planned_storage_type(edit)
+    if storage_error:
+        return storage_error
+    if current_source.get("storage_type") != planned_storage:
+        return "parameter storage type changed since preview"
+
+    if current_source.get("source") != edit.get("old_value", ""):
+        return "parameter source changed since preview"
+
+    if planned_kind == "expression":
+        if "language" not in edit or edit.get("language") is None:
+            return "preview is missing expression language metadata"
+        if current_source.get("language") != edit.get("language"):
+            return "expression language changed since preview"
+    elif edit.get("language") is not None:
+        return "preview storage metadata is inconsistent"
+
+    return ""
+
+
+def _rename_edit_canonical_signature(edit):
+    """Return the authorization-sensitive fields of one planner record."""
+    storage_type, storage_error = _rename_edit_planned_storage_type(edit)
+    if storage_error:
+        return None, storage_error
+
+    code_type = edit.get("code_type")
+    if not code_type:
+        code_type = _edit_code_type(edit)
+    risk = edit.get("risk")
+    if not risk:
+        risk = _edit_risk(edit)
+    return (
+        edit.get("old_value", ""),
+        edit.get("new_value", ""),
+        tuple(edit.get("reasons", ())),
+        edit.get("value_kind"),
+        edit.get("language"),
+        code_type,
+        risk,
+        storage_type,
+    ), ""
+
+
+def _rename_edit_reauthorization_reason(
+    node,
+    parm,
+    edit,
+    rename_kind,
+    item_class,
+    old_name,
+    new_name,
+):
+    """Replan one row so changed owner metadata cannot reuse an old preview."""
+    aggressive_vex = (
+        "aggressive VEX exact string" in tuple(edit.get("reasons", ()))
+    )
+    current_edit, _, _skipped = (
+        rename_engine.plan_parameter_rewrite(
+            node,
+            parm,
+            rename_kind,
+            item_class,
+            old_name,
+            new_name,
+            rename_vex=True,
+            rename_python=True,
+            aggressive_vex=aggressive_vex,
+        )
+    )
+    if current_edit is None:
+        return "rename ownership or authorization changed since preview"
+
+    preview_signature, preview_error = _rename_edit_canonical_signature(edit)
+    if preview_error:
+        return preview_error
+    current_signature, current_error = _rename_edit_canonical_signature(
+        current_edit
+    )
+    if current_error:
+        return "current rename plan is incomplete: {0}".format(current_error)
+    if current_signature != preview_signature:
+        return "rename ownership or authorization changed since preview"
+    return ""
+
+
+def _rename_edit_written_reason(parm, edit):
+    """Verify that a setter produced the exact planned source and storage."""
+    current_source = _rename_edit_current_source(parm)
+    planned_storage, storage_error = _rename_edit_planned_storage_type(edit)
+    if storage_error:
+        return storage_error
+    if current_source.get("value_kind") != edit.get("value_kind"):
+        return "parameter write changed the source storage kind"
+    if current_source.get("storage_type") != planned_storage:
+        return "parameter write changed the storage type"
+    if current_source.get("source") != edit.get("new_value", ""):
+        return "parameter write did not produce the planned source"
+    if (
+        edit.get("value_kind") == "expression"
+        and current_source.get("language") != edit.get("language")
+    ):
+        return "parameter write changed the expression language"
+    return ""
+
 
 def _apply_rename_edit_value(parm, edit):
+    """Write a plan without changing its expression/value storage kind."""
     new_value = edit.get("new_value", "")
     if edit.get("value_kind") == "expression":
         language = edit.get("language")
@@ -5841,6 +4779,84 @@ def _apply_rename_edit_value(parm, edit):
         return
 
     parm.set(new_value)
+
+
+def _restore_rename_edit_source(parm, edit, target_guard=None):
+    """Restore a setter's preview source after write verification fails."""
+    if target_guard is not None:
+        identity_reason = target_guard.validate_identity(
+            edit,
+            parm=parm,
+        )
+        if identity_reason:
+            return (
+                "preview source was not restored because target identity "
+                "is unsafe: {0}"
+            ).format(identity_reason)
+
+    # A setter can fail before it writes, so avoid a second write when the
+    # exact preview source is already present.
+    current_source = _rename_edit_current_source(parm)
+    if not _rename_edit_stale_reason(current_source, edit):
+        return ""
+
+    restore_edit = dict(edit)
+    restore_edit["new_value"] = edit.get("old_value", "")
+    if target_guard is None:
+        _apply_rename_edit_value(parm, restore_edit)
+    else:
+        with target_guard.writing(edit):
+            _apply_rename_edit_value(parm, restore_edit)
+        identity_reason = target_guard.validate_identity(
+            edit,
+            parm=parm,
+        )
+        if identity_reason:
+            return (
+                "preview source restoration could not be verified because "
+                "target identity is unsafe: {0}"
+            ).format(identity_reason)
+    current_source = _rename_edit_current_source(parm)
+    restore_reason = _rename_edit_stale_reason(current_source, edit)
+    if not restore_reason and target_guard is not None:
+        target_guard.accept_write(edit)
+    return restore_reason
+
+
+def _record_write_restore(
+    failed,
+    node_path,
+    parm_name,
+    parm,
+    edit,
+    target_guard,
+    reason,
+    reraise_interruption=False,
+):
+    """Restore a post-set edit and record one guarded failure outcome."""
+    try:
+        restore_reason = _restore_rename_edit_source(
+            parm,
+            edit,
+            target_guard=target_guard,
+        )
+    except Exception as restore_exc:
+        restore_reason = "could not restore preview source: {0}".format(
+            restore_exc
+        )
+        _append_rename_issue(
+            failed, node_path, parm_name, "{0}; {1}".format(reason, restore_reason)
+        )
+        if reraise_interruption and _operation_interrupted(restore_exc):
+            raise
+        return
+
+    if restore_reason:
+        reason = "{0}; {1}".format(reason, restore_reason)
+    else:
+        reason += "; preview source was restored"
+    _append_rename_issue(failed, node_path, parm_name, reason)
+
 
 def _apply_attribute_rename_edits(
     edits,
@@ -5850,7 +4866,9 @@ def _apply_attribute_rename_edits(
     attr_class,
     rename_kind=RENAME_KIND_ATTRIBUTE,
     discovery_issues=None,
+    target_guard=None,
 ):
+    """Apply still-current plans independently inside one Houdini undo group."""
     rename_kind = _normalize_rename_kind(rename_kind)
     if rename_kind == RENAME_KIND_GROUP:
         attr_class = _normalize_group_class(attr_class)
@@ -5858,61 +4876,295 @@ def _apply_attribute_rename_edits(
         attr_class = _normalize_attribute_class(attr_class)
     applied = []
     failed = []
+    interrupted = None
 
     def _apply_selected_edits():
         for edit in edits:
             node_path = edit.get("node_path", "")
             parm_name = edit.get("parm_name", "")
-            node = hou.node(node_path) if node_path else None
-            parm = node.parm(parm_name) if node is not None and parm_name else None
-            if parm is None:
-                failed.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "parameter no longer exists",
-                })
+            # Resolve at apply time instead of retaining live parameters from
+            # discovery or preview.
+            try:
+                node = hou.node(node_path) if node_path else None
+                parm = (
+                    node.parm(parm_name)
+                    if node is not None and parm_name
+                    else None
+                )
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    failed,
+                    node_path,
+                    parm_name,
+                    "could not resolve parameter: {0}".format(exc),
+                )
                 continue
 
-            current_value = _rename_edit_current_value(parm, edit)
-            if current_value != edit.get("old_value", ""):
-                failed.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "parameter changed since preview",
-                })
+            if parm is None:
+                _append_rename_issue(
+                    failed, node_path, parm_name, "parameter no longer exists"
+                )
                 continue
 
             try:
-                _apply_rename_edit_value(parm, edit)
-                applied.append(edit)
+                current_source = _rename_edit_current_source(parm)
             except Exception as exc:
-                failed.append({
-                    "node_path": node_path,
-                    "parm_name": parm_name,
-                    "reason": "could not set parameter: {0}".format(exc),
-                })
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    failed,
+                    node_path,
+                    parm_name,
+                    "could not read current parameter source: {0}".format(exc),
+                )
+                continue
+
+            # A preview is a snapshot.  Never overwrite source that changed
+            # while the user was reviewing the batch.
+            try:
+                stale_reason = _rename_edit_stale_reason(current_source, edit)
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    failed,
+                    node_path,
+                    parm_name,
+                    "could not compare parameter with preview: {0}".format(exc),
+                )
+                continue
+            if stale_reason:
+                _append_rename_issue(
+                    failed, node_path, parm_name, stale_reason
+                )
+                continue
+
+            try:
+                authorization_reason = _rename_edit_reauthorization_reason(
+                    node,
+                    parm,
+                    edit,
+                    rename_kind,
+                    attr_class,
+                    old_attr,
+                    new_attr,
+                )
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    raise
+                _append_rename_issue(
+                    failed,
+                    node_path,
+                    parm_name,
+                    "could not revalidate rename authorization: {0}".format(exc),
+                )
+                continue
+            if authorization_reason:
+                _append_rename_issue(
+                    failed, node_path, parm_name, authorization_reason
+                )
+                continue
+
+            if target_guard is not None:
+                try:
+                    target_reason = target_guard.validate(
+                        edit,
+                        node=node,
+                        parm=parm,
+                    )
+                except Exception as exc:
+                    if _operation_interrupted(exc):
+                        raise
+                    target_reason = (
+                        "could not revalidate preview target identity: {0}"
+                    ).format(exc)
+                if target_reason:
+                    _append_rename_issue(
+                        failed, node_path, parm_name, target_reason
+                    )
+                    continue
+
+            try:
+                if target_guard is None:
+                    _apply_rename_edit_value(parm, edit)
+                else:
+                    with target_guard.writing(edit):
+                        _apply_rename_edit_value(parm, edit)
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    interrupted = exc
+                    _record_write_restore(
+                        failed,
+                        node_path,
+                        parm_name,
+                        parm,
+                        edit,
+                        target_guard,
+                        "rename was interrupted while setting the parameter",
+                    )
+                    raise interrupted
+                _record_write_restore(
+                    failed,
+                    node_path,
+                    parm_name,
+                    parm,
+                    edit,
+                    target_guard,
+                    "could not set parameter: {0}".format(exc),
+                    reraise_interruption=True,
+                )
+                continue
+
+            if target_guard is not None:
+                try:
+                    target_reason = target_guard.validate(
+                        edit,
+                        node=node,
+                        parm=parm,
+                        allow_pending_write=True,
+                    )
+                except Exception as exc:
+                    if _operation_interrupted(exc):
+                        interrupted = exc
+                        _record_write_restore(
+                            failed,
+                            node_path,
+                            parm_name,
+                            parm,
+                            edit,
+                            target_guard,
+                            "rename was interrupted during post-write target validation",
+                        )
+                        raise interrupted
+                    target_reason = (
+                        "could not verify preview target identity after write: {0}"
+                    ).format(exc)
+                if target_reason:
+                    _record_write_restore(
+                        failed,
+                        node_path,
+                        parm_name,
+                        parm,
+                        edit,
+                        target_guard,
+                        target_reason,
+                        reraise_interruption=True,
+                    )
+                    continue
+
+            try:
+                written_reason = _rename_edit_written_reason(parm, edit)
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    interrupted = exc
+                    _record_write_restore(
+                        failed,
+                        node_path,
+                        parm_name,
+                        parm,
+                        edit,
+                        target_guard,
+                        "rename was interrupted during parameter write verification",
+                    )
+                    raise interrupted
+                written_reason = "could not verify parameter write: {0}".format(
+                    exc
+                )
+            if not written_reason and target_guard is not None:
+                try:
+                    target_guard.accept_write(edit, node=node)
+                except Exception as exc:
+                    if _operation_interrupted(exc):
+                        interrupted = exc
+                        _record_write_restore(
+                            failed,
+                            node_path,
+                            parm_name,
+                            parm,
+                            edit,
+                            target_guard,
+                            "rename was interrupted while accepting verified write state",
+                        )
+                        raise interrupted
+                    written_reason = (
+                        "could not accept verified guarded write state: {0}"
+                    ).format(exc)
+            if written_reason:
+                _record_write_restore(
+                    failed,
+                    node_path,
+                    parm_name,
+                    parm,
+                    edit,
+                    target_guard,
+                    written_reason,
+                    reraise_interruption=True,
+                )
+                continue
+            applied.append(edit)
 
     undo_label = "Rename {0}: {1} to {2}".format(_rename_kind_label(rename_kind), old_attr, new_attr)
-    with hou.undos.group(undo_label):
-        _apply_selected_edits()
+    try:
+        # Individual failures are recorded and skipped, while every successful
+        # write remains part of the same user-visible undo action.
+        with hou.undos.group(undo_label):
+            _apply_selected_edits()
+    except Exception as exc:
+        interrupted = (
+            exc
+            if _operation_interrupted(exc)
+            else None
+        )
+        _append_rename_issue(
+            failed,
+            "",
+            "<undo group>",
+            "{0}: {1}".format(
+                (
+                    "rename batch was interrupted"
+                    if interrupted is not None
+                    else "rename batch failed"
+                ),
+                exc,
+            ),
+        )
 
     if applied:
-        _set_matching_item(rename_kind, attr_class, new_attr)
-        _set_rename_kind(rename_kind)
+        try:
+            _set_matching_item(rename_kind, attr_class, new_attr)
+            _set_rename_kind(rename_kind)
+        except Exception as exc:
+            _append_rename_issue(
+                failed,
+                "",
+                "<session state>",
+                "rename applied but session defaults could not be updated: {0}".format(
+                    exc
+                ),
+            )
 
-    _show_attribute_rename_report(
-        applied,
-        skipped,
-        failed,
-        old_attr,
-        new_attr,
-        attr_class,
-        rename_kind=rename_kind,
-        discovery_issues=discovery_issues,
-    )
+    # Reporting remains outside the write loop so partial batches always
+    # receive a complete outcome summary.
+    try:
+        _show_attribute_rename_report(
+            applied,
+            skipped,
+            failed,
+            old_attr,
+            new_attr,
+            attr_class,
+            rename_kind=rename_kind,
+            discovery_issues=discovery_issues,
+        )
+    finally:
+        if interrupted is not None:
+            raise interrupted
     return bool(applied)
 
 def _attribute_rename_needs_apply_confirmation(selected_edits, scope_label):
+    """Require a final warning for broad, large, or high-risk batches."""
     return (
         len(selected_edits) >= 10
         or scope_label == SCOPE_ALL_NODES_LABEL
@@ -5921,6 +5173,7 @@ def _attribute_rename_needs_apply_confirmation(selected_edits, scope_label):
 
 
 def _confirm_any_class_group_rename(old_group, new_group, scope_label):
+    """Confirm edits across owner classes when discovery cannot prove one."""
     message = (
         "The class of group '{0}' could not be determined.\n\n"
         "Rename references from '{0}' to '{1}' across Point, Primitive, "
@@ -5950,6 +5203,7 @@ def _confirm_any_class_group_rename(old_group, new_group, scope_label):
 
 
 def _confirm_attribute_rename_apply(selected_edits, old_attr, new_attr, attr_class, scope_label, rename_kind=RENAME_KIND_ATTRIBUTE):
+    """Request final approval when the selected batch crosses a risk threshold."""
     if not _attribute_rename_needs_apply_confirmation(selected_edits, scope_label):
         return True
 
@@ -5991,7 +5245,10 @@ def _defer_apply_attribute_rename_edits(
     attr_class,
     rename_kind=RENAME_KIND_ATTRIBUTE,
     discovery_issues=None,
+    target_guard=None,
 ):
+    """Schedule application after the active dialog callback has returned."""
+    # Freeze the preview snapshot before Qt releases its dialog-owned data.
     edits = tuple(dict(edit) for edit in edits)
     skipped = tuple(dict(skip) for skip in skipped)
     discovery_issues = tuple(dict(issue) for issue in discovery_issues or ())
@@ -6010,23 +5267,41 @@ def _defer_apply_attribute_rename_edits(
                 attr_class,
                 rename_kind=rename_kind,
                 discovery_issues=discovery_issues,
+                target_guard=target_guard,
             )
         except Exception as exc:
-            _show_attribute_rename_warning(
-                "Rename failed: {0}".format(exc)
-            )
+            if _operation_interrupted(exc):
+                _show_status(
+                    "Rename canceled; partial results are listed in the rename report.",
+                    hou.severityType.Warning,
+                )
+            else:
+                _show_attribute_rename_warning(
+                    "Rename failed: {0}".format(exc)
+                )
+        finally:
+            if target_guard is not None:
+                target_guard.close()
 
     try:
         import hdefereval
         hdefereval.executeDeferred(_deferred_apply)
         return True
     except Exception as exc:
+        if target_guard is not None:
+            target_guard.close()
         _show_attribute_rename_warning(
             "Could not defer rename: {0}".format(exc)
         )
         return False
 
+# ---------------------------------------------------------------------------
+# End-to-end shelf workflow
+# ---------------------------------------------------------------------------
+
+
 def _open_item_stage_for_scope(scope, scene_viewer=None, initial_context=None):
+    """Open the searchable candidate stage for one normalized scope."""
     def _on_choose(context, choice):
         return _continue_rename_from_item_choice(context, choice, scene_viewer)
 
@@ -6043,6 +5318,7 @@ def _open_item_stage_for_scope(scope, scene_viewer=None, initial_context=None):
 
 
 def _continue_rename_from_item_choice(context, choice, scene_viewer=None):
+    """Drive naming, preview, confirmation, and deferred application."""
     context = context or {}
     scope = context.get("scope") or _default_rename_scope_options()
     scope_label = context.get("scope_label") or _scope_label(scope)
@@ -6095,87 +5371,107 @@ def _continue_rename_from_item_choice(context, choice, scene_viewer=None):
                 )
                 return True
 
+        target_guard = None
+        target_guard_transferred = False
         try:
-            edits, skipped = _collect_item_rename_edits(
-                rename_kind,
-                nodes,
+            try:
+                target_guard = _create_rename_preview_target_guard()
+                edits, skipped = _collect_item_rename_edits(
+                    rename_kind,
+                    nodes,
+                    old_name,
+                    new_name,
+                    item_class,
+                    rename_vex=scope.get("rename_vex", True),
+                    rename_python=scope.get("rename_python", True),
+                    aggressive_vex=scope.get("aggressive_vex", False),
+                    target_guard=target_guard,
+                )
+                guard_reason = target_guard.validate_all()
+            except Exception as exc:
+                if _operation_interrupted(exc):
+                    _show_status(
+                        "Rename scan canceled; no parameters were changed.",
+                        hou.severityType.Message,
+                    )
+                    return _open_item_stage_for_scope(
+                        scope,
+                        scene_viewer,
+                    )
+                _show_attribute_rename_warning(
+                    "Could not safely guard rename targets: {0}".format(exc)
+                )
+                return False
+
+            if guard_reason:
+                _show_attribute_rename_warning(
+                    "Rename targets changed during the final scan. "
+                    "Refresh the scope and try again.",
+                    details=guard_reason,
+                )
+                return _open_item_stage_for_scope(scope, scene_viewer)
+
+            selected_edits = _choose_attribute_rename_edits(
+                edits,
+                skipped,
                 old_name,
                 new_name,
                 item_class,
-                rename_vex=scope.get("rename_vex", True),
-                rename_python=scope.get("rename_python", True),
-                aggressive_vex=scope.get("aggressive_vex", False),
+                scope_label=scope_label,
+                rename_kind=rename_kind,
+                nodes=nodes,
+                discovery_issues=discovery_issues,
             )
-        except Exception as exc:
-            if exc.__class__.__name__ == "OperationInterrupted":
-                _show_status(
-                    "Rename scan canceled; no parameters were changed.",
-                    hou.severityType.Message,
-                )
-                return _open_item_stage_for_scope(
-                    scope,
-                    scene_viewer,
-                    initial_context=context,
-                )
-            _show_attribute_rename_warning(
-                "Could not scan rename references: {0}".format(exc)
-            )
-            return False
-        selected_edits = _choose_attribute_rename_edits(
-            edits,
-            skipped,
-            old_name,
-            new_name,
-            item_class,
-            scope_label=scope_label,
-            rename_kind=rename_kind,
-            nodes=nodes,
-            discovery_issues=discovery_issues,
-        )
-        if selected_edits == DIALOG_BACK:
-            initial_new_name = new_name
-            continue
-        if selected_edits is None:
-            return False
+            if selected_edits == DIALOG_BACK:
+                initial_new_name = new_name
+                continue
+            if selected_edits is None:
+                return False
 
-        if not selected_edits:
-            if edits:
+            if not selected_edits:
+                if edits:
+                    _show_status(
+                        "Rename canceled; no parameters were changed.",
+                        hou.severityType.Message,
+                    )
+                return True
+
+            if not _confirm_attribute_rename_apply(
+                selected_edits,
+                old_name,
+                new_name,
+                item_class,
+                scope_label,
+                rename_kind=rename_kind,
+            ):
                 _show_status(
                     "Rename canceled; no parameters were changed.",
                     hou.severityType.Message,
                 )
-            return True
+                return True
 
-        if not _confirm_attribute_rename_apply(
-            selected_edits,
-            old_name,
-            new_name,
-            item_class,
-            scope_label,
-            rename_kind=rename_kind,
-        ):
-            _show_status(
-                "Rename canceled; no parameters were changed.",
-                hou.severityType.Message,
+            deferred = _defer_apply_attribute_rename_edits(
+                selected_edits,
+                skipped,
+                old_name,
+                new_name,
+                item_class,
+                rename_kind=rename_kind,
+                discovery_issues=discovery_issues,
+                target_guard=target_guard,
             )
-            return True
-
-        return _defer_apply_attribute_rename_edits(
-            selected_edits,
-            skipped,
-            old_name,
-            new_name,
-            item_class,
-            rename_kind=rename_kind,
-            discovery_issues=discovery_issues,
-        )
-
-
-def _continue_rename_attribute_from_scope(scope, scene_viewer=None):
-    return _open_item_stage_for_scope(scope, scene_viewer)
+            target_guard_transferred = bool(deferred)
+            return deferred
+        finally:
+            if (
+                target_guard is not None
+                and not target_guard_transferred
+            ):
+                target_guard.close()
 
 
 def _rename_attribute_from_popup(scene_viewer=None):
+    """Start the non-modal workflow and retain a native fallback."""
     def _continue_from_scope(scope):
         return _open_item_stage_for_scope(scope, scene_viewer)
 
@@ -6193,9 +5489,6 @@ def _rename_attribute_from_popup(scene_viewer=None):
     return _open_item_stage_for_scope(scope, scene_viewer)
 
 
-def _rename_attribute_upstream_from_popup(scene_viewer=None):
-    return _rename_attribute_from_popup(scene_viewer)
-
-
 def run():
+    """Shelf entry point for the rename workflow."""
     _rename_attribute_from_popup()
