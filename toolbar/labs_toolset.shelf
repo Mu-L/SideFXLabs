@@ -20,6 +20,7 @@
     <memberTool name="labs::sticker_placer"/>
     <memberTool name="labs::random_selection"/>
     <memberTool name="labs::align_and_distribute"/>
+    <memberTool name="labs::ruler"/> 
     <memberTool name="labs::multi_attribute_promote"/>
     <memberTool name="labs::parameter_diff"/>
     <memberTool name="labs::fast_remesh"/>
@@ -147,6 +148,28 @@ soptoolutils.genericTool(kwargs, 'labs::random_selection', exact_node_type=False
     <helpURL>operator:Sop/align_and_distribute?namespace=labs</helpURL>
     <script scriptType="python"><![CDATA[import soptoolutils
 soptoolutils.genericTool(kwargs, 'labs::align_and_distribute', exact_node_type=False)]]></script>
+  </tool>
+
+  <tool name="labs::ruler" label="Labs Ruler" icon="$SIDEFXLABS/help/icons/ruler.svg">
+    <helpURL>/shelf/labs--ruler.txt</helpURL>
+    <toolMenuContext name="network">
+      <contextNetType>SOP</contextNetType>
+    </toolMenuContext>
+    <toolSubmenu>Labs/Utility</toolSubmenu>
+    <script scriptType="python"><![CDATA[import stateutils
+
+# We want to launch a SOP state, so we need to make sure the
+# viewer is at the SOP level first
+viewer = stateutils.findSceneViewer()
+network = viewer.pwd()
+if network.childTypeCategory() != hou.sopNodeTypeCategory():
+    # The user pressed Enter without selecting an object
+    raise hou.Error("You must be in a sop network to use this tool.")
+if network.displayNode() == None:
+    raise hou.Error("You must have the display flag set on a node.")
+# Set the viewer's current state to my state
+viewer.setCurrentState("labs::ruler")
+]]></script>
   </tool>
 
   <tool name="labs::multi_attribute_promote" label="Multi Atribute Promote" icon="$SIDEFXLABS/config/Icons/sidefx_labs_default.svg">
