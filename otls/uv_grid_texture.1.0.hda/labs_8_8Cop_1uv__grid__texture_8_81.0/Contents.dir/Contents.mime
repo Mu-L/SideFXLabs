@@ -31,7 +31,7 @@ Content-Disposition: attachment; filename="hdaroot.def"
 Content-Type: text/plain
 
 comment ""
-position -4.5 1.05339
+position -0.378237 -4.46
 connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
@@ -67,10 +67,6 @@ Content-Type: text/plain
 	"__last_invoked_recipes__":{
 		"type":"string",
 		"value":"{\"preset\": \"sidefx::recipe::ramp_rgb::infrared\", \"parm_preset_recipe\": \"sidefx::recipe::ramp_rgb::infrared\", \"submenus\": {\"Default Group\": {\"preset\": \"sidefx::recipe::ramp_rgb::infrared\", \"parm_preset_recipe\": \"sidefx::recipe::ramp_rgb::infrared\"}}}"
-	},
-	"wirestyle":{
-		"type":"string",
-		"value":"rounded"
 	}
 }
 
@@ -348,10 +344,10 @@ gradientrotate	[ 0	locks=0 ]	(	0	)
 gradienttype	[ 0	locks=0 ]	(	"horizontal"	)
 gradientramp	[ 0	locks=0 ]	(	2	)
 outlinewidth	[ 0	locks=0 ]	(	0.1	)
-cutout_edgefilter	[ 0	locks=0 ]	(	0	)
-doaa	[ 0	locks=0 ]	(	"off"	)
+cutout_edgefilter	[ 0	locks=0 ]	(	1	)
+doaa	[ 0	locks=0 ]	(	"on"	)
 folder9	[ 0	locks=0 ]	(	1	)
-filter	[ 0	locks=0 ]	(	"point"	)
+filter	[ 0	locks=0 ]	(	"box"	)
 blend	[ 0	locks=0 ]	(	"sorted"	)
 randstamporder	[ 0	locks=0 ]	(	"off"	)
 randstamporderseed	[ 0	locks=0 ]	(	0	)
@@ -622,6 +618,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -630,6 +627,8 @@ mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
+clipbydata	[ 0	locks=0 ]	(	"off"	)
+crop	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -785,6 +784,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -793,6 +793,8 @@ mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
+clipbydata	[ 0	locks=0 ]	(	"off"	)
+crop	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -818,7 +820,7 @@ Content-Disposition: attachment; filename="hdaroot/tilepattern2.def"
 Content-Type: text/plain
 
 comment ""
-position -12.5 -3.32
+position -12.5 -3.78563
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
@@ -1363,6 +1365,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -1371,6 +1374,8 @@ mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
+clipbydata	[ 0	locks=0 ]	(	"off"	)
+crop	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1406,12 +1411,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	resolution 0 1 "camera_ref"
+0 	"" "" 1 "camera_ref"
 1 	text_sop 0 1 "geometry"
 }
 inputs
 {
-0 	resolution 0 1
+0 	"" 0 1
 1 	text_sop 0 1
 }
 stat
@@ -1435,11 +1440,27 @@ version 0.8
 quicksetup	[ 0	locks=0 ]	(	"menu"	)
 resetorig	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"auto"	)
+depthmode	[ 0	locks=0 ]	(	"min"	)
+faceculling	[ 0	locks=0 ]	(	"noculling"	)
 attributes	[ 0	locks=0 ]	(	2	)
-outtype1	[ 0	locks=0 ]	(	"float"	)
 name1	[ 0	locks=0 ]	(	intrinsic:alpha	)
-outtype2	[ 0	locks=0 ]	(	"vector3"	)
+attribmenu1	[ 0	locks=0 ]	(	0	)
+outtype1	[ 0	locks=0 ]	(	"float"	)
+optional1	[ 0	locks=0 ]	(	"off"	)
+f1_def1	[ 0	locks=0 ]	(	1	)
+f2_def1	[ 0	locks=0 ]	(	1	1	)
+f3_def1	[ 0	locks=0 ]	(	1	1	1	)
+f4_def1	[ 0	locks=0 ]	(	1	1	1	1	)
+i_def1	[ 0	locks=0 ]	(	0	)
 name2	[ 0	locks=0 ]	(	Cd	)
+attribmenu2	[ 0	locks=0 ]	(	0	)
+outtype2	[ 0	locks=0 ]	(	"vector3"	)
+optional2	[ 0	locks=0 ]	(	"off"	)
+f1_def2	[ 0	locks=0 ]	(	1	)
+f2_def2	[ 0	locks=0 ]	(	1	1	)
+f3_def2	[ 0	locks=0 ]	(	1	1	1	)
+f4_def2	[ 0	locks=0 ]	(	1	1	1	1	)
+i_def2	[ 0	locks=0 ]	(	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1541,6 +1562,7 @@ settypeinfo	[ 0	locks=0 ]	(	"off"	)
 typeinfo	[ 0	locks=0 ]	(	"none"	)
 setpixelscale	[ 0	locks=0 ]	(	"off"	)
 pixelscale	[ 0	locks=0 ]	(	1	)
+identityxform	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1644,6 +1666,7 @@ trange	[ 0	locks=0 ]	(	"off"	)
 f	[ 0	locks=0 ]	(	[ f1	0 ] 	[ f2	0 ] 	1	)
 setudim	[ 0	locks=0 ]	(	"off"	)
 udim	[ 0	locks=0 ]	(	1001	1001	)
+udimlist	[ 0	locks=0 ]	(	""	)
 take	[ 0	locks=0 ]	(	_current_	)
 coppath	[ 0	locks=0 ]	(	../output1	)
 copoutput	[ 8	locks=0 ]	(	`chs(\"../outputfile\")`	)
@@ -1668,6 +1691,7 @@ stdswitcher	[ 0	locks=0 ]	(	0	0	0	0	0	)
 addaovs	[ 0	locks=0 ]	(	0	)
 outputaovs	[ 0	locks=0 ]	(	1	)
 mkpath	[ 0	locks=0 ]	(	"on"	)
+initsim	[ 0	locks=0 ]	(	"off"	)
 alfprogress	[ 0	locks=0 ]	(	"off"	)
 savebackground	[ 0	locks=0 ]	(	"on"	)
 exportattribs	[ 0	locks=0 ]	(	"on"	)
@@ -1680,6 +1704,7 @@ vm_image_mplay_gamma	[ 0	locks=0 ]	(	1	)
 mktx	[ 0	locks=0 ]	(	"off"	)
 txtilesize	[ 0	locks=0 ]	(	64	64	)
 txmipmapfilter	[ 0	locks=0 ]	(	box	)
+txopaquedetect	[ 0	locks=0 ]	(	"on"	)
 vm_image_jpeg_quality	[ 0	locks=0 ]	(	100	)
 vm_image_tiff_compression	[ 0	locks=0 ]	(	"LZW"	)
 vm_image_exr_compression	[ 0	locks=0 ]	(	"zip"	)
@@ -2479,6 +2504,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -2487,6 +2513,8 @@ mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
+clipbydata	[ 0	locks=0 ]	(	"off"	)
+crop	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -2743,8 +2771,11 @@ rampType	[ 0	locks=0 ]	(	"horizontal"	)
 cycles	[ 0	locks=0 ]	(	1	)
 phase	[ 0	locks=0 ]	(	0	)
 method	[ 0	locks=0 ]	(	"clamp"	)
+sizemethod	[ 0	locks=0 ]	(	"frame"	)
 center	[ 0	locks=0 ]	(	0	0	)
 rotation	[ 0	locks=0 ]	(	0	)
+startpos	[ 0	locks=0 ]	(	0	0	)
+endpos	[ 0	locks=0 ]	(	1	0	)
 ramp	[ 8	locks=0 ]	(	[ ramp	5 ] 	)
 rampmono	[ 0	locks=0 ]	(	2	)
 ramp1pos	[ 0	locks=0 ]	(	[ ramp1pos	0 ] 	)
@@ -2797,7 +2828,7 @@ Content-Disposition: attachment; filename="hdaroot/text_sop.def"
 Content-Type: text/plain
 
 comment ""
-position 3.17544 -15.8774
+position 3.33961 -12.9728
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
@@ -3522,7 +3553,7 @@ Content-Type: text/plain
 {
 version 0.8
 type	[ 0	locks=0 ]	(	"poly"	)
-file	[ 0	locks=0 ]	(	[ file	"Lato Bold" ] 	)
+file	[ 0	locks=0 ]	(	[ file	Lato ] 	)
 text	[ 0	locks=0 ]	(	"`points(-1, detail(-2, \"iteration\", 0), \"coords\")`"	)
 halign	[ 0	locks=0 ]	(	"center"	)
 valign	[ 0	locks=0 ]	(	"middle"	)
@@ -5027,13 +5058,13 @@ Content-Type: text/plain
         parm {
             name    "options_iterations"
             baseparm
-            label   "Iterations"
+            label   "Kernel Iterations"
             export  none
         }
         parm {
             name    "options_iteration"
             baseparm
-            label   "Include Iteration"
+            label   "Include Kernel Iteration"
             export  none
         }
         parm {
@@ -5051,7 +5082,7 @@ Content-Type: text/plain
         parm {
             name    "options_timeinccontext"
             baseparm
-            label   "Use Context's Timestep"
+            label   "Use Timestep"
             export  none
         }
         parm {
@@ -5179,6 +5210,14 @@ Content-Type: text/plain
                 baseparm
                 label   "Type Info"
                 nolabel
+                joinnext
+                export  none
+            }
+            parm {
+                name    "output#_attribtypeinfo"
+                baseparm
+                label   "Type Info"
+                nolabel
                 export  none
             }
             parm {
@@ -5220,6 +5259,12 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
+                    name    "bindings#_rampinputtype"
+                    baseparm
+                    label   "Input Type"
+                    export  none
+                }
+                parm {
                     name    "bindings#_rampsize"
                     baseparm
                     label   "Ramp Size"
@@ -5241,6 +5286,12 @@ Content-Type: text/plain
                     name    "bindings#_ramp_rgb"
                     baseparm
                     label   "Ramp"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_rampraw"
+                    baseparm
+                    label   "Raw Ramp"
                     export  none
                 }
                 parm {
@@ -5328,6 +5379,18 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
+                    name    "bindings#_contextname"
+                    baseparm
+                    label   "Context Option"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_contexttype"
+                    baseparm
+                    label   "Data Type"
+                    export  none
+                }
+                parm {
                     name    "bindings#_precision"
                     baseparm
                     label   "Precision"
@@ -5388,6 +5451,24 @@ Content-Type: text/plain
                     export  none
                 }
                 parm {
+                    name    "bindings#_attribbvh"
+                    baseparm
+                    label   "Build BVH"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_attribpointbvh"
+                    baseparm
+                    label   "Build Point BVH"
+                    export  none
+                }
+                parm {
+                    name    "bindings#_attribpointbvhmask"
+                    baseparm
+                    label   "Point BVH Mask Attr"
+                    export  none
+                }
+                parm {
                     name    "bindings#_timescale"
                     baseparm
                     label   "Time Scale"
@@ -5417,6 +5498,12 @@ Content-Type: text/plain
         }
     }
 
+    parm {
+        name    "cablerenamebylabel"
+        baseparm
+        label   "Rename Wires Using Output Labels"
+        export  none
+    }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/opencl1.chn"
@@ -5493,6 +5580,7 @@ options_timescale	[ 0	locks=0 ]	(	1	)
 options_timemethod	[ 0	locks=0 ]	(	"invert"	)
 options_importprequel	[ 0	locks=0 ]	(	"on"	)
 options_timing	[ 0	locks=0 ]	(	"off"	)
+cablerenamebylabel	[ 0	locks=0 ]	(	"off"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 options_precision	[ 0	locks=0 ]	(	"32"	)
 inputs	[ 0	locks=0 ]	(	2	)
@@ -5512,6 +5600,7 @@ output1_type	[ 0	locks=0 ]	(	"float2"	)
 output1_metadata	[ 0	locks=0 ]	(	"first"	)
 output1_precision	[ 0	locks=0 ]	(	"node"	)
 output1_typeinfo	[ 0	locks=0 ]	(	"node"	)
+output1_attribtypeinfo	[ 0	locks=0 ]	(	"node"	)
 output1_metaname	[ 0	locks=0 ]	(	""	)
 input2_name	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	id	)
 input2_type	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"int"	)
@@ -5519,10 +5608,12 @@ input2_optional	[ 0	locks=0	autoscope=0	autosel=4294967295 ]	(	"off"	)
 stdswitcher0_1	[ 0	locks=0 ]	(	0	)
 bindings1_name	[ 0	locks=0 ]	(	divisions	)
 bindings1_type	[ 0	locks=0 ]	(	"int"	)
+bindings1_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings1_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings1_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings1_ramp	[ 0	locks=0 ]	(	2	)
 bindings1_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings1_rampraw	[ 0	locks=0 ]	(	""	)
 bindings1_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings1_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings1_portname	[ 0	locks=0 ]	(	divisions	)
@@ -5537,6 +5628,8 @@ bindings1_attribute	[ 0	locks=0 ]	(	divisions	)
 bindings1_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings1_attribtype	[ 0	locks=0 ]	(	"int"	)
 bindings1_attribsize	[ 0	locks=0 ]	(	1	)
+bindings1_contextname	[ 0	locks=0 ]	(	""	)
+bindings1_contexttype	[ 0	locks=0 ]	(	"float"	)
 bindings1_precision	[ 0	locks=0 ]	(	"32"	)
 bindings1_readable	[ 0	locks=0 ]	(	"on"	)
 bindings1_writeable	[ 0	locks=0 ]	(	"off"	)
@@ -5547,6 +5640,9 @@ bindings1_fval	[ 0	locks=0 ]	(	0	)
 bindings1_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings1_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings1_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
+bindings1_attribbvh	[ 0	locks=0 ]	(	"off"	)
+bindings1_attribpointbvh	[ 0	locks=0 ]	(	"off"	)
+bindings1_attribpointbvhmask	[ 0	locks=0 ]	(	""	)
 bindings1_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings1_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings1_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -5563,10 +5659,12 @@ bindings1_ramp_rgb2interp	[ 0	locks=0 ]	(	"linear"	)
 stdswitcher0_2	[ 0	locks=0 ]	(	0	)
 bindings2_name	[ 0	locks=0 ]	(	gradient	)
 bindings2_type	[ 0	locks=0 ]	(	"ramp"	)
+bindings2_rampinputtype	[ 0	locks=0 ]	(	"parm"	)
 bindings2_rampsize	[ 0	locks=0 ]	(	1024	)
 bindings2_ramptype	[ 0	locks=0 ]	(	"float"	)
 bindings2_ramp	[ 0	locks=0 ]	(	2	)
 bindings2_ramp_rgb	[ 0	locks=0 ]	(	2	)
+bindings2_rampraw	[ 0	locks=0 ]	(	""	)
 bindings2_layertype	[ 0	locks=0 ]	(	"floatn"	)
 bindings2_layerborder	[ 0	locks=0 ]	(	"input"	)
 bindings2_portname	[ 0	locks=0 ]	(	gradient	)
@@ -5581,6 +5679,8 @@ bindings2_attribute	[ 0	locks=0 ]	(	gradient	)
 bindings2_attribclass	[ 0	locks=0 ]	(	"detail"	)
 bindings2_attribtype	[ 0	locks=0 ]	(	"float"	)
 bindings2_attribsize	[ 0	locks=0 ]	(	1	)
+bindings2_contextname	[ 0	locks=0 ]	(	""	)
+bindings2_contexttype	[ 0	locks=0 ]	(	"float"	)
 bindings2_precision	[ 0	locks=0 ]	(	"node"	)
 bindings2_readable	[ 0	locks=0 ]	(	"on"	)
 bindings2_writeable	[ 0	locks=0 ]	(	"off"	)
@@ -5591,6 +5691,9 @@ bindings2_fval	[ 0	locks=0 ]	(	0	)
 bindings2_v2val	[ 0	locks=0 ]	(	0	0	)
 bindings2_v3val	[ 0	locks=0 ]	(	0	0	0	)
 bindings2_v4val	[ 0	locks=0 ]	(	0	0	0	0	)
+bindings2_attribbvh	[ 0	locks=0 ]	(	"off"	)
+bindings2_attribpointbvh	[ 0	locks=0 ]	(	"off"	)
+bindings2_attribpointbvhmask	[ 0	locks=0 ]	(	""	)
 bindings2_timescale	[ 0	locks=0 ]	(	"none"	)
 bindings2_ramp1pos	[ 0	locks=0 ]	(	0	)
 bindings2_ramp1value	[ 0	locks=0 ]	(	0	)
@@ -5667,6 +5770,7 @@ Content-Type: text/plain
 {
 version 0.8
 signature	[ 0	locks=0 ]	(	auto	)
+space	[ 0	locks=0 ]	(	"world"	)
 border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
@@ -5675,6 +5779,8 @@ mode	[ 0	locks=0 ]	(	"blend"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
 uselength	[ 0	locks=0 ]	(	"off"	)
+clipbydata	[ 0	locks=0 ]	(	"off"	)
+crop	[ 0	locks=0 ]	(	"off"	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY

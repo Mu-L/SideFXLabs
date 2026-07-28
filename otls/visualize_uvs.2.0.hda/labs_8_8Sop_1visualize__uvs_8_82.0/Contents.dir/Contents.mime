@@ -32,17 +32,19 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 1.30546
-connectornextid 0
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+position -2.5 -4.15
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
+0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
+0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
@@ -3509,6 +3511,9 @@ Content-Type: text/plain
 {
 version 0.8
 group	[ 0	locks=0 ]	(	""	)
+setudimlist	[ 0	locks=0 ]	(	"off"	)
+udimlist	[ 0	locks=0 ]	(	""	)
+udimlistattrib	[ 0	locks=0 ]	(	UDIM_list	)
 materialfolder	[ 0	locks=0 ]	(	0	0	)
 basefolder	[ 0	locks=0 ]	(	1	)
 basecolorgroup	[ 0	locks=0 ]	(	0	)
@@ -5005,12 +5010,14 @@ Content-Type: text/plain
 version 0.8
 usecoppath	[ 0	locks=0 ]	(	"off"	)
 coppath	[ 0	locks=0 ]	(	""	)
+folder3	[ 0	locks=0 ]	(	1	)
 singleoutput	[ 0	locks=0 ]	(	"on"	)
 useinput	[ 0	locks=0 ]	(	"off"	)
 output	[ 0	locks=0 ]	(	0	)
 plane	[ 0	locks=0 ]	(	"xy"	)
 docompile	[ 0	locks=0 ]	(	"off"	)
 outputapexgraph	[ 0	locks=0 ]	(	"off"	)
+folder0	[ 0	locks=0 ]	(	1	)
 setres	[ 0	locks=0 ]	(	"off"	)
 res	[ 0	locks=0 ]	(	1024	1024	)
 resmenu	[ 0	locks=0 ]	(	"none"	)
@@ -5020,10 +5027,25 @@ setborder	[ 0	locks=0 ]	(	"off"	)
 border	[ 0	locks=0 ]	(	"wrap"	)
 setprecision	[ 0	locks=0 ]	(	"off"	)
 precision	[ 0	locks=0 ]	(	"b32"	)
-setudim	[ 0	locks=0 ]	(	"off"	)
-udim	[ 0	locks=0 ]	(	1001	)
+folder1	[ 0	locks=0 ]	(	0	)
+setcanvas	[ 0	locks=0 ]	(	"off"	)
+canvassource	[ 0	locks=0 ]	(	"camera"	)
+camera	[ 0	locks=0 ]	(	""	)
+plane_orient	[ 0	locks=0 ]	(	"xy"	)
+plane_size	[ 0	locks=0 ]	(	1	1	)
+plane_t	[ 0	locks=0 ]	(	0	0	0	)
+plane_r	[ 0	locks=0 ]	(	0	0	0	)
+plane_scale	[ 0	locks=0 ]	(	1	)
 setvistile	[ 0	locks=0 ]	(	"off"	)
 vistile	[ 0	locks=0 ]	(	3	)
+folder2	[ 0	locks=0 ]	(	0	)
+setudim	[ 0	locks=0 ]	(	"off"	)
+udim	[ 0	locks=0 ]	(	1001	)
+setudimlist	[ 0	locks=0 ]	(	"off"	)
+udimlistsource	[ 0	locks=0 ]	(	"explicit"	)
+udimlist	[ 0	locks=0 ]	(	1001	)
+udimlistgeo	[ 0	locks=0 ]	(	""	)
+udimlistattrib	[ 0	locks=0 ]	(	UDIM_list	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -5054,7 +5076,7 @@ Content-Type: text/plain
 
 comment ""
 position 5.5 -18.62
-connectornextid 1
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
 {
