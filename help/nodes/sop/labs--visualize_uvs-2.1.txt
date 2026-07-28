@@ -1,0 +1,194 @@
+#type:      node
+#context:   sop
+#internal:  labs::visualize_uvs::2.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     21.0
+
+= Labs UV Visualize =
+
+"""Visualizes UV layouts directly on geometry."""
+
+This node projects a UV test pattern onto geometry to help inspect UV layouts, orientation, distortion, seams, and island organization.
+
+Visualization textures can be generated procedurally using the [Labs UV Grid Texture|Node:cop/labs--uv_grid_texture-1.0] COP or loaded from an external image file.
+
+Additional visualization options allow UV islands and seams to be highlighted directly on the geometry, making the node useful for UV validation, look development, and texture-authoring workflows.
+
+
+@parameters
+
+    Group:
+        #id: group
+        Primitive group to visualize. Leave empty to visualize all geometry.
+
+    UV Attribute:
+        #id: uvattribute
+        UV attribute used for texture projection and visualization.
+
+    Texture Source:
+        #id: texturesource
+        Source used to generate the visualization texture.
+
+        <p>__Procedural Grid__: Generates a UV test pattern using the Labs UV Grid Texture COP.</p>
+        <p>__Image File__: Uses an external image file.</p>
+
+    == Texture ==
+
+    === Image File ===
+
+    Image File:
+        #id: imagefile
+        Image used for UV visualization.
+
+    Texture Tiling:
+        #id: texturetiling
+        Number of texture repetitions within each UV tile.
+
+    === Procedural Grid ===
+    The parameters in this section mirror the controls available in the [Labs UV Grid Texture|Node:cop/labs--uv_grid_texture-1.0] COP.
+
+    Resolution:
+        #id: resolution
+        Resolution of the generated texture.
+
+    Grid Divisions:
+        #id: griddivisions
+        Number of subdivisions within each UV tile.
+
+    Background Color:
+        #id: bgcolor
+        Background color of the generated texture. Available only when __Add Rounded Corners__ is enabled.
+
+    == Tiles ==
+
+    Coloring Mode:
+        #id: tilecolormode
+        Method used to color UV tiles.
+
+        <p>__Uniform__: Uses a single color for all tiles.</p>
+
+        <p>__Checker__: Alternates between two colors.</p>
+
+        <p>__Gradient__: Uses a color ramp.</p>
+
+    Uniform Color:
+        #id: tileunicolor
+        Color used when __Coloring Mode__ is set to __Uniform__.
+
+    Checker Color 1:
+        #id: tilechecker1color
+        First color used for checkerboard tiles.
+
+    Checker Color 2:
+        #id: tilechecker2color
+        Second color used for checkerboard tiles.
+
+    Color Gradient:
+        #id: tileramp
+        Color ramp used when __Coloring Mode__ is set to __Gradient__.
+
+    Add Tile Outlines:
+        #id: addtileoutlines
+        Adds outlines around UV tiles.
+
+    Outline Width:
+        #id: outlinewidth
+        Width of the tile outlines.
+
+    Outline Color:
+        #id: outlinecolor
+        Color of the tile outlines.
+
+    Add Rounded Corners:
+        #id: addroundedcorners
+        Adds rounded corners on UV tiles.
+
+    Corner Radius:
+        #id: cornerradius
+        Radius of the tile corner rounding.
+
+    == Markers ==
+
+    Marker Type:
+        #id: markertype
+        Marker displayed within each UV tile.
+
+        <p>__Text__: Displays text labels.</p>
+
+        <p>__Cross__: Displays cross markers.</p>
+
+        <p>__Arrow__: Displays directional arrows.</p>
+
+    Text Mode:
+        #id: textmode
+        Text displayed when __Marker Type__ is set to __Text__.
+
+        <p>__Letters & Numbers__: Displays alphanumeric identifiers.</p>
+
+        <p>__Coordinates__: Displays tile coordinates.</p>
+
+    Font:
+        #id: font
+        Font used for text markers.
+
+    Marker Size:
+        #id: markersize
+        Normalized size of the markers relative to the tile size.
+
+    Coloring Mode:
+        #id: markercolormode
+        Method used to color markers.
+
+        <p>__Uniform__: Uses a single color.</p>
+
+        <p>__Checker__: Alternates between two colors.</p>
+
+        <p>__Gradient__: Uses a color ramp.</p>
+
+    Uniform Color:
+        #id: markerunicolor
+        Marker color used when __Coloring Mode__ is set to __Uniform__.
+
+    Checker Color 1:
+        #id: markerchecker1color
+        First checker marker color.
+
+    Checker Color 2:
+        #id: markerchecker2color
+        Second checker marker color.
+
+    Color Gradient:
+        #id: markerramp
+        Marker color ramp used when __Coloring Mode__ is set to __Gradient__.
+        
+    == Additional ==
+
+    Color UV Islands:
+        #id: coloruvislands
+        Assigns a unique color to each UV island.
+        
+    Show UV Seams:
+        #id: showuvseams
+        Highlights UV seams on the geometry by generating a cylindrical mesh.
+        
+    Seam Thickness:
+        #id: thickness
+        Width of the cylindrical mesh used for visualizing the seams.
+        
+    Seam Color:
+        #id: color
+        Color used for seam visualization.
+        
+    World-Space Projection:
+        #id: worldspaceprojection
+        Unwraps and projects the mesh in world space to match its UV space.
+        
+    Blend:
+        #id: blend
+        Blends the projection from object to world space.
+        
+    
+    
+@related
+- [Labs UV Grid Texture|Node:cop/labs--uv_grid_texture-1.0]
+- [Labs Export UV Wireframe|Node:sop/labs--export_uv_wireframe-1.0]
