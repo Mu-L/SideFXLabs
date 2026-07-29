@@ -4,58 +4,54 @@
 #icon: /labs_icons/sidefx_labs_default.svg
 #tags: sidefxlabs, utility, shelf, attributes, groups, refactor
 
-""" Renames attribute and group references in SOP node parameters, VEX and Python code. """
+""" Renames direct attribute and group references on selected nodes. """
 
 == Overview ==
 
-This shelf tool finds attribute and group names on SOP geometry on selected nodes,
-then renames them.
-
-It changes references to a name. It does not rename attributes or groups on the
-geometry directly.
+This tool updates parameter, vex and python attributes or group names.
+It updates their references not on the geometry directly.
 
 == Quick Start ==
 
-# Select nodes and click __Rename Attributes and Groups__ on the Labs shelf.
+# In the current Network Editor, select the nodes you want to inspect.
 
-# Choose __Attributes__ or __Groups__, then select a scope and code options.
+# Click __Rename Attributes and Groups__ on the Labs shelf.
 
-# Choose a discovered name. Use __Find Rename Locations__ or
-  __View Rename Locations__ if you want to inspect the matching nodes.
+# Choose __Attributes__ or __Groups__. Enable __Inside Nodes__ only when you
+  also want to inspect editable nodes contained by the selection.
 
-# Enter the new name. Resolve any collision warning, then click __Preview__.
+# Choose a discovered name, then enter the new name and click __Preview__.
 
-# Review the checked edits, click __Accept__, and read the final report.
+# Uncheck any edits you do not want, then click __Accept__.
 
-== Scope and Code Options ==
+== Supported References ==
 
-Selected Nodes:
-    Scan the selection in the current Network Editor.
+The tool supports:
 
-Upstream / Downstream:
-    Include connected nodes before or after the selection.
+* Explicit attribute and group name fields with a proven owner class.
 
-Inside Nodes:
-    Include subnets and editable asset contents. Locked hidden contents are
-    skipped and reported.
+* Direct VEX bindings such as `f@name` when the Wrangle __Run Over__ class
+  matches, and direct string arguments to supported VEX functions.
 
-All Nodes:
-    Scan the editable node surface of the whole HIP file.
+* Direct Python string arguments on proven `hou` receiver chains.
 
-Rename in VEX / Rename in Python:
-    Include supported references in those code languages.
+* Direct string arguments in supported HScript expression functions.
 
-Aggressive VEX Strings:
-    Also rename exact, complete string literals in detected VEX code. These
-    edits are high risk and require confirmation.
+Aliases, `chs()` targets, macros, overloaded or qualified functions, dynamic
+names, wildcard group operands, unknown expression languages, and ambiguous
+group classes are not changed.
 
-Ambiguous ownership, dynamic code, unsupported expressions, and inaccessible
-content are left unchanged and reported.
+== Preview and Safety ==
+
+Writes are verified and failed writes are restored when possible. Accepted
+edits use one Houdini undo group, so ((CTRL)) + `Z` undoes the batch in one
+step.
 
 == Notes ==
 
-Scanning and previewing do not change parameters. Changes begin only after
-__Accept__.
+Only the current Network Editor selection is searched by default. __Inside
+Nodes__ adds nested editable nodes, but does not enter protected internals of
+locked assets.
 
-All accepted edits use one Houdini undo group, so ((CTRL)) + `Z` undoes the
-batch as one action.
+The final report lists applied, deselected, skipped, discovery, and failed
+items.
