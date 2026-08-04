@@ -451,6 +451,7 @@
                 label   "Rest Pose"
                 type    oppath
                 default { "" }
+                help    "The character’s capture pose, where the P and transform (matrix3) attributes contain the joint’s transform. The point’s name attribute contains the joint’s name, and is matched up with the capture paths in the rest geometry’s boneCapture attribute when deforming the skin. Typically the second output from an FBX Character Import SOP."
                 disablewhen "{ mode != 4 }"
                 parmtag { "opfilter" "!!SOP!!" }
                 parmtag { "oprelative" "." }
@@ -460,6 +461,7 @@
                 label   "Anim Pose"
                 type    oppath
                 default { "" }
+                help    "The character’s animated pose, which is represented in the same manner as the Rest Pose. Typically the third output from an FBX Character Import SOP."
                 disablewhen "{ mode != 4 }"
                 parmtag { "opfilter" "!!SOP!!" }
                 parmtag { "oprelative" "." }
