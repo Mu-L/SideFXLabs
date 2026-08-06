@@ -2519,64 +2519,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/camera_to_geometry.init"
-Content-Type: text/plain
-
-type = layertogeo::2.0
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/camera_to_geometry.def"
-Content-Type: text/plain
-
-comment ""
-position -23.2658 6.07434
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
-outputsNamed3
-{
-1 "geometry"
-}
-inputsNamed3
-{
-0 	create_camera 0 1 "layer1"
-}
-inputs
-{
-0 	create_camera 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/camera_to_geometry.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/camera_to_geometry.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/geometry_to_camera.init"
 Content-Type: text/plain
 
@@ -2597,11 +2539,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	edit_camera 1 1 "geometry"
+0 	sopimport1 0 1 "geometry"
 }
 inputs
 {
-0 	edit_camera 0 1
+0 	sopimport1 0 1
 }
 stat
 {
@@ -3325,6 +3267,20 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 expr = $FEND }
     }
+    channel res1 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { length = 0 value = 1024 1024 expr = ch(\"../../resolution\") }
+    }
+    channel res2 {
+      lefttype = extend
+      righttype = extend
+      default = 1024
+      flags = 0
+      segment { length = 0 value = 1024 1024 expr = ch(\"../../resolution\") }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -3345,8 +3301,8 @@ take	[ 0	locks=0 ]	(	_current_	)
 coppath	[ 0	locks=0 ]	(	""	)
 copoutput	[ 0	locks=0 ]	(	`chs(\"../../file\")`	)
 docompile	[ 0	locks=0 ]	(	"off"	)
-setres	[ 0	locks=0 ]	(	"off"	)
-res	[ 0	locks=0 ]	(	1024	1024	)
+setres	[ 0	locks=0 ]	(	"on"	)
+res	[ 0	locks=0 ]	(	[ res1	1024 ] 	[ res2	1024 ] 	)
 resmenu	[ 0	locks=0 ]	(	"none"	)
 setpixelscale	[ 0	locks=0 ]	(	"off"	)
 pixelscale	[ 0	locks=0 ]	(	1	)
@@ -4190,124 +4146,6 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/create_camera.init"
-Content-Type: text/plain
-
-type = camera
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/create_camera.def"
-Content-Type: text/plain
-
-comment ""
-position -26.1446 5.99934
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
-outputsNamed3
-{
-0 "camera"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.3 0.55 0.75 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/create_camera.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-setparmsfrominput	[ 0	locks=0 ]	(	0	)
-transform	[ 0	locks=0 ]	(	0	)
-dotransform	[ 0	locks=0 ]	(	"on"	)
-xOrd	[ 0	locks=0 ]	(	"srt"	)
-rOrd	[ 0	locks=0 ]	(	"xyz"	)
-t	[ 0	locks=0 ]	(	0	0	0	)
-r	[ 0	locks=0 ]	(	0	0	0	)
-parmgroup_pivotxform	[ 0	locks=0 ]	(	0	)
-p	[ 0	locks=0 ]	(	0	0	0	)
-pr	[ 0	locks=0 ]	(	0	0	0	)
-lookat	[ 0	locks=0 ]	(	0	)
-dolookat	[ 0	locks=0 ]	(	"off"	)
-lookatposition	[ 0	locks=0 ]	(	0	0	0	)
-upvecmethod	[ 0	locks=0 ]	(	"yaxis"	)
-upvec	[ 0	locks=0 ]	(	0	1	0	)
-twist	[ 0	locks=0 ]	(	0	)
-view	[ 0	locks=0 ]	(	1	)
-doview	[ 0	locks=0 ]	(	"on"	)
-dores	[ 0	locks=0 ]	(	"on"	)
-res	[ 0	locks=0 ]	(	1280	720	)
-resmenu	[ 0	locks=0 ]	(	"none"	)
-doprojection	[ 0	locks=0 ]	(	"on"	)
-projection	[ 0	locks=0 ]	(	"perspective"	)
-dofocal	[ 0	locks=0 ]	(	"on"	)
-focal	[ 0	locks=0 ]	(	50	)
-doaperture	[ 0	locks=0 ]	(	"on"	)
-aperture	[ 0	locks=0 ]	(	41.4214	)
-doorthowidth	[ 0	locks=0 ]	(	"on"	)
-orthowidth	[ 0	locks=0 ]	(	1	)
-donearclip	[ 0	locks=0 ]	(	"on"	)
-nearclip	[ 0	locks=0 ]	(	0.001	)
-dofarclip	[ 0	locks=0 ]	(	"on"	)
-farclip	[ 0	locks=0 ]	(	10000	)
-dowin	[ 0	locks=0 ]	(	"on"	)
-win	[ 0	locks=0 ]	(	0	0	)
-dowinsize	[ 0	locks=0 ]	(	"on"	)
-winsize	[ 0	locks=0 ]	(	1	1	)
-docropl	[ 0	locks=0 ]	(	"on"	)
-cropl	[ 0	locks=0 ]	(	0	)
-docropr	[ 0	locks=0 ]	(	"on"	)
-cropr	[ 0	locks=0 ]	(	1	)
-docropb	[ 0	locks=0 ]	(	"on"	)
-cropb	[ 0	locks=0 ]	(	0	)
-docropt	[ 0	locks=0 ]	(	"on"	)
-cropt	[ 0	locks=0 ]	(	1	)
-doimgdist	[ 0	locks=0 ]	(	"on"	)
-imgdist	[ 0	locks=0 ]	(	1	)
-doguidescale	[ 0	locks=0 ]	(	"on"	)
-guidescale	[ 0	locks=0 ]	(	1	)
-sampling	[ 0	locks=0 ]	(	0	)
-dosampling	[ 0	locks=0 ]	(	"on"	)
-doshutteropen	[ 0	locks=0 ]	(	"on"	)
-shutteropen	[ 0	locks=0 ]	(	-0.25	)
-doshutterclose	[ 0	locks=0 ]	(	"on"	)
-shutterclose	[ 0	locks=0 ]	(	0.25	)
-dofocus	[ 0	locks=0 ]	(	"on"	)
-focus	[ 0	locks=0 ]	(	5	)
-dofstop	[ 0	locks=0 ]	(	"on"	)
-fstop	[ 0	locks=0 ]	(	5.6	)
-metadata	[ 0	locks=0 ]	(	0	)
-dometadata	[ 0	locks=0 ]	(	"off"	)
-entries	[ 0	locks=0 ]	(	0	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/create_camera.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.init"
 Content-Type: text/plain
 
@@ -4319,8 +4157,8 @@ Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.
 Content-Type: text/plain
 
 comment ""
-position -20.5 6.07434
-connectornextid 2
+position -22.7939 6.07434
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display off render on highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
 outputsNamed3
 {
@@ -4328,11 +4166,9 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	camera_to_geometry 1 1 "input1"
 }
 inputs
 {
-0 	camera_to_geometry 0 1
 }
 stat
 {
@@ -4352,11 +4188,9 @@ Content-Type: text/plain
 
 {
 version 0.8
-inputs	[ 0	locks=0 ]	(	1	)
-outputs	[ 0	locks=0 ]	(	1	)
+inputs	[ 0	locks=0 ]	(	0	)
+outputs	[ 0	locks=0 ]	(	0	)
 unload	[ 0	locks=0 ]	(	"always"	)
-input1_name	[ 0	locks=0 ]	(	input1	)
-output1_path	[ 0	locks=0 ]	(	./output1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4369,234 +4203,6 @@ Content-Type: text/plain
 		"value":"___EXTERNAL___"
 	}
 }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output1.init"
-Content-Type: text/plain
-
-type = compile_end
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5016 -3.15355
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-}
-inputsNamed3
-{
-0 	edit_camera 1 1 "input1"
-}
-inputs
-{
-0 	edit_camera 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-docompile	[ 0	locks=0 ]	(	"on"	)
-unload	[ 0	locks=0 ]	(	"always"	)
-primarypath	[ 0	locks=0 ]	(	""	)
-forcerecompile	[ 0	locks=0 ]	(	0	)
-delayillegal	[ 0	locks=0 ]	(	"off"	)
-fallback	[ 0	locks=0 ]	(	"off"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/input1.init"
-Content-Type: text/plain
-
-type = compile_begin
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/input1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5016 1.84715
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	placeholder1 0 1 "input1"
-}
-inputs
-{
-0 	placeholder1 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/input1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-blockpath	[ 0	locks=0 ]	(	../output1	)
-name	[ 0	locks=0 ]	(	input1	)
-optional	[ 0	locks=0 ]	(	"off"	)
-createbeginblock	[ 0	locks=0 ]	(	0	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/input1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/placeholder1.init"
-Content-Type: text/plain
-
-type = copnet
-matchesdef = 0
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/placeholder1.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 1.5 3.85
-connectornextid 1
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-0 "output1"
-}
-inputsNamed3
-{
-}
-inputs
-{
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/placeholder1.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-usecoppath	[ 0	locks=0 ]	(	"on"	)
-coppath	[ 0	locks=0 ]	(	..	)
-folder3	[ 0	locks=0 ]	(	1	)
-singleoutput	[ 0	locks=0 ]	(	"on"	)
-useinput	[ 0	locks=0 ]	(	"on"	)
-output	[ 0	locks=0 ]	(	0	)
-plane	[ 0	locks=0 ]	(	"xy"	)
-docompile	[ 0	locks=0 ]	(	"off"	)
-outputapexgraph	[ 0	locks=0 ]	(	"off"	)
-folder0	[ 0	locks=0 ]	(	1	)
-setres	[ 0	locks=0 ]	(	"off"	)
-res	[ 0	locks=0 ]	(	1024	1024	)
-resmenu	[ 0	locks=0 ]	(	"none"	)
-setpixelscale	[ 0	locks=0 ]	(	"off"	)
-pixelscale	[ 0	locks=0 ]	(	2	)
-setborder	[ 0	locks=0 ]	(	"off"	)
-border	[ 0	locks=0 ]	(	"wrap"	)
-setprecision	[ 0	locks=0 ]	(	"off"	)
-precision	[ 0	locks=0 ]	(	"b32"	)
-folder1	[ 0	locks=0 ]	(	0	)
-setcanvas	[ 0	locks=0 ]	(	"off"	)
-canvassource	[ 0	locks=0 ]	(	"camera"	)
-camera	[ 0	locks=0 ]	(	""	)
-plane_orient	[ 0	locks=0 ]	(	"xy"	)
-plane_size	[ 0	locks=0 ]	(	1	1	)
-plane_t	[ 0	locks=0 ]	(	0	0	0	)
-plane_r	[ 0	locks=0 ]	(	0	0	0	)
-plane_scale	[ 0	locks=0 ]	(	1	)
-setvistile	[ 0	locks=0 ]	(	"off"	)
-vistile	[ 0	locks=0 ]	(	3	)
-folder2	[ 0	locks=0 ]	(	0	)
-setudim	[ 0	locks=0 ]	(	"off"	)
-udim	[ 0	locks=0 ]	(	1001	)
-setudimlist	[ 0	locks=0 ]	(	"off"	)
-udimlistsource	[ 0	locks=0 ]	(	"explicit"	)
-udimlist	[ 0	locks=0 ]	(	1001	)
-udimlistgeo	[ 0	locks=0 ]	(	""	)
-udimlistattrib	[ 0	locks=0 ]	(	UDIM_list	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/placeholder1.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/placeholder1.net"
-Content-Type: text/plain
-
-1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position.init"
@@ -4620,12 +4226,12 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	input1 1 1 "input1"
+0 	camera 0 1 "input1"
 2 	create_bound_box 1 1 "input2"
 }
 inputs
 {
-0 	input1 0 1
+0 	camera 0 1
 1 	create_bound_box 0 1
 }
 stat
@@ -5278,34 +4884,127 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.init"
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/camera.init"
 Content-Type: text/plain
 
-type = attribwrangle
+type = camera
 matchesdef = 1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.def"
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/camera.def"
 Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.75201 -2.59387
-connectornextid 3
+position 1.5 1.80465
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
+0 "output1"
 }
 inputsNamed3
 {
-0 	input1 1 1 "input1"
-2 	create_bound_box 1 1 "input2"
 }
 inputs
 {
-0 	input1 0 1
-1 	create_bound_box 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.3 0.55 0.75 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/camera.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+name	[ 0	locks=0 ]	(	$OS	)
+transform	[ 0	locks=0 ]	(	0	)
+xOrd	[ 0	locks=0 ]	(	"srt"	)
+rOrd	[ 0	locks=0 ]	(	"xyz"	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+r	[ 0	locks=0 ]	(	0	0	0	)
+parmgroup_pivotxform	[ 0	locks=0 ]	(	0	)
+p	[ 0	locks=0 ]	(	0	0	0	)
+pr	[ 0	locks=0 ]	(	0	0	0	)
+lookat	[ 0	locks=0 ]	(	0	)
+dolookat	[ 0	locks=0 ]	(	"off"	)
+lookatposition	[ 0	locks=0 ]	(	0	0	0	)
+upvecmethod	[ 0	locks=0 ]	(	"yaxis"	)
+upvec	[ 0	locks=0 ]	(	0	1	0	)
+twist	[ 0	locks=0 ]	(	0	)
+view	[ 0	locks=0 ]	(	1	)
+res	[ 0	locks=0 ]	(	1280	720	)
+resmenu	[ 0	locks=0 ]	(	"none"	)
+projection	[ 0	locks=0 ]	(	"perspective"	)
+focal	[ 0	locks=0 ]	(	50	)
+aperture	[ 0	locks=0 ]	(	41.4214	)
+orthowidth	[ 0	locks=0 ]	(	1	)
+nearclip	[ 0	locks=0 ]	(	0.001	)
+farclip	[ 0	locks=0 ]	(	10000	)
+win	[ 0	locks=0 ]	(	0	0	)
+winsize	[ 0	locks=0 ]	(	1	1	)
+cropl	[ 0	locks=0 ]	(	0	)
+cropr	[ 0	locks=0 ]	(	1	)
+cropb	[ 0	locks=0 ]	(	0	)
+cropt	[ 0	locks=0 ]	(	1	)
+imgdist	[ 0	locks=0 ]	(	1	)
+guidescale	[ 0	locks=0 ]	(	1	)
+sampling	[ 0	locks=0 ]	(	0	)
+shutteropen	[ 0	locks=0 ]	(	-0.25	)
+shutterclose	[ 0	locks=0 ]	(	0.25	)
+focus	[ 0	locks=0 ]	(	5	)
+fstop	[ 0	locks=0 ]	(	5.6	)
+metadata	[ 0	locks=0 ]	(	0	)
+entries	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/camera.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output0.init"
+Content-Type: text/plain
+
+type = output
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output0.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.5 -3.15
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+}
+inputsNamed3
+{
+0 	edit_camera 1 1 "input1"
+}
+inputs
+{
+0 	edit_camera 0 1
 }
 stat
 {
@@ -5320,329 +5019,22 @@ exprlanguage hscript
 end
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.spareparmdef"
-Content-Type: text/plain
-
-    group {
-        name    "folder1"
-        label   "Code"
-
-        parm {
-            name    "group"
-            baseparm
-            label   "Group"
-            export  none
-            bindselector uvselect "Modify Attribs"
-                "Select the geometry to affect and press Enter to complete."
-                0 1 0xffffffff 0 grouptype 0
-        }
-        parm {
-            name    "grouptype"
-            baseparm
-            label   "Group Type"
-            export  none
-        }
-        parm {
-            name    "class"
-            baseparm
-            label   "Run Over"
-            export  none
-        }
-        parm {
-            name    "vex_numcount"
-            baseparm
-            label   "Number Count"
-            export  none
-        }
-        parm {
-            name    "vex_threadjobsize"
-            baseparm
-            label   "Thread Job Size"
-            export  none
-        }
-        groupsimple {
-            name    "folder_generatedparms_snippet"
-            label   "Generated Channel Parameters"
-            grouptag { "group_type" "simple" }
-            grouptag { "sidefx::look" "blank" }
-
-            parm {
-                name    "grid_size"
-                label   "Grid Size"
-                type    integer
-                default { "0" }
-                range   { 0 10 }
-            }
-            parm {
-                name    "mode"
-                label   "Mode"
-                type    integer
-                default { "0" }
-                range   { 0 10 }
-            }
-            parm {
-                name    "iteration"
-                label   "Iteration"
-                type    integer
-                default { "0" }
-                range   { 0 10 }
-            }
-        }
-
-        parm {
-            name    "snippet"
-            baseparm
-            label   "VEXpression"
-            export  all
-        }
-        parm {
-            name    "exportlist"
-            baseparm
-            label   "Attributes to Create"
-            export  none
-        }
-        parm {
-            name    "vex_strict"
-            baseparm
-            label   "Enforce Prototypes"
-            export  none
-        }
-        parm {
-            name    "vex_strictvariables"
-            baseparm
-            label   "Standard Variable Names Only"
-            export  none
-        }
-    }
-
-    group {
-        name    "folder1_1"
-        label   "Bindings"
-
-        parm {
-            name    "autobind"
-            baseparm
-            label   "Autobind by Name"
-            export  none
-        }
-        multiparm {
-            name    "bindings"
-            label    "Number of Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindname#"
-                baseparm
-                label   "Attribute Name"
-                export  none
-            }
-            parm {
-                name    "bindparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "groupautobind"
-            baseparm
-            label   "Autobind Groups by Name"
-            export  none
-        }
-        multiparm {
-            name    "groupbindings"
-            label    "Group Bindings"
-            baseparm
-            default 0
-            parmtag { "autoscope" "0000000000000000" }
-            parmtag { "multistartoffset" "1" }
-
-            parm {
-                name    "bindgroupname#"
-                baseparm
-                label   "Group Name"
-                export  none
-            }
-            parm {
-                name    "bindgroupparm#"
-                baseparm
-                label   "VEX Parameter"
-                export  none
-            }
-        }
-
-        parm {
-            name    "vex_cwdpath"
-            baseparm
-            label   "Evaluation Node Path"
-            export  none
-        }
-        parm {
-            name    "vex_outputmask"
-            baseparm
-            label   "Export Parameters"
-            export  none
-        }
-        parm {
-            name    "vex_updatenmls"
-            baseparm
-            label   "Update Normals If Displaced"
-            export  none
-        }
-        parm {
-            name    "vex_matchattrib"
-            baseparm
-            label   "Attribute to Match"
-            export  none
-        }
-        parm {
-            name    "vex_inplace"
-            baseparm
-            label   "Compute Results In Place"
-            export  none
-        }
-        parm {
-            name    "vex_selectiongroup"
-            baseparm
-            label   "Output Selection Group"
-            export  none
-        }
-        parm {
-            name    "vex_precision"
-            baseparm
-            label   "VEX Precision"
-            export  none
-        }
-    }
-
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.chn"
-Content-Type: text/plain
-
-{
-    channel grid_size {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../../../framesxy\") }
-    }
-    channel mode {
-      lefttype = extend
-      righttype = extend
-      flags = 0
-      segment { length = 0 expr = ch(\"../../../impostortype\") }
-    }
-    channel iteration {
-      lefttype = extend
-      righttype = extend
-      default = 2
-      flags = 0
-      segment { length = 0 value = 2 2 expr = $F }
-    }
-  }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.parm"
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output0.parm"
 Content-Type: text/plain
 
 {
 version 0.8
-folder0	[ 0	locks=0 ]	(	0	0	)
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-class	[ 0	locks=0 ]	(	"point"	)
-vex_numcount	[ 0	locks=0 ]	(	10	)
-vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
-snippet	[ 0	locks=0 ]	(	"// === CONFIG ===
-int N = chi(\"grid_size\");
-int mode = chi(\"mode\");
-float distance = getbbox_size(1).y;
-
-// === ITERATOR ===
-int i = chi(\"iteration\");
-int col = i % N;
-int row = i / N;
-
-// === DIRECTION ===
-vector dir;
-
-if (mode == 0) {
-    // Full Sphere - Octahedron
-    float u = float(col) / float(N - 1);
-    float v = float(row) / float(N - 1);
-    float cx = u * 2.0 - 1.0;
-    float cy = v * 2.0 - 1.0;
-    float z = 1.0 - abs(cx) - abs(cy);
-    float x, y;
-    if (z < 0.0) {
-        x = sign(cx) * (1.0 - abs(cy));
-        y = sign(cy) * (1.0 - abs(cx));
-    } else {
-        x = cx; y = cy;
-    }
-    dir = normalize(set(x, y, z));
-    dir = set(dir.x, dir.z, dir.y);  // swizzle Z-up → Y-up
-
-} else if (mode == 1) {
-    // Upper Hemisphere - Hemi-octahedron
-    float u = float(col) / float(N - 1);
-    float v = float(row) / float(N - 1);
-    float cx = u * 2.0 - 1.0;
-    float cy = v * 2.0 - 1.0;
-    float hx = (cx + cy) * 0.5;
-    float hy = (cx - cy) * 0.5;
-    float hz = 1.0 - abs(hx) - abs(hy);
-    dir = normalize(set(hx, hy, hz));
-    dir = set(dir.x, dir.z, dir.y);  // swizzle Z-up → Y-up
-
-} else {
-    // Turntable
-    int total = N * N;
-    float angle = radians(360.0 - (360.0 / float(total)) * float(i));
-    dir = normalize(set(sin(angle), 0, cos(angle)));
-}
-
-// === POSITION ===
-vector cam_pos = dir * distance;
-
-f@dis = distance;
-
-// === OUTPUT ===
-@P = cam_pos;"	)
-exportlist	[ 0	locks=0 ]	(	*	)
-vex_strict	[ 0	locks=0 ]	(	"off"	)
-vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
-autobind	[ 0	locks=0 ]	(	"on"	)
-bindings	[ 0	locks=0 ]	(	0	)
-groupautobind	[ 0	locks=0 ]	(	"on"	)
-groupbindings	[ 0	locks=0 ]	(	0	)
-vex_cwdpath	[ 0	locks=0 ]	(	.	)
-vex_outputmask	[ 0	locks=0 ]	(	*	)
-vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
-vex_matchattrib	[ 0	locks=0 ]	(	id	)
-vex_inplace	[ 0	locks=0 ]	(	"off"	)
-vex_selectiongroup	[ 0	locks=0 ]	(	""	)
-vex_precision	[ 0	locks=0 ]	(	auto	)
-folder1	[ 0	locks=0 ]	(	0	0	)
-folder_generatedparms_snippet	[ 0	locks=0 ]	(	0	)
-grid_size	[ 0	locks=0 ]	(	[ grid_size	0 ] 	)
-mode	[ 0	locks=0 ]	(	[ mode	0 ] 	)
-iteration	[ 0	locks=0 ]	(	[ iteration	0 ] 	)
+outputidx	[ 0	locks=0 ]	(	0	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/calculate_camera_position1.userdata"
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/output0.userdata"
 Content-Type: text/plain
 
 {
 	"___Version___":{
 		"type":"string",
-		"value":""
+		"value":"___EXTERNAL___"
 	}
 }
 
@@ -5650,18 +5042,80 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.order"
 Content-Type: text/plain
 
-8
-output1
-input1
-placeholder1
+6
 calculate_camera_position
 object_merge1
 create_bound_box
 edit_camera
-calculate_camera_position1
+camera
+output0
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.net"
+Content-Type: text/plain
+
+1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/sopimport1.init"
+Content-Type: text/plain
+
+type = sopimport
+matchesdef = 0
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/sopimport1.def"
+Content-Type: text/plain
+
+comment ""
+position -20.3712 6.07434
+connectornextid 1
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress off colordefault on exposed on lowdetail off mediumdetail off highdetail on
+outputsNamed3
+{
+0 "geometry"
+}
+inputsNamed3
+{
+}
+inputs
+{
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/sopimport1.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+usesoppath	[ 0	locks=0 ]	(	"on"	)
+soppath	[ 0	locks=0 ]	(	../edit_camera	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/sopimport1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/sopimport1.net"
 Content-Type: text/plain
 
 1
@@ -5683,12 +5137,11 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot/impostor_texture.order"
 Content-Type: text/plain
 
-23
+22
 rasterizegeo1
 import_object
 texturesample
 import_texture
-camera_to_geometry
 geometry_to_camera
 timepack1
 contactsheet_basecolor
@@ -5705,8 +5158,8 @@ contactsheet_alpha
 normal
 OUTPUT
 tilepattern1
-create_camera
 edit_camera
+sopimport1
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture.net"
