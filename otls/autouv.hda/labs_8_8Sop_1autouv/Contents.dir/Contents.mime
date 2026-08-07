@@ -32,25 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -2.5 1.85
-connectornextid 1
+position -3.23616 0.778339
+connectornextid 0
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
 }
 inputsNamed3
 {
-0 	testgeometry_rubbertoy1 0 1 "input1"
 }
 inputs
 {
-0 	testgeometry_rubbertoy1 0 1
 }
 stat
 {
   create -1
   modify -1
-  author christoss@cayuga.local
+  author Bailey@BaileysPC
   access 0777
 }
 color UT_Color RGB 0.8 0.8 0.8 
@@ -1687,6 +1685,8 @@ outclass	[ 0	locks=0 ]	(	"primitive"	)
 usepieceattrib	[ 0	locks=0 ]	(	"off"	)
 pieceattrib	[ 0	locks=0 ]	(	name	)
 method	[ 0	locks=0 ]	(	"min"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
 useoutname	[ 0	locks=0 ]	(	"off"	)
 outname	[ 0	locks=0 ]	(	""	)
 deletein	[ 0	locks=0 ]	(	"on"	)
@@ -4578,7 +4578,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 9.5 -26.15
+position 9.5 -26.8961
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4588,11 +4588,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	(__dot7) "" 1 "input1"
+0 	set_id 1 1 "input1"
 }
 inputs
 {
-0 	(__dot7) 0 1
+0 	set_id 0 1
 }
 stat
 {
@@ -4656,7 +4656,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 7.5 -30.09
+position 7.5 -30.8361
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -4720,7 +4720,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 9.49885 -31.0869
+position 9.49885 -31.833
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4781,7 +4781,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.5 -32.0902
+position 5.5 -34.9336
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4791,12 +4791,12 @@ outputsNamed3
 inputsNamed3
 {
 0 	uvtransform1 1 1 "input1"
-1 	merge1 2 1 "input2"
+1 	fuse_by_id 0 1 "input2"
 }
 inputs
 {
 0 	uvtransform1 0 1
-1 	merge1 0 1
+1 	fuse_by_id 0 1
 }
 stat
 {
@@ -5235,7 +5235,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment "HDA code: auv"
-position 5.5 -37.09
+position 5.5 -37.8361
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on displaycomment on
 outputsNamed3
@@ -5294,7 +5294,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.49655 -35.09
+position 5.49655 -35.8361
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -5515,7 +5515,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 5.5 -36.09
+position 5.5 -36.8361
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -5952,6 +5952,188 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_by_id.init"
+Content-Type: text/plain
+
+type = fuse::2.0
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_by_id.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 9.5 -32.6754
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+0 "output1"
+}
+inputsNamed3
+{
+1 	merge1 2 1 "input1"
+}
+inputs
+{
+0 	merge1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_by_id.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+querygroup	[ 0	locks=0 ]	(	""	)
+usetargetgroup	[ 0	locks=0 ]	(	"off"	)
+targetgroup	[ 0	locks=0 ]	(	""	)
+modifyboth	[ 0	locks=0 ]	(	"off"	)
+posattrib	[ 0	locks=0 ]	(	P	)
+snapgroup	[ 0	locks=0 ]	(	0	)
+snaptype	[ 0	locks=0 ]	(	"distancesnap"	)
+algorithm	[ 0	locks=0 ]	(	"lowest"	)
+usetol3d	[ 0	locks=0 ]	(	"on"	)
+tol3d	[ 0	locks=0	minrange=7.5e-14	maxrange=10 ]	(	1e-13	)
+targetptattrib	[ 0	locks=0 ]	(	snap_to	)
+targetclass	[ 0	locks=0 ]	(	"point"	)
+usepositionsnapmethod	[ 0	locks=0 ]	(	"on"	)
+positionsnapmethod	[ 0	locks=0 ]	(	"lowest"	)
+positionsnapweightname	[ 0	locks=0 ]	(	weight	)
+useradiusattrib	[ 0	locks=0 ]	(	"off"	)
+radiusattrib	[ 0	locks=0 ]	(	pscale	)
+usematchattrib	[ 0	locks=0 ]	(	"on"	)
+matchattrib	[ 8	locks=0 ]	(	_auv_id	)
+matchtype	[ 0	locks=0 ]	(	"match"	)
+matchtol	[ 0	locks=0 ]	(	0	)
+gridtype	[ 0	locks=0 ]	(	"spacing"	)
+gridspacing	[ 0	locks=0 ]	(	0.1	0.1	0.1	)
+gridlines	[ 0	locks=0 ]	(	10	10	10	)
+gridpow2	[ 0	locks=0 ]	(	3	3	3	)
+gridoffset	[ 0	locks=0 ]	(	0	0	0	)
+gridround	[ 0	locks=0 ]	(	"nearest"	)
+usegridtol	[ 0	locks=0 ]	(	"on"	)
+gridtol	[ 0	locks=0 ]	(	10	)
+consolidategroup	[ 0	locks=0 ]	(	0	)
+consolidatesnappedpoints	[ 0	locks=0 ]	(	"on"	)
+keepconsolidatedpoints	[ 0	locks=0 ]	(	"off"	)
+deldegen	[ 0	locks=0 ]	(	"on"	)
+deldegenpoints	[ 0	locks=0 ]	(	"on"	)
+delunusedpoints	[ 0	locks=0 ]	(	"off"	)
+outputgroup	[ 0	locks=0 ]	(	0	)
+recomputenml	[ 0	locks=0 ]	(	"on"	)
+createsnappedgroup	[ 0	locks=0 ]	(	"off"	)
+snappedgroupname	[ 0	locks=0 ]	(	snapped_points	)
+createsnappedattrib	[ 0	locks=0 ]	(	"off"	)
+snappedattribname	[ 0	locks=0 ]	(	snapped_to	)
+numpointattribs	[ 0	locks=0 ]	(	0	)
+numgroups	[ 0	locks=0 ]	(	0	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/fuse_by_id.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_id.init"
+Content-Type: text/plain
+
+type = attribwrangle
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_id.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 9.497 -25.8582
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	(__dot7) "" 1 "input1"
+}
+inputs
+{
+0 	(__dot7) 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_id.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	0	)
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+class	[ 0	locks=0 ]	(	"point"	)
+vex_numcount	[ 0	locks=0 ]	(	10	)
+vex_threadjobsize	[ 0	locks=0 ]	(	1024	)
+snippet	[ 0	locks=0 ]	(	"i@_auv_id = @ptnum;"	)
+exportlist	[ 0	locks=0 ]	(	*	)
+vex_strict	[ 0	locks=0 ]	(	"off"	)
+vex_strictvariables	[ 0	locks=0 ]	(	"on"	)
+autobind	[ 0	locks=0 ]	(	"on"	)
+bindings	[ 0	locks=0 ]	(	0	)
+groupautobind	[ 0	locks=0 ]	(	"on"	)
+groupbindings	[ 0	locks=0 ]	(	0	)
+vex_cwdpath	[ 0	locks=0 ]	(	.	)
+vex_outputmask	[ 0	locks=0 ]	(	*	)
+vex_updatenmls	[ 0	locks=0 ]	(	"off"	)
+vex_matchattrib	[ 0	locks=0 ]	(	id	)
+vex_inplace	[ 0	locks=0 ]	(	"off"	)
+vex_selectiongroup	[ 0	locks=0 ]	(	""	)
+vex_precision	[ 0	locks=0 ]	(	auto	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/set_id.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot2.networkdotinit"
 Content-Type: text/plain
 
@@ -6151,8 +6333,8 @@ Content-Type: text/plain
 
 {
 	"version":1,
-	"posx":12,
-	"posy":-31,
+	"posx":11.942142479880399,
+	"posy":-34.783418095863766,
 	"pinned":false,
 	"color":"FROMOUTPUT",
 	"input":"(__dot14) 0 1"
@@ -6162,7 +6344,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-60
+62
 convertline1
 clean1
 attribwrangle1
@@ -6223,6 +6405,8 @@ groupdelete3
 measure_curvature1
 merge_small_islands1
 maskbyfeature1
+fuse_by_id
+set_id
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
