@@ -3,7 +3,7 @@
 {
     name	labs::biome_region_assign::1.2
     script	labs::dryad_initialize::1.0
-    label	"Labs Biome Region Assign (Beta)"
+    label	"Labs Biome Region Assign"
 
     help {
 	""
@@ -535,27 +535,30 @@
                             [ "" ]
                             [ "node = kwargs['node']" ]
                             [ "inputs = node.inputs()" ]
-                            [ "uniqueVals = []" ]
-                            [ "uniqueValsFormatted = []" ]
-                            [ "attribName = node.parm(\"attrname\").evalAsString()" ]
-                            [ "attrib = inputs[2].geometry().findPrimAttrib(attribName)" ]
                             [ "" ]
-                            [ "" ]
-                            [ "" ]
-                            [ "" ]
-                            [ "if inputs and inputs[2]:" ]
-                            [ "    uniqueVals = node.parm(\"attribvalcontainer\").eval()" ]
-                            [ "    #Formatting list from the stored string value into correct data type, so we eliminate unecessary characters" ]
-                            [ "    uniqueVals = list(uniqueVals.split(\",\"))" ]
-                            [ "" ]
-                            [ "    #Menu items only show every other entry, so we populate the array twice " ]
-                            [ "    for u in uniqueVals:" ]
-                            [ "        uniqueValsFormatted.extend([u, u])" ]
-                            [ "        " ]
-                            [ "" ]
-                            [ "        " ]
-                            [ "return uniqueValsFormatted" ]
-                            [ "                " ]
+                            [ "if node.parm('source').eval() == 1 and len(inputs)>2:" ]
+                            [ "    uniqueVals = []" ]
+                            [ "    uniqueValsFormatted = []" ]
+                            [ "    attribName = node.parm(\"attrname\").evalAsString()" ]
+                            [ "    attrib = inputs[2].geometry().findPrimAttrib(attribName)" ]
+                            [ "    " ]
+                            [ "    " ]
+                            [ "    " ]
+                            [ "    " ]
+                            [ "    if inputs and inputs[2]:" ]
+                            [ "        uniqueVals = node.parm(\"attribvalcontainer\").eval()" ]
+                            [ "        #Formatting list from the stored string value into correct data type, so we eliminate unecessary characters" ]
+                            [ "        uniqueVals = list(uniqueVals.split(\",\"))" ]
+                            [ "    " ]
+                            [ "        #Menu items only show every other entry, so we populate the array twice " ]
+                            [ "        for u in uniqueVals:" ]
+                            [ "            uniqueValsFormatted.extend([u, u])" ]
+                            [ "            " ]
+                            [ "    " ]
+                            [ "            " ]
+                            [ "    return uniqueValsFormatted" ]
+                            [ "else:    " ]
+                            [ "    return []" ]
                             language python
                         }
                         parmtag { "script_callback_language" "python" }
