@@ -32,20 +32,19 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.5 0.85
-connectornextid 2
+position -2.5 -0.15
+connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
 {
-1 "output1"
 }
 inputsNamed3
 {
-0 	testgeometry_rubbertoy1 0 1 "input1"
+0 	transform1 1 1 "input1"
 }
 inputs
 {
-0 	testgeometry_rubbertoy1 0 1
+0 	transform1 0 1
 }
 stat
 {
@@ -126,7 +125,7 @@ Content-Disposition: attachment; filename="hdaroot.inp"
 Content-Type: text/plain
 
 1
-0 -10.499999988824129 4.8832999892532847 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
+0 -10.499999988824129 6.8832999832928206 2 0 __NO_OWNER_NETWORK_BOX__ "FROMOUTPUT"
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/create_bound_box.init"
@@ -234,7 +233,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -6.50125 4.85155
+position -6.50125 6.85155
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -419,7 +418,7 @@ Content-Type: text/plain
 version 0.8
 stdswitcher	[ 0	locks=0 ]	(	0	0	0	)
 keep	[ 0	locks=0 ]	(	"off"	)
-points	[ 8	locks=0	minrange=0	maxrange=2 ]	(	[ points	9 ] 	)
+points	[ 8	locks=0	minrange=0	maxrange=2 ]	(	[ points	25 ] 	)
 remove	[ 0	locks=0 ]	(	"off"	)
 switcher	[ 0	locks=0 ]	(	0	0	)
 prims	[ 0	locks=0 ]	(	1	)
@@ -460,6 +459,54 @@ weight7	[ 0	locks=0 ]	(	1	)
 usept8	[ 0	locks=0 ]	(	"on"	)
 pt8	[ 0	locks=0 ]	(	0	0	0	)
 weight8	[ 0	locks=0 ]	(	1	)
+usept9	[ 0	locks=0 ]	(	"on"	)
+pt9	[ 0	locks=0 ]	(	0	0	0	)
+weight9	[ 0	locks=0 ]	(	1	)
+usept10	[ 0	locks=0 ]	(	"on"	)
+pt10	[ 0	locks=0 ]	(	0	0	0	)
+weight10	[ 0	locks=0 ]	(	1	)
+usept11	[ 0	locks=0 ]	(	"on"	)
+pt11	[ 0	locks=0 ]	(	0	0	0	)
+weight11	[ 0	locks=0 ]	(	1	)
+usept12	[ 0	locks=0 ]	(	"on"	)
+pt12	[ 0	locks=0 ]	(	0	0	0	)
+weight12	[ 0	locks=0 ]	(	1	)
+usept13	[ 0	locks=0 ]	(	"on"	)
+pt13	[ 0	locks=0 ]	(	0	0	0	)
+weight13	[ 0	locks=0 ]	(	1	)
+usept14	[ 0	locks=0 ]	(	"on"	)
+pt14	[ 0	locks=0 ]	(	0	0	0	)
+weight14	[ 0	locks=0 ]	(	1	)
+usept15	[ 0	locks=0 ]	(	"on"	)
+pt15	[ 0	locks=0 ]	(	0	0	0	)
+weight15	[ 0	locks=0 ]	(	1	)
+usept16	[ 0	locks=0 ]	(	"on"	)
+pt16	[ 0	locks=0 ]	(	0	0	0	)
+weight16	[ 0	locks=0 ]	(	1	)
+usept17	[ 0	locks=0 ]	(	"on"	)
+pt17	[ 0	locks=0 ]	(	0	0	0	)
+weight17	[ 0	locks=0 ]	(	1	)
+usept18	[ 0	locks=0 ]	(	"on"	)
+pt18	[ 0	locks=0 ]	(	0	0	0	)
+weight18	[ 0	locks=0 ]	(	1	)
+usept19	[ 0	locks=0 ]	(	"on"	)
+pt19	[ 0	locks=0 ]	(	0	0	0	)
+weight19	[ 0	locks=0 ]	(	1	)
+usept20	[ 0	locks=0 ]	(	"on"	)
+pt20	[ 0	locks=0 ]	(	0	0	0	)
+weight20	[ 0	locks=0 ]	(	1	)
+usept21	[ 0	locks=0 ]	(	"on"	)
+pt21	[ 0	locks=0 ]	(	0	0	0	)
+weight21	[ 0	locks=0 ]	(	1	)
+usept22	[ 0	locks=0 ]	(	"on"	)
+pt22	[ 0	locks=0 ]	(	0	0	0	)
+weight22	[ 0	locks=0 ]	(	1	)
+usept23	[ 0	locks=0 ]	(	"on"	)
+pt23	[ 0	locks=0 ]	(	0	0	0	)
+weight23	[ 0	locks=0 ]	(	1	)
+usept24	[ 0	locks=0 ]	(	"on"	)
+pt24	[ 0	locks=0 ]	(	0	0	0	)
+weight24	[ 0	locks=0 ]	(	1	)
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -1467,11 +1514,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	center_obj_to_origin 1 1 "input1"
+0 	scale_and_center_obj_to_origin 1 1 "input1"
 }
 inputs
 {
-0 	center_obj_to_origin 0 1
+0 	scale_and_center_obj_to_origin 0 1
 }
 stat
 {
@@ -1817,7 +1864,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position -8.5 2.8498
+position -8.5 4.8498
 connectornextid 3
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -1876,100 +1923,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/center_obj_to_origin.init"
-Content-Type: text/plain
-
-type = matchsize
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/center_obj_to_origin.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position -8.5 1.85
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	switch_source_geometry 2 1 "input1"
-}
-inputs
-{
-0 	switch_source_geometry 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author christoss@cayuga.local
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/center_obj_to_origin.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-group	[ 0	locks=0 ]	(	""	)
-grouptype	[ 0	locks=0 ]	(	"guess"	)
-sepparm	[ 0	locks=0 ]	(	)
-justifytarget	[ 0	locks=0 ]	(	"auto"	)
-doboundgroup	[ 0	locks=0 ]	(	"off"	)
-folder2	[ 0	locks=0 ]	(	0	)
-sourcegroup	[ 0	locks=0 ]	(	""	)
-sourcegrouptype	[ 0	locks=0 ]	(	"guess"	)
-refgroup	[ 0	locks=0 ]	(	""	)
-refgrouptype	[ 0	locks=0 ]	(	"guess"	)
-folder1	[ 0	locks=0 ]	(	0	)
-t	[ 0	locks=0 ]	(	0	0	0	)
-size	[ 0	locks=0 ]	(	1	1	1	)
-folder0	[ 0	locks=0 ]	(	0	)
-dotranslate	[ 0	locks=0 ]	(	"on"	)
-justify_x	[ 0	locks=0 ]	(	"center"	)
-goal_x	[ 0	locks=0 ]	(	"same"	)
-offset_x	[ 0	locks=0 ]	(	0	)
-justify_y	[ 0	locks=0 ]	(	"center"	)
-goal_y	[ 0	locks=0 ]	(	"same"	)
-offset_y	[ 0	locks=0 ]	(	0	)
-justify_z	[ 0	locks=0 ]	(	"center"	)
-goal_z	[ 0	locks=0 ]	(	"same"	)
-offset_z	[ 0	locks=0 ]	(	0	)
-doscale	[ 0	locks=0 ]	(	"off"	)
-uniformscale	[ 0	locks=0 ]	(	"on"	)
-scale_axis	[ 0	locks=0 ]	(	"min"	)
-scale_x	[ 0	locks=0 ]	(	"on"	)
-scale_y	[ 0	locks=0 ]	(	"on"	)
-scale_z	[ 0	locks=0 ]	(	"on"	)
-restorexform	[ 0	locks=0 ]	(	"off"	)
-restoreattrib	[ 0	locks=0 ]	(	xform	)
-stashxform	[ 0	locks=0 ]	(	"off"	)
-stashattrib	[ 0	locks=0 ]	(	xform	)
-stashmerge	[ 0	locks=0 ]	(	"replace"	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/center_obj_to_origin.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
 	}
 }
 
@@ -4712,7 +4665,7 @@ divs	[ 0	locks=0 ]	(	3	3	3	)
 rebar	[ 0	locks=0 ]	(	"off"	)
 minsize	[ 0	locks=0 ]	(	0	0	0	)
 orient	[ 0	locks=0 ]	(	"y"	)
-accurate	[ 0	locks=0 ]	(	"off"	)
+accurate	[ 0	locks=0 ]	(	"on"	)
 minradius	[ 0	locks=0 ]	(	0	)
 orientedbrect	[ 0	locks=0 ]	(	"off"	)
 origin	[ 0	locks=0 ]	(	0	0	0	)
@@ -4752,7 +4705,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 -1.15
+position 1.5 -2.15
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -4761,11 +4714,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	calculate_camera_position 1 1 "input1"
+0 	dis_to_detail 1 1 "input1"
 }
 inputs
 {
-0 	calculate_camera_position 0 1
+0 	dis_to_detail 0 1
 }
 stat
 {
@@ -4798,6 +4751,13 @@ Content-Type: text/plain
       flags = 0
       segment { length = 0 value = 512 512 expr = ch(\"resx\") }
     }
+    channel orthowidth {
+      lefttype = extend
+      righttype = extend
+      default = 1.3100000000000001
+      flags = 0
+      segment { length = 0 value = 1.3100000000000001 1.3100000000000001 expr = "detail(0, \"dis\", 0)" }
+    }
   }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
@@ -4827,7 +4787,7 @@ twist	[ 0	locks=0 ]	(	0	)
 view	[ 0	locks=0 ]	(	1	)
 doview	[ 0	locks=0 ]	(	"on"	)
 dores	[ 0	locks=0 ]	(	"on"	)
-res	[ 8	locks=0	minrange=0	maxrange=160 ]	(	[ resx	1280 ] 	[ resy	720 ] 	)
+res	[ 0	locks=0	minrange=0	maxrange=160 ]	(	[ resx	1280 ] 	[ resy	720 ] 	)
 resmenu	[ 0	locks=0 ]	(	"none"	)
 doprojection	[ 0	locks=0 ]	(	"on"	)
 projection	[ 0	locks=0 ]	(	"ortho"	)
@@ -4836,7 +4796,7 @@ focal	[ 0	locks=0 ]	(	50	)
 doaperture	[ 0	locks=0 ]	(	"on"	)
 aperture	[ 0	locks=0 ]	(	41.4214	)
 doorthowidth	[ 0	locks=0 ]	(	"on"	)
-orthowidth	[ 0	locks=0 ]	(	2.5823	)
+orthowidth	[ 0	locks=0 ]	(	[ orthowidth	1 ] 	)
 donearclip	[ 0	locks=0 ]	(	"on"	)
 nearclip	[ 0	locks=0 ]	(	0.001	)
 dofarclip	[ 0	locks=0 ]	(	"on"	)
@@ -4992,7 +4952,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 1.5 -3.15
+position 1.5 -4.15
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload off savedata off compress on colordefault on exposed on
 outputsNamed3
@@ -5039,16 +4999,87 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/dis_to_detail.init"
+Content-Type: text/plain
+
+type = attribpromote
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/dis_to_detail.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 1.49655 -1.15
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	calculate_camera_position 1 1 "input1"
+}
+inputs
+{
+0 	calculate_camera_position 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author christoss@cayuga.local
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/dis_to_detail.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+inname	[ 0	locks=0 ]	(	dis	)
+inclass	[ 0	locks=0 ]	(	"point"	)
+outclass	[ 0	locks=0 ]	(	"detail"	)
+usepieceattrib	[ 0	locks=0 ]	(	"off"	)
+pieceattrib	[ 0	locks=0 ]	(	name	)
+method	[ 0	locks=0 ]	(	"max"	)
+doindexattrib	[ 0	locks=0 ]	(	"off"	)
+indexattrib	[ 0	locks=0 ]	(	sourceindex	)
+useoutname	[ 0	locks=0 ]	(	"off"	)
+outname	[ 0	locks=0 ]	(	""	)
+deletein	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera/dis_to_detail.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":"___EXTERNAL___"
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.order"
 Content-Type: text/plain
 
-6
+7
 calculate_camera_position
 object_merge1
 create_bound_box
 edit_camera
 camera
 output0
+dis_to_detail
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/impostor_texture/edit_camera.net"
@@ -5256,6 +5287,100 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/scale_and_center_obj_to_origin.init"
+Content-Type: text/plain
+
+type = matchsize
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/scale_and_center_obj_to_origin.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position -8.5 2.85
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	switch_source_geometry 2 1 "input1"
+}
+inputs
+{
+0 	switch_source_geometry 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author simon@LAPTOP-UT28NOSR
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/scale_and_center_obj_to_origin.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+group	[ 0	locks=0 ]	(	""	)
+grouptype	[ 0	locks=0 ]	(	"guess"	)
+sepparm	[ 0	locks=0 ]	(	)
+justifytarget	[ 0	locks=0 ]	(	"auto"	)
+doboundgroup	[ 0	locks=0 ]	(	"off"	)
+folder2	[ 0	locks=0 ]	(	0	)
+sourcegroup	[ 0	locks=0 ]	(	""	)
+sourcegrouptype	[ 0	locks=0 ]	(	"guess"	)
+refgroup	[ 0	locks=0 ]	(	""	)
+refgrouptype	[ 0	locks=0 ]	(	"guess"	)
+folder1	[ 0	locks=0 ]	(	0	)
+t	[ 0	locks=0 ]	(	0	0	0	)
+size	[ 0	locks=0	minrange=-1	maxrange=12.5 ]	(	1	1	1	)
+folder0	[ 0	locks=0 ]	(	0	)
+dotranslate	[ 0	locks=0 ]	(	"on"	)
+justify_x	[ 0	locks=0 ]	(	"center"	)
+goal_x	[ 0	locks=0 ]	(	"same"	)
+offset_x	[ 0	locks=0 ]	(	0	)
+justify_y	[ 0	locks=0 ]	(	"center"	)
+goal_y	[ 0	locks=0 ]	(	"same"	)
+offset_y	[ 0	locks=0 ]	(	0	)
+justify_z	[ 0	locks=0 ]	(	"center"	)
+goal_z	[ 0	locks=0 ]	(	"same"	)
+offset_z	[ 0	locks=0 ]	(	0	)
+doscale	[ 0	locks=0 ]	(	"on"	)
+uniformscale	[ 0	locks=0 ]	(	"on"	)
+scale_axis	[ 0	locks=0 ]	(	"min"	)
+scale_x	[ 0	locks=0 ]	(	"on"	)
+scale_y	[ 0	locks=0 ]	(	"on"	)
+scale_z	[ 0	locks=0 ]	(	"on"	)
+restorexform	[ 0	locks=0 ]	(	"off"	)
+restoreattrib	[ 0	locks=0 ]	(	xform	)
+stashxform	[ 0	locks=0 ]	(	"off"	)
+stashattrib	[ 0	locks=0 ]	(	xform	)
+stashmerge	[ 0	locks=0 ]	(	"replace"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/scale_and_center_obj_to_origin.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/__dot1.networkdotinit"
 Content-Type: text/plain
 
@@ -5292,10 +5417,10 @@ merge_camera_and_geo
 switch_show_guides
 no_guide
 switch_source_geometry
-center_obj_to_origin
 create_tileres_attribute
 impostor_texture
 rotate_texture
+scale_and_center_obj_to_origin
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
