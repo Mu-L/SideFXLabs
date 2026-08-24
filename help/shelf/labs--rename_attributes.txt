@@ -17,8 +17,9 @@ It updates their references not on the geometry directly.
 
 # Click __Rename Attributes and Groups__ on the Labs shelf.
 
-# Choose __Attributes__ or __Groups__. Enable __Inside Nodes__ only when you
-  also want to inspect editable nodes contained by the selection.
+# Choose __Attributes__ or __Groups__. __Inside Nodes__, __Rename in VEX__,
+  and __Rename in Python__ start enabled; turn off anything you do not want
+  searched.
 
 # Choose a discovered name, then enter the new name and click __Preview__.
 
@@ -30,6 +31,12 @@ The tool supports:
 
 * Explicit attribute and group name fields with a proven owner class.
 
+* Exact attribute references may use `^`. The exclusion is preserved, so
+  `^old` becomes `^new`.
+
+* Exact group references may use `!`, `^`, or `&`. The operator is preserved,
+  so `!old` becomes `!new`.
+
 * Direct VEX bindings such as `f@name` when the Wrangle __Run Over__ class
   matches, and direct string arguments to supported VEX functions.
 
@@ -37,9 +44,13 @@ The tool supports:
 
 * Direct string arguments in supported HScript expression functions.
 
+For automatic attribute or group fields such as __Any__, __Guess__, or
+__Auto__, the tool continues only when the relevant geometry proves the name
+belongs to one class. Names shared by multiple classes are skipped.
+
 Aliases, `chs()` targets, macros, overloaded or qualified functions, dynamic
-names, wildcard group operands, unknown expression languages, and ambiguous
-group classes are not changed.
+names, name-dependent wildcard or compound patterns, unknown expression
+languages, and ambiguous owner classes are not changed.
 
 == Preview and Safety ==
 
@@ -49,9 +60,9 @@ step.
 
 == Notes ==
 
-Only the current Network Editor selection is searched by default. __Inside
-Nodes__ adds nested editable nodes, but does not enter protected internals of
-locked assets.
+The current Network Editor selection is always searched. __Inside Nodes__ is
+enabled by default and adds nested editable nodes, but does not enter protected
+internals of locked assets.
 
 The final report lists applied, deselected, skipped, discovery, and failed
 items.

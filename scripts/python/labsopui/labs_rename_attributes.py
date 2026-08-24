@@ -93,13 +93,18 @@ def run():
         settings = _options()
         if settings is None:
             return False
-        kind, include_inside = settings
+        kind, include_inside, rename_vex, rename_python = settings
         nodes, scope, traversal_issues = _scope_nodes(
             nodes, include_inside)
 
         # Offer only attributes and groups with a safely recognized reference.
         choice = _choose(
-            nodes, kind, discovery_issues=traversal_issues)
+            nodes,
+            kind,
+            discovery_issues=traversal_issues,
+            rename_vex=rename_vex,
+            rename_python=rename_python,
+        )
         if choice is None:
             return False
         kind, item_class, old, discovery_issues = choice
@@ -111,7 +116,14 @@ def run():
         # Build the preview records without writing parameters. Unsafe or
         # dynamic references are reported as skipped.
         edits, skipped = collect_edits(
-            nodes, kind, item_class, old, new)
+            nodes,
+            kind,
+            item_class,
+            old,
+            new,
+            rename_vex=rename_vex,
+            rename_python=rename_python,
+        )
     except hou.OperationInterrupted:
         _ui("Scan canceled; no changes were made.")
         return False
@@ -133,6 +145,8 @@ def run():
             item_class,
             old,
             new,
+            rename_vex=rename_vex,
+            rename_python=rename_python,
         )
     except hou.OperationInterrupted:
         _ui("Rename canceled during application.", warning=True)
@@ -654,7 +668,7 @@ class _PreviewDialog(QtWidgets.QDialog):
 
 
 class _OptionsDialog(QtWidgets.QDialog):
-    """Choose Attributes or Groups and whether to scan inside selected nodes."""
+    """Choose the rename kind, scope, and enabled code languages."""
 
     def __init__(self, initial_kind, parent=None):
         super(_OptionsDialog, self).__init__(parent)
@@ -675,13 +689,31 @@ class _OptionsDialog(QtWidgets.QDialog):
         self.inside_check = QtWidgets.QCheckBox("Inside Nodes")
         self.inside_check.setToolTip(
             "Also inspect editable nodes contained by the selection.")
+        self.inside_check.setChecked(True)
         layout.addWidget(self.inside_check)
+
+        self.vex_check = QtWidgets.QCheckBox("Rename in VEX")
+        self.vex_check.setToolTip(
+            "Update direct, safely recognized references in VEX parameters.")
+        self.vex_check.setChecked(True)
+        layout.addWidget(self.vex_check)
+
+        self.python_check = QtWidgets.QCheckBox("Rename in Python")
+        self.python_check.setToolTip(
+            "Update direct, safely recognized references in Python parameters.")
+        self.python_check.setChecked(True)
+        layout.addWidget(self.python_check)
 
         _add_dialog_buttons(self, layout, accept_text="Next")
 
     def options(self):
-        """Return the rename kind and this run's Inside Nodes setting."""
-        return self.kind_combo.currentData(), self.inside_check.isChecked()
+        """Return the rename kind, scope, and code-language settings."""
+        return (
+            self.kind_combo.currentData(),
+            self.inside_check.isChecked(),
+            self.vex_check.isChecked(),
+            self.python_check.isChecked(),
+        )
 
 
 def _options():
@@ -690,9 +722,9 @@ def _options():
     result = _exec_dialog(dialog)
     if result != _ACCEPTED:
         return None
-    kind, include_inside = dialog.options()
-    setattr(hou.session, SESSION_RENAME_KIND_NAME, kind)
-    return kind, include_inside
+    settings = dialog.options()
+    setattr(hou.session, SESSION_RENAME_KIND_NAME, settings[0])
+    return settings
 
 
 class _CandidateDialog(QtWidgets.QDialog):
@@ -807,7 +839,8 @@ def _restore_after_error(parm, original):
 
 
 def apply_edits(
-        edits, identities, kind, item_class, old_name, new_name):
+        edits, identities, kind, item_class, old_name, new_name,
+        rename_vex=True, rename_python=True):
     """Recheck and apply selected edits as one verified undo batch.
 
     Every preview row passes the same sequence before it counts as applied:
@@ -865,6 +898,8 @@ def apply_edits(
                         item_class,
                         old_name,
                         new_name,
+                        rename_vex=rename_vex,
+                        rename_python=rename_python,
                     )
                 )
                 if canonical != edit:
@@ -930,7 +965,9 @@ def _set_parm(parm, value, kind, language):
 
 # Candidate discovery and safe-reference filtering
 
-def _choose(nodes, kind, discovery_issues=()):
+def _choose(
+        nodes, kind, discovery_issues=(),
+        rename_vex=True, rename_python=True):
     """Ask the user which discovered name to rename.
 
     Geometry and parameter-only names pass through the final preview's planner,
@@ -946,8 +983,15 @@ def _choose(nodes, kind, discovery_issues=()):
         if choice not in choices:
             choices.append(choice)
 
-    choices, locations = _filter_choices_by_safe_locations(
-        nodes, kind, choices)
+    choices, locations, filtered_issues = _filter_choices_by_safe_locations(
+        nodes,
+        kind,
+        choices,
+        rename_vex=rename_vex,
+        rename_python=rename_python,
+    )
+    issues.extend(
+        issue for issue in filtered_issues if issue not in issues)
 
     if not choices:
         _ui("No {}s with safe parameter references were found in this scope.".
@@ -1023,46 +1067,73 @@ def _discover_geometry(nodes, kind):
 
 
 def _discover_text(nodes, kind):
-    """Collect groups found only in group-name parameters."""
-    if kind != "group":
+    """Collect exact names from metadata-proven parameter fields."""
+    if kind not in ("attribute", "group"):
         return [], []
+    name_reader = (
+        rename_engine._plain_attribute_names
+        if kind == "attribute"
+        else rename_engine._plain_group_names
+    )
+    reference_reader = (
+        rename_engine._inspect_attribute_reference
+        if kind == "attribute"
+        else rename_engine._inspect_group_reference
+    )
     choices, seen, issues = [], set(), []
     for node in _iter_with_progress(
-            nodes, "Scanning group parameters for names"):
+            nodes, "Scanning {} parameters for names".format(kind)):
         for parm in node.parms():
-            parm_name = parm.name().lower()
-            parm_hint = "{} {}".format(
-                parm_name, parm.parmTemplate().label()).lower()
-            if "group" not in parm_hint:
+            try:
+                field_kind, _metadata_owner = (
+                    rename_engine.inspect_plain_field(node, parm))
+            except hou.OperationInterrupted:
+                raise
+            except hou.Error as error:
+                issues.append(
+                    "{}/{}: could not inspect {} metadata: {}".format(
+                        node.path(), parm.name(), kind, error))
                 continue
-            if re.match(
-                    r"^(?:grouptype|groupclass|groupentity|entity)\d*$",
-                    parm_name) or "group type" in parm_hint or (
-                        "group class" in parm_hint):
-                # Companion menus describe another parameter's owner. Values
-                # such as "points" are not group names.
+            if field_kind != kind:
                 continue
 
-            text, _kind, _language, _storage = (
-                rename_engine.parameter_source(parm))
+            try:
+                text, _kind, _language, _storage = (
+                    rename_engine.parameter_source(parm))
+            except hou.OperationInterrupted:
+                raise
+            except hou.Error as error:
+                issues.append(
+                    "{}/{}: could not inspect {} value: {}".format(
+                        node.path(), parm.name(), kind, error))
+                continue
             if not text:
                 continue
 
-            field_kind, item_class = rename_engine.inspect_plain_field(
-                node, parm)
-            if field_kind != "group":
-                item_class = None
-            if item_class is None:
-                issues.append(
-                    "{}/{}: group owner is not proven".format(
-                        node.path(), parm.name()))
-                continue
-            if item_class == UNSUPPORTED_GROUP_CLASS:
-                issues.append("{}/{}: vertex groups are not supported".format(
-                    node.path(), parm.name()))
-                continue
-
-            for name in _group_names(text):
+            for name in name_reader(text):
+                if kind == "attribute" and name == "P":
+                    continue
+                try:
+                    item_class, problem = reference_reader(node, parm, name)
+                except hou.OperationInterrupted:
+                    raise
+                except hou.Error as error:
+                    item_class = None
+                    problem = "could not inspect {} owner: {}".format(
+                        kind, error)
+                if item_class is None:
+                    issue = "{}/{}: {}".format(
+                        node.path(), parm.name(),
+                        problem or "{} owner is not proven".format(kind))
+                    if issue not in issues:
+                        issues.append(issue)
+                    continue
+                if kind == "group" and item_class == UNSUPPORTED_GROUP_CLASS:
+                    issue = "{}/{}: vertex groups are not supported".format(
+                        node.path(), parm.name())
+                    if issue not in issues:
+                        issues.append(issue)
+                    continue
                 pair = (item_class, name)
                 if pair not in seen:
                     seen.add(pair)
@@ -1070,37 +1141,29 @@ def _discover_text(nodes, kind):
     return choices, issues
 
 
-def _group_names(text):
-    """Read exact names from a simple Houdini group expression."""
-    names = []
-    for token in re.split(r"[\s,]+", str(text or "")):
-        if token[:1] in ("^", "!", "&"):
-            # Exclusions, complements, and intersections still name a concrete
-            # group. IDENT rejects wildcard and range syntax because those do
-            # not identify one exact group.
-            token = token[1:]
-        if IDENT.match(token) and token not in names:
-            names.append(token)
-    return names
-
-
-def _filter_choices_by_safe_locations(nodes, kind, choices):
+def _filter_choices_by_safe_locations(
+        nodes, kind, choices, rename_vex=True, rename_python=True):
     """Keep candidates with at least one safely plannable reference.
 
     Reusing the read-only ``collect_edits`` planner keeps picker eligibility
     aligned with the final preview.
     """
     nodes, choices = list(nodes), list(choices)
-    offered, locations = [], {}
+    offered, locations, issues = [], {}, []
     for item_class, old in choices:
         choice = (item_class, old)
-        edits, _skipped = collect_edits(
+        edits, skipped = collect_edits(
             nodes, kind, item_class, old,
-            _rename_location_probe_name(old))
+            _rename_location_probe_name(old),
+            rename_vex=rename_vex,
+            rename_python=rename_python,
+        )
         locations[choice] = tuple(edits)
         if edits:
             offered.append(choice)
-    return offered, locations
+        else:
+            issues.extend(item for item in skipped if item not in issues)
+    return offered, locations, issues
 
 
 def _rename_location_probe_name(old):
