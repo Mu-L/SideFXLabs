@@ -1,0 +1,123 @@
+# Dialog script for labs::cut_hole::1.0 automatically generated
+
+{
+    name	labs::cut_hole::1.0
+    script	splitme
+    label	"Cut Hole"
+
+    help {
+	""
+    }
+
+    inputlabel	1	"Geometry Input"
+    inputlabel	2	"Sub-Network Input #2"
+    inputlabel	3	"Sub-Network Input #3"
+    inputlabel	4	"Sub-Network Input #4"
+
+    parm {
+        name    "group"
+        label   "Group"
+        type    string
+        default { "" }
+        menutoggle {
+            [ "r = []" ]
+            [ "node = hou.pwd()" ]
+            [ "inputs = node.inputs()" ]
+            [ "if inputs and inputs[0]:" ]
+            [ "    geo = inputs[0].geometry()" ]
+            [ "    if geo:" ]
+            [ "        attrs = []        " ]
+            [ "        for g in geo.pointGroups():" ]
+            [ "            r.extend([g.name(), g.name()])             " ]
+            [ "return r" ]
+            language python
+        }
+        parmtag { "Select geometry from an available viewport. Shift-click to turn on Select Groups.script_action" "Select geometry from an available viewport. Shift-click to turn on Select Groups." }
+        parmtag { "script_action" "import soputils\nkwargs['geometrytype'] = hou.geometryType.Points\nkwargs['inputindex'] = 0\nsoputils.selectGroupParm(kwargs)" }
+        parmtag { "script_action_icon" "BUTTONS_reselect" }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "radius"
+        label   "Radius"
+        type    float
+        default { "0.25" }
+        range   { 0 1 }
+        parmtag { "script_callback_language" "python" }
+    }
+    parm {
+        name    "fillhole"
+        label   "Fill Hole"
+        type    toggle
+        default { "1" }
+        parmtag { "script_callback_language" "python" }
+    }
+    groupsimple {
+        name    "fd_fillhole"
+        label   "Fill Hole"
+        disablewhen "{ fillhole == 0 }"
+        grouptag { "sidefx::look" "blank" }
+
+        parm {
+            name    "fill"
+            label   "Fill"
+            type    ordinal
+            default { "0" }
+            menu {
+                "0" "Quads"
+                "1" "Triangles"
+            }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+    groupsimple {
+        name    "fd_output"
+        label   "Output Groups"
+
+        parm {
+            name    "outputfillprims"
+            label   "Fill Primitives"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            disablewhen "{ fillhole == 0 }"
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "fillprims"
+            label   "Fill Primitives"
+            type    string
+            default { "fillprims" }
+            disablewhen "{ fillhole == 0 } { outputfillprims == 0 }"
+            menureplace {
+                [ "opmenu -l -a rename_groups newname6" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "outputedgering"
+            label   "Edge Ring"
+            type    toggle
+            nolabel
+            joinnext
+            default { "0" }
+            parmtag { "script_callback_language" "python" }
+        }
+        parm {
+            name    "edgeloop"
+            label   "Edge Loop"
+            type    string
+            default { "edgeloop" }
+            disablewhen "{ outputedgering == 0 }"
+            menureplace {
+                [ "opmenu -l -a grouprename1 newname3" ]
+            }
+            parmtag { "autoscope" "0000000000000000" }
+            parmtag { "script_callback_language" "python" }
+        }
+    }
+
+}

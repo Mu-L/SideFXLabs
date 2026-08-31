@@ -1,0 +1,39 @@
+#type:      node
+#context:   sop
+#internal:  labs::cut_hole::1.0
+#icon:      /labs_icons/sidefx_labs_default.svg
+#since:     22.0
+
+= Labs Cut Hole =
+
+"""Cuts an octagonal hole in the mesh."""
+
+This node automates the process of cutting an octagonal hole in the mesh and producing a result with clean topology. Circular holes are commonly used in a hard-surface modelling workflow.
+
+@parameters
+
+    Group:
+        #id: group
+        The point group to apply the cut hole operation to. If blank, the entire geometry will be used.
+
+    Radius:
+        #id: radius
+        Scaling transform applied to each constructed hole.
+    
+    Fill Hole:
+        #id: fillhole
+        Fills holes with polygonal patches.
+
+    Fill:
+        #id: fill
+        The algorithm used to fill the holes. The options are Quads and Triangles.
+
+    == Output Groups ==
+
+    Fill Primitives:
+        #id: fillprims
+        The name of the primitive group.
+
+    Edge Loop:
+        #id: edgeloop
+        The name of the edge group.

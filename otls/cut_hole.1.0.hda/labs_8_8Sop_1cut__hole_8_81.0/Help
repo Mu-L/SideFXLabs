@@ -1,0 +1,110 @@
+= Tubby Cut =
+#icon: SOP/HDA_Icon.png
+
+"""Performs a boolean operation with a cylinderical shape in a selection of points."""
+
+
+== Overview ==
+
+
+Tubby Cut is a utility that performs cylindrical boolean operations for hard surface modeling.
+
+It was created to speed up the process of performing boolean operations with clean topology.
+
+It results in a clean topology that includes quads and outputs groups to be used.
+
+@parameters
+
+
+== General Settings ==
+
+
+Operation:
+    #id: operation
+
+    Defines the boolean operation that is going to be performed.
+
+Points Group:
+    #id: points_group
+
+    The group name for the selection of points. This is the selection of points the operation is going to be performed to.
+    
+
+== Operator Settings ==
+
+
+Shape:
+    #id: shape
+
+    Choose either a Tube or a Sphere shape as the boolean operator.
+
+Radius:
+    #id: radius
+
+    The radius of the shape that acts as the boolean operator.
+
+Height:
+    #id: height
+
+    The height of the shape that acts as the boolean operator. This is only available for the Tube shape.
+
+Cap:
+    #id: cap
+
+    Toggles the cap fill for the shape that acts as the boolean operator.
+    
+Fill:
+    #id: fill
+
+    Choose between a Quads or a Triangles fill for the cap of the shape.
+
+Quads Offset:
+    #id: quads_offset
+
+    Offset the quads pattern for the cap fill of the shape. This is only available when Fill is set to Quads.
+
+
+== Output Groups ==
+
+    
+=== Primitives Group ===
+   
+
+Operator Wall:
+    #id: op_wall
+
+    This is the group for the side primitives of the shape that acts as the boolean operator.
+
+Operator Cap:
+    #id: op_cap
+
+    This is the group for the cap fill primitives of the shape that acts as the boolean operator.
+
+Surface Perimeter:
+    #id: surface_perimeter
+
+    This is the group for the side primitives of the geometry the boolean operation is performed to.
+    
+Surface Rest:
+    #id: surface_rest
+
+    This is the group for the rest primitives of the geometry the boolean operation is performed to.
+
+    
+=== Edges Group ===
+
+
+Operator Edges:
+    #id: op_edges
+
+    This is the group for the cap fill edges of the shape that acts as the boolean operator.
+
+Surface Edges:
+    #id: surface_edges
+
+    This is the group for the intersecting edges of the shape that acts as the boolean operator and the geometry that is performed to.
+
+   
+@related
+
+* [Node:sop/copy]
