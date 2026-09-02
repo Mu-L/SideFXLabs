@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Kapok_Tree_Dead_3"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Kapok_Tree_Dead_3" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Kapok_Tree_Dead_3.usd@
+        string name = "SM_Kapok_Tree_Dead_3"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Kapok_Tree_Dead_3>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-6.7870092, -0.7208339, -12.312478), (6.018043, 54.170242, 10.871502), (-6.5723224, -0.7208339, -12.264759), (6.1637774, 54.117916, 10.801361)]
+}
+
+class "__class__SM_Kapok_Tree_Dead_3"
+{
+}
+

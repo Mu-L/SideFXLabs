@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_SitkaSpruce_Growth_3"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_SitkaSpruce_Growth_3" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_SitkaSpruce_Growth_3.usd@
+        string name = "SM_SitkaSpruce_Growth_3"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_SitkaSpruce_Growth_3>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-13.780337, -0.49779806, -12.497695), (12.73716, 51.504513, 13.042311), (-13.780337, -0.49779806, -12.497695), (12.73716, 51.47609, 13.042311)]
+}
+
+class "__class__SM_SitkaSpruce_Growth_3"
+{
+}
+

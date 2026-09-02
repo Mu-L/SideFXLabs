@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Manzanita_Tree_Dead_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Manzanita_Tree_Dead_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Manzanita_Tree_Dead_2.usd@
+        string name = "SM_Manzanita_Tree_Dead_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Manzanita_Tree_Dead_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-4.1333222, -0.22547232, -4.018369), (3.2080605, 4.5271387, 4.24997), (-4.056745, -0.22547226, -4.0207973), (3.2068067, 4.47681, 4.21524)]
+}
+
+class "__class__SM_Manzanita_Tree_Dead_2"
+{
+}
+

@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_SwordFern_Dead_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_SwordFern_Dead_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_SwordFern_Dead_1.usd@
+        string name = "SM_SwordFern_Dead_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_SwordFern_Dead_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.9461776, -0.031623572, -0.9691214), (0.7768365, 0.34813064, 0.7490796), (-0.935068, -0.036026843, -0.9576813), (0.76769584, 0.33186078, 0.6948236)]
+}
+
+class "__class__SM_SwordFern_Dead_1"
+{
+}
+

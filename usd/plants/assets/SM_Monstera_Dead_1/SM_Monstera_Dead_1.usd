@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Monstera_Dead_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Monstera_Dead_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Monstera_Dead_1.usd@
+        string name = "SM_Monstera_Dead_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Monstera_Dead_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.75547487, -0.007757783, -0.6719888), (0.72499806, 0.730054, 0.92621946), (-0.7524013, -0.007725104, -0.66075283), (0.7205332, 0.71885735, 0.9201512)]
+}
+
+class "__class__SM_Monstera_Dead_1"
+{
+}
+

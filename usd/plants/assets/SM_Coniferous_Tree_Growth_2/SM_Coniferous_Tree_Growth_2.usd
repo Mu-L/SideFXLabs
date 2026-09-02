@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Coniferous_Tree_Growth_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Coniferous_Tree_Growth_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Coniferous_Tree_Growth_2.usd@
+        string name = "SM_Coniferous_Tree_Growth_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Coniferous_Tree_Growth_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-2.1825495, -0.625, -2.1888804), (2.2202663, 8.53317, 2.2045758), (-2.178741, -0.625, -2.2211142), (1.9759078, 8.53317, 2.2045758)]
+}
+
+class "__class__SM_Coniferous_Tree_Growth_2"
+{
+}
+

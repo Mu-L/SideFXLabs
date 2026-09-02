@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Desert_Shrub_Dead_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Desert_Shrub_Dead_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Desert_Shrub_Dead_1.usd@
+        string name = "SM_Desert_Shrub_Dead_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Desert_Shrub_Dead_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.5571032, -0.011829158, -1.2781022), (1.6485001, 0.8470098, 1.6050853), (-1.5485396, -0.039806347, -1.2698386), (1.6402965, 0.82826096, 1.596625)]
+}
+
+class "__class__SM_Desert_Shrub_Dead_1"
+{
+}
+

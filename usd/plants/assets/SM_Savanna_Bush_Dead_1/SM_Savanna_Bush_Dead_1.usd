@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Savanna_Bush_Dead_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Savanna_Bush_Dead_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Savanna_Bush_Dead_1.usd@
+        string name = "SM_Savanna_Bush_Dead_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Savanna_Bush_Dead_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.6660478, -0.040869355, -1.3927925), (1.5460846, 1.2973458, 1.4032767), (-1.6611316, -0.040869355, -1.3809125), (1.5518719, 1.2680815, 1.3840381)]
+}
+
+class "__class__SM_Savanna_Bush_Dead_1"
+{
+}
+

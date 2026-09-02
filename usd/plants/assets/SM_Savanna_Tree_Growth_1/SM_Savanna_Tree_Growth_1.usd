@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Savanna_Tree_Growth_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Savanna_Tree_Growth_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Savanna_Tree_Growth_1.usd@
+        string name = "SM_Savanna_Tree_Growth_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Savanna_Tree_Growth_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.4552729, -0.625, -2.135042), (1.7509663, 2.2439318, 1.5424265), (-1.4601643, -0.625, -2.1489987), (1.7509663, 2.2363703, 1.5424265)]
+}
+
+class "__class__SM_Savanna_Tree_Growth_1"
+{
+}
+

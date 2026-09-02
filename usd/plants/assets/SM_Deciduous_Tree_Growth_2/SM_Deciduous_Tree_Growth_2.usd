@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Deciduous_Tree_Growth_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Deciduous_Tree_Growth_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Deciduous_Tree_Growth_2.usd@
+        string name = "SM_Deciduous_Tree_Growth_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Deciduous_Tree_Growth_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-4.440104, -0.625, -4.641221), (4.237538, 7.6863675, 3.792555), (-4.423492, -0.625, -4.621196), (4.2504625, 7.6863675, 3.787059)]
+}
+
+class "__class__SM_Deciduous_Tree_Growth_2"
+{
+}
+

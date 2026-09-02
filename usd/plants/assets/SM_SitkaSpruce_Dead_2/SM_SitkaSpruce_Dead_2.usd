@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_SitkaSpruce_Dead_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_SitkaSpruce_Dead_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_SitkaSpruce_Dead_2.usd@
+        string name = "SM_SitkaSpruce_Dead_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_SitkaSpruce_Dead_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-5.4487114, -0.4949279, -5.147202), (7.479259, 31.770699, 6.2990127), (-5.278054, -0.4949279, -4.944832), (7.4931726, 31.770699, 6.186722)]
+}
+
+class "__class__SM_SitkaSpruce_Dead_2"
+{
+}
+

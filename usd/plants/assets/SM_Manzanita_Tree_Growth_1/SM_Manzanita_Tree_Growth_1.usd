@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Manzanita_Tree_Growth_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Manzanita_Tree_Growth_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Manzanita_Tree_Growth_1.usd@
+        string name = "SM_Manzanita_Tree_Growth_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Manzanita_Tree_Growth_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-3.1450126, -0.22321983, -4.144183), (2.7395732, 4.5338163, 3.924712), (-3.2763526, -0.22321978, -4.112722), (2.9469512, 4.5338163, 3.9157429)]
+}
+
+class "__class__SM_Manzanita_Tree_Growth_1"
+{
+}
+

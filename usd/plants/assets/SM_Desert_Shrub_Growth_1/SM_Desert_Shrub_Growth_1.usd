@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Desert_Shrub_Growth_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Desert_Shrub_Growth_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Desert_Shrub_Growth_1.usd@
+        string name = "SM_Desert_Shrub_Growth_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Desert_Shrub_Growth_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.2893198, -1.1517346e-8, -1.1328864), (1.4863926, 1.1893957, 1.8479824), (-1.316782, 0.02214755, -1.1887625), (1.5385199, 1.1893957, 1.8479824)]
+}
+
+class "__class__SM_Desert_Shrub_Growth_1"
+{
+}
+

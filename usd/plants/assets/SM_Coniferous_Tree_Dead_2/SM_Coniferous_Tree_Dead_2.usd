@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Coniferous_Tree_Dead_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Coniferous_Tree_Dead_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Coniferous_Tree_Dead_2.usd@
+        string name = "SM_Coniferous_Tree_Dead_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Coniferous_Tree_Dead_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.5142019, -0.625, -1.7265565), (0.41475868, 8.776882, 1.8247468), (-1.5454172, -0.625, -1.7451489), (0.41475868, 8.74157, 1.8206251)]
+}
+
+class "__class__SM_Coniferous_Tree_Dead_2"
+{
+}
+

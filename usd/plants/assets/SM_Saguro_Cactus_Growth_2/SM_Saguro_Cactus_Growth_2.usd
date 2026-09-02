@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Saguro_Cactus_Growth_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Saguro_Cactus_Growth_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Saguro_Cactus_Growth_2.usd@
+        string name = "SM_Saguro_Cactus_Growth_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Saguro_Cactus_Growth_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-0.23818107, -0.25, -0.67848074), (0.25789, 2.9501443, 0.7270465), (-0.24154536, -0.25, -0.6582567), (0.23825361, 2.9501443, 0.7065991)]
+}
+
+class "__class__SM_Saguro_Cactus_Growth_2"
+{
+}
+

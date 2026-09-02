@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Acai_Palm_Tree_Growth_3"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Acai_Palm_Tree_Growth_3" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Acai_Palm_Tree_Growth_3.usd@
+        string name = "SM_Acai_Palm_Tree_Growth_3"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Acai_Palm_Tree_Growth_3>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-6.9851985, -0.50000024, -5.632006), (7.5280457, 18.894773, 7.3620114), (-6.9734364, -0.50000024, -5.618141), (7.514254, 18.917265, 7.3510575)]
+}
+
+class "__class__SM_Acai_Palm_Tree_Growth_3"
+{
+}
+

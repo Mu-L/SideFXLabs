@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Kapok_Tree_Growth_3"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Kapok_Tree_Growth_3" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Kapok_Tree_Growth_3.usd@
+        string name = "SM_Kapok_Tree_Growth_3"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Kapok_Tree_Growth_3>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-21.75425, -0.7208339, -28.466312), (15.942152, 62.945404, 25.345528), (-20.660187, -0.6704957, -28.466312), (14.848088, 62.803574, 25.576715)]
+}
+
+class "__class__SM_Kapok_Tree_Growth_3"
+{
+}
+

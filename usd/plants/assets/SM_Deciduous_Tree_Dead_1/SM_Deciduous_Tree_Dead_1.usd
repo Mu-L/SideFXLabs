@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_Deciduous_Tree_Dead_1"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_Deciduous_Tree_Dead_1" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_Deciduous_Tree_Dead_1.usd@
+        string name = "SM_Deciduous_Tree_Dead_1"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_Deciduous_Tree_Dead_1>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-2.3411314, -0.625, -1.4437106), (1.9044731, 4.6162667, 1.7912629), (-1.9038106, -0.625, -1.3753139), (1.4309763, 4.526193, 1.7753016)]
+}
+
+class "__class__SM_Deciduous_Tree_Dead_1"
+{
+}
+

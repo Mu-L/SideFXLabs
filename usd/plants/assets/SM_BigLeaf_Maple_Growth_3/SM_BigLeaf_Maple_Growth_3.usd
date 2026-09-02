@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_BigLeaf_Maple_Growth_3"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_BigLeaf_Maple_Growth_3" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_BigLeaf_Maple_Growth_3.usd@
+        string name = "SM_BigLeaf_Maple_Growth_3"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_BigLeaf_Maple_Growth_3>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-4.106169, -0.69382215, -5.2643747), (5.91353, 10.649303, 5.8316894), (-4.1337385, -0.69382215, -5.399124), (5.6229835, 10.649303, 5.8590336)]
+}
+
+class "__class__SM_BigLeaf_Maple_Growth_3"
+{
+}
+

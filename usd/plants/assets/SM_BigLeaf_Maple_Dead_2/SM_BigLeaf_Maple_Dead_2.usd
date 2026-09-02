@@ -1,0 +1,37 @@
+#usda 1.0
+(
+    defaultPrim = "SM_BigLeaf_Maple_Dead_2"
+    framesPerSecond = 24
+    metersPerUnit = 1
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "SM_BigLeaf_Maple_Dead_2" (
+    prepend apiSchemas = ["GeomModelAPI", "AssetPreviewsAPI"]
+    assetInfo = {
+        asset identifier = @./SM_BigLeaf_Maple_Dead_2.usd@
+        string name = "SM_BigLeaf_Maple_Dead_2"
+        dictionary previews = {
+            dictionary thumbnails = {
+                dictionary default = {
+                    asset defaultImage = @./thumbnail.png@
+                }
+            }
+        }
+    }
+    prepend inherits = </__class__SM_BigLeaf_Maple_Dead_2>
+    kind = "component"
+    prepend payload = @./payload.usdc@
+    variants = {
+        string mtl = "M_Plants"
+    }
+)
+{
+    float3[] extentsHint = [(3.4028235e38, 3.4028235e38, 3.4028235e38), (-3.4028235e38, -3.4028235e38, -3.4028235e38), (-1.1633753, -0.5090083, -1.5579976), (3.3620064, 5.6124296, 2.535579), (-1.1633753, -0.5090082, -1.4997296), (3.3976064, 5.6814375, 2.6895509)]
+}
+
+class "__class__SM_BigLeaf_Maple_Dead_2"
+{
+}
+
