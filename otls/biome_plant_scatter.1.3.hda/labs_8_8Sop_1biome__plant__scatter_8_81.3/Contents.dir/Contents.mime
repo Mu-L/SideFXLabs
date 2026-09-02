@@ -32,25 +32,23 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 0.593901 -25.4754
-connectornextid 5
+position -54.7983 55.5104
+connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on outputforview 4294967295
 outputsNamed3
 {
-0 "output1"
-4 "output2"
+4 "output1"
+5 "output2"
 }
 inputsNamed3
 {
-1 	PLANT_DEFINITIONS 1 1 "input1"
-2 	heightfield_masknoise1 1 1 "input2"
-3 	biome_region_assign1 0 1 "input3"
+0 	OUT_DEFINE_PLANTS1 0 1 "input1"
+1 	biome_attributes_evolve1 0 1 "input2"
 }
 inputs
 {
-0 	PLANT_DEFINITIONS 0 1
-1 	heightfield_masknoise1 0 1
-2 	biome_region_assign1 0 1
+0 	OUT_DEFINE_PLANTS1 0 1
+1 	biome_attributes_evolve1 0 1
 }
 stat
 {
@@ -868,6 +866,369 @@ Content-Type: text/plain
 }
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.init"
+Content-Type: text/plain
+
+type = heightfield_visualize
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 46.0143 -69.3749
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	replace_spaces_from_species 1 1 "input1"
+}
+inputs
+{
+0 	replace_spaces_from_species 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.8 0.8 0.8 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.spareparmdef"
+Content-Type: text/plain
+
+    groupsimple {
+        name    "folder2"
+        label   "Tinting by Layer"
+        grouptag { "sidefx::switcher" "folder0" }
+
+        parm {
+            name    "updatetinting"
+            baseparm
+            label   "Update Tinting"
+            export  none
+        }
+        parm {
+            name    "heightvolume"
+            baseparm
+            label   "Height Layer"
+            export  none
+        }
+        parm {
+            name    "cdvolume"
+            baseparm
+            label   "Color Layer"
+            export  none
+        }
+        parm {
+            name    "computerange"
+            baseparm
+            label   "Compute Range"
+            export  none
+        }
+        parm {
+            name    "cdrangeoverride"
+            baseparm
+            label   "Diffuse Range"
+            nolabel
+            joinnext
+            export  none
+        }
+        parm {
+            name    "cdrange"
+            baseparm
+            label   "Diffuse Range"
+            export  none
+        }
+        parm {
+            name    "cdrampmode"
+            baseparm
+            label   "Mode"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "cdpreset"
+            baseparm
+            label   "Diffuse"
+            export  none
+        }
+        parm {
+            name    "cdramp"
+            baseparm
+            label   "Diffuse Ramp"
+            export  none
+        }
+    }
+
+    groupsimple {
+        name    "folder3"
+        label   "Material"
+        grouptag { "sidefx::switcher" "folder1" }
+
+        parm {
+            name    "updatematerial"
+            baseparm
+            label   "Update Material"
+            export  none
+        }
+        parm {
+            name    "vis_projection"
+            baseparm
+            label   "Projection"
+            export  none
+        }
+        parm {
+            name    "computerange2"
+            baseparm
+            label   "Compute Range"
+            export  none
+        }
+        parm {
+            name    "vis_minelevation"
+            baseparm
+            label   "Min Elevation"
+            export  none
+        }
+        parm {
+            name    "vis_maxelevation"
+            baseparm
+            label   "Max Elevation"
+            export  none
+        }
+        parm {
+            name    "vis_heightramp"
+            baseparm
+            label   "Height Ramp"
+            export  none
+        }
+        parm {
+            name    "vis_layer9"
+            baseparm
+            label   "Layer 9"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color9"
+            baseparm
+            label   "Color 9"
+            export  none
+        }
+        parm {
+            name    "vis_layer8"
+            baseparm
+            label   "Layer 8"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color8"
+            baseparm
+            label   "Color 8"
+            export  none
+        }
+        parm {
+            name    "vis_layer7"
+            baseparm
+            label   "Layer 7"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color7"
+            baseparm
+            label   "Color 7"
+            export  none
+        }
+        parm {
+            name    "vis_layer6"
+            baseparm
+            label   "Layer 6"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color6"
+            baseparm
+            label   "Color 6"
+            export  none
+        }
+        parm {
+            name    "vis_layer5"
+            baseparm
+            label   "Layer 5"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color5"
+            baseparm
+            label   "Color 5"
+            export  none
+        }
+        parm {
+            name    "vis_layer4"
+            baseparm
+            label   "Layer 4"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color4"
+            baseparm
+            label   "Color 4"
+            export  none
+        }
+        parm {
+            name    "vis_layer3"
+            baseparm
+            label   "Layer 3"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color3"
+            baseparm
+            label   "Color 3"
+            export  none
+        }
+        parm {
+            name    "vis_layer2"
+            baseparm
+            label   "Layer 2"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color2"
+            baseparm
+            label   "Color 2"
+            export  none
+        }
+        parm {
+            name    "vis_layer1"
+            baseparm
+            label   "Layer 1"
+            joinnext
+            export  none
+        }
+        parm {
+            name    "vis_color1"
+            baseparm
+            label   "Color 1"
+            export  none
+        }
+    }
+
+    parm {
+        name    "spare_input0"
+        label   "Spare Input 0"
+        type    oppath
+        default { "" }
+        help    "Refer to this in expressions as -1, such as: npoints(-1)"
+        parmtag { "cook_dependent" "1" }
+        parmtag { "opfilter" "!!SOP!!" }
+        parmtag { "oprelative" "." }
+    }
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+folder0	[ 0	locks=0 ]	(	0	)
+updatetinting	[ 0	locks=0 ]	(	"custom"	)
+heightvolume	[ 0	locks=0 ]	(	height	)
+cdvolume	[ 0	locks=0 ]	(	"_bps_speciesviability_`details(-1, \"species\")`"	)
+computerange	[ 0	locks=0 ]	(	0	)
+cdrangeoverride	[ 0	locks=0 ]	(	"off"	)
+cdrange	[ 0	locks=0 ]	(	0	1	)
+cdrampmode	[ 0	locks=0 ]	(	"clamp"	)
+cdpreset	[ 0	locks=0 ]	(	"none"	)
+cdramp	[ 0	locks=0 ]	(	2	)
+folder1	[ 0	locks=0 ]	(	0	)
+updatematerial	[ 0	locks=0 ]	(	"custom"	)
+vis_projection	[ 0	locks=0 ]	(	"y"	)
+computerange2	[ 0	locks=0 ]	(	0	)
+vis_minelevation	[ 0	locks=0 ]	(	0	)
+vis_maxelevation	[ 0	locks=0 ]	(	250	)
+vis_heightramp	[ 0	locks=0 ]	(	5	)
+vis_layer9	[ 8	locks=0 ]	(	""	)
+vis_color9	[ 0	locks=0 ]	(	1	0	0	1	)
+vis_layer8	[ 0	locks=0 ]	(	""	)
+vis_color8	[ 0	locks=0 ]	(	0	0	1	1	)
+vis_layer7	[ 0	locks=0 ]	(	""	)
+vis_color7	[ 0	locks=0 ]	(	0	1	0	1	)
+vis_layer6	[ 0	locks=0 ]	(	""	)
+vis_color6	[ 0	locks=0 ]	(	0.3	0.3	0.3	1	)
+vis_layer5	[ 0	locks=0 ]	(	""	)
+vis_color5	[ 0	locks=0 ]	(	0.3	0.5	0.03	1	)
+vis_layer4	[ 0	locks=0 ]	(	""	)
+vis_color4	[ 0	locks=0 ]	(	0	0.5	0	1	)
+vis_layer3	[ 0	locks=0 ]	(	""	)
+vis_color3	[ 0	locks=0 ]	(	0.45	0	0.9	1	)
+vis_layer2	[ 0	locks=0 ]	(	""	)
+vis_color2	[ 0	locks=0 ]	(	0	0.9	0.9	1	)
+vis_layer1	[ 0	locks=0 ]	(	""	)
+vis_color1	[ 0	locks=0 ]	(	0.5	0.25	0	1	)
+cdramp1pos	[ 0	locks=0 ]	(	0	)
+cdramp1c	[ 0	locks=0 ]	(	1	1	1	)
+cdramp1interp	[ 0	locks=0 ]	(	"linear"	)
+cdramp2pos	[ 0	locks=0 ]	(	1	)
+cdramp2c	[ 0	locks=0 ]	(	1	0	0	)
+cdramp2interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp1pos	[ 0	locks=0 ]	(	0	)
+vis_heightramp1c	[ 0	locks=0 ]	(	0.5	0.25	0	)
+vis_heightramp1interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp2pos	[ 0	locks=0 ]	(	0.3286624252796173	)
+vis_heightramp2c	[ 0	locks=0 ]	(	0	0.7239999771118164	0	)
+vis_heightramp2interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp3pos	[ 0	locks=0 ]	(	0.6496815085411072	)
+vis_heightramp3c	[ 0	locks=0 ]	(	0	0.28999999165534973	0	)
+vis_heightramp3interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp4pos	[ 0	locks=0 ]	(	0.8458598852157593	)
+vis_heightramp4c	[ 0	locks=0 ]	(	0.3479999899864197	0.3479999899864197	0.3479999899864197	)
+vis_heightramp4interp	[ 0	locks=0 ]	(	"linear"	)
+vis_heightramp5pos	[ 0	locks=0 ]	(	1	)
+vis_heightramp5c	[ 0	locks=0 ]	(	1	1	1	)
+vis_heightramp5interp	[ 0	locks=0 ]	(	"linear"	)
+folder2	[ 0	locks=0 ]	(	0	)
+folder3	[ 0	locks=0 ]	(	0	)
+spare_input0	[ 0	locks=0 ]	(	../replace_spaces_from_species	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.netbox"
+Content-Type: text/plain
+
+__netbox17
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/visualize_viability.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/output0.init"
 Content-Type: text/plain
 
@@ -880,7 +1241,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.18451 -135.417
+position 3.18451 -135.695
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1334,7 +1695,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 52.3853 -94.4786
+position 52.3853 -94.8504
 connectornextid 1
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1630,7 +1991,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 3.18451 -133.602
+position 3.18451 -133.88
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1766,7 +2127,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 52.3853 -93.2713
+position 52.3853 -93.7521
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -1775,11 +2136,11 @@ outputsNamed3
 }
 inputsNamed3
 {
-0 	remove_hda_code_attributes1 1 1 "input1"
+0 	delete_volvis_cdfield 1 1 "input1"
 }
 inputs
 {
-0 	remove_hda_code_attributes1 0 1
+0 	delete_volvis_cdfield 0 1
 }
 stat
 {
@@ -4336,369 +4697,6 @@ Content-Type: text/plain
 	"___Version___":{
 		"type":"string",
 		"value":"___EXTERNAL___"
-	}
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.init"
-Content-Type: text/plain
-
-type = heightfield_visualize
-matchesdef = 1
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.def"
-Content-Type: text/plain
-
-sopflags sopflags = 
-comment ""
-position 46.0143 -69.3749
-connectornextid 2
-flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload on savedata off compress on colordefault on exposed on
-outputsNamed3
-{
-1 "output1"
-}
-inputsNamed3
-{
-0 	replace_spaces_from_species 1 1 "input1"
-}
-inputs
-{
-0 	replace_spaces_from_species 0 1
-}
-stat
-{
-  create -1
-  modify -1
-  author Bailey@BaileysPC
-  access 0777
-}
-color UT_Color RGB 0.8 0.8 0.8 
-delscript ""
-exprlanguage hscript
-end
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.spareparmdef"
-Content-Type: text/plain
-
-    groupsimple {
-        name    "folder2"
-        label   "Tinting by Layer"
-        grouptag { "sidefx::switcher" "folder0" }
-
-        parm {
-            name    "updatetinting"
-            baseparm
-            label   "Update Tinting"
-            export  none
-        }
-        parm {
-            name    "heightvolume"
-            baseparm
-            label   "Height Layer"
-            export  none
-        }
-        parm {
-            name    "cdvolume"
-            baseparm
-            label   "Color Layer"
-            export  none
-        }
-        parm {
-            name    "computerange"
-            baseparm
-            label   "Compute Range"
-            export  none
-        }
-        parm {
-            name    "cdrangeoverride"
-            baseparm
-            label   "Diffuse Range"
-            nolabel
-            joinnext
-            export  none
-        }
-        parm {
-            name    "cdrange"
-            baseparm
-            label   "Diffuse Range"
-            export  none
-        }
-        parm {
-            name    "cdrampmode"
-            baseparm
-            label   "Mode"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "cdpreset"
-            baseparm
-            label   "Diffuse"
-            export  none
-        }
-        parm {
-            name    "cdramp"
-            baseparm
-            label   "Diffuse Ramp"
-            export  none
-        }
-    }
-
-    groupsimple {
-        name    "folder3"
-        label   "Material"
-        grouptag { "sidefx::switcher" "folder1" }
-
-        parm {
-            name    "updatematerial"
-            baseparm
-            label   "Update Material"
-            export  none
-        }
-        parm {
-            name    "vis_projection"
-            baseparm
-            label   "Projection"
-            export  none
-        }
-        parm {
-            name    "computerange2"
-            baseparm
-            label   "Compute Range"
-            export  none
-        }
-        parm {
-            name    "vis_minelevation"
-            baseparm
-            label   "Min Elevation"
-            export  none
-        }
-        parm {
-            name    "vis_maxelevation"
-            baseparm
-            label   "Max Elevation"
-            export  none
-        }
-        parm {
-            name    "vis_heightramp"
-            baseparm
-            label   "Height Ramp"
-            export  none
-        }
-        parm {
-            name    "vis_layer9"
-            baseparm
-            label   "Layer 9"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color9"
-            baseparm
-            label   "Color 9"
-            export  none
-        }
-        parm {
-            name    "vis_layer8"
-            baseparm
-            label   "Layer 8"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color8"
-            baseparm
-            label   "Color 8"
-            export  none
-        }
-        parm {
-            name    "vis_layer7"
-            baseparm
-            label   "Layer 7"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color7"
-            baseparm
-            label   "Color 7"
-            export  none
-        }
-        parm {
-            name    "vis_layer6"
-            baseparm
-            label   "Layer 6"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color6"
-            baseparm
-            label   "Color 6"
-            export  none
-        }
-        parm {
-            name    "vis_layer5"
-            baseparm
-            label   "Layer 5"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color5"
-            baseparm
-            label   "Color 5"
-            export  none
-        }
-        parm {
-            name    "vis_layer4"
-            baseparm
-            label   "Layer 4"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color4"
-            baseparm
-            label   "Color 4"
-            export  none
-        }
-        parm {
-            name    "vis_layer3"
-            baseparm
-            label   "Layer 3"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color3"
-            baseparm
-            label   "Color 3"
-            export  none
-        }
-        parm {
-            name    "vis_layer2"
-            baseparm
-            label   "Layer 2"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color2"
-            baseparm
-            label   "Color 2"
-            export  none
-        }
-        parm {
-            name    "vis_layer1"
-            baseparm
-            label   "Layer 1"
-            joinnext
-            export  none
-        }
-        parm {
-            name    "vis_color1"
-            baseparm
-            label   "Color 1"
-            export  none
-        }
-    }
-
-    parm {
-        name    "spare_input0"
-        label   "Spare Input 0"
-        type    oppath
-        default { "" }
-        help    "Refer to this in expressions as -1, such as: npoints(-1)"
-        parmtag { "cook_dependent" "1" }
-        parmtag { "opfilter" "!!SOP!!" }
-        parmtag { "oprelative" "." }
-    }
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.parm"
-Content-Type: text/plain
-
-{
-version 0.8
-folder0	[ 0	locks=0 ]	(	0	)
-updatetinting	[ 0	locks=0 ]	(	"custom"	)
-heightvolume	[ 0	locks=0 ]	(	height	)
-cdvolume	[ 0	locks=0 ]	(	"_bps_speciesviability_`details(-1, \"species\")`"	)
-computerange	[ 0	locks=0 ]	(	0	)
-cdrangeoverride	[ 0	locks=0 ]	(	"off"	)
-cdrange	[ 0	locks=0 ]	(	0	1	)
-cdrampmode	[ 0	locks=0 ]	(	"clamp"	)
-cdpreset	[ 0	locks=0 ]	(	"none"	)
-cdramp	[ 0	locks=0 ]	(	2	)
-folder1	[ 0	locks=0 ]	(	0	)
-updatematerial	[ 0	locks=0 ]	(	"custom"	)
-vis_projection	[ 0	locks=0 ]	(	"y"	)
-computerange2	[ 0	locks=0 ]	(	0	)
-vis_minelevation	[ 0	locks=0 ]	(	0	)
-vis_maxelevation	[ 0	locks=0 ]	(	250	)
-vis_heightramp	[ 0	locks=0 ]	(	5	)
-vis_layer9	[ 8	locks=0 ]	(	""	)
-vis_color9	[ 0	locks=0 ]	(	1	0	0	1	)
-vis_layer8	[ 0	locks=0 ]	(	""	)
-vis_color8	[ 0	locks=0 ]	(	0	0	1	1	)
-vis_layer7	[ 0	locks=0 ]	(	""	)
-vis_color7	[ 0	locks=0 ]	(	0	1	0	1	)
-vis_layer6	[ 0	locks=0 ]	(	""	)
-vis_color6	[ 0	locks=0 ]	(	0.3	0.3	0.3	1	)
-vis_layer5	[ 0	locks=0 ]	(	""	)
-vis_color5	[ 0	locks=0 ]	(	0.3	0.5	0.03	1	)
-vis_layer4	[ 0	locks=0 ]	(	""	)
-vis_color4	[ 0	locks=0 ]	(	0	0.5	0	1	)
-vis_layer3	[ 0	locks=0 ]	(	""	)
-vis_color3	[ 0	locks=0 ]	(	0.45	0	0.9	1	)
-vis_layer2	[ 0	locks=0 ]	(	""	)
-vis_color2	[ 0	locks=0 ]	(	0	0.9	0.9	1	)
-vis_layer1	[ 0	locks=0 ]	(	""	)
-vis_color1	[ 0	locks=0 ]	(	0.5	0.25	0	1	)
-cdramp1pos	[ 0	locks=0 ]	(	0	)
-cdramp1c	[ 0	locks=0 ]	(	1	1	1	)
-cdramp1interp	[ 0	locks=0 ]	(	"linear"	)
-cdramp2pos	[ 0	locks=0 ]	(	1	)
-cdramp2c	[ 0	locks=0 ]	(	1	0	0	)
-cdramp2interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp1pos	[ 0	locks=0 ]	(	0	)
-vis_heightramp1c	[ 0	locks=0 ]	(	0.5	0.25	0	)
-vis_heightramp1interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp2pos	[ 0	locks=0 ]	(	0.3286624252796173	)
-vis_heightramp2c	[ 0	locks=0 ]	(	0	0.7239999771118164	0	)
-vis_heightramp2interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp3pos	[ 0	locks=0 ]	(	0.6496815085411072	)
-vis_heightramp3c	[ 0	locks=0 ]	(	0	0.28999999165534973	0	)
-vis_heightramp3interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp4pos	[ 0	locks=0 ]	(	0.8458598852157593	)
-vis_heightramp4c	[ 0	locks=0 ]	(	0.3479999899864197	0.3479999899864197	0.3479999899864197	)
-vis_heightramp4interp	[ 0	locks=0 ]	(	"linear"	)
-vis_heightramp5pos	[ 0	locks=0 ]	(	1	)
-vis_heightramp5c	[ 0	locks=0 ]	(	1	1	1	)
-vis_heightramp5interp	[ 0	locks=0 ]	(	"linear"	)
-folder2	[ 0	locks=0 ]	(	0	)
-folder3	[ 0	locks=0 ]	(	0	)
-spare_input0	[ 0	locks=0 ]	(	../replace_spaces_from_species	)
-}
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.netbox"
-Content-Type: text/plain
-
-__netbox17
-
---HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
-Content-Disposition: attachment; filename="hdaroot/visualize_viability.userdata"
-Content-Type: text/plain
-
-{
-	"___Version___":{
-		"type":"string",
-		"value":""
 	}
 }
 
@@ -9562,7 +9560,6 @@ Content-Type: text/plain
 
 {
 version 0.8
-setfields	[ 0	locks=0 ]	(	0	)
 outputs	[ 0	locks=0 ]	(	1	)
 outputname1	[ 0	locks=0 ]	(	""	)
 }
@@ -10152,7 +10149,6 @@ border	[ 0	locks=0 ]	(	"auto"	)
 filter	[ 0	locks=0 ]	(	"box"	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
-invertmask	[ 0	locks=0 ]	(	"off"	)
 mode	[ 0	locks=0 ]	(	"multiply"	)
 alpha	[ 0	locks=0 ]	(	"off"	)
 swap	[ 0	locks=0 ]	(	"off"	)
@@ -10220,7 +10216,6 @@ version 0.8
 signature	[ 0	locks=0 ]	(	f4	)
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
-invertmask	[ 0	locks=0 ]	(	"off"	)
 f1	[ 0	locks=0 ]	(	1	)
 f2	[ 0	locks=0 ]	(	1	1	)
 f3	[ 0	locks=0 ]	(	1	0	0	)
@@ -10373,7 +10368,6 @@ Content-Type: text/plain
 version 0.8
 mask	[ 0	locks=0 ]	(	1	)
 scopergba	[ 0	locks=0 ]	(	15	)
-invertmask	[ 0	locks=0 ]	(	"off"	)
 computerange	[ 0	locks=0 ]	(	0	)
 dolowerlimit	[ 0	locks=0 ]	(	"on"	)
 lowerlimit	[ 0	locks=0 ]	(	0	)
@@ -30322,7 +30316,7 @@ Content-Type: text/plain
 
 sopflags sopflags = 
 comment ""
-position 52.3819 -92.042
+position 52.3819 -91.5404
 connectornextid 2
 flags =  lock off model off template off footprint off xray off bypass off display on render on highlight off unload on savedata off compress on colordefault off exposed on
 outputsNamed3
@@ -30370,6 +30364,76 @@ updatevar	[ 0	locks=0 ]	(	"on"	)
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot/remove_hda_code_attributes1.userdata"
+Content-Type: text/plain
+
+{
+	"___Version___":{
+		"type":"string",
+		"value":""
+	}
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/delete_volvis_cdfield.init"
+Content-Type: text/plain
+
+type = attribdelete
+matchesdef = 1
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/delete_volvis_cdfield.def"
+Content-Type: text/plain
+
+sopflags sopflags = 
+comment ""
+position 52.3819 -92.6437
+connectornextid 2
+flags =  lock off model off template off footprint off xray off bypass off display off render off highlight off unload off savedata off compress on colordefault off exposed on
+outputsNamed3
+{
+1 "output1"
+}
+inputsNamed3
+{
+0 	remove_hda_code_attributes1 1 1 "input1"
+}
+inputs
+{
+0 	remove_hda_code_attributes1 0 1
+}
+stat
+{
+  create -1
+  modify -1
+  author Bailey@BaileysPC
+  access 0777
+}
+color UT_Color RGB 0.98 0.275 0.275 
+delscript ""
+exprlanguage hscript
+end
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/delete_volvis_cdfield.parm"
+Content-Type: text/plain
+
+{
+version 0.8
+usereference	[ 0	locks=0 ]	(	"off"	)
+negate	[ 0	locks=0 ]	(	"off"	)
+doptdel	[ 0	locks=0 ]	(	"off"	)
+ptdel	[ 0	locks=0 ]	(	""	)
+dovtxdel	[ 0	locks=0 ]	(	"off"	)
+vtxdel	[ 0	locks=0 ]	(	""	)
+doprimdel	[ 0	locks=0 ]	(	"off"	)
+primdel	[ 0	locks=0 ]	(	""	)
+dodtldel	[ 0	locks=0 ]	(	"on"	)
+dtldel	[ 0	locks=0 ]	(	volvis_cdfield	)
+updatevar	[ 0	locks=0 ]	(	"on"	)
+}
+
+--HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
+Content-Disposition: attachment; filename="hdaroot/delete_volvis_cdfield.userdata"
 Content-Type: text/plain
 
 {
@@ -30437,7 +30501,7 @@ Content-Type: text/plain
 Content-Disposition: attachment; filename="hdaroot.order"
 Content-Type: text/plain
 
-236
+237
 noise_float
 output0
 INITIAL_SCATTER
@@ -30674,6 +30738,7 @@ mask_found_on_input1
 blast_mask
 copy_mask_from_input
 remove_hda_code_attributes1
+delete_volvis_cdfield
 
 --HOUDINIMIMEBOUNDARY0xD3ADD339-0x00000F49-0x56B122C9-0x00000001HOUDINIMIMEBOUNDARY
 Content-Disposition: attachment; filename="hdaroot.net"
